@@ -9,6 +9,8 @@ export const PERSON_MOTIFS = [
   "walking", // 散歩・運動
   "doctor", // 医師・診察
   "talking", // 語りかけ・説明
+  "frail", // 衰えた姿 (杖・前かがみ)
+  "compare", // 元気な姿と衰えた姿の対比 (筋肉が減る・老化が進む等)
 ] as const;
 
 export const OBJECT_MOTIFS = [
@@ -28,6 +30,8 @@ export const OBJECT_MOTIFS = [
   "salt",
   "oil",
   "supplement",
+  "hiyayakko", // 冷奴
+  "meal", // 一汁三菜の食事トレー (献立・食事例)
 ] as const;
 
 export const LOCATION_MOTIFS = [

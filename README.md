@@ -22,10 +22,18 @@
 | Name | 用途 |
 |---|---|
 | `ANTHROPIC_API_KEY` | 台本の各文に絵を割り当てる |
-| `ELEVENLABS_API_KEY` | ナレーション合成 |
-| `ELEVENLABS_VOICE_ID` | 使う声 (Add to My Voices 済みのもの) |
+| `ELEVENLABS_API_KEY` | ナレーション合成 (ElevenLabs使用時のみ) |
+| `ELEVENLABS_VOICE_ID` | 使う声 (ElevenLabs使用時のみ) |
 | `GIST_TOKEN` | 台本の読み取り (gist権限のみ) |
-| `GEMINI_API_KEY` | シーンごとのAI画像生成 (未設定ならSVGの絵で代用) |
+| `GEMINI_API_KEY` | シーンごとのAI画像生成 (現在オフ。ワークフローのコメントを外すと有効) |
+
+## ナレーション (VOICEVOX)
+
+標準の音声エンジンはVOICEVOX (無料・日本語専用)。キーは不要で、GitHub Actionsが自動で起動する。
+声の変更は `src/channel.ts` の `voicevoxSpeaker` を書き換える (サンプル: https://voicevox.hiroshiba.jp/ )。
+
+**重要**: 動画の説明欄に「VOICEVOX:青山龍星」のようにキャラ名のクレジットを必ず書くこと (利用条件)。
+ElevenLabsに戻すには `src/channel.ts` の `engine` を `"elevenlabs"` にする。
 
 ## 中の構成
 

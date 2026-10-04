@@ -30,13 +30,30 @@ jobs:
       - name: 依存関係
         run: npm ci
 
+      - name: VOICEVOXエンジンを起動 (無料の日本語音声)
+        run: |
+          docker run -d --name voicevox -p 50021:50021 voicevox/voicevox_engine:cpu-latest
+          echo "エンジンの起動を待っています..."
+          for i in $(seq 1 90); do
+            if curl -sf http://127.0.0.1:50021/version > /dev/null; then
+              echo "VOICEVOX起動完了 (version: $(curl -s http://127.0.0.1:50021/version))"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "VOICEVOXの起動がタイムアウトしました"
+          docker logs voicevox | tail -50
+          exit 1
+
       - name: 工程1-5 台本読込・絵づけ・補正・画像生成・音声合成
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # AI画像は一旦オフ (使うときは下の行の先頭の「# 」を消す)
+          # GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
           GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+          VOICEVOX_URL: http://127.0.0.1:50021
           SCRIPT_URL: ${{ inputs.gist_url }}
         run: npm run generate -- "$SCRIPT_URL"
 

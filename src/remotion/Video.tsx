@@ -6,6 +6,7 @@ import {
   useCurrentFrame,
   interpolate,
 } from "remotion";
+import { loadDefaultJapaneseParser } from "budoux";
 import { PALETTE, SUBTITLE, VIDEO } from "../style";
 import type { Scene, ScenesData } from "../types";
 import { CharacterScene } from "./scenes/CharacterScene";
@@ -40,6 +41,9 @@ const SceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
   }
 };
 
+// 日本語の文節で改行する (「たんぱ\nく質」のような変な折り返しを防ぐ)
+const jaParser = loadDefaultJapaneseParser();
+
 const Subtitle: React.FC<{ text: string; onImage?: boolean }> = ({
   text,
   onImage,
@@ -48,6 +52,7 @@ const Subtitle: React.FC<{ text: string; onImage?: boolean }> = ({
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
   });
+  const chunks = jaParser.parse(text);
   return (
     <div
       style={{
@@ -76,7 +81,11 @@ const Subtitle: React.FC<{ text: string; onImage?: boolean }> = ({
           borderRadius: 4,
         }}
       >
-        {text}
+        {chunks.map((chunk, i) => (
+          <span key={i} style={{ display: "inline-block" }}>
+            {chunk}
+          </span>
+        ))}
       </span>
     </div>
   );

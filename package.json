@@ -12,6 +12,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@remotion/cli": "4.0.242",
+    "budoux": "^0.9.3",
     "music-metadata": "^10.5.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",

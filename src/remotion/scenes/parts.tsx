@@ -13,7 +13,8 @@ export const ElderlyPerson: React.FC<{ motif: string; size?: number }> = ({
   const frame = useCurrentFrame();
   const bob = Math.sin(frame / 14) * 5;
   const female = ["cooking", "shopping", "happy"].includes(motif);
-  const sweater = female ? P.accentSoft : P.softBlue;
+  const frail = motif === "frail";
+  const sweater = frail ? P.hair : female ? P.accentSoft : P.softBlue;
 
   return (
     <svg
@@ -55,7 +56,13 @@ export const ElderlyPerson: React.FC<{ motif: string; size?: number }> = ({
       {/* 顔 */}
       <circle cx="178" cy="150" r="5" fill={INK} />
       <circle cx="222" cy="150" r="5" fill={INK} />
-      <path d="M186 176 Q200 186 214 176" fill="none" stroke={INK} strokeWidth={4} strokeLinecap="round" />
+      <path
+        d={frail ? "M186 182 Q200 172 214 182" : "M186 176 Q200 186 214 176"}
+        fill="none"
+        stroke={INK}
+        strokeWidth={4}
+        strokeLinecap="round"
+      />
       <circle cx="165" cy="168" r="9" fill={P.accentSoft} opacity={0.55} />
       <circle cx="235" cy="168" r="9" fill={P.accentSoft} opacity={0.55} />
       {/* 題材ごとの小道具 */}
@@ -112,6 +119,19 @@ const Props: React.FC<{ motif: string }> = ({ motif }) => {
         <g>
           <path d="M96 70 L104 90 L124 92 L108 106 L114 126 L96 114 L78 126 L84 106 L68 92 L88 90 Z" fill={P.softYellow} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
           <path d="M310 90 L316 104 L330 106 L319 116 L323 130 L310 122 L297 130 L301 116 L290 106 L304 104 Z" fill={P.softYellow} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+        </g>
+      );
+    case "frail":
+      return (
+        <g>
+          {/* 杖 */}
+          <line x1="298" y1="258" x2="298" y2="374" stroke="#A98B66" strokeWidth={10} strokeLinecap="round" />
+          <path d="M288 258 Q298 244 312 254" fill="none" stroke="#A98B66" strokeWidth={10} strokeLinecap="round" />
+          {/* 困り眉と汗 */}
+          <path d="M162 132 Q172 126 182 132 M218 132 Q228 126 238 132" stroke={INK} strokeWidth={4} fill="none" strokeLinecap="round" />
+          <path d="M282 118 Q290 132 282 144 Q272 132 282 118 Z" fill={P.softBlue} stroke={INK} strokeWidth={3} />
+          {/* 下向き矢印 (弱っていく印) */}
+          <path d="M86 150 L86 230 M66 206 L86 232 L106 206" fill="none" stroke={P.accent} strokeWidth={9} strokeLinecap="round" strokeLinejoin="round" />
         </g>
       );
     case "walking":
@@ -255,6 +275,41 @@ const Food: React.FC<{ motif: string }> = ({ motif }) => {
           <ellipse cx="150" cy="212" rx="105" ry="26" fill={P.softBlue} opacity={0.35} stroke={INK} strokeWidth={4} />
           <path d="M85 130 L215 130 L215 200 L85 200 Z" fill="#FFFFFF" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
           <path d="M85 130 L110 108 L240 108 L215 130 M215 200 L240 178 L240 108" fill="#FDFBF7" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
+        </g>
+      );
+    case "hiyayakko":
+      return (
+        <g>
+          {/* 小皿 */}
+          <ellipse cx="150" cy="210" rx="110" ry="30" fill={P.softBlue} opacity={0.4} stroke={INK} strokeWidth={4} />
+          {/* 豆腐 */}
+          <path d="M85 140 L205 140 L205 200 L85 200 Z" fill="#FFFFFF" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
+          <path d="M85 140 L108 120 L228 120 L205 140 M205 200 L228 180 L228 120" fill="#FDFBF7" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
+          {/* 醤油 */}
+          <path d="M100 162 Q150 176 196 160 L196 178 Q150 192 100 180 Z" fill="#8B6B4A" opacity={0.8} />
+          {/* 鰹節 */}
+          <path d="M118 122 Q130 108 144 118 M150 120 Q164 104 178 116 M184 124 Q196 110 208 118" stroke="#C9A86A" strokeWidth={6} fill="none" strokeLinecap="round" />
+          {/* 小ねぎ */}
+          {[[128, 134], [156, 130], [182, 136], [142, 128]].map(([x, y], i) => (
+            <circle key={i} cx={x} cy={y} r="6" fill={P.softGreen} stroke={INK} strokeWidth={2.5} />
+          ))}
+        </g>
+      );
+    case "meal":
+      return (
+        <g>
+          {/* お盆 */}
+          <rect x="30" y="100" width="240" height="150" rx="14" fill={P.warmBeige} stroke={INK} strokeWidth={SW} />
+          {/* ご飯茶碗 */}
+          <path d="M55 200 L125 200 Q122 232 90 234 Q58 232 55 200 Z" fill="#FFFFFF" stroke={INK} strokeWidth={4.5} />
+          <path d="M62 200 Q66 178 90 175 Q114 178 118 200 Z" fill="#FDFBF7" stroke={INK} strokeWidth={4.5} />
+          {/* 味噌汁 */}
+          <path d="M175 200 L245 200 Q242 230 210 232 Q178 230 175 200 Z" fill="#B0543F" stroke={INK} strokeWidth={4.5} />
+          <path d="M186 192 Q194 180 190 170 M212 192 Q220 178 216 168" stroke={P.hair} strokeWidth={4} fill="none" strokeLinecap="round" />
+          {/* 焼き魚の皿 */}
+          <ellipse cx="150" cy="140" rx="92" ry="28" fill="#FFFFFF" stroke={INK} strokeWidth={4.5} />
+          <path d="M92 140 Q130 114 180 128 Q200 134 208 140 Q200 148 180 152 Q130 164 92 140 Z" fill="#C98B5C" stroke={INK} strokeWidth={4} />
+          <path d="M208 140 L228 128 L223 140 L228 152 Z" fill="#C98B5C" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
         </g>
       );
     case "snack":

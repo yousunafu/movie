@@ -10,7 +10,8 @@ import { assignScenes } from "./assign";
 import { enforceRatios } from "./enforce";
 import { generateImage, imagesAvailable, imagesDisabledReason } from "./images";
 import { checkCredits, synthesize } from "./tts";
-import { CHANNEL } from "../channel";
+import { synthesizeVoicevox } from "./voicevox";
+import { CHANNEL, VOICE } from "../channel";
 import type { Scene, ScenesData } from "../types";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -82,13 +83,23 @@ async function main() {
   console.log("=== 工程5: 音声合成 ===");
   const closing = CHANNEL.closingLine;
   const ttsChars = totalChars + closing.length;
-  await checkCredits(ttsChars);
+  const useVoicevox = VOICE.engine === "voicevox";
+  const speak = useVoicevox ? synthesizeVoicevox : synthesize;
+  const ext = useVoicevox ? "wav" : "mp3";
+  if (useVoicevox) {
+    console.log(
+      `エンジン: VOICEVOX (無料)。動画の説明欄に「VOICEVOX:${VOICE.voicevoxSpeaker}」と書いてください`,
+    );
+  } else {
+    console.log("エンジン: ElevenLabs");
+    await checkCredits(ttsChars);
+  }
 
   fs.mkdirSync(path.join(PUBLIC, "audio"), { recursive: true });
   const scenes: Scene[] = [];
   for (let i = 0; i < sentences.length; i++) {
-    const audio = `audio/scene-${String(i).padStart(3, "0")}.mp3`;
-    const dur = await synthesize(sentences[i], path.join(PUBLIC, audio));
+    const audio = `audio/scene-${String(i).padStart(3, "0")}.${ext}`;
+    const dur = await speak(sentences[i], path.join(PUBLIC, audio));
     scenes.push({
       index: i,
       text: sentences[i],
@@ -101,8 +112,8 @@ async function main() {
   }
 
   // 締めの決まり文句 (channel.ts で一元管理)
-  const endAudio = `audio/scene-end.mp3`;
-  const endDur = await synthesize(closing, path.join(PUBLIC, endAudio));
+  const endAudio = `audio/scene-end.${ext}`;
+  const endDur = await speak(closing, path.join(PUBLIC, endAudio));
   scenes.push({
     index: scenes.length,
     text: closing,

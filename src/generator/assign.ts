@@ -29,6 +29,11 @@ const PROMPT = (sentences: string[]) => `あなたは高齢者向け健康解説
 題材 (motif) は必ずこの中から選ぶ:
 ${ALL_MOTIFS.join(", ")}
 
+分かりにくい題材の意味:
+- compare: 元気な姿と衰えた姿の対比 (筋肉が減る・老化が早まる・放っておくとこうなる、の文に最適)
+- frail: 衰えた人物1人 (杖・弱った様子)
+- hiyayakko: 冷奴 / meal: ご飯・味噌汁・焼き魚の食事トレー (献立例・バランスの良い食事の文に)
+
 ルール:
 - 数字が出てくる文は chart を検討し、items に label と value を入れる (桁をそのまま写す。単位を省略しない)
 - diagram のときは items に部位や要素のラベルを2〜4個
@@ -127,7 +132,8 @@ const OBJECT_WORDS: Record<string, string> = {
   肉: "meat", 鶏: "meat", 豚: "meat", 牛: "meat",
   ご飯: "rice", 米: "rice", 食パン: "bread", パン: "bread",
   牛乳: "milk", 乳製品: "milk", 卵: "egg", 果物: "fruit", りんご: "fruit",
-  お茶: "tea", 緑茶: "tea", 水: "water", 納豆: "natto", 豆腐: "tofu",
+  お茶: "tea", 緑茶: "tea", 水: "water", 納豆: "natto",
+  冷奴: "hiyayakko", 豆腐: "tofu", 献立: "meal", 定食: "meal", 一汁三菜: "meal",
   お菓子: "snack", おやつ: "snack", 塩: "salt", 油: "oil", サプリ: "supplement",
 };
 const LOCATION_WORDS: Record<string, string> = {
@@ -135,6 +141,7 @@ const LOCATION_WORDS: Record<string, string> = {
   キッチン: "kitchen", 公園: "park", 散歩: "park", 自宅: "home", 家: "home",
 };
 const PERSON_WORDS: Record<string, string> = {
+  筋肉: "compare", 老化: "compare", 衰え: "frail", 弱: "frail",
   料理: "cooking", 作り: "cooking", 食べ: "eating", 食事: "eating",
   買い: "shopping", 悩: "thinking", 考え: "thinking", 心配: "worried",
   不安: "worried", 元気: "happy", 嬉し: "happy", 歩: "walking",

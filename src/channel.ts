@@ -10,7 +10,18 @@ export const CHANNEL = {
 } as const;
 
 export const VOICE = {
+  // 使う音声エンジン: "voicevox" (無料・日本語専用) か "elevenlabs"
+  engine: "voicevox" as "voicevox" | "elevenlabs",
+
+  // --- VOICEVOXの設定 ---
+  // キャラ名はサンプル https://voicevox.hiroshiba.jp/ で聞き比べて選ぶ。
+  // 使ったら動画の説明欄に「VOICEVOX:キャラ名」と書くこと (利用条件)。
+  voicevoxSpeaker: "青山龍星",
+  voicevoxStyle: "ノーマル",
+  voicevoxSpeed: 0.95, // 1.0が標準。高齢の視聴者向けに少しゆっくり
+
+  // --- ElevenLabsの設定 ---
   modelId: "eleven_multilingual_v2",
   stability: 0.5,
   similarityBoost: 0.75,
-} as const;
+};

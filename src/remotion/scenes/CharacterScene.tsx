@@ -12,6 +12,56 @@ export const CharacterScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const slideY = interpolate(enter, [0, 1], [40, 0]);
   const hasFood = (OBJECT_MOTIFS as readonly string[]).includes(scene.motif);
 
+  // 元気な姿と衰えた姿の対比 (筋肉が減る・老化が進む等)
+  if (scene.motif === "compare") {
+    const Label: React.FC<{ text: string; color: string }> = ({ text, color }) => (
+      <div
+        style={{
+          fontFamily: FONT,
+          fontSize: 48,
+          fontWeight: 700,
+          color: "#FFFFFF",
+          backgroundColor: color,
+          borderRadius: 16,
+          padding: "10px 36px",
+        }}
+      >
+        {text}
+      </div>
+    );
+    return (
+      <AbsoluteFill style={{ backgroundColor: P.background }}>
+        <div
+          style={{
+            position: "absolute",
+            top: 70,
+            left: 0,
+            right: 0,
+            bottom: 220,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 40,
+            opacity: enter,
+            transform: `translateY(${slideY}px)`,
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+            <ElderlyPerson motif="happy" size={480} />
+            <Label text="元気な体" color={P.softGreen} />
+          </div>
+          <div style={{ fontFamily: FONT, fontSize: 110, color: P.accent, fontWeight: 800 }}>
+            →
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+            <ElderlyPerson motif="frail" size={480} />
+            <Label text="衰えた体" color={P.accent} />
+          </div>
+        </div>
+      </AbsoluteFill>
+    );
+  }
+
   return (
     <AbsoluteFill style={{ backgroundColor: P.background }}>
       <div

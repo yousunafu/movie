@@ -2,6 +2,8 @@ import { AbsoluteFill, useCurrentFrame, spring, useVideoConfig } from "remotion"
 import { PALETTE as P } from "../../style";
 import type { Scene } from "../../types";
 import { FONT } from "../Video";
+import { FoodIcon } from "./parts";
+import { OBJECT_MOTIFS } from "../../motifs";
 
 // 数量の比較。数字は桁をそのまま表示する (丸め・単位の省略をしない)
 export const ChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
@@ -11,6 +13,8 @@ export const ChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const values = items.map((i) => Math.abs(i.value ?? 1));
   const max = Math.max(...values, 1);
   const colors = [P.accent, P.softBlue, P.softGreen, P.softYellow];
+  // 食材の話なら数字の横に食材イラストを添える
+  const hasFood = (OBJECT_MOTIFS as readonly string[]).includes(scene.motif);
 
   return (
     <AbsoluteFill style={{ backgroundColor: P.background }}>
@@ -40,9 +44,10 @@ export const ChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          gap: 110,
+          gap: hasFood ? 80 : 110,
         }}
       >
+        {hasFood && <FoodIcon motif={scene.motif} size={360} />}
         {items.length > 0 ? (
           items.map((item, i) => {
             const grow = spring({

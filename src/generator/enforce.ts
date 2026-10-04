@@ -4,7 +4,8 @@
 
 import { RATIOS, type SceneType } from "../style";
 import type { Assignment } from "./assign";
-import { heuristicAssign } from "./assign";
+import { heuristicAssign, findFoodMotif } from "./assign";
+import { OBJECT_MOTIFS } from "../motifs";
 
 export function enforceRatios(
   sentences: string[],
@@ -90,6 +91,21 @@ export function enforceRatios(
     out[k].type = "character";
     out[k].motif = "talking";
     log.push(`シーン${k}を人物に変更 (人物${Math.round(RATIOS.characterMin * 100)}%未満のため)`);
+  }
+
+  // 6. 食材の言葉がある文には必ず食材イラストを付ける
+  // (chart/card は食材でない motif を無視して描くため、ここで差し替えないと絵が出ない)
+  for (let i = 0; i < n; i++) {
+    const a = out[i];
+    if (!["chart", "card", "character"].includes(a.type)) continue;
+    if ((OBJECT_MOTIFS as readonly string[]).includes(a.motif)) continue;
+    // compare・frail など意図のある人物イラストは残す
+    if (a.type === "character" && !["talking", "thinking", "body"].includes(a.motif)) continue;
+    const food = findFoodMotif(sentences[i]);
+    if (food) {
+      a.motif = food;
+      log.push(`シーン${i}に食材イラスト(${food})を追加`);
+    }
   }
 
   const summary = {

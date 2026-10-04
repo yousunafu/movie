@@ -3,6 +3,8 @@ import { PALETTE as P } from "../../style";
 import { CHANNEL } from "../../channel";
 import type { Scene } from "../../types";
 import { FONT } from "../Video";
+import { FoodIcon } from "./parts";
+import { OBJECT_MOTIFS } from "../../motifs";
 
 // 結論を額装したカード。終了画面もこの型 (isEnding)
 export const CardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
@@ -10,6 +12,8 @@ export const CardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const { fps } = useVideoConfig();
   const enter = spring({ frame, fps, config: { damping: 200 } });
   const scale = interpolate(enter, [0, 1], [0.92, 1]);
+  // 食材の話なら結論カードの中に食材イラストを添える
+  const hasFood = (OBJECT_MOTIFS as readonly string[]).includes(scene.motif);
 
   if (scene.isEnding) {
     return (
@@ -83,7 +87,7 @@ export const CardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
           border: `7px solid ${P.ink}`,
           borderRadius: 6,
           background: P.background,
-          padding: "90px 110px",
+          padding: hasFood ? "50px 110px 70px" : "90px 110px",
           maxWidth: 1400,
           transform: `scale(${scale})`,
           opacity: enter,
@@ -91,6 +95,11 @@ export const CardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
           boxShadow: `18px 18px 0 ${P.warmBeige}`,
         }}
       >
+        {hasFood && (
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 14 }}>
+            <FoodIcon motif={scene.motif} size={290} />
+          </div>
+        )}
         <div
           style={{
             fontFamily: FONT,

@@ -33,6 +33,7 @@ ${ALL_MOTIFS.join(", ")}
 - compare: 元気な姿と衰えた姿の対比 (筋肉が減る・老化が早まる・放っておくとこうなる、の文に最適)
 - frail: 衰えた人物1人 (杖・弱った様子)
 - hiyayakko: 冷奴 / meal: ご飯・味噌汁・焼き魚の食事トレー (献立例・バランスの良い食事の文に)
+- protein: 肉・魚・卵・豆腐の盛り合わせ (たんぱく質全般の話、複数の食材を挙げる文に)
 
 ルール:
 - 数字が出てくる文は chart を検討し、items に label と value を入れる (桁をそのまま写す。単位を省略しない)
@@ -135,7 +136,18 @@ const OBJECT_WORDS: Record<string, string> = {
   お茶: "tea", 緑茶: "tea", 水: "water", 納豆: "natto",
   冷奴: "hiyayakko", 豆腐: "tofu", 献立: "meal", 定食: "meal", 一汁三菜: "meal",
   お菓子: "snack", おやつ: "snack", 塩: "salt", 油: "oil", サプリ: "supplement",
+  たんぱく質: "protein", タンパク質: "protein", 蛋白質: "protein", 大豆: "protein",
 };
+
+// 文から食材の題材を探す。複数の食材が挙がる文は盛り合わせ (protein) にする
+export function findFoodMotif(sentence: string): string | undefined {
+  const hits: string[] = [];
+  for (const [w, motif] of Object.entries(OBJECT_WORDS)) {
+    if (sentence.includes(w) && !hits.includes(motif)) hits.push(motif);
+  }
+  if (hits.includes("protein") || hits.length >= 3) return "protein";
+  return hits[0];
+}
 const LOCATION_WORDS: Record<string, string> = {
   スーパー: "supermarket", 売り場: "supermarket", 台所: "kitchen",
   キッチン: "kitchen", 公園: "park", 散歩: "park", 自宅: "home", 家: "home",

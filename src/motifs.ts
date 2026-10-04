@@ -32,6 +32,7 @@ export const OBJECT_MOTIFS = [
   "supplement",
   "hiyayakko", // 冷奴
   "meal", // 一汁三菜の食事トレー (献立・食事例)
+  "protein", // 肉・魚・卵・豆腐の盛り合わせ (たんぱく質全般の文に)
 ] as const;
 
 export const LOCATION_MOTIFS = [

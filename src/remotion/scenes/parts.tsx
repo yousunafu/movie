@@ -312,6 +312,29 @@ const Food: React.FC<{ motif: string }> = ({ motif }) => {
           <path d="M208 140 L228 128 L223 140 L228 152 Z" fill="#C98B5C" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
         </g>
       );
+    case "protein":
+      return (
+        <g>
+          {/* 大皿 */}
+          <ellipse cx="150" cy="185" rx="135" ry="72" fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
+          <ellipse cx="150" cy="182" rx="112" ry="56" fill="#FDFBF7" stroke={INK} strokeWidth={3} />
+          {/* 焼き魚 */}
+          <g transform="rotate(-8 115 176)">
+            <path d="M52 176 Q92 148 146 160 Q164 166 172 176 Q164 186 146 192 Q92 204 52 176 Z" fill="#C98B5C" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+            <path d="M172 176 L192 164 L187 176 L192 188 Z" fill="#C98B5C" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+          </g>
+          {/* 鶏もも肉 */}
+          <path d="M162 126 Q202 110 224 138 Q242 162 216 180 Q188 196 168 174 Q150 150 162 126 Z" fill={P.accentSoft} stroke={INK} strokeWidth={4} />
+          <path d="M220 146 L248 126 M226 160 L254 148" stroke="#FFFFFF" strokeWidth={10} strokeLinecap="round" />
+          <path d="M220 146 L248 126 M226 160 L254 148" stroke={INK} strokeWidth={3} fill="none" strokeLinecap="round" />
+          {/* ゆで卵 (半分) */}
+          <ellipse cx="108" cy="216" rx="34" ry="25" fill="#FFFFFF" stroke={INK} strokeWidth={4} />
+          <circle cx="108" cy="216" r="13" fill={P.softYellow} stroke={INK} strokeWidth={3} />
+          {/* 豆腐 */}
+          <path d="M172 206 L226 206 L226 234 L172 234 Z" fill="#FFFFFF" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+          <path d="M172 206 L184 196 L238 196 L226 206 M226 234 L238 224 L238 196" fill="#FDFBF7" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+        </g>
+      );
     case "snack":
       return (
         <g>

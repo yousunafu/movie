@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 import { splitScript } from "./split";
 import { assignScenes } from "./assign";
 import { enforceRatios } from "./enforce";
+import { generateImage, imagesAvailable, imagesDisabledReason } from "./images";
 import { checkCredits, synthesize } from "./tts";
 import { CHANNEL } from "../channel";
 import type { Scene, ScenesData } from "../types";
@@ -55,7 +56,30 @@ async function main() {
   console.log("=== 工程3: 機械的な補正 ===");
   const enforced = enforceRatios(sentences, assigned);
 
-  console.log("=== 工程4: 音声合成 ===");
+  console.log("=== 工程4: AI画像の生成 ===");
+  const images: (string | undefined)[] = [];
+  if (!imagesAvailable()) {
+    console.warn(`画像生成をスキップ (${imagesDisabledReason()})。SVGの絵で代用します`);
+    for (let i = 0; i < sentences.length; i++) images.push(undefined);
+  } else {
+    fs.mkdirSync(path.join(PUBLIC, "images"), { recursive: true });
+    for (let i = 0; i < sentences.length; i++) {
+      const rel = `images/scene-${String(i).padStart(3, "0")}.png`;
+      const prompt = assigned[i].imagePrompt ?? sentences[i];
+      const ok = await generateImage(prompt, path.join(PUBLIC, rel));
+      images.push(ok ? rel : undefined);
+      console.log(
+        `  ${i + 1}/${sentences.length} ${ok ? "生成" : "SVGで代用"} ${prompt.slice(0, 30)}…`,
+      );
+    }
+    const made = images.filter(Boolean).length;
+    console.log(`画像: ${made}/${sentences.length}枚を生成`);
+    if (made < sentences.length && imagesDisabledReason()) {
+      console.warn(`途中で停止した理由: ${imagesDisabledReason()}`);
+    }
+  }
+
+  console.log("=== 工程5: 音声合成 ===");
   const closing = CHANNEL.closingLine;
   const ttsChars = totalChars + closing.length;
   await checkCredits(ttsChars);
@@ -69,6 +93,7 @@ async function main() {
       index: i,
       text: sentences[i],
       ...enforced[i],
+      image: images[i],
       audio,
       durationSec: dur,
     });

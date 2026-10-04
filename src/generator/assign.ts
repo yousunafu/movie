@@ -12,6 +12,7 @@ export type Assignment = {
   emphasis?: string;
   title?: string;
   items?: { label: string; value?: number; unit?: string }[];
+  imagePrompt?: string;
 };
 
 const PROMPT = (sentences: string[]) => `あなたは高齢者向け健康解説動画の絵コンテ担当です。
@@ -33,11 +34,15 @@ ${ALL_MOTIFS.join(", ")}
 - diagram のときは items に部位や要素のラベルを2〜4個
 - 強調したい短い語があれば emphasis に
 - chart/diagram には短い title を付ける
+- 各文に image を付ける: その文の内容を一目で伝えるAI画像生成用の具体的な場面描写 (日本語で40〜80字)。
+  例「白髪の日本人女性が台所で冷奴に鰹節をのせている。小鉢に入った豆腐、薬味のねぎ」。
+  抽象的な文なら比喩的な場面に置き換える (例: 老化が早まる→元気な姿と弱った姿の対比)。
+  文字やグラフを画像内に描かせない。食材は料理として美味しそうに。
 
 台本 (${sentences.length}文):
 ${sentences.map((s, i) => `${i}: ${s}`).join("\n")}
 
-JSON配列のみを返してください。各要素は {"i": 文番号, "type": "...", "motif": "...", "emphasis": "...", "title": "...", "items": [...]} の形。emphasis/title/itemsは不要なら省略。`;
+JSON配列のみを返してください。各要素は {"i": 文番号, "type": "...", "motif": "...", "emphasis": "...", "title": "...", "items": [...], "image": "..."} の形。emphasis/title/itemsは不要なら省略。`;
 
 export async function assignScenes(sentences: string[]): Promise<Assignment[]> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -90,6 +95,10 @@ function parseAssignments(text: string, count: number): Assignment[] | null {
         motif,
         emphasis: typeof found.emphasis === "string" ? found.emphasis : undefined,
         title: typeof found.title === "string" ? found.title : undefined,
+        imagePrompt:
+          typeof found.image === "string" && found.image.length > 0
+            ? found.image
+            : undefined,
         items: Array.isArray(found.items)
           ? (found.items as Assignment["items"])!.slice(0, 5).map((it) => ({
               label: String(it!.label ?? ""),

@@ -14,11 +14,16 @@ import { DiagramScene } from "./scenes/DiagramScene";
 import { ChartScene } from "./scenes/ChartScene";
 import { LocationScene } from "./scenes/LocationScene";
 import { CardScene } from "./scenes/CardScene";
+import { ImageScene } from "./scenes/ImageScene";
 
 export const FONT =
   "'Noto Sans JP', 'Noto Sans CJK JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif";
 
 const SceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
+  // 結論カード以外は、AI画像があればそれを優先して全面に見せる
+  if (scene.image && scene.type !== "card") {
+    return <ImageScene scene={scene} />;
+  }
   switch (scene.type) {
     case "object":
       return <ObjectScene scene={scene} />;
@@ -35,7 +40,10 @@ const SceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
   }
 };
 
-const Subtitle: React.FC<{ text: string }> = ({ text }) => {
+const Subtitle: React.FC<{ text: string; onImage?: boolean }> = ({
+  text,
+  onImage,
+}) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
@@ -49,15 +57,27 @@ const Subtitle: React.FC<{ text: string }> = ({ text }) => {
         transform: "translateX(-50%)",
         width: `${SUBTITLE.maxWidthRatio * 100}%`,
         textAlign: "center",
-        fontFamily: FONT,
-        fontSize: SUBTITLE.fontSize,
-        fontWeight: SUBTITLE.weight,
-        color: PALETTE.subtitle,
-        lineHeight: 1.45,
         opacity,
       }}
     >
-      {text}
+      <span
+        style={{
+          display: "inline",
+          fontFamily: FONT,
+          fontSize: SUBTITLE.fontSize,
+          fontWeight: SUBTITLE.weight,
+          color: PALETTE.subtitle,
+          lineHeight: 1.55,
+          // 画像の上では、読みやすいよううっすら白帯を敷く
+          backgroundColor: onImage ? "rgba(255, 252, 247, 0.88)" : undefined,
+          boxShadow: onImage ? "0 0 0 14px rgba(255, 252, 247, 0.88)" : undefined,
+          boxDecorationBreak: "clone",
+          WebkitBoxDecorationBreak: "clone",
+          borderRadius: 4,
+        }}
+      >
+        {text}
+      </span>
     </div>
   );
 };
@@ -100,7 +120,10 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
             >
               <Audio src={staticFile(scene.audio)} />
               <SceneView scene={scene} />
-              <Subtitle text={scene.text} />
+              <Subtitle
+                text={scene.text}
+                onImage={Boolean(scene.image) && scene.type !== "card"}
+              />
             </Series.Sequence>
           );
         })}

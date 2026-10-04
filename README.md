@@ -25,6 +25,7 @@
 | `ELEVENLABS_API_KEY` | ナレーション合成 |
 | `ELEVENLABS_VOICE_ID` | 使う声 (Add to My Voices 済みのもの) |
 | `GIST_TOKEN` | 台本の読み取り (gist権限のみ) |
+| `GEMINI_API_KEY` | シーンごとのAI画像生成 (未設定ならSVGの絵で代用) |
 
 ## 中の構成
 

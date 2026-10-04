@@ -1,5 +1,6 @@
 node_modules/
 out/
 public/audio/
+public/images/
 .DS_Store
 *.log

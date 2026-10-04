@@ -15,6 +15,7 @@ export type Scene = {
   title?: string; // 図解・チャートの見出し
   items?: SceneItem[]; // 図解のラベル / チャートの数値
   isEnding?: boolean;
+  image?: string; // AI生成画像 (public/ 内の相対パス)。無ければSVGの絵で描く
   audio: string; // public/ 内の相対パス
   durationSec: number;
 };

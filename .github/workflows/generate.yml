@@ -30,9 +30,10 @@ jobs:
       - name: 依存関係
         run: npm ci
 
-      - name: 工程1-4 台本読込・絵づけ・補正・音声合成
+      - name: 工程1-5 台本読込・絵づけ・補正・画像生成・音声合成
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
           GIST_TOKEN: ${{ secrets.GIST_TOKEN }}

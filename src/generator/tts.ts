@@ -75,6 +75,11 @@ export async function synthesize(
         `404 voice_not_found: その声が使えません。ElevenLabsで「Add to My Voices」を押したか確認してください。${body.slice(0, 200)}`,
       );
     }
+    if (res.status === 402) {
+      throw new Error(
+        `402: 無料プランではライブラリの声をAPIで使えません。標準の声(Default)のIDに変えるか、有料プラン(Starter $5/月)に上げてください`,
+      );
+    }
     if (res.status === 401) {
       throw new Error(`401: APIキーが違います。キーを取り直してください`);
     }

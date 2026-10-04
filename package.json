@@ -2,6 +2,7 @@
   "name": "movie-factory",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "台本を渡すと解説動画が自動で出てくる工場",
   "scripts": {
     "generate": "tsx src/generator/index.ts",

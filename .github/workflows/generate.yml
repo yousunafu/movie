@@ -1,0 +1,60 @@
+name: 動画を生成
+
+on:
+  workflow_dispatch:
+    inputs:
+      gist_url:
+        description: "台本のGist Raw URL"
+        required: true
+        type: string
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 日本語フォントとffmpeg
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q fonts-noto-cjk ffmpeg
+
+      - name: 依存関係
+        run: npm ci
+
+      - name: 工程1-4 台本読込・絵づけ・補正・音声合成
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          ELEVENLABS_VOICE_ID: ${{ secrets.ELEVENLABS_VOICE_ID }}
+          GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+          SCRIPT_URL: ${{ inputs.gist_url }}
+        run: npm run generate -- "$SCRIPT_URL"
+
+      - name: 工程6 映像の書き出し
+        run: npx remotion render Main out/video.mp4
+
+      - name: プレビュー画像 (20コマを並べた一覧)
+        run: |
+          D=$(ffprobe -v quiet -show_entries format=duration -of csv=p=0 out/video.mp4)
+          I=$(awk "BEGIN{v=$D/20; if(v<0.5)v=0.5; print v}")
+          ffmpeg -loglevel error -i out/video.mp4 \
+            -vf "fps=1/$I,scale=480:270,tile=5x4" -frames:v 1 out/preview.png
+
+      - name: 成果物の保存
+        uses: actions/upload-artifact@v4
+        with:
+          name: video
+          path: |
+            out/video.mp4
+            out/preview.png
+            src/remotion/scenes-data.json
+          retention-days: 14

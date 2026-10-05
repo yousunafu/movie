@@ -117,23 +117,76 @@ const PersonSit: React.FC<{ x: number; y: number; color?: string }> = ({
   </g>
 );
 
-// 街灯 (柱 + 琥珀色の光の輪)
+// 街灯 (柱 + 琥珀色の光の輪)。光はろうそくのようにかすかに揺れる
 const StreetLamp: React.FC<{ x: number; groundY: number; h?: number }> = ({
   x,
   groundY,
   h = 460,
-}) => (
-  <g>
-    <ellipse cx={x} cy={groundY - h} rx={170} ry={150} fill={AP.amber} opacity={0.1} />
-    <ellipse cx={x} cy={groundY - h} rx={90} ry={80} fill={AP.amber} opacity={0.14} />
-    <rect x={x - 7} y={groundY - h} width={14} height={h} fill={AP.silhouette} />
-    <path d={`M ${x - 7} ${groundY - h + 4} Q ${x} ${groundY - h - 36} ${x + 42} ${groundY - h - 24}`} stroke={AP.silhouette} strokeWidth={12} fill="none" />
-    <circle cx={x + 46} cy={groundY - h - 18} r={20} fill={AP.amberSoft} />
-    <circle cx={x + 46} cy={groundY - h - 18} r={44} fill={AP.amber} opacity={0.25} />
-    {/* 地面の光だまり */}
-    <ellipse cx={x + 40} cy={groundY} rx={190} ry={26} fill={AP.amber} opacity={0.12} />
-  </g>
-);
+}) => {
+  const frame = useCurrentFrame();
+  const fl = 1 + 0.16 * Math.sin(frame / 5 + x) * Math.sin(frame / 13 + x * 0.7);
+  return (
+    <g>
+      <ellipse cx={x} cy={groundY - h} rx={170} ry={150} fill={AP.amber} opacity={0.1 * fl} />
+      <ellipse cx={x} cy={groundY - h} rx={90} ry={80} fill={AP.amber} opacity={0.14 * fl} />
+      <rect x={x - 7} y={groundY - h} width={14} height={h} fill={AP.silhouette} />
+      <path d={`M ${x - 7} ${groundY - h + 4} Q ${x} ${groundY - h - 36} ${x + 42} ${groundY - h - 24}`} stroke={AP.silhouette} strokeWidth={12} fill="none" />
+      <circle cx={x + 46} cy={groundY - h - 18} r={20} fill={AP.amberSoft} />
+      <circle cx={x + 46} cy={groundY - h - 18} r={44} fill={AP.amber} opacity={0.25 * fl} />
+      {/* 地面の光だまり */}
+      <ellipse cx={x + 40} cy={groundY} rx={190} ry={26} fill={AP.amber} opacity={0.12 * fl} />
+    </g>
+  );
+};
+
+// ふわふわ漂う光の粒 (飽きさせない環境アニメーション。控えめに)
+const Particles: React.FC<{ count?: number }> = ({ count = 12 }) => {
+  const frame = useCurrentFrame();
+  return (
+    <g>
+      {Array.from({ length: count }, (_, i) => {
+        const h1 = Math.sin(i * 91.7 + 3) * 43758.5453;
+        const h2 = Math.sin(i * 47.3 + 9) * 43758.5453;
+        const fx = h1 - Math.floor(h1);
+        const fy = h2 - Math.floor(h2);
+        const speed = 0.25 + fx * 0.35;
+        const y = ((fy * 1080 - frame * speed) % 1080 + 1080) % 1080;
+        const x = fx * 1920 + Math.sin(frame / 50 + i * 2.1) * 34;
+        const op = 0.1 + 0.16 * Math.abs(Math.sin(frame / 55 + i));
+        return (
+          <circle key={i} cx={x} cy={y} r={2 + (i % 3)} fill={AP.amberSoft} opacity={op} />
+        );
+      })}
+    </g>
+  );
+};
+
+// シーン全体のゆっくりしたズーム (奇数・偶数で寄り/引きを交互) と、
+// シーン切り替わりの短い暗転フェード
+export const AshiMotion: React.FC<{ index: number; children: React.ReactNode }> = ({
+  index,
+  children,
+}) => {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  const dur = Math.max(durationInFrames, 30);
+  const zoomIn = index % 2 === 0;
+  const scale = interpolate(frame, [0, dur], zoomIn ? [1, 1.065] : [1.065, 1], {
+    extrapolateRight: "clamp",
+  });
+  const fade = interpolate(frame, [0, 10, dur - 10, dur], [1, 0, 0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={{ transform: `scale(${scale})` }}>{children}</AbsoluteFill>
+      <AbsoluteFill
+        style={{ backgroundColor: AP.deep, opacity: fade * 0.95, pointerEvents: "none" }}
+      />
+    </AbsoluteFill>
+  );
+};
 
 // ビルのシルエット (窓にぽつぽつ灯り)
 const Skyline: React.FC<{ groundY: number; opacity?: number }> = ({
@@ -201,15 +254,35 @@ const Sky: React.FC = () => (
 // ===== 人物の場面 =====
 
 export const AshiCharacterScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const { opacity } = useEnter();
   const G = 900; // 地面の高さ
   const m = scene.motif;
+
+  // ① 行列のミニストーリー: 一人が右から歩いてきて、行列の最後尾で気づく
+  const QN = 8; // 行列の人数 (密度高め)
+  const qx = (i: number) => 500 + i * 146;
+  const stopX = qx(QN - 1) + 200; // 立ち止まる位置
+  const walkEnd = 84; // このフレームで立ち止まる
+  const wx = interpolate(frame, [8, walkEnd], [2090, stopX], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const isWalking = frame >= 8 && frame < walkEnd;
+  const bob = isWalking ? Math.abs(Math.sin(frame / 3.2)) * 8 : 0;
+  const lean = interpolate(frame, [walkEnd - 10, walkEnd], [-5, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const notice = spring({ frame: frame - (walkEnd + 5), fps, config: { damping: 10 } });
 
   return (
     <AbsoluteFill style={{ backgroundColor: AP.background }}>
       <svg viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>
         <Sky />
         <Stars />
+        <Particles />
         <g opacity={opacity}>
           {m === "window" ? (
             <g>
@@ -250,18 +323,49 @@ export const AshiCharacterScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             </g>
           ) : m === "queue" ? (
             <g>
-              {/* 行列に並ぶ人々 */}
+              {/* ① お店 → 密な行列 → 一人が歩いてきて気づく、のミニストーリー */}
               <Skyline groundY={G} opacity={0.6} />
-              <Moon x={1660} y={190} r={80} />
+              <Moon x={1680} y={160} r={72} />
               <rect x={0} y={G} width={1920} height={180} fill={AP.deep} />
-              <StreetLamp x={330} groundY={G} />
-              {[0, 1, 2, 3, 4, 5].map((i) => (
-                <PersonStand key={i} x={560 + i * 210} y={G} h={265 - (i % 2) * 14} />
+              <StreetLamp x={1240} groundY={G} h={430} />
+              {/* 先頭の店 (ひさし + 灯りのともるショーウィンドウ) */}
+              <rect x={140} y={G - 350} width={330} height={350} fill={AP.building} />
+              <rect x={128} y={G - 372} width={354} height={32} rx={8} fill={AP.frame} opacity={0.9} />
+              <circle cx={305} cy={G - 312} r={17} fill={AP.amberSoft} />
+              <rect x={186} y={G - 266} width={238} height={180} fill={AP.amber} opacity={0.85} />
+              <rect x={186} y={G - 266} width={238} height={180} fill="none" stroke={AP.silhouette} strokeWidth={10} />
+              <ellipse cx={305} cy={G} rx={230} ry={24} fill={AP.amber} opacity={0.1} />
+              {/* 密度を上げた行列 */}
+              {Array.from({ length: QN }, (_, i) => (
+                <PersonStand
+                  key={i}
+                  x={qx(i) + (i % 3) * 8}
+                  y={G}
+                  h={246 + ((i * 5) % 3) * 13}
+                />
               ))}
-              {/* 先頭の店の灯り */}
-              <rect x={180} y={G - 330} width={300} height={330} fill={AP.building} />
-              <rect x={226} y={G - 250} width={208} height={160} fill={AP.amber} opacity={0.8} />
-              <rect x={226} y={G - 250} width={208} height={160} fill="none" stroke={AP.silhouette} strokeWidth={10} />
+              {/* 右から歩いてくる人 (立ち止まって行列に気づく) */}
+              <g transform={`translate(${wx}, ${G - bob}) rotate(${lean})`}>
+                <PersonStand x={0} y={0} h={272} color="#0A1020" />
+              </g>
+              {/* 気づきの「!」 */}
+              <g
+                transform={`translate(${stopX + 14}, ${G - 330}) scale(${Math.max(notice, 0)})`}
+                opacity={Math.min(Math.max(notice, 0), 1)}
+              >
+                <circle cx={0} cy={-28} r={52} fill={AP.deep} stroke={AP.amberSoft} strokeWidth={4} />
+                <text
+                  x={0}
+                  y={4}
+                  textAnchor="middle"
+                  fontFamily={ASHI_FONT}
+                  fontSize={72}
+                  fontWeight={700}
+                  fill={AP.amberSoft}
+                >
+                  !
+                </text>
+              </g>
             </g>
           ) : m === "crowd" ? (
             <g>
@@ -515,6 +619,7 @@ export const AshiObjectScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       <svg viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>
         <Sky />
         <Stars count={50} />
+        <Particles count={10} />
         <g opacity={enter}>
           {/* 琥珀色の後光 */}
           <circle cx={960} cy={480} r={430} fill={AP.amber} opacity={0.07} />
@@ -554,6 +659,7 @@ export const AshiLocationScene: React.FC<{ scene: Scene }> = ({ scene }) => {
     <AbsoluteFill style={{ backgroundColor: AP.background }}>
       <svg viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>
         <Sky />
+        <Particles count={10} />
         <g opacity={opacity}>
           {m === "room" ? (
             <g>
@@ -645,6 +751,45 @@ export const AshiLocationScene: React.FC<{ scene: Scene }> = ({ scene }) => {
 
 // ===== 数値の比較 =====
 
+// ④ 人型ピクトグラム: 10人のうち何人か、を琥珀色の塗りで見せる
+const MiniPersonShape: React.FC<{ x: number; color: string; opacity?: number }> = ({
+  x,
+  color,
+  opacity = 1,
+}) => (
+  <g transform={`translate(${x}, 0)`} opacity={opacity}>
+    <circle cx={0} cy={17} r={14} fill={color} />
+    <path d="M -14 42 Q 0 31 14 42 L 18 112 L -18 112 Z" fill={color} />
+  </g>
+);
+
+const PictoRow: React.FC<{ fillRatio: number; color: string; id: string }> = ({
+  fillRatio,
+  color,
+  id,
+}) => {
+  const W = 560;
+  const xs = Array.from({ length: 10 }, (_, i) => 28 + i * 56);
+  const w = Math.max(0, Math.min(1, fillRatio)) * W;
+  return (
+    <svg width={W} height={118} viewBox={`0 0 ${W} 118`}>
+      <defs>
+        <clipPath id={`picto-${id}`}>
+          <rect x={0} y={0} width={w} height={118} />
+        </clipPath>
+      </defs>
+      {xs.map((x, i) => (
+        <MiniPersonShape key={i} x={x} color={AP.faint} opacity={0.26} />
+      ))}
+      <g clipPath={`url(#picto-${id})`}>
+        {xs.map((x, i) => (
+          <MiniPersonShape key={i} x={x} color={color} />
+        ))}
+      </g>
+    </svg>
+  );
+};
+
 export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -690,54 +835,52 @@ export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       >
         {items.length > 0 ? (
           items.map((item, i) => {
+            // ⑥ 数値はカウントアップ、⑤塗りもじわっと満ちていく
             const grow = spring({
-              frame: frame - i * Math.round(fps * 0.3),
+              frame: frame - i * Math.round(fps * 0.45),
               fps,
-              config: { damping: 15 },
+              config: { damping: 100 },
             });
-            const r =
-              (90 + 180 * ((item.value !== undefined ? Math.abs(item.value) : max / 2) / max)) *
-              grow;
+            const val = item.value !== undefined ? Math.abs(item.value) : undefined;
+            const shown = val !== undefined ? Math.round(val * grow) : undefined;
+            const unit = item.unit ?? "";
+            const isPercent = /[%％]/.test(unit) || /パーセント/.test(unit);
+            const ratio =
+              val === undefined ? 0.5 : isPercent ? Math.min(val, 100) / 100 : val / max;
+            const strongest = val !== undefined && val === max && items.length > 1;
             return (
               <div
                 key={i}
-                style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 26 }}
+                style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}
               >
-                <div
-                  style={{
-                    width: r,
-                    height: r,
-                    borderRadius: "50%",
-                    background: colors[i % colors.length],
-                    opacity: 0.92,
-                    boxShadow: `0 0 70px ${colors[i % colors.length]}55`,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  {item.value !== undefined && (
-                    <span
-                      style={{
-                        fontFamily: ASHI_FONT,
-                        fontSize: Math.max(34, Math.min(62, r / 3.4)),
-                        fontWeight: 700,
-                        color: AP.deep,
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {item.value}
-                      {item.unit ?? ""}
-                    </span>
-                  )}
-                </div>
+                {shown !== undefined && (
+                  <div
+                    style={{
+                      fontFamily: ASHI_FONT,
+                      fontSize: strongest ? 150 : 116,
+                      fontWeight: 700,
+                      color: strongest ? AP.amberSoft : AP.moon,
+                      lineHeight: 1,
+                      textShadow: strongest ? `0 0 70px ${AP.amber}66` : undefined,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {shown}
+                    <span style={{ fontSize: strongest ? 76 : 60 }}>{unit}</span>
+                  </div>
+                )}
+                <PictoRow
+                  fillRatio={ratio * grow}
+                  color={colors[i % colors.length]}
+                  id={`${scene.index}-${i}`}
+                />
                 <div
                   style={{
                     fontFamily: ASHI_FONT,
                     fontSize: 42,
                     fontWeight: 700,
                     color: AP.ink,
-                    maxWidth: 380,
+                    maxWidth: 480,
                     textAlign: "center",
                   }}
                 >
@@ -755,8 +898,22 @@ export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
 };
 
 const AshiEmphasisNumber: React.FC<{ text: string }> = ({ text }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const m = text.match(/[0-9０-９][0-9０-９.,．]*\s*[%％割倍人年歳個本回分秒億万千]*/);
   const num = m ? m[0] : "";
+  // ⑥ 数値部分はカウントアップで登場させる
+  const half = num.replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
+  const nm = half.match(/[0-9]+(?:\.[0-9]+)?/);
+  const value = nm ? parseFloat(nm[0]) : null;
+  const suffix = nm ? half.slice(half.indexOf(nm[0]) + nm[0].length) : "";
+  const grow = spring({ frame, fps, config: { damping: 100 } });
+  const shown =
+    value === null
+      ? num
+      : Number.isInteger(value)
+        ? `${Math.round(value * grow)}${suffix}`
+        : `${(value * grow).toFixed(1)}${suffix}`;
   return (
     <div
       style={{
@@ -770,7 +927,7 @@ const AshiEmphasisNumber: React.FC<{ text: string }> = ({ text }) => {
         boxShadow: `inset 0 0 0 10px ${AP.background}, inset 0 0 0 13px ${AP.frame}`,
       }}
     >
-      {num || "数字"}
+      {shown || "数字"}
     </div>
   );
 };
@@ -920,38 +1077,73 @@ export const AshiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
     );
   }
 
+  // ②③ 文字ドン: 核心の言葉を画面いっぱいの大きな文字で見せる。
+  // 本文に「...」の引用があれば先に小さく出し、強調語を後から大きくドンと出す2段構え
+  const quoted = scene.text.match(/「([^」]+)」/)?.[1];
+  const main = scene.emphasis ?? quoted ?? scene.text;
+  const line1 = quoted && quoted !== main ? quoted : null;
+  const mainSize = Math.max(64, Math.min(150, Math.floor(1560 / Math.max(main.length, 1))));
+  const enter1 = spring({ frame: frame - 5, fps, config: { damping: 200 } });
+  const enter2 = spring({ frame: frame - (line1 ? 34 : 10), fps, config: { damping: 12 } });
+  const scale2 = interpolate(enter2, [0, 1], [0.6, 1]);
+
   return (
     <AbsoluteFill style={{ backgroundColor: AP.background, justifyContent: "center", alignItems: "center" }}>
       <svg viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>
         <Sky />
         <Stars count={50} />
+        <Particles count={9} />
         <circle cx={960} cy={500} r={480} fill={AP.amber} opacity={0.05} />
       </svg>
       <div
         style={{
-          border: `3px solid ${AP.frame}`,
-          borderRadius: 4,
-          background: "rgba(12, 18, 34, 0.75)",
-          padding: "90px 120px",
-          maxWidth: 1420,
-          transform: `scale(${scale})`,
-          opacity: enter,
-          marginBottom: 140,
-          boxShadow: `inset 0 0 0 12px ${AP.background}, inset 0 0 0 15px ${AP.frame}`,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 58,
+          marginBottom: 150,
           position: "relative",
         }}
       >
+        {line1 && (
+          <div
+            style={{
+              fontFamily: ASHI_FONT,
+              fontSize: 76,
+              fontWeight: 700,
+              color: AP.ink,
+              opacity: enter1,
+            }}
+          >
+            「{line1}」
+          </div>
+        )}
         <div
           style={{
-            fontFamily: ASHI_FONT,
-            fontSize: 60,
-            fontWeight: 700,
-            color: AP.ink,
-            lineHeight: 1.8,
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 34,
+            opacity: Math.min(Math.max(enter2, 0), 1),
+            transform: `scale(${scale2})`,
           }}
         >
-          {scene.emphasis ?? scene.text}
+          <div style={{ width: 130, height: 3, background: AP.frame }} />
+          <div
+            style={{
+              fontFamily: ASHI_FONT,
+              fontSize: mainSize,
+              fontWeight: 700,
+              color: AP.amberSoft,
+              lineHeight: 1.5,
+              textAlign: "center",
+              maxWidth: 1620,
+              textShadow: `0 0 70px ${AP.amber}55`,
+            }}
+          >
+            {main}
+          </div>
+          <div style={{ width: 130, height: 3, background: AP.frame }} />
         </div>
       </div>
     </AbsoluteFill>

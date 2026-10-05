@@ -112,6 +112,21 @@ export function enforceRatios(
     }
   }
 
+  // 7. (ashi のみ) 同じ人物場面が連続したら、2つ目を文字ドンのカードに変える
+  // (例: 「行列」の絵が2文続くと単調なので、2文目は核心の言葉を大きく見せる)
+  if (isAshi) {
+    for (let i = 1; i < n - 1; i++) {
+      if (
+        out[i].type === "character" &&
+        out[i - 1].type === "character" &&
+        out[i].motif === out[i - 1].motif
+      ) {
+        out[i].type = "card";
+        log.push(`シーン${i}を文字カードに変更 (同じ人物場面「${out[i].motif}」が連続したため)`);
+      }
+    }
+  }
+
   const summary = {
     total: n,
     character: count("character"),

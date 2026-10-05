@@ -16,7 +16,7 @@ import { ChartScene } from "./scenes/ChartScene";
 import { LocationScene } from "./scenes/LocationScene";
 import { CardScene } from "./scenes/CardScene";
 import { ImageScene } from "./scenes/ImageScene";
-import { AshiSceneView, AP, ASHI_FONT } from "./ashi/AshiScenes";
+import { AshiSceneView, AshiMotion, AP, ASHI_FONT } from "./ashi/AshiScenes";
 
 export const FONT =
   "'Noto Sans JP', 'Noto Sans CJK JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif";
@@ -45,16 +45,49 @@ const SceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
 // 日本語の文節で改行する (「たんぱ\nく質」のような変な折り返しを防ぐ)
 const jaParser = loadDefaultJapaneseParser();
 
-const Subtitle: React.FC<{ text: string; onImage?: boolean; ashi?: boolean }> = ({
-  text,
-  onImage,
-  ashi,
-}) => {
+const Subtitle: React.FC<{
+  text: string;
+  onImage?: boolean;
+  ashi?: boolean;
+  highlight?: string;
+}> = ({ text, onImage, ashi, highlight }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const chunks = jaParser.parse(text);
+  // 強調語 (emphasis) が字幕の中にあれば、その部分だけ黄色にする
+  const hl = highlight?.replace(/[「」]/g, "").trim();
+  const useHl = Boolean(hl && hl.length >= 2 && text.includes(hl!));
+  const nodes: React.ReactNode[] = [];
+  if (useHl) {
+    text.split(hl!).forEach((part, i, arr) => {
+      jaParser.parse(part).forEach((chunk, j) => {
+        nodes.push(
+          <span key={`${i}-${j}`} style={{ display: "inline-block" }}>
+            {chunk}
+          </span>,
+        );
+      });
+      if (i < arr.length - 1) {
+        nodes.push(
+          <span
+            key={`h-${i}`}
+            style={{ display: "inline-block", color: "#FFD966", fontWeight: 700 }}
+          >
+            {hl}
+          </span>,
+        );
+      }
+    });
+  } else {
+    jaParser.parse(text).forEach((chunk, i) => {
+      nodes.push(
+        <span key={i} style={{ display: "inline-block" }}>
+          {chunk}
+        </span>,
+      );
+    });
+  }
   // ashi: 白い明朝体 + 影。画像の上では暗い帯
   const band = ashi ? "rgba(7, 11, 22, 0.72)" : "rgba(255, 252, 247, 0.88)";
   return (
@@ -86,11 +119,7 @@ const Subtitle: React.FC<{ text: string; onImage?: boolean; ashi?: boolean }> = 
           borderRadius: 4,
         }}
       >
-        {chunks.map((chunk, i) => (
-          <span key={i} style={{ display: "inline-block" }}>
-            {chunk}
-          </span>
-        ))}
+        {nodes}
       </span>
     </div>
   );
@@ -134,11 +163,18 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
               name={`${scene.index}-${scene.type}`}
             >
               <Audio src={staticFile(scene.audio)} />
-              {isAshi ? <AshiSceneView scene={scene} /> : <SceneView scene={scene} />}
+              {isAshi ? (
+                <AshiMotion index={scene.index}>
+                  <AshiSceneView scene={scene} />
+                </AshiMotion>
+              ) : (
+                <SceneView scene={scene} />
+              )}
               <Subtitle
                 text={scene.text}
                 onImage={Boolean(scene.image) && scene.type !== "card"}
                 ashi={isAshi}
+                highlight={isAshi ? scene.emphasis : undefined}
               />
             </Series.Sequence>
           );

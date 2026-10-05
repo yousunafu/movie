@@ -57,7 +57,14 @@ ${ALL_ASHI_MOTIFS.join(", ")}
 - reading: 本を読む人 / phone: スマホの光に照らされる人 / talking: ランプの下で語る人
 - book: 知識・学び / clock: 時間 / moon: 夜・孤独・静けさ / scale: 天秤=判断・比較
 - lightbulb: 気づき・発見 / hourglass: 時間の有限さ / mask: 本音と建前 / coffee: 夜のひととき
-- room: 間接照明の部屋と本棚 / city: 夜の街並み / street: 夜の通りと街灯 / concept: 抽象概念の図解`;
+- room: 間接照明の部屋と本棚 / city: 夜の街並み / street: 夜の通りと街灯 / concept: 抽象概念の図解
+
+この作風だけの決まり:
+- card は額装ではなく「文字ドン」(核心の言葉を画面いっぱいの大きな文字で見せる)。
+  核心の主張や、専門用語が初めて登場する文 (「これを◯◯と呼びます」など) は card にして
+  emphasis にその用語・核心の短い語句を入れる
+- emphasis は必ず本文中にそのまま含まれる語句を抜き出す (字幕のその部分が黄色く強調される)
+- 同じ motif の人物場面を2文続けない (続きそうなら2文目を card か object にする)`;
 
 const PROMPT = (sentences: string[], preset: Preset) => `${
   preset === "ashi" ? ASHI_HEADER() : GENKI_HEADER()
@@ -243,6 +250,11 @@ const ASHI_LOCATION_WORDS: Record<string, string> = {
 };
 
 export function ashiHeuristicAssign(sentence: string): Assignment {
+  // 「これを◯◯と呼びます」のような用語紹介は文字ドンのカードに
+  const q = sentence.match(/「([^」]+)」/);
+  if (q && /(呼び|言い|いいます)/.test(sentence)) {
+    return { type: "card", motif: "concept", emphasis: q[1] };
+  }
   if (/[0-9０-９]+(?:[%％割倍人年回分秒])/.test(sentence)) {
     return { type: "chart", motif: "concept", title: "数字で見る" };
   }

@@ -23,10 +23,14 @@ import { AshiSceneView, AshiMotion, AshiV2Context, AP, ASHI_FONT } from "./ashi/
 const ashiV2Indices = (scenes: Scene[]): Set<number> => {
   const set = new Set<number>();
   let firstCardUsed = false;
+  let firstQueueUsed = false;
   for (const s of scenes) {
     if (s.type === "chart") set.add(s.index);
-    else if (s.type === "character" && s.motif === "queue") set.add(s.index);
-    else if (s.type === "card" && !s.isEnding && !firstCardUsed) {
+    else if (s.type === "character" && s.motif === "queue" && !firstQueueUsed) {
+      // 行列アニメは最初の1回だけ。2回目以降は静かな行列の絵 (v1)
+      set.add(s.index);
+      firstQueueUsed = true;
+    } else if (s.type === "card" && !s.isEnding && !firstCardUsed) {
       set.add(s.index);
       firstCardUsed = true;
     }

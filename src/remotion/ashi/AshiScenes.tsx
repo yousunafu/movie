@@ -794,8 +794,11 @@ export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const items = (scene.items ?? []).slice(0, 4).filter((i) => i.label);
-  const values = items.map((i) => Math.abs(i.value ?? 1));
+  const numeric = (v: unknown): v is number => typeof v === "number" && Number.isFinite(v);
+  const values = items.filter((i) => numeric(i.value)).map((i) => Math.abs(i.value as number));
   const max = Math.max(...values, 1);
+  // 数値がひとつも無ければ、ピクトグラムは描けないので文中の数字を大きく見せる
+  const hasValues = values.length > 0;
   const colors = [AP.amber, AP.blue, AP.green, AP.moon];
 
   return (
@@ -833,7 +836,7 @@ export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
           gap: 120,
         }}
       >
-        {items.length > 0 ? (
+        {items.length > 0 && hasValues ? (
           items.map((item, i) => {
             // ⑥ 数値はカウントアップ、⑤塗りもじわっと満ちていく
             const grow = spring({
@@ -841,7 +844,7 @@ export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
               fps,
               config: { damping: 100 },
             });
-            const val = item.value !== undefined ? Math.abs(item.value) : undefined;
+            const val = numeric(item.value) ? Math.abs(item.value) : undefined;
             const shown = val !== undefined ? Math.round(val * grow) : undefined;
             const unit = item.unit ?? "";
             const isPercent = /[%％]/.test(unit) || /パーセント/.test(unit);
@@ -900,8 +903,12 @@ export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
 const AshiEmphasisNumber: React.FC<{ text: string }> = ({ text }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const m = text.match(/[0-9０-９][0-9０-９.,．]*\s*[%％割倍人年歳個本回分秒億万千]*/);
-  const num = m ? m[0] : "";
+  // 文中の数字を拾う。%付きの数字を最優先、無ければ最後の数字 (結論の数字は後ろに来やすい)
+  const ms = [
+    ...text.matchAll(/[0-9０-９][0-9０-９.,．]*\s*(?:パーセント|[%％割倍人年歳個本回分秒億万千])?/g),
+  ];
+  const pick = ms.find((x) => /パーセント|[%％]/.test(x[0])) ?? ms[ms.length - 1];
+  const num = (pick ? pick[0] : "").replace("パーセント", "%");
   // ⑥ 数値部分はカウントアップで登場させる
   const half = num.replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
   const nm = half.match(/[0-9]+(?:\.[0-9]+)?/);

@@ -71,7 +71,8 @@ const PROMPT = (sentences: string[], preset: Preset) => `${
 }
 
 ルール:
-- 数字が出てくる文は chart を検討し、items に label と value を入れる (桁をそのまま写す。単位を省略しない)
+- 数字が出てくる文は chart を検討し、items に label と value を入れる。
+  value は必ず数値だけ (例: 4)。単位や文字を混ぜない。単位は unit に書く (パーセントは unit を "%" に)
 - diagram のときは items に部位や要素のラベルを2〜4個
 - 強調したい短い語があれば emphasis に
 - chart/diagram には短い title を付ける
@@ -151,11 +152,7 @@ function parseAssignments(text: string, count: number, preset: Preset): Assignme
             ? found.image
             : undefined,
         items: Array.isArray(found.items)
-          ? (found.items as Assignment["items"])!.slice(0, 5).map((it) => ({
-              label: String(it!.label ?? ""),
-              value: it!.value !== undefined ? Number(it!.value) : undefined,
-              unit: it!.unit !== undefined ? String(it!.unit) : undefined,
-            }))
+          ? (found.items as Record<string, unknown>[]).slice(0, 5).map(coerceItem)
           : undefined,
       });
     }
@@ -163,6 +160,27 @@ function parseAssignments(text: string, count: number, preset: Preset): Assignme
   } catch {
     return null;
   }
+}
+
+// AIが value を「"4%"」「"40パーセント"」のような文字列で返しても数値として拾う
+function coerceItem(it: Record<string, unknown>): {
+  label: string;
+  value?: number;
+  unit?: string;
+} {
+  const raw = it.value;
+  let value: number | undefined;
+  let unit = it.unit !== undefined ? String(it.unit) : undefined;
+  if (typeof raw === "number" && Number.isFinite(raw)) {
+    value = raw;
+  } else if (typeof raw === "string") {
+    const half = raw.replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
+    const m = half.match(/-?[0-9]+(?:\.[0-9]+)?/);
+    if (m) value = parseFloat(m[0]);
+    if (!unit && /[%％]|パーセント/.test(half)) unit = "%";
+  }
+  if (unit?.includes("パーセント")) unit = "%";
+  return { label: String(it.label ?? ""), value, unit };
 }
 
 function defaultMotif(type: SceneType, preset: Preset): string {

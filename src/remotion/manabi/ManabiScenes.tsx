@@ -421,11 +421,21 @@ const ThermometerScene: React.FC<{ scene: Scene }> = ({ scene }) => {
           fill={MP.accent}
         />
         <circle cx={x} cy={bottom + 46} r={44} fill={MP.accent} stroke={MP.line} strokeWidth={5} />
-        {/* 値 */}
+        {/* 名前と値は同じ行に「金属 20℃」。上下はタイトル・字幕と重なるため */}
         <text
-          x={x}
+          x={x - 6}
           y={top - 36}
-          textAnchor="middle"
+          textAnchor="end"
+          fontSize={40}
+          fontWeight={700}
+          fill={color}
+          fontFamily={MANABI_FONT}
+        >
+          {label}
+        </text>
+        <text
+          x={x + 8}
+          y={top - 36}
           fontSize={52}
           fontWeight={700}
           fill={MP.accentSoft}
@@ -434,8 +444,6 @@ const ThermometerScene: React.FC<{ scene: Scene }> = ({ scene }) => {
         >
           {temp}℃
         </text>
-        {/* 名前は上に (下は字幕と重なるため) */}
-        <SmallLabel x={x} y={146} text={label} color={color} size={38} />
       </g>
     );
   };
@@ -520,18 +528,20 @@ const HeatFlowScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
   const leftLabel = scene.items?.[0]?.label ?? "手";
   const rightLabel = scene.items?.[1]?.label ?? "金属";
+  // 相手が木などの「熱を奪わない物」なら、矢印をほとんど流さない (意味が逆になるのを防ぐ)
+  const weak = /木|布|紙|プラ|発泡|ウール|毛/.test(rightLabel);
   const boxTop = 330;
   const boxH = 420;
   // 矢印が左から右へ流れ続ける
   const Arrow: React.FC<{ y: number; offset: number }> = ({ y, offset }) => {
     const loop = 46;
-    const t = ((frame * 1.6 + offset) % loop) / loop;
-    const x = interpolate(t, [0, 1], [760, 1070]);
-    const o = interpolate(t, [0, 0.12, 0.8, 1], [0, 1, 1, 0]);
+    const t = ((frame * (weak ? 0.5 : 1.6) + offset) % loop) / loop;
+    const x = interpolate(t, [0, 1], [760, weak ? 900 : 1070]);
+    const o = interpolate(t, [0, 0.12, 0.8, 1], [0, 1, 1, 0]) * (weak ? 0.45 : 1);
     return (
       <g opacity={o} transform={`translate(${x}, ${y})`}>
-        <line x1={-56} x2={6} y1={0} y2={0} stroke={MP.accent} strokeWidth={10} strokeLinecap="round" />
-        <path d="M 2 -16 L 30 0 L 2 16 Z" fill={MP.accent} />
+        <line x1={-56} x2={6} y1={0} y2={0} stroke={MP.accent} strokeWidth={weak ? 6 : 10} strokeLinecap="round" />
+        <path d="M 2 -16 L 30 0 L 2 16 Z" fill={MP.accent} transform={weak ? "scale(0.7)" : undefined} />
       </g>
     );
   };
@@ -565,22 +575,28 @@ const HeatFlowScene: React.FC<{ scene: Scene }> = ({ scene }) => {
           width={320}
           height={boxH}
           rx={16}
-          fill="#15202E"
-          stroke={MP.blue}
+          fill={weak ? "#201A10" : "#15202E"}
+          stroke={weak ? MP.woodWarm : MP.blue}
           strokeWidth={6}
         />
         <text x={1260} y={boxTop + 96} textAnchor="middle" fontSize={46} fontWeight={700} fill={MP.ink} fontFamily={MANABI_FONT}>
           {rightLabel}
         </text>
-        <text x={1260} y={boxTop + 240} textAnchor="middle" fontSize={30} fill={MP.faint} fontFamily={MANABI_FONT}>
-          冷たい
+        <text x={1260} y={boxTop + 240} textAnchor="middle" fontSize={30} fill={weak ? MP.woodWarm : MP.faint} fontFamily={MANABI_FONT}>
+          {weak ? "熱を奪わない" : "冷たい"}
         </text>
-        {/* 熱の矢印 */}
-        <Arrow y={440} offset={0} />
-        <Arrow y={540} offset={18} />
-        <Arrow y={640} offset={33} />
-        <text x={920} y={790} textAnchor="middle" fontSize={34} fill={MP.accent} fontFamily={MANABI_FONT} letterSpacing={2}>
-          熱は温かいほうから冷たいほうへ
+        {/* 熱の矢印 (weak のときは1本だけ・ゆっくり・途中まで) */}
+        <Arrow y={weak ? 540 : 440} offset={0} />
+        {!weak && <Arrow y={540} offset={18} />}
+        {!weak && <Arrow y={640} offset={33} />}
+        {weak && (
+          <g stroke={MP.faint} strokeWidth={4}>
+            <line x1={940} x2={1000} y1={500} y2={580} />
+            <line x1={1000} x2={940} y1={500} y2={580} />
+          </g>
+        )}
+        <text x={920} y={790} textAnchor="middle" fontSize={34} fill={weak ? MP.woodWarm : MP.accent} fontFamily={MANABI_FONT} letterSpacing={2}>
+          {weak ? "熱はほとんど流れない → 手の温かさが保たれる" : "熱は温かいほうから冷たいほうへ"}
         </text>
       </svg>
       <DiagramTitle text={scene.title ?? "熱の移動"} />
@@ -1089,6 +1105,15 @@ export const ManabiSceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
   if (scene.isEnding) return <ManabiCardScene scene={scene} />;
 
   const m = scene.motif;
+  // 題材 (motif) を型より優先して拾う。AIが type を diagram/object で揺らしても専用の絵が出るように
+  if (scene.type !== "card" && scene.type !== "chart") {
+    if (m === "thermometer") return <ThermometerScene scene={scene} />;
+    if (m === "doorknob" || m === "touch_metal") return <TouchScene scene={scene} material="metal" />;
+    if (m === "wood" || m === "touch_wood") return <TouchScene scene={scene} material="wood" />;
+    if (m === "hand") return <HandWarmScene />;
+    if (m === "question") return <QuestionScene />;
+    if (m === "bathroom") return <BathroomScene />;
+  }
   switch (scene.type) {
     case "card":
       return <ManabiCardScene scene={scene} />;

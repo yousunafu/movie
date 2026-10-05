@@ -11,7 +11,7 @@ import { enforceRatios } from "./enforce";
 import { generateImage, imagesAvailable, imagesDisabledReason } from "./images";
 import { checkCredits, synthesize } from "./tts";
 import { synthesizeVoicevox } from "./voicevox";
-import { CHANNEL, VOICE } from "../channel";
+import { VOICE, getPreset, getChannel } from "../channel";
 import type { Scene, ScenesData } from "../types";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -19,6 +19,15 @@ const PUBLIC = path.join(ROOT, "public");
 const DATA_FILE = path.join(ROOT, "src/remotion/scenes-data.json");
 
 async function fetchScript(url: string): Promise<string> {
+  // リポジトリ内のファイルパスも受け付ける (例: docs/ashi-sample-script.txt)
+  if (!/^https?:\/\//.test(url)) {
+    const local = path.join(ROOT, url);
+    if (fs.existsSync(local)) {
+      console.log(`リポジトリ内の台本を使用: ${url}`);
+      return fs.readFileSync(local, "utf-8");
+    }
+    throw new Error(`台本が見つかりません: ${url} (URLかリポジトリ内のパスを指定)`);
+  }
   const headers: Record<string, string> = {};
   if (process.env.GIST_TOKEN) {
     headers.Authorization = `token ${process.env.GIST_TOKEN}`;
@@ -39,6 +48,10 @@ async function main() {
     process.exit(1);
   }
 
+  const preset = getPreset();
+  const channel = getChannel(preset);
+  console.log(`作風プリセット: ${preset === "ashi" ? "ashi (夜の教養エッセイ)" : "genki (健康解説)"}`);
+
   console.log("=== 工程1: 台本の読込 ===");
   const raw = await fetchScript(url);
   const sentences = splitScript(raw);
@@ -52,10 +65,10 @@ async function main() {
   }
 
   console.log("=== 工程2: AIによる絵づけ ===");
-  const assigned = await assignScenes(sentences);
+  const assigned = await assignScenes(sentences, preset);
 
   console.log("=== 工程3: 機械的な補正 ===");
-  const enforced = enforceRatios(sentences, assigned);
+  const enforced = enforceRatios(sentences, assigned, preset);
 
   console.log("=== 工程4: AI画像の生成 ===");
   const images: (string | undefined)[] = [];
@@ -81,7 +94,7 @@ async function main() {
   }
 
   console.log("=== 工程5: 音声合成 ===");
-  const closing = CHANNEL.closingLine;
+  const closing = channel.closingLine;
   const ttsChars = totalChars + closing.length;
   const useVoicevox = VOICE.engine === "voicevox";
   const speak = useVoicevox ? synthesizeVoicevox : synthesize;
@@ -133,6 +146,7 @@ async function main() {
     scenes,
     hasBgm,
     generatedAt: new Date().toISOString(),
+    preset,
   };
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 

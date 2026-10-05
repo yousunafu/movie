@@ -4,13 +4,17 @@
 
 import { RATIOS, type SceneType } from "../style";
 import type { Assignment } from "./assign";
-import { heuristicAssign, findFoodMotif } from "./assign";
+import { heuristicAssign, ashiHeuristicAssign, findFoodMotif } from "./assign";
 import { OBJECT_MOTIFS } from "../motifs";
+import type { Preset } from "../channel";
 
 export function enforceRatios(
   sentences: string[],
   assignments: Assignment[],
+  preset: Preset = "genki",
 ): Assignment[] {
+  const isAshi = preset === "ashi";
+  const assign = isAshi ? ashiHeuristicAssign : heuristicAssign;
   const out = assignments.map((a) => ({ ...a }));
   const n = out.length;
   const count = (t: SceneType) => out.filter((a) => a.type === t).length;
@@ -36,9 +40,9 @@ export function enforceRatios(
     }
     sinceLocation++;
     if (sinceLocation > maxGap) {
-      const h = heuristicAssign(sentences[i]);
+      const h = assign(sentences[i]);
       out[i].type = "location";
-      out[i].motif = h.type === "location" ? h.motif : "kitchen";
+      out[i].motif = h.type === "location" ? h.motif : isAshi ? "city" : "kitchen";
       log.push(`シーン${i}を風景(location)に変更 (${maxGap}シーン以上図解・人物が続いたため)`);
       sinceLocation = 0;
     }
@@ -63,11 +67,11 @@ export function enforceRatios(
   if (count("object") < objTarget) {
     for (let i = 0; i < n && count("object") < objTarget; i++) {
       if (out[i].type !== "character") continue;
-      const h = heuristicAssign(sentences[i]);
+      const h = assign(sentences[i]);
       if (h.type === "object") {
         out[i].type = "object";
         out[i].motif = h.motif;
-        log.push(`シーン${i}を食品アップに変更`);
+        log.push(`シーン${i}を物のアップに変更`);
       }
     }
   }
@@ -76,12 +80,12 @@ export function enforceRatios(
   const charMin = Math.floor(n * RATIOS.characterMin);
   const charMax = Math.ceil(n * RATIOS.characterMax);
   while (count("character") > charMax) {
-    const i = out.findIndex((a, idx) => a.type === "character" && heuristicAssign(sentences[idx]).type === "object");
+    const i = out.findIndex((a, idx) => a.type === "character" && assign(sentences[idx]).type === "object");
     if (i === -1) break;
-    const h = heuristicAssign(sentences[i]);
+    const h = assign(sentences[i]);
     out[i].type = "object";
     out[i].motif = h.motif;
-    log.push(`シーン${i}を食品アップに変更 (人物${Math.round(RATIOS.characterMax * 100)}%超のため)`);
+    log.push(`シーン${i}を物のアップに変更 (人物${Math.round(RATIOS.characterMax * 100)}%超のため)`);
   }
   while (count("character") < charMin) {
     const i = out.findIndex((a) => a.type === "location");
@@ -93,9 +97,9 @@ export function enforceRatios(
     log.push(`シーン${k}を人物に変更 (人物${Math.round(RATIOS.characterMin * 100)}%未満のため)`);
   }
 
-  // 6. 食材の言葉がある文には必ず食材イラストを付ける
+  // 6. 食材の言葉がある文には必ず食材イラストを付ける (genki のみ)
   // (chart/card は食材でない motif を無視して描くため、ここで差し替えないと絵が出ない)
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < n && !isAshi; i++) {
     const a = out[i];
     if (!["chart", "card", "character"].includes(a.type)) continue;
     if ((OBJECT_MOTIFS as readonly string[]).includes(a.motif)) continue;

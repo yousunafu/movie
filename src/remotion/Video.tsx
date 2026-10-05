@@ -16,6 +16,7 @@ import { ChartScene } from "./scenes/ChartScene";
 import { LocationScene } from "./scenes/LocationScene";
 import { CardScene } from "./scenes/CardScene";
 import { ImageScene } from "./scenes/ImageScene";
+import { AshiSceneView, AP, ASHI_FONT } from "./ashi/AshiScenes";
 
 export const FONT =
   "'Noto Sans JP', 'Noto Sans CJK JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif";
@@ -44,15 +45,18 @@ const SceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
 // 日本語の文節で改行する (「たんぱ\nく質」のような変な折り返しを防ぐ)
 const jaParser = loadDefaultJapaneseParser();
 
-const Subtitle: React.FC<{ text: string; onImage?: boolean }> = ({
+const Subtitle: React.FC<{ text: string; onImage?: boolean; ashi?: boolean }> = ({
   text,
   onImage,
+  ashi,
 }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
   });
   const chunks = jaParser.parse(text);
+  // ashi: 白い明朝体 + 影。画像の上では暗い帯
+  const band = ashi ? "rgba(7, 11, 22, 0.72)" : "rgba(255, 252, 247, 0.88)";
   return (
     <div
       style={{
@@ -68,14 +72,15 @@ const Subtitle: React.FC<{ text: string; onImage?: boolean }> = ({
       <span
         style={{
           display: "inline",
-          fontFamily: FONT,
+          fontFamily: ashi ? ASHI_FONT : FONT,
           fontSize: SUBTITLE.fontSize,
           fontWeight: SUBTITLE.weight,
-          color: PALETTE.subtitle,
+          color: ashi ? AP.sub : PALETTE.subtitle,
           lineHeight: 1.55,
-          // 画像の上では、読みやすいよううっすら白帯を敷く
-          backgroundColor: onImage ? "rgba(255, 252, 247, 0.88)" : undefined,
-          boxShadow: onImage ? "0 0 0 14px rgba(255, 252, 247, 0.88)" : undefined,
+          textShadow: ashi ? "0 2px 12px rgba(0,0,0,0.9)" : undefined,
+          // 画像の上では、読みやすいよう帯を敷く
+          backgroundColor: onImage ? band : undefined,
+          boxShadow: onImage ? `0 0 0 14px ${band}` : undefined,
           boxDecorationBreak: "clone",
           WebkitBoxDecorationBreak: "clone",
           borderRadius: 4,
@@ -92,6 +97,7 @@ const Subtitle: React.FC<{ text: string; onImage?: boolean }> = ({
 };
 
 export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
+  const isAshi = data.preset === "ashi";
   if (data.scenes.length === 0) {
     return (
       <AbsoluteFill
@@ -109,7 +115,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
     );
   }
   return (
-    <AbsoluteFill style={{ backgroundColor: PALETTE.background }}>
+    <AbsoluteFill style={{ backgroundColor: isAshi ? AP.background : PALETTE.background }}>
       {data.hasBgm && (
         <Audio loop src={staticFile("bgm.mp3")} volume={0.07} />
       )}
@@ -128,10 +134,11 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
               name={`${scene.index}-${scene.type}`}
             >
               <Audio src={staticFile(scene.audio)} />
-              <SceneView scene={scene} />
+              {isAshi ? <AshiSceneView scene={scene} /> : <SceneView scene={scene} />}
               <Subtitle
                 text={scene.text}
                 onImage={Boolean(scene.image) && scene.type !== "card"}
+                ashi={isAshi}
               />
             </Series.Sequence>
           );

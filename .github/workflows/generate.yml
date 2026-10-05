@@ -4,9 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       gist_url:
-        description: "台本のGist Raw URL"
+        description: "台本のGist Raw URL (またはリポジトリ内のパス 例: docs/ashi-sample-script.txt)"
         required: true
         type: string
+      preset:
+        description: "作風 (genki=健康解説 / ashi=夜の教養エッセイ)"
+        required: true
+        type: choice
+        default: genki
+        options:
+          - genki
+          - ashi
 
 jobs:
   generate:
@@ -55,6 +63,7 @@ jobs:
           GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
           VOICEVOX_URL: http://127.0.0.1:50021
           SCRIPT_URL: ${{ inputs.gist_url }}
+          PRESET: ${{ inputs.preset }}
         run: npm run generate -- "$SCRIPT_URL"
 
       - name: 工程6 映像の書き出し

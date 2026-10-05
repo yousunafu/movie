@@ -49,3 +49,40 @@ export const ALL_MOTIFS = [
   "body", // 図解用: 体のシルエット
   "ending",
 ] as const;
+
+// ===== ashi (夜の教養エッセイ) 用の題材 =====
+export const ASHI_PERSON_MOTIFS = [
+  "thinking", // 机で考え込むシルエット
+  "window", // 窓辺で月を眺める
+  "walking", // 夜道をひとり歩く
+  "queue", // 行列に並ぶ人々
+  "crowd", // 群衆・通行人
+  "reading", // 本を読む
+  "phone", // スマホの光に照らされる
+  "talking", // ランプの下で語る (既定)
+] as const;
+
+export const ASHI_OBJECT_MOTIFS = [
+  "book", // 本 (知識・思想)
+  "clock", // 時計 (時間)
+  "moon", // 月 (夜・孤独)
+  "scale", // 天秤 (判断・比較)
+  "lightbulb", // 電球 (気づき)
+  "hourglass", // 砂時計 (有限さ)
+  "mask", // 仮面 (本音と建前)
+  "coffee", // コーヒー (夜の時間)
+] as const;
+
+export const ASHI_LOCATION_MOTIFS = [
+  "room", // 間接照明の部屋・本棚
+  "city", // 夜の街並み
+  "street", // 夜の通り・街灯
+] as const;
+
+export const ALL_ASHI_MOTIFS = [
+  ...ASHI_PERSON_MOTIFS,
+  ...ASHI_OBJECT_MOTIFS,
+  ...ASHI_LOCATION_MOTIFS,
+  "concept", // 図解用: 抽象概念
+  "ending",
+] as const;

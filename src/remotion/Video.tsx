@@ -16,7 +16,23 @@ import { ChartScene } from "./scenes/ChartScene";
 import { LocationScene } from "./scenes/LocationScene";
 import { CardScene } from "./scenes/CardScene";
 import { ImageScene } from "./scenes/ImageScene";
-import { AshiSceneView, AshiMotion, AP, ASHI_FONT } from "./ashi/AshiScenes";
+import { AshiSceneView, AshiMotion, AshiV2Context, AP, ASHI_FONT } from "./ashi/AshiScenes";
+
+// ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
+// ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
+const ashiV2Indices = (scenes: Scene[]): Set<number> => {
+  const set = new Set<number>();
+  let firstCardUsed = false;
+  for (const s of scenes) {
+    if (s.type === "chart") set.add(s.index);
+    else if (s.type === "character" && s.motif === "queue") set.add(s.index);
+    else if (s.type === "card" && !s.isEnding && !firstCardUsed) {
+      set.add(s.index);
+      firstCardUsed = true;
+    }
+  }
+  return set;
+};
 
 export const FONT =
   "'Noto Sans JP', 'Noto Sans CJK JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif";
@@ -143,6 +159,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
       </AbsoluteFill>
     );
   }
+  const v2Set = isAshi ? ashiV2Indices(data.scenes) : new Set<number>();
   return (
     <AbsoluteFill style={{ backgroundColor: isAshi ? AP.background : PALETTE.background }}>
       {data.hasBgm && (
@@ -156,6 +173,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
             ),
             1,
           );
+          const v2 = v2Set.has(scene.index);
           return (
             <Series.Sequence
               key={scene.index}
@@ -164,9 +182,15 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
             >
               <Audio src={staticFile(scene.audio)} />
               {isAshi ? (
-                <AshiMotion index={scene.index}>
-                  <AshiSceneView scene={scene} />
-                </AshiMotion>
+                <AshiV2Context.Provider value={v2}>
+                  {v2 ? (
+                    <AshiMotion index={scene.index}>
+                      <AshiSceneView scene={scene} />
+                    </AshiMotion>
+                  ) : (
+                    <AshiSceneView scene={scene} />
+                  )}
+                </AshiV2Context.Provider>
               ) : (
                 <SceneView scene={scene} />
               )}
@@ -174,7 +198,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 text={scene.text}
                 onImage={Boolean(scene.image) && scene.type !== "card"}
                 ashi={isAshi}
-                highlight={isAshi ? scene.emphasis : undefined}
+                highlight={v2 ? scene.emphasis : undefined}
               />
             </Series.Sequence>
           );

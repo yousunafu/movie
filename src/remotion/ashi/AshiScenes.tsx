@@ -2,6 +2,7 @@
 // お手本チャンネルのテイスト分析から: 夜・ダークトーン・フラットイラスト・
 // シルエットの人物・間接照明の暖かい光・明朝体。1ファイルに全部まとめる。
 
+import { createContext, useContext } from "react";
 import {
   AbsoluteFill,
   useCurrentFrame,
@@ -33,6 +34,11 @@ export const AP = {
 
 export const ASHI_FONT =
   "'Noto Serif JP', 'Noto Serif CJK JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif";
+
+// v2演出 (ズーム・光の粒・街灯ゆらぎ・文字ドン・行列アニメ) を使うかどうか。
+// ユーザーの指定: 行列アニメ / チャート / 最初のカード だけ v2、他は v1 の落ち着いた画面。
+// Video.tsx がシーンごとに値を入れる。
+export const AshiV2Context = createContext(true);
 
 // ===== 共通の部品 =====
 
@@ -124,7 +130,8 @@ const StreetLamp: React.FC<{ x: number; groundY: number; h?: number }> = ({
   h = 460,
 }) => {
   const frame = useCurrentFrame();
-  const fl = 1 + 0.16 * Math.sin(frame / 5 + x) * Math.sin(frame / 13 + x * 0.7);
+  const v2 = useContext(AshiV2Context);
+  const fl = v2 ? 1 + 0.16 * Math.sin(frame / 5 + x) * Math.sin(frame / 13 + x * 0.7) : 1;
   return (
     <g>
       <ellipse cx={x} cy={groundY - h} rx={170} ry={150} fill={AP.amber} opacity={0.1 * fl} />
@@ -142,6 +149,8 @@ const StreetLamp: React.FC<{ x: number; groundY: number; h?: number }> = ({
 // ふわふわ漂う光の粒 (飽きさせない環境アニメーション。控えめに)
 const Particles: React.FC<{ count?: number }> = ({ count = 12 }) => {
   const frame = useCurrentFrame();
+  const v2 = useContext(AshiV2Context);
+  if (!v2) return null; // v1のシーンでは出さない
   return (
     <g>
       {Array.from({ length: count }, (_, i) => {
@@ -256,6 +265,7 @@ const Sky: React.FC = () => (
 export const AshiCharacterScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const v2 = useContext(AshiV2Context);
   const { opacity } = useEnter();
   const G = 900; // 地面の高さ
   const m = scene.motif;
@@ -320,6 +330,21 @@ export const AshiCharacterScene: React.FC<{ scene: Scene }> = ({ scene }) => {
               <text x={1060} y={420} fontFamily={ASHI_FONT} fontSize={110} fill={AP.faint} opacity={0.8}>
                 ?
               </text>
+            </g>
+          ) : m === "queue" && !v2 ? (
+            <g>
+              {/* v1: 静かな行列の絵 */}
+              <Skyline groundY={G} opacity={0.6} />
+              <Moon x={1660} y={190} r={80} />
+              <rect x={0} y={G} width={1920} height={180} fill={AP.deep} />
+              <StreetLamp x={330} groundY={G} />
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <PersonStand key={i} x={560 + i * 210} y={G} h={265 - (i % 2) * 14} />
+              ))}
+              {/* 先頭の店の灯り */}
+              <rect x={180} y={G - 330} width={300} height={330} fill={AP.building} />
+              <rect x={226} y={G - 250} width={208} height={160} fill={AP.amber} opacity={0.8} />
+              <rect x={226} y={G - 250} width={208} height={160} fill="none" stroke={AP.silhouette} strokeWidth={10} />
             </g>
           ) : m === "queue" ? (
             <g>
@@ -790,6 +815,29 @@ const PictoRow: React.FC<{ fillRatio: number; color: string; id: string }> = ({
   );
 };
 
+// 100人の人型グリッド (10×10)。パーセントの実数ぶんだけ点灯する
+// → 「100人中4人」「100人中40人」が人数の違いとして一目で分かる
+const PictoGrid: React.FC<{ lit: number; color: string }> = ({ lit, color }) => {
+  const cols = 10;
+  const cw = 40;
+  const ch = 36;
+  return (
+    <svg width={cols * cw} height={10 * ch} viewBox={`0 0 ${cols * cw} ${10 * ch}`}>
+      {Array.from({ length: 100 }, (_, i) => {
+        const x = (i % cols) * cw + cw / 2;
+        const y = Math.floor(i / cols) * ch;
+        const on = i < lit;
+        return (
+          <g key={i} transform={`translate(${x}, ${y}) scale(0.28)`} opacity={on ? 1 : 0.2}>
+            <circle cx={0} cy={17} r={14} fill={on ? color : AP.faint} />
+            <path d="M -14 42 Q 0 31 14 42 L 18 112 L -18 112 Z" fill={on ? color : AP.faint} />
+          </g>
+        );
+      })}
+    </svg>
+  );
+};
+
 export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -800,6 +848,15 @@ export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   // 数値がひとつも無ければ、ピクトグラムは描けないので文中の数字を大きく見せる
   const hasValues = values.length > 0;
   const colors = [AP.amber, AP.blue, AP.green, AP.moon];
+  // 本文で語られている数字 (「4パーセント」など) を主役として強調する。無ければ最大値
+  const mentioned = new Set(
+    values.filter(
+      (v) =>
+        scene.text.includes(`${v}パーセント`) ||
+        scene.text.includes(`${v}%`) ||
+        scene.text.includes(`${v}％`),
+    ),
+  );
 
   return (
     <AbsoluteFill style={{ backgroundColor: AP.background }}>
@@ -850,7 +907,10 @@ export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             const isPercent = /[%％]/.test(unit) || /パーセント/.test(unit);
             const ratio =
               val === undefined ? 0.5 : isPercent ? Math.min(val, 100) / 100 : val / max;
-            const strongest = val !== undefined && val === max && items.length > 1;
+            const strongest =
+              val !== undefined &&
+              items.length > 1 &&
+              (mentioned.size > 0 ? mentioned.has(val) : val === max);
             return (
               <div
                 key={i}
@@ -872,19 +932,25 @@ export const AshiChartScene: React.FC<{ scene: Scene }> = ({ scene }) => {
                     <span style={{ fontSize: strongest ? 76 : 60 }}>{unit}</span>
                   </div>
                 )}
-                <PictoRow
-                  fillRatio={ratio * grow}
-                  color={colors[i % colors.length]}
-                  id={`${scene.index}-${i}`}
-                />
+                {isPercent && val !== undefined ? (
+                  // % のときは100人グリッド: 数字と同じ人数が点灯していく
+                  <PictoGrid lit={shown ?? 0} color={colors[i % colors.length]} />
+                ) : (
+                  <PictoRow
+                    fillRatio={ratio * grow}
+                    color={colors[i % colors.length]}
+                    id={`${scene.index}-${i}`}
+                  />
+                )}
                 <div
                   style={{
                     fontFamily: ASHI_FONT,
-                    fontSize: 42,
+                    fontSize: 38,
                     fontWeight: 700,
                     color: AP.ink,
-                    maxWidth: 480,
+                    maxWidth: 600,
                     textAlign: "center",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   {item.label}
@@ -1022,6 +1088,7 @@ export const AshiDiagramScene: React.FC<{ scene: Scene }> = ({ scene }) => {
 export const AshiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const v2 = useContext(AshiV2Context);
   const enter = spring({ frame, fps, config: { damping: 200 } });
   const scale = interpolate(enter, [0, 1], [0.94, 1]);
 
@@ -1078,6 +1145,46 @@ export const AshiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             }}
           >
             チャンネル登録はこちら
+          </div>
+        </div>
+      </AbsoluteFill>
+    );
+  }
+
+  // v1: 金の額縁に入った落ち着いた引用カード
+  if (!v2) {
+    return (
+      <AbsoluteFill style={{ backgroundColor: AP.background, justifyContent: "center", alignItems: "center" }}>
+        <svg viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>
+          <Sky />
+          <Stars count={50} />
+          <circle cx={960} cy={500} r={480} fill={AP.amber} opacity={0.05} />
+        </svg>
+        <div
+          style={{
+            border: `3px solid ${AP.frame}`,
+            borderRadius: 4,
+            background: "rgba(12, 18, 34, 0.75)",
+            padding: "90px 120px",
+            maxWidth: 1420,
+            transform: `scale(${scale})`,
+            opacity: enter,
+            marginBottom: 140,
+            boxShadow: `inset 0 0 0 12px ${AP.background}, inset 0 0 0 15px ${AP.frame}`,
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: ASHI_FONT,
+              fontSize: 60,
+              fontWeight: 700,
+              color: AP.ink,
+              lineHeight: 1.8,
+              textAlign: "center",
+            }}
+          >
+            {scene.emphasis ?? scene.text}
           </div>
         </div>
       </AbsoluteFill>

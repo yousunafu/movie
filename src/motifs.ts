@@ -86,3 +86,38 @@ export const ALL_ASHI_MOTIFS = [
   "concept", // 図解用: 抽象概念
   "ending",
 ] as const;
+
+// ===== manabi (身近な科学の図解解説) 用 =====
+export const MANABI_PERSON_MOTIFS = [
+  "touch_metal", // 金属のドアノブに手が触れてヒヤッとする
+  "touch_wood", // 木の棚・板に手が触れる (冷たくない)
+  "thinking", // 疑問に思う人 (?マーク)
+] as const;
+
+export const MANABI_OBJECT_MOTIFS = [
+  "doorknob", // 金属のドアノブ
+  "wood", // 木の板・木目
+  "thermometer", // 温度計2本の比較 (同じ温度を示す)
+  "hand", // 手のクローズアップ (体温・感覚)
+  "question", // 丸の中の大きな「?」 (問いかけ)
+] as const;
+
+export const MANABI_DIAGRAM_MOTIFS = [
+  "heatflow", // 断面図: 熱が矢印で移動していく
+  "molecules", // 粒 (分子) が熱を順に伝えていく
+  "graph", // 折れ線グラフ (変化・上がる下がる)
+  "concept", // その他の図解
+] as const;
+
+export const MANABI_LOCATION_MOTIFS = [
+  "bathroom", // 風呂場 (タイルと木の椅子)
+  "room", // 部屋の全景
+] as const;
+
+export const ALL_MANABI_MOTIFS = [
+  ...MANABI_PERSON_MOTIFS,
+  ...MANABI_OBJECT_MOTIFS,
+  ...MANABI_DIAGRAM_MOTIFS,
+  ...MANABI_LOCATION_MOTIFS,
+  "ending",
+] as const;

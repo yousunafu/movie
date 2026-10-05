@@ -50,7 +50,15 @@ async function main() {
 
   const preset = getPreset();
   const channel = getChannel(preset);
-  console.log(`作風プリセット: ${preset === "ashi" ? "ashi (夜の教養エッセイ)" : "genki (健康解説)"}`);
+  console.log(
+    `作風プリセット: ${
+      preset === "ashi"
+        ? "ashi (夜の教養エッセイ)"
+        : preset === "manabi"
+          ? "manabi (身近な科学の図解解説)"
+          : "genki (健康解説)"
+    }`,
+  );
 
   console.log("=== 工程1: 台本の読込 ===");
   const raw = await fetchScript(url);

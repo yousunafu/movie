@@ -4,7 +4,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { SCENE_TYPES, type SceneType } from "../style";
-import { ALL_MOTIFS, ALL_ASHI_MOTIFS } from "../motifs";
+import { ALL_MOTIFS, ALL_ASHI_MOTIFS, ALL_MANABI_MOTIFS } from "../motifs";
 import type { Preset } from "../channel";
 
 export type Assignment = {
@@ -66,8 +66,38 @@ ${ALL_ASHI_MOTIFS.join(", ")}
 - emphasis は必ず本文中にそのまま含まれる語句を抜き出す (字幕のその部分が黄色く強調される)
 - 同じ motif の人物場面を2文続けない (続きそうなら2文目を card か object にする)`;
 
+const MANABI_HEADER = () => `あなたは身近な現象を科学で解説する動画の絵コンテ担当です。
+映像は濃い紺のダークトーンに白い線画の図解。強調はオレンジ1色です。
+台本の各文に、画面の型と題材を割り当ててください。
+
+画面の型:
+- character: 手や人が物に触れる場面
+- object: 物や記号を暗い背景の中央に大きく見せる
+- diagram: 仕組みの図解 (熱の移動・分子・グラフなど)
+- chart: 数値の比較 (値が文中にあるときだけ。倍率はマスの数で見せる)
+- location: 場所の全景
+- card: 章の見出しや大事な結論を1行で見せる (キーワードがオレンジになる)
+
+題材 (motif) は必ずこの中から選ぶ:
+${ALL_MANABI_MOTIFS.join(", ")}
+
+題材の意味:
+- touch_metal: 金属のドアノブに手が触れてヒヤッとする / touch_wood: 木に触れる (冷たくない)
+- doorknob: 金属のドアノブ / wood: 木の板 / thermometer: 温度計2本の比較 (同じ温度の文に)
+- hand: 手のクローズアップ (体温・感覚の文に) / question: 大きな「?」 (問いかけの文に)
+- heatflow: 断面図で熱が矢印で移動する (熱が移る・奪われる・吸い取られる文に)
+- molecules: 粒が熱を順に伝える図 (伝わりやすさ・分子の文に)
+- graph: 折れ線グラフ (温度が下がる・変化の文に)
+- bathroom: 風呂場のタイルと木の椅子 / room: 部屋の全景 / concept: その他の図解
+
+この作風だけの決まり:
+- 「答えは〜」「つまり〜」のような核心の文と、最後の結論の文は card にして
+  emphasis に核心の短い語句 (本文中にそのまま含まれる語) を入れる
+- 数値の倍率 (〜倍) が出る文は必ず chart にして、items を [{基準のlabel, value: 1}, {比べるlabel, value: 倍率}] にする
+- thermometer / heatflow / graph では items の label を比べる物の名前にする (例: 金属, 木)`;
+
 const PROMPT = (sentences: string[], preset: Preset) => `${
-  preset === "ashi" ? ASHI_HEADER() : GENKI_HEADER()
+  preset === "ashi" ? ASHI_HEADER() : preset === "manabi" ? MANABI_HEADER() : GENKI_HEADER()
 }
 
 ルール:
@@ -82,7 +112,11 @@ ${
     ? `  例「夜の街角、長い行列に並ぶ人々のシルエット。街灯の暖かい光、深い青の夜空」。
   抽象的な文なら比喩的な場面に置き換える。夜・ダークトーン・シルエットの雰囲気で。
   文字やグラフを画像内に描かせない。`
-    : `  例「白髪の日本人女性が台所で冷奴に鰹節をのせている。小鉢に入った豆腐、薬味のねぎ」。
+    : preset === "manabi"
+      ? `  例「濃紺の背景に白い線画で描いた金属のドアノブ。手が触れて、冷たさを示す淡い青の線」。
+  濃紺の背景・白い線画・オレンジの強調、という理科の図解の雰囲気で。
+  文字やグラフを画像内に描かせない。`
+      : `  例「白髪の日本人女性が台所で冷奴に鰹節をのせている。小鉢に入った豆腐、薬味のねぎ」。
   抽象的な文なら比喩的な場面に置き換える (例: 老化が早まる→元気な姿と弱った姿の対比)。
   文字やグラフを画像内に描かせない。食材は料理として美味しそうに。`
 }
@@ -124,13 +158,20 @@ export async function assignScenes(
     console.warn("ANTHROPIC_API_KEY が未設定。機械割り当てにフォールバックします");
   }
   console.log("フォールバック: キーワードによる機械割り当てを使用");
-  return sentences.map((s) => (preset === "ashi" ? ashiHeuristicAssign(s) : heuristicAssign(s)));
+  return sentences.map((s) =>
+    preset === "ashi"
+      ? ashiHeuristicAssign(s)
+      : preset === "manabi"
+        ? manabiHeuristicAssign(s)
+        : heuristicAssign(s),
+  );
 }
 
 function parseAssignments(text: string, count: number, preset: Preset): Assignment[] | null {
   const m = text.match(/\[[\s\S]*\]/);
   if (!m) return null;
-  const validMotifs: readonly string[] = preset === "ashi" ? ALL_ASHI_MOTIFS : ALL_MOTIFS;
+  const validMotifs: readonly string[] =
+    preset === "ashi" ? ALL_ASHI_MOTIFS : preset === "manabi" ? ALL_MANABI_MOTIFS : ALL_MOTIFS;
   try {
     const arr = JSON.parse(m[0]) as Record<string, unknown>[];
     const out: Assignment[] = [];
@@ -189,6 +230,12 @@ function defaultMotif(type: SceneType, preset: Preset): string {
     if (type === "location") return "city";
     if (type === "diagram") return "concept";
     return "talking";
+  }
+  if (preset === "manabi") {
+    if (type === "object") return "question";
+    if (type === "location") return "room";
+    if (type === "diagram") return "concept";
+    return "thinking";
   }
   if (type === "object") return "vegetables";
   if (type === "location") return "kitchen";
@@ -266,6 +313,44 @@ const ASHI_LOCATION_WORDS: Record<string, string> = {
   街: "city", 都会: "city", ビル: "city",
   通り: "street", 路上: "street", 街角: "street", 夜道: "street",
 };
+
+// ===== manabi (身近な科学の図解解説) 用のキーワード機械割り当て =====
+export function manabiHeuristicAssign(sentence: string): Assignment {
+  if (/[0-9０-９]+(?:倍)/.test(sentence)) {
+    return { type: "chart", motif: "concept", title: "数字で見る" };
+  }
+  if (/(でしょうか|だろうか)[。]?$/.test(sentence)) {
+    return { type: "object", motif: "question" };
+  }
+  if (/(答えは|つまり|とは、)/.test(sentence)) {
+    return { type: "card", motif: "concept" };
+  }
+  if (/(奪われ|吸い取|移動|流れ出|伝わって)/.test(sentence)) {
+    return { type: "diagram", motif: "heatflow" };
+  }
+  if (/(下がり|上がり|変化|グラフ)/.test(sentence)) {
+    return { type: "diagram", motif: "graph" };
+  }
+  if (/(分子|粒|原子)/.test(sentence)) {
+    return { type: "diagram", motif: "molecules" };
+  }
+  if (/(温度計|同じ温度)/.test(sentence)) {
+    return { type: "object", motif: "thermometer" };
+  }
+  if (/(風呂|タイル)/.test(sentence)) {
+    return { type: "location", motif: "bathroom" };
+  }
+  if (/(ドアノブ|金属)/.test(sentence)) {
+    return { type: "character", motif: "touch_metal" };
+  }
+  if (/(木|ヒノキ)/.test(sentence)) {
+    return { type: "character", motif: "touch_wood" };
+  }
+  if (/(手|体温|36度)/.test(sentence)) {
+    return { type: "object", motif: "hand" };
+  }
+  return { type: "character", motif: "thinking" };
+}
 
 export function ashiHeuristicAssign(sentence: string): Assignment {
   // 「これを◯◯と呼びます」のような用語紹介は文字ドンのカードに

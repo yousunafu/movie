@@ -5,6 +5,7 @@ import type { Scene } from "../../types";
 import { FONT } from "../Video";
 import { FoodIcon } from "./parts";
 import { OBJECT_MOTIFS } from "../../motifs";
+import { wrapJa } from "../wrapJa";
 
 // 結論を額装したカード。終了画面もこの型 (isEnding)
 export const CardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
@@ -110,7 +111,8 @@ export const CardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             textAlign: "center",
           }}
         >
-          {scene.emphasis ?? scene.text}
+          {/* 文節単位で折り返す (全作風共通ルール: wrapJa) */}
+          {wrapJa(scene.emphasis ?? scene.text)}
         </div>
       </div>
     </AbsoluteFill>

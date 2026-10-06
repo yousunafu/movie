@@ -12,13 +12,10 @@ import {
   useVideoConfig,
   interpolate,
 } from "remotion";
-import { loadDefaultJapaneseParser } from "budoux";
 import type { Scene } from "../../types";
 import { KOUZOU_CHANNEL } from "../../channel";
 import { ImageScene } from "../scenes/ImageScene";
-
-// 日本語の文節で改行する (カードの「変なところで折り返し」防止)
-const jaParser = loadDefaultJapaneseParser();
+import { wrapJa } from "../wrapJa";
 
 // 図書館の配色 (KP)
 export const KP = {
@@ -763,37 +760,10 @@ const KouzouCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const useFull = Boolean(hl && text.includes(hl) && text.length <= 52) || (!hl && text.length <= 52);
   const display = useFull ? text : (hl ?? scene.title ?? text.slice(0, 40));
   const rise = interpolate(inP, [0, 1], [24, 0]);
-  // 文節単位で折り返す (budoux)。強調語は「」ごとひとかたまりにして途中で割れないように
-  const nodes: React.ReactNode[] = [];
-  if (useFull && hl) {
-    const unit = text.includes(`「${hl}」`) ? `「${hl}」` : hl;
-    text.split(unit).forEach((part, i, arr) => {
-      jaParser.parse(part).forEach((chunk, j) => {
-        nodes.push(
-          <span key={`${i}-${j}`} style={{ display: "inline-block" }}>
-            {chunk}
-          </span>,
-        );
-      });
-      if (i < arr.length - 1) {
-        nodes.push(
-          <span key={`h-${i}`} style={{ display: "inline-block" }}>
-            {unit.startsWith("「") && "「"}
-            <span style={{ color: KP.teal, filter: "brightness(1.5)" }}>{hl}</span>
-            {unit.endsWith("」") && "」"}
-          </span>,
-        );
-      }
-    });
-  } else {
-    jaParser.parse(String(display)).forEach((chunk, j) => {
-      nodes.push(
-        <span key={j} style={{ display: "inline-block" }}>
-          {chunk}
-        </span>,
-      );
-    });
-  }
+  // 文節単位で折り返す (budoux)。強調語は「」ごとひとかたまりにして途中で割れないように (全作風共通ルール: wrapJa)
+  const nodes = useFull
+    ? wrapJa(text, hl, { color: KP.teal, filter: "brightness(1.5)" })
+    : wrapJa(String(display));
   return (
     <NavySurface>
       <div style={{ opacity: inP, transform: `translateY(${rise}px)`, display: "flex", flexDirection: "column", alignItems: "center" }}>

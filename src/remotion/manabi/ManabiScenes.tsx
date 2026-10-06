@@ -15,6 +15,7 @@ import {
 import type { Scene } from "../../types";
 import { MANABI_CHANNEL } from "../../channel";
 import { ImageScene } from "../scenes/ImageScene";
+import { wrapJa } from "../wrapJa";
 
 // 理科室の配色
 export const MP = {
@@ -2031,7 +2032,7 @@ const ChapterCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             marginTop: num ? 30 : 48,
           }}
         >
-          {titleText}
+          {wrapJa(titleText)}
         </div>
         <div style={{ width: 170, height: 3, background: MP.accent, borderRadius: 2, marginTop: 52 }} />
       </AbsoluteFill>
@@ -2106,14 +2107,8 @@ const ManabiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             letterSpacing: 2,
           }}
         >
-          {useFull && hl
-            ? text.split(hl).map((part, i, arr) => (
-                <span key={i}>
-                  {part}
-                  {i < arr.length - 1 && <span style={{ color: MP.accent }}>{hl}</span>}
-                </span>
-              ))
-            : display}
+          {/* 文節単位で折り返す (全作風共通ルール: wrapJa)。強調語は途中で割れない */}
+          {useFull && hl ? wrapJa(text, hl, { color: MP.accent }) : wrapJa(String(display))}
         </div>
         <div style={{ width: 64, height: 4, background: MP.accent, marginTop: 56, borderRadius: 2 }} />
       </AbsoluteFill>

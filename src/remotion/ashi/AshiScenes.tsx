@@ -13,6 +13,7 @@ import {
 import type { Scene } from "../../types";
 import { ASHI_CHANNEL } from "../../channel";
 import { ImageScene } from "../scenes/ImageScene";
+import { wrapJa } from "../wrapJa";
 
 // 夜の配色
 export const AP = {
@@ -1184,7 +1185,8 @@ export const AshiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
               textAlign: "center",
             }}
           >
-            {scene.emphasis ?? scene.text}
+            {/* 文節単位で折り返す (全作風共通ルール: wrapJa) */}
+            {wrapJa(scene.emphasis ?? scene.text)}
           </div>
         </div>
       </AbsoluteFill>
@@ -1255,7 +1257,7 @@ export const AshiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
               textShadow: `0 0 70px ${AP.amber}55`,
             }}
           >
-            {main}
+            {wrapJa(main)}
           </div>
           <div style={{ width: 130, height: 3, background: AP.frame }} />
         </div>

@@ -15,6 +15,7 @@ import {
 import type { Scene } from "../../types";
 import { REKISHI_CHANNEL } from "../../channel";
 import { ImageScene } from "../scenes/ImageScene";
+import { wrapJa } from "../wrapJa";
 
 // 資料室の配色 (RP)
 export const RP = {
@@ -1139,20 +1140,11 @@ const CardSurface: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </AbsoluteFill>
 );
 
-// emphasis の語だけ錆朱にして文字列を描く
-const RustText: React.FC<{ text: string; hl?: string }> = ({ text, hl }) => {
-  if (!hl || !text.includes(hl)) return <>{text}</>;
-  return (
-    <>
-      {text.split(hl).map((part, i, arr) => (
-        <span key={i}>
-          {part}
-          {i < arr.length - 1 && <span style={{ color: RP.rust }}>{hl}</span>}
-        </span>
-      ))}
-    </>
-  );
-};
+// emphasis の語だけ錆朱にして文字列を描く。
+// 折り返しは文節単位 (全作風共通ルール: wrapJa)。強調語は途中で割れない
+const RustText: React.FC<{ text: string; hl?: string }> = ({ text, hl }) => (
+  <>{wrapJa(text, hl, { color: RP.rust })}</>
+);
 
 // card: 白背景スライドに黒明朝で見出し+箇条書き (結論シーンで使用)
 const RekishiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
@@ -1263,7 +1255,7 @@ const RekishiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             letterSpacing: 2,
           }}
         >
-          {useFull ? <RustText text={text} hl={hl} /> : display}
+          {useFull ? <RustText text={text} hl={hl} /> : wrapJa(String(display))}
         </div>
         <div style={{ width: 64, height: 4, background: RP.rust, marginTop: 56, borderRadius: 2 }} />
       </div>

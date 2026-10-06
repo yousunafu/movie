@@ -16,6 +16,7 @@ import {
 import type { Scene } from "../../types";
 import { KEIZAI_CHANNEL } from "../../channel";
 import { ImageScene } from "../scenes/ImageScene";
+import { wrapJa } from "../wrapJa";
 
 // 経済室の配色 (EP)
 export const EP = {
@@ -965,20 +966,11 @@ export const keizaiCardShowsFullText = (scene: Scene): boolean => {
   return !hl && text.length <= 52;
 };
 
-// emphasis の語だけ赤にして文字列を描く (白フリップの上は黄色より赤が読みやすい)
-const RedText: React.FC<{ text: string; hl?: string }> = ({ text, hl }) => {
-  if (!hl || !text.includes(hl)) return <>{text}</>;
-  return (
-    <>
-      {text.split(hl).map((part, i, arr) => (
-        <span key={i}>
-          {part}
-          {i < arr.length - 1 && <span style={{ color: EP.red }}>{hl}</span>}
-        </span>
-      ))}
-    </>
-  );
-};
+// emphasis の語だけ赤にして文字列を描く (白フリップの上は黄色より赤が読みやすい)。
+// 折り返しは文節単位 (全作風共通ルール: wrapJa)。強調語は途中で割れない
+const RedText: React.FC<{ text: string; hl?: string }> = ({ text, hl }) => (
+  <>{wrapJa(text, hl, { color: EP.red })}</>
+);
 
 // card: 赤見出しバー+白ボード+箇条書きのまとめフリップ
 const KeizaiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
@@ -1113,7 +1105,7 @@ const KeizaiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
               lineHeight: 1.65,
             }}
           >
-            {useFull ? <RedText text={text} hl={hl} /> : display}
+            {useFull ? <RedText text={text} hl={hl} /> : wrapJa(String(display))}
           </div>
         </div>
       </Flip>

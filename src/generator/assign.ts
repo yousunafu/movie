@@ -89,6 +89,14 @@ ${ALL_MANABI_MOTIFS.join(", ")}
 - molecules: 粒が熱を順に伝える図 (伝わりやすさ・分子の文に)
 - graph: 折れ線グラフ (温度が下がる・変化の文に)
 - bathroom: 風呂場のタイルと木の椅子 / room: 部屋の全景 / concept: その他の図解
+- city: 都市のスカイラインから人の姿がふっと消える (人類がいなくなる・無人になる文に)
+- ruin: ビルが緑のツタと雨に飲み込まれていく (建物が植物に覆われる・廃墟になる文に)
+- decay: 鉄が錆びてオレンジ褐色になり、コンクリートが砂になって崩れ落ちる (風化・錆の文に)
+- dinosaur: 恐竜の骨格 (白線画) が左から順に描かれる (恐竜・骨の形を知っている文に)
+- fossilize: 左=地表で朽ちて消える骨、右=泥の層に埋まって残る骨の対比図 (「埋まったものだけが化石に」の文に)
+- strata: 画面いっぱいの地層断面。人類の時代が細いオレンジ1本の線で刻まれ丸で囲まれる (地層・薄い一枚の線の文に)
+- future_fossil: ペットボトルと鶏の骨をオレンジの輪でハイライト (プラスチック・未来の化石候補の文に)
+- moon_footprint: 黒い空と月面の地平線に足跡がひとつ残る静かな絵 (月に残した足跡の文に)
 
 この作風だけの決まり:
 - 「答えは〜」「つまり〜」のような核心の文と、最後の結論の文は card にして
@@ -322,8 +330,33 @@ export function manabiHeuristicAssign(sentence: string): Assignment {
   if (/(でしょうか|だろうか)[。]?$/.test(sentence)) {
     return { type: "object", motif: "question" };
   }
-  if (/(答えは|つまり|とは、)/.test(sentence)) {
+  if (/(答えは|つまり|とは、|かもしれません。?$)/.test(sentence)) {
     return { type: "card", motif: "concept" };
+  }
+  // 人類の痕跡テーマ
+  if (/(いなくなっ|無人にな)/.test(sentence)) {
+    return { type: "location", motif: "city" };
+  }
+  if (/(植物|ツタ|飲み込ま|廃墟)/.test(sentence)) {
+    return { type: "location", motif: "ruin" };
+  }
+  if (/(錆|砂に戻|風化)/.test(sentence)) {
+    return { type: "diagram", motif: "decay" };
+  }
+  if (/恐竜/.test(sentence)) {
+    return { type: "diagram", motif: "dinosaur" };
+  }
+  if (/(泥に埋|化石として|化石にな)/.test(sentence)) {
+    return { type: "diagram", motif: "fossilize", title: "化石になる条件" };
+  }
+  if (/(地層|一枚の線)/.test(sentence)) {
+    return { type: "diagram", motif: "strata" };
+  }
+  if (/(プラスチック|ペットボトル|鶏の骨)/.test(sentence)) {
+    return { type: "object", motif: "future_fossil" };
+  }
+  if (/(月に残|月面|足跡)/.test(sentence)) {
+    return { type: "location", motif: "moon_footprint" };
   }
   if (/(奪われ|吸い取|移動|流れ出|伝わって)/.test(sentence)) {
     return { type: "diagram", motif: "heatflow" };

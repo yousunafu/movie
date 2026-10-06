@@ -100,18 +100,26 @@ export const MANABI_OBJECT_MOTIFS = [
   "thermometer", // 温度計2本の比較 (同じ温度を示す)
   "hand", // 手のクローズアップ (体温・感覚)
   "question", // 丸の中の大きな「?」 (問いかけ)
+  "future_fossil", // ペットボトルと鶏の骨 (未来の化石候補)
 ] as const;
 
 export const MANABI_DIAGRAM_MOTIFS = [
   "heatflow", // 断面図: 熱が矢印で移動していく
   "molecules", // 粒 (分子) が熱を順に伝えていく
   "graph", // 折れ線グラフ (変化・上がる下がる)
+  "decay", // 鉄が錆び、コンクリートが砂に崩れる (風化)
+  "dinosaur", // 恐竜の骨格が左から順に描かれる
+  "fossilize", // 左=地表で朽ちる骨 / 右=泥に埋まって残る骨 の対比図
+  "strata", // 地層の断面。人類の時代は細いオレンジ1本の線
   "concept", // その他の図解
 ] as const;
 
 export const MANABI_LOCATION_MOTIFS = [
   "bathroom", // 風呂場 (タイルと木の椅子)
   "room", // 部屋の全景
+  "city", // 都市のスカイライン。人のピクトグラムがふっと消える
+  "ruin", // ビルが緑のツタと雨に飲み込まれる (廃墟)
+  "moon_footprint", // 月面に残る足跡と星空 (静かな演出)
 ] as const;
 
 export const ALL_MANABI_MOTIFS = [

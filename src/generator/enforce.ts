@@ -21,8 +21,22 @@ export function enforceRatios(
   const log: string[] = [];
 
   // manabi (図解解説) / rekishi (資料図版) は図版が主役なので、人物比率などの補正はしない。
-  // 「最後の実質シーンは結論カード」だけ守る。
+  // カードは「最後の結論カード」と「章扉カード (motif=chapter)」だけ守る。
   if (preset === "manabi" || preset === "rekishi") {
+    // 章扉カード (manabi のみ): 章タイトルを宣言する文 (「第1章」などを含む) は
+    // AIが type を揺らしても card + motif=chapter にそろえる
+    if (preset === "manabi") {
+      for (let i = 0; i < n - 1; i++) {
+        if (
+          /第[0-9０-９一二三四五六七八九十]+章/.test(sentences[i]) &&
+          !(out[i].type === "card" && out[i].motif === "chapter")
+        ) {
+          out[i].type = "card";
+          out[i].motif = "chapter";
+          log.push(`シーン${i}を章扉カードに変更`);
+        }
+      }
+    }
     if (n >= 3 && out[n - 1].type !== "card") {
       out[n - 1].type = "card";
       out[n - 1].motif = "concept";

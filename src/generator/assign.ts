@@ -97,8 +97,15 @@ ${ALL_MANABI_MOTIFS.join(", ")}
 - strata: 画面いっぱいの地層断面。人類の時代が細いオレンジ1本の線で刻まれ丸で囲まれる (地層・薄い一枚の線の文に)
 - future_fossil: ペットボトルと鶏の骨をオレンジの輪でハイライト (プラスチック・未来の化石候補の文に)
 - moon_footprint: 黒い空と月面の地平線に足跡がひとつ残る静かな絵 (月に残した足跡の文に)
+- flood: 都市の断面図。地下鉄のトンネルに水位が上がっていく (地下鉄・都市が水没する・ポンプの文に)
+- trash_layer: ゴミ処分場の断面図。埋まったボトルや骨や陶器が光る (処分場・ゴミ・未来の遺跡の文に)
+- timeline: 左から目盛りが伸びる年表 (数十年→数百年→数千年と時間を順に数える文に)
+- chapter: 章扉カード (「第1章」などの章番号と章タイトルを静かに見せる。type は card にする)
 
 この作風だけの決まり:
+- 章の切り替え文 (「まず」「第一に」「ここからは」「最後に」などで始まり、
+  「第1章」「第2章」のように章タイトルを宣言する文) は type を card、motif を chapter にして、
+  title に章タイトルだけ (例: 消えていく痕跡) を入れる
 - 「答えは〜」「つまり〜」のような核心の文と、最後の結論の文は card にして
   emphasis に核心の短い語句 (本文中にそのまま含まれる語) を入れる
 - 数値の倍率 (〜倍) が出る文は必ず chart にして、items を [{基準のlabel, value: 1}, {比べるlabel, value: 倍率}] にする
@@ -377,11 +384,24 @@ const ASHI_LOCATION_WORDS: Record<string, string> = {
 
 // ===== manabi (身近な科学の図解解説) 用のキーワード機械割り当て =====
 export function manabiHeuristicAssign(sentence: string): Assignment {
+  // 章の切り替え文 (「まず第1章、〜」など) は章扉カード
+  if (/第[0-9０-９一二三四五六七八九十]+章/.test(sentence)) {
+    return { type: "card", motif: "chapter" };
+  }
   if (/[0-9０-９]+(?:倍)/.test(sentence)) {
     return { type: "chart", motif: "concept", title: "数字で見る" };
   }
   if (/(でしょうか|だろうか)[。]?$/.test(sentence)) {
     return { type: "object", motif: "question" };
+  }
+  if (/(水没|地下鉄|ポンプ|くみ出)/.test(sentence)) {
+    return { type: "diagram", motif: "flood" };
+  }
+  if (/(処分場|ゴミ|埋め立て|考古学者)/.test(sentence)) {
+    return { type: "diagram", motif: "trash_layer" };
+  }
+  if (/(数十年.*数百年|年表)/.test(sentence)) {
+    return { type: "diagram", motif: "timeline", title: "痕跡が消えていく時間" };
   }
   if (/(答えは|つまり|とは、|かもしれません。?$)/.test(sentence)) {
     return { type: "card", motif: "concept" };

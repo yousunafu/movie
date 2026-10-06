@@ -111,6 +111,9 @@ export const MANABI_DIAGRAM_MOTIFS = [
   "dinosaur", // 恐竜の骨格が左から順に描かれる
   "fossilize", // 左=地表で朽ちる骨 / 右=泥に埋まって残る骨 の対比図
   "strata", // 地層の断面。人類の時代は細いオレンジ1本の線
+  "flood", // 都市の断面図。地下鉄のトンネルに水位が上がっていく (水没)
+  "trash_layer", // ゴミ処分場の断面 = 未来の遺跡。埋まった人工物をオレンジでハイライト
+  "timeline", // 数十年→数百年→数千年→1万年の年表。左から目盛りが伸びる
   "concept", // その他の図解
 ] as const;
 
@@ -127,6 +130,7 @@ export const ALL_MANABI_MOTIFS = [
   ...MANABI_OBJECT_MOTIFS,
   ...MANABI_DIAGRAM_MOTIFS,
   ...MANABI_LOCATION_MOTIFS,
+  "chapter", // 章扉カード (「第1章」+ 章タイトル。type は card で使う)
   "ending",
 ] as const;
 

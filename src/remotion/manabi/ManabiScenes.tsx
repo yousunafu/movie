@@ -1648,6 +1648,264 @@ const MoonFootprintScene: React.FC = () => {
   );
 };
 
+// 都市の断面図: 地下鉄のトンネルに水位が上がっていく (ポンプが止まると水没)
+const FloodScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const groundY = 400;
+  const tubeX = 300;
+  const tubeW = 1320;
+  const tubeTop = 560;
+  const tubeBottom = 880;
+  // 水位が下から上がっていく (ナレーションと同期してゆっくり)
+  const rise = interpolate(frame, [18, 110], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const waterY = tubeBottom - 24 - rise * (tubeBottom - tubeTop - 70);
+  const wave = (x: number) => 6 * Math.sin(frame / 9 + x / 120);
+  const waveD = `M ${tubeX + 10} ${waterY} ${Array.from({ length: 12 }, (_, i) => {
+    const wx = tubeX + 10 + ((i + 1) * (tubeW - 20)) / 12;
+    return `L ${wx} ${waterY + wave(wx)}`;
+  }).join(" ")} L ${tubeX + tubeW - 10} ${tubeBottom - 6} L ${tubeX + 10} ${tubeBottom - 6} Z`;
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 地上: 小さなスカイライン */}
+        {(
+          [
+            [360, 150, 170],
+            [560, 120, 230],
+            [840, 160, 130],
+            [1120, 130, 210],
+            [1380, 150, 160],
+          ] as const
+        ).map(([bx, bw, bh], i) => (
+          <rect
+            key={i}
+            x={bx}
+            y={groundY - bh}
+            width={bw}
+            height={bh}
+            fill={MP.background}
+            stroke={MP.line}
+            strokeWidth={4}
+          />
+        ))}
+        {/* 地面と地下の土 */}
+        <rect x={0} y={groundY} width={W} height={H - groundY} fill="#151B27" />
+        <line x1={0} x2={W} y1={groundY} y2={groundY} stroke={MP.line} strokeWidth={5} />
+        {/* 地上への階段 (水の入り口) */}
+        <g stroke={MP.line} strokeWidth={4} fill="none">
+          <path d={`M 1500 ${groundY} l 0 40 l 40 0 l 0 40 l 40 0 l 0 46 l 40 0`} />
+        </g>
+        {/* 地下鉄のトンネル */}
+        <rect
+          x={tubeX}
+          y={tubeTop}
+          width={tubeW}
+          height={tubeBottom - tubeTop}
+          rx={46}
+          fill={MP.deep}
+          stroke={MP.line}
+          strokeWidth={6}
+        />
+        {/* 電車 (白線画) */}
+        <g stroke={MP.line} strokeWidth={5} fill={MP.panel}>
+          <rect x={430} y={640} width={520} height={170} rx={26} />
+          {[0, 1, 2, 3].map((i) => (
+            <rect key={i} x={470 + i * 120} y={676} width={76} height={56} fill={MP.deep} strokeWidth={3} />
+          ))}
+          <circle cx={520} cy={818} r={20} fill={MP.deep} />
+          <circle cx={860} cy={818} r={20} fill={MP.deep} />
+        </g>
+        {/* 水 (下から静かに満ちる) */}
+        <path d={waveD} fill={MP.blueDeep} opacity={0.72} />
+        <path
+          d={`M ${tubeX + 10} ${waterY} ${Array.from({ length: 12 }, (_, i) => {
+            const wx = tubeX + 10 + ((i + 1) * (tubeW - 20)) / 12;
+            return `L ${wx} ${waterY + wave(wx)}`;
+          }).join(" ")}`}
+          fill="none"
+          stroke={MP.blueLight}
+          strokeWidth={4}
+        />
+        {/* 階段から流れ込む水 */}
+        <path
+          d={`M 1504 ${groundY + 4} l 0 44 l 40 0 l 0 44 l 40 0 l 0 40`}
+          fill="none"
+          stroke={MP.blueLight}
+          strokeWidth={5}
+          strokeLinecap="round"
+          strokeDasharray="16 14"
+          strokeDashoffset={-frame * 2.2}
+          opacity={0.8}
+        />
+        {/* 止まったポンプ */}
+        <g opacity={0.9}>
+          <circle cx={1450} cy={760} r={34} fill={MP.panel} stroke={MP.line} strokeWidth={5} />
+          <line x1={1428} y1={738} x2={1472} y2={782} stroke={MP.blueLight} strokeWidth={6} strokeLinecap="round" />
+          <SmallLabel x={1450} y={846} text="ポンプ停止" color={MP.blueLight} size={28} />
+        </g>
+        <SmallLabel x={660} y={530} text="地下鉄のトンネル" color={MP.faint} size={32} />
+      </svg>
+      <DiagramTitle text={scene.title ?? "人がいなくなった都市の地下"} />
+    </Frame>
+  );
+};
+
+// ゴミ処分場の断面 = 未来の遺跡。埋まった人工物をオレンジの輪でハイライト
+const TrashLayerScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const surfaceY = 420;
+  // ゴミの層が下から順に積み重なって見えてくる
+  const layers: [number, string][] = [
+    [820, "#2A3346"],
+    [700, "#232C3E"],
+    [580, "#1C2534"],
+  ];
+  const ringAt = [52, 68, 84];
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 地表 (草がすこし生えた丘) */}
+        <path
+          d={`M 0 ${surfaceY + 40} Q 480 ${surfaceY - 40} 960 ${surfaceY} Q 1440 ${surfaceY + 30} 1920 ${surfaceY - 10} L 1920 0 L 0 0 Z`}
+          fill={MP.background}
+        />
+        <path
+          d={`M 0 ${surfaceY + 40} Q 480 ${surfaceY - 40} 960 ${surfaceY} Q 1440 ${surfaceY + 30} 1920 ${surfaceY - 10}`}
+          fill="none"
+          stroke={MP.line}
+          strokeWidth={5}
+        />
+        {[300, 700, 1200, 1650].map((gx, i) => (
+          <g key={i} transform={`translate(${gx}, ${surfaceY - 10 - (i % 2) * 16})`} stroke={MP.green} strokeWidth={4} fill="none" strokeLinecap="round">
+            <line x1={0} y1={0} x2={-6} y2={-28} />
+            <line x1={8} y1={0} x2={8} y2={-34} />
+            <line x1={16} y1={0} x2={22} y2={-24} />
+          </g>
+        ))}
+        {/* 土 */}
+        <rect x={0} y={surfaceY + 30} width={W} height={H - surfaceY} fill="#151B27" />
+        {/* ゴミの層 (下から順に現れる) */}
+        {layers.map(([y, c], k) => {
+          const s = spring({ frame: frame - 8 - k * 14, fps, config: { damping: 200 }, durationInFrames: 18 });
+          return (
+            <g key={k} opacity={Math.max(s, 0)}>
+              <rect x={160} y={y} width={1600} height={110} rx={14} fill={c} />
+              <line x1={160} x2={1760} y1={y} y2={y} stroke={MP.blueDeep} strokeWidth={3} />
+            </g>
+          );
+        })}
+        {/* 埋まっている人工物 (白線画) */}
+        {/* ペットボトル (小) */}
+        <g transform="translate(480, 750) rotate(18) scale(0.55)" stroke={MP.line} strokeWidth={7} fill="none" strokeLinejoin="round">
+          <rect x={-28} y={-150} width={56} height={26} rx={7} />
+          <path d="M -24 -124 L -24 -96 C -58 -70 -70 -42 -70 -6 L -70 110 Q -70 142 -36 142 L 36 142 Q 70 142 70 110 L 70 -6 C 70 -42 58 -70 24 -96 L 24 -124 Z" />
+        </g>
+        {/* 鶏の骨 */}
+        <LongBone x={1050} y={740} rotate={-18} scale={0.8} color={MP.line} fill="none" />
+        {/* 陶器の茶わん */}
+        <g transform="translate(1480, 640)" stroke={MP.line} strokeWidth={6} fill="none">
+          <path d="M -90 -20 Q -80 60 0 60 Q 80 60 90 -20 Z" />
+          <ellipse cx={0} cy={-20} rx={90} ry={18} />
+        </g>
+        {/* オレンジの輪で順にハイライト */}
+        {(
+          [
+            [480, 745, 130, 110],
+            [1050, 740, 130, 80],
+            [1480, 660, 140, 90],
+          ] as const
+        ).map(([cx, cy, rx, ry], i) => {
+          const s = spring({ frame: frame - ringAt[i], fps, config: { damping: 14 } });
+          return (
+            <ellipse
+              key={i}
+              cx={cx}
+              cy={cy}
+              rx={rx * Math.max(s, 0.001)}
+              ry={ry * Math.max(s, 0.001)}
+              fill="none"
+              stroke={MP.accent}
+              strokeWidth={6}
+              opacity={Math.max(s, 0)}
+            />
+          );
+        })}
+        <SmallLabel x={960} y={530} text="ゴミ処分場 = すぐ埋まり、酸素に触れない" color={MP.accentSoft} size={34} />
+      </svg>
+      <DiagramTitle text={scene.title ?? "未来の遺跡になる場所"} />
+    </Frame>
+  );
+};
+
+// 年表: 数十年→数百年→数千年→1万年。左から目盛りが伸びる
+const TimelineScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const axisY = 600;
+  const x0 = 240;
+  const x1 = 1680;
+  const p = interpolate(frame, [10, 100], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const headX = x0 + (x1 - x0) * p;
+  const defaults = [
+    { time: "数十年", note: "木造が朽ちる" },
+    { time: "数百年", note: "鉄が錆びる" },
+    { time: "数千年", note: "コンクリートが砕ける" },
+    { time: "1万年", note: "都市は地形に還る" },
+  ];
+  // items があれば注釈を差し替える (label = 注釈)
+  const marks = defaults.map((d, i) => ({
+    ...d,
+    note: scene.items?.[i]?.label ?? d.note,
+    x: x0 + ((x1 - x0) * (i + 1)) / 4.3,
+  }));
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 軸 (左から伸びる) */}
+        <line x1={x0} y1={axisY} x2={headX} y2={axisY} stroke={MP.line} strokeWidth={6} strokeLinecap="round" />
+        {p > 0.98 && <path d={`M ${x1 + 26} ${axisY} l -24 -13 v 26 Z`} fill={MP.line} />}
+        <SmallLabel x={x0} y={axisY + 64} text="今" color={MP.ink} size={34} />
+        <circle cx={x0} cy={axisY} r={11} fill={MP.ink} />
+        {marks.map((m, i) => {
+          const reached = headX >= m.x;
+          const o = interpolate(headX, [m.x - 30, m.x + 30], [0, 1], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          });
+          const last = i === marks.length - 1;
+          const c = last ? MP.accent : MP.line;
+          return (
+            <g key={i} opacity={o}>
+              <line x1={m.x} y1={axisY - 22} x2={m.x} y2={axisY + 22} stroke={c} strokeWidth={last ? 7 : 5} />
+              <text
+                x={m.x}
+                y={axisY + 72}
+                textAnchor="middle"
+                fontSize={last ? 46 : 40}
+                fontWeight={700}
+                fill={last ? MP.accentSoft : MP.ink}
+                fontFamily={MANABI_FONT}
+              >
+                {m.time}
+              </text>
+              {/* 注釈 (目盛りの上、字幕と重ならない高さ) */}
+              <line x1={m.x} y1={axisY - 22} x2={m.x} y2={axisY - 88 - (i % 2) * 70} stroke={MP.faint} strokeWidth={2.5} opacity={reached ? 0.8 : 0} />
+              <SmallLabel x={m.x} y={axisY - 104 - (i % 2) * 70} text={m.note} color={last ? MP.accentSoft : MP.faint} size={30} />
+            </g>
+          );
+        })}
+      </svg>
+      <DiagramTitle text={scene.title ?? "痕跡が消えていく時間"} />
+    </Frame>
+  );
+};
+
 // 考える人 (線画の横顔と「?」)
 const ThinkingScene: React.FC = () => {
   const frame = useCurrentFrame();
@@ -1712,10 +1970,73 @@ const ConceptScene: React.FC<{ scene: Scene }> = ({ scene }) => {
 // カードがナレーション全文をそのまま大きく見せるか (その場合は字幕を重ねない)
 export const manabiCardShowsFullText = (scene: Scene): boolean => {
   if (scene.isEnding || scene.type !== "card") return false;
+  // 章扉カードは「第N章 + 章タイトル」だけを静かに見せる (字幕も重ねない)
+  if (scene.motif === "chapter") return true;
   const hl = scene.emphasis?.replace(/[「」]/g, "").trim();
   const text = scene.text.replace(/[。]$/, "");
   if (hl && text.includes(hl) && text.length <= 52) return true;
   return !hl && text.length <= 52;
+};
+
+// 章扉カード: 濃紺の背景にオレンジの細線 +「第1章」+ 章タイトル。静かに1秒でフェードイン
+const CHAPTER_NUM_RE = /第[0-9０-９一二三四五六七八九十]+章/;
+const ChapterCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const fade = interpolate(frame, [0, fps], [0, 1], { extrapolateRight: "clamp" });
+  // 章番号は title か本文から拾う
+  const num =
+    scene.title?.match(CHAPTER_NUM_RE)?.[0] ?? scene.text.match(CHAPTER_NUM_RE)?.[0] ?? "";
+  // 章タイトル: title (章番号を除く) が最優先。無ければ本文の前置き・章番号・結びを削って導く
+  let titleText = (scene.title ?? "").replace(CHAPTER_NUM_RE, "").replace(/^[、。:：\s]+/, "").trim();
+  if (!titleText) {
+    titleText = scene.text
+      .replace(/^(まず|第一に|ここからは|次は|次に|続いて|最後に|さて|それでは)[、\s]*/, "")
+      .replace(CHAPTER_NUM_RE, "")
+      .replace(/^[はもで]?[、\s]*/, "")
+      .replace(/(から|を)?見て(いき|み)ましょう[。]?$/, "")
+      .replace(/(の話|のお話)です[。]?$/, "")
+      .replace(/について考えます[。]?$/, "")
+      .replace(/です[。]?$/, "")
+      .replace(/[。]$/, "")
+      .trim();
+  }
+  return (
+    <Frame>
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: fade }}>
+        <div style={{ width: 170, height: 3, background: MP.accent, borderRadius: 2 }} />
+        {num && (
+          <div
+            style={{
+              fontFamily: MANABI_SERIF,
+              fontSize: 46,
+              color: MP.accent,
+              letterSpacing: 12,
+              marginTop: 44,
+            }}
+          >
+            {num}
+          </div>
+        )}
+        <div
+          style={{
+            fontFamily: MANABI_SERIF,
+            fontSize: 78,
+            fontWeight: 600,
+            color: MP.ink,
+            letterSpacing: 6,
+            textAlign: "center",
+            lineHeight: 1.6,
+            maxWidth: 1500,
+            marginTop: num ? 30 : 48,
+          }}
+        >
+          {titleText}
+        </div>
+        <div style={{ width: 170, height: 3, background: MP.accent, borderRadius: 2, marginTop: 52 }} />
+      </AbsoluteFill>
+    </Frame>
+  );
 };
 
 // カード: 章見出し・結論 (キーワードだけオレンジ)
@@ -1808,6 +2129,9 @@ const ManabiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
 const resolveTraceMotif = (m: string): string | undefined => {
   if (/future_fossil|plastic|bottle|chicken/.test(m)) return "future_fossil";
   if (/moon|footprint|lunar/.test(m)) return "moon_footprint";
+  if (/trash|landfill|garbage|dump|waste/.test(m)) return "trash_layer"; // "trash_layer" は strata より先に
+  if (/flood|submerg|underwater|subway|metro/.test(m)) return "flood";
+  if (/timeline|chronolog|countup/.test(m)) return "timeline";
   if (/strata|stratum|layer/.test(m)) return "strata";
   if (/fossil|sediment|buri|bury|mud/.test(m)) return "fossilize";
   if (/dino|rex|skeleton|bone/.test(m)) return "dinosaur";
@@ -1842,9 +2166,14 @@ export const ManabiSceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
     if (trace === "strata") return <StrataScene />;
     if (trace === "future_fossil") return <FutureFossilScene scene={scene} />;
     if (trace === "moon_footprint") return <MoonFootprintScene />;
+    if (trace === "flood") return <FloodScene scene={scene} />;
+    if (trace === "trash_layer") return <TrashLayerScene scene={scene} />;
+    if (trace === "timeline") return <TimelineScene scene={scene} />;
   }
   switch (scene.type) {
     case "card":
+      // 章扉カード (motif=chapter) は専用の静かな画面
+      if (m === "chapter") return <ChapterCardScene scene={scene} />;
       return <ManabiCardScene scene={scene} />;
     case "chart":
       return <ManabiChartScene scene={scene} />;

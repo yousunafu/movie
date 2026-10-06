@@ -121,3 +121,19 @@ export const ALL_MANABI_MOTIFS = [
   ...MANABI_LOCATION_MOTIFS,
   "ending",
 ] as const;
+
+// ===== rekishi (歴史・深い時間の資料図版) 用 =====
+export const REKISHI_MOTIFS = [
+  "city", // 廃墟になっていく都市の遠景
+  "ruin", // ツタに覆われるビル
+  "decay", // 錆と砂に埋もれる物 (歯車・鉄骨)
+  "dinosaur", // 恐竜骨格の博物図版
+  "fossilize", // 埋没→地層→化石化の図解
+  "strata", // 地層の断面と薄い一枚の錆朱の線
+  "future_fossil", // ペットボトルと鶏の骨の標本図版
+  "moon_footprint", // 月面に残る足跡
+  "question", // 大きな「?」の図版 (問いかけ)
+  "concept", // その他の図版 (砂時計 = 時の流れ)
+] as const;
+
+export const ALL_REKISHI_MOTIFS = [...REKISHI_MOTIFS, "ending"] as const;

@@ -18,6 +18,12 @@ import { CardScene } from "./scenes/CardScene";
 import { ImageScene } from "./scenes/ImageScene";
 import { AshiSceneView, AshiMotion, AshiV2Context, AP, ASHI_FONT } from "./ashi/AshiScenes";
 import { ManabiSceneView, MP, MANABI_FONT, manabiCardShowsFullText } from "./manabi/ManabiScenes";
+import {
+  RekishiSceneView,
+  RP,
+  REKISHI_BAND_H,
+  rekishiCardShowsFullText,
+} from "./rekishi/RekishiScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -71,8 +77,9 @@ const Subtitle: React.FC<{
   onImage?: boolean;
   ashi?: boolean;
   manabi?: boolean;
+  rekishi?: boolean;
   highlight?: string;
-}> = ({ text, onImage, ashi, manabi, highlight }) => {
+}> = ({ text, onImage, ashi, manabi, rekishi, highlight }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
@@ -109,6 +116,38 @@ const Subtitle: React.FC<{
         </span>,
       );
     });
+  }
+  // rekishi: 下2割の黒帯 (RekishiSceneView が描く) の中央に白ゴシックで全文。帯は敷かない
+  if (rekishi) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          bottom: 0,
+          width: "100%",
+          height: REKISHI_BAND_H,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          opacity,
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "88%",
+            textAlign: "center",
+            fontFamily: FONT,
+            fontSize: 48,
+            fontWeight: 700,
+            color: "#FFFFFF",
+            lineHeight: 1.55,
+          }}
+        >
+          {nodes}
+        </div>
+      </div>
+    );
   }
   // ashi: 白い明朝体 + 影。manabi: 白いゴシック + 影。画像の上では暗い帯
   const band = ashi || manabi
@@ -154,6 +193,7 @@ const Subtitle: React.FC<{
 export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const isAshi = data.preset === "ashi";
   const isManabi = data.preset === "manabi";
+  const isRekishi = data.preset === "rekishi";
   if (data.scenes.length === 0) {
     return (
       <AbsoluteFill
@@ -178,7 +218,9 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
           ? AP.background
           : isManabi
             ? MP.background
-            : PALETTE.background,
+            : isRekishi
+              ? RP.band
+              : PALETTE.background,
       }}
     >
       {data.hasBgm && (
@@ -212,16 +254,20 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 </AshiV2Context.Provider>
               ) : isManabi ? (
                 <ManabiSceneView scene={scene} />
+              ) : isRekishi ? (
+                <RekishiSceneView scene={scene} />
               ) : (
                 <SceneView scene={scene} />
               )}
-              {/* manabi: カードが全文を大きく見せるときは字幕を重ねない (二重表示を防ぐ) */}
-              {!(isManabi && manabiCardShowsFullText(scene)) && (
+              {/* manabi/rekishi: カードが全文を大きく見せるときは字幕を重ねない (二重表示を防ぐ) */}
+              {!(isManabi && manabiCardShowsFullText(scene)) &&
+                !(isRekishi && rekishiCardShowsFullText(scene)) && (
                 <Subtitle
                   text={scene.text}
-                  onImage={Boolean(scene.image) && scene.type !== "card"}
+                  onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi}
                   ashi={isAshi}
                   manabi={isManabi}
+                  rekishi={isRekishi}
                   highlight={v2 ? scene.emphasis : undefined}
                 />
               )}

@@ -56,7 +56,9 @@ async function main() {
         ? "ashi (夜の教養エッセイ)"
         : preset === "manabi"
           ? "manabi (身近な科学の図解解説)"
-          : "genki (健康解説)"
+          : preset === "rekishi"
+            ? "rekishi (歴史・深い時間の資料図版)"
+            : "genki (健康解説)"
     }`,
   );
 

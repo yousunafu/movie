@@ -20,15 +20,15 @@ export function enforceRatios(
   const count = (t: SceneType) => out.filter((a) => a.type === t).length;
   const log: string[] = [];
 
-  // manabi (図解解説) は図解が主役なので、人物比率などの補正はしない。
+  // manabi (図解解説) / rekishi (資料図版) は図版が主役なので、人物比率などの補正はしない。
   // 「最後の実質シーンは結論カード」だけ守る。
-  if (preset === "manabi") {
+  if (preset === "manabi" || preset === "rekishi") {
     if (n >= 3 && out[n - 1].type !== "card") {
       out[n - 1].type = "card";
       out[n - 1].motif = "concept";
       log.push(`シーン${n - 1}を結論カードに変更`);
     }
-    console.log("機械的補正 (manabi):", log.length ? log.join(" / ") : "補正なし");
+    console.log(`機械的補正 (${preset}):`, log.length ? log.join(" / ") : "補正なし");
     return out;
   }
 

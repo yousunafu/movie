@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       preset:
-        description: "作風 (genki=健康解説 / ashi=夜の教養エッセイ / manabi=身近な科学の図解)"
+        description: "作風 (genki=健康解説 / ashi=夜の教養エッセイ / manabi=身近な科学の図解 / rekishi=歴史の資料図版)"
         required: true
         type: choice
         default: genki
@@ -16,6 +16,7 @@ on:
           - genki
           - ashi
           - manabi
+          - rekishi
 
 jobs:
   generate:

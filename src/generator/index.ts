@@ -60,7 +60,9 @@ async function main() {
             ? "rekishi (歴史・深い時間の資料図版)"
             : preset === "kouzou"
               ? "kouzou (仕事・組織の構造図解)"
-              : "genki (健康解説)"
+              : preset === "keizai"
+                ? "keizai (経済ニュース解説)"
+                : "genki (健康解説)"
     }`,
   );
 

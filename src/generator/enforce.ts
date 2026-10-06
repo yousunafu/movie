@@ -26,9 +26,10 @@ export function enforceRatios(
   const count = (t: SceneType) => out.filter((a) => a.type === t).length;
   const log: string[] = [];
 
-  // manabi (図解解説) / rekishi (資料図版) / kouzou (構造図解) は図版が主役なので、
-  // 人物比率などの補正はしない。カードは「最後の結論カード」+ 各作風の章カードだけ守る。
-  if (preset === "manabi" || preset === "rekishi" || preset === "kouzou") {
+  // manabi (図解解説) / rekishi (資料図版) / kouzou (構造図解) / keizai (フリップ図解) は
+  // 図版が主役なので、人物比率などの補正はしない。
+  // カードは「最後の結論カード (keizai はまとめフリップ)」+ 各作風の章カードだけ守る。
+  if (preset === "manabi" || preset === "rekishi" || preset === "kouzou" || preset === "keizai") {
     // 章扉カード (manabi のみ): 章タイトルを宣言する文 (「第1章」などを含む) は
     // AIが type を揺らしても card + motif=chapter にそろえる
     if (preset === "manabi") {

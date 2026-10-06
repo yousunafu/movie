@@ -30,6 +30,7 @@ import {
   KOUZOU_BAND_H,
   kouzouCardShowsFullText,
 } from "./kouzou/KouzouScenes";
+import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -85,8 +86,9 @@ const Subtitle: React.FC<{
   manabi?: boolean;
   rekishi?: boolean;
   kouzou?: boolean;
+  keizai?: boolean;
   highlight?: string;
-}> = ({ text, onImage, ashi, manabi, rekishi, kouzou, highlight }) => {
+}> = ({ text, onImage, ashi, manabi, rekishi, kouzou, keizai, highlight }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
@@ -156,6 +158,37 @@ const Subtitle: React.FC<{
       </div>
     );
   }
+  // keizai: 下部に白いゴシック太字+黒の縁取り (ニュース番組のテロップ風。帯は敷かない)
+  if (keizai) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          bottom: 48,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "88%",
+          textAlign: "center",
+          opacity,
+        }}
+      >
+        <span
+          style={{
+            display: "inline",
+            fontFamily: KEIZAI_FONT,
+            fontSize: 52,
+            fontWeight: 800,
+            color: "#FFFFFF",
+            lineHeight: 1.55,
+            textShadow:
+              "3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000, 0 6px 18px rgba(0,0,0,0.85)",
+          }}
+        >
+          {nodes}
+        </span>
+      </div>
+    );
+  }
   // ashi: 白い明朝体 + 影。manabi: 白いゴシック + 影。画像の上では暗い帯
   const band = ashi || manabi
     ? manabi
@@ -202,6 +235,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const isManabi = data.preset === "manabi";
   const isRekishi = data.preset === "rekishi";
   const isKouzou = data.preset === "kouzou";
+  const isKeizai = data.preset === "keizai";
   if (data.scenes.length === 0) {
     return (
       <AbsoluteFill
@@ -230,7 +264,9 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
               ? RP.band
               : isKouzou
                 ? KP.band
-                : PALETTE.background,
+                : isKeizai
+                  ? EP.bgTop
+                  : PALETTE.background,
       }}
     >
       {data.hasBgm && (
@@ -268,20 +304,24 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 <RekishiSceneView scene={scene} />
               ) : isKouzou ? (
                 <KouzouSceneView scene={scene} />
+              ) : isKeizai ? (
+                <KeizaiSceneView scene={scene} />
               ) : (
                 <SceneView scene={scene} />
               )}
-              {/* manabi/rekishi/kouzou: カードが全文を大きく見せるときは字幕を重ねない (二重表示を防ぐ) */}
+              {/* manabi/rekishi/kouzou/keizai: カードが全文を大きく見せるときは字幕を重ねない (二重表示を防ぐ) */}
               {!(isManabi && manabiCardShowsFullText(scene)) &&
                 !(isRekishi && rekishiCardShowsFullText(scene)) &&
-                !(isKouzou && kouzouCardShowsFullText(scene)) && (
+                !(isKouzou && kouzouCardShowsFullText(scene)) &&
+                !(isKeizai && keizaiCardShowsFullText(scene)) && (
                 <Subtitle
                   text={scene.text}
-                  onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi && !isKouzou}
+                  onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi && !isKouzou && !isKeizai}
                   ashi={isAshi}
                   manabi={isManabi}
                   rekishi={isRekishi}
                   kouzou={isKouzou}
+                  keizai={isKeizai}
                   highlight={v2 ? scene.emphasis : undefined}
                 />
               )}

@@ -24,6 +24,12 @@ import {
   REKISHI_BAND_H,
   rekishiCardShowsFullText,
 } from "./rekishi/RekishiScenes";
+import {
+  KouzouSceneView,
+  KP,
+  KOUZOU_BAND_H,
+  kouzouCardShowsFullText,
+} from "./kouzou/KouzouScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -78,8 +84,9 @@ const Subtitle: React.FC<{
   ashi?: boolean;
   manabi?: boolean;
   rekishi?: boolean;
+  kouzou?: boolean;
   highlight?: string;
-}> = ({ text, onImage, ashi, manabi, rekishi, highlight }) => {
+}> = ({ text, onImage, ashi, manabi, rekishi, kouzou, highlight }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
@@ -117,8 +124,8 @@ const Subtitle: React.FC<{
       );
     });
   }
-  // rekishi: 下2割の黒帯 (RekishiSceneView が描く) の中央に白ゴシックで全文。帯は敷かない
-  if (rekishi) {
+  // rekishi / kouzou: 下端の黒帯 (各 SceneView が描く) の中央に白ゴシックで全文。帯は敷かない
+  if (rekishi || kouzou) {
     return (
       <div
         style={{
@@ -126,7 +133,7 @@ const Subtitle: React.FC<{
           left: 0,
           bottom: 0,
           width: "100%",
-          height: REKISHI_BAND_H,
+          height: rekishi ? REKISHI_BAND_H : KOUZOU_BAND_H,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -138,10 +145,10 @@ const Subtitle: React.FC<{
             maxWidth: "88%",
             textAlign: "center",
             fontFamily: FONT,
-            fontSize: 48,
+            fontSize: rekishi ? 48 : 42,
             fontWeight: 700,
             color: "#FFFFFF",
-            lineHeight: 1.55,
+            lineHeight: 1.5,
           }}
         >
           {nodes}
@@ -194,6 +201,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const isAshi = data.preset === "ashi";
   const isManabi = data.preset === "manabi";
   const isRekishi = data.preset === "rekishi";
+  const isKouzou = data.preset === "kouzou";
   if (data.scenes.length === 0) {
     return (
       <AbsoluteFill
@@ -220,7 +228,9 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
             ? MP.background
             : isRekishi
               ? RP.band
-              : PALETTE.background,
+              : isKouzou
+                ? KP.band
+                : PALETTE.background,
       }}
     >
       {data.hasBgm && (
@@ -256,18 +266,22 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 <ManabiSceneView scene={scene} />
               ) : isRekishi ? (
                 <RekishiSceneView scene={scene} />
+              ) : isKouzou ? (
+                <KouzouSceneView scene={scene} />
               ) : (
                 <SceneView scene={scene} />
               )}
-              {/* manabi/rekishi: カードが全文を大きく見せるときは字幕を重ねない (二重表示を防ぐ) */}
+              {/* manabi/rekishi/kouzou: カードが全文を大きく見せるときは字幕を重ねない (二重表示を防ぐ) */}
               {!(isManabi && manabiCardShowsFullText(scene)) &&
-                !(isRekishi && rekishiCardShowsFullText(scene)) && (
+                !(isRekishi && rekishiCardShowsFullText(scene)) &&
+                !(isKouzou && kouzouCardShowsFullText(scene)) && (
                 <Subtitle
                   text={scene.text}
-                  onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi}
+                  onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi && !isKouzou}
                   ashi={isAshi}
                   manabi={isManabi}
                   rekishi={isRekishi}
+                  kouzou={isKouzou}
                   highlight={v2 ? scene.emphasis : undefined}
                 />
               )}

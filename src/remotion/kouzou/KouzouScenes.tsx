@@ -12,9 +12,13 @@ import {
   useVideoConfig,
   interpolate,
 } from "remotion";
+import { loadDefaultJapaneseParser } from "budoux";
 import type { Scene } from "../../types";
 import { KOUZOU_CHANNEL } from "../../channel";
 import { ImageScene } from "../scenes/ImageScene";
+
+// 日本語の文節で改行する (カードの「変なところで折り返し」防止)
+const jaParser = loadDefaultJapaneseParser();
 
 // 図書館の配色 (KP)
 export const KP = {
@@ -27,6 +31,7 @@ export const KP = {
   navy: "#1B2A41", // 濃紺 (章・結論カード)
   white: "#F7F5EF", // カードの白文字
   band: "#101010", // 下端の黒帯 (字幕領域)
+  red: "#C14B3F", // ×印・ダメの記号だけに使う赤 (差し色は基本teal)
 } as const;
 
 export const KOUZOU_FONT =
@@ -98,9 +103,11 @@ const Sheet: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </AbsoluteFill>
 );
 
-// 図解の見出し (上部中央・青緑の短い下線)
+// 図解の見出し (上部中央・文字幅に合わせた青緑の下線)
 const SheetTitle: React.FC<{ text?: string }> = ({ text }) => {
   if (!text) return null;
+  // 下線は見出しの文字幅に合わせる (全角1文字 ≈ fontSize + letterSpacing)
+  const uw = Math.max(72, Math.round(text.length * 49 * 0.96));
   return (
     <g>
       <text
@@ -115,7 +122,7 @@ const SheetTitle: React.FC<{ text?: string }> = ({ text }) => {
       >
         {text}
       </text>
-      <rect x={W / 2 - 36} y={124} width={72} height={5} rx={2.5} fill={KP.teal} />
+      <rect x={W / 2 - uw / 2} y={124} width={uw} height={5} rx={2.5} fill={KP.teal} />
     </g>
   );
 };
@@ -225,8 +232,12 @@ const Bubble: React.FC<{
 
 // meeting: 会議室。テーブルと人のピクトグラム、吹き出しが増えていく
 const MeetingScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
   const tableY = 650;
   const seats = [430, 700, 970, 1240, 1510];
+  // 壁の時計: 会議が進むと同時に針がどんどん進む (分針は速く、短針はじわっと)
+  const minuteDeg = frame * 4.5;
+  const hourDeg = frame * 0.375;
   return (
     <Sheet>
       <SheetTitle text={scene.title} />
@@ -246,30 +257,63 @@ const MeetingScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       <Bubble x={985} y={tableY - 236} delay={70} accent mark="…" />
       <Bubble x={1255} y={tableY - 272} delay={100} />
       <Bubble x={1525} y={tableY - 240} delay={130} />
-      <Bubble x={860} y={tableY - 400} w={104} h={68} delay={165} />
-      <Bubble x={1130} y={tableY - 416} w={104} h={68} delay={195} />
-      {/* 壁の時計 (時間が過ぎていく記号) */}
-      <g transform="translate(1720, 220)">
-        <circle r={56} fill={KP.paper} stroke={KP.ink} strokeWidth={6} />
-        <line x1={0} y1={0} x2={0} y2={-34} stroke={KP.ink} strokeWidth={6} strokeLinecap="round" />
-        <line x1={0} y1={0} x2={24} y2={12} stroke={KP.teal} strokeWidth={6} strokeLinecap="round" />
+      <Bubble x={600} y={tableY - 400} w={104} h={68} delay={165} />
+      <Bubble x={1320} y={tableY - 416} w={104} h={68} delay={195} />
+      {/* 壁の時計 (上部の真ん中。針が回る = 会議の時間が過ぎていく) */}
+      <g transform={`translate(${W / 2}, 200)`}>
+        <circle r={74} fill={KP.paper} stroke={KP.ink} strokeWidth={7} />
+        {Array.from({ length: 12 }, (_, i) => (
+          <line
+            key={i}
+            x1={0}
+            y1={-64}
+            x2={0}
+            y2={-54}
+            stroke={KP.inkSoft}
+            strokeWidth={4}
+            transform={`rotate(${i * 30})`}
+          />
+        ))}
+        <line x1={0} y1={6} x2={0} y2={-32} stroke={KP.ink} strokeWidth={8} strokeLinecap="round" transform={`rotate(${hourDeg})`} />
+        <line x1={0} y1={8} x2={0} y2={-50} stroke={KP.teal} strokeWidth={6} strokeLinecap="round" transform={`rotate(${minuteDeg})`} />
+        <circle r={7} fill={KP.ink} />
       </g>
     </Sheet>
   );
 };
 
 // structure: 箱3つの分岐図。該当の箱が青緑で順に点灯
+// ラベルの中の × は赤、○ は青緑に塗る (ダメ/正解が一目で分かるように)
+const structLabelSpans = (label: string, lit: boolean) =>
+  Array.from(label).map((ch, j) => {
+    const isX = ch === "×" || ch === "✕";
+    const isO = ch === "○" || ch === "〇" || ch === "◯";
+    const fill = lit ? KP.white : isX ? KP.red : isO ? KP.teal : KP.ink;
+    return (
+      <tspan key={j} fill={fill} fontWeight={isX || isO ? 800 : 700}>
+        {ch}
+      </tspan>
+    );
+  });
+
 const StructureScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const labels = (scene.items ?? []).map((i) => i.label).filter(Boolean).slice(0, 3);
   const boxes = labels.length >= 2 ? labels : ["要因 1", "要因 2", "要因 3"];
   const n = boxes.length;
   const rootX = W / 2;
   const rootY = 250;
   const childY = 560;
-  const boxW = 420;
   const boxH = 130;
-  const xs = boxes.map((_, i) => W / 2 + (i - (n - 1) / 2) * 500);
+  // 箱の幅はラベルの文字数に合わせて広げる (はみ出し防止)。間隔も幅に合わせる
+  const boxWs = boxes.map((b) => Math.max(420, b.length * 40 + 90));
+  const gap = Math.max(500, Math.max(...boxWs) + 70);
+  const xs = boxes.map((_, i) => W / 2 + (i - (n - 1) / 2) * gap);
+  // 点灯はシーンの長さから逆算し、最後の箱まで必ず点灯し切る (順に1周して止まる)
+  const totalFrames = Math.ceil((scene.durationSec + 0.35) * fps);
+  const litStart = 22 + n * 14 + 14;
+  const cycleLen = Math.max(16, Math.floor((totalFrames - litStart - 4) / n));
   return (
     <Sheet>
       <SheetTitle text={scene.title ?? "構造を分解する"} />
@@ -283,15 +327,15 @@ const StructureScene: React.FC<{ scene: Scene }> = ({ scene }) => {
         const midY = (rootY + 60 + childY - boxH / 2) / 2 + 10;
         const d = `M ${rootX} ${rootY + 60} L ${rootX} ${midY} L ${x} ${midY} L ${x} ${childY - boxH / 2}`;
         const len = Math.abs(midY - rootY - 60) + Math.abs(x - rootX) + Math.abs(childY - boxH / 2 - midY);
-        return <DrawPath key={i} d={d} len={len} delay={14 + i * 22} dur={22} width={5.5} />;
+        return <DrawPath key={i} d={d} len={len} delay={10 + i * 14} dur={18} width={5.5} />;
       })}
-      {/* 箱が順に現れ、青緑で順に点灯 */}
+      {/* 箱が順に現れ、青緑で順に点灯 (最後の箱で止まる) */}
       {xs.map((x, i) => {
-        const appear = prog(frame, 30 + i * 22, 12);
-        // 全部出そろったあと、1つずつ順に点灯してまわる
-        const litStart = 30 + n * 22 + 20;
-        const cycle = Math.floor(Math.max(frame - litStart, 0) / 50);
-        const lit = frame >= litStart && cycle % n === i;
+        const appear = prog(frame, 22 + i * 14, 12);
+        const sinceLit = frame - litStart;
+        const idx = Math.min(Math.floor(Math.max(sinceLit, 0) / cycleLen), n - 1);
+        const lit = sinceLit >= 0 && idx === i;
+        const boxW = boxWs[i];
         return (
           <g key={i} opacity={appear} transform={`translate(0, ${(1 - appear) * 20})`}>
             <rect
@@ -310,10 +354,9 @@ const StructureScene: React.FC<{ scene: Scene }> = ({ scene }) => {
               textAnchor="middle"
               fontSize={40}
               fontWeight={700}
-              fill={lit ? KP.white : KP.ink}
               fontFamily={KOUZOU_FONT}
             >
-              {boxes[i]}
+              {structLabelSpans(boxes[i], lit)}
             </text>
           </g>
         );
@@ -372,8 +415,9 @@ const MixScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       })}
       {/* 押し込む矢印 (外→枠の中) */}
       <GrowArrow x={fx - 240} y={fy + fh / 2} length={170} delay={14} />
+      {/* 上の矢印はタイトルに当たらないよう短く・下から開始 (y 148→232) */}
       <g transform={`rotate(90, ${fx + fw / 2}, ${fy - 180})`}>
-        <GrowArrow x={fx + fw / 2 - 85} y={fy - 180} length={130} delay={40} />
+        <GrowArrow x={fx + fw / 2 + 28} y={fy - 180} length={84} delay={40} />
       </g>
       <g transform={`rotate(180, ${fx + fw + 120}, ${fy + fh / 2})`}>
         <GrowArrow x={fx + fw + 35} y={fy + fh / 2} length={170} delay={66} />
@@ -719,6 +763,37 @@ const KouzouCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const useFull = Boolean(hl && text.includes(hl) && text.length <= 52) || (!hl && text.length <= 52);
   const display = useFull ? text : (hl ?? scene.title ?? text.slice(0, 40));
   const rise = interpolate(inP, [0, 1], [24, 0]);
+  // 文節単位で折り返す (budoux)。強調語は「」ごとひとかたまりにして途中で割れないように
+  const nodes: React.ReactNode[] = [];
+  if (useFull && hl) {
+    const unit = text.includes(`「${hl}」`) ? `「${hl}」` : hl;
+    text.split(unit).forEach((part, i, arr) => {
+      jaParser.parse(part).forEach((chunk, j) => {
+        nodes.push(
+          <span key={`${i}-${j}`} style={{ display: "inline-block" }}>
+            {chunk}
+          </span>,
+        );
+      });
+      if (i < arr.length - 1) {
+        nodes.push(
+          <span key={`h-${i}`} style={{ display: "inline-block" }}>
+            {unit.startsWith("「") && "「"}
+            <span style={{ color: KP.teal, filter: "brightness(1.5)" }}>{hl}</span>
+            {unit.endsWith("」") && "」"}
+          </span>,
+        );
+      }
+    });
+  } else {
+    jaParser.parse(String(display)).forEach((chunk, j) => {
+      nodes.push(
+        <span key={j} style={{ display: "inline-block" }}>
+          {chunk}
+        </span>,
+      );
+    });
+  }
   return (
     <NavySurface>
       <div style={{ opacity: inP, transform: `translateY(${rise}px)`, display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -735,14 +810,7 @@ const KouzouCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             letterSpacing: 2,
           }}
         >
-          {useFull && hl
-            ? text.split(hl).map((part, i, arr) => (
-                <span key={i}>
-                  {part}
-                  {i < arr.length - 1 && <span style={{ color: KP.teal, filter: "brightness(1.5)" }}>{hl}</span>}
-                </span>
-              ))
-            : display}
+          {nodes}
         </div>
         <div style={{ width: 64, height: 4, background: KP.teal, marginTop: 54, borderRadius: 2 }} />
       </div>

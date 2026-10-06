@@ -4,7 +4,13 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { SCENE_TYPES, type SceneType } from "../style";
-import { ALL_MOTIFS, ALL_ASHI_MOTIFS, ALL_MANABI_MOTIFS, ALL_REKISHI_MOTIFS } from "../motifs";
+import {
+  ALL_MOTIFS,
+  ALL_ASHI_MOTIFS,
+  ALL_MANABI_MOTIFS,
+  ALL_REKISHI_MOTIFS,
+  ALL_KEIZAI_MOTIFS,
+} from "../motifs";
 import type { Preset } from "../channel";
 
 export type Assignment = {
@@ -134,6 +140,39 @@ ${ALL_REKISHI_MOTIFS.join(", ")}
   要点を列挙できる結論の文は、items に [{"label": "要点1"}, ...] を2〜4個入れると箇条書きスライドになる
 - 数値の倍率 (〜倍) が出る文は必ず chart にして、items を [{基準のlabel, value: 1}, {比べるlabel, value: 倍率}] にする`;
 
+const KEIZAI_HEADER = () => `あなたは経済ニュースをかみ砕いて解説する動画の絵コンテ担当です。
+映像はニュース番組のフリップ風。濃紺のスタジオ背景に白いフリップボード、見出しは赤いバー、
+強調数字は黄色のビッグ文字です。台本の各文に、画面の型と題材を割り当ててください。
+
+画面の型:
+- character: 人や動きのある場面 (この作風ではフリップとピクトグラムで描かれる)
+- object: 象徴的な物や記号をフリップで大きく見せる
+- diagram: 仕組み・流れのラベル付き図解 (矢印チェーン・分岐図など)
+- chart: 数値の比較 (値が文中にあるときだけ。緑/紫の横棒グラフになる)
+- location: 全景の図 (日本地図など)
+- card: 大事な結論をまとめフリップ (赤見出し+白ボード+箇条書き) で見せる
+
+題材 (motif) は必ずこの中から選ぶ:
+${ALL_KEIZAI_MOTIFS.join(", ")}
+
+題材の意味:
+- news: ニュース速報風の見出しテロップ (導入・「〜というニュース」の文に)
+- exchange: 両替の図。1ドル=100円→150円のように数字がカウントアップ (円安の定義・為替レートの文に)
+- import_japan: 日本地図+外から入る矢印+「食料 約6割」などの赤バーフリップ (輸入に頼る・自給率の文に)
+- cost_chain: 仕入れ値→企業→価格転嫁の矢印チェーン (コストが順に伝わる文に)
+- ripple: 小麦→パン、原油→電気代・輸送費の分岐図 (値上がりが波及する文に)
+- transport: トラックのピクト+値札に輸送費が含まれる図 (輸送費・物流の文に)
+- price_up: 値札の数字が上がるアニメ (値段が上がる・押し上げる文に)
+- balance: 天秤。左に痛み・右に恩恵 (輸出企業は追い風・メリットとデメリットの文に)
+- concept: その他 (白フリップ+キーワード)
+
+この作風だけの決まり:
+- 最後の結論の文は card にして emphasis に核心の短い語句 (本文中にそのまま含まれる語) を入れる。
+  要点を列挙できる結論の文は、items に [{"label": "要点1"}, ...] を2〜4個入れると箇条書きフリップになる
+- 数値の比較が出る文は chart にして、items を [{label, value, unit}] にする (value は数値だけ)
+- exchange / price_up では items に変化前と変化後の2つの数値を入れる (例: [{"label": "いま", "value": 100, "unit": "円"}, {"label": "円安後", "value": 150, "unit": "円"}])
+- emphasis は必ず本文中にそのまま含まれる語句を抜き出す`;
+
 const PROMPT = (sentences: string[], preset: Preset) => `${
   preset === "ashi"
     ? ASHI_HEADER()
@@ -141,7 +180,9 @@ const PROMPT = (sentences: string[], preset: Preset) => `${
       ? MANABI_HEADER()
       : preset === "rekishi"
         ? REKISHI_HEADER()
-        : GENKI_HEADER()
+        : preset === "keizai"
+          ? KEIZAI_HEADER()
+          : GENKI_HEADER()
 }
 
 ルール:
@@ -164,7 +205,11 @@ ${
         ? `  例「セピア色の古い銅版画。ツタに覆われた廃墟のビル群、細い平行線のハッチングの陰影、古紙の質感」。
   セピアの古文書・銅版画調の資料図版の雰囲気で。差し色は錆朱だけ。
   文字やグラフを画像内に描かせない。`
-        : `  例「白髪の日本人女性が台所で冷奴に鰹節をのせている。小鉢に入った豆腐、薬味のねぎ」。
+        : preset === "keizai"
+          ? `  例「濃紺のニューススタジオ。白いフリップボードに円とドルの硬貨のイラスト、赤い見出しバー」。
+  ニュース番組のフリップ風、濃紺スタジオ+白ボード+赤と黄色の差し色、という雰囲気で。
+  文字やグラフを画像内に描かせない。`
+          : `  例「白髪の日本人女性が台所で冷奴に鰹節をのせている。小鉢に入った豆腐、薬味のねぎ」。
   抽象的な文なら比喩的な場面に置き換える (例: 老化が早まる→元気な姿と弱った姿の対比)。
   文字やグラフを画像内に描かせない。食材は料理として美味しそうに。`
 }
@@ -213,7 +258,9 @@ export async function assignScenes(
         ? manabiHeuristicAssign(s)
         : preset === "rekishi"
           ? rekishiHeuristicAssign(s)
-          : heuristicAssign(s),
+          : preset === "keizai"
+            ? keizaiHeuristicAssign(s)
+            : heuristicAssign(s),
   );
 }
 
@@ -227,7 +274,9 @@ function parseAssignments(text: string, count: number, preset: Preset): Assignme
         ? ALL_MANABI_MOTIFS
         : preset === "rekishi"
           ? ALL_REKISHI_MOTIFS
-          : ALL_MOTIFS;
+          : preset === "keizai"
+            ? ALL_KEIZAI_MOTIFS
+            : ALL_MOTIFS;
   try {
     const arr = JSON.parse(m[0]) as Record<string, unknown>[];
     const out: Assignment[] = [];
@@ -296,6 +345,11 @@ function defaultMotif(type: SceneType, preset: Preset): string {
   if (preset === "rekishi") {
     if (type === "object") return "question";
     if (type === "location") return "city";
+    return "concept";
+  }
+  if (preset === "keizai") {
+    if (type === "location") return "import_japan";
+    if (type === "diagram") return "cost_chain";
     return "concept";
   }
   if (type === "object") return "vegetables";
@@ -472,6 +526,56 @@ export function rekishiHeuristicAssign(sentence: string): Assignment {
   }
   if (/(ビル|都市|街|文明|人類)/.test(sentence)) {
     return { type: "location", motif: "city" };
+  }
+  return { type: "object", motif: "concept" };
+}
+
+// ===== keizai (経済ニュース解説・フリップボード) 用のキーワード機械割り当て =====
+export function keizaiHeuristicAssign(sentence: string): Assignment {
+  // 導入・締めの「ニュース」の文は速報テロップ風に
+  if (/(ニュース|速報)/.test(sentence)) {
+    return { type: "object", motif: "news" };
+  }
+  // 両替の図 (1ドル100円が150円に → 数字を items に拾ってカウントアップ)
+  if (/(円安とは|[0-9０-９]+ドル|ドル.*円|為替)/.test(sentence)) {
+    const half = sentence.replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0));
+    const m = half.match(/([0-9]+)円が([0-9]+)円/);
+    return {
+      type: "diagram",
+      motif: "exchange",
+      title: "円安のしくみ",
+      items: m
+        ? [
+            { label: "いま", value: parseFloat(m[1]), unit: "円" },
+            { label: "円安後", value: parseFloat(m[2]), unit: "円" },
+          ]
+        : undefined,
+    };
+  }
+  // 輸入依存 (「輸入品」は price_up 側に流すため「輸入に頼る」系だけ拾う)
+  if (/(輸入に頼|自給率|日本地図|地図)/.test(sentence)) {
+    return { type: "location", motif: "import_japan" };
+  }
+  if (/(転嫁|仕入れ|負担)/.test(sentence)) {
+    return { type: "diagram", motif: "cost_chain", title: "値上がりが届くまで" };
+  }
+  if (/(小麦|パン|原油)/.test(sentence)) {
+    return { type: "diagram", motif: "ripple", title: "値上がりの連鎖" };
+  }
+  if (/(輸送費|トラック|物流|運ぶ)/.test(sentence)) {
+    return { type: "diagram", motif: "transport" };
+  }
+  if (/(押し上げ|値上げ|値段.*上が|価格.*上が)/.test(sentence)) {
+    return { type: "object", motif: "price_up" };
+  }
+  if (/(天秤|恩恵|追い風|輸出|海外に.*売る)/.test(sentence)) {
+    return { type: "diagram", motif: "balance", title: "円安の痛みと恩恵" };
+  }
+  if (/[0-9０-９][0-9０-９,，.．]*(?:[%％割倍円万])/.test(sentence)) {
+    return { type: "chart", motif: "concept", title: "数字で見る" };
+  }
+  if (/(答えは|つまり|結論|なのです)/.test(sentence)) {
+    return { type: "card", motif: "concept" };
   }
   return { type: "object", motif: "concept" };
 }

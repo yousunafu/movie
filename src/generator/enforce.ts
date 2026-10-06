@@ -20,9 +20,9 @@ export function enforceRatios(
   const count = (t: SceneType) => out.filter((a) => a.type === t).length;
   const log: string[] = [];
 
-  // manabi (図解解説) / rekishi (資料図版) は図版が主役なので、人物比率などの補正はしない。
-  // 「最後の実質シーンは結論カード」だけ守る。
-  if (preset === "manabi" || preset === "rekishi") {
+  // manabi (図解解説) / rekishi (資料図版) / keizai (フリップ図解) は図版が主役なので、
+  // 人物比率などの補正はしない。「最後の実質シーンは結論カード (keizai はまとめフリップ)」だけ守る。
+  if (preset === "manabi" || preset === "rekishi" || preset === "keizai") {
     if (n >= 3 && out[n - 1].type !== "card") {
       out[n - 1].type = "card";
       out[n - 1].motif = "concept";

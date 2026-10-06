@@ -145,3 +145,18 @@ export const REKISHI_MOTIFS = [
 ] as const;
 
 export const ALL_REKISHI_MOTIFS = [...REKISHI_MOTIFS, "ending"] as const;
+
+// ===== keizai (経済ニュース解説・フリップボード) 用の題材 =====
+export const KEIZAI_MOTIFS = [
+  "news", // ニュース速報風の見出しテロップ (導入)
+  "exchange", // 両替の図: 1ドル=100円→150円 (円とドル、数字カウントアップ)
+  "import_japan", // 日本地図の簡略形+外から入る矢印+「食料 約6割」などの赤バーフリップ
+  "cost_chain", // 仕入れ値→企業→価格転嫁の矢印チェーン (フリップが順に点灯)
+  "ripple", // 小麦→パン、原油→電気代・輸送費の分岐図
+  "transport", // トラックのピクト+あらゆる値札に輸送費が含まれる図
+  "price_up", // 値札の数字が上がるアニメ
+  "balance", // 天秤: 左に痛み・右に恩恵 (輸出企業は追い風)
+  "concept", // その他 (白フリップ+キーワードの汎用)
+] as const;
+
+export const ALL_KEIZAI_MOTIFS = [...KEIZAI_MOTIFS, "ending"] as const;

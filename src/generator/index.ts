@@ -58,7 +58,9 @@ async function main() {
           ? "manabi (身近な科学の図解解説)"
           : preset === "rekishi"
             ? "rekishi (歴史・深い時間の資料図版)"
-            : "genki (健康解説)"
+            : preset === "kouzou"
+              ? "kouzou (仕事・組織の構造図解)"
+              : "genki (健康解説)"
     }`,
   );
 

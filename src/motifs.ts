@@ -145,3 +145,17 @@ export const REKISHI_MOTIFS = [
 ] as const;
 
 export const ALL_REKISHI_MOTIFS = [...REKISHI_MOTIFS, "ending"] as const;
+
+// ===== kouzou (仕事・組織の構造の図解) 用 =====
+export const KOUZOU_MOTIFS = [
+  "meeting", // 会議室: テーブルと人のピクトグラム。吹き出しが増えていく
+  "structure", // 箱3つの分岐図。該当の箱が青緑で順に点灯
+  "mix", // 性質の違う仕事 (報告・議論・決定) が1つの枠に押し込まれる図
+  "no_end", // 「終わりの条件」のチェックボックスに×。時間の線が右へ伸び続ける
+  "silence", // 沈黙→不安→発言の連鎖。人型から吹き出しが連鎖する矢印図
+  "anchor", // 時間の錨: 60分のバー。30分で結論が出ても60分まで埋まる
+  "law", // パーキンソンの法則: 枠=与えられた時間、中身が枠いっぱいに膨らむ
+  "concept", // その他の構造図 (つながりのネットワーク図)
+] as const;
+
+export const ALL_KOUZOU_MOTIFS = [...KOUZOU_MOTIFS, "ending"] as const;

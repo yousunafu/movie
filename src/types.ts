@@ -24,5 +24,5 @@ export type ScenesData = {
   scenes: Scene[];
   hasBgm: boolean;
   generatedAt: string;
-  preset?: "genki" | "ashi" | "manabi" | "rekishi"; // 作風。省略時は genki (従来通り)
+  preset?: "genki" | "ashi" | "manabi" | "rekishi" | "kouzou"; // 作風。省略時は genki (従来通り)
 };

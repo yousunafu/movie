@@ -4,7 +4,13 @@
 
 import { RATIOS, type SceneType } from "../style";
 import type { Assignment } from "./assign";
-import { heuristicAssign, ashiHeuristicAssign, findFoodMotif } from "./assign";
+import {
+  heuristicAssign,
+  ashiHeuristicAssign,
+  kouzouHeuristicAssign,
+  isKouzouChapterText,
+  findFoodMotif,
+} from "./assign";
 import { OBJECT_MOTIFS } from "../motifs";
 import type { Preset } from "../channel";
 
@@ -20,9 +26,22 @@ export function enforceRatios(
   const count = (t: SceneType) => out.filter((a) => a.type === t).length;
   const log: string[] = [];
 
-  // manabi (図解解説) / rekishi (資料図版) は図版が主役なので、人物比率などの補正はしない。
-  // 「最後の実質シーンは結論カード」だけ守る。
-  if (preset === "manabi" || preset === "rekishi") {
+  // manabi (図解解説) / rekishi (資料図版) / kouzou (構造図解) は図版が主役なので、
+  // 人物比率などの補正はしない。「最後の実質シーンは結論カード」だけ守る。
+  if (preset === "manabi" || preset === "rekishi" || preset === "kouzou") {
+    // kouzou: カードは「章の切り替えの短い文」と「最後の結論」だけ。
+    // それ以外の文に AI が card を割り当てていたら図解に戻す (本編は図解で見せる)
+    if (preset === "kouzou") {
+      for (let i = 0; i < n - 1; i++) {
+        if (out[i].type !== "card") continue;
+        if (isKouzouChapterText(sentences[i])) continue;
+        const h = kouzouHeuristicAssign(sentences[i]);
+        out[i].type = h.type === "card" ? "diagram" : h.type;
+        out[i].motif = h.type === "card" ? "concept" : h.motif;
+        if (h.items) out[i].items = h.items;
+        log.push(`シーン${i}のカードを図解に変更 (カードは章・結論のみ)`);
+      }
+    }
     if (n >= 3 && out[n - 1].type !== "card") {
       out[n - 1].type = "card";
       out[n - 1].motif = "concept";

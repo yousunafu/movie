@@ -4,7 +4,13 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { SCENE_TYPES, type SceneType } from "../style";
-import { ALL_MOTIFS, ALL_ASHI_MOTIFS, ALL_MANABI_MOTIFS, ALL_REKISHI_MOTIFS } from "../motifs";
+import {
+  ALL_MOTIFS,
+  ALL_ASHI_MOTIFS,
+  ALL_MANABI_MOTIFS,
+  ALL_REKISHI_MOTIFS,
+  ALL_KOUZOU_MOTIFS,
+} from "../motifs";
 import type { Preset } from "../channel";
 
 export type Assignment = {
@@ -134,6 +140,37 @@ ${ALL_REKISHI_MOTIFS.join(", ")}
   要点を列挙できる結論の文は、items に [{"label": "要点1"}, ...] を2〜4個入れると箇条書きスライドになる
 - 数値の倍率 (〜倍) が出る文は必ず chart にして、items を [{基準のlabel, value: 1}, {比べるlabel, value: 倍率}] にする`;
 
+const KOUZOU_HEADER = () => `あなたは仕事・人生・組織の仕組みを心理学・行動科学・経済学で構造化して解説する動画の絵コンテ担当です。
+映像は生成り (アイボリー) の紙の背景に、黒のピクトグラムと線・矢印・分岐・グラフの図解。差し色は青緑1色です。
+台本の各文に、画面の型と題材を割り当ててください。
+
+画面の型:
+- character: 人のピクトグラムが登場する場面 (会議室など)
+- object: 記号や物のピクトグラムを中央に大きく見せる
+- diagram: 構造の図解 (分岐図・連鎖の矢印・バーの図など。この作風の主役)
+- chart: 数値の比較 (値が文中にあり、比較そのものが主役のときだけ)
+- location: 場面の全景 (この作風では会議室の図になる)
+- card: 章の切り替えの短い見出し文と、最後の結論だけに使う濃紺のカード (キーワードが青緑になる)
+
+題材 (motif) は必ずこの中から選ぶ:
+${ALL_KOUZOU_MOTIFS.join(", ")}
+
+題材の意味:
+- meeting: 会議室 (テーブルと人のピクトグラム、吹き出しが増えていく)。会議の場面・冒頭の問いの文に
+- structure: 箱の分岐図。構造・要点の列挙の文に。items に [{"label": "要素1"}, ...] を2〜4個入れる (箱になる)
+- mix: 性質の違う仕事が1つの枠に押し込まれる図 (混在・同居の文に)。items に仕事のラベルを入れる
+- no_end: チェックボックスに×が付き、時間の線が右へ伸び続ける図 (終わりの条件がない・時間を飲み込む文に)
+- silence: 人型から吹き出しが連鎖する矢印図 (沈黙→不安→発言の連鎖の文に)
+- anchor: 60分のバーと錨の図 (時間を使い切る・30分で結論が出ても60分かかる文に。数値があっても chart より anchor を優先)
+- law: 枠=与えられた時間、中身の仕事が枠いっぱいに膨らむ図 (パーキンソンの法則の文に)
+- concept: その他の構造図 (つながりのネットワーク図)
+
+この作風だけの決まり:
+- card は「次に、〜です。」のような章の切り替えの短い文と、最後の結論の文だけに使う。
+  それ以外の文は card にしない (本編は図解で見せる)
+- card では emphasis に核心の短い語句 (本文中にそのまま含まれる語) を入れる (その部分が青緑になる)
+- 時間 (分・時間) の数値は anchor / no_end の図で見せる。chart は「30分 vs 60分」のような比較が主役の文だけ`;
+
 const PROMPT = (sentences: string[], preset: Preset) => `${
   preset === "ashi"
     ? ASHI_HEADER()
@@ -141,7 +178,9 @@ const PROMPT = (sentences: string[], preset: Preset) => `${
       ? MANABI_HEADER()
       : preset === "rekishi"
         ? REKISHI_HEADER()
-        : GENKI_HEADER()
+        : preset === "kouzou"
+          ? KOUZOU_HEADER()
+          : GENKI_HEADER()
 }
 
 ルール:
@@ -164,7 +203,11 @@ ${
         ? `  例「セピア色の古い銅版画。ツタに覆われた廃墟のビル群、細い平行線のハッチングの陰影、古紙の質感」。
   セピアの古文書・銅版画調の資料図版の雰囲気で。差し色は錆朱だけ。
   文字やグラフを画像内に描かせない。`
-        : `  例「白髪の日本人女性が台所で冷奴に鰹節をのせている。小鉢に入った豆腐、薬味のねぎ」。
+        : preset === "kouzou"
+          ? `  例「生成りの紙の背景に、黒いピクトグラムで描いた会議室。テーブルを囲む人型と増えていく吹き出し、青緑の矢印」。
+  生成り背景・黒ピクトグラム・線と矢印の図解、差し色は青緑だけ、というフラットな雰囲気で。
+  文字やグラフを画像内に描かせない。`
+          : `  例「白髪の日本人女性が台所で冷奴に鰹節をのせている。小鉢に入った豆腐、薬味のねぎ」。
   抽象的な文なら比喩的な場面に置き換える (例: 老化が早まる→元気な姿と弱った姿の対比)。
   文字やグラフを画像内に描かせない。食材は料理として美味しそうに。`
 }
@@ -213,7 +256,9 @@ export async function assignScenes(
         ? manabiHeuristicAssign(s)
         : preset === "rekishi"
           ? rekishiHeuristicAssign(s)
-          : heuristicAssign(s),
+          : preset === "kouzou"
+            ? kouzouHeuristicAssign(s)
+            : heuristicAssign(s),
   );
 }
 
@@ -227,7 +272,9 @@ function parseAssignments(text: string, count: number, preset: Preset): Assignme
         ? ALL_MANABI_MOTIFS
         : preset === "rekishi"
           ? ALL_REKISHI_MOTIFS
-          : ALL_MOTIFS;
+          : preset === "kouzou"
+            ? ALL_KOUZOU_MOTIFS
+            : ALL_MOTIFS;
   try {
     const arr = JSON.parse(m[0]) as Record<string, unknown>[];
     const out: Assignment[] = [];
@@ -296,6 +343,10 @@ function defaultMotif(type: SceneType, preset: Preset): string {
   if (preset === "rekishi") {
     if (type === "object") return "question";
     if (type === "location") return "city";
+    return "concept";
+  }
+  if (preset === "kouzou") {
+    if (type === "location" || type === "character") return "meeting";
     return "concept";
   }
   if (type === "object") return "vegetables";
@@ -474,6 +525,61 @@ export function rekishiHeuristicAssign(sentence: string): Assignment {
     return { type: "location", motif: "city" };
   }
   return { type: "object", motif: "concept" };
+}
+
+// ===== kouzou (仕事・組織の構造図解) 用のキーワード機械割り当て =====
+
+// 「次に、沈黙のコストです。」のような章の切り替えの短い文か (濃紺カードにしてよい文)
+export function isKouzouChapterText(sentence: string): boolean {
+  const t = sentence.trim();
+  return (
+    /^(まず|つぎに|次に|最後に|さいごに|続いて|そして|第[一二三四五1-9１-９])/.test(t) &&
+    t.length <= 26
+  );
+}
+
+export function kouzouHeuristicAssign(sentence: string): Assignment {
+  const quoted = [...sentence.matchAll(/「([^」]+)」/g)].map((m) => m[1]);
+  // 章の切り替え (短い見出し文) → 濃紺カード。「次に、◯◯です。」の◯◯を強調
+  if (isKouzouChapterText(sentence)) {
+    const m = sentence.match(/[、,](.+?)です。?$/);
+    return { type: "card", motif: "concept", emphasis: m?.[1] };
+  }
+  // 最後の結論・核心の文 → カード (最終シーン以外は enforce が図解に戻す)
+  if (/(最初の一歩|答えは)/.test(sentence)) {
+    return { type: "card", motif: "concept", emphasis: quoted[0] };
+  }
+  if (/(パーキンソン|使い切る|膨張)/.test(sentence)) {
+    return { type: "diagram", motif: "law", emphasis: quoted[0] };
+  }
+  if (/(錨|予約された|分で結論|分かけて)/.test(sentence)) {
+    return { type: "diagram", motif: "anchor" };
+  }
+  if (/(沈黙|発言|一言|口を開)/.test(sentence)) {
+    return { type: "diagram", motif: "silence" };
+  }
+  if (/(終わりの条件|条件のない|条件がな|飲み込|終わりがな)/.test(sentence)) {
+    return { type: "diagram", motif: "no_end" };
+  }
+  if (/(同居|混在|押し込|詰め込)/.test(sentence) || /報告.*議論.*決定/.test(sentence)) {
+    return { type: "diagram", motif: "mix", items: quoted.length >= 2 ? quoted.map((label) => ({ label })) : undefined };
+  }
+  // 「鍵は3つ、「A」「B」「C」です」→ 分岐図 (箱のラベルに)
+  if (/(鍵は|ポイントは|[0-9０-９三]つ)/.test(sentence) && quoted.length >= 2) {
+    return {
+      type: "diagram",
+      motif: "structure",
+      title: "3つの鍵",
+      items: quoted.map((label) => ({ label })),
+    };
+  }
+  if (/(構造|設計|仕組み|つまり)/.test(sentence)) {
+    return { type: "diagram", motif: "structure", emphasis: quoted[0] };
+  }
+  if (/会議/.test(sentence)) {
+    return { type: "character", motif: "meeting" };
+  }
+  return { type: "diagram", motif: "concept" };
 }
 
 export function ashiHeuristicAssign(sentence: string): Assignment {

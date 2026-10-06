@@ -4,7 +4,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { SCENE_TYPES, type SceneType } from "../style";
-import { ALL_MOTIFS, ALL_ASHI_MOTIFS, ALL_MANABI_MOTIFS } from "../motifs";
+import { ALL_MOTIFS, ALL_ASHI_MOTIFS, ALL_MANABI_MOTIFS, ALL_REKISHI_MOTIFS } from "../motifs";
 import type { Preset } from "../channel";
 
 export type Assignment = {
@@ -104,8 +104,44 @@ ${ALL_MANABI_MOTIFS.join(", ")}
 - 数値の倍率 (〜倍) が出る文は必ず chart にして、items を [{基準のlabel, value: 1}, {比べるlabel, value: 倍率}] にする
 - thermometer / heatflow / graph では items の label を比べる物の名前にする (例: 金属, 木)`;
 
+const REKISHI_HEADER = () => `あなたは歴史・深い時間スケールの教養解説動画の絵コンテ担当です。
+映像はセピアの古文書・銅版画調の資料図版 (上8割が絵、下2割が黒帯の字幕領域)。
+台本の各文に、画面の型と題材を割り当ててください。
+
+画面の型:
+- character: 人や生き物が主役の場面 (この作風では図版として描かれる)
+- object: 象徴的な物や記号を図版として大きく見せる
+- diagram: 仕組み・過程のラベル付き図解 (化石化・地層など)
+- chart: 数値の比較 (値が文中にあるときだけ。倍率はマスの数で見せる)
+- location: 風景の全景 (都市・月面など)
+- card: 章の見出しや大事な結論を白背景のスライドで見せる (キーワードが錆朱になる)
+
+題材 (motif) は必ずこの中から選ぶ:
+${ALL_REKISHI_MOTIFS.join(", ")}
+
+題材の意味:
+- city: 廃墟になっていく都市の遠景 / ruin: ツタに覆われるビル (植物に飲み込まれる文に)
+- decay: 錆と砂に埋もれる歯車・鉄骨 (錆びる・砂に戻る文に)
+- dinosaur: 恐竜の骨格の博物図版 / fossilize: 埋没→地層→化石化の3段階の図解
+- strata: 地層の断面に薄い一枚の錆朱の線 (地層に刻まれる・一枚の線の文に)
+- future_fossil: ペットボトルと鶏の骨の標本図版 (未来の化石の文に)
+- moon_footprint: 月面に残る足跡 (月・足跡の文に)
+- question: 大きな「?」の図版 (問いかけの文に) / concept: その他 (砂時計 = 時の流れ)
+
+この作風だけの決まり:
+- 「答えは〜」「つまり〜」のような核心の文と、最後の結論の文は card にして
+  emphasis に核心の短い語句 (本文中にそのまま含まれる語) を入れる。
+  要点を列挙できる結論の文は、items に [{"label": "要点1"}, ...] を2〜4個入れると箇条書きスライドになる
+- 数値の倍率 (〜倍) が出る文は必ず chart にして、items を [{基準のlabel, value: 1}, {比べるlabel, value: 倍率}] にする`;
+
 const PROMPT = (sentences: string[], preset: Preset) => `${
-  preset === "ashi" ? ASHI_HEADER() : preset === "manabi" ? MANABI_HEADER() : GENKI_HEADER()
+  preset === "ashi"
+    ? ASHI_HEADER()
+    : preset === "manabi"
+      ? MANABI_HEADER()
+      : preset === "rekishi"
+        ? REKISHI_HEADER()
+        : GENKI_HEADER()
 }
 
 ルール:
@@ -124,7 +160,11 @@ ${
       ? `  例「濃紺の背景に白い線画で描いた金属のドアノブ。手が触れて、冷たさを示す淡い青の線」。
   濃紺の背景・白い線画・オレンジの強調、という理科の図解の雰囲気で。
   文字やグラフを画像内に描かせない。`
-      : `  例「白髪の日本人女性が台所で冷奴に鰹節をのせている。小鉢に入った豆腐、薬味のねぎ」。
+      : preset === "rekishi"
+        ? `  例「セピア色の古い銅版画。ツタに覆われた廃墟のビル群、細い平行線のハッチングの陰影、古紙の質感」。
+  セピアの古文書・銅版画調の資料図版の雰囲気で。差し色は錆朱だけ。
+  文字やグラフを画像内に描かせない。`
+        : `  例「白髪の日本人女性が台所で冷奴に鰹節をのせている。小鉢に入った豆腐、薬味のねぎ」。
   抽象的な文なら比喩的な場面に置き換える (例: 老化が早まる→元気な姿と弱った姿の対比)。
   文字やグラフを画像内に描かせない。食材は料理として美味しそうに。`
 }
@@ -171,7 +211,9 @@ export async function assignScenes(
       ? ashiHeuristicAssign(s)
       : preset === "manabi"
         ? manabiHeuristicAssign(s)
-        : heuristicAssign(s),
+        : preset === "rekishi"
+          ? rekishiHeuristicAssign(s)
+          : heuristicAssign(s),
   );
 }
 
@@ -179,7 +221,13 @@ function parseAssignments(text: string, count: number, preset: Preset): Assignme
   const m = text.match(/\[[\s\S]*\]/);
   if (!m) return null;
   const validMotifs: readonly string[] =
-    preset === "ashi" ? ALL_ASHI_MOTIFS : preset === "manabi" ? ALL_MANABI_MOTIFS : ALL_MOTIFS;
+    preset === "ashi"
+      ? ALL_ASHI_MOTIFS
+      : preset === "manabi"
+        ? ALL_MANABI_MOTIFS
+        : preset === "rekishi"
+          ? ALL_REKISHI_MOTIFS
+          : ALL_MOTIFS;
   try {
     const arr = JSON.parse(m[0]) as Record<string, unknown>[];
     const out: Assignment[] = [];
@@ -244,6 +292,11 @@ function defaultMotif(type: SceneType, preset: Preset): string {
     if (type === "location") return "room";
     if (type === "diagram") return "concept";
     return "thinking";
+  }
+  if (preset === "rekishi") {
+    if (type === "object") return "question";
+    if (type === "location") return "city";
+    return "concept";
   }
   if (type === "object") return "vegetables";
   if (type === "location") return "kitchen";
@@ -383,6 +436,44 @@ export function manabiHeuristicAssign(sentence: string): Assignment {
     return { type: "object", motif: "hand" };
   }
   return { type: "character", motif: "thinking" };
+}
+
+// ===== rekishi (歴史・深い時間の資料図版) 用のキーワード機械割り当て =====
+export function rekishiHeuristicAssign(sentence: string): Assignment {
+  if (/[0-9０-９,，万]+倍/.test(sentence)) {
+    return { type: "chart", motif: "concept", title: "数字で見る" };
+  }
+  if (/(でしょうか|だろうか|のでしょうか)[。]?$/.test(sentence)) {
+    return { type: "object", motif: "question" };
+  }
+  if (/(答えは|つまり|結論)/.test(sentence)) {
+    return { type: "card", motif: "concept" };
+  }
+  if (/(月|足跡)/.test(sentence)) {
+    return { type: "location", motif: "moon_footprint" };
+  }
+  if (/(地層|一枚の線|刻ま)/.test(sentence)) {
+    return { type: "diagram", motif: "strata" };
+  }
+  if (/(プラスチック|ペットボトル|鶏)/.test(sentence)) {
+    return { type: "object", motif: "future_fossil" };
+  }
+  if (/(化石|埋ま)/.test(sentence)) {
+    return { type: "diagram", motif: "fossilize" };
+  }
+  if (/(恐竜|骨格)/.test(sentence)) {
+    return { type: "object", motif: "dinosaur" };
+  }
+  if (/(錆|砂に|砂へ|コンクリート)/.test(sentence)) {
+    return { type: "object", motif: "decay" };
+  }
+  if (/(ツタ|つた|植物|飲み込|のまれ)/.test(sentence)) {
+    return { type: "location", motif: "ruin" };
+  }
+  if (/(ビル|都市|街|文明|人類)/.test(sentence)) {
+    return { type: "location", motif: "city" };
+  }
+  return { type: "object", motif: "concept" };
 }
 
 export function ashiHeuristicAssign(sentence: string): Assignment {

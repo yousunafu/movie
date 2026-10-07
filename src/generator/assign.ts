@@ -114,10 +114,27 @@ ${ALL_MANABI_MOTIFS.join(", ")}
 - memory_transfer: 海馬 (一時保管庫) から大脳皮質 (長期保管庫) へ記憶の粒が移る図 (記憶の引っ越し・保存の文に)
 - pruning: 神経のつながりの剪定図。大事な線は太く、不要な線は消える (記憶の選別・刈り込みの文に)
 - brain_wash: 脳の断面。青い脳脊髄液が細胞のすき間を流れ、老廃物の粒を洗い流す (脳の掃除・グリンパティック・アミロイドベータの文に)
+- surprised: ハッと気づく人 (!マーク) (「なんと」「実は」「意外にも」のような驚きの文に)
+- nodding: 納得してうなずく人 (チェックマーク) (「だから」「そのため」のようなまとめ・納得の文に)
+- rem_eye: 閉じたまぶたの下で目玉が左右に動く (目が動く・レム睡眠の様子の文に)
+- alarm_clock: 目覚まし時計 (目覚まし・朝起きる・起床の文に)
+- lightbulb: 電球がぽっと灯る (新しい発見・注目の研究・ひらめきの文に)
+- house_loan: 家と値札 (家のローン・家計のたとえ話の文に)
+- life_pie: 人生の円グラフ。3分の1がオレンジに塗られる (人生の3分の1・合計30年のような人生の時間の文に)
+- roadmap: 章の箱が横に並んで順に点灯する目次図 (「今日は4つの章で見ていく」のような全体の流れの文に)
+- energy_meter: バー2本がほぼ同じ高さで並ぶ比較メーター (活動量・消費量がほとんど変わらない文に)
+- info_flood: 頭のシルエットに情報の矢印が次々と降り注ぐ (情報を浴びる・見たもの聞いたことが流れ込む文に)
+- bar_compare: 2グループの棒グラフ対比。勝者がオレンジ (実験で成績が良い・リスクが高いなど2者比較の文に)
+- messy_desk: 机に書類がどんどん積み上がる (散らかる・たまる・放置するとどうなるかの文に)
+- brain_repair: 脳にレンチ (脳の修理・メンテナンス・回復の文に)
+- night_office: 夜のビル群に窓明かりがぽつぽつ灯る (夜勤・夜に働く・舞台裏の文に)
+- sunrise: 地平線から朝日が昇る (朝・明日・目覚めた後の文に)
 - chapter: 章扉カード (「第1章」などの章番号と章タイトルを静かに見せる。type は card にする)
 - quiz: クイズ出題カード (「ここで問題です」のような出題宣言の文に。type は card にする)
 
 この作風だけの決まり:
+- 同じ題材が2文以上続かないように散らす。特に語り・つなぎの文を thinking ばかりにせず、
+  文意に合わせて surprised / nodding / night_office / sunrise / sleeping などを使い分ける
 - 章の切り替え文 (「まず」「第一に」「ここからは」「最後に」などで始まり、
   「第1章」「第2章」のように章タイトルを宣言する文) は type を card、motif を chapter にして、
   title に章タイトルだけ (例: 消えていく痕跡) を入れる
@@ -516,6 +533,10 @@ export function manabiHeuristicAssign(sentence: string): Assignment {
   if (/(水没|地下鉄|ポンプ|くみ出)/.test(sentence)) {
     return { type: "diagram", motif: "flood" };
   }
+  // 「脳のゴミ」の文脈は処分場 (trash_layer) ではなく脳の洗浄図に振る
+  if (/(アミロイド|老廃物|脳脊髄液|グリンパティック|ゴミ.*脳|脳.*ゴミ|洗い流)/.test(sentence)) {
+    return { type: "diagram", motif: "brain_wash", title: "眠る脳の洗浄" };
+  }
   if (/(処分場|ゴミ|埋め立て|考古学者)/.test(sentence)) {
     return { type: "diagram", motif: "trash_layer" };
   }
@@ -544,8 +565,48 @@ export function manabiHeuristicAssign(sentence: string): Assignment {
   if (/(グリンパティック|脳脊髄液|老廃物|洗い流|アミロイド|脳の掃除|大掃除)/.test(sentence)) {
     return { type: "diagram", motif: "brain_wash", title: "眠る脳の洗浄" };
   }
-  if (/(眠りに落ち|眠っている間|睡眠中|夜勤|眠るほう|よく眠)/.test(sentence)) {
+  if (/(眠りに落ち|眠っている間|睡眠中|眠るほう|よく眠)/.test(sentence)) {
     return { type: "character", motif: "sleeping" };
+  }
+  // 睡眠テーマの脇役の絵 (語り・つなぎの文のバリエーション)
+  if (/(人生の(およそ)?[0-9０-９]分の[0-9０-９]|合計で.*[0-9０-９]+年)/.test(sentence)) {
+    return { type: "diagram", motif: "life_pie", title: "人生の時間" };
+  }
+  if (/(ローン|家を買)/.test(sentence)) {
+    return { type: "object", motif: "house_loan" };
+  }
+  if (/([0-9０-９]+つの章|章に分けて)/.test(sentence)) {
+    return { type: "diagram", motif: "roadmap", title: "今日の流れ" };
+  }
+  if (/(目玉|まぶたの下|眼球)/.test(sentence)) {
+    return { type: "object", motif: "rem_eye" };
+  }
+  if (/(目覚まし|起床|朝起き)/.test(sentence)) {
+    return { type: "object", motif: "alarm_clock" };
+  }
+  if (/(エネルギー|活動量|同じ水準|ほとんど変わらない)/.test(sentence)) {
+    return { type: "diagram", motif: "energy_meter", title: "ほぼ同じ活動量" };
+  }
+  if (/(膨大な情報|情報を浴び|見たもの|聞いたこと)/.test(sentence)) {
+    return { type: "diagram", motif: "info_flood", title: "日中の情報" };
+  }
+  if (/(実験|成績|グループ|リスク.*(高ま|関連))/.test(sentence)) {
+    return { type: "diagram", motif: "bar_compare", title: "実験の結果" };
+  }
+  if (/(新しい発見|注目され|ひらめ|大きな発見)/.test(sentence)) {
+    return { type: "object", motif: "lightbulb" };
+  }
+  if (/(散らか|積み上が|たまって|オフィス|放置)/.test(sentence)) {
+    return { type: "diagram", motif: "messy_desk" };
+  }
+  if (/(修理|メンテナンス|整備)/.test(sentence)) {
+    return { type: "diagram", motif: "brain_repair", title: "脳の夜間メンテナンス" };
+  }
+  if (/(夜勤|夜の仕事|夜間シフト|舞台裏)/.test(sentence)) {
+    return { type: "location", motif: "night_office" };
+  }
+  if (/(明日の|翌朝|朝にな|目覚めたとき)/.test(sentence)) {
+    return { type: "location", motif: "sunrise" };
   }
   // 人類の痕跡テーマ
   if (/(いなくなっ|無人にな)/.test(sentence)) {
@@ -595,6 +656,13 @@ export function manabiHeuristicAssign(sentence: string): Assignment {
   }
   if (/(手|体温|36度)/.test(sentence)) {
     return { type: "object", motif: "hand" };
+  }
+  // 語り・つなぎの文のバリエーション (どのテーマにも当てはまらなかったとき)
+  if (/(なんと|実は|意外に|驚く)/.test(sentence)) {
+    return { type: "character", motif: "surprised" };
+  }
+  if (/(だから|そのため|というわけ|なのです。?$)/.test(sentence)) {
+    return { type: "character", motif: "nodding" };
   }
   return { type: "character", motif: "thinking" };
 }

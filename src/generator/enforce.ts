@@ -8,6 +8,7 @@ import {
   heuristicAssign,
   ashiHeuristicAssign,
   kouzouHeuristicAssign,
+  manabiHeuristicAssign,
   isKouzouChapterText,
   isManabiQuizText,
   findFoodMotif,
@@ -65,6 +66,38 @@ export function enforceRatios(
         out[i].motif = h.type === "card" ? "concept" : h.motif;
         if (h.items) out[i].items = h.items;
         log.push(`シーン${i}のカードを図解に変更 (カードは章・結論のみ)`);
+      }
+    }
+    if (preset === "manabi") {
+      // 「脳のゴミ」の文脈にゴミ処分場の図 (trash_layer) が当たったら脳の洗浄図に直す
+      for (let i = 0; i < n; i++) {
+        if (
+          /trash|landfill|garbage|dump/.test(out[i].motif) &&
+          /(脳|アミロイド|老廃物|洗い流|睡眠)/.test(sentences[i])
+        ) {
+          out[i].type = "diagram";
+          out[i].motif = "brain_wash";
+          log.push(`シーン${i}のゴミ処分場の図を脳の洗浄図に変更 (脳の文脈のため)`);
+        }
+      }
+      // 同じ絵の連続を散らす: 直前と同じ motif が続いたら別の絵に差し替える
+      // (card は除く。まず機械割り当てで文に合う絵を探し、無ければ人物のバリエーションを順繰りに使う)
+      const personRotation = ["thinking", "nodding", "surprised"];
+      for (let i = 1; i < n - 1; i++) {
+        if (out[i].type === "card" || out[i - 1].type === "card") continue;
+        if (out[i].motif !== out[i - 1].motif) continue;
+        const h = manabiHeuristicAssign(sentences[i]);
+        if (h.type !== "card" && h.motif !== out[i].motif) {
+          out[i].type = h.type;
+          out[i].motif = h.motif;
+          if (h.title) out[i].title = h.title;
+          log.push(`シーン${i}を${h.motif}に変更 (同じ絵「${out[i - 1].motif}」の連続を散らすため)`);
+        } else if (out[i].type === "character") {
+          const next =
+            personRotation[(personRotation.indexOf(out[i].motif) + 1) % personRotation.length];
+          out[i].motif = next;
+          log.push(`シーン${i}を${next}に変更 (同じ人物の絵の連続を散らすため)`);
+        }
       }
     }
     if (n >= 3 && out[n - 1].type !== "card") {

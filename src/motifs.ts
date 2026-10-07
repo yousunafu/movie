@@ -92,6 +92,8 @@ export const MANABI_PERSON_MOTIFS = [
   "touch_metal", // 金属のドアノブに手が触れてヒヤッとする
   "touch_wood", // 木の棚・板に手が触れる (冷たくない)
   "thinking", // 疑問に思う人 (?マーク)
+  "surprised", // ハッと気づく人 (!マーク)。意外な事実・なんと・実は の文に
+  "nodding", // 納得してうなずく人 (チェックマーク)。まとめ・だから・つまり の文に
   "sleeping", // 夜、ベッドで眠る人。月と星の静かな絵
 ] as const;
 
@@ -102,6 +104,10 @@ export const MANABI_OBJECT_MOTIFS = [
   "hand", // 手のクローズアップ (体温・感覚)
   "question", // 丸の中の大きな「?」 (問いかけ)
   "future_fossil", // ペットボトルと鶏の骨 (未来の化石候補)
+  "rem_eye", // 閉じたまぶたの下で目玉が左右に動く (レム睡眠)
+  "alarm_clock", // 目覚まし時計 (朝・目覚め・時刻)
+  "lightbulb", // 電球が灯る (発見・新しい研究・ひらめき)
+  "house_loan", // 家と値札 (ローン・家計・たとえ話)
 ] as const;
 
 export const MANABI_DIAGRAM_MOTIFS = [
@@ -121,6 +127,13 @@ export const MANABI_DIAGRAM_MOTIFS = [
   "memory_transfer", // 海馬 (一時保管庫)→大脳皮質 (長期保管庫) へ記憶が移る図
   "pruning", // 神経のつながりの剪定。大事な線は太く、不要な線は消える
   "brain_wash", // 脳の洗浄。脳脊髄液が細胞のすき間を流れ老廃物を洗い流す
+  "life_pie", // 人生の円グラフ。3分の1がオレンジに塗られる (眠りの時間)
+  "roadmap", // 目次の図。章の箱が横に並び順に点灯 (今日の流れ)
+  "energy_meter", // バー2本の比較メーター (ほぼ同じ高さ。活動量・消費量の比較)
+  "info_flood", // 頭のシルエットに情報の矢印が次々と降り注ぐ (情報の洪水)
+  "bar_compare", // 2グループの棒グラフ対比 (実験結果・成績比較。勝者がオレンジ)
+  "messy_desk", // 机に書類が積み上がっていく (散らかる・たまる)
+  "brain_repair", // 脳とレンチ (修理・メンテナンス)
   "concept", // その他の図解
 ] as const;
 
@@ -130,6 +143,8 @@ export const MANABI_LOCATION_MOTIFS = [
   "city", // 都市のスカイライン。人のピクトグラムがふっと消える
   "ruin", // ビルが緑のツタと雨に飲み込まれる (廃墟)
   "moon_footprint", // 月面に残る足跡と星空 (静かな演出)
+  "night_office", // 夜のビル群に窓明かりがぽつぽつ灯る (夜勤・夜の仕事)
+  "sunrise", // 朝日が昇る地平線 (朝・目覚め・明日)
 ] as const;
 
 export const ALL_MANABI_MOTIFS = [

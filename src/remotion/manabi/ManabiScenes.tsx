@@ -2569,6 +2569,558 @@ const SleepingScene: React.FC = () => {
   );
 };
 
+// ===== 語り・つなぎの文を豊かにする脇役の絵 (15種) =====
+// 同じ「考える人」の連発を避けるためのバリエーション。どのテーマの動画でも使える
+
+// ハッと気づく人 (線画の横顔と「!」)
+const SurprisedScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const pop = spring({ frame: frame - 10, fps, config: { damping: 9 } });
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <g transform={`translate(0, ${-12 * Math.max(pop, 0)})`}>
+          <g stroke={MP.line} strokeWidth={6} fill="none">
+            <circle cx={820} cy={500} r={130} />
+          </g>
+          {/* 驚きの放射線 */}
+          <g stroke={MP.accentSoft} strokeWidth={6} strokeLinecap="round" opacity={Math.max(pop, 0)}>
+            <line x1={745} y1={370} x2={722} y2={331} />
+            <line x1={820} y1={350} x2={820} y2={305} />
+            <line x1={895} y1={370} x2={918} y2={331} />
+          </g>
+        </g>
+        <path d="M 600 1000 q 10 -220 220 -230 q 210 10 220 230" stroke={MP.line} strokeWidth={6} fill="none" />
+        <g transform={`translate(1160, 240) scale(${Math.max(pop, 0)})`}>
+          <circle r={86} fill={MP.panel} stroke={MP.accent} strokeWidth={5} />
+          <text y={34} textAnchor="middle" fontSize={100} fontWeight={700} fill={MP.accent} fontFamily={MANABI_SERIF}>
+            !
+          </text>
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// 納得してうなずく人 (ゆっくり首を振る + チェックマーク)
+const NoddingScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const pop = spring({ frame: frame - 18, fps, config: { damping: 13 } });
+  const nod = 5 * Math.sin(frame / 13);
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <g transform={`rotate(${nod} 820 640)`}>
+          <circle cx={820} cy={490} r={130} stroke={MP.line} strokeWidth={6} fill="none" />
+        </g>
+        <path d="M 600 990 q 10 -220 220 -230 q 210 10 220 230" stroke={MP.line} strokeWidth={6} fill="none" />
+        <g transform={`translate(1150, 250) scale(${Math.max(pop, 0)})`}>
+          <circle r={86} fill={MP.panel} stroke={MP.line} strokeWidth={5} />
+          <path d="M -34 4 L -8 30 L 40 -26" stroke={MP.accent} strokeWidth={12} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// 閉じたまぶたの下で目玉が左右に動く (レム睡眠)
+const RemEyeScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const px = 960 + Math.sin(frame / 9) * 150;
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 眉 */}
+        <path d="M 600 350 Q 960 272 1320 350" stroke={MP.faint} strokeWidth={6} fill="none" />
+        {/* 動く目玉 (まぶたの下の影) */}
+        <ellipse cx={px} cy={575} rx={62} ry={46} fill="none" stroke={MP.blueLight} strokeWidth={4} strokeDasharray="8 8" opacity={0.85} />
+        {/* 閉じたまぶた */}
+        <path d="M 560 520 Q 960 672 1360 520" stroke={MP.line} strokeWidth={8} fill="none" />
+        {/* まつ毛 */}
+        {[680, 820, 960, 1100, 1240].map((x, i) => {
+          const y = 520 + (1 - Math.abs(x - 960) / 400) * 112;
+          return <line key={i} x1={x} y1={y + 6} x2={x} y2={y + 42} stroke={MP.line} strokeWidth={5} strokeLinecap="round" />;
+        })}
+        {/* 左右の動きを示す矢印 */}
+        <g stroke={MP.accent} strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.9}>
+          <line x1={760} y1={800} x2={1160} y2={800} />
+          <path d="M 790 780 L 760 800 L 790 820" />
+          <path d="M 1130 780 L 1160 800 L 1130 820" />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// 目覚まし時計 (鳴っている)
+const AlarmClockScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const shake = frame > 25 ? Math.sin(frame * 1.4) * 1.6 : 0;
+  const ringOp = frame > 25 ? 0.4 + 0.5 * Math.abs(Math.sin(frame / 6)) : 0;
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <g transform={`rotate(${shake} 960 580)`}>
+          {/* ベル */}
+          <path d="M 790 420 A 95 95 0 0 1 925 345" stroke={MP.line} strokeWidth={8} fill="none" />
+          <path d="M 995 345 A 95 95 0 0 1 1130 420" stroke={MP.line} strokeWidth={8} fill="none" />
+          <line x1={960} y1={330} x2={960} y2={388} stroke={MP.line} strokeWidth={8} strokeLinecap="round" />
+          {/* 本体 */}
+          <circle cx={960} cy={580} r={190} fill={MP.panel} stroke={MP.line} strokeWidth={8} />
+          {/* 足 */}
+          <line x1={840} y1={742} x2={800} y2={800} stroke={MP.line} strokeWidth={10} strokeLinecap="round" />
+          <line x1={1080} y1={742} x2={1120} y2={800} stroke={MP.line} strokeWidth={10} strokeLinecap="round" />
+          {/* 目盛り */}
+          {Array.from({ length: 12 }).map((_, i) => {
+            const a = (i * Math.PI) / 6;
+            return (
+              <line
+                key={i}
+                x1={960 + Math.sin(a) * 158}
+                y1={580 - Math.cos(a) * 158}
+                x2={960 + Math.sin(a) * 175}
+                y2={580 - Math.cos(a) * 175}
+                stroke={MP.faint}
+                strokeWidth={i % 3 === 0 ? 7 : 4}
+              />
+            );
+          })}
+          {/* 針 */}
+          <line x1={960} y1={580} x2={1040} y2={520} stroke={MP.ink} strokeWidth={11} strokeLinecap="round" />
+          <line x1={960} y1={580} x2={960} y2={442} stroke={MP.ink} strokeWidth={8} strokeLinecap="round" />
+          <line x1={960} y1={580} x2={960} y2={432} stroke={MP.accent} strokeWidth={4} strokeLinecap="round" transform={`rotate(${frame * 6} 960 580)`} />
+          <circle cx={960} cy={580} r={12} fill={MP.accent} />
+        </g>
+        {/* 鳴っている波線 */}
+        <g stroke={MP.accentSoft} strokeWidth={5} fill="none" strokeLinecap="round" opacity={ringOp}>
+          <path d="M 700 380 A 330 330 0 0 1 760 310" />
+          <path d="M 640 350 A 400 400 0 0 1 715 262" />
+          <path d="M 1220 380 A 330 330 0 0 0 1160 310" />
+          <path d="M 1280 350 A 400 400 0 0 0 1205 262" />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// 電球がぽっと灯る (発見・ひらめき)
+const LightbulbScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const lit = interpolate(frame, [22, 42], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 光 */}
+        <circle cx={960} cy={470} r={210} fill={MP.accent} opacity={lit * 0.08} />
+        <circle cx={960} cy={470} r={150} fill={MP.accent} opacity={lit * 0.16} />
+        {/* ガラス球 */}
+        <circle cx={960} cy={470} r={150} fill="none" stroke={MP.line} strokeWidth={7} />
+        {/* フィラメント */}
+        <path d="M 915 530 L 938 488 L 960 530 L 982 488 L 1005 530" stroke={lit > 0.3 ? MP.accent : MP.faint} strokeWidth={6} fill="none" strokeLinecap="round" opacity={0.4 + lit * 0.6} />
+        <line x1={930} y1={530} x2={930} y2={606} stroke={MP.line} strokeWidth={5} />
+        <line x1={990} y1={530} x2={990} y2={606} stroke={MP.line} strokeWidth={5} />
+        {/* 口金 */}
+        {[0, 1, 2].map((i) => (
+          <rect key={i} x={898} y={614 + i * 34} width={124} height={28} rx={12} fill={MP.panel} stroke={MP.line} strokeWidth={5} />
+        ))}
+        <path d="M 930 716 Q 960 744 990 716" stroke={MP.line} strokeWidth={5} fill="none" />
+        {/* 光の線 */}
+        <g stroke={MP.accentSoft} strokeWidth={6} strokeLinecap="round" opacity={lit}>
+          {[-150, -110, -70, -30, 30, 70, 110, 150].map((deg, i) => {
+            const a = (deg * Math.PI) / 180;
+            return (
+              <line
+                key={i}
+                x1={960 + Math.sin(a) * 190}
+                y1={470 - Math.cos(a) * 190}
+                x2={960 + Math.sin(a) * 245}
+                y2={470 - Math.cos(a) * 245}
+              />
+            );
+          })}
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// 家と値札 (ローン・家計のたとえ)
+const HouseLoanScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const sway = Math.sin(frame / 20) * 5;
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <line x1={320} y1={800} x2={1600} y2={800} stroke={MP.line} strokeWidth={6} />
+        {/* 家 */}
+        <rect x={620} y={520} width={440} height={280} fill={MP.panel} stroke={MP.line} strokeWidth={6} />
+        <path d="M 580 520 L 840 330 L 1100 520 Z" fill="none" stroke={MP.line} strokeWidth={7} strokeLinejoin="round" />
+        <rect x={780} y={650} width={95} height={150} fill={MP.background} stroke={MP.line} strokeWidth={5} />
+        <rect x={940} y={580} width={110} height={92} fill={MP.background} stroke={MP.line} strokeWidth={5} />
+        <line x1={995} y1={580} x2={995} y2={672} stroke={MP.line} strokeWidth={4} />
+        <line x1={940} y1={626} x2={1050} y2={626} stroke={MP.line} strokeWidth={4} />
+        {/* 値札 */}
+        <line x1={840} y1={330} x2={1250} y2={420} stroke={MP.faint} strokeWidth={4} />
+        <g transform={`translate(1250, 420) rotate(${sway})`}>
+          <rect x={-20} y={-16} width={200} height={120} rx={14} fill={MP.background} stroke={MP.accent} strokeWidth={6} />
+          <circle cx={0} cy={4} r={9} fill="none" stroke={MP.accent} strokeWidth={4} />
+          <text x={92} y={66} textAnchor="middle" fontSize={64} fontWeight={700} fill={MP.accent} fontFamily={MANABI_FONT}>
+            ¥
+          </text>
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// 人生の円グラフ: 3分の1がオレンジに塗られていく
+const LifePieScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const t = interpolate(frame, [15, 75], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const cx = 960;
+  const cy = 600;
+  const r = 280;
+  const end = (-90 + 120 * t) * (Math.PI / 180);
+  const ex = cx + Math.cos(end) * r;
+  const ey = cy + Math.sin(end) * r;
+  const labelIn = interpolate(frame, [60, 85], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <circle cx={cx} cy={cy} r={r} fill={MP.panel} stroke={MP.line} strokeWidth={6} />
+        {t > 0.01 && (
+          <path d={`M ${cx} ${cy} L ${cx} ${cy - r} A ${r} ${r} 0 0 1 ${ex} ${ey} Z`} fill={MP.accent} opacity={0.3} stroke={MP.accent} strokeWidth={5} />
+        )}
+        <g opacity={labelIn}>
+          <text x={1330} y={430} fontSize={40} fontWeight={700} fill={MP.accent} fontFamily={MANABI_FONT}>
+            睡眠
+          </text>
+          <text x={1330} y={482} fontSize={30} fill={MP.faint} fontFamily={MANABI_FONT}>
+            約3分の1
+          </text>
+          <text x={370} y={790} fontSize={36} fill={MP.ink} fontFamily={MANABI_FONT}>
+            起きている時間
+          </text>
+        </g>
+      </svg>
+      <DiagramTitle text={scene.title ?? "人生の時間"} />
+    </Frame>
+  );
+};
+
+// 目次の図: 章の箱が横に並んで順に点灯
+const RoadmapScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const labels =
+    scene.items && scene.items.length >= 2
+      ? scene.items.slice(0, 4).map((it) => it.label)
+      : ["第1章", "第2章", "第3章", "第4章"];
+  const n = labels.length;
+  const bw = 280;
+  const gap = 70;
+  const x0 = (W - (n * bw + (n - 1) * gap)) / 2;
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {labels.map((label, i) => {
+          const s = spring({ frame: frame - 12 - i * 11, fps, config: { damping: 14 } });
+          const x = x0 + i * (bw + gap);
+          return (
+            <g key={i}>
+              <rect x={x} y={480} width={bw} height={170} rx={14} fill={MP.panel} stroke={MP.line} strokeWidth={5} />
+              <rect x={x} y={480} width={bw} height={170} rx={14} fill={MP.accent} opacity={Math.max(s, 0) * 0.14} stroke={MP.accent} strokeWidth={5} strokeOpacity={Math.max(s, 0)} />
+              <text x={x + bw / 2} y={578} textAnchor="middle" fontSize={38} fontWeight={600} fill={MP.ink} fontFamily={MANABI_FONT}>
+                {label}
+              </text>
+              {i < n - 1 && (
+                <path d={`M ${x + bw + 18} 565 L ${x + bw + gap - 18} 565 M ${x + bw + gap - 34} 548 L ${x + bw + gap - 18} 565 L ${x + bw + gap - 34} 582`} stroke={MP.faint} strokeWidth={5} fill="none" strokeLinecap="round" />
+              )}
+            </g>
+          );
+        })}
+      </svg>
+      <DiagramTitle text={scene.title ?? "今日の流れ"} />
+    </Frame>
+  );
+};
+
+// バー2本がほぼ同じ高さの比較メーター
+const EnergyMeterScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const left = scene.items?.[0]?.label ?? "起きているとき";
+  const right = scene.items?.[1]?.label ?? "眠っているとき";
+  const g1 = spring({ frame: frame - 10, fps, config: { damping: 15 } });
+  const g2 = spring({ frame: frame - 24, fps, config: { damping: 15 } });
+  const eq = interpolate(frame, [48, 70], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const base = 840;
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <line x1={520} y1={base} x2={1400} y2={base} stroke={MP.line} strokeWidth={5} />
+        <rect x={650} y={base - 400 * Math.max(g1, 0)} width={220} height={400 * Math.max(g1, 0)} fill={MP.panel} stroke={MP.line} strokeWidth={5} />
+        <rect x={1050} y={base - 382 * Math.max(g2, 0)} width={220} height={382 * Math.max(g2, 0)} fill={MP.accent} opacity={0.25} stroke={MP.accent} strokeWidth={5} />
+        <text x={960} y={620} textAnchor="middle" fontSize={84} fontWeight={700} fill={MP.accent} fontFamily={MANABI_SERIF} opacity={eq}>
+          ≒
+        </text>
+        <SmallLabel x={760} y={910} text={left} color={MP.ink} size={34} />
+        <SmallLabel x={1160} y={910} text={right} color={MP.ink} size={34} />
+      </svg>
+      <DiagramTitle text={scene.title ?? "ほぼ同じ活動量"} />
+    </Frame>
+  );
+};
+
+// 頭のシルエットに情報の矢印が降り注ぐ
+const InfoFloodScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const xs = [520, 680, 840, 1000, 1160, 1320, 1440];
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 頭と肩 */}
+        <circle cx={960} cy={660} r={115} stroke={MP.line} strokeWidth={6} fill="none" />
+        <path d="M 770 1020 q 10 -200 190 -210 q 180 10 190 210" stroke={MP.line} strokeWidth={6} fill="none" />
+        {/* 降り注ぐ矢印 */}
+        {xs.map((x, i) => {
+          const targetY = 400 + (i % 3) * 55;
+          const p = ((frame * 2.2 + i * 41) % 130) / 130;
+          const y = -60 + p * (targetY + 60);
+          const op = p < 0.82 ? 0.9 : Math.max(0, (1 - p) / 0.18);
+          const col = i % 3 === 0 ? MP.accentSoft : MP.faint;
+          return (
+            <g key={i} stroke={col} strokeWidth={5} opacity={op} strokeLinecap="round" fill="none">
+              <line x1={x} y1={y - 70} x2={x} y2={y} />
+              <path d={`M ${x - 14} ${y - 18} L ${x} ${y} L ${x + 14} ${y - 18}`} />
+            </g>
+          );
+        })}
+      </svg>
+      <DiagramTitle text={scene.title ?? "日中の情報"} />
+    </Frame>
+  );
+};
+
+// 2グループの棒グラフ対比 (勝者がオレンジ)
+const BarCompareScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = scene.items?.[0] ?? { label: "徹夜した", value: 62 };
+  const b = scene.items?.[1] ?? { label: "眠った", value: 100 };
+  const maxV = Math.max(a.value || 1, b.value || 1);
+  const ha = 430 * ((a.value || 1) / maxV);
+  const hb = 430 * ((b.value || 1) / maxV);
+  const aWins = (a.value || 0) > (b.value || 0);
+  const g1 = spring({ frame: frame - 10, fps, config: { damping: 15 } });
+  const g2 = spring({ frame: frame - 26, fps, config: { damping: 15 } });
+  const base = 850;
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <line x1={500} y1={base} x2={1420} y2={base} stroke={MP.line} strokeWidth={5} />
+        <rect
+          x={640}
+          y={base - ha * Math.max(g1, 0)}
+          width={240}
+          height={ha * Math.max(g1, 0)}
+          fill={aWins ? MP.accent : MP.panel}
+          opacity={aWins ? 0.3 : 1}
+          stroke={aWins ? MP.accent : MP.line}
+          strokeWidth={5}
+        />
+        <rect
+          x={1040}
+          y={base - hb * Math.max(g2, 0)}
+          width={240}
+          height={hb * Math.max(g2, 0)}
+          fill={aWins ? MP.panel : MP.accent}
+          opacity={aWins ? 1 : 0.3}
+          stroke={aWins ? MP.line : MP.accent}
+          strokeWidth={5}
+        />
+        <SmallLabel x={760} y={920} text={a.label} color={MP.ink} size={34} />
+        <SmallLabel x={1160} y={920} text={b.label} color={MP.ink} size={34} />
+      </svg>
+      <DiagramTitle text={scene.title ?? "実験の結果"} />
+    </Frame>
+  );
+};
+
+// 机に書類が積み上がっていく (散らかる・たまる)
+const MessyDeskScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 机 */}
+        <rect x={480} y={740} width={960} height={26} fill={MP.panel} stroke={MP.line} strokeWidth={6} />
+        <line x1={540} y1={766} x2={540} y2={1000} stroke={MP.line} strokeWidth={8} />
+        <line x1={1380} y1={766} x2={1380} y2={1000} stroke={MP.line} strokeWidth={8} />
+        {/* 床に落ちた紙 */}
+        <rect x={360} y={960} width={150} height={16} rx={4} fill="none" stroke={MP.faint} strokeWidth={4} transform="rotate(-8 435 968)" />
+        <rect x={1460} y={940} width={150} height={16} rx={4} fill="none" stroke={MP.faint} strokeWidth={4} transform="rotate(11 1535 948)" />
+        {/* 積み上がる書類 */}
+        {Array.from({ length: 9 }).map((_, i) => {
+          const s = spring({ frame: frame - 8 - i * 8, fps, config: { damping: 16 } });
+          const y = 712 - i * 27;
+          const rot = (i % 2 === 0 ? 1 : -1) * (1.6 + (i % 3));
+          const top = i === 8;
+          return (
+            <g key={i} opacity={Math.max(s, 0)} transform={`rotate(${rot} 960 ${y + 13})`}>
+              <rect x={800} y={y} width={320} height={26} rx={5} fill={MP.background} stroke={top ? MP.accent : MP.line} strokeWidth={5} />
+            </g>
+          );
+        })}
+      </svg>
+    </Frame>
+  );
+};
+
+// 脳の修理: 脳とレンチ (夜間メンテナンス)
+const BrainRepairScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const turn = Math.sin(frame / 10) * 9;
+  const sparkIn = interpolate(frame, [30, 55], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <g transform="translate(-60, 40) scale(0.92)">
+          <path d={BRAIN_PATH} fill={MP.panel} stroke={MP.line} strokeWidth={6} />
+        </g>
+        {/* レンチ (先端が脳に当たり、小さく回る) */}
+        <g transform={`translate(1280, 350) rotate(${35 + turn})`}>
+          <path d="M -36 -64 A 50 50 0 1 1 36 -64 L 18 -16 L -18 -16 Z" fill={MP.panel} stroke={MP.accent} strokeWidth={6} strokeLinejoin="round" />
+          <rect x={-18} y={-16} width={36} height={210} rx={14} fill={MP.panel} stroke={MP.accent} strokeWidth={6} />
+        </g>
+        {/* 直っていく印 (+) */}
+        <g stroke={MP.accentSoft} strokeWidth={6} strokeLinecap="round" opacity={sparkIn}>
+          {[[640, 300], [900, 240], [1120, 560]].map(([x, y], i) => (
+            <g key={i}>
+              <line x1={x - 18} y1={y} x2={x + 18} y2={y} />
+              <line x1={x} y1={y - 18} x2={x} y2={y + 18} />
+            </g>
+          ))}
+        </g>
+      </svg>
+      <DiagramTitle text={scene.title ?? "脳の夜間メンテナンス"} />
+    </Frame>
+  );
+};
+
+// 夜のビル群に窓明かりがぽつぽつ灯る (夜勤・夜の仕事)
+const NightOfficeScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const buildings: [number, number, number][] = [
+    [300, 190, 330],
+    [530, 230, 470],
+    [800, 270, 570],
+    [1110, 210, 410],
+    [1360, 240, 520],
+    [1640, 160, 300],
+  ];
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 月と星 */}
+        <path d="M 1700 170 A 70 70 0 1 0 1700 295 A 55 55 0 1 1 1700 170 Z" fill={MP.ink} opacity={0.8} />
+        {[[380, 180], [620, 120], [1240, 150]].map(([x, y], i) => (
+          <g key={i} opacity={0.35 + 0.4 * Math.abs(Math.sin(frame / 24 + i * 1.7))} stroke={MP.faint} strokeWidth={3} strokeLinecap="round">
+            <line x1={x - 10} y1={y} x2={x + 10} y2={y} />
+            <line x1={x} y1={y - 10} x2={x} y2={y + 10} />
+          </g>
+        ))}
+        <line x1={160} y1={880} x2={1760} y2={880} stroke={MP.line} strokeWidth={6} />
+        {buildings.map(([bx, bw, bh], bi) => (
+          <g key={bi}>
+            <rect x={bx} y={880 - bh} width={bw} height={bh} fill={MP.deep} stroke={MP.line} strokeWidth={5} />
+            {Array.from({ length: Math.floor(bw / 62) }).map((_, ci) =>
+              Array.from({ length: Math.floor(bh / 84) }).map((_, ri) => {
+                const wx = bx + 24 + ci * 62;
+                const wy = 880 - bh + 26 + ri * 84;
+                const lit = (bi * 7 + ci * 13 + ri * 5) % 5 < 2;
+                const delay = ((bi * 31 + ci * 17 + ri * 23) % 70) + 8;
+                const op = interpolate(frame, [delay, delay + 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+                return lit ? (
+                  <rect key={`${ci}-${ri}`} x={wx} y={wy} width={26} height={36} fill={MP.accent} opacity={op * 0.85} />
+                ) : (
+                  <rect key={`${ci}-${ri}`} x={wx} y={wy} width={26} height={36} fill="none" stroke={MP.faint} strokeWidth={2.5} opacity={0.5} />
+                );
+              }),
+            )}
+          </g>
+        ))}
+      </svg>
+    </Frame>
+  );
+};
+
+// 地平線から朝日が昇る (朝・明日・目覚め)
+const SunriseScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const rise = interpolate(frame, [0, 85], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const cy = 880 - rise * 215;
+  const rays = interpolate(frame, [70, 95], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <defs>
+          <clipPath id="manabi-sunrise-clip">
+            <rect x={0} y={0} width={W} height={720} />
+          </clipPath>
+        </defs>
+        <g clipPath="url(#manabi-sunrise-clip)">
+          <circle cx={960} cy={cy} r={175} fill={MP.accent} opacity={0.12 + rise * 0.08} />
+          <circle cx={960} cy={cy} r={120} fill={MP.accent} opacity={0.22} stroke={MP.accent} strokeWidth={7} />
+          <g stroke={MP.accentSoft} strokeWidth={6} strokeLinecap="round" opacity={rays}>
+            {[-80, -55, -30, 0, 30, 55, 80].map((deg, i) => {
+              const a = (deg * Math.PI) / 180;
+              return (
+                <line
+                  key={i}
+                  x1={960 + Math.sin(a) * 160}
+                  y1={cy - Math.cos(a) * 160}
+                  x2={960 + Math.sin(a) * 215}
+                  y2={cy - Math.cos(a) * 215}
+                />
+              );
+            })}
+          </g>
+        </g>
+        {/* 地平線 */}
+        <line x1={160} y1={720} x2={1760} y2={720} stroke={MP.line} strokeWidth={6} />
+        {/* 地面のハッチング */}
+        {[320, 560, 820, 1120, 1390, 1600].map((x, i) => (
+          <line key={i} x1={x} y1={760 + (i % 3) * 40} x2={x + 90} y2={760 + (i % 3) * 40} stroke={MP.faint} strokeWidth={4} opacity={0.6} />
+        ))}
+      </svg>
+    </Frame>
+  );
+};
+
+// 脇役の絵のmotif名のゆらぎを吸収して代表名に寄せる
+const resolveSupportMotif = (m: string): string | undefined => {
+  if (/surpris|exclam|shock|aha|notice/.test(m)) return "surprised";
+  if (/nod|agree|convinc/.test(m)) return "nodding";
+  if (/rem_eye|eyeball|eye_move|eyelid|^eye$/.test(m)) return "rem_eye";
+  if (/alarm|wake|clock/.test(m)) return "alarm_clock";
+  if (/bulb|idea|discover|insight|eureka/.test(m)) return "lightbulb";
+  if (/house|loan|mortgage/.test(m)) return "house_loan";
+  if (/life_pie|pie|life_time/.test(m)) return "life_pie";
+  if (/roadmap|agenda|outline|toc|chapters/.test(m)) return "roadmap";
+  if (/energy|meter|same_level|equal/.test(m)) return "energy_meter";
+  if (/info_flood|information|overload/.test(m)) return "info_flood";
+  if (/bar_compare|experiment|result|versus/.test(m)) return "bar_compare";
+  if (/messy|desk|clutter|pile|paper/.test(m)) return "messy_desk";
+  if (/repair|wrench|mainten|fix|overhaul/.test(m)) return "brain_repair";
+  if (/night_office|office|night_city|night_work|nightshift/.test(m)) return "night_office";
+  if (/sunrise|dawn|morning|sunup|tomorrow/.test(m)) return "sunrise";
+  return undefined;
+};
+
 // 睡眠テーマのmotif名のゆらぎを吸収して代表名に寄せる
 const resolveSleepMotif = (m: string): string | undefined => {
   if (/sleep_wave|hypnogram|cycle|rem|wave/.test(m)) return "sleep_wave";
@@ -2616,6 +3168,23 @@ export const ManabiSceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
     if (m === "hand") return <HandWarmScene />;
     if (m === "question") return <QuestionScene />;
     if (m === "bathroom") return <BathroomScene />;
+    // 脇役の絵 (語り・つなぎ用。info_flood が痕跡テーマの flood に吸われないよう先に判定)
+    const support = resolveSupportMotif(m ?? "");
+    if (support === "surprised") return <SurprisedScene />;
+    if (support === "nodding") return <NoddingScene />;
+    if (support === "rem_eye") return <RemEyeScene />;
+    if (support === "alarm_clock") return <AlarmClockScene />;
+    if (support === "lightbulb") return <LightbulbScene />;
+    if (support === "house_loan") return <HouseLoanScene />;
+    if (support === "life_pie") return <LifePieScene scene={scene} />;
+    if (support === "roadmap") return <RoadmapScene scene={scene} />;
+    if (support === "energy_meter") return <EnergyMeterScene scene={scene} />;
+    if (support === "info_flood") return <InfoFloodScene scene={scene} />;
+    if (support === "bar_compare") return <BarCompareScene scene={scene} />;
+    if (support === "messy_desk") return <MessyDeskScene />;
+    if (support === "brain_repair") return <BrainRepairScene scene={scene} />;
+    if (support === "night_office") return <NightOfficeScene />;
+    if (support === "sunrise") return <SunriseScene />;
     // 人類の痕跡テーマ (名前のゆらぎも resolveTraceMotif で吸収)
     const trace = resolveTraceMotif(m ?? "");
     if (trace === "city") return <CityVanishScene />;

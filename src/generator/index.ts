@@ -12,6 +12,7 @@ import { generateImage, imagesAvailable, imagesDisabledReason } from "./images";
 import { checkCredits, synthesize } from "./tts";
 import { synthesizeVoicevox } from "./voicevox";
 import { VOICE, getPreset, getChannel } from "../channel";
+import { pickBgm } from "../bgm";
 import type { Scene, ScenesData } from "../types";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -151,14 +152,16 @@ async function main() {
     durationSec: endDur,
   });
 
-  const hasBgm = fs.existsSync(path.join(PUBLIC, "bgm.mp3"));
-  if (!hasBgm) {
-    console.log("BGMなし (public/bgm.mp3 を置くと自動でナレーションの下に敷かれます)");
+  const bgmFile = pickBgm(preset, PUBLIC);
+  if (bgmFile) {
+    console.log(`BGM: ${bgmFile} (作風 ${preset} 用に自動選曲)`);
+  } else {
+    console.log("BGMなし (public/bgm/ に曲を置き src/bgm.ts で割り当てると自動で敷かれます)");
   }
 
   const data: ScenesData = {
     scenes,
-    hasBgm,
+    bgmFile,
     generatedAt: new Date().toISOString(),
     preset,
   };

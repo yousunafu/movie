@@ -22,7 +22,7 @@ export type Scene = {
 
 export type ScenesData = {
   scenes: Scene[];
-  hasBgm: boolean;
+  bgmFile?: string; // BGMの public/ 内相対パス (例: "bgm/xxx.mp3")。無ければBGMなし
   generatedAt: string;
   preset?: "genki" | "ashi" | "manabi" | "rekishi" | "kouzou" | "keizai"; // 作風。省略時は genki (従来通り)
 };

@@ -253,6 +253,23 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
     );
   }
   const v2Set = isAshi ? ashiV2Indices(data.scenes) : new Set<number>();
+  // BGM: 冒頭2秒フェードイン・末尾3秒フェードアウト。音量はナレーションを邪魔しない 7%
+  const totalFrames = data.scenes.reduce(
+    (a, s) =>
+      a + Math.max(Math.ceil((s.durationSec + VIDEO.scenePaddingSec) * VIDEO.fps), 1),
+    0,
+  );
+  const bgmVolume = (f: number) => {
+    const fadeIn = 2 * VIDEO.fps;
+    const fadeOut = 3 * VIDEO.fps;
+    return (
+      0.07 *
+      interpolate(f, [0, fadeIn, totalFrames - fadeOut, totalFrames], [0, 1, 1, 0], {
+        extrapolateLeft: "clamp",
+        extrapolateRight: "clamp",
+      })
+    );
+  };
   return (
     <AbsoluteFill
       style={{
@@ -269,8 +286,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   : PALETTE.background,
       }}
     >
-      {data.hasBgm && (
-        <Audio loop src={staticFile("bgm.mp3")} volume={0.07} />
+      {data.bgmFile && (
+        <Audio loop src={staticFile(data.bgmFile)} volume={bgmVolume} />
       )}
       <Series>
         {data.scenes.map((scene) => {

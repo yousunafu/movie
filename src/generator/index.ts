@@ -13,6 +13,7 @@ import { checkCredits, synthesize } from "./tts";
 import { synthesizeVoicevox } from "./voicevox";
 import { VOICE, getPreset, getChannel } from "../channel";
 import { pickBgm } from "../bgm";
+import { voiceStyleFor, ttsTextFor, styleLabel } from "./pacing";
 import type { Scene, ScenesData } from "../types";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -112,7 +113,6 @@ async function main() {
   const closing = channel.closingLine;
   const ttsChars = totalChars + closing.length;
   const useVoicevox = VOICE.engine === "voicevox";
-  const speak = useVoicevox ? synthesizeVoicevox : synthesize;
   const ext = useVoicevox ? "wav" : "mp3";
   if (useVoicevox) {
     console.log(
@@ -127,7 +127,11 @@ async function main() {
   const scenes: Scene[] = [];
   for (let i = 0; i < sentences.length; i++) {
     const audio = `audio/scene-${String(i).padStart(3, "0")}.${ext}`;
-    const dur = await speak(sentences[i], path.join(PUBLIC, audio));
+    // 声の緩急: 文の種類 (問いかけ・章扉・結論カード) で話速と間を変える (VOICEVOXのみ)
+    const style = voiceStyleFor(sentences[i], enforced[i].type, enforced[i].motif);
+    const dur = useVoicevox
+      ? await synthesizeVoicevox(ttsTextFor(sentences[i]), path.join(PUBLIC, audio), style)
+      : await synthesize(sentences[i], path.join(PUBLIC, audio));
     scenes.push({
       index: i,
       text: sentences[i],
@@ -136,12 +140,19 @@ async function main() {
       audio,
       durationSec: dur,
     });
-    console.log(`  ${i + 1}/${sentences.length} [${enforced[i].type}/${enforced[i].motif}] ${dur.toFixed(1)}秒 ${sentences[i].slice(0, 24)}…`);
+    const label = useVoicevox ? styleLabel(style) : "";
+    console.log(`  ${i + 1}/${sentences.length} [${enforced[i].type}/${enforced[i].motif}]${label ? ` (${label})` : ""} ${dur.toFixed(1)}秒 ${sentences[i].slice(0, 24)}…`);
   }
 
   // 締めの決まり文句 (channel.ts で一元管理)
   const endAudio = `audio/scene-end.${ext}`;
-  const endDur = await speak(closing, path.join(PUBLIC, endAudio));
+  const endDur = useVoicevox
+    ? await synthesizeVoicevox(
+        closing,
+        path.join(PUBLIC, endAudio),
+        voiceStyleFor(closing, "card", "ending", true),
+      )
+    : await synthesize(closing, path.join(PUBLIC, endAudio));
   scenes.push({
     index: scenes.length,
     text: closing,

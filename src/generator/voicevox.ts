@@ -6,6 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { parseBuffer } from "music-metadata";
 import { VOICE } from "../channel";
+import type { VoiceStyle } from "./pacing";
 
 const BASE = () => process.env.VOICEVOX_URL || "http://127.0.0.1:50021";
 
@@ -39,6 +40,7 @@ async function resolveStyleId(): Promise<number> {
 export async function synthesizeVoicevox(
   text: string,
   outFile: string,
+  style?: VoiceStyle,
 ): Promise<number> {
   if (cachedStyleId === null) cachedStyleId = await resolveStyleId();
   const speaker = cachedStyleId;
@@ -52,9 +54,12 @@ export async function synthesizeVoicevox(
       );
       if (!qRes.ok) throw new Error(`audio_query HTTP ${qRes.status}`);
       const query = (await qRes.json()) as Record<string, unknown>;
-      query.speedScale = VOICE.voicevoxSpeed;
-      // 文末の余白を少しだけ (シーン間の間はRemotion側で付けるため短めに)
-      query.postPhonemeLength = 0.15;
+      // 声の緩急 (pacing.ts): 文の種類で話速・間・抑揚を変える。指定が無ければ従来通り
+      query.speedScale = style?.speedScale ?? VOICE.voicevoxSpeed;
+      query.prePhonemeLength = style?.prePhonemeLength ?? 0.1;
+      // 文末の余白 (シーン間の間はRemotion側でも付くため基本は短めに)
+      query.postPhonemeLength = style?.postPhonemeLength ?? 0.15;
+      query.intonationScale = style?.intonationScale ?? 1.0;
 
       const sRes = await fetch(`${BASE()}/synthesis?speaker=${speaker}`, {
         method: "POST",

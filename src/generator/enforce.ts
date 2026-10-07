@@ -9,6 +9,7 @@ import {
   ashiHeuristicAssign,
   kouzouHeuristicAssign,
   isKouzouChapterText,
+  isManabiQuizText,
   findFoodMotif,
 } from "./assign";
 import { OBJECT_MOTIFS } from "../motifs";
@@ -41,6 +42,15 @@ export function enforceRatios(
           out[i].type = "card";
           out[i].motif = "chapter";
           log.push(`シーン${i}を章扉カードに変更`);
+        }
+        // クイズの出題宣言は控えめな出題カードにそろえる
+        if (
+          isManabiQuizText(sentences[i]) &&
+          !(out[i].type === "card" && out[i].motif === "quiz")
+        ) {
+          out[i].type = "card";
+          out[i].motif = "quiz";
+          log.push(`シーン${i}をクイズ出題カードに変更`);
         }
       }
     }

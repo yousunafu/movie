@@ -1973,6 +1973,8 @@ export const manabiCardShowsFullText = (scene: Scene): boolean => {
   if (scene.isEnding || scene.type !== "card") return false;
   // 章扉カードは「第N章 + 章タイトル」だけを静かに見せる (字幕も重ねない)
   if (scene.motif === "chapter") return true;
+  // クイズ出題カードは出題文をそのまま大きく見せる (字幕も重ねない)
+  if (scene.motif === "quiz") return true;
   const hl = scene.emphasis?.replace(/[「」]/g, "").trim();
   const text = scene.text.replace(/[。]$/, "");
   if (hl && text.includes(hl) && text.length <= 52) return true;
@@ -2116,6 +2118,469 @@ const ManabiCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   );
 };
 
+// ===== 睡眠テーマの画面 =====
+
+// クイズ出題カード: 小さなQの輪+出題文だけ。大人向けに演出は控えめ (静かにフェードイン)
+const QuizCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const fade = interpolate(frame, [0, fps], [0, 1], { extrapolateRight: "clamp" });
+  const text = scene.text.replace(/[。]$/, "");
+  return (
+    <Frame>
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: fade }}>
+        <div
+          style={{
+            width: 84,
+            height: 84,
+            borderRadius: 42,
+            border: `3px solid ${MP.accent}`,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontFamily: MANABI_SERIF,
+            fontSize: 44,
+            color: MP.accent,
+          }}
+        >
+          Q
+        </div>
+        <div
+          style={{
+            fontFamily: MANABI_SERIF,
+            fontSize: 64,
+            fontWeight: 600,
+            color: MP.ink,
+            letterSpacing: 4,
+            textAlign: "center",
+            lineHeight: 1.7,
+            maxWidth: 1460,
+            marginTop: 48,
+          }}
+        >
+          {wrapJa(text)}
+        </div>
+        <div style={{ width: 64, height: 3, background: MP.accent, marginTop: 48, borderRadius: 2 }} />
+      </AbsoluteFill>
+    </Frame>
+  );
+};
+
+// 一晩の眠りの波: 深い眠りから始まり、明け方ほどレム (浅い) が増える90分周期のグラフ
+const SleepWaveScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const ox = 380;
+  const oy = 760;
+  const topY = 240;
+  const rightX = 1580;
+  const p = interpolate(frame, [12, 110], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const wave =
+    "M 420 330 C 460 520 480 680 560 690 C 640 700 660 420 700 350 " +
+    "C 740 470 760 640 830 660 C 900 680 920 400 960 330 " +
+    "C 1000 440 1020 580 1090 600 C 1160 620 1180 380 1220 320 " +
+    "C 1260 400 1280 500 1340 520 C 1400 540 1420 350 1460 300 L 1545 298";
+  const dash = 3600;
+  // レム睡眠の帯 (明け方ほど長い)。線の進みに合わせて順に灯る
+  const rems = [
+    { x: 682, w: 34, y: 338 },
+    { x: 940, w: 48, y: 320 },
+    { x: 1198, w: 64, y: 310 },
+    { x: 1438, w: 110, y: 290 },
+  ];
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <line x1={ox} y1={oy} x2={rightX} y2={oy} stroke={MP.line} strokeWidth={5} />
+        <line x1={ox} y1={oy} x2={ox} y2={topY} stroke={MP.line} strokeWidth={5} />
+        <path d={`M ${rightX} ${oy} l -20 -11 v 22 Z`} fill={MP.line} />
+        <text x={ox - 30} y={300} textAnchor="end" fontSize={32} fill={MP.faint} fontFamily={MANABI_FONT}>
+          浅い
+        </text>
+        <text x={ox - 30} y={720} textAnchor="end" fontSize={32} fill={MP.faint} fontFamily={MANABI_FONT}>
+          深い
+        </text>
+        <text x={ox + 40} y={oy + 52} fontSize={32} fill={MP.faint} fontFamily={MANABI_FONT}>
+          就寝
+        </text>
+        <text x={rightX - 10} y={oy + 52} textAnchor="end" fontSize={32} fill={MP.faint} fontFamily={MANABI_FONT}>
+          起床 →
+        </text>
+        {/* 眠りの波 (左から描く) */}
+        <path
+          d={wave}
+          fill="none"
+          stroke={MP.blueLight}
+          strokeWidth={8}
+          strokeLinecap="round"
+          strokeDasharray={dash}
+          strokeDashoffset={(1 - p) * dash}
+        />
+        {/* レム睡眠の帯 */}
+        {rems.map((r, i) => (
+          <g key={i} opacity={interpolate(p, [0.2 + i * 0.2, 0.3 + i * 0.2], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}>
+            <line x1={r.x} y1={r.y - 22} x2={r.x + r.w} y2={r.y - 22} stroke={MP.accent} strokeWidth={10} strokeLinecap="round" />
+          </g>
+        ))}
+        <g opacity={interpolate(p, [0.35, 0.5], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}>
+          <text x={1180} y={240} fontSize={36} fontWeight={700} fill={MP.accent} fontFamily={MANABI_FONT}>
+            レム睡眠 (浅い)
+          </text>
+          <text x={500} y={640} fontSize={36} fontWeight={700} fill={MP.blueLight} fontFamily={MANABI_FONT}>
+            ノンレム睡眠 (深い)
+          </text>
+        </g>
+        {/* 約90分のひと周期 */}
+        <g opacity={interpolate(p, [0.25, 0.4], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })}>
+          <path d="M 420 826 v 14 h 280 v -14" fill="none" stroke={MP.faint} strokeWidth={4} />
+          <text x={560} y={880} textAnchor="middle" fontSize={32} fill={MP.ink} fontFamily={MANABI_FONT}>
+            約90分でひと周期
+          </text>
+        </g>
+      </svg>
+      <DiagramTitle text={scene.title ?? "一晩の眠りの波"} />
+    </Frame>
+  );
+};
+
+// 脳の側面図のりんかく (dream_brain / brain_wash で共用)
+const BRAIN_PATH =
+  "M 700 640 C 550 610 470 500 495 395 C 520 295 650 225 830 210 " +
+  "C 1030 193 1250 245 1340 380 C 1405 480 1385 585 1285 648 " +
+  "C 1205 697 1075 710 975 698 C 935 726 895 745 858 738 " +
+  "C 838 734 846 706 858 690 C 800 678 745 662 700 640 Z";
+
+// 夢を見る脳: 視覚野・扁桃体はオレンジに灯り、前頭前野 (理性) だけお休み
+const DreamBrainScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const pulse = (ph: number) => 0.5 + 0.3 * Math.sin(frame / 8 + ph);
+  const labelIn = interpolate(frame, [20, 45], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <path d={BRAIN_PATH} fill={MP.panel} stroke={MP.line} strokeWidth={6} />
+        {/* 前頭前野: 休止中 (点線・薄く) */}
+        <circle cx={610} cy={410} r={95} fill="none" stroke={MP.faint} strokeWidth={5} strokeDasharray="14 12" />
+        <text x={610} y={400} textAnchor="middle" fontSize={30} fill={MP.faint} fontFamily={MANABI_FONT}>
+          z z
+        </text>
+        <text x={610} y={444} textAnchor="middle" fontSize={26} fill={MP.faint} fontFamily={MANABI_FONT}>
+          休止中
+        </text>
+        {/* 視覚野: 映像の処理 (強く灯る) */}
+        <circle cx={1250} cy={490} r={88} fill={MP.accent} opacity={0.14 + 0.1 * Math.sin(frame / 8)} />
+        <circle cx={1250} cy={490} r={88} fill="none" stroke={MP.accent} strokeWidth={6} opacity={pulse(0)} />
+        {/* 扁桃体: 感情 (小さく強く灯る) */}
+        <circle cx={930} cy={555} r={48} fill={MP.accent} opacity={0.16 + 0.1 * Math.sin(frame / 8 + 2)} />
+        <circle cx={930} cy={555} r={48} fill="none" stroke={MP.accent} strokeWidth={6} opacity={pulse(2)} />
+        {/* ラベル */}
+        <g opacity={labelIn}>
+          <line x1={470} y1={262} x2={575} y2={338} stroke={MP.faint} strokeWidth={3} />
+          <text x={440} y={240} textAnchor="middle" fontSize={34} fontWeight={700} fill={MP.ink} fontFamily={MANABI_FONT}>
+            前頭前野
+          </text>
+          <text x={440} y={284} textAnchor="middle" fontSize={27} fill={MP.faint} fontFamily={MANABI_FONT}>
+            論理・判断
+          </text>
+          <line x1={1480} y1={282} x2={1310} y2={430} stroke={MP.faint} strokeWidth={3} />
+          <text x={1530} y={250} textAnchor="middle" fontSize={34} fontWeight={700} fill={MP.accent} fontFamily={MANABI_FONT}>
+            視覚野
+          </text>
+          <text x={1530} y={294} textAnchor="middle" fontSize={27} fill={MP.faint} fontFamily={MANABI_FONT}>
+            映像の処理
+          </text>
+          <line x1={880} y1={790} x2={922} y2={610} stroke={MP.faint} strokeWidth={3} />
+          <text x={850} y={830} textAnchor="middle" fontSize={34} fontWeight={700} fill={MP.accent} fontFamily={MANABI_FONT}>
+            扁桃体
+          </text>
+          <text x={1010} y={830} fontSize={27} fill={MP.faint} fontFamily={MANABI_FONT}>
+            感情
+          </text>
+        </g>
+      </svg>
+      <DiagramTitle text={scene.title ?? "夢を見ている脳"} />
+    </Frame>
+  );
+};
+
+// 体が動かない仕組み: 夢の中は走っていても、指令は脳幹でせき止められる
+const BodyLockScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const blockIn = interpolate(frame, [30, 45], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const labelIn = interpolate(frame, [50, 70], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 夢の吹き出し: 走っている人 */}
+        <circle cx={560} cy={568} r={8} fill="none" stroke={MP.faint} strokeWidth={4} />
+        <circle cx={592} cy={520} r={13} fill="none" stroke={MP.faint} strokeWidth={4} />
+        <ellipse cx={740} cy={370} rx={200} ry={120} fill="none" stroke={MP.line} strokeWidth={5} />
+        <g stroke={MP.accent} strokeWidth={7} fill="none" strokeLinecap="round">
+          <circle cx={720} cy={310} r={24} />
+          <path d="M 720 334 L 712 400 M 712 400 L 660 440 M 712 400 L 768 444 M 716 356 L 660 380 M 716 356 L 778 352" />
+        </g>
+        <text x={1030} y={330} fontSize={27} fill={MP.faint} fontFamily={MANABI_FONT}>
+          夢の中では走っている
+        </text>
+        {/* ベッドと眠る人 */}
+        <line x1={320} y1={732} x2={1600} y2={732} stroke={MP.line} strokeWidth={6} />
+        <circle cx={520} cy={668} r={52} fill={MP.background} stroke={MP.line} strokeWidth={6} />
+        <path d="M 580 648 Q 960 586 1380 660 L 1380 730 L 580 730 Z" fill={MP.panel} stroke={MP.line} strokeWidth={6} />
+        {/* 指令の線: 脳から体へ → 脳幹 (首) でストップ */}
+        <line x1={552} y1={690} x2={618} y2={700} stroke={MP.accentSoft} strokeWidth={7} strokeLinecap="round" />
+        <g opacity={blockIn}>
+          <circle cx={652} cy={702} r={30} fill={MP.background} stroke={MP.accent} strokeWidth={6} />
+          <path d="M 638 688 L 666 716 M 666 688 L 638 716" stroke={MP.accent} strokeWidth={6} strokeLinecap="round" />
+        </g>
+        <line x1={694} y1={704} x2={1320} y2={704} stroke={MP.faint} strokeWidth={5} strokeDasharray="6 16" opacity={0.6} />
+        {/* ラベル */}
+        <g opacity={labelIn}>
+          <line x1={652} y1={740} x2={652} y2={790} stroke={MP.faint} strokeWidth={3} />
+          <text x={652} y={830} textAnchor="middle" fontSize={34} fontWeight={700} fill={MP.accent} fontFamily={MANABI_FONT}>
+            脳幹でせき止める
+          </text>
+          <text x={1180} y={800} textAnchor="middle" fontSize={32} fill={MP.ink} fontFamily={MANABI_FONT}>
+            体は動かない
+          </text>
+        </g>
+      </svg>
+      <DiagramTitle text={scene.title ?? "体が動かない仕組み"} />
+    </Frame>
+  );
+};
+
+// 記憶の引っ越し: 海馬 (一時保管庫) → 大脳皮質 (長期保管庫)
+const MemoryTransferScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const dots = [0, 1, 2, 3, 4];
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 海馬 */}
+        <rect x={300} y={330} width={360} height={320} rx={16} fill="none" stroke={MP.line} strokeWidth={6} />
+        <text x={480} y={400} textAnchor="middle" fontSize={40} fontWeight={700} fill={MP.ink} fontFamily={MANABI_FONT}>
+          海馬
+        </text>
+        <text x={480} y={446} textAnchor="middle" fontSize={27} fill={MP.faint} fontFamily={MANABI_FONT}>
+          一時保管庫
+        </text>
+        {/* 大脳皮質 */}
+        <rect x={1140} y={270} width={480} height={420} rx={16} fill="none" stroke={MP.line} strokeWidth={6} />
+        <text x={1380} y={344} textAnchor="middle" fontSize={40} fontWeight={700} fill={MP.ink} fontFamily={MANABI_FONT}>
+          大脳皮質
+        </text>
+        <text x={1380} y={390} textAnchor="middle" fontSize={27} fill={MP.faint} fontFamily={MANABI_FONT}>
+          長期保管庫
+        </text>
+        {/* 矢印 */}
+        <line x1={690} y1={500} x2={1090} y2={500} stroke={MP.line} strokeWidth={6} />
+        <path d="M 1110 500 l -26 -14 v 28 Z" fill={MP.line} />
+        {/* ゆったりした脳波 */}
+        <path
+          d="M 700 600 q 50 -36 100 0 t 100 0 t 100 0 t 100 0"
+          fill="none"
+          stroke={MP.blueLight}
+          strokeWidth={5}
+          strokeDasharray="18 14"
+          strokeDashoffset={-frame * 1.6}
+          opacity={0.8}
+        />
+        <text x={900} y={668} textAnchor="middle" fontSize={27} fill={MP.faint} fontFamily={MANABI_FONT}>
+          大きくゆったりした脳波に乗せて
+        </text>
+        {/* 記憶の粒が移っていく */}
+        {dots.map((i) => {
+          const t = interpolate(frame - 14 - i * 16, [0, 60], [0, 1], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          });
+          const sx = 470 + (i % 2) * 70;
+          const sy = 490 + (i % 3) * 44;
+          const ex = 1250 + (i % 3) * 110;
+          const ey = 460 + Math.floor(i / 3) * 110;
+          const x = sx + (ex - sx) * t;
+          const y = sy + (ey - sy) * t - Math.sin(t * Math.PI) * 70;
+          return (
+            <rect key={i} x={x - 13} y={y - 13} width={26} height={26} rx={5} fill={MP.accentSoft} opacity={0.95} />
+          );
+        })}
+      </svg>
+      <DiagramTitle text={scene.title ?? "記憶の引っ越し"} />
+    </Frame>
+  );
+};
+
+// 記憶の選別 (剪定): 大事なつながりは太く、使わないつながりは消える
+const PruningScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const p = interpolate(frame, [24, 90], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const nodes: [number, number][] = [
+    [520, 330], [840, 260], [1220, 310], [1470, 430],
+    [1300, 660], [900, 710], [560, 630], [1050, 480],
+  ];
+  const strong: [number, number][] = [[0, 7], [7, 2], [7, 4]];
+  const weak: [number, number][] = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 0], [1, 7], [5, 7]];
+  const labelIn = interpolate(p, [0.6, 1], [0, 1]);
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {weak.map(([a, b], i) => (
+          <line
+            key={`w${i}`}
+            x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]}
+            stroke={MP.faint}
+            strokeWidth={3}
+            opacity={1 - p * 0.9}
+          />
+        ))}
+        {strong.map(([a, b], i) => (
+          <line
+            key={`s${i}`}
+            x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]}
+            stroke={MP.accent}
+            strokeWidth={3 + p * 6}
+            strokeLinecap="round"
+          />
+        ))}
+        {nodes.map(([x, y], i) => (
+          <circle key={i} cx={x} cy={y} r={17} fill={MP.background} stroke={MP.line} strokeWidth={5} />
+        ))}
+        <g opacity={labelIn}>
+          <text x={1480} y={280} textAnchor="middle" fontSize={32} fontWeight={700} fill={MP.accent} fontFamily={MANABI_FONT}>
+            大事なつながりは強く
+          </text>
+          <text x={520} y={810} fontSize={32} fill={MP.faint} fontFamily={MANABI_FONT}>
+            使わないつながりは消えていく
+          </text>
+        </g>
+      </svg>
+      <DiagramTitle text={scene.title ?? "記憶の選別"} />
+    </Frame>
+  );
+};
+
+// 眠る脳の洗浄: 脳脊髄液が細胞のすき間を流れ、老廃物を洗い流す
+const BrainWashScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const labelIn = interpolate(frame, [30, 55], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const flows = [
+    "M 560 420 C 700 330 900 330 1040 400 C 1140 450 1230 520 1310 575",
+    "M 580 520 C 760 610 980 630 1180 585 C 1240 570 1290 590 1330 620",
+    "M 690 300 C 850 258 1050 268 1200 330",
+  ];
+  const cells: [number, number, number][] = [
+    [660, 470, 52], [900, 350, 46], [1150, 470, 52], [880, 600, 44],
+  ];
+  // 老廃物の粒: 左から右下の出口へ流れて消える
+  const waste = [0, 1, 2, 3, 4];
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <path d={BRAIN_PATH} fill={MP.panel} stroke={MP.line} strokeWidth={6} />
+        {cells.map(([x, y, r], i) => (
+          <circle key={i} cx={x} cy={y} r={r} fill={MP.background} stroke={MP.faint} strokeWidth={4} />
+        ))}
+        {/* 流れる脳脊髄液 */}
+        {flows.map((d, i) => (
+          <path
+            key={i}
+            d={d}
+            fill="none"
+            stroke={MP.blueLight}
+            strokeWidth={6}
+            strokeLinecap="round"
+            strokeDasharray="26 20"
+            strokeDashoffset={-frame * 2.4 - i * 15}
+            opacity={0.85}
+          />
+        ))}
+        {/* 老廃物が流されていく */}
+        {waste.map((i) => {
+          const t = ((frame * 0.012 + i * 0.21) % 1);
+          const x = 600 + (1330 - 600) * t;
+          const y = 430 + (610 - 430) * t + Math.sin(t * 6 + i) * 26;
+          const o = t < 0.1 ? t * 10 : t > 0.85 ? (1 - t) * 6.7 : 1;
+          return <circle key={i} cx={x} cy={y} r={11} fill={MP.rust} opacity={o * 0.9} />;
+        })}
+        {/* 出口の矢印 */}
+        <line x1={1330} y1={620} x2={1440} y2={690} stroke={MP.blueLight} strokeWidth={5} opacity={0.7} />
+        <path d="M 1452 698 l -30 -4 l 14 -24 Z" fill={MP.blueLight} opacity={0.7} />
+        <g opacity={labelIn}>
+          <line x1={1500} y1={282} x2={1255} y2={360} stroke={MP.faint} strokeWidth={3} />
+          <text x={1545} y={250} textAnchor="middle" fontSize={34} fontWeight={700} fill={MP.blueLight} fontFamily={MANABI_FONT}>
+            脳脊髄液
+          </text>
+          <text x={1545} y={294} textAnchor="middle" fontSize={27} fill={MP.faint} fontFamily={MANABI_FONT}>
+            すき間を流れる
+          </text>
+          <text x={480} y={810} fontSize={32} fontWeight={700} fill={MP.rust} fontFamily={MANABI_FONT}>
+            ● 老廃物
+          </text>
+          <text x={640} y={810} fontSize={32} fill={MP.ink} fontFamily={MANABI_FONT}>
+            を洗い流す
+          </text>
+        </g>
+      </svg>
+      <DiagramTitle text={scene.title ?? "眠る脳の洗浄"} />
+    </Frame>
+  );
+};
+
+// 夜、眠る人: 月と星とベッド (静かな場面)
+const SleepingScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 月 (三日月) */}
+        <path d="M 1480 180 A 92 92 0 1 0 1480 344 A 72 72 0 1 1 1480 180 Z" fill={MP.ink} opacity={0.85} />
+        {/* 星 */}
+        {[[1240, 220], [1650, 420], [1330, 460], [320, 260]].map(([x, y], i) => (
+          <g key={i} opacity={0.4 + 0.4 * Math.abs(Math.sin(frame / 22 + i * 1.6))} stroke={MP.faint} strokeWidth={3} strokeLinecap="round">
+            <line x1={x - 12} y1={y} x2={x + 12} y2={y} />
+            <line x1={x} y1={y - 12} x2={x} y2={y + 12} />
+          </g>
+        ))}
+        {/* Zzz */}
+        {[0, 1, 2].map((i) => (
+          <text
+            key={i}
+            x={700 + i * 66}
+            y={500 - i * 72}
+            fontSize={34 + i * 14}
+            fill={MP.blueLight}
+            fontFamily={MANABI_FONT}
+            opacity={0.25 + 0.55 * Math.abs(Math.sin(frame / 26 + i * 0.9))}
+          >
+            Z
+          </text>
+        ))}
+        {/* ベッド */}
+        <rect x={470} y={560} width={28} height={190} fill={MP.background} stroke={MP.line} strokeWidth={6} />
+        <line x1={420} y1={752} x2={1500} y2={752} stroke={MP.line} strokeWidth={6} />
+        <rect x={498} y={648} width={880} height={56} rx={12} fill={MP.panel} stroke={MP.line} strokeWidth={6} />
+        <rect x={524} y={614} width={150} height={40} rx={14} fill={MP.background} stroke={MP.line} strokeWidth={5} />
+        <circle cx={600} cy={602} r={44} fill={MP.background} stroke={MP.line} strokeWidth={6} />
+        <path d="M 660 590 Q 980 540 1350 620 L 1350 650 L 660 650 Z" fill={MP.panel} stroke={MP.line} strokeWidth={6} />
+      </svg>
+    </Frame>
+  );
+};
+
+// 睡眠テーマのmotif名のゆらぎを吸収して代表名に寄せる
+const resolveSleepMotif = (m: string): string | undefined => {
+  if (/sleep_wave|hypnogram|cycle|rem|wave/.test(m)) return "sleep_wave";
+  if (/dream|amygdala|visual|prefrontal|brain_region|brain_map/.test(m)) return "dream_brain";
+  if (/lock|paralysis|atonia|kanashibari|brainstem|freeze/.test(m)) return "body_lock";
+  if (/memory|hippocamp|cortex|transfer|consolidat/.test(m)) return "memory_transfer";
+  if (/prun|synap|trim/.test(m)) return "pruning";
+  if (/wash|glymph|clean|csf|waste|amyloid|fluid/.test(m)) return "brain_wash";
+  if (/sleep|bed|night|zzz/.test(m)) return "sleeping";
+  return undefined;
+};
+
 // ===== 入口: シーンの型と題材で描き分ける =====
 
 // 人類の痕跡テーマのmotif名のゆらぎを吸収して代表名に寄せる
@@ -2164,11 +2629,22 @@ export const ManabiSceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
     if (trace === "flood") return <FloodScene scene={scene} />;
     if (trace === "trash_layer") return <TrashLayerScene scene={scene} />;
     if (trace === "timeline") return <TimelineScene scene={scene} />;
+    // 睡眠テーマ (名前のゆらぎも resolveSleepMotif で吸収)
+    const sleep = resolveSleepMotif(m ?? "");
+    if (sleep === "sleep_wave") return <SleepWaveScene scene={scene} />;
+    if (sleep === "dream_brain") return <DreamBrainScene scene={scene} />;
+    if (sleep === "body_lock") return <BodyLockScene scene={scene} />;
+    if (sleep === "memory_transfer") return <MemoryTransferScene scene={scene} />;
+    if (sleep === "pruning") return <PruningScene scene={scene} />;
+    if (sleep === "brain_wash") return <BrainWashScene scene={scene} />;
+    if (sleep === "sleeping") return <SleepingScene />;
   }
   switch (scene.type) {
     case "card":
       // 章扉カード (motif=chapter) は専用の静かな画面
       if (m === "chapter") return <ChapterCardScene scene={scene} />;
+      // クイズ出題カード (motif=quiz) は控えめな出題画面
+      if (m === "quiz") return <QuizCardScene scene={scene} />;
       return <ManabiCardScene scene={scene} />;
     case "chart":
       return <ManabiChartScene scene={scene} />;

@@ -107,12 +107,22 @@ ${ALL_MANABI_MOTIFS.join(", ")}
 - flood: 都市の断面図。地下鉄のトンネルに水位が上がっていく (地下鉄・都市が水没する・ポンプの文に)
 - trash_layer: ゴミ処分場の断面図。埋まったボトルや骨や陶器が光る (処分場・ゴミ・未来の遺跡の文に)
 - timeline: 左から目盛りが伸びる年表 (数十年→数百年→数千年と時間を順に数える文に)
+- sleeping: 夜、ベッドで眠る人と月 (眠りに落ちる・睡眠中・夜勤のたとえの文に)
+- sleep_wave: 一晩の眠りの深さの波グラフ。90分周期でレム/ノンレムが入れ替わる (眠りのリズム・周期の文に)
+- dream_brain: 脳の側面図。視覚野と扁桃体がオレンジに灯り、前頭前野だけ消灯 (夢を見る脳・脳の部位の文に)
+- body_lock: 眠る体の図。脳からの指令線が脳幹でせき止められる (体が動かない・金縛り・安全装置の文に)
+- memory_transfer: 海馬 (一時保管庫) から大脳皮質 (長期保管庫) へ記憶の粒が移る図 (記憶の引っ越し・保存の文に)
+- pruning: 神経のつながりの剪定図。大事な線は太く、不要な線は消える (記憶の選別・刈り込みの文に)
+- brain_wash: 脳の断面。青い脳脊髄液が細胞のすき間を流れ、老廃物の粒を洗い流す (脳の掃除・グリンパティック・アミロイドベータの文に)
 - chapter: 章扉カード (「第1章」などの章番号と章タイトルを静かに見せる。type は card にする)
+- quiz: クイズ出題カード (「ここで問題です」のような出題宣言の文に。type は card にする)
 
 この作風だけの決まり:
 - 章の切り替え文 (「まず」「第一に」「ここからは」「最後に」などで始まり、
   「第1章」「第2章」のように章タイトルを宣言する文) は type を card、motif を chapter にして、
   title に章タイトルだけ (例: 消えていく痕跡) を入れる
+- クイズの出題を宣言する文 (「ここで問題です」「ここで2問目です」など) は type を card、
+  motif を quiz にする (演出は控えめな出題カード)
 - 「答えは〜」「つまり〜」のような核心の文と、最後の結論の文は card にして
   emphasis に核心の短い語句 (本文中にそのまま含まれる語) を入れる
 - 数値の倍率 (〜倍) が出る文は必ず chart にして、items を [{基準のlabel, value: 1}, {比べるlabel, value: 倍率}] にする
@@ -483,10 +493,19 @@ const ASHI_LOCATION_WORDS: Record<string, string> = {
 };
 
 // ===== manabi (身近な科学の図解解説) 用のキーワード機械割り当て =====
+// クイズの出題宣言の文か (「さて、ここで問題です。」「ここで2問目です。」など)
+export function isManabiQuizText(sentence: string): boolean {
+  return /ここで(問題|クイズ|[0-9０-９一二三]問目)です/.test(sentence);
+}
+
 export function manabiHeuristicAssign(sentence: string): Assignment {
   // 章の切り替え文 (「まず第1章、〜」など) は章扉カード
   if (/第[0-9０-９一二三四五六七八九十]+章/.test(sentence)) {
     return { type: "card", motif: "chapter" };
+  }
+  // クイズの出題宣言 (「さて、ここで問題です。」など) は控えめな出題カード
+  if (isManabiQuizText(sentence)) {
+    return { type: "card", motif: "quiz" };
   }
   if (/[0-9０-９]+(?:倍)/.test(sentence)) {
     return { type: "chart", motif: "concept", title: "数字で見る" };
@@ -505,6 +524,28 @@ export function manabiHeuristicAssign(sentence: string): Assignment {
   }
   if (/(答えは|つまり|とは、|かもしれません。?$)/.test(sentence)) {
     return { type: "card", motif: "concept" };
+  }
+  // 睡眠テーマ
+  if (/(レム睡眠|ノンレム|眠りの(リズム|深さ|波)|90分|睡眠周期|周期)/.test(sentence)) {
+    return { type: "diagram", motif: "sleep_wave", title: "一晩の眠りの波" };
+  }
+  if (/(視覚野|扁桃体|前頭前野|夢を見る脳)/.test(sentence)) {
+    return { type: "diagram", motif: "dream_brain", title: "夢を見ている脳" };
+  }
+  if (/(金縛り|脳幹|筋肉への(指令|命令)|動かせなく|安全装置)/.test(sentence)) {
+    return { type: "diagram", motif: "body_lock", title: "体が動かない仕組み" };
+  }
+  if (/(海馬|大脳皮質|保管庫|記憶が.*移|引っ越し)/.test(sentence)) {
+    return { type: "diagram", motif: "memory_transfer", title: "記憶の引っ越し" };
+  }
+  if (/(剪定|刈り込|選別|配線.*整理|つながりは.*(強め|弱め))/.test(sentence)) {
+    return { type: "diagram", motif: "pruning", title: "記憶の選別" };
+  }
+  if (/(グリンパティック|脳脊髄液|老廃物|洗い流|アミロイド|脳の掃除|大掃除)/.test(sentence)) {
+    return { type: "diagram", motif: "brain_wash", title: "眠る脳の洗浄" };
+  }
+  if (/(眠りに落ち|眠っている間|睡眠中|夜勤|眠るほう|よく眠)/.test(sentence)) {
+    return { type: "character", motif: "sleeping" };
   }
   // 人類の痕跡テーマ
   if (/(いなくなっ|無人にな)/.test(sentence)) {

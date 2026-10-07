@@ -92,6 +92,7 @@ export const MANABI_PERSON_MOTIFS = [
   "touch_metal", // 金属のドアノブに手が触れてヒヤッとする
   "touch_wood", // 木の棚・板に手が触れる (冷たくない)
   "thinking", // 疑問に思う人 (?マーク)
+  "sleeping", // 夜、ベッドで眠る人。月と星の静かな絵
 ] as const;
 
 export const MANABI_OBJECT_MOTIFS = [
@@ -114,6 +115,12 @@ export const MANABI_DIAGRAM_MOTIFS = [
   "flood", // 都市の断面図。地下鉄のトンネルに水位が上がっていく (水没)
   "trash_layer", // ゴミ処分場の断面 = 未来の遺跡。埋まった人工物をオレンジでハイライト
   "timeline", // 数十年→数百年→数千年→1万年の年表。左から目盛りが伸びる
+  "sleep_wave", // 一晩の眠りの深さの波 (レム/ノンレムの90分周期グラフ)
+  "dream_brain", // 脳の側面図。視覚野・扁桃体がオレンジに灯り、前頭前野だけ消灯
+  "body_lock", // 眠る体の図。脳からの指令線が脳幹でせき止められる (安全装置)
+  "memory_transfer", // 海馬 (一時保管庫)→大脳皮質 (長期保管庫) へ記憶が移る図
+  "pruning", // 神経のつながりの剪定。大事な線は太く、不要な線は消える
+  "brain_wash", // 脳の洗浄。脳脊髄液が細胞のすき間を流れ老廃物を洗い流す
   "concept", // その他の図解
 ] as const;
 
@@ -131,6 +138,7 @@ export const ALL_MANABI_MOTIFS = [
   ...MANABI_DIAGRAM_MOTIFS,
   ...MANABI_LOCATION_MOTIFS,
   "chapter", // 章扉カード (「第1章」+ 章タイトル。type は card で使う)
+  "quiz", // クイズ出題カード (小さなQ+出題文。控えめな演出。type は card で使う)
   "ending",
 ] as const;
 

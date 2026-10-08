@@ -187,6 +187,58 @@ export const KOUZOU_MOTIFS = [
 
 export const ALL_KOUZOU_MOTIFS = [...KOUZOU_MOTIFS, "ending"] as const;
 
+// ===== suuri (数理・統計で身近な疑問を解く図解) 用の題材 =====
+// 真っ黒背景・白ピクトグラム・赤1色の強調。系図・ネットワーク図が主役。
+export const SUURI_PERSON_MOTIFS = [
+  "thinking", // 疑問に思う人 (?マーク)
+  "surprised", // ハッと気づく人 (!マーク)。意外な事実・なんと・実は の文に
+  "nodding", // 納得してうなずく人 (チェックマーク)。まとめ・だから・つまり の文に
+  "unknown_farmer", // 名もなき農民・漁師のピクトグラム (名前が残らない人々)
+] as const;
+
+export const SUURI_OBJECT_MOTIFS = [
+  "question", // 丸の中の大きな「?」 (問いかけ)
+  "lottery", // 当たりくじ (絶滅の心配がない別格の家系)
+  "scroll", // 家系図の巻物 (系図・家系図ビジネス・創作系図)
+  "nengajo", // 年賀状のはがき (締めの乾いた一言)
+] as const;
+
+export const SUURI_DIAGRAM_MOTIFS = [
+  "doubling_tree", // あなたから上へ倍々に枝分かれする先祖の系図 (2人→4人→8人)
+  "exp_curve", // 指数関数の急上昇カーブ (席の数が爆発的に増える)
+  "school", // 校舎と生徒の点グリッド (1,024人=全校生徒のたとえ)
+  "city_pop", // 都市のスカイラインと人の点 (105万人=仙台市のたとえ)
+  "globe_pop", // 地球と人口の比較 (先祖の席10億 vs 当時の総人口3億)
+  "seat_share", // 1人のピクトが複数の席に線でつながる (平均140席の掛け持ち)
+  "net_merge", // きれいな木が途中から枝がくっつき網になる (家系の収束)
+  "hatoko", // はとこ夫婦の系図。共通の曽祖父母が2か所で赤く灯る
+  "japan_net", // 日本列島が家系の網で覆われる (日本人全体がひとつの親戚)
+  "michinaga", // 藤原道長の人物図 (束帯・烏帽子・扇)
+  "three_points", // ポイント3つの箱が順に点灯 (なぜ道長か)
+  "descend_tree", // 道長から下へ倍々に広がる子孫の系図
+  "extinct_line", // 家系の線が途中で×印とともに途切れる (断絶)
+  "crown", // 3つの后の冠と天皇 (一家三后・孫から天皇)
+  "path_count", // あなた→道長へ無数の赤い経路が同時に走る網
+  "dna_half", // DNAのバーが半分→4分の1→…とほぼ0%まで薄まる
+  "chain_lights", // 千年の命のリレー。光の鎖が途切れず現代まで届く
+  "roadmap", // 章の箱が横に並び順に点灯 (今日の流れ)
+  "concept", // その他の図解
+] as const;
+
+export const SUURI_LOCATION_MOTIFS = [
+  "village", // 昔の村の全景 (藁ぶき屋根と田畑)
+] as const;
+
+export const ALL_SUURI_MOTIFS = [
+  ...SUURI_PERSON_MOTIFS,
+  ...SUURI_OBJECT_MOTIFS,
+  ...SUURI_DIAGRAM_MOTIFS,
+  ...SUURI_LOCATION_MOTIFS,
+  "chapter", // 章扉カード (「第1章」+ 章タイトル。type は card で使う)
+  "quiz", // クイズ出題カード (小さなQ+出題文。type は card で使う)
+  "ending",
+] as const;
+
 // ===== keizai (経済ニュース解説・フリップボード) 用の題材 =====
 export const KEIZAI_MOTIFS = [
   "news", // ニュース速報風の見出しテロップ (導入)

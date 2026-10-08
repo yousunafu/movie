@@ -9,6 +9,7 @@ import {
   ashiHeuristicAssign,
   kouzouHeuristicAssign,
   manabiHeuristicAssign,
+  suuriHeuristicAssign,
   isKouzouChapterText,
   isManabiQuizText,
   findFoodMotif,
@@ -31,10 +32,16 @@ export function enforceRatios(
   // manabi (図解解説) / rekishi (資料図版) / kouzou (構造図解) / keizai (フリップ図解) は
   // 図版が主役なので、人物比率などの補正はしない。
   // カードは「最後の結論カード (keizai はまとめフリップ)」+ 各作風の章カードだけ守る。
-  if (preset === "manabi" || preset === "rekishi" || preset === "kouzou" || preset === "keizai") {
-    // 章扉カード (manabi のみ): 章タイトルを宣言する文 (「第1章」などを含む) は
+  if (
+    preset === "manabi" ||
+    preset === "rekishi" ||
+    preset === "kouzou" ||
+    preset === "keizai" ||
+    preset === "suuri"
+  ) {
+    // 章扉カード (manabi / suuri): 章タイトルを宣言する文 (「第1章」などを含む) は
     // AIが type を揺らしても card + motif=chapter にそろえる
-    if (preset === "manabi") {
+    if (preset === "manabi" || preset === "suuri") {
       for (let i = 0; i < n - 1; i++) {
         if (
           /第[0-9０-９一二三四五六七八九十]+章/.test(sentences[i]) &&
@@ -80,13 +87,16 @@ export function enforceRatios(
           log.push(`シーン${i}のゴミ処分場の図を脳の洗浄図に変更 (脳の文脈のため)`);
         }
       }
+    }
+    if (preset === "manabi" || preset === "suuri") {
       // 同じ絵の連続を散らす: 直前と同じ motif が続いたら別の絵に差し替える
       // (card は除く。まず機械割り当てで文に合う絵を探し、無ければ人物のバリエーションを順繰りに使う)
+      const themeAssign = preset === "suuri" ? suuriHeuristicAssign : manabiHeuristicAssign;
       const personRotation = ["thinking", "nodding", "surprised"];
       for (let i = 1; i < n - 1; i++) {
         if (out[i].type === "card" || out[i - 1].type === "card") continue;
         if (out[i].motif !== out[i - 1].motif) continue;
-        const h = manabiHeuristicAssign(sentences[i]);
+        const h = themeAssign(sentences[i]);
         if (h.type !== "card" && h.motif !== out[i].motif) {
           out[i].type = h.type;
           out[i].motif = h.motif;

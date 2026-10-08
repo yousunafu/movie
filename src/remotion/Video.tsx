@@ -31,6 +31,7 @@ import {
   kouzouCardShowsFullText,
 } from "./kouzou/KouzouScenes";
 import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
+import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText } from "./suuri/SuuriScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -87,8 +88,9 @@ const Subtitle: React.FC<{
   rekishi?: boolean;
   kouzou?: boolean;
   keizai?: boolean;
+  suuri?: boolean;
   highlight?: string;
-}> = ({ text, onImage, ashi, manabi, rekishi, kouzou, keizai, highlight }) => {
+}> = ({ text, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, highlight }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
@@ -189,11 +191,13 @@ const Subtitle: React.FC<{
       </div>
     );
   }
-  // ashi: 白い明朝体 + 影。manabi: 白いゴシック + 影。画像の上では暗い帯
-  const band = ashi || manabi
-    ? manabi
-      ? "rgba(10, 14, 22, 0.75)"
-      : "rgba(7, 11, 22, 0.72)"
+  // ashi: 白い明朝体 + 影。manabi/suuri: 白いゴシック + 影。画像の上では暗い帯
+  const band = ashi || manabi || suuri
+    ? suuri
+      ? "rgba(6, 6, 8, 0.78)"
+      : manabi
+        ? "rgba(10, 14, 22, 0.75)"
+        : "rgba(7, 11, 22, 0.72)"
     : "rgba(255, 252, 247, 0.88)";
   return (
     <div
@@ -210,12 +214,12 @@ const Subtitle: React.FC<{
       <span
         style={{
           display: "inline",
-          fontFamily: ashi ? ASHI_FONT : manabi ? MANABI_FONT : FONT,
+          fontFamily: ashi ? ASHI_FONT : manabi ? MANABI_FONT : suuri ? SUURI_FONT : FONT,
           fontSize: SUBTITLE.fontSize,
           fontWeight: SUBTITLE.weight,
-          color: ashi ? AP.sub : manabi ? MP.ink : PALETTE.subtitle,
+          color: ashi ? AP.sub : manabi ? MP.ink : suuri ? SP.ink : PALETTE.subtitle,
           lineHeight: 1.55,
-          textShadow: ashi || manabi ? "0 2px 12px rgba(0,0,0,0.9)" : undefined,
+          textShadow: ashi || manabi || suuri ? "0 2px 12px rgba(0,0,0,0.9)" : undefined,
           // 画像の上では、読みやすいよう帯を敷く
           backgroundColor: onImage ? band : undefined,
           boxShadow: onImage ? `0 0 0 14px ${band}` : undefined,
@@ -236,6 +240,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const isRekishi = data.preset === "rekishi";
   const isKouzou = data.preset === "kouzou";
   const isKeizai = data.preset === "keizai";
+  const isSuuri = data.preset === "suuri";
   if (data.scenes.length === 0) {
     return (
       <AbsoluteFill
@@ -283,7 +288,9 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 ? KP.band
                 : isKeizai
                   ? EP.bgTop
-                  : PALETTE.background,
+                  : isSuuri
+                    ? SP.background
+                    : PALETTE.background,
       }}
     >
       {data.bgmFile && (
@@ -323,14 +330,17 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 <KouzouSceneView scene={scene} />
               ) : isKeizai ? (
                 <KeizaiSceneView scene={scene} />
+              ) : isSuuri ? (
+                <SuuriSceneView scene={scene} />
               ) : (
                 <SceneView scene={scene} />
               )}
-              {/* manabi/rekishi/kouzou/keizai: カードが全文を大きく見せるときは字幕を重ねない (二重表示を防ぐ) */}
+              {/* manabi/rekishi/kouzou/keizai/suuri: カードが全文を大きく見せるときは字幕を重ねない (二重表示を防ぐ) */}
               {!(isManabi && manabiCardShowsFullText(scene)) &&
                 !(isRekishi && rekishiCardShowsFullText(scene)) &&
                 !(isKouzou && kouzouCardShowsFullText(scene)) &&
-                !(isKeizai && keizaiCardShowsFullText(scene)) && (
+                !(isKeizai && keizaiCardShowsFullText(scene)) &&
+                !(isSuuri && suuriCardShowsFullText(scene)) && (
                 <Subtitle
                   text={scene.text}
                   onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi && !isKouzou && !isKeizai}
@@ -339,6 +349,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   rekishi={isRekishi}
                   kouzou={isKouzou}
                   keizai={isKeizai}
+                  suuri={isSuuri}
                   highlight={v2 ? scene.emphasis : undefined}
                 />
               )}

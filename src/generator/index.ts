@@ -64,7 +64,9 @@ async function main() {
               ? "kouzou (仕事・組織の構造図解)"
               : preset === "keizai"
                 ? "keizai (経済ニュース解説)"
-                : "genki (健康解説)"
+                : preset === "suuri"
+                  ? "suuri (数理・統計の図解)"
+                  : "genki (健康解説)"
     }`,
   );
 

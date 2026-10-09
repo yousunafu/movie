@@ -31,7 +31,7 @@ import {
   kouzouCardShowsFullText,
 } from "./kouzou/KouzouScenes";
 import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
-import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText } from "./suuri/SuuriScenes";
+import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, computeSuuriVariants } from "./suuri/SuuriScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -241,6 +241,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const isKouzou = data.preset === "kouzou";
   const isKeizai = data.preset === "keizai";
   const isSuuri = data.preset === "suuri";
+  // suuri: 同じ絵の2回目以降は姿を変える (絵が育つ仕組み)
+  const suuriVariants = isSuuri ? computeSuuriVariants(data.scenes) : [];
   if (data.scenes.length === 0) {
     return (
       <AbsoluteFill
@@ -297,7 +299,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
         <Audio loop src={staticFile(data.bgmFile)} volume={bgmVolume} />
       )}
       <Series>
-        {data.scenes.map((scene) => {
+        {data.scenes.map((scene, sceneI) => {
           const frames = Math.max(
             Math.ceil(
               (scene.durationSec + VIDEO.scenePaddingSec) * VIDEO.fps,
@@ -331,7 +333,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
               ) : isKeizai ? (
                 <KeizaiSceneView scene={scene} />
               ) : isSuuri ? (
-                <SuuriSceneView scene={scene} />
+                <SuuriSceneView scene={scene} variant={suuriVariants[sceneI] ?? 0} />
               ) : (
                 <SceneView scene={scene} />
               )}

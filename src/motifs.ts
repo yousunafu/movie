@@ -196,6 +196,7 @@ export const SUURI_PERSON_MOTIFS = [
   "unknown_farmer", // 名もなき農民・漁師のピクトグラム (名前が残らない人々)
   "multiply_imagine", // 吹き出しに赤い×記号。掛け算と想像力で考える人
   "thanks", // 先祖に向かって深くおじぎする人 (感謝の文に)
+  "wait_stop", // 手のひらを突き出して制止する人 (お待ちください、の文に)
 ] as const;
 
 export const SUURI_OBJECT_MOTIFS = [
@@ -205,6 +206,7 @@ export const SUURI_OBJECT_MOTIFS = [
   "nengajo", // 年賀状のはがき (締めの乾いた一言)
   "tally", // 「正」の字で数を数える (数字で確かめる文に)
   "ordinary_house", // 普通の家と家族 (代々普通の家系、の文に)
+  "kakeizu_business", // 「家系図お作りします」の看板と巻物 (家系図の商売の文に)
 ] as const;
 
 export const SUURI_DIAGRAM_MOTIFS = [
@@ -231,6 +233,14 @@ export const SUURI_DIAGRAM_MOTIFS = [
   "number_ladder", // 倍々に伸びる棒グラフ (4人→8人→16人と数字が増える文に)
   "timeline", // 現代→江戸→戦国→平安の時間の矢印 (時代をさかのぼる文に)
   "japan_pop", // 日本列島と人口の点 (当時の日本の人口の文に)
+  "hierarchy_top", // 人のピラミッドの頂点が赤く灯る (最高権力者の文に)
+  "neighbor_merge", // あなたの家と隣の家の系図が上でひとつに合流する図
+  "child_grandchild", // 子3人→孫9人と文中の人数どおりに増える図
+  "swallow_japan", // 日本列島を子孫の赤い円が飲み込む図
+  "twelve_children", // 道長の下に12人の子が並ぶ図
+  "emperor_grandsons", // 道長→娘→孫の2人の天皇 (後一条・後朱雀) の系図
+  "spread_samurai", // 貴族から武家へ血筋が流れ込む図
+  "you_here", // 光の鎖のいちばん先に立つあなた (奇跡の積み重ねの文に)
   "concept", // その他の図解
 ] as const;
 

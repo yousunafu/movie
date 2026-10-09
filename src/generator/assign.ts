@@ -287,6 +287,16 @@ ${ALL_SUURI_MOTIFS.join(", ")}
 - timeline: 現代→江戸→戦国→平安の時間の矢印 (時代をさかのぼる・何年前の文に)
 - japan_pop: 日本列島と人口の点 (当時の日本の人口は何人、という文に)
 - thanks: 先祖に深くおじぎする人 (感謝の文に)
+- hierarchy_top: 人のピラミッドの頂点が赤く灯る (最高権力者・頂点に立つ人の文に)
+- neighbor_merge: あなたの家と隣の家の系図が上でひとつに合流する図 (隣の家・佐藤さんの文に)
+- child_grandchild: 子3人→孫9人と文中の人数どおりに人が増える図 (子が◯人、孫が◯人の文に)
+- swallow_japan: 日本列島を子孫の赤い円が飲み込む図 (日本の人口を丸ごと飲み込む文に)
+- twelve_children: 道長の下に12人の子が並ぶ図 (道長に12人の子がいた文に)
+- emperor_grandsons: 道長→娘→孫の天皇2人の系図 (後一条天皇・後朱雀天皇・孫が天皇の文に)
+- spread_samurai: 貴族から武家へ血筋が流れ込む図 (武家に嫁ぐ・貴族のほとんどの文に)
+- wait_stop: 手のひらを突き出して制止する人 (お待ちください、のような文に)
+- kakeizu_business: 「家系図お作りします」の看板と巻物 (家系図の商売の文に)
+- you_here: 光の鎖のいちばん先に立つあなた (奇跡の積み重ねの先にあなたが立つ文に)
 - question: 大きな「?」 (問いかけの文に) / roadmap: 章の箱が順に点灯する目次図 (今日の流れの文に)
 - thinking: 疑問に思う人 / surprised: ハッと気づく人 (なんと・実は の文に)
 - nodding: 納得してうなずく人 (だから・つまり のまとめの文に)
@@ -911,6 +921,36 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "card", motif: "concept", emphasis: q?.[1] };
   }
   // --- 文に寄り添う絵: 具体的な言葉から順に判定する (上にあるほど優先) ---
+  if (/最高権力者/.test(sentence)) {
+    return { type: "diagram", motif: "hierarchy_top", title: "平安の最高権力者" };
+  }
+  if (/(隣の家|佐藤さん)/.test(sentence)) {
+    return { type: "diagram", motif: "neighbor_merge", title: "隣の家ともどこかで合流" };
+  }
+  if (/子が[0-9０-９]+人、孫/.test(sentence)) {
+    return { type: "diagram", motif: "child_grandchild", title: "子3人なら孫9人" };
+  }
+  if (/(丸ごと飲み込|人口を丸ごと)/.test(sentence)) {
+    return { type: "diagram", motif: "swallow_japan", title: "日本を丸ごと飲み込む" };
+  }
+  if (/[0-9０-９]+人の子がい/.test(sentence)) {
+    return { type: "diagram", motif: "twelve_children", title: "道長の子は12人" };
+  }
+  if (/(後一条|後朱雀|孫から.{0,8}天皇)/.test(sentence)) {
+    return { type: "diagram", motif: "emperor_grandsons", title: "孫が天皇になった" };
+  }
+  if (/(武家|貴族のほとんど)/.test(sentence)) {
+    return { type: "diagram", motif: "spread_samurai", title: "貴族から武家へ" };
+  }
+  if (/(お待ちください|名乗ろうと決めた)/.test(sentence)) {
+    return { type: "character", motif: "wait_stop" };
+  }
+  if (/(お作りします|という商売|家系図ビジネス)/.test(sentence)) {
+    return { type: "object", motif: "kakeizu_business" };
+  }
+  if (/(いちばん先に|あなたが立って)/.test(sentence)) {
+    return { type: "diagram", motif: "you_here", title: "そのいちばん先に" };
+  }
   if (/(普通の家|代々、普通)/.test(sentence)) {
     return { type: "object", motif: "ordinary_house" };
   }
@@ -923,7 +963,7 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(数字で確かめ|人数を数え)/.test(sentence)) {
     return { type: "object", motif: "tally" };
   }
-  if (/(父と母|[2２]人の親)/.test(sentence)) {
+  if (/(父と母|[2２]人の親|親から子へ)/.test(sentence)) {
     return { type: "diagram", motif: "parents", title: "あなたの親は2人" };
   }
   if (/(曽祖父母は[0-9０-９]|その上は[0-9０-９])/.test(sentence)) {
@@ -957,7 +997,7 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "diagram", motif: "hatoko", title: "はとこ婚の家系図" };
   }
   if (
-    /(子孫.*(増え|広が|行き渡|飲み込)|子が[0-9０-９]人、孫|大繁栄|ばらま|孫からは|血筋.*広が)/.test(
+    /(子孫.*(増え|広が|行き渡|飲み込)|大繁栄|ばらま|孫からは|血筋.*広が)/.test(
       sentence,
     )
   ) {
@@ -1007,7 +1047,7 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "diagram", motif: "dna_half", title: "薄まるDNA" };
   }
   if (
-    /(家系図ビジネス|系図|お作りします|創作|借り物|紙で証明|記録は、?ほとんど残|[0-9０-９]つ目、記録|記録の話|名前と記録)/.test(
+    /(系図|創作|借り物|紙で証明|記録は、?ほとんど残|[0-9０-９]つ目、記録|記録の話|名前と記録)/.test(
       sentence,
     )
   ) {

@@ -107,6 +107,12 @@ export function enforceRatios(
             personRotation[(personRotation.indexOf(out[i].motif) + 1) % personRotation.length];
           out[i].motif = next;
           log.push(`シーン${i}を${next}に変更 (同じ人物の絵の連続を散らすため)`);
+        } else if (i >= 2 && out[i - 2].type === out[i].type && out[i - 2].motif === out[i].motif) {
+          // 同じ図解が3連続以上 → 真ん中を人物のリアクションで区切る (2連続までは説明の続きとして許容)
+          const next = personRotation[i % personRotation.length];
+          out[i].type = "character";
+          out[i].motif = next;
+          log.push(`シーン${i}を${next}に変更 (同じ図解「${out[i - 1].motif}」の3連続を区切るため)`);
         }
       }
     }

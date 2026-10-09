@@ -54,10 +54,23 @@ export function voiceStyleFor(
   };
 }
 
+// VOICEVOXが読み間違える言葉の読み替え表 (字幕には影響しない。読み上げだけ直す)。
+// 上から順に適用するので、長い言葉 (藤原道長) を短い言葉 (道長) より先に書く。
+const TTS_READINGS: [RegExp, string][] = [
+  [/藤原道長/g, "ふじわらのみちなが"],
+  [/道長/g, "みちなが"], // 「みちちょう」と読まれる対策
+  [/重なり/g, "かさなり"], // 「じゅうなり」と読まれる対策
+  [/後一条天皇/g, "ごいちじょうてんのう"],
+  [/後朱雀天皇/g, "ごすざくてんのう"],
+  [/后の位/g, "きさきのくらい"],
+];
+
 // 読み上げ専用テキスト (字幕には影響しない)。
 // 「答えは」「つまり」などの後に読点を足し、大事な言葉の前にタメを作る。
 export function ttsTextFor(text: string): string {
-  return text.replace(/(答えは|つまり|実は|ところが|なんと)(?![、。])/g, "$1、");
+  let t = text.replace(/(答えは|つまり|実は|ところが|なんと)(?![、。])/g, "$1、");
+  for (const [pattern, reading] of TTS_READINGS) t = t.replace(pattern, reading);
+  return t;
 }
 
 // ログ用の短い説明 (どの話し方になったか一目でわかるように)

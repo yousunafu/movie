@@ -1668,8 +1668,348 @@ const ConceptScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   );
 };
 
+// ===== 台本の言葉に寄り添う絵 (2回目の総点検で追加した9種) =====
+
+// 掛け算と少しの想像力: 考える人の吹き出しに赤い×記号
+const MultiplyImagineScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const pop = useAppear(14);
+  const tw = Math.sin(frame / 9) * 4;
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <g stroke={SP.line} strokeWidth={6} fill="none">
+          <circle cx={820} cy={480} r={130} />
+          <path d="M 600 980 q 10 -220 220 -230 q 210 10 220 230" />
+        </g>
+        <circle cx={1000} cy={340} r={10} fill={SP.faint} />
+        <circle cx={1055} cy={290} r={14} fill={SP.faint} />
+        <g transform={`translate(1230, 210) scale(${pop})`}>
+          <ellipse rx={150} ry={110} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+          <text x={-44} y={34} textAnchor="middle" fontSize={100} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
+            ×
+          </text>
+          <text x={52} y={32} textAnchor="middle" fontSize={84} fontWeight={800} fill={SP.ink} fontFamily={SUURI_FONT}>
+            2
+          </text>
+        </g>
+        {[[1440, 120, -20], [1060, 100, 15], [1430, 330, 30]].map(([x, y, rot], i) => (
+          <g key={i} transform={`translate(${x}, ${y + tw}) rotate(${rot})`} opacity={pop}>
+            <path d="M 0 -16 L 4 -4 L 16 0 L 4 4 L 0 16 L -4 4 L -16 0 L -4 -4 Z" fill={SP.accentSoft} />
+          </g>
+        ))}
+      </svg>
+    </Frame>
+  );
+};
+
+// 数学の話: 黒板風の枠に数学記号が順に浮かぶ
+const MathTalkScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <Frame>
+      <DiagramTitle text={scene.title ?? "数学で考える"} />
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <rect
+          x={430}
+          y={300}
+          width={1060}
+          height={500}
+          rx={18}
+          fill={SP.panel}
+          stroke={SP.line}
+          strokeWidth={5}
+          opacity={appearAt(frame, fps, 8)}
+        />
+        {["×", "÷", "√", "=", "%"].map((s, i) => (
+          <text
+            key={i}
+            x={560 + i * 200}
+            y={590}
+            textAnchor="middle"
+            fontSize={120}
+            fontWeight={800}
+            fill={i === 0 ? SP.accent : SP.line}
+            fontFamily={SUURI_FONT}
+            opacity={appearAt(frame, fps, 20 + i * 10)}
+          >
+            {s}
+          </text>
+        ))}
+        <SmallLabel x={960} y={880} text="道具は掛け算と、少しの想像力だけ" size={34} />
+      </svg>
+    </Frame>
+  );
+};
+
+// 「正」の字で人数を数える
+const TallyScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <rect
+          x={510}
+          y={280}
+          width={900}
+          height={440}
+          rx={18}
+          fill={SP.panel}
+          stroke={SP.line}
+          strokeWidth={5}
+          opacity={appearAt(frame, fps, 6)}
+        />
+        {["正", "正", "正"].map((s, i) => (
+          <text
+            key={i}
+            x={680 + i * 280}
+            y={560}
+            textAnchor="middle"
+            fontSize={180}
+            fontWeight={700}
+            fill={i === 2 ? SP.accent : SP.line}
+            fontFamily={SUURI_SERIF}
+            opacity={appearAt(frame, fps, 16 + i * 12)}
+          >
+            {s}
+          </text>
+        ))}
+        <SmallLabel x={960} y={830} text="実際の人数を数えてみる" size={34} />
+      </svg>
+    </Frame>
+  );
+};
+
+// ごく普通の家と家族 (代々、普通の家系)
+const OrdinaryHouseScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const hp = appearAt(frame, fps, 8);
+  const fp = appearAt(frame, fps, 26);
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <g opacity={hp} stroke={SP.line} strokeWidth={6} fill="none">
+          <path d="M 560 560 L 800 380 L 1040 560" strokeLinejoin="round" />
+          <rect x={620} y={560} width={360} height={320} />
+          <rect x={760} y={700} width={90} height={180} />
+        </g>
+        <g opacity={fp}>
+          <Person x={1180} y={700} scale={1.6} />
+          <Person x={1320} y={720} scale={1.4} />
+          <Person x={1430} y={760} scale={1.0} />
+        </g>
+        <SmallLabel x={960} y={210} text="代々、ごく普通の家系" color={SP.ink} size={38} weight={700} />
+      </svg>
+    </Frame>
+  );
+};
+
+// あなたと父・母の小さな系図 (親は2人)
+const ParentsScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const you = appearAt(frame, fps, 8);
+  const pa = appearAt(frame, fps, 24);
+  const num = appearAt(frame, fps, 44);
+  return (
+    <Frame>
+      <DiagramTitle text={scene.title ?? "あなたの親は2人"} />
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <g stroke={SP.dim} strokeWidth={4} opacity={pa}>
+          <line x1={720} y1={490} x2={940} y2={630} />
+          <line x1={1200} y1={490} x2={980} y2={630} />
+        </g>
+        <g opacity={you}>
+          <Person x={960} y={690} scale={2.2} color={SP.accentSoft} />
+          <SmallLabel x={960} y={890} text="あなた" color={SP.accent} size={36} weight={800} />
+        </g>
+        <g opacity={pa}>
+          <Person x={720} y={360} scale={1.8} />
+          <SmallLabel x={720} y={560} text="父" color={SP.ink} size={34} weight={700} />
+          <Person x={1200} y={360} scale={1.8} />
+          <SmallLabel x={1200} y={560} text="母" color={SP.ink} size={34} weight={700} />
+        </g>
+        <g opacity={num}>
+          <text x={1510} y={450} textAnchor="middle" fontSize={110} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
+            2人
+          </text>
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// 倍々に高くなる棒グラフ (4人→8人→16人→32人)
+const NumberLadderScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const bars = [
+    { label: "祖父母", n: "4人", h: 90 },
+    { label: "曽祖父母", n: "8人", h: 180 },
+    { label: "その上", n: "16人", h: 300 },
+    { label: "さらに上", n: "32人", h: 460 },
+  ];
+  const baseY = 780;
+  return (
+    <Frame>
+      <DiagramTitle text={scene.title ?? "倍々に増える先祖"} />
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <line x1={420} y1={baseY} x2={1520} y2={baseY} stroke={SP.faint} strokeWidth={3} />
+        {bars.map((b, i) => {
+          const p = appearAt(frame, fps, 12 + i * 12);
+          const x = 500 + i * 270;
+          const red = i === bars.length - 1;
+          return (
+            <g key={i} opacity={p}>
+              <rect
+                x={x}
+                y={baseY - b.h * p}
+                width={150}
+                height={b.h * p}
+                fill={red ? SP.accent : SP.panel}
+                stroke={red ? SP.accent : SP.line}
+                strokeWidth={4}
+              />
+              <SmallLabel
+                x={x + 75}
+                y={baseY - b.h - 24}
+                text={b.n}
+                color={red ? SP.accent : SP.ink}
+                size={red ? 44 : 36}
+                weight={800}
+              />
+              <SmallLabel x={x + 75} y={baseY + 48} text={b.label} size={30} />
+              {i < bars.length - 1 && (
+                <SmallLabel x={x + 212} y={baseY - 180} text="×2" color={SP.accentSoft} size={38} weight={800} />
+              )}
+            </g>
+          );
+        })}
+      </svg>
+    </Frame>
+  );
+};
+
+// 現代→江戸→戦国→平安と時間をさかのぼる矢印
+const TimelineScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const lineP = appearAt(frame, fps, 8);
+  const eras = [
+    { x: 1420, name: "現代", sub: "いま", red: false },
+    { x: 1100, name: "江戸", sub: "約300年前", red: false },
+    { x: 780, name: "戦国", sub: "約450年前", red: false },
+    { x: 460, name: "平安", sub: "約1000年前", red: true },
+  ];
+  const y = 560;
+  return (
+    <Frame>
+      <DiagramTitle text={scene.title ?? "時間をさかのぼる"} />
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <line x1={1500} y1={y} x2={1500 - 1120 * lineP} y2={y} stroke={SP.line} strokeWidth={5} />
+        <path d={`M 380 ${y} l 34 -20 v 40 Z`} fill={SP.line} opacity={lineP} />
+        {eras.map((e, i) => {
+          const p = appearAt(frame, fps, 16 + i * 12);
+          return (
+            <g key={i} opacity={p}>
+              <circle cx={e.x} cy={y} r={e.red ? 20 : 14} fill={e.red ? SP.accent : SP.line} />
+              <SmallLabel
+                x={e.x}
+                y={y - 46}
+                text={e.name}
+                color={e.red ? SP.accent : SP.ink}
+                size={e.red ? 52 : 42}
+                weight={800}
+              />
+              <SmallLabel x={e.x} y={y + 80} text={e.sub} size={28} />
+            </g>
+          );
+        })}
+        <SmallLabel x={960} y={820} text="さかのぼるほど先祖の席は増えていく" size={32} />
+      </svg>
+    </Frame>
+  );
+};
+
+// 日本列島と当時の人口 (文中の「〜万人」をそのまま赤で見せる)
+const JapanPopScene: React.FC<{ scene: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const p = appearAt(frame, fps, 8);
+  const num = appearAt(frame, fps, 40);
+  const popText = scene.text.match(/約?[0-9０-９,，]+万人/)?.[0] ?? "約700万人";
+  const dots: [number, number][] = [
+    [620, 790], [700, 750], [820, 690], [900, 650], [980, 610],
+    [1060, 560], [1140, 500], [1220, 440], [1300, 380], [880, 720],
+    [1000, 670], [1100, 590], [760, 800], [1180, 530],
+  ];
+  return (
+    <Frame>
+      <DiagramTitle text={scene.title ?? "当時の日本の人口"} />
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <g opacity={p * 0.9} stroke={SP.dim} strokeWidth={4} fill="none">
+          <path d="M 540 860 Q 500 800 580 760 Q 660 730 720 760 Q 760 800 700 850 Q 620 890 540 860 Z" />
+          <path d="M 760 780 Q 740 700 840 640 Q 980 560 1120 480 Q 1240 410 1300 360 Q 1360 320 1380 360 Q 1360 440 1240 520 Q 1080 630 920 720 Q 820 770 760 780 Z" />
+          <path d="M 1380 240 Q 1360 180 1440 160 Q 1520 170 1500 250 Q 1450 300 1400 280 Z" />
+          <path d="M 880 760 Q 920 740 980 760 Q 960 800 900 800 Z" />
+        </g>
+        {dots.map(([x, y], i) => (
+          <circle key={i} cx={x} cy={y} r={9} fill={SP.line} opacity={appearAt(frame, fps, 14 + i * 3)} />
+        ))}
+        <g opacity={num}>
+          <text x={1340} y={760} textAnchor="middle" fontSize={92} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
+            {popText}
+          </text>
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// 先祖に深くおじぎする人 (感謝)
+const ThanksScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const anc = appearAt(frame, fps, 8);
+  const bow = appearAt(frame, fps, 20);
+  const tag = appearAt(frame, fps, 48);
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <g opacity={anc * 0.7}>
+          <Person x={420} y={260} scale={1.1} color={SP.faint} />
+          <Person x={560} y={200} scale={0.9} color={SP.faint} />
+          <Person x={690} y={160} scale={0.75} color={SP.faint} />
+          <Person x={800} y={130} scale={0.6} color={SP.faint} />
+        </g>
+        <g transform={`rotate(${-35 * bow}, 1060, 850)`}>
+          <Person x={1060} y={520} scale={5} />
+        </g>
+        <g opacity={tag}>
+          <text x={1340} y={520} textAnchor="middle" fontSize={96} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
+            感謝
+          </text>
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
 // motif名のゆらぎを吸収して代表名に寄せる
 const resolveSuuriMotif = (m: string): string | undefined => {
+  // 新しい9種は既存の判定より先に見る (multi→seat_share などの誤吸収を防ぐため順番が大事)
+  if (/multiply|imagin/.test(m)) return "multiply_imagine";
+  if (/math|calc|equation|formula|blackboard/.test(m)) return "math_talk";
+  if (/thanks|gratitude|pray|bow/.test(m)) return "thanks";
+  if (/tally|counting/.test(m)) return "tally";
+  if (/ordinary|house|home/.test(m)) return "ordinary_house";
+  if (/parents|father|mother/.test(m)) return "parents";
+  if (/ladder/.test(m)) return "number_ladder";
+  if (/timeline|history|edo|heian|era\b/.test(m)) return "timeline";
+  if (/population|japan_pop/.test(m)) return "japan_pop";
   if (/japan|nippon/.test(m)) return "japan_net";
   if (/doubling|pedigree|ancestor_tree|binary/.test(m)) return "doubling_tree";
   if (/exp|curve|billion|trillion|explos/.test(m)) return "exp_curve";
@@ -1729,6 +2069,15 @@ export const SuuriSceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
     if (m === "dna_half") return <DnaHalfScene scene={scene} />;
     if (m === "chain_lights") return <ChainLightsScene scene={scene} />;
     if (m === "roadmap") return <RoadmapScene scene={scene} />;
+    if (m === "multiply_imagine") return <MultiplyImagineScene />;
+    if (m === "math_talk") return <MathTalkScene scene={scene} />;
+    if (m === "tally") return <TallyScene />;
+    if (m === "ordinary_house") return <OrdinaryHouseScene />;
+    if (m === "parents") return <ParentsScene scene={scene} />;
+    if (m === "number_ladder") return <NumberLadderScene scene={scene} />;
+    if (m === "timeline") return <TimelineScene scene={scene} />;
+    if (m === "japan_pop") return <JapanPopScene scene={scene} />;
+    if (m === "thanks") return <ThanksScene />;
     if (m === "lottery") return <LotteryScene />;
     if (m === "scroll") return <ScrollScene />;
     if (m === "nengajo") return <NengajoScene />;

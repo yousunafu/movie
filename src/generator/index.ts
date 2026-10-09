@@ -150,7 +150,7 @@ async function main() {
   const endAudio = `audio/scene-end.${ext}`;
   const endDur = useVoicevox
     ? await synthesizeVoicevox(
-        closing,
+        ttsTextFor(closing),
         path.join(PUBLIC, endAudio),
         voiceStyleFor(closing, "card", "ending", true),
       )

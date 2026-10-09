@@ -42,14 +42,26 @@ export function enforceRatios(
     // 章扉カード (manabi / suuri): 章タイトルを宣言する文 (「第1章」などを含む) は
     // AIが type を揺らしても card + motif=chapter にそろえる
     if (preset === "manabi" || preset === "suuri") {
+      // 「第1章、〜」のように章タイトルを宣言する文だけ章扉にする。
+      // 「第1章で数え、第2章で〜」のような予告の文は章扉にしない (「章」の直後が読点・句点の時だけ)
+      const isChapterDecl = (s: string) => /第[0-9０-９一二三四五六七八九十]+章[、。]/.test(s);
       for (let i = 0; i < n - 1; i++) {
-        if (
-          /第[0-9０-９一二三四五六七八九十]+章/.test(sentences[i]) &&
-          !(out[i].type === "card" && out[i].motif === "chapter")
-        ) {
+        if (isChapterDecl(sentences[i]) && !(out[i].type === "card" && out[i].motif === "chapter")) {
           out[i].type = "card";
           out[i].motif = "chapter";
           log.push(`シーン${i}を章扉カードに変更`);
+        }
+        // 予告の文をAIが章扉カードにしていたら、機械割り当ての図解に戻す
+        if (
+          out[i].type === "card" &&
+          out[i].motif === "chapter" &&
+          !isChapterDecl(sentences[i])
+        ) {
+          const h = (preset === "suuri" ? suuriHeuristicAssign : manabiHeuristicAssign)(sentences[i]);
+          out[i].type = h.type === "card" ? "diagram" : h.type;
+          out[i].motif = h.type === "card" ? "concept" : h.motif;
+          if (h.title) out[i].title = h.title;
+          log.push(`シーン${i}の章扉カードを取り消し (章タイトルの宣言ではなく予告の文のため)`);
         }
         // クイズの出題宣言は控えめな出題カードにそろえる
         if (
@@ -94,6 +106,21 @@ export function enforceRatios(
       //  同じ図解の2連続も許さない — 連続は単調で視聴者が萎えるため)
       const themeAssign = preset === "suuri" ? suuriHeuristicAssign : manabiHeuristicAssign;
       const personRotation = ["thinking", "nodding", "surprised"];
+      // 文の調子に合うリアクションを選ぶ (驚きの文に thinking を当てない)。
+      // avoid に入っている絵 (直前・近くで使った絵) は飛ばして次の候補にする
+      const toneMotif = (text: string, avoid: string[]): string => {
+        const pick = /(実は|なんと|意外|驚|おかしい)/.test(text)
+          ? "surprised"
+          : /(だから|つまり|なのです|わけです|大丈夫)/.test(text)
+            ? "nodding"
+            : "thinking";
+        if (!avoid.includes(pick)) return pick;
+        for (let k = 1; k < personRotation.length; k++) {
+          const alt = personRotation[(personRotation.indexOf(pick) + k) % personRotation.length];
+          if (!avoid.includes(alt)) return alt;
+        }
+        return pick;
+      };
       for (let i = 1; i < n - 1; i++) {
         if (out[i].type === "card" || out[i - 1].type === "card") continue;
         if (out[i].motif !== out[i - 1].motif) continue;
@@ -103,17 +130,14 @@ export function enforceRatios(
           out[i].motif = h.motif;
           if (h.title) out[i].title = h.title;
           log.push(`シーン${i}を${h.motif}に変更 (同じ絵「${out[i - 1].motif}」の連続を散らすため)`);
-        } else if (out[i].type === "character") {
-          const next =
-            personRotation[(personRotation.indexOf(out[i].motif) + 1) % personRotation.length];
-          out[i].motif = next;
-          log.push(`シーン${i}を${next}に変更 (同じ人物の絵の連続を散らすため)`);
         } else {
-          // 文に合う別の絵が無い → 人物のリアクションで区切る (同じ図解は2連続もさせない)
-          const next = personRotation[i % personRotation.length];
+          // 文に合う別の絵が無い → 人物のリアクションで区切る (同じ図解・人物の2連続もさせない)
+          const avoid = [out[i - 1].motif];
+          if (i >= 2 && out[i - 2].type === "character") avoid.push(out[i - 2].motif);
+          const next = toneMotif(sentences[i], avoid);
           out[i].type = "character";
           out[i].motif = next;
-          log.push(`シーン${i}を${next}に変更 (同じ図解「${out[i - 1].motif}」の連続を区切るため)`);
+          log.push(`シーン${i}を${next}に変更 (同じ絵「${out[i - 1].motif}」の連続を区切るため)`);
         }
       }
     }

@@ -194,6 +194,8 @@ export const SUURI_PERSON_MOTIFS = [
   "surprised", // ハッと気づく人 (!マーク)。意外な事実・なんと・実は の文に
   "nodding", // 納得してうなずく人 (チェックマーク)。まとめ・だから・つまり の文に
   "unknown_farmer", // 名もなき農民・漁師のピクトグラム (名前が残らない人々)
+  "multiply_imagine", // 吹き出しに赤い×記号。掛け算と想像力で考える人
+  "thanks", // 先祖に向かって深くおじぎする人 (感謝の文に)
 ] as const;
 
 export const SUURI_OBJECT_MOTIFS = [
@@ -201,6 +203,8 @@ export const SUURI_OBJECT_MOTIFS = [
   "lottery", // 当たりくじ (絶滅の心配がない別格の家系)
   "scroll", // 家系図の巻物 (系図・家系図ビジネス・創作系図)
   "nengajo", // 年賀状のはがき (締めの乾いた一言)
+  "tally", // 「正」の字で数を数える (数字で確かめる文に)
+  "ordinary_house", // 普通の家と家族 (代々普通の家系、の文に)
 ] as const;
 
 export const SUURI_DIAGRAM_MOTIFS = [
@@ -222,6 +226,11 @@ export const SUURI_DIAGRAM_MOTIFS = [
   "dna_half", // DNAのバーが半分→4分の1→…とほぼ0%まで薄まる
   "chain_lights", // 千年の命のリレー。光の鎖が途切れず現代まで届く
   "roadmap", // 章の箱が横に並び順に点灯 (今日の流れ)
+  "math_talk", // 黒板風の枠に×÷√=%の記号 (数学の話・計算の文に)
+  "parents", // あなた+父と母の3人の系図 (親2人の文に)
+  "number_ladder", // 倍々に伸びる棒グラフ (4人→8人→16人と数字が増える文に)
+  "timeline", // 現代→江戸→戦国→平安の時間の矢印 (時代をさかのぼる文に)
+  "japan_pop", // 日本列島と人口の点 (当時の日本の人口の文に)
   "concept", // その他の図解
 ] as const;
 

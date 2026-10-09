@@ -278,6 +278,15 @@ ${ALL_SUURI_MOTIFS.join(", ")}
 - nengajo: 年賀状のはがき (年賀状の文に)
 - unknown_farmer: 名もなき農民・漁師のピクトグラム (名前が残っていない人々の文に)
 - village: 昔の村の全景 (昔の村・集落の文に)
+- multiply_imagine: 吹き出しに赤い掛け算記号が浮かぶ人 (掛け算と想像力で考える文に)
+- math_talk: 黒板風の枠に数学記号 (数学の話・計算・数理モデルの文に)
+- tally: 「正」の字で数を数える図 (数字で確かめる・人数を数える文に)
+- ordinary_house: 普通の家と家族 (代々普通の家系、という文に)
+- parents: あなたと父・母の3人の小さな系図 (親は2人、という文に)
+- number_ladder: 倍々に高くなる棒グラフ (4人→8人→16人と数字が並ぶ文に)
+- timeline: 現代→江戸→戦国→平安の時間の矢印 (時代をさかのぼる・何年前の文に)
+- japan_pop: 日本列島と人口の点 (当時の日本の人口は何人、という文に)
+- thanks: 先祖に深くおじぎする人 (感謝の文に)
 - question: 大きな「?」 (問いかけの文に) / roadmap: 章の箱が順に点灯する目次図 (今日の流れの文に)
 - thinking: 疑問に思う人 / surprised: ハッと気づく人 (なんと・実は の文に)
 - nodding: 納得してうなずく人 (だから・つまり のまとめの文に)
@@ -286,8 +295,12 @@ ${ALL_SUURI_MOTIFS.join(", ")}
 この作風だけの決まり:
 - 同じ題材が2文以上続かないように散らす。語り・つなぎの文は thinking ばかりにせず、
   文意に合わせて surprised / nodding / question などを使い分ける
+- 絵は文の言葉に細かく寄り添わせる。文中に「掛け算」とあれば multiply_imagine、
+  「親は2人」なら parents のように、その文で口にした物事が画面に見えるように選ぶ
 - 章の切り替え文 (「第1章」「第2章」のように章タイトルを宣言する文) は type を card、
   motif を chapter にして、title に章タイトルだけ (例: 先祖の倍々ゲーム) を入れる
+- ただし「第1章で数え、第2章で〜」のように複数の章をまとめて予告する文はカードにせず、
+  roadmap などの図解にする
 - クイズの出題を宣言する文 (「ここで問題です」「ここで2問目です」など) は type を card、motif を quiz にする
 - 「答えは〜」「つまり〜」のような核心の文と、最後の結論の文は card にして
   emphasis に核心の短い語句 (本文中にそのまま含まれる語) を入れる
@@ -883,8 +896,9 @@ export function keizaiHeuristicAssign(sentence: string): Assignment {
 // ===== suuri (数理・統計の図解) 用のキーワード機械割り当て =====
 // クイズの出題宣言は manabi と同じ決まり文句 (isManabiQuizText) を使う
 export function suuriHeuristicAssign(sentence: string): Assignment {
-  // 章の切り替え文 (「まず第1章、〜」など) は章扉カード
-  if (/第[0-9０-９一二三四五六七八九十]+章/.test(sentence)) {
+  // 章の切り替え文 (「まず第1章、〜」など) は章扉カード。
+  // 「第1章で数え、第2章で〜」のような予告の文は章扉にしない (「章」の直後に読点・句点がある時だけ)
+  if (/第[0-9０-９一二三四五六七八九十]+章[、。]/.test(sentence)) {
     return { type: "card", motif: "chapter" };
   }
   // クイズの出題宣言 (「さて、ここで問題です。」など) は控えめな出題カード
@@ -892,13 +906,28 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "card", motif: "quiz" };
   }
   // 核心の文・種明かしはカード (答えの数字もカードで見せる)
-  if (/(答えは|つまり|とは、|呼びます)/.test(sentence)) {
+  if (/(答えは|とは、|呼びます|ひとつにまとめ)/.test(sentence)) {
     const q = sentence.match(/「([^」]+)」/);
     return { type: "card", motif: "concept", emphasis: q?.[1] };
   }
-  // 家系・先祖テーマの図解
-  if (/(倍々|2倍に|それぞれ親|祖父母は[0-9０-９]|曽祖父母は[0-9０-９]|先祖の席.*増え)/.test(sentence)) {
-    return { type: "diagram", motif: "doubling_tree", title: "先祖の倍々ゲーム" };
+  // --- 文に寄り添う絵: 具体的な言葉から順に判定する (上にあるほど優先) ---
+  if (/(普通の家|代々、普通)/.test(sentence)) {
+    return { type: "object", motif: "ordinary_house" };
+  }
+  if (/(掛け算|少しの想像力)/.test(sentence)) {
+    return { type: "character", motif: "multiply_imagine" };
+  }
+  if (/(数学の話|数学的に|割り算|数理モデル|計算では|計算上)/.test(sentence)) {
+    return { type: "diagram", motif: "math_talk", title: "数学で考える" };
+  }
+  if (/(数字で確かめ|人数を数え)/.test(sentence)) {
+    return { type: "object", motif: "tally" };
+  }
+  if (/(父と母|[2２]人の親)/.test(sentence)) {
+    return { type: "diagram", motif: "parents", title: "あなたの親は2人" };
+  }
+  if (/(曽祖父母は[0-9０-９]|その上は[0-9０-９])/.test(sentence)) {
+    return { type: "diagram", motif: "number_ladder", title: "倍々に増える先祖" };
   }
   if (/(全校生徒|学校)/.test(sentence)) {
     return { type: "diagram", motif: "school", title: "1,024人のたとえ" };
@@ -906,41 +935,70 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(仙台|市の人口)/.test(sentence)) {
     return { type: "diagram", motif: "city_pop", title: "105万人のたとえ" };
   }
+  if (/軽く超え/.test(sentence)) {
+    return { type: "character", motif: "surprised" };
+  }
   if (/(地球|総人口|世界中の人類)/.test(sentence)) {
     return { type: "diagram", motif: "globe_pop", title: "地球の人口との比較" };
   }
-  if (/([0-9０-９]+代(さかのぼ|前)|約10億|1兆席)/.test(sentence)) {
+  if (/(江戸時代の中ごろ|というと、江戸|平安時代の後半|千年前という時間)/.test(sentence)) {
+    return { type: "diagram", motif: "timeline", title: "時間をさかのぼる" };
+  }
+  if (/(日本の人口は|日本の人口では)/.test(sentence)) {
+    return { type: "diagram", motif: "japan_pop", title: "当時の日本の人口" };
+  }
+  if (/([0-9０-９]+代(さかのぼ|前)|約10億|1兆席|席は10億)/.test(sentence)) {
     return { type: "diagram", motif: "exp_curve", title: "先祖の席の数" };
   }
-  if (/(掛け持ち|何度も座|[0-9０-９]+席の)/.test(sentence)) {
+  if (/(掛け持ち|何度も座|[0-9０-９]+席の|席を埋め)/.test(sentence)) {
     return { type: "diagram", motif: "seat_share", title: "同じ人が席を掛け持ち" };
   }
   if (/(はとこ|共通の曽祖父母|二重に登場)/.test(sentence)) {
     return { type: "diagram", motif: "hatoko", title: "はとこ婚の家系図" };
   }
+  if (
+    /(子孫.*(増え|広が|行き渡|飲み込)|子が[0-9０-９]人、孫|大繁栄|ばらま|孫からは|血筋.*広が)/.test(
+      sentence,
+    )
+  ) {
+    return { type: "diagram", motif: "descend_tree", title: "子孫の倍々ゲーム" };
+  }
+  if (
+    /(倍々|2倍に|それぞれ親|祖父母は[0-9０-９]|先祖の席.*増え|きれいな木|枝分かれ|先祖の数を数え)/.test(
+      sentence,
+    )
+  ) {
+    return { type: "diagram", motif: "doubling_tree", title: "先祖の倍々ゲーム" };
+  }
+  if (/(日本中|佐藤さん|親戚|合流|日本人全体|隣の人|みんな道長)/.test(sentence)) {
+    return { type: "diagram", motif: "japan_net", title: "日本はひとつの網" };
+  }
   if (/(網|絡み合|枝と枝|くっつ|収束)/.test(sentence)) {
     return { type: "diagram", motif: "net_merge", title: "木から網へ" };
-  }
-  if (/(日本中|佐藤さん|親戚|合流|日本人全体)/.test(sentence)) {
-    return { type: "diagram", motif: "japan_net", title: "日本はひとつの網" };
   }
   if (/(ポイントは?[0-9０-９三]つ|[0-9０-９]つあります)/.test(sentence)) {
     return { type: "diagram", motif: "three_points", title: "なぜ道長なのか" };
   }
-  if (/(子孫.*(増え|広が|行き渡|飲み込)|子が[0-9０-９]人、孫|大繁栄|ばらま)/.test(sentence)) {
-    return { type: "diagram", motif: "descend_tree", title: "子孫の倍々ゲーム" };
+  if (/[0-9０-９]つ目、千年前/.test(sentence)) {
+    return { type: "diagram", motif: "michinaga" };
   }
-  if (/(絶え|途絶|子に恵まれない|流行り病|残せて)/.test(sentence)) {
+  if (/(絶え|途絶|子に恵まれない|流行り病|残せていません)/.test(sentence)) {
     return { type: "diagram", motif: "extinct_line", title: "家系の断絶" };
   }
   if (/(きさき|后|天皇|一家三后)/.test(sentence)) {
     return { type: "diagram", motif: "crown", title: "一家三后" };
   }
-  if (/(くじ|当たり)/.test(sentence)) {
+  if (/くじ/.test(sentence)) {
     return { type: "object", motif: "lottery" };
   }
-  if (/(農民|漁師|名もなき|名前は、?誰|名前と記録)/.test(sentence)) {
+  if (/(命をつない|途切れず|積み重(ね|な)|リレー|千年間を)/.test(sentence)) {
+    return { type: "diagram", motif: "chain_lights", title: "千年の命のリレー" };
+  }
+  if (/(農民|漁師|名もなき|本当にすごいのは)/.test(sentence)) {
     return { type: "character", motif: "unknown_farmer" };
+  }
+  if (/誰ひとり知り/.test(sentence)) {
+    return { type: "object", motif: "question" };
   }
   if (/(経路|何本|何万本|たどり着け)/.test(sentence)) {
     return { type: "diagram", motif: "path_count", title: "道長への道" };
@@ -948,14 +1006,18 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(DNA|半分の半分|ほぼ0|面影|受け継)/.test(sentence)) {
     return { type: "diagram", motif: "dna_half", title: "薄まるDNA" };
   }
-  if (/(家系図ビジネス|系図|お作りします|創作|借り物|紙で証明|記録は、?ほとんど残)/.test(sentence)) {
+  if (
+    /(家系図ビジネス|系図|お作りします|創作|借り物|紙で証明|記録は、?ほとんど残|[0-9０-９]つ目、記録|記録の話|名前と記録)/.test(
+      sentence,
+    )
+  ) {
     return { type: "object", motif: "scroll" };
   }
-  if (/(命をつない|途切れず|積み重ね|リレー|千年間を)/.test(sentence)) {
-    return { type: "diagram", motif: "chain_lights", title: "千年の命のリレー" };
-  }
-  if (/年賀状/.test(sentence)) {
+  if (/(年賀状|正月)/.test(sentence)) {
     return { type: "object", motif: "nengajo" };
+  }
+  if (/感謝/.test(sentence)) {
+    return { type: "character", motif: "thanks" };
   }
   if (/(昔の村|村では)/.test(sentence)) {
     return { type: "location", motif: "village" };
@@ -963,14 +1025,20 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/([0-9０-９]+つの章|章で|今日の流れ)/.test(sentence)) {
     return { type: "diagram", motif: "roadmap", title: "今日の流れ" };
   }
-  if (/道長/.test(sentence)) {
+  if (/(道長|この世をば|望月)/.test(sentence)) {
     return { type: "diagram", motif: "michinaga" };
+  }
+  if (/(どう考えても|何かがおかしい)/.test(sentence)) {
+    return { type: "character", motif: "thinking" };
+  }
+  if (/核心/.test(sentence)) {
+    return { type: "object", motif: "question" };
   }
   if (/(でしょうか|だろうか)[。]?$/.test(sentence)) {
     return { type: "object", motif: "question" };
   }
   // 語り・つなぎの文のバリエーション
-  if (/(なんと|実は|意外に|驚く|おかしい)/.test(sentence)) {
+  if (/(なんと|実は|意外に|驚く|おかしい|奇跡)/.test(sentence)) {
     return { type: "character", motif: "surprised" };
   }
   if (/(だから|そのため|というわけ|なのです。?$|大丈夫です)/.test(sentence)) {

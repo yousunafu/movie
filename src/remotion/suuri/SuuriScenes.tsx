@@ -1442,9 +1442,9 @@ const DescendTreeScene: React.FC<{ scene: Scene; variant?: number }> = ({ scene,
         ) : (
           <>
             {[880, 960, 1040].map((x, i) => (
-              <circle key={i} cx={x} cy={800} r={8} fill={SP.faint} opacity={appearAt(frame, fps, 70 + i * 6)} />
+              <circle key={i} cx={x} cy={752} r={8} fill={SP.faint} opacity={appearAt(frame, fps, 70 + i * 6)} />
             ))}
-            <SmallLabel x={960} y={880} text={label} color={SP.accent} size={36} weight={800} />
+            <SmallLabel x={960} y={800} text={label} color={SP.accent} size={36} weight={800} />
           </>
         )}
       </svg>
@@ -2291,18 +2291,18 @@ const NeighborMergeScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       <DiagramTitle text={scene.title ?? "隣の家ともどこかで合流"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <g opacity={houses} stroke={SP.line} strokeWidth={5} fill="none" strokeLinejoin="round">
-          <path d={housePath(600, 880)} />
-          <path d={housePath(1320, 880)} />
+          <path d={housePath(600, 800)} />
+          <path d={housePath(1320, 800)} />
         </g>
         <g opacity={houses}>
-          <SmallLabel x={600} y={930} text="あなたの家" color={SP.ink} size={34} weight={700} />
-          <SmallLabel x={1320} y={930} text="隣の佐藤さんの家" color={SP.ink} size={34} weight={700} />
+          <SmallLabel x={600} y={856} text="あなたの家" color={SP.ink} size={34} weight={700} />
+          <SmallLabel x={1320} y={856} text="隣の佐藤さんの家" color={SP.ink} size={34} weight={700} />
         </g>
         <g opacity={lines} stroke={SP.dim} strokeWidth={4} fill="none">
-          <path d="M 600 740 Q 560 620 700 540 Q 840 470 940 420" />
-          <path d="M 640 740 Q 700 600 820 520 Q 920 460 945 430" />
-          <path d="M 1320 740 Q 1360 620 1220 540 Q 1080 470 980 420" />
-          <path d="M 1280 740 Q 1220 600 1100 520 Q 1000 460 975 430" />
+          <path d="M 600 660 Q 560 580 700 520 Q 840 460 940 415" />
+          <path d="M 640 660 Q 700 570 820 505 Q 920 455 945 425" />
+          <path d="M 1320 660 Q 1360 580 1220 520 Q 1080 460 980 415" />
+          <path d="M 1280 660 Q 1220 570 1100 505 Q 1000 455 975 425" />
         </g>
         <g opacity={merge}>
           <circle cx={960} cy={400} r={20} fill={SP.accent} />

@@ -89,8 +89,9 @@ export function enforceRatios(
       }
     }
     if (preset === "manabi" || preset === "suuri") {
-      // 同じ絵の連続を散らす: 直前と同じ motif が続いたら別の絵に差し替える
-      // (card は除く。まず機械割り当てで文に合う絵を探し、無ければ人物のバリエーションを順繰りに使う)
+      // 同じ絵の連続を散らす: 直前と同じ motif が続いたら必ず別の絵に差し替える
+      // (card は除く。まず機械割り当てで文に合う絵を探し、無ければ人物のリアクションで区切る。
+      //  同じ図解の2連続も許さない — 連続は単調で視聴者が萎えるため)
       const themeAssign = preset === "suuri" ? suuriHeuristicAssign : manabiHeuristicAssign;
       const personRotation = ["thinking", "nodding", "surprised"];
       for (let i = 1; i < n - 1; i++) {
@@ -107,12 +108,12 @@ export function enforceRatios(
             personRotation[(personRotation.indexOf(out[i].motif) + 1) % personRotation.length];
           out[i].motif = next;
           log.push(`シーン${i}を${next}に変更 (同じ人物の絵の連続を散らすため)`);
-        } else if (i >= 2 && out[i - 2].type === out[i].type && out[i - 2].motif === out[i].motif) {
-          // 同じ図解が3連続以上 → 真ん中を人物のリアクションで区切る (2連続までは説明の続きとして許容)
+        } else {
+          // 文に合う別の絵が無い → 人物のリアクションで区切る (同じ図解は2連続もさせない)
           const next = personRotation[i % personRotation.length];
           out[i].type = "character";
           out[i].motif = next;
-          log.push(`シーン${i}を${next}に変更 (同じ図解「${out[i - 1].motif}」の3連続を区切るため)`);
+          log.push(`シーン${i}を${next}に変更 (同じ図解「${out[i - 1].motif}」の連続を区切るため)`);
         }
       }
     }

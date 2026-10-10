@@ -396,6 +396,8 @@ const ChapterCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   let titleText = (scene.title ?? "").replace(CHAPTER_NUM_RE, "").replace(/^[、。:：\s]+/, "").trim();
   if (!titleText) {
     titleText = scene.text
+      // 「いよいよ第3章」「最後の第4章」など、章番号より前の前置きはまるごと削る
+      .replace(new RegExp(`^.*?${CHAPTER_NUM_RE.source}`), "")
       .replace(/^(まず|第一に|ここからは|次は|次に|続いて|最後に|さて|それでは)[、\s]*/, "")
       .replace(CHAPTER_NUM_RE, "")
       .replace(/^[はもで]?[、\s]*/, "")

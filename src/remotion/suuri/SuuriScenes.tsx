@@ -13,136 +13,57 @@ import {
 } from "remotion";
 import type { Scene } from "../../types";
 import { SUURI_CHANNEL } from "../../channel";
+import { SUURI_SUSHI_MOTIFS } from "../../motifs";
 import { ImageScene } from "../scenes/ImageScene";
 import { wrapJa } from "../wrapJa";
 
-// 数理室の配色 (黒・白・赤の3色だけで律する)
-export const SP = {
-  background: "#0A0A0C", // ほぼ真っ黒
-  panel: "#16161B", // 少し明るい面
-  ink: "#F2F2F4", // 白い文字
-  line: "#E2E2E8", // 線画の白
-  faint: "#70707C", // 補足の薄い文字・目盛り
-  dim: "#3A3A44", // 消えた線・背景の枝
-  accent: "#D63B3B", // 強調の赤
-  accentSoft: "#E8625A",
-} as const;
+// 共通の部品 (配色・枠・ピクトグラム・出現アニメ・和紙モード) は parts.tsx に集約した
+import {
+  SP,
+  SUURI_FONT,
+  SUURI_SERIF,
+  W,
+  H,
+  Frame,
+  DiagramTitle,
+  Person,
+  SmallLabel,
+  useAppear,
+  appearAt,
+} from "./parts";
 
-export const SUURI_FONT =
-  "'Noto Sans JP', 'Noto Sans CJK JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif";
-export const SUURI_SERIF =
-  "'Noto Serif JP', 'Noto Serif CJK JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif";
+// Video.tsx など外から使う口は従来どおり SuuriScenes から import できるよう再輸出
+export { SP, SUURI_FONT, SUURI_SERIF, WashiCtx } from "./parts";
 
-const W = 1920;
-const H = 1080;
-
-// ===== 共通の部品 =====
-
-const Header: React.FC = () => (
-  <div
-    style={{
-      position: "absolute",
-      top: 34,
-      left: 60,
-      fontFamily: SUURI_FONT,
-      fontSize: 26,
-      letterSpacing: 4,
-      color: SP.faint,
-    }}
-  >
-    <span style={{ color: SP.accent }}>—</span> {SUURI_CHANNEL.name}
-  </div>
-);
-
-const Frame: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <AbsoluteFill style={{ backgroundColor: SP.background }}>
-    {children}
-    <Header />
-  </AbsoluteFill>
-);
-
-// 図解の見出し (上部中央・赤い細線つき)
-const DiagramTitle: React.FC<{ text?: string }> = ({ text }) => {
-  if (!text) return null;
-  return (
-    <div
-      style={{
-        position: "absolute",
-        top: 90,
-        width: "100%",
-        textAlign: "center",
-        fontFamily: SUURI_FONT,
-        fontSize: 44,
-        fontWeight: 700,
-        color: SP.ink,
-        letterSpacing: 2,
-      }}
-    >
-      {text}
-      <div
-        style={{
-          width: 64,
-          height: 4,
-          background: SP.accent,
-          margin: "18px auto 0",
-          borderRadius: 2,
-        }}
-      />
-    </div>
-  );
-};
-
-// 人のピクトグラム (頭+肩)。(x, y) が頭の中心
-const Person: React.FC<{
-  x: number;
-  y: number;
-  scale?: number;
-  color?: string;
-  fill?: boolean;
-  opacity?: number;
-}> = ({ x, y, scale = 1, color = SP.line, fill = false, opacity = 1 }) => (
-  <g transform={`translate(${x}, ${y}) scale(${scale})`} opacity={opacity}>
-    <circle r={16} fill={fill ? color : "none"} stroke={color} strokeWidth={5} />
-    <path
-      d="M -26 66 q 2 -34 26 -36 q 24 2 26 36 Z"
-      fill={fill ? color : "none"}
-      stroke={color}
-      strokeWidth={5}
-      strokeLinejoin="round"
-    />
-  </g>
-);
-
-// 小さなラベル
-const SmallLabel: React.FC<{
-  x: number;
-  y: number;
-  text: string;
-  color?: string;
-  size?: number;
-  anchor?: "start" | "middle" | "end";
-  weight?: number;
-}> = ({ x, y, text, color = SP.faint, size = 32, anchor = "middle", weight = 400 }) => (
-  <text
-    x={x}
-    y={y}
-    textAnchor={anchor}
-    fill={color}
-    fontSize={size}
-    fontWeight={weight}
-    fontFamily={SUURI_FONT}
-    letterSpacing={2}
-  >
-    {text}
-  </text>
-);
-
-// 出現アニメの進み (spring)
-const useAppear = (delay: number) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  return Math.max(spring({ frame: frame - delay, fps, config: { damping: 16 } }), 0);
-};
+// 37%ルール回 (回転寿司×結婚) の専用シーン
+import {
+  SushiLaneScene,
+  OnePlateScene,
+  NoReturnScene,
+  OtoroScene,
+  MaguroScene,
+  PassAllScene,
+  GariScene,
+  RegretBalanceScene,
+  MarriageMathScene,
+  LookOnlyScene,
+  MonosashiScene,
+  GrabBestScene,
+  CutoffLineScene,
+  ChutoroTrapScene,
+  OtoroLostScene,
+  PlusOneScene,
+  GainFadeScene,
+  CostVsGainScene,
+  SuccessMountainScene,
+  EulerEScene,
+  YamakanScene,
+  AgeTimelineScene,
+  HumanNotSushiScene,
+  ManySidesScene,
+  PersonFleesScene,
+  ApplyAnywhereScene,
+} from "./SushiScenes";
 
 // ===== 語り・つなぎの人物 =====
 
@@ -644,9 +565,7 @@ const SuuriCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
 };
 
 // ===== ここから図解 (この作風の主役) =====
-// spring進行 (フック無し版。ループの中で使うため)
-const appearAt = (frame: number, fps: number, delay: number) =>
-  Math.max(spring({ frame: frame - delay, fps, config: { damping: 16 } }), 0);
+// (spring進行のフック無し版 appearAt は parts.tsx から import 済み)
 
 // 倍々ゲームの家系図: あなたから上へ 2人→4人→8人→16人 と倍増。
 // variant で木が1段育って32人まで伸びる
@@ -1733,7 +1652,8 @@ const RoadmapScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const labels = (scene.items?.map((it) => it.label).filter(Boolean) ?? []).slice(0, 4);
-  const texts = labels.length >= 2 ? labels : ["先祖の倍々ゲーム", "人数が合わない謎", "なぜ道長なのか", "それでも奇跡"];
+  // 章名は items で渡される (enforce.ts が台本の章宣言から補完)。無い時は章番号だけ見せる
+  const texts = labels.length >= 2 ? labels : ["", "", "", ""];
   return (
     <Frame>
       <DiagramTitle text={scene.title ?? "今日の道のり"} />
@@ -2603,6 +2523,34 @@ const YouHereScene: React.FC<{ scene: Scene }> = ({ scene }) => {
 
 // motif名のゆらぎを吸収して代表名に寄せる
 const resolveSuuriMotif = (m: string): string | undefined => {
+  // 寿司回 (37%ルール) の題材をいちばん先に見る
+  // (marriage→hatoko / house_hunt→ordinary_house などの誤吸収を防ぐため順番が大事)
+  if (/human_not|not_sushi/.test(m)) return "human_not_sushi";
+  if (/chutoro|nise|trap/.test(m)) return "chutoro_trap";
+  if (/otoro_lost|lost_otoro|lost|gone_chance/.test(m)) return "otoro_lost";
+  if (/otoro|\btoro\b/.test(m)) return "otoro";
+  if (/maguro|tuna/.test(m)) return "maguro";
+  if (/gari|ginger/.test(m)) return "gari";
+  if (/pass_all|see_off|last_plate|miokuri/.test(m)) return "pass_all";
+  if (/one_plate|single_plate|one_dish/.test(m)) return "one_plate";
+  if (/no_return|irrevers|cant_go_back/.test(m)) return "no_return";
+  if (/sushi|kaiten|conveyor|lane/.test(m)) return "sushi_lane";
+  if (/regret|seesaw/.test(m)) return "regret_balance";
+  if (/marriage|partner_choice|propose/.test(m)) return "marriage_math";
+  if (/look_?only|watch_only|observe_time/.test(m)) return "lookonly";
+  if (/monosashi|ruler|yardstick|benchmark|measuring/.test(m)) return "monosashi";
+  if (/grab|take_best|best_so_far|reach_out/.test(m)) return "grab_best";
+  if (/cutoff|boundary_line|threshold|how_long/.test(m)) return "cutoff_line";
+  if (/plus_one|one_more|extend/.test(m)) return "plus_one";
+  if (/cost/.test(m)) return "cost_vs_gain"; // cost_vs_gain は gain より先に
+  if (/gain|diminish|fading|saturat/.test(m)) return "gain_fade";
+  if (/success|mountain|peak|summit/.test(m)) return "success_mountain";
+  if (/euler|napier|2718|number_e/.test(m)) return "euler_e";
+  if (/yamakan|blind_guess|random_pick|guess/.test(m)) return "yamakan";
+  if (/age_timeline|age_axis|\bage\b/.test(m)) return "age_timeline";
+  if (/many_sides|facet|multi_?sided|charm/.test(m)) return "many_sides";
+  if (/flee|run_away|escape/.test(m)) return "person_flees";
+  if (/apply|anywhere|house_hunt|job_hunt|everywhere/.test(m)) return "apply_anywhere";
   // 文に寄り添う10種は最優先 (emperor_grandsons→crown などの誤吸収を防ぐため順番が大事)
   if (/hierarchy|pyramid|apex|power_top/.test(m)) return "hierarchy_top";
   if (/neighbor|sato/.test(m)) return "neighbor_merge";
@@ -2662,11 +2610,102 @@ export const computeSuuriVariants = (scenes: Scene[]): number[] => {
   const seen = new Map<string, number>();
   return scenes.map((s) => {
     const m = resolveSuuriMotif(s.motif ?? "") ?? s.motif ?? "";
-    const key = `${s.type === "card" || s.type === "chart" ? s.type + ":" : ""}${m}`;
+    // 寿司題材は chart 型でも同じ絵 (育つ仕組み) を使うので、通し番号で数える
+    const key = (SUURI_SUSHI_MOTIFS as readonly string[]).includes(m)
+      ? s.type === "card"
+        ? `card:${m}`
+        : m
+      : `${s.type === "card" || s.type === "chart" ? s.type + ":" : ""}${m}`;
     const n = seen.get(key) ?? 0;
     seen.set(key, n + 1);
     return n;
   });
+};
+
+// ===== 和紙背景モードの場面判定 =====
+// 「寿司の絵」は和紙に墨、「数学の絵」は黒に白、で場面ごとに切り替える。
+// 題材を 和紙/黒/中立 に分類し、中立は前の場面を引き継ぐ。章扉は次の場面を先取りする。
+const WASHI_MOTIFS = new Set([
+  "sushi_lane",
+  "one_plate",
+  "no_return",
+  "otoro",
+  "maguro",
+  "pass_all",
+  "gari",
+  "regret_balance",
+  "lookonly",
+  "monosashi",
+  "grab_best",
+  "cutoff_line",
+  "chutoro_trap",
+  "otoro_lost",
+]);
+const DARK_MOTIFS = new Set([
+  "plus_one",
+  "gain_fade",
+  "cost_vs_gain",
+  "success_mountain",
+  "euler_e",
+  "yamakan",
+  "age_timeline",
+  "human_not_sushi",
+  "many_sides",
+  "person_flees",
+  "apply_anywhere",
+  "math_talk",
+]);
+
+export const computeSuuriWashi = (scenes: Scene[]): boolean[] => {
+  const n = scenes.length;
+  // 1) 題材で 和紙(true)/黒(false)/中立(undefined) に分類
+  const raw: (boolean | undefined)[] = scenes.map((s) => {
+    if (s.isEnding || s.image) return undefined;
+    const m = resolveSuuriMotif(s.motif ?? "") ?? s.motif ?? "";
+    if (WASHI_MOTIFS.has(m)) return true;
+    if (DARK_MOTIFS.has(m)) return false;
+    return undefined;
+  });
+  // 2) 中立を埋める: 章扉は「次の分類」を先取り、それ以外は前を引き継ぐ (冒頭は黒)
+  const filled: boolean[] = new Array(n).fill(false);
+  let prev = false;
+  for (let i = 0; i < n; i++) {
+    if (raw[i] !== undefined) {
+      prev = raw[i] as boolean;
+      filled[i] = prev;
+      continue;
+    }
+    if (scenes[i].type === "card" && scenes[i].motif === "chapter") {
+      let v: boolean = prev;
+      for (let j = i + 1; j < n; j++) {
+        if (raw[j] !== undefined) {
+          v = raw[j] as boolean;
+          break;
+        }
+      }
+      prev = v;
+    }
+    filled[i] = prev;
+  }
+  // 3) ならし: 2場面以下の飛び地は周りに合わせる (背景が目まぐるしく変わるのを防ぐ)
+  const out = filled.slice();
+  let i = 0;
+  while (i < n) {
+    let j = i;
+    while (j < n && out[j] === out[i]) j++;
+    if (j - i <= 2 && i > 0 && j < n && out[i - 1] === out[j]) {
+      for (let k = i; k < j; k++) out[k] = out[i - 1];
+    }
+    i = j;
+  }
+  // 4) 最後のまとめは和紙に戻る: 終盤8場面の中で最初に寿司の絵が出た所から最後まで和紙
+  for (let k = Math.max(0, n - 8); k < n; k++) {
+    if (raw[k] === true) {
+      for (let t = k; t < n; t++) out[t] = true;
+      break;
+    }
+  }
+  return out;
 };
 
 export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ scene, variant = 0 }) => {
@@ -2676,6 +2715,37 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
   if (scene.isEnding) return <SuuriCardScene scene={scene} />;
 
   const m = resolveSuuriMotif(scene.motif ?? "") ?? scene.motif;
+  // --- 寿司回 (37%ルール): カード以外なら type が chart でも専用の絵を出す ---
+  // (gain_fade などは機械割り当てが type=chart を返すが、汎用チャートに落とさない)
+  if (scene.type !== "card") {
+    if (m === "sushi_lane") return <SushiLaneScene scene={scene} variant={variant} />;
+    if (m === "one_plate") return <OnePlateScene scene={scene} variant={variant} />;
+    if (m === "no_return") return <NoReturnScene scene={scene} variant={variant} />;
+    if (m === "otoro") return <OtoroScene scene={scene} variant={variant} />;
+    if (m === "maguro") return <MaguroScene scene={scene} variant={variant} />;
+    if (m === "pass_all") return <PassAllScene scene={scene} variant={variant} />;
+    if (m === "gari") return <GariScene scene={scene} variant={variant} />;
+    if (m === "regret_balance") return <RegretBalanceScene scene={scene} />;
+    if (m === "marriage_math") return <MarriageMathScene scene={scene} variant={variant} />;
+    if (m === "lookonly") return <LookOnlyScene scene={scene} variant={variant} />;
+    if (m === "monosashi") return <MonosashiScene scene={scene} variant={variant} />;
+    if (m === "grab_best") return <GrabBestScene scene={scene} variant={variant} />;
+    if (m === "cutoff_line") return <CutoffLineScene scene={scene} variant={variant} />;
+    if (m === "chutoro_trap") return <ChutoroTrapScene scene={scene} variant={variant} />;
+    if (m === "otoro_lost") return <OtoroLostScene scene={scene} variant={variant} />;
+    if (m === "plus_one") return <PlusOneScene scene={scene} variant={variant} />;
+    if (m === "gain_fade") return <GainFadeScene scene={scene} variant={variant} />;
+    if (m === "cost_vs_gain") return <CostVsGainScene scene={scene} variant={variant} />;
+    if (m === "success_mountain") return <SuccessMountainScene scene={scene} variant={variant} />;
+    if (m === "euler_e") return <EulerEScene scene={scene} variant={variant} />;
+    if (m === "yamakan") return <YamakanScene scene={scene} variant={variant} />;
+    if (m === "age_timeline") return <AgeTimelineScene scene={scene} variant={variant} />;
+    if (m === "human_not_sushi") return <HumanNotSushiScene scene={scene} variant={variant} />;
+    if (m === "many_sides") return <ManySidesScene scene={scene} variant={variant} />;
+    if (m === "person_flees") return <PersonFleesScene scene={scene} />;
+    if (m === "apply_anywhere") return <ApplyAnywhereScene scene={scene} variant={variant} />;
+  }
+  // --- ここまで寿司回 ---
   // 題材 (motif) を型より優先して拾う。AIが type を揺らしても専用の絵が出るように
   if (scene.type !== "card" && scene.type !== "chart") {
     if (m === "hierarchy_top") return <HierarchyTopScene scene={scene} />;

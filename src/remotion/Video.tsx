@@ -31,7 +31,7 @@ import {
   kouzouCardShowsFullText,
 } from "./kouzou/KouzouScenes";
 import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
-import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, computeSuuriVariants } from "./suuri/SuuriScenes";
+import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, computeSuuriVariants, computeSuuriWashi, WashiCtx } from "./suuri/SuuriScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -89,8 +89,9 @@ const Subtitle: React.FC<{
   kouzou?: boolean;
   keizai?: boolean;
   suuri?: boolean;
+  washi?: boolean; // suuri の和紙背景モード (字幕を墨色にする)
   highlight?: string;
-}> = ({ text, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, highlight }) => {
+}> = ({ text, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, washi, highlight }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
@@ -217,9 +218,14 @@ const Subtitle: React.FC<{
           fontFamily: ashi ? ASHI_FONT : manabi ? MANABI_FONT : suuri ? SUURI_FONT : FONT,
           fontSize: SUBTITLE.fontSize,
           fontWeight: SUBTITLE.weight,
-          color: ashi ? AP.sub : manabi ? MP.ink : suuri ? SP.ink : PALETTE.subtitle,
+          color: ashi ? AP.sub : manabi ? MP.ink : suuri ? (washi ? "#2A2622" : SP.ink) : PALETTE.subtitle,
           lineHeight: 1.55,
-          textShadow: ashi || manabi || suuri ? "0 2px 12px rgba(0,0,0,0.9)" : undefined,
+          textShadow:
+            suuri && washi
+              ? "0 2px 10px rgba(242, 235, 219, 0.9)"
+              : ashi || manabi || suuri
+                ? "0 2px 12px rgba(0,0,0,0.9)"
+                : undefined,
           // 画像の上では、読みやすいよう帯を敷く
           backgroundColor: onImage ? band : undefined,
           boxShadow: onImage ? `0 0 0 14px ${band}` : undefined,
@@ -243,6 +249,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const isSuuri = data.preset === "suuri";
   // suuri: 同じ絵の2回目以降は姿を変える (絵が育つ仕組み)
   const suuriVariants = isSuuri ? computeSuuriVariants(data.scenes) : [];
+  // suuri: 寿司の場面だけ和紙背景にする (題材から場面ごとに判定)
+  const suuriWashi = isSuuri ? computeSuuriWashi(data.scenes) : [];
   if (data.scenes.length === 0) {
     return (
       <AbsoluteFill
@@ -333,7 +341,9 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
               ) : isKeizai ? (
                 <KeizaiSceneView scene={scene} />
               ) : isSuuri ? (
-                <SuuriSceneView scene={scene} variant={suuriVariants[sceneI] ?? 0} />
+                <WashiCtx.Provider value={suuriWashi[sceneI] ?? false}>
+                  <SuuriSceneView scene={scene} variant={suuriVariants[sceneI] ?? 0} />
+                </WashiCtx.Provider>
               ) : (
                 <SceneView scene={scene} />
               )}
@@ -352,6 +362,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   kouzou={isKouzou}
                   keizai={isKeizai}
                   suuri={isSuuri}
+                  washi={isSuuri && (suuriWashi[sceneI] ?? false)}
                   highlight={v2 ? scene.emphasis : undefined}
                 />
               )}

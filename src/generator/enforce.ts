@@ -14,7 +14,7 @@ import {
   isManabiQuizText,
   findFoodMotif,
 } from "./assign";
-import { OBJECT_MOTIFS } from "../motifs";
+import { OBJECT_MOTIFS, SUURI_GROW_MOTIFS } from "../motifs";
 import type { Preset } from "../channel";
 
 export function enforceRatios(
@@ -73,6 +73,24 @@ export function enforceRatios(
           log.push(`シーン${i}をクイズ出題カードに変更`);
         }
       }
+      // 目次図 (roadmap) の章名は、台本の章宣言文から拾って items に埋める
+      // (埋めないと絵の部品側が前回動画の章名で描いてしまうため)
+      const chapterTitles: string[] = [];
+      for (let i = 0; i < n; i++) {
+        if (!(out[i].type === "card" && out[i].motif === "chapter")) continue;
+        const m = sentences[i].match(
+          /第[0-9０-９一二三四五六七八九十]+章[、。]\s*(.+?)(?:です)?[。]?$/,
+        );
+        if (m) chapterTitles.push(m[1]);
+      }
+      if (chapterTitles.length >= 2) {
+        for (let i = 0; i < n; i++) {
+          if (out[i].motif !== "roadmap") continue;
+          if ((out[i].items?.length ?? 0) >= 2) continue;
+          out[i].items = chapterTitles.map((label) => ({ label }));
+          log.push(`シーン${i}の目次図に章名を補完 (${chapterTitles.join("・")})`);
+        }
+      }
     }
     // kouzou: カードは「章の切り替えの短い文」と「最後の結論」だけ。
     // それ以外の文に AI が card を割り当てていたら図解に戻す (本編は図解で見せる)
@@ -124,6 +142,9 @@ export function enforceRatios(
       for (let i = 1; i < n - 1; i++) {
         if (out[i].type === "card" || out[i - 1].type === "card") continue;
         if (out[i].motif !== out[i - 1].motif) continue;
+        // suuri の寿司題材は「同じ絵が段階的に育つ」設計なので、連続をそのまま許す
+        // (SushiScenes.tsx の variant で 2回目以降は別の絵に変わる)
+        if (preset === "suuri" && SUURI_GROW_MOTIFS.includes(out[i].motif)) continue;
         const h = themeAssign(sentences[i]);
         if (h.type !== "card" && h.motif !== out[i].motif) {
           out[i].type = h.type;

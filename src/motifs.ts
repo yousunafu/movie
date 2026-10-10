@@ -248,11 +248,70 @@ export const SUURI_LOCATION_MOTIFS = [
   "village", // 昔の村の全景 (藁ぶき屋根と田畑)
 ] as const;
 
+// 37%ルール (回転寿司×結婚) 回の題材。寿司の絵は和紙背景モードで描かれる
+export const SUURI_SUSHI_MOTIFS = [
+  "sushi_lane", // 回転寿司のレーンと流れる皿 (お店の紹介・レーンの前に座る)
+  "one_plate", // 取れるのは一生に1皿だけ、のルール図 (1皿だけ赤く灯る)
+  "no_return", // 見送った皿は戻らない (戻る矢印に赤い×)。お断りした人・気まずい にも
+  "otoro", // 輝く大トロの皿 (目標・まだ見ぬ大トロ・70皿目の大トロ)
+  "maguro", // 1皿目のマグロ (取りますか?と手が伸びる)
+  "pass_all", // 全部見送る (×付きの皿の列・最後の1皿のサスペンス)
+  "gari", // ガリの皿 (ガリでした・ガリと添い遂げる)
+  "regret_balance", // 天秤: 早く取る後悔 vs 待ちすぎる後悔
+  "marriage_math", // 寿司の皿と人が対応する図 (結婚相手選びとそっくり・一人ずつ)
+  "lookonly", // 見るだけタイム (皿を見つめる目・絶対に取らない)
+  "monosashi", // ものさしが育つ図 (店のレベルのものさし。甘い→完璧→もう伸びない)
+  "grab_best", // 過去最高ラインを超えた皿に即、手を伸ばす図
+  "cutoff_line", // 0〜100皿の帯と区切り線 (短すぎ×・長すぎ×・ちょうどいいは?)
+  "chutoro_trap", // ニセモノの中トロに飛びつく罠 (かみしめながら大トロを見送る)
+  "otoro_lost", // 大トロが最初の70皿に混ざる確率70% (空のレーン)
+  "plus_one", // 見るだけを1皿延ばすと? (+1の皿)
+  "gain_fade", // ものさしの効き目がだんだん減る図 (最初はぐんぐん→ほぼ横ばい)
+  "cost_vs_gain", // 払うもの1%一定 vs もらえるもの減少の交差 (分かれ目=37%)
+  "success_mountain", // 成功率の山のグラフ (10皿23%→37皿37.1%が頂上→下り)
+  "euler_e", // 数学の有名人 e=2.718 (1÷e=0.368・レーンの裏の大スター)
+  "yamakan", // ヤマ勘1% vs 作戦あり37% (37倍)
+  "age_timeline", // 20歳〜40歳の年齢軸と27歳の赤い印
+  "human_not_sushi", // 人は寿司ではない (皿と人の間に≠)
+  "many_sides", // 人の魅力は多面的 (優しいが朝弱い・頼れるが歌いすぎ)
+  "person_flees", // 寿司は逃げないが人は逃げる (走り去る人)
+  "apply_anywhere", // 家探し・就職・中古車・レストランにも使える図
+] as const;
+
+// 「絵が育つ」題材: 連続しても variant で絵が変わるので、連続散らしの対象外にする
+export const SUURI_GROW_MOTIFS: readonly string[] = [
+  "sushi_lane",
+  "no_return",
+  "otoro",
+  "maguro",
+  "pass_all",
+  "gari",
+  "marriage_math",
+  "lookonly",
+  "monosashi",
+  "grab_best",
+  "cutoff_line",
+  "chutoro_trap",
+  "otoro_lost",
+  "plus_one",
+  "gain_fade",
+  "cost_vs_gain",
+  "success_mountain",
+  "euler_e",
+  "yamakan",
+  "age_timeline",
+  "human_not_sushi",
+  "many_sides",
+  "apply_anywhere",
+  "one_plate",
+];
+
 export const ALL_SUURI_MOTIFS = [
   ...SUURI_PERSON_MOTIFS,
   ...SUURI_OBJECT_MOTIFS,
   ...SUURI_DIAGRAM_MOTIFS,
   ...SUURI_LOCATION_MOTIFS,
+  ...SUURI_SUSHI_MOTIFS,
   "chapter", // 章扉カード (「第1章」+ 章タイトル。type は card で使う)
   "quiz", // クイズ出題カード (小さなQ+出題文。type は card で使う)
   "ending",

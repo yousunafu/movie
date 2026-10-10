@@ -302,6 +302,34 @@ ${ALL_SUURI_MOTIFS.join(", ")}
 - nodding: 納得してうなずく人 (だから・つまり のまとめの文に)
 - chapter: 章扉カード (type は card にする) / quiz: クイズ出題カード (type は card にする)
 
+回転寿司×結婚 (37%ルール) の回で使う題材 (寿司の絵は自動で和風の和紙背景になる):
+- sushi_lane: 回転寿司のレーンと流れる皿 (お店の紹介・100皿・レーンの前に座る文に)
+- one_plate: 「取れるのは1皿だけ」のルール図 (ルールの説明の文に)
+- no_return: 見送った皿は戻らない図 (戻れない・お断りした人とは戻れない・気まずい の文に)
+- otoro: 輝く大トロの皿 (大トロが目標・もっとすごいのが来るかも・70皿目にいた の文に)
+- maguro: 1皿目のマグロの皿 (マグロが流れてきた・取りますか? の文に)
+- pass_all: 皿を全部見送る図 (99皿見送る・最後の一皿が流れてくる の文に)
+- gari: ガリの皿 (ガリでした・ガリと添い遂げる の文に)
+- regret_balance: 後悔の天秤 (早く取っても待ちすぎても後悔、の文に)
+- marriage_math: 皿と人が対応する図 (結婚相手選びとそっくり・お付き合いは一人ずつ・結婚に当てはめる の文に)
+- lookonly: 見るだけタイムの目 (最初は選ばない・絶対に取らない・味だけ覚える の文に)
+- monosashi: ものさしが育つ図 (ものさしを作る・ものさしが甘い/完璧/もう伸びない の文に)
+- grab_best: 過去最高ラインを超えた皿に即、手を伸ばす図 (過去最高が来た瞬間に取る の文に)
+- cutoff_line: 0〜100皿の帯と区切り線 (何皿にするか・短すぎ/長すぎ・ちょうどいい長さ の文に)
+- chutoro_trap: ニセモノの中トロに飛びつく罠 (そこそこの中トロで手を打ってしまう の文に)
+- otoro_lost: 大トロが最初の皿に混ざる確率の図 (70%で見るだけの中・取るものがなくなる の文に)
+- plus_one: 見るだけを1皿延ばすと?の図 (1皿延ばす・払うもの1%・もらえるもの の文に)
+- gain_fade: 効き目がだんだん減る曲線 (最初はぐんぐん効く・だんだん効かなくなる の文に)
+- cost_vs_gain: 払うもの一定 vs もらえるもの減少の交差図 (釣り合う・分かれ目が37% の文に)
+- success_mountain: 成功率の山のグラフ (10皿なら23%・37皿で37.1%・頂上・下がる の文に)
+- euler_e: 数学の有名人 e=2.718 の図 (2.718・e・1をeで割ると0.368・一致する の文に)
+- yamakan: ヤマ勘1% vs 作戦あり37% (ヤマ勘なら1%・37倍 の文に)
+- age_timeline: 20〜40歳の年齢軸と27歳の印 (27歳・年齢に当てはめる の文に)
+- human_not_sushi: 皿と人の間に≠ (人は寿司ではない・数字で並べられない の文に)
+- many_sides: 人の魅力は多面的の図 (優しいけど朝弱い・頼れるけど歌いすぎ・どちらが上? の文に)
+- person_flees: 寿司は逃げないが人は逃げる図 (向こうがあなたを選ぶか・人は逃げる の文に)
+- apply_anywhere: 家・就職・車・レストランの図 (結婚以外にも使える・家探しなら の文に)
+
 この作風だけの決まり:
 - 同じ題材が2文以上続かないように散らす。語り・つなぎの文は thinking ばかりにせず、
   文意に合わせて surprised / nodding / question などを使い分ける
@@ -916,9 +944,89 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "card", motif: "quiz" };
   }
   // 核心の文・種明かしはカード (答えの数字もカードで見せる)
-  if (/(答えは|とは、|呼びます|ひとつにまとめ)/.test(sentence)) {
+  // 「〜のあとは、」が「とは、」に誤マッチしないよう直前の「あ」を除外する
+  if (/(答えは|(?<!あ)とは、|呼びます|ひとつにまとめ)/.test(sentence)) {
     const q = sentence.match(/「([^」]+)」/);
     return { type: "card", motif: "concept", emphasis: q?.[1] };
+  }
+  // --- 回転寿司×結婚 (37%ルール) の回: 具体的な言葉から順に判定する ---
+  if (/(人は、寿司では|寿司ではありません|人の魅力|数字で並べ|寿司より)/.test(sentence)) {
+    return { type: "diagram", motif: "human_not_sushi", title: "人は寿司ではない" };
+  }
+  if (/(1皿延ば|一皿延ば|ものさしの精度|見送ってしまう危険|危険が1%|プラス1)/.test(sentence)) {
+    return { type: "diagram", motif: "plus_one", title: "もう1皿見送ると" };
+  }
+  if (/中トロ/.test(sentence)) {
+    return { type: "diagram", motif: "chutoro_trap", title: "ニセの最高、中トロ" };
+  }
+  if (/(取るものがなくな|残りの70|70皿に混ざ)/.test(sentence)) {
+    return { type: "diagram", motif: "otoro_lost", title: "完璧すぎたものさし" };
+  }
+  if (/(2\.718|ネイピア|は、e|をeで|0\.368|自然対数|数字には正体|この数にぴったり|数学の大スター)/.test(sentence)) {
+    return { type: "diagram", motif: "euler_e", title: "数学の宝物 e" };
+  }
+  if (/(取れる確率|頂上|てっぺん|山の形|37\.1|36\.5|90皿では|成功率)/.test(sentence)) {
+    return { type: "chart", motif: "success_mountain", title: "成功率の山" };
+  }
+  if (/大トロ/.test(sentence)) {
+    return { type: "diagram", motif: "otoro", title: "狙いは大トロ" };
+  }
+  if (/(マグロ|1皿目が流れ)/.test(sentence)) {
+    return { type: "diagram", motif: "maguro", title: "1皿目のマグロ" };
+  }
+  if (/ガリ/.test(sentence)) {
+    return { type: "object", motif: "gari" };
+  }
+  if (/(99皿|最後の一皿|最後の1皿|全部見送)/.test(sentence)) {
+    return { type: "diagram", motif: "pass_all", title: "全部見送ると…" };
+  }
+  if (/(一生に1皿|一生に一皿|1皿だけ|一皿だけ|ルールは[2２]つ)/.test(sentence)) {
+    return { type: "diagram", motif: "one_plate", title: "一生に一皿だけ" };
+  }
+  if (/(見送った皿|二度と戻|戻れません|気まずい|やり直(し|せ))/.test(sentence)) {
+    return { type: "diagram", motif: "no_return", title: "戻ってこない" };
+  }
+  if (/後悔/.test(sentence)) {
+    return { type: "diagram", motif: "regret_balance", title: "どちらも後悔" };
+  }
+  if (/(ぐんぐん|効かなくな|伸びが鈍|[0-9０-９]+皿目から[0-9０-９]+皿目)/.test(sentence)) {
+    return { type: "chart", motif: "gain_fade", title: "伸びは鈍っていく" };
+  }
+  if (/(釣り合|分かれ目|損と得|払うものはずっと|もう延ばさない)/.test(sentence)) {
+    return { type: "chart", motif: "cost_vs_gain", title: "損と得の分かれ目" };
+  }
+  if (/(家探し|就職活動|中古車|レストラン選び|人生は「?戻れない選択)/.test(sentence)) {
+    return { type: "diagram", motif: "apply_anywhere", title: "戻れない選択はどこにでも" };
+  }
+  if (/(何皿にするか|短すぎ|長すぎ|ちょうどいい長さ|どこで区切)/.test(sentence)) {
+    return { type: "diagram", motif: "cutoff_line", title: "どこで区切る？" };
+  }
+  if (/(過去最高|迷わず取る|超えた皿)/.test(sentence)) {
+    return { type: "diagram", motif: "grab_best", title: "過去最高を超えたら取る" };
+  }
+  if (/ものさし/.test(sentence)) {
+    return { type: "diagram", motif: "monosashi", title: "心のものさし" };
+  }
+  if (/(見るだけ|絶対に取らない|最初は選ばない)/.test(sentence)) {
+    return { type: "diagram", motif: "lookonly", title: "見るだけタイム" };
+  }
+  if (/(ヤマ勘|37倍|当てずっぽう)/.test(sentence)) {
+    return { type: "diagram", motif: "yamakan", title: "ヤマ勘の37倍" };
+  }
+  if (/(27歳|20歳から40歳|婚活の期間)/.test(sentence)) {
+    return { type: "diagram", motif: "age_timeline", title: "37%地点は何歳？" };
+  }
+  if (/(朝に.*弱い|歌いすぎ|どちらが「?上|点数では測れ)/.test(sentence)) {
+    return { type: "diagram", motif: "many_sides", title: "人には色々な面がある" };
+  }
+  if (/逃げ/.test(sentence)) {
+    return { type: "diagram", motif: "person_flees", title: "寿司は逃げない、人は逃げる" };
+  }
+  if (/(結婚相手|結婚に当てはめ|お付き合い|婚活|プロポーズ|お見合い)/.test(sentence)) {
+    return { type: "diagram", motif: "marriage_math", title: "結婚を数学で考える" };
+  }
+  if (/(回転寿司|レーンの前|お寿司屋)/.test(sentence)) {
+    return { type: "diagram", motif: "sushi_lane", title: "回転寿司のレーン" };
   }
   // --- 文に寄り添う絵: 具体的な言葉から順に判定する (上にあるほど優先) ---
   if (/最高権力者/.test(sentence)) {

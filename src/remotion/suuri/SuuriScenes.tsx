@@ -77,19 +77,20 @@ const ThinkingScene: React.FC<{ variant?: number }> = ({ variant = 0 }) => {
   return (
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g stroke={SP.line} strokeWidth={6} fill="none">
+        {/* 体の下端を 840 に収める (字幕セーフゾーン: 下240pxに絵を入れない) */}
+        <g transform={`translate(${px} 840) scale(0.86) translate(${-px} -980)`} stroke={SP.line} strokeWidth={7} fill="none">
           <circle cx={px} cy={480} r={130} />
           <path d={`M ${px - 220} 980 q 10 -220 220 -230 q 210 10 220 230`} />
         </g>
-        <circle cx={px + dir * 180} cy={330} r={10} fill={SP.faint} />
-        <circle cx={px + dir * 230} cy={280} r={14} fill={SP.faint} />
+        <circle cx={px + dir * 180} cy={310} r={10} fill={SP.faint} />
+        <circle cx={px + dir * 230} cy={260} r={14} fill={SP.faint} />
         <g transform={`translate(${bx}, 200) scale(${pop})`}>
           <circle r={86} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
           <text y={34} textAnchor="middle" fontSize={v === 2 ? 68 : 100} fontWeight={700} fill={SP.accentSoft} fontFamily={SUURI_FONT}>
             {v === 2 ? "？？" : "?"}
           </text>
         </g>
-        {v === 2 && <line x1={560} y1={982} x2={1360} y2={982} stroke={SP.dim} strokeWidth={4} />}
+        {v === 2 && <line x1={560} y1={840} x2={1360} y2={840} stroke={SP.dim} strokeWidth={4} />}
       </svg>
     </Frame>
   );
@@ -109,7 +110,7 @@ const SurprisedScene: React.FC<{ variant?: number }> = ({ variant = 0 }) => {
   return (
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g transform={`translate(0, ${jump})`} stroke={SP.line} strokeWidth={6} fill="none">
+        <g transform={`translate(${px} ${840 + jump}) scale(0.86) translate(${-px} -980)`} stroke={SP.line} strokeWidth={7} fill="none">
           <circle cx={px} cy={480} r={130} />
           <path d={`M ${px - 220} 980 q 10 -220 220 -230 q 210 10 220 230`} />
         </g>
@@ -139,7 +140,7 @@ const NoddingScene: React.FC<{ variant?: number }> = ({ variant = 0 }) => {
   return (
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g stroke={SP.line} strokeWidth={6} fill="none">
+        <g transform={`translate(${px} 840) scale(0.86) translate(${-px} -980)`} stroke={SP.line} strokeWidth={7} fill="none">
           <g transform={`translate(0, ${nod})`}>
             <circle cx={px} cy={485} r={130} />
           </g>
@@ -172,9 +173,9 @@ const UnknownFarmerScene: React.FC = () => {
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         {/* 地面 */}
-        <line x1={360} y1={880} x2={1560} y2={880} stroke={SP.dim} strokeWidth={5} />
+        <line x1={360} y1={840} x2={1560} y2={840} stroke={SP.dim} strokeWidth={5} />
         {/* 農民: 頭・体・鍬 */}
-        <g stroke={SP.line} strokeWidth={6} fill="none">
+        <g transform="translate(0 -40)" stroke={SP.line} strokeWidth={6} fill="none">
           {/* 編み笠 */}
           <path d="M 700 356 q 90 -66 180 0 Z" fill={SP.panel} />
           <circle cx={790} cy={420} r={72} />
@@ -1792,12 +1793,12 @@ const MultiplyImagineScene: React.FC = () => {
   return (
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g stroke={SP.line} strokeWidth={6} fill="none">
+        <g transform="translate(820 840) scale(0.86) translate(-820 -980)" stroke={SP.line} strokeWidth={7} fill="none">
           <circle cx={820} cy={480} r={130} />
           <path d="M 600 980 q 10 -220 220 -230 q 210 10 220 230" />
         </g>
-        <circle cx={1000} cy={340} r={10} fill={SP.faint} />
-        <circle cx={1055} cy={290} r={14} fill={SP.faint} />
+        <circle cx={1000} cy={320} r={10} fill={SP.faint} />
+        <circle cx={1055} cy={270} r={14} fill={SP.faint} />
         <g transform={`translate(1230, 210) scale(${pop})`}>
           <ellipse rx={150} ry={110} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
           <text x={-44} y={34} textAnchor="middle" fontSize={100} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
@@ -2423,7 +2424,7 @@ const WaitStopScene: React.FC = () => {
   return (
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g opacity={body} stroke={SP.line} strokeWidth={10} fill="none">
+        <g opacity={body} transform="translate(700 840) scale(0.86) translate(-700 -980)" stroke={SP.line} strokeWidth={12} fill="none">
           <circle cx={700} cy={480} r={130} />
           <path d="M 480 980 q 10 -220 220 -230 q 210 10 220 230" />
         </g>
@@ -2524,9 +2525,72 @@ const YouHereScene: React.FC<{ scene: Scene }> = ({ scene }) => {
 };
 
 // motif名のゆらぎを吸収して代表名に寄せる
+// 「ここからが山場」: 山の頂上に赤い旗を立て、集中線で強調する (黒背景の絵)
+const YamabaScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const mount = appearAt(frame, fps, 6);
+  const route = appearAt(frame, fps, 22);
+  const flag = appearAt(frame, fps, 42);
+  const ray = appearAt(frame, fps, 56);
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 地面 */}
+        <line x1={320} y1={840} x2={1600} y2={840} stroke={SP.dim} strokeWidth={5} opacity={mount} />
+        {/* 山 (手前の小さな山と、主役の高い山) */}
+        <g opacity={mount} stroke={SP.line} strokeWidth={8} fill="none" strokeLinejoin="round">
+          <path d="M 400 840 L 760 520 L 900 640 L 1150 320 L 1520 840" />
+          <path d="M 1105 380 l 30 24 l 28 -22 l 30 24" strokeWidth={5} stroke={SP.faint} />
+        </g>
+        {/* 登山ルート: いまここ → 頂上 */}
+        <path
+          d="M 520 820 Q 700 770 820 670 Q 990 560 1130 350"
+          fill="none"
+          stroke={SP.accentSoft}
+          strokeWidth={7}
+          strokeDasharray="4 22"
+          strokeLinecap="round"
+          opacity={route}
+        />
+        <g opacity={route}>
+          <circle cx={520} cy={820} r={14} fill={SP.accent} />
+          <text x={520} y={772} textAnchor="middle" fontSize={34} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT}>
+            いまここ
+          </text>
+        </g>
+        {/* 頂上の赤い旗 */}
+        <g opacity={flag}>
+          <line x1={1150} y1={320} x2={1150} y2={180} stroke={SP.ink} strokeWidth={7} strokeLinecap="round" />
+          <path d="M 1150 185 L 1272 215 L 1150 245 Z" fill={SP.accent} />
+          <text x={1330} y={238} fontSize={60} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
+            山場
+          </text>
+        </g>
+        {/* 集中線で「ここが大事」を強調 */}
+        <g opacity={ray} stroke={SP.accent} strokeWidth={6} strokeLinecap="round">
+          {[-150, -120, -90, -60, -30].map((deg, i) => {
+            const rad = (deg * Math.PI) / 180;
+            return (
+              <line
+                key={i}
+                x1={1150 + Math.cos(rad) * 120}
+                y1={215 + Math.sin(rad) * 120}
+                x2={1150 + Math.cos(rad) * 168}
+                y2={215 + Math.sin(rad) * 168}
+              />
+            );
+          })}
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
 const resolveSuuriMotif = (m: string): string | undefined => {
   // 寿司回 (37%ルール) の題材をいちばん先に見る
   // (marriage→hatoko / house_hunt→ordinary_house などの誤吸収を防ぐため順番が大事)
+  if (/yamaba|climax/.test(m)) return "yamaba";
   if (/human_not|not_sushi/.test(m)) return "human_not_sushi";
   if (/chutoro|nise|trap/.test(m)) return "chutoro_trap";
   if (/otoro_lost|lost_otoro|lost|gone_chance/.test(m)) return "otoro_lost";
@@ -2746,6 +2810,7 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
     if (m === "many_sides") return <ManySidesScene scene={scene} variant={variant} />;
     if (m === "person_flees") return <PersonFleesScene scene={scene} />;
     if (m === "apply_anywhere") return <ApplyAnywhereScene scene={scene} variant={variant} />;
+    if (m === "yamaba") return <YamabaScene />;
   }
   // --- ここまで寿司回 ---
   // 題材 (motif) を型より優先して拾う。AIが type を揺らしても専用の絵が出るように

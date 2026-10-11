@@ -21,6 +21,8 @@ export const SP = {
   dim: "#3A3A44", // 消えた線・背景の枝
   accent: "#D63B3B", // 強調の赤
   accentSoft: "#E8625A",
+  tamago: "#E8C34A", // 卵・ガリの黄色
+  ikura: "#E07A3E", // イクラのオレンジ
 } as const;
 
 export const SUURI_FONT =
@@ -127,7 +129,8 @@ export const Frame: React.FC<{ children: React.ReactNode }> = ({ children }) => 
       {/* 白い線→墨色、赤→赤のまま になるように反転 (絵は黒地用のまま使い回す) */}
       <AbsoluteFill
         style={{
-          filter: "invert(0.92) hue-rotate(180deg) saturate(1.5) brightness(0.86)",
+          filter:
+            "invert(0.92) hue-rotate(180deg) saturate(1.5) brightness(0.86) contrast(1.35)",
         }}
       >
         {children}
@@ -225,7 +228,15 @@ export const appearAt = (frame: number, fps: number, delay: number) =>
 
 // ===== 寿司の共通部品 =====
 
-export type NetaKind = "maguro" | "otoro" | "chutoro" | "gari" | "plain" | "tamago";
+export type NetaKind =
+  | "maguro"
+  | "otoro"
+  | "chutoro"
+  | "gari"
+  | "plain"
+  | "tamago"
+  | "ika"
+  | "ikura";
 
 // 寿司皿 (横から見た図)。(x, y) は皿の中心 (縁の高さ)
 export const Plate: React.FC<{
@@ -235,7 +246,19 @@ export const Plate: React.FC<{
   kind?: NetaKind;
   opacity?: number;
   glow?: boolean; // 大トロの輝き (放射線)
-}> = ({ x, y, scale = 1, kind = "plain", opacity = 1, glow = false }) => (
+}> = ({ x, y, scale = 1, kind = "plain", opacity = 1, glow = false }) => {
+  // 和紙モードは色反転フィルタで黄色 (#E8C34A) が焦げ茶に沈むので、
+  // 反転後に黄土色 (からし色) に見える色へ置き換える
+  const washi = React.useContext(WashiCtx);
+  const tamagoC = washi ? "#9C5400" : SP.tamago;
+  // シャリを白く見せる工夫: 和紙モードでは皿を一段濃いグレーに落とし、
+  // シャリ・イカを「絵の中で一番明るい色」にして白米に見せる。
+  // 海苔 (卵の帯・軍艦) は和紙では黒に寄せる
+  const plateFill = washi ? "#393939" : SP.background;
+  // 黒背景では白く塗る。和紙では「黒く塗る→反転で白く見える」
+  const shariFill = washi ? "#000000" : SP.ink;
+  const noriFill = washi ? SP.ink : SP.background;
+  return (
   <g transform={`translate(${x}, ${y}) scale(${scale})`} opacity={opacity}>
     {glow && (
       <g stroke={SP.accent} strokeWidth={4} strokeLinecap="round" opacity={0.9}>
@@ -250,43 +273,65 @@ export const Plate: React.FC<{
       </g>
     )}
     {/* 皿 */}
-    <ellipse rx={74} ry={17} fill={SP.background} stroke={SP.line} strokeWidth={4} />
+    <ellipse rx={74} ry={17} fill={plateFill} stroke={SP.line} strokeWidth={4} />
     {kind === "gari" ? (
-      // ガリの小さな山
-      <g stroke={SP.accentSoft} strokeWidth={4} fill="none" strokeLinecap="round">
-        <path d="M -26 -6 Q -18 -30 0 -26 Q 18 -34 26 -8" />
-        <path d="M -14 -10 Q -6 -22 6 -18" />
-        <path d="M -2 -8 Q 8 -16 16 -12" />
+      // ガリの小さな山 (甘酢漬けの黄色)。土台を塗りつぶして皿が透けないように
+      <g strokeLinecap="round">
+        <path d="M -26 -6 Q -18 -30 0 -26 Q 18 -34 26 -8 Z" fill={shariFill} stroke={tamagoC} strokeWidth={4} />
+        <g stroke={tamagoC} strokeWidth={4} fill="none">
+          <path d="M -14 -10 Q -6 -22 6 -18" />
+          <path d="M -2 -8 Q 8 -16 16 -12" />
+        </g>
       </g>
     ) : (
       <>
-        {/* シャリ */}
+        {/* シャリ (塗りつぶして皿が透けないように) */}
         <rect
           x={-40}
           y={-26}
           width={80}
           height={22}
           rx={10}
-          fill="none"
+          fill={shariFill}
           stroke={SP.line}
           strokeWidth={4}
         />
         {/* ネタ */}
         {kind === "plain" && (
-          <rect x={-46} y={-40} width={92} height={18} rx={8} fill="none" stroke={SP.line} strokeWidth={4} />
+          <rect x={-46} y={-40} width={92} height={18} rx={8} fill={shariFill} stroke={SP.line} strokeWidth={4} />
         )}
         {kind === "tamago" && (
           <>
-            <rect x={-46} y={-42} width={92} height={20} rx={6} fill="none" stroke={SP.line} strokeWidth={4} />
-            <path d="M -8 -42 L -16 -22 M 10 -42 L 2 -22" stroke={SP.line} strokeWidth={3} />
+            {/* 黄色い玉子焼き + 海苔の帯 */}
+            <rect x={-46} y={-42} width={92} height={20} rx={6} fill={tamagoC} />
+            <rect x={-10} y={-44} width={20} height={26} rx={3} fill={noriFill} stroke={SP.line} strokeWidth={3} />
+          </>
+        )}
+        {kind === "ika" && (
+          <>
+            {/* 白い身 + 斜めの飾り包丁。塗りつぶして皿が透けないように */}
+            <rect x={-46} y={-40} width={92} height={18} rx={8} fill={shariFill} stroke={SP.line} strokeWidth={4} />
+            <path d="M -28 -36 l 10 10 M -6 -36 l 10 10 M 16 -36 l 10 10" stroke={SP.line} strokeWidth={3} fill="none" opacity={0.8} />
+          </>
+        )}
+        {kind === "ikura" && (
+          <>
+            {/* 軍艦の海苔 + オレンジの粒 */}
+            <rect x={-40} y={-44} width={80} height={40} rx={8} fill={noriFill} stroke={SP.line} strokeWidth={4} />
+            {[-24, -8, 8, 24].map((cx) => (
+              <circle key={cx} cx={cx} cy={-38} r={8} fill={SP.ikura} />
+            ))}
+            {[-16, 0, 16].map((cx) => (
+              <circle key={`b${cx}`} cx={cx} cy={-46} r={8} fill={SP.ikura} />
+            ))}
           </>
         )}
         {kind === "maguro" && (
-          <rect x={-46} y={-40} width={92} height={18} rx={8} fill={SP.accent} opacity={0.88} />
+          <rect x={-46} y={-40} width={92} height={18} rx={8} fill={SP.accent} />
         )}
         {kind === "chutoro" && (
           <>
-            <rect x={-46} y={-40} width={92} height={18} rx={8} fill={SP.accentSoft} opacity={0.8} />
+            <rect x={-46} y={-40} width={92} height={18} rx={8} fill={SP.accentSoft} />
             <path d="M -30 -31 q 10 -6 20 0 M 2 -31 q 10 -6 20 0" stroke={SP.ink} strokeWidth={3} fill="none" opacity={0.7} />
           </>
         )}
@@ -305,7 +350,8 @@ export const Plate: React.FC<{
       </>
     )}
   </g>
-);
+  );
+};
 
 // 回転寿司のレーン (ベルトの2本線 + 流れる目盛り)。y はベルト上面
 export const Lane: React.FC<{

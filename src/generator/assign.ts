@@ -329,6 +329,7 @@ ${ALL_SUURI_MOTIFS.join(", ")}
 - many_sides: 人の魅力は多面的の図 (優しいけど朝弱い・頼れるけど歌いすぎ・どちらが上? の文に)
 - person_flees: 寿司は逃げないが人は逃げる図 (向こうがあなたを選ぶか・人は逃げる の文に)
 - apply_anywhere: 家・就職・車・レストランの図 (結婚以外にも使える・家探しなら の文に)
+- yamaba: 山の頂上に赤い旗と集中線の図 (ここからが山場・いちばん大事な話 の文に)
 
 この作風だけの決まり:
 - 同じ題材が2文以上続かないように散らす。語り・つなぎの文は thinking ばかりにせず、
@@ -950,6 +951,9 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "card", motif: "concept", emphasis: q?.[1] };
   }
   // --- 回転寿司×結婚 (37%ルール) の回: 具体的な言葉から順に判定する ---
+  if (/山場/.test(sentence)) {
+    return { type: "diagram", motif: "yamaba", title: "ここからが山場" };
+  }
   if (/(人は、寿司では|寿司ではありません|人の魅力|数字で並べ|寿司より)/.test(sentence)) {
     return { type: "diagram", motif: "human_not_sushi", title: "人は寿司ではない" };
   }

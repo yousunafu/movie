@@ -3,7 +3,7 @@
 // 和紙背景への反転は Frame が担当するので、ここでは従来どおり黒地用の色で描けばよい。
 
 import React from "react";
-import { useCurrentFrame, useVideoConfig } from "remotion";
+import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import type { Scene } from "../../types";
 import {
   SP,
@@ -61,7 +61,7 @@ const FlowingPlates: React.FC<{
   kinds?: NetaKind[];
   speed?: number;
   scale?: number;
-}> = ({ y, kinds = ["plain", "maguro", "tamago", "chutoro", "plain", "tamago"], speed = 1.2, scale = 1.1 }) => {
+}> = ({ y, kinds = ["ika", "maguro", "tamago", "ikura", "chutoro", "tamago"], speed = 1.2, scale = 1.1 }) => {
   const frame = useCurrentFrame();
   const span = W + 360;
   return (
@@ -130,7 +130,7 @@ export const OnePlateScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
           <g opacity={a2}>
             <rect x={1020} y={330} width={600} height={330} rx={16} fill={SP.panel} stroke={SP.line} strokeWidth={4} />
             <SmallLabel x={1320} y={420} text="ルール ②" color={SP.accent} size={42} weight={800} />
-            <Plate x={1250} y={540} scale={1.2} kind="plain" />
+            <Plate x={1250} y={540} scale={1.2} kind="ika" />
             <path d="M 1330 520 q 90 -40 60 -90" fill="none" stroke={SP.faint} strokeWidth={5} strokeDasharray="10 8" />
             <Cross x={1400} y={470} size={24} />
             <SmallLabel x={1320} y={620} text="見送ったら 戻らない" color={SP.ink} size={36} weight={700} />
@@ -143,7 +143,7 @@ export const OnePlateScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
     <Frame>
       <DiagramTitle text={scene?.title} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <Plate x={500} y={520} scale={1.1} kind="plain" opacity={0.3} />
+        <Plate x={500} y={520} scale={1.1} kind="ikura" opacity={0.3} />
         <Plate x={1420} y={520} scale={1.1} kind="tamago" opacity={0.3} />
         <g opacity={a1}>
           <circle cx={960} cy={480} r={170} fill="none" stroke={SP.accent} strokeWidth={6} />
@@ -276,12 +276,12 @@ export const OtoroScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
       <DiagramTitle text={scene?.title} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <Lane y={500} />
-        <Plate x={420} y={492} scale={1.1} kind="plain" opacity={0.45} />
+        <Plate x={420} y={492} scale={1.1} kind="ika" opacity={0.45} />
         <Plate x={700} y={492} scale={1.1} kind="tamago" opacity={0.45} />
         <g opacity={a1}>
           <Plate x={1060} y={492} scale={1.5} kind="otoro" glow />
         </g>
-        <Plate x={1420} y={492} scale={1.1} kind="plain" opacity={0.45} />
+        <Plate x={1420} y={492} scale={1.1} kind="ikura" opacity={0.45} />
         <g opacity={a2}>
           <SmallLabel x={1060} y={700} text="本物は 70皿目" color={SP.accent} size={46} weight={800} />
         </g>
@@ -450,13 +450,13 @@ export const RegretBalanceScene: React.FC<SceneProps> = ({ scene }) => {
               <line x1={560} y1={560} x2={520} y2={640} stroke={SP.faint} strokeWidth={4} />
               <line x1={560} y1={560} x2={600} y2={640} stroke={SP.faint} strokeWidth={4} />
               <path d="M 490 640 q 70 50 140 0" fill="none" stroke={SP.line} strokeWidth={5} />
-              <Person x={560} y={650} scale={0.9} color={SP.accentSoft} />
+              <Person x={560} y={596} scale={0.9} color={SP.accentSoft} />
             </g>
             <g>
               <line x1={1360} y1={560} x2={1320} y2={640} stroke={SP.faint} strokeWidth={4} />
               <line x1={1360} y1={560} x2={1400} y2={640} stroke={SP.faint} strokeWidth={4} />
               <path d="M 1290 640 q 70 50 140 0" fill="none" stroke={SP.line} strokeWidth={5} />
-              <Person x={1360} y={650} scale={0.9} color={SP.accentSoft} />
+              <Person x={1360} y={596} scale={0.9} color={SP.accentSoft} />
             </g>
           </g>
           <SmallLabel x={520} y={380} text="早く取る" color={SP.ink} size={38} weight={700} />
@@ -465,7 +465,7 @@ export const RegretBalanceScene: React.FC<SceneProps> = ({ scene }) => {
           <SmallLabel x={1400} y={432} text="「あのとき取れば…」" size={32} />
         </g>
         <g opacity={a2}>
-          <SmallLabel x={960} y={300} text="どちらも 後悔" color={SP.accent} size={50} weight={800} />
+          <SmallLabel x={960} y={300} text="どっちに転んでも…" color={SP.accent} size={50} weight={800} />
         </g>
       </svg>
     </Frame>
@@ -489,7 +489,7 @@ export const MarriageMathScene: React.FC<SceneProps> = ({ scene, variant = 0 }) 
             const s = appearAt(frame, fps, 6 + i * 5);
             return (
               <g key={i} opacity={s}>
-                <Plate x={x} y={330} scale={1.1} kind={(["plain", "maguro", "tamago", "chutoro"] as NetaKind[])[i]} />
+                <Plate x={x} y={330} scale={1.1} kind={(["ika", "maguro", "tamago", "ikura"] as NetaKind[])[i]} />
                 <line x1={x} y1={390} x2={x} y2={520} stroke={SP.faint} strokeWidth={4} strokeDasharray="10 8" />
                 <Person x={x} y={540} scale={1.6} />
               </g>
@@ -863,7 +863,7 @@ export const PlusOneScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
         {v === 0 && (
           <>
             {[0, 1, 2].map((i) => (
-              <Plate key={i} x={480 + i * 260} y={480} scale={1.1} kind="plain" opacity={0.55} />
+              <Plate key={i} x={480 + i * 260} y={480} scale={1.1} kind={(["ika", "maguro", "ikura"] as const)[i]} opacity={0.55} />
             ))}
             <g opacity={a1}>
               <circle cx={1300} cy={450} r={120} fill="none" stroke={SP.accent} strokeWidth={6} strokeDasharray="14 10" />
@@ -1031,10 +1031,13 @@ export const SuccessMountainScene: React.FC<SceneProps> = ({ scene, variant = 0 
     { t: 70, pct: 25 },
     { t: 90, pct: 9 },
   ];
-  const shown = v === 0 ? 1 : v === 1 ? 2 : v <= 3 ? 3 : 6;
+  const shown = v === 0 ? 1 : v === 1 ? 2 : v === 2 ? 3 : 6;
   const px = (t: number) => 360 + t * 12.6;
   const barH = (pct: number) => pct * 11;
   const baseY = 720;
+  // v3 (50皿だと35%…70皿では25%…90皿では9%) は、ナレーションに合わせて
+  // 右の3本をシーンの長さに沿って順番に出す
+  const durF = (scene?.durationSec ?? 6) * fps;
   return (
     <Frame>
       <DiagramTitle text={scene?.title} />
@@ -1043,7 +1046,9 @@ export const SuccessMountainScene: React.FC<SceneProps> = ({ scene, variant = 0 
         {/* 90皿の目盛りラベルと重ならないよう、軸ラベルは一段下に置く */}
         <SmallLabel x={1520} y={808} text="見るだけの皿数" size={28} />
         {bars.slice(0, shown).map((b, i) => {
-          const grow = appearAt(frame, fps, 6 + i * 6);
+          const delay =
+            v === 3 && i >= 3 ? durF * [0.06, 0.42, 0.68][i - 3] : 6 + i * 6;
+          const grow = appearAt(frame, fps, delay);
           const red = b.t === 37;
           return (
             <g key={b.t}>
@@ -1070,14 +1075,14 @@ export const SuccessMountainScene: React.FC<SceneProps> = ({ scene, variant = 0 
             </g>
           );
         })}
-        {v === 3 && (
+        {v === 2 && (
           <g opacity={appearAt(frame, fps, 24)}>
             {/* 上に置くとタイトルと重なるので、棒の右横から左向き矢印で指す */}
             <path d={`M ${px(37) + 56} ${baseY - barH(37.1) + 16} l 44 -26 v 52 Z`} fill={SP.accent} />
             <SmallLabel x={px(37) + 120} y={baseY - barH(37.1) + 30} text="ここが 頂上" color={SP.accent} size={40} weight={800} anchor="start" />
           </g>
         )}
-        {v === 5 && (
+        {v >= 4 && (
           <g opacity={appearAt(frame, fps, 20)}>
             <path
               d={`M ${px(5)} ${baseY - barH(14)} Q ${px(37)} ${baseY - barH(37.1) - 60} ${px(37)} ${baseY - barH(37.1)} Q ${px(40)} ${baseY - barH(37.1) - 55} ${px(95)} ${baseY - barH(5)}`}
@@ -1404,9 +1409,24 @@ export const ManySidesScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
 // 寿司は逃げないが、人は逃げる
 export const PersonFleesScene: React.FC<SceneProps> = ({ scene }) => {
   const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const a1 = useAppear(8);
   const a2 = useAppear(26);
-  const run = Math.min(frame * 4, 420);
+  // 人は最初その場に立っていて、シーンの中盤から画面右へ走り去る (皿は残る)
+  const durF = (scene?.durationSec ?? 6) * fps;
+  const startRun = Math.max(durF * 0.45, 30);
+  const run = interpolate(frame, [startRun, startRun + fps * 1.2], [0, 950], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const lean = interpolate(run, [0, 80], [0, 10], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const speedLines = interpolate(run, [0, 30, 600, 820], [0, 0.85, 0.85, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
   return (
     <Frame>
       <DiagramTitle text={scene?.title} />
@@ -1417,36 +1437,67 @@ export const PersonFleesScene: React.FC<SceneProps> = ({ scene }) => {
           <SmallLabel x={550} y={700} text="寿司は 逃げない" size={36} color={SP.faint} />
         </g>
         <g opacity={a2}>
-          <g transform={`translate(${1250 + run * 0.4}, 0) rotate(8, 1350, 460)`}>
-            <Person x={1350} y={430} scale={2.8} color={SP.accent} />
+          <g transform={`translate(${run}, 0) rotate(${lean}, 1300, 460)`}>
+            <Person x={1300} y={430} scale={2.8} color={SP.accent} />
           </g>
-          {/* スピード線 */}
-          <g stroke={SP.accentSoft} strokeWidth={5} strokeLinecap="round" opacity={0.8}>
-            <line x1={1130} y1={420} x2={1230} y2={420} />
-            <line x1={1110} y1={480} x2={1220} y2={480} />
-            <line x1={1140} y1={540} x2={1240} y2={540} />
+          {/* スピード線 (走り出した時だけ) */}
+          <g stroke={SP.accentSoft} strokeWidth={5} strokeLinecap="round" opacity={speedLines}>
+            <line x1={1080} y1={420} x2={1180} y2={420} />
+            <line x1={1060} y1={480} x2={1170} y2={480} />
+            <line x1={1090} y1={540} x2={1190} y2={540} />
           </g>
-          <SmallLabel x={1400} y={700} text="人は 逃げる" color={SP.accent} size={42} weight={800} />
+          <SmallLabel x={1330} y={700} text="人は 逃げる" color={SP.accent} size={42} weight={800} />
         </g>
       </svg>
     </Frame>
   );
 };
 
-// 結婚以外にも使える (v0: 4つの場面 / v1: 家探し / v2: 戻れない選択の連続)
+// 結婚以外にも使える (v0: 家探しは見るだけに / v1: 就職・車・レストラン / v2: 戻れない選択の連続)
 export const ApplyAnywhereScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const v = variant % 3;
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const a2 = useAppear(30);
   if (v === 0) {
+    // 家探し: 最初の何軒かは見るだけ (台詞「家探しなら、最初の何軒かは見るだけにする」に対応)
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title} />
+        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+          {[0, 1, 2, 3, 4].map((i) => {
+            const s = appearAt(frame, fps, 8 + i * 6);
+            const x = 420 + i * 280;
+            const lookOnly = i < 2;
+            return (
+              <g key={i} opacity={s}>
+                <path
+                  d={`M ${x - 70} 480 L ${x} 410 L ${x + 70} 480 M ${x - 50} 470 V 540 H ${x + 50} V 470`}
+                  fill="none"
+                  stroke={lookOnly ? SP.faint : SP.line}
+                  strokeWidth={6}
+                  strokeLinejoin="round"
+                />
+                {lookOnly ? (
+                  <SmallLabel x={x} y={620} text="見るだけ" size={30} />
+                ) : i === 4 ? (
+                  <g>
+                    <path d={`M ${x - 34} 600 l 22 26 l 48 -52`} fill="none" stroke={SP.accent} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" />
+                  </g>
+                ) : null}
+              </g>
+            );
+          })}
+          <g opacity={a2}>
+            <SmallLabel x={960} y={740} text="最初の何軒かは 見るだけに" color={SP.ink} size={42} weight={700} />
+          </g>
+        </svg>
+      </Frame>
+    );
+  }
+  if (v === 1) {
+    // 就職・中古車・レストラン: ラベルは絵の下に置き、左右にはみ出さない
     const items: { label: string; draw: React.ReactNode }[] = [
-      {
-        label: "家探し",
-        draw: (
-          <path d="M -70 20 L 0 -50 L 70 20 M -50 10 V 70 H 50 V 10" fill="none" stroke={SP.line} strokeWidth={6} strokeLinejoin="round" />
-        ),
-      },
       {
         label: "就職活動",
         draw: (
@@ -1482,50 +1533,17 @@ export const ApplyAnywhereScene: React.FC<SceneProps> = ({ scene, variant = 0 })
         <DiagramTitle text={scene?.title} />
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
           {items.map((it, i) => {
-            const s = appearAt(frame, fps, 8 + i * 7);
-            const x = 420 + (i % 2) * 1080;
-            const y = 330 + Math.floor(i / 2) * 290;
+            const s = appearAt(frame, fps, 8 + i * 8);
+            const x = 480 + i * 480;
             return (
               <g key={it.label} opacity={s}>
-                <g transform={`translate(${x}, ${y})`}>{it.draw}</g>
-                <SmallLabel x={x + 260} y={y + 20} text={it.label} color={SP.ink} size={40} weight={700} anchor="start" />
-              </g>
-            );
-          })}
-        </svg>
-      </Frame>
-    );
-  }
-  if (v === 1) {
-    return (
-      <Frame>
-        <DiagramTitle text={scene?.title} />
-        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-          {[0, 1, 2, 3, 4].map((i) => {
-            const s = appearAt(frame, fps, 8 + i * 6);
-            const x = 420 + i * 280;
-            const lookOnly = i < 2;
-            return (
-              <g key={i} opacity={s}>
-                <path
-                  d={`M ${x - 70} 480 L ${x} 410 L ${x + 70} 480 M ${x - 50} 470 V 540 H ${x + 50} V 470`}
-                  fill="none"
-                  stroke={lookOnly ? SP.faint : SP.line}
-                  strokeWidth={6}
-                  strokeLinejoin="round"
-                />
-                {lookOnly ? (
-                  <SmallLabel x={x} y={620} text="見るだけ" size={30} />
-                ) : i === 4 ? (
-                  <g>
-                    <path d={`M ${x - 34} 600 l 22 26 l 48 -52`} fill="none" stroke={SP.accent} strokeWidth={8} strokeLinecap="round" strokeLinejoin="round" />
-                  </g>
-                ) : null}
+                <g transform={`translate(${x}, 440)`}>{it.draw}</g>
+                <SmallLabel x={x} y={620} text={it.label} color={SP.ink} size={38} weight={700} />
               </g>
             );
           })}
           <g opacity={a2}>
-            <SmallLabel x={960} y={740} text="最初の何軒かは 見るだけに" color={SP.ink} size={42} weight={700} />
+            <SmallLabel x={960} y={740} text="ぜんぶ「戻れない選択」" color={SP.accent} size={42} weight={800} />
           </g>
         </svg>
       </Frame>

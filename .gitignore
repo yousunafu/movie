@@ -6,3 +6,8 @@ public/images/
 *.log
 .claude/settings.local.json
 .claude/worktrees/
+
+# 検品用の一時ファイル (道具のスクリプトだけ残す)
+tmp/*
+!tmp/fake-sushi.ts
+!tmp/stills.ts

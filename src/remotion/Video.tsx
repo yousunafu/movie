@@ -7,7 +7,7 @@ import {
   interpolate,
 } from "remotion";
 import { loadDefaultJapaneseParser } from "budoux";
-import { PALETTE, SUBTITLE, VIDEO } from "../style";
+import { PALETTE, SUBTITLE, VIDEO, sceneHoldSec } from "../style";
 import type { Scene, ScenesData } from "../types";
 import { CharacterScene } from "./scenes/CharacterScene";
 import { ObjectScene } from "./scenes/ObjectScene";
@@ -31,7 +31,7 @@ import {
   kouzouCardShowsFullText,
 } from "./kouzou/KouzouScenes";
 import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
-import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, computeSuuriVariants, computeSuuriWashi, WashiCtx } from "./suuri/SuuriScenes";
+import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, computeSuuriVariants, computeSuuriWashi, WashiCtx, splitPunchline } from "./suuri/SuuriScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -91,11 +91,17 @@ const Subtitle: React.FC<{
   suuri?: boolean;
   washi?: boolean; // suuri の和紙背景モード (字幕を墨色にする)
   highlight?: string;
-}> = ({ text, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, washi, highlight }) => {
+  // オチ字幕: atFrame までは先頭 headChars 文字だけ表示する (ネタバレ防止)
+  tailReveal?: { headChars: number; atFrame: number };
+}> = ({ text: fullText, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, washi, highlight, tailReveal }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
   });
+  const text =
+    tailReveal && frame < tailReveal.atFrame
+      ? fullText.slice(0, tailReveal.headChars)
+      : fullText;
   // 強調語 (emphasis) が字幕の中にあれば、その部分だけ黄色にする
   const hl = highlight?.replace(/[「」]/g, "").trim();
   const useHl = Boolean(hl && hl.length >= 2 && text.includes(hl!));
@@ -270,8 +276,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const v2Set = isAshi ? ashiV2Indices(data.scenes) : new Set<number>();
   // BGM: 冒頭2秒フェードイン・末尾3秒フェードアウト。音量はナレーションを邪魔しない 7%
   const totalFrames = data.scenes.reduce(
-    (a, s) =>
-      a + Math.max(Math.ceil((s.durationSec + VIDEO.scenePaddingSec) * VIDEO.fps), 1),
+    (a, s) => a + Math.max(Math.ceil(sceneHoldSec(s) * VIDEO.fps), 1),
     0,
   );
   const bgmVolume = (f: number) => {
@@ -309,12 +314,12 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
       <Series>
         {data.scenes.map((scene, sceneI) => {
           const frames = Math.max(
-            Math.ceil(
-              (scene.durationSec + VIDEO.scenePaddingSec) * VIDEO.fps,
-            ),
+            Math.ceil(sceneHoldSec(scene) * VIDEO.fps),
             1,
           );
           const v2 = v2Set.has(scene.index);
+          // suuri: オチのある文は、ナレーションがオチを読む瞬間まで字幕も隠す (絵と同期)
+          const punch = isSuuri ? splitPunchline(scene) : null;
           return (
             <Series.Sequence
               key={scene.index}
@@ -364,6 +369,14 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   suuri={isSuuri}
                   washi={isSuuri && (suuriWashi[sceneI] ?? false)}
                   highlight={v2 ? scene.emphasis : undefined}
+                  tailReveal={
+                    punch
+                      ? {
+                          headChars: punch.head.length,
+                          atFrame: Math.round(punch.ratio * scene.durationSec * VIDEO.fps),
+                        }
+                      : undefined
+                  }
                 />
               )}
             </Series.Sequence>

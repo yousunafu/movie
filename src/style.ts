@@ -42,7 +42,13 @@ export const VIDEO = {
   height: 1080,
   fps: 30,
   scenePaddingSec: 0.35, // 音声の後の間
+  endingHoldSec: 2.5, // エンディングだけ余韻を足す (字幕を読み切る前に動画が終わらないように)
 } as const;
+
+// シーンの表示秒数 (音声 + 後の間)。エンディングは余韻を足す。
+// シーンの長さを計算する場所は必ずこれを使う (Root / Video で食い違うと尻切れになる)
+export const sceneHoldSec = (s: { durationSec: number; isEnding?: boolean }) =>
+  s.durationSec + VIDEO.scenePaddingSec + (s.isEnding ? VIDEO.endingHoldSec : 0);
 
 export const SUBTITLE = {
   fontSize: 54,

@@ -20,6 +20,7 @@ import {
   Plate,
   Lane,
   NetaKind,
+  splitPunchline,
 } from "./parts";
 
 type SceneProps = { scene?: Scene; variant?: number };
@@ -102,8 +103,9 @@ export const SushiLaneScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
         )}
         {v === 2 && (
           <g opacity={pop}>
-            <Person x={960} y={640} scale={2.6} color={SP.accent} />
-            <SmallLabel x={960} y={660 + 120} text="あなた" color={SP.accent} size={40} weight={800} />
+            {/* 体の下端 = 600 + 66×2.4 ≒ 758。ラベルは体の下・字幕セーフゾーン (y<840) 内に置く */}
+            <Person x={960} y={600} scale={2.4} color={SP.accent} />
+            <SmallLabel x={960} y={812} text="あなた" color={SP.accent} size={40} weight={800} />
           </g>
         )}
       </svg>
@@ -159,7 +161,12 @@ export const OnePlateScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
 
 // 戻れない図 (v0: 皿は戻らない / v1: お断りした人 / v2: 気まずい / v3: 現実は戻れることも)
 export const NoReturnScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
-  const v = variant % 4;
+  // 絵の意味はナレーションの意味に合わせる (機械割り当てより文の内容を優先)。
+  // 「やり直せる」=前向きな点線の絵、「気まずい」=気まずい2人の絵
+  const text = scene?.text ?? "";
+  let v = variant % 4;
+  if (/やり直せ/.test(text)) v = 3;
+  else if (/気まずい/.test(text)) v = 2;
   const frame = useCurrentFrame();
   const a1 = useAppear(8);
   const a2 = useAppear(26);
@@ -214,13 +221,10 @@ export const NoReturnScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
       <DiagramTitle text={scene?.title} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <g opacity={a1}>
+          {/* 汗マーク（）は「謎の赤い記号」に見えるので廃止 (2026-10 寿司回の検品指摘)。
+              気まずさは「……。」の沈黙だけで表現する */}
           <Person x={760} y={460} scale={3} />
           <Person x={1160} y={460} scale={3} color={SP.faint} />
-          {/* 汗 */}
-          <g fill="none" stroke={SP.accentSoft} strokeWidth={5} strokeLinecap="round">
-            <path d="M 700 380 q -10 24 6 34" opacity={a2} />
-            <path d="M 1222 380 q 10 24 -6 34" opacity={a2} />
-          </g>
         </g>
         <g opacity={a2}>
           <SmallLabel x={960} y={300} text="……。" color={SP.faint} size={56} weight={700} />
@@ -386,21 +390,33 @@ export const PassAllScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   );
 };
 
-// ガリ (v0: ガリでした / v1: ガリと添い遂げる)
+// ガリ (v0: 何かな?→ガリでした / v1: ガリと添い遂げる)
 export const GariScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const v = variant % 2;
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const a1 = useAppear(8);
   const a2 = useAppear(28);
   if (v === 0) {
+    // オチのネタバレ防止: ナレーションが「ガリでした」を読む瞬間までガリを見せない。
+    // 前半は空の皿+「?」で引っぱり、文字数割合からオチの読み上げ位置を推定して同期させる
+    const pl = splitPunchline(scene);
+    const durF = (scene?.durationSec ?? 6) * fps;
+    const revealF = Math.round(durF * (pl?.ratio ?? 0.75));
+    const reveal = appearAt(frame, fps, revealF);
+    const bob = Math.sin(frame / 11) * 10; // ?がゆらゆら浮く
     return (
       <Frame>
         <DiagramTitle text={scene?.title} />
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-          <g opacity={a1}>
-            <Plate x={960} y={500} scale={2.6} kind="gari" />
+          {/* 何かな? (ガリ出現と入れ替わりで消える) */}
+          <g opacity={Math.max(a1 - reveal * 1.4, 0)}>
+            <Plate x={960} y={520} scale={2.6} kind="empty" />
+            <SmallLabel x={960} y={360 + bob} text="?" color={SP.faint} size={110} weight={800} />
           </g>
-          <g opacity={a2}>
-            <SmallLabel x={960} y={700} text="ガリでした" color={SP.accent} size={64} weight={800} />
+          {/* ガリ (ぽんっと出る) */}
+          <g opacity={reveal} transform={`translate(0, ${(1 - reveal) * -30})`}>
+            <Plate x={960} y={520} scale={2.6} kind="gari" />
           </g>
         </svg>
       </Frame>

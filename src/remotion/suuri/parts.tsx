@@ -157,18 +157,38 @@ export const DiagramTitle: React.FC<{ text?: string }> = ({ text }) => {
         letterSpacing: 2,
       }}
     >
-      {text}
-      <div
-        style={{
-          width: 64,
-          height: 4,
-          background: SP.accent,
-          margin: "18px auto 0",
-          borderRadius: 2,
-        }}
-      />
+      {/* 下線はタイトルの文字幅に連動させる (§9-3)。inline-block の幅=文字幅 */}
+      <div style={{ display: "inline-block" }}>
+        {text}
+        <div
+          style={{
+            width: "100%",
+            height: 4,
+            background: SP.accent,
+            margin: "18px 0 0",
+            borderRadius: 2,
+          }}
+        />
+      </div>
     </div>
   );
+};
+
+// オチ字幕の分割 (例: 「…流れてきます。ガリでした。」)。
+// オチ (tail) はナレーションがそこを読む瞬間まで出さない。
+// ratio = 本文の文字数割合 ≒ 音声の中でオチが始まる位置
+export const splitPunchline = (scene?: {
+  text?: string;
+  motif?: string;
+}): { head: string; tail: string; ratio: number } | null => {
+  const text = scene?.text ?? "";
+  if (scene?.motif !== "gari") return null;
+  const m = text.match(/^(.+[。!?！？])(ガリでした。?)$/);
+  if (!m) return null;
+  const head = m[1];
+  const tail = m[2];
+  const ratio = head.length / (head.length + tail.length);
+  return { head, tail, ratio };
 };
 
 // 人のピクトグラム (頭+肩)。(x, y) が頭の中心
@@ -243,7 +263,7 @@ export const Plate: React.FC<{
   x: number;
   y: number;
   scale?: number;
-  kind?: NetaKind;
+  kind?: NetaKind | "empty"; // empty = 皿だけ (何が来るかな?の演出用)
   opacity?: number;
   glow?: boolean; // 大トロの輝き (放射線)
 }> = ({ x, y, scale = 1, kind = "plain", opacity = 1, glow = false }) => {
@@ -274,7 +294,7 @@ export const Plate: React.FC<{
     )}
     {/* 皿 */}
     <ellipse rx={74} ry={17} fill={plateFill} stroke={SP.line} strokeWidth={4} />
-    {kind === "gari" ? (
+    {kind === "empty" ? null : kind === "gari" ? (
       // ガリの小さな山 (甘酢漬けの黄色)。土台を塗りつぶして皿が透けないように
       <g strokeLinecap="round">
         <path d="M -26 -6 Q -18 -30 0 -26 Q 18 -34 26 -8 Z" fill={shariFill} stroke={tamagoC} strokeWidth={4} />

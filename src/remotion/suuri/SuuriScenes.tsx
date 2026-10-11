@@ -33,7 +33,7 @@ import {
 } from "./parts";
 
 // Video.tsx など外から使う口は従来どおり SuuriScenes から import できるよう再輸出
-export { SP, SUURI_FONT, SUURI_SERIF, WashiCtx } from "./parts";
+export { SP, SUURI_FONT, SUURI_SERIF, WashiCtx, splitPunchline } from "./parts";
 
 // 37%ルール回 (回転寿司×結婚) の専用シーン
 import {
@@ -91,6 +91,80 @@ const ThinkingScene: React.FC<{ variant?: number }> = ({ variant = 0 }) => {
           </text>
         </g>
         {v === 2 && <line x1={560} y1={840} x2={1360} y2={840} stroke={SP.dim} strokeWidth={4} />}
+      </svg>
+    </Frame>
+  );
+};
+
+// 数学者たち (3人の学者が議論している)。ナレーションが「数学者たち」のように
+// 複数を言うときは絵も複数人にする (§9-3)。吹き出しの声が飛び交う演出つき
+const MathematiciansScene: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const scholars = [
+    { x: 480, color: SP.line, say: "37…?", bx: 390, by: 270, delay: 12 },
+    { x: 960, color: SP.faint, say: "いや 36?", bx: 1010, by: 190, delay: 28 },
+    { x: 1440, color: SP.line, say: "証明できた!", bx: 1530, by: 290, delay: 44 },
+  ];
+  return (
+    <Frame>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {scholars.map((s, i) => {
+          const pop = appearAt(frame, fps, s.delay);
+          const bob = Math.sin(frame / 13 + i * 2.1) * 8; // 声がふわふわ飛び交う
+          const hatY = 560 - 16 * 2.6 - 10; // 頭のてっぺん
+          return (
+            <g key={i}>
+              {/* 学者 (人+角帽) */}
+              <Person x={s.x} y={560} scale={2.6} color={s.color} />
+              <g stroke={s.color} strokeWidth={5} fill="none" strokeLinejoin="round">
+                <path d={`M ${s.x - 64} ${hatY} L ${s.x} ${hatY - 26} L ${s.x + 64} ${hatY} L ${s.x} ${hatY + 22} Z`} />
+                <line x1={s.x + 58} y1={hatY + 2} x2={s.x + 58} y2={hatY + 40} />
+              </g>
+              {/* 議論の吹き出し */}
+              <g opacity={pop} transform={`translate(0, ${bob})`}>
+                <rect
+                  x={s.bx - 130}
+                  y={s.by - 52}
+                  width={260}
+                  height={86}
+                  rx={40}
+                  fill={SP.panel}
+                  stroke={i === 2 ? SP.accent : SP.line}
+                  strokeWidth={4}
+                />
+                <text
+                  x={s.bx}
+                  y={s.by + 12}
+                  textAnchor="middle"
+                  fontSize={40}
+                  fontWeight={800}
+                  fill={i === 2 ? SP.accent : SP.ink}
+                  fontFamily={SUURI_FONT}
+                >
+                  {s.say}
+                </text>
+              </g>
+            </g>
+          );
+        })}
+        {/* 飛び交う声のかけら */}
+        {[
+          { x: 720, y: 380, t: "?", d: 20 },
+          { x: 1200, y: 360, t: "!", d: 36 },
+          { x: 960, y: 450, t: "=", d: 52 },
+        ].map((p, i) => (
+          <g key={`v${i}`} opacity={appearAt(frame, fps, p.d) * 0.8}>
+            <SmallLabel
+              x={p.x + Math.sin(frame / 17 + i * 1.7) * 14}
+              y={p.y + Math.cos(frame / 15 + i) * 10}
+              text={p.t}
+              color={SP.accentSoft}
+              size={44}
+              weight={800}
+            />
+          </g>
+        ))}
       </svg>
     </Frame>
   );
@@ -2875,6 +2949,9 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
     case "object":
       return <QuestionScene variant={variant} />;
     default:
+      // 「数学者たち」「学者たち」など複数の学者を語る文は、1人の考える人ではなく
+      // 複数の学者が議論する絵にする (§9-3: 複数表現には複数人の絵)
+      if (/数学者|学者たち/.test(scene.text ?? "")) return <MathematiciansScene />;
       return <ThinkingScene variant={variant} />;
   }
 };

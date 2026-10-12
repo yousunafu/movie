@@ -65,6 +65,47 @@ import {
   ApplyAnywhereScene,
 } from "./SushiScenes";
 
+// キラキラ画面回 (帰ってこなかった飛行機) の専用シーン
+import {
+  BulletMapScene,
+  SeaBottomScene,
+  FutonPhoneScene,
+  KirakiraFeedScene,
+  ScrollForeverScene,
+  AloneSighScene,
+  WorldVsScreenScene,
+  SelectionGatesScene,
+  HomerunTvScene,
+  BatterScene,
+  NotSadViewerScene,
+  Fail7of10Scene,
+  HrDivideScene,
+  JuiceScene,
+  LifeHomerunScene,
+  GachaShineScene,
+  GachaCloseScene,
+  TimelineWinsScene,
+  CameraRollScene,
+  Pick1of100Scene,
+  Calendar10Scene,
+  RankUpScene,
+  MultiplyCalcScene,
+  NgFilmScene,
+  UnfairMatchScene,
+  NothingTuesdayScene,
+  SinkPostsScene,
+  WarPlanesScene,
+  GeneralsScene,
+  WaldStopScene,
+  MissingDataScene,
+  CountDiseaseScene,
+  RunwayPhonesScene,
+  WhisperQuestionScene,
+  MutualShineScene,
+  KIRAKIRA_WASHI_MOTIFS,
+  KIRAKIRA_DARK_MOTIFS,
+} from "./KirakiraScenes";
+
 // ===== 語り・つなぎの人物 =====
 
 // variant (何回目の登場か) で立ち位置と吹き出しを変え、同じ姿の再登場を防ぐ
@@ -2662,6 +2703,45 @@ const YamabaScene: React.FC = () => {
 };
 
 const resolveSuuriMotif = (m: string): string | undefined => {
+  // キラキラ画面回 (帰ってこなかった飛行機) の題材をいちばん先に見る
+  // (bullet→lottery / sea→see_off などの誤吸収を防ぐため順番が大事)
+  if (/bullet|hole_map|wald_map|shot_map/.test(m)) return "bullet_map";
+  if (/sea_bottom|sunken|ocean_floor|under_sea/.test(m)) return "sea_bottom";
+  // (専用トークンだけ使う: 裸の scroll / timeline / pick / count / multiply は下の既存判定に残す)
+  if (/futon|bed_phone|night_phone/.test(m)) return "futon_phone";
+  if (/kirakira|sns_feed|glitter|sparkle_feed/.test(m)) return "kirakira_feed";
+  if (/scroll_forever|endless_scroll|infinite_scroll/.test(m)) return "scroll_forever";
+  if (/alone_sigh|sigh|empty_days/.test(m)) return "alone_sigh";
+  if (/world_vs|vs_screen|screen_not_world/.test(m)) return "world_vs_screen";
+  if (/selection|gate|sieve/.test(m)) return "selection_gates";
+  if (/life_homerun|life_hr/.test(m)) return "life_homerun";
+  if (/homerun_tv|sports_news|highlight_reel/.test(m)) return "homerun_tv";
+  if (/batter|at_bat|swing/.test(m)) return "batter";
+  if (/not_sad|no_envy|calm_viewer/.test(m)) return "not_sad_viewer";
+  if (/fail_7|7of10|seven_fail|fail_rate/.test(m)) return "fail_7of10";
+  if (/hr_divide|divide_600|600_40|one_in_15|fifteen/.test(m)) return "hr_divide";
+  if (/juice|concentrat|noushuku/.test(m)) return "juice";
+  if (/gacha_close|gacha_lose|quiet_close/.test(m)) return "gacha_close";
+  if (/gacha|rare_hit|capsule/.test(m)) return "gacha_shine";
+  if (/timeline_wins|win_report|win_timeline/.test(m)) return "timeline_wins";
+  if (/homerun/.test(m)) return "homerun_tv";
+  if (/camera_roll|camera|photo_roll/.test(m)) return "camera_roll";
+  if (/pick_1|1of100|one_of_100|best_shot|miracle_shot/.test(m)) return "pick_1of100";
+  if (/calendar|365|ten_days/.test(m)) return "calendar_10";
+  if (/rank_up|ranking|sort_up|boost/.test(m)) return "rank_up";
+  if (/multiply_calc|7200|triple_mult/.test(m)) return "multiply_calc";
+  if (/ng_film|ng_reel|blooper|outtake/.test(m)) return "ng_film";
+  if (/unfair|vs_7200|mismatch|losing_game/.test(m)) return "unfair_match";
+  if (/tuesday|nothing_day/.test(m)) return "nothing_tuesday";
+  if (/sink|unposted|below_surface/.test(m)) return "sink_posts";
+  if (/mutual|otagai|each_other/.test(m)) return "mutual_shine";
+  if (/war_plane|ww2|world_war|shot_down|air_battle/.test(m)) return "war_planes";
+  if (/general|military|army/.test(m)) return "generals";
+  if (/wald|mathematician/.test(m)) return "wald_stop";
+  if (/missing|not_arrived|unreturned|no_data/.test(m)) return "missing_data";
+  if (/count_disease|count_only|survivor/.test(m)) return "count_disease";
+  if (/runway/.test(m)) return "runway_phones";
+  if (/whisper|mutter|tsubuyaki/.test(m)) return "whisper_question";
   // 寿司回 (37%ルール) の題材をいちばん先に見る
   // (marriage→hatoko / house_hunt→ordinary_house などの誤吸収を防ぐため順番が大事)
   if (/yamaba|climax/.test(m)) return "yamaba";
@@ -2804,6 +2884,9 @@ export const computeSuuriWashi = (scenes: Scene[]): boolean[] => {
     const m = resolveSuuriMotif(s.motif ?? "") ?? s.motif ?? "";
     if (WASHI_MOTIFS.has(m)) return true;
     if (DARK_MOTIFS.has(m)) return false;
+    // キラキラ画面回: 第3章 (飛行機の資料の世界) だけ和紙、それ以外は黒
+    if ((KIRAKIRA_WASHI_MOTIFS as readonly string[]).includes(m)) return true;
+    if ((KIRAKIRA_DARK_MOTIFS as readonly string[]).includes(m)) return false;
     return undefined;
   });
   // 2) 中立を埋める: 章扉は「次の分類」を先取り、それ以外は前を引き継ぐ (冒頭は黒)
@@ -2858,6 +2941,43 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
   // --- 寿司回 (37%ルール): カード以外なら type が chart でも専用の絵を出す ---
   // (gain_fade などは機械割り当てが type=chart を返すが、汎用チャートに落とさない)
   if (scene.type !== "card") {
+    // --- キラキラ画面回 (帰ってこなかった飛行機) ---
+    if (m === "bullet_map") return <BulletMapScene scene={scene} variant={variant} />;
+    if (m === "sea_bottom") return <SeaBottomScene scene={scene} />;
+    if (m === "futon_phone") return <FutonPhoneScene scene={scene} />;
+    if (m === "kirakira_feed") return <KirakiraFeedScene scene={scene} />;
+    if (m === "scroll_forever") return <ScrollForeverScene scene={scene} />;
+    if (m === "alone_sigh") return <AloneSighScene scene={scene} />;
+    if (m === "world_vs_screen") return <WorldVsScreenScene scene={scene} />;
+    if (m === "selection_gates") return <SelectionGatesScene scene={scene} />;
+    if (m === "homerun_tv") return <HomerunTvScene scene={scene} />;
+    if (m === "batter") return <BatterScene scene={scene} />;
+    if (m === "not_sad_viewer") return <NotSadViewerScene scene={scene} />;
+    if (m === "fail_7of10") return <Fail7of10Scene scene={scene} />;
+    if (m === "hr_divide") return <HrDivideScene scene={scene} />;
+    if (m === "juice") return <JuiceScene scene={scene} />;
+    if (m === "life_homerun") return <LifeHomerunScene scene={scene} />;
+    if (m === "gacha_shine") return <GachaShineScene scene={scene} />;
+    if (m === "gacha_close") return <GachaCloseScene scene={scene} />;
+    if (m === "timeline_wins") return <TimelineWinsScene scene={scene} />;
+    if (m === "camera_roll") return <CameraRollScene scene={scene} />;
+    if (m === "pick_1of100") return <Pick1of100Scene scene={scene} />;
+    if (m === "calendar_10") return <Calendar10Scene scene={scene} />;
+    if (m === "rank_up") return <RankUpScene scene={scene} />;
+    if (m === "multiply_calc") return <MultiplyCalcScene scene={scene} />;
+    if (m === "ng_film") return <NgFilmScene scene={scene} />;
+    if (m === "unfair_match") return <UnfairMatchScene scene={scene} />;
+    if (m === "nothing_tuesday") return <NothingTuesdayScene scene={scene} variant={variant} />;
+    if (m === "sink_posts") return <SinkPostsScene scene={scene} />;
+    if (m === "war_planes") return <WarPlanesScene scene={scene} />;
+    if (m === "generals") return <GeneralsScene scene={scene} />;
+    if (m === "wald_stop") return <WaldStopScene scene={scene} />;
+    if (m === "missing_data") return <MissingDataScene scene={scene} />;
+    if (m === "count_disease") return <CountDiseaseScene scene={scene} />;
+    if (m === "runway_phones") return <RunwayPhonesScene scene={scene} />;
+    if (m === "whisper_question") return <WhisperQuestionScene scene={scene} />;
+    if (m === "mutual_shine") return <MutualShineScene scene={scene} />;
+    // --- 寿司回 (37%ルール) ---
     if (m === "sushi_lane") return <SushiLaneScene scene={scene} variant={variant} />;
     if (m === "one_plate") return <OnePlateScene scene={scene} variant={variant} />;
     if (m === "no_return") return <NoReturnScene scene={scene} variant={variant} />;

@@ -941,8 +941,139 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "card", motif: "chapter" };
   }
   // クイズの出題宣言 (「さて、ここで問題です。」など) は控えめな出題カード
-  if (isManabiQuizText(sentence)) {
+  if (isManabiQuizText(sentence) || /ここで質問です/.test(sentence)) {
     return { type: "card", motif: "quiz" };
+  }
+  // 予告の文 (「第1章で〜、第2章で〜」) は中身の言葉より先に道筋の絵へ
+  if (/第[0-9０-９一二三四五六七八九十]+章で/.test(sentence)) {
+    return { type: "diagram", motif: "roadmap", title: "今日の流れ" };
+  }
+  // --- キラキラ画面×帰ってこなかった飛行機の回: 具体的な言葉から順に判定する ---
+  // (順番が大事: 7200倍濃縮→juice より前に unfair、海の底→sea より前に count など)
+  if (/「見えないものは/.test(sentence)) {
+    return { type: "card", motif: "concept", emphasis: "見えないものは、ないことになってしまう" };
+  }
+  if (/(三段まとめて|から、100倍|から、36倍|から、2倍|100かける)/.test(sentence)) {
+    return { type: "diagram", motif: "multiply_calc", title: "三段まとめて、掛け算" };
+  }
+  if (/(くらべる勝負|勝負をし|勝てません)/.test(sentence)) {
+    return { type: "diagram", motif: "unfair_match", title: "これは、勝てない勝負" };
+  }
+  if (/(濃縮ジュース|原液|むせる|7200倍濃縮|何倍濃縮|何千倍)/.test(sentence)) {
+    return { type: "diagram", motif: "juice", title: "現実をしぼった、濃縮ジュース" };
+  }
+  if (/(当選報告|確率の感覚)/.test(sentence)) {
+    return { type: "diagram", motif: "timeline_wins", title: "タイムラインは、当選報告だらけ" };
+  }
+  if (/(そっとアプリ|外れた人)/.test(sentence)) {
+    return { type: "diagram", motif: "gacha_close", title: "外れた人は、そっと閉じるだけ" };
+  }
+  if (/(ガチャ|激レア)/.test(sentence)) {
+    return { type: "diagram", motif: "gacha_shine", title: "当たった人だけが、投稿する" };
+  }
+  if (/(人生のホームラン|投稿と、ホームラン)/.test(sentence)) {
+    return { type: "diagram", motif: "life_homerun", title: "友達の投稿は、人生のホームラン集" };
+  }
+  if (/(落ち込む人|落ち込む必要|プロはすごい)/.test(sentence)) {
+    return { type: "diagram", motif: "not_sad_viewer", title: "ホームラン集を見ても、落ち込まない" };
+  }
+  if (/(ホームラン集|打った瞬間|スポーツニュース|ベスト盤)/.test(sentence)) {
+    return { type: "diagram", motif: "homerun_tv", title: "夜のスポーツニュース" };
+  }
+  if (/(600割る|15回に1回)/.test(sentence)) {
+    return { type: "diagram", motif: "hr_divide", title: "ホームランは、15回に1回" };
+  }
+  if (/(打席|もっと少ない)/.test(sentence)) {
+    return { type: "diagram", motif: "batter", title: "一流バッターの1年" };
+  }
+  if (/(7回は失敗|10回のうち)/.test(sentence)) {
+    return { type: "diagram", motif: "fail_7of10", title: "超一流でも、7回は失敗" };
+  }
+  if (/(NG集|道に迷った|無言の電車)/.test(sentence)) {
+    return { type: "diagram", motif: "ng_film", title: "あなただけが見られる、NG集" };
+  }
+  if (/(カメラロール|ブレた写真|変な顔)/.test(sentence)) {
+    return { type: "diagram", motif: "camera_roll", title: "あなたのカメラロール" };
+  }
+  if (/(奇跡の1枚|選んで投稿|一段目|100枚|100倍濃縮)/.test(sentence)) {
+    return { type: "diagram", motif: "pick_1of100", title: "100枚から、奇跡の1枚" };
+  }
+  if (/(二段目|365日|特別な日|365割る)/.test(sentence)) {
+    return { type: "diagram", motif: "calendar_10", title: "投稿したくなる日は、1年に10日" };
+  }
+  if (/(三段目|上に表示|2倍と)/.test(sentence)) {
+    return { type: "diagram", motif: "rank_up", title: "人気の投稿ほど、上に表示" };
+  }
+  if (/投稿されない/.test(sentence)) {
+    return { type: "diagram", motif: "sink_posts", title: "投稿されないものは、海の底へ" };
+  }
+  if (/(火曜日|ポテチ|ソファー)/.test(sentence)) {
+    return { type: "diagram", motif: "nothing_tuesday", title: "誰にでもある、何もない火曜日" };
+  }
+  if (/(お互いさま|あなたの投稿も)/.test(sentence)) {
+    return { type: "diagram", motif: "mutual_shine", title: "あなたの投稿も、誰かの画面では" };
+  }
+  if (/[3３三]か条/.test(sentence)) {
+    return {
+      type: "diagram",
+      motif: "three_points",
+      title: "付き合い方、3か条",
+      items: [
+        { label: "画面は「7200倍濃縮のベスト盤」と知る" },
+        { label: "相手の「何もない火曜日」を想像する" },
+        { label: "あなたの投稿も、誰かにはキラキラ" },
+      ],
+    };
+  }
+  // --- 第3章 (和紙の世界) ---
+  if (/(数えてしまう病|手元に残った)/.test(sentence)) {
+    return { type: "diagram", motif: "count_disease", title: "帰ってきたものだけ、数えてしまう病" };
+  }
+  if (/届かなかった/.test(sentence)) {
+    return { type: "diagram", motif: "missing_data", title: "記録に残らなかったもの" };
+  }
+  if (/(つぶや|ここに届いていない)/.test(sentence)) {
+    return { type: "diagram", motif: "whisper_question", title: "ウォールドさんのつぶやき" };
+  }
+  if (/(ウォールド|待ったをかけ|数学者|命を救った)/.test(sentence)) {
+    return { type: "diagram", motif: "wald_stop", title: "ひとりの数学者の、待った" };
+  }
+  if (/(海の底|帰ってこられない)/.test(sentence)) {
+    return { type: "diagram", motif: "sea_bottom", title: "帰ってこなかった飛行機のゆくえ" };
+  }
+  if (/(銃弾|穴の場所|翼やしっぽ|穴がたくさん|鉄板|エンジン|帰ってこられた)/.test(sentence)) {
+    return { type: "diagram", motif: "bullet_map", title: "帰ってきた飛行機の、弾痕の記録" };
+  }
+  if (/(アメリカ軍|軍の偉い人|頭を悩ませ)/.test(sentence)) {
+    return { type: "diagram", motif: "generals", title: "軍の作戦会議" };
+  }
+  if (/(第二次世界大戦|撃ち落とされ|80年前)/.test(sentence)) {
+    return { type: "diagram", motif: "war_planes", title: "80年前・第二次世界大戦" };
+  }
+  if (/(滑走路|生き残った)/.test(sentence)) {
+    return { type: "diagram", motif: "runway_phones", title: "帰ってきたものだけの滑走路" };
+  }
+  // --- 導入 (夜のスマホの世界) ---
+  if (/選ばれ/.test(sentence)) {
+    return { type: "diagram", motif: "selection_gates", title: "世界は、選ばれてから届く" };
+  }
+  if (/(キラキラしているのは|世界ではありません|あなたの画面です)/.test(sentence)) {
+    return { type: "diagram", motif: "world_vs_screen", title: "キラキラなのは、どっち?" };
+  }
+  if (/(ふとん|おやすみ)/.test(sentence)) {
+    return { type: "diagram", motif: "futon_phone", title: "夜、ふとんの中で" };
+  }
+  if (/(ため息|落ち込|何もない毎日|自分の毎日)/.test(sentence)) {
+    return { type: "diagram", motif: "alone_sigh", title: "夜のため息" };
+  }
+  if (/スクロール/.test(sentence)) {
+    return { type: "diagram", motif: "scroll_forever", title: "スクロールしても、きらきら" };
+  }
+  if (/(きらきら|キラキラ|旅行に行き|ごちそう)/.test(sentence)) {
+    return { type: "diagram", motif: "kirakira_feed", title: "画面の中は、きらきら" };
+  }
+  if (/ありがとうございました/.test(sentence)) {
+    return { type: "character", motif: "thanks" };
   }
   // 核心の文・種明かしはカード (答えの数字もカードで見せる)
   // 「〜のあとは、」が「とは、」に誤マッチしないよう直前の「あ」を除外する

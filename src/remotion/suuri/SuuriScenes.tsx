@@ -33,7 +33,7 @@ import {
 } from "./parts";
 
 // Video.tsx など外から使う口は従来どおり SuuriScenes から import できるよう再輸出
-export { SP, SUURI_FONT, SUURI_SERIF, WashiCtx, splitPunchline } from "./parts";
+export { SP, SUURI_FONT, SUURI_SERIF, WashiCtx, StadiumCtx, splitPunchline } from "./parts";
 
 // 37%ルール回 (回転寿司×結婚) の専用シーン
 import {
@@ -102,8 +102,18 @@ import {
   RunwayPhonesScene,
   WhisperQuestionScene,
   MutualShineScene,
+  NotConsolationScene,
+  BatterRallyScene,
+  OrzScene,
+  FruitPressScene,
+  DrinkFallScene,
+  BoxerChampScene,
+  SofaClockScene,
+  Ww2YearScene,
+  WaldProfileScene,
   KIRAKIRA_WASHI_MOTIFS,
   KIRAKIRA_DARK_MOTIFS,
+  KIRAKIRA_STADIUM_MOTIFS,
 } from "./KirakiraScenes";
 
 // ===== 語り・つなぎの人物 =====
@@ -1358,6 +1368,46 @@ const MichinagaScene: React.FC<{ scene?: Scene; variant?: number }> = ({ scene, 
 };
 
 // ポイント3つの箱 (赤い番号バッジつき)
+// 3か条の行末につける小さなアイコン (キラキラ回: 言葉と絵をそろえる)
+// 他の動画の3か条には出ない (ラベルに該当語がないため)
+const ThreePointIcon: React.FC<{ label: string }> = ({ label }) => {
+  if (/濃縮/.test(label)) {
+    // 小さなジュースグラス
+    return (
+      <svg width={64} height={64} viewBox="0 0 64 64">
+        <path d="M 18 14 L 46 14 L 42 52 L 22 52 Z" fill="none" stroke={SP.line} strokeWidth={4} strokeLinejoin="round" />
+        <path d="M 20.5 30 L 43.5 30 L 42 52 L 22 52 Z" fill="#E08A3C" opacity={0.9} />
+        <line x1={40} y1={10} x2={48} y2={2} stroke={SP.line} strokeWidth={4} />
+      </svg>
+    );
+  }
+  if (/火曜日/.test(label)) {
+    // 小さなカレンダー (火)
+    return (
+      <svg width={64} height={64} viewBox="0 0 64 64">
+        <rect x={10} y={12} width={44} height={42} rx={6} fill="none" stroke={SP.line} strokeWidth={4} />
+        <line x1={10} y1={26} x2={54} y2={26} stroke={SP.line} strokeWidth={4} />
+        <line x1={22} y1={6} x2={22} y2={16} stroke={SP.line} strokeWidth={4} />
+        <line x1={42} y1={6} x2={42} y2={16} stroke={SP.line} strokeWidth={4} />
+        <text x={32} y={48} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={22} fontWeight={800} fill={SP.ink}>
+          火
+        </text>
+      </svg>
+    );
+  }
+  if (/キラキラ/.test(label)) {
+    // 小さなスマホ+きらめき
+    return (
+      <svg width={64} height={64} viewBox="0 0 64 64">
+        <rect x={20} y={8} width={26} height={48} rx={6} fill="none" stroke={SP.line} strokeWidth={4} />
+        <path d="M 33 24 L 35.5 31 L 42 33.5 L 35.5 36 L 33 43 L 30.5 36 L 24 33.5 L 30.5 31 Z" fill={SP.ink} />
+        <path d="M 50 12 L 51.5 16 L 55.5 17.5 L 51.5 19 L 50 23 L 48.5 19 L 44.5 17.5 L 48.5 16 Z" fill={SP.line} />
+      </svg>
+    );
+  }
+  return null;
+};
+
 const ThreePointsScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -1403,6 +1453,9 @@ const ThreePointsScene: React.FC<{ scene: Scene }> = ({ scene }) => {
                 {i + 1}
               </div>
               <div style={{ fontFamily: SUURI_FONT, fontSize: 44, fontWeight: 700, color: SP.ink }}>{t}</div>
+              <div style={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
+                <ThreePointIcon label={t} />
+              </div>
             </div>
           );
         })}
@@ -1916,11 +1969,9 @@ const MultiplyImagineScene: React.FC = () => {
         <circle cx={1055} cy={270} r={14} fill={SP.faint} />
         <g transform={`translate(1230, 210) scale(${pop})`}>
           <ellipse rx={150} ry={110} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-          <text x={-44} y={34} textAnchor="middle" fontSize={100} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
+          {/* 「何を何倍するか」はまだ言っていないので、記号は × だけ (数字は見せない) */}
+          <text x={0} y={36} textAnchor="middle" fontSize={110} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
             ×
-          </text>
-          <text x={52} y={32} textAnchor="middle" fontSize={84} fontWeight={800} fill={SP.ink} fontFamily={SUURI_FONT}>
-            2
           </text>
         </g>
         {[[1440, 120, -20], [1060, 100, 15], [1430, 330, 30]].map(([x, y, rot], i) => (
@@ -2705,6 +2756,18 @@ const YamabaScene: React.FC = () => {
 const resolveSuuriMotif = (m: string): string | undefined => {
   // キラキラ画面回 (帰ってこなかった飛行機) の題材をいちばん先に見る
   // (bullet→lottery / sea→see_off などの誤吸収を防ぐため順番が大事)
+  // 専用イラスト11種 (batter_rally→batter / ww2_year→war_planes などの誤吸収を防ぐため最優先)
+  if (/not_consolation|consolation/.test(m)) return "not_consolation";
+  if (/batter_rally|rally/.test(m)) return "batter_rally";
+  if (/orz|all_fours/.test(m)) return "orz";
+  if (/ww2_year|year_1943|1943/.test(m)) return "ww2_year";
+  if (/wald_profile|profile/.test(m)) return "wald_profile";
+  if (/orange_press/.test(m)) return "orange_press";
+  if (/lemon_press|lemon/.test(m)) return "lemon_press";
+  if (/lime_press|lime/.test(m)) return "lime_press";
+  if (/drink_fall|drink/.test(m)) return "drink_fall";
+  if (/boxer|champ/.test(m)) return "boxer_champ";
+  if (/sofa_clock|sofa/.test(m)) return "sofa_clock";
   if (/bullet|hole_map|wald_map|shot_map/.test(m)) return "bullet_map";
   if (/sea_bottom|sunken|ocean_floor|under_sea/.test(m)) return "sea_bottom";
   // (専用トークンだけ使う: 裸の scroll / timeline / pick / count / multiply は下の既存判定に残す)
@@ -2931,6 +2994,54 @@ export const computeSuuriWashi = (scenes: Scene[]): boolean[] => {
   return out;
 };
 
+// ===== 夜の球場モードの場面判定 (キラキラ回の第1章 = 野球の世界) =====
+// computeSuuriWashi と同じ考え方: 球場(true)/他の分類あり(false)/中立(undefined) に分け、
+// 中立は前を引き継ぎ、章扉は次を先取りし、2場面以下の飛び地はならす。
+// Frame 側では和紙が優先される (和紙でなく球場のときだけ球場背景)。
+export const computeSuuriStadium = (scenes: Scene[]): boolean[] => {
+  const n = scenes.length;
+  const raw: (boolean | undefined)[] = scenes.map((s) => {
+    if (s.isEnding || s.image) return undefined;
+    const m = resolveSuuriMotif(s.motif ?? "") ?? s.motif ?? "";
+    if ((KIRAKIRA_STADIUM_MOTIFS as readonly string[]).includes(m)) return true;
+    if (WASHI_MOTIFS.has(m) || DARK_MOTIFS.has(m)) return false;
+    if ((KIRAKIRA_WASHI_MOTIFS as readonly string[]).includes(m)) return false;
+    if ((KIRAKIRA_DARK_MOTIFS as readonly string[]).includes(m)) return false;
+    return undefined;
+  });
+  const filled: boolean[] = new Array(n).fill(false);
+  let prev = false;
+  for (let i = 0; i < n; i++) {
+    if (raw[i] !== undefined) {
+      prev = raw[i] as boolean;
+      filled[i] = prev;
+      continue;
+    }
+    if (scenes[i].type === "card" && scenes[i].motif === "chapter") {
+      let v: boolean = prev;
+      for (let j = i + 1; j < n; j++) {
+        if (raw[j] !== undefined) {
+          v = raw[j] as boolean;
+          break;
+        }
+      }
+      prev = v;
+    }
+    filled[i] = prev;
+  }
+  const out = filled.slice();
+  let i = 0;
+  while (i < n) {
+    let j = i;
+    while (j < n && out[j] === out[i]) j++;
+    if (j - i <= 2 && i > 0 && j < n && out[i - 1] === out[j]) {
+      for (let k = i; k < j; k++) out[k] = out[i - 1];
+    }
+    i = j;
+  }
+  return out;
+};
+
 export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ scene, variant = 0 }) => {
   if (scene.image && scene.type !== "card") {
     return <ImageScene scene={scene} />;
@@ -2977,6 +3088,17 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
     if (m === "runway_phones") return <RunwayPhonesScene scene={scene} />;
     if (m === "whisper_question") return <WhisperQuestionScene scene={scene} />;
     if (m === "mutual_shine") return <MutualShineScene scene={scene} />;
+    if (m === "not_consolation") return <NotConsolationScene scene={scene} />;
+    if (m === "batter_rally") return <BatterRallyScene scene={scene} />;
+    if (m === "orz") return <OrzScene scene={scene} />;
+    if (m === "orange_press") return <FruitPressScene scene={scene} fruit="orange" />;
+    if (m === "lemon_press") return <FruitPressScene scene={scene} fruit="lemon" />;
+    if (m === "lime_press") return <FruitPressScene scene={scene} fruit="lime" />;
+    if (m === "drink_fall") return <DrinkFallScene scene={scene} />;
+    if (m === "boxer_champ") return <BoxerChampScene scene={scene} />;
+    if (m === "sofa_clock") return <SofaClockScene scene={scene} />;
+    if (m === "ww2_year") return <Ww2YearScene scene={scene} />;
+    if (m === "wald_profile") return <WaldProfileScene scene={scene} />;
     // --- 寿司回 (37%ルール) ---
     if (m === "sushi_lane") return <SushiLaneScene scene={scene} variant={variant} />;
     if (m === "one_plate") return <OnePlateScene scene={scene} variant={variant} />;

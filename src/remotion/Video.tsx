@@ -31,7 +31,7 @@ import {
   kouzouCardShowsFullText,
 } from "./kouzou/KouzouScenes";
 import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
-import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, computeSuuriVariants, computeSuuriWashi, WashiCtx, splitPunchline } from "./suuri/SuuriScenes";
+import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, computeSuuriVariants, computeSuuriWashi, WashiCtx, computeSuuriStadium, StadiumCtx, splitPunchline } from "./suuri/SuuriScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -257,6 +257,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const suuriVariants = isSuuri ? computeSuuriVariants(data.scenes) : [];
   // suuri: 寿司の場面だけ和紙背景にする (題材から場面ごとに判定)
   const suuriWashi = isSuuri ? computeSuuriWashi(data.scenes) : [];
+  // suuri (キラキラ回): 第1章の野球の場面だけ夜の球場背景 (和紙が優先)
+  const suuriStadium = isSuuri ? computeSuuriStadium(data.scenes) : [];
   if (data.scenes.length === 0) {
     return (
       <AbsoluteFill
@@ -347,7 +349,9 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 <KeizaiSceneView scene={scene} />
               ) : isSuuri ? (
                 <WashiCtx.Provider value={suuriWashi[sceneI] ?? false}>
-                  <SuuriSceneView scene={scene} variant={suuriVariants[sceneI] ?? 0} />
+                  <StadiumCtx.Provider value={suuriStadium[sceneI] ?? false}>
+                    <SuuriSceneView scene={scene} variant={suuriVariants[sceneI] ?? 0} />
+                  </StadiumCtx.Provider>
                 </WashiCtx.Provider>
               ) : (
                 <SceneView scene={scene} />

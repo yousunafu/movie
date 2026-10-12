@@ -40,6 +40,60 @@ export const H = 1080;
 
 export const WashiCtx = React.createContext(false);
 
+// ===== 夜の球場モード (キラキラ回の第1章 = 野球の世界) =====
+// 黒地のまま、外野フェンスの弧・芝のグラデ・照明塔を薄く敷いて「球場にいる」空気を出す。
+// 和紙が優先 (washi のときは球場は描かない)。
+export const StadiumCtx = React.createContext(false);
+
+// 夜の球場の背景 (控えめ: 線は SP.dim 系、絵の邪魔をしない)
+const StadiumBg: React.FC = () => (
+  <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+    <defs>
+      {/* 芝: 下にいくほどわずかに緑がにじむ */}
+      <linearGradient id="stadiumGrass" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stopColor="#0E1A12" stopOpacity={0} />
+        <stop offset="100%" stopColor="#13291A" stopOpacity={0.9} />
+      </linearGradient>
+      <radialGradient id="stadiumGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#E8E4C8" stopOpacity={0.5} />
+        <stop offset="100%" stopColor="#E8E4C8" stopOpacity={0} />
+      </radialGradient>
+    </defs>
+    {/* 外野フェンスの弧 (画面上方にゆるい弧) */}
+    <path
+      d="M -80 360 Q 960 130 2000 360"
+      fill="none"
+      stroke="#2A2A34"
+      strokeWidth={10}
+    />
+    <path
+      d="M -80 376 Q 960 146 2000 376"
+      fill="none"
+      stroke="#20202A"
+      strokeWidth={4}
+    />
+    {/* 芝生 (フェンスから下へ) */}
+    <path d="M -80 362 Q 960 132 2000 362 L 2000 1080 L -80 1080 Z" fill="url(#stadiumGrass)" />
+    {/* ファウルライン (左右から中央下へ) */}
+    <line x1={120} y1={1080} x2={700} y2={620} stroke="#3A3A44" strokeWidth={5} opacity={0.8} />
+    <line x1={1800} y1={1080} x2={1220} y2={620} stroke="#3A3A44" strokeWidth={5} opacity={0.8} />
+    {/* 照明塔 2本 (フェンスの向こう・ぼんやり光る) */}
+    {[
+      { x: 310, y: 180 },
+      { x: 1610, y: 180 },
+    ].map(({ x, y }) => (
+      <g key={x}>
+        <circle cx={x} cy={y} r={120} fill="url(#stadiumGlow)" />
+        <line x1={x} y1={y + 36} x2={x} y2={y + 150} stroke="#2A2A34" strokeWidth={8} />
+        <rect x={x - 56} y={y - 20} width={112} height={56} rx={8} fill="none" stroke="#3A3A44" strokeWidth={5} />
+        {[0, 1, 2].map((c) => (
+          <circle key={c} cx={x - 30 + c * 30} cy={y + 8} r={7} fill="#55523E" />
+        ))}
+      </g>
+    ))}
+  </svg>
+);
+
 const WASHI_BG = "#F2EBDB"; // 生成りの和紙
 const WASHI_WAVE = "#C9BA9A"; // 青海波の薄い線
 
@@ -115,9 +169,11 @@ export const Header: React.FC = () => (
 
 export const Frame: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const washi = React.useContext(WashiCtx);
+  const stadium = React.useContext(StadiumCtx);
   if (!washi) {
     return (
       <AbsoluteFill style={{ backgroundColor: SP.background }}>
+        {stadium && <StadiumBg />}
         {children}
         <Header />
       </AbsoluteFill>

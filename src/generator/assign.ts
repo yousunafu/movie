@@ -953,6 +953,43 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/「見えないものは/.test(sentence)) {
     return { type: "card", motif: "concept", emphasis: "見えないものは、ないことになってしまう" };
   }
+  // --- 専用イラスト (既存ルールより先に判定しないと飲み込まれる言葉たち) ---
+  if (/なぐさめ/.test(sentence)) {
+    return { type: "diagram", motif: "not_consolation", title: "なぐさめではなく、数字の話" };
+  }
+  if (/打った瞬間/.test(sentence)) {
+    return { type: "diagram", motif: "batter_rally", title: "打った瞬間だけが、次々と" };
+  }
+  if (/(落ち込む人は、いません|くらべて自分の毎日|落ち込む必要もありません)/.test(sentence)) {
+    return { type: "diagram", motif: "orz", title: "落ち込む必要は、ありません" };
+  }
+  if (/ブレた写真/.test(sentence)) {
+    return { type: "diagram", motif: "orange_press", title: "現実を、ぎゅっとしぼる" };
+  }
+  if (/濃縮、二段目/.test(sentence)) {
+    return { type: "diagram", motif: "lemon_press", title: "濃縮、二段目" };
+  }
+  if (/ひかえめに2倍/.test(sentence)) {
+    return { type: "diagram", motif: "lime_press", title: "ひかえめに、2倍" };
+  }
+  if (/上に表示される/.test(sentence)) {
+    return { type: "diagram", motif: "rank_up", title: "人気の投稿ほど、上に表示" };
+  }
+  if (/むせる/.test(sentence)) {
+    return { type: "diagram", motif: "drink_fall", title: "そのまま飲んだら、むせる" };
+  }
+  if (/世界チャンピオン/.test(sentence)) {
+    return { type: "diagram", motif: "boxer_champ", title: "世界チャンピオンでも、勝てない" };
+  }
+  if (/夜ふかし/.test(sentence)) {
+    return { type: "diagram", motif: "sofa_clock", title: "だらだらと、夜ふかし" };
+  }
+  if (/第二次世界大戦/.test(sentence)) {
+    return { type: "diagram", motif: "ww2_year", title: "時は、第二次世界大戦" };
+  }
+  if (/(エイブラハム|ウォールドさんです)/.test(sentence)) {
+    return { type: "diagram", motif: "wald_profile", title: "数学者、エイブラハム・ウォールド" };
+  }
   if (/(三段まとめて|から、100倍|から、36倍|から、2倍|100かける)/.test(sentence)) {
     return { type: "diagram", motif: "multiply_calc", title: "三段まとめて、掛け算" };
   }
@@ -1019,7 +1056,7 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
       motif: "three_points",
       title: "付き合い方、3か条",
       items: [
-        { label: "画面は「7200倍濃縮のベスト盤」と知る" },
+        { label: "画面は、7200倍濃縮のベスト盤" },
         { label: "相手の「何もない火曜日」を想像する" },
         { label: "あなたの投稿も、誰かにはキラキラ" },
       ],

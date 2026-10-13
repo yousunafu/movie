@@ -115,6 +115,15 @@ import {
   FutonThinkScene,
   DeclareFingerScene,
   LetsGoScene,
+  UnmaskScene,
+  PreviewCh12Scene,
+  PreviewCh34Scene,
+  PhotoFloodScene,
+  CameraRollSleepScene,
+  TroublesRainScene,
+  VanishPostsScene,
+  PitfallPeopleScene,
+  CountOnlyHandScene,
   KIRAKIRA_WASHI_MOTIFS,
   KIRAKIRA_DARK_MOTIFS,
   KIRAKIRA_STADIUM_MOTIFS,
@@ -2807,6 +2816,16 @@ const resolveSuuriMotif = (m: string): string | undefined => {
   if (/gacha|rare_hit|capsule/.test(m)) return "gacha_shine";
   if (/timeline_wins|win_report|win_timeline/.test(m)) return "timeline_wins";
   if (/homerun/.test(m)) return "homerun_tv";
+  // キラキラ画面回の新イラスト (camera_roll や count_disease の広い正規表現より先に見る)
+  if (/unmask|see_through|minuku/.test(m)) return "unmask";
+  if (/preview_ch12|preview_first/.test(m)) return "preview_ch12";
+  if (/preview_ch34|preview_second/.test(m)) return "preview_ch34";
+  if (/photo_flood|blur_photos|bad_photos/.test(m)) return "photo_flood";
+  if (/camera_roll_sleep|sleep_photos|asleep/.test(m)) return "camera_roll_sleep";
+  if (/troubles_rain|lost_hour|trouble_fall/.test(m)) return "troubles_rain";
+  if (/vanish_posts|invisible_posts|not_exist/.test(m)) return "vanish_posts";
+  if (/pitfall_people|pitfall|name_the_trap/.test(m)) return "pitfall_people";
+  if (/count_only_hand|hand_count|only_counted/.test(m)) return "count_only_hand";
   if (/camera_roll|camera|photo_roll/.test(m)) return "camera_roll";
   if (/pick_1|1of100|one_of_100|best_shot|miracle_shot/.test(m)) return "pick_1of100";
   if (/calendar|365|ten_days/.test(m)) return "calendar_10";
@@ -3091,6 +3110,15 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
     if (m === "gacha_close") return <GachaCloseScene scene={scene} />;
     if (m === "timeline_wins") return <TimelineWinsScene scene={scene} />;
     if (m === "camera_roll") return <CameraRollScene scene={scene} />;
+    if (m === "unmask") return <UnmaskScene scene={scene} />;
+    if (m === "preview_ch12") return <PreviewCh12Scene scene={scene} />;
+    if (m === "preview_ch34") return <PreviewCh34Scene scene={scene} />;
+    if (m === "photo_flood") return <PhotoFloodScene scene={scene} />;
+    if (m === "camera_roll_sleep") return <CameraRollSleepScene scene={scene} />;
+    if (m === "troubles_rain") return <TroublesRainScene scene={scene} />;
+    if (m === "vanish_posts") return <VanishPostsScene scene={scene} />;
+    if (m === "pitfall_people") return <PitfallPeopleScene scene={scene} />;
+    if (m === "count_only_hand") return <CountOnlyHandScene scene={scene} />;
     if (m === "pick_1of100") return <Pick1of100Scene scene={scene} />;
     if (m === "calendar_10") return <Calendar10Scene scene={scene} />;
     if (m === "rank_up") return <RankUpScene scene={scene} />;

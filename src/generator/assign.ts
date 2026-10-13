@@ -944,7 +944,14 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (isManabiQuizText(sentence) || /ここで質問です/.test(sentence)) {
     return { type: "card", motif: "quiz" };
   }
-  // 予告の文 (「第1章で〜、第2章で〜」) は中身の言葉より先に道筋の絵へ
+  // 予告の文 (「第1章で〜、第2章で〜」) は中身の言葉より先に道筋の絵へ。
+  // キラキラ回は前半 (第1章・第2章) と後半 (第3章・第4章) で絵を分ける (斜め線の2分割予告)
+  if (/第[1１一]章で/.test(sentence)) {
+    return { type: "diagram", motif: "preview_ch12", title: "今日の流れ・前半" };
+  }
+  if (/第[3３三]章で/.test(sentence)) {
+    return { type: "diagram", motif: "preview_ch34", title: "今日の流れ・後半" };
+  }
   if (/第[0-9０-９一二三四五六七八九十]+章で/.test(sentence)) {
     return { type: "diagram", motif: "roadmap", title: "今日の流れ" };
   }
@@ -995,7 +1002,17 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(エイブラハム|ウォールドさんです)/.test(sentence)) {
     return { type: "diagram", motif: "wald_profile", title: "数学者、エイブラハム・ウォールド" };
   }
-  if (/(三段まとめて|から、100倍|から、36倍|から、2倍|100かける)/.test(sentence)) {
+  // 掛け算のおさらい3文は、それぞれ対応する章の絵をもう一度見せる (数字の根拠を思い出させる)
+  if (/から、100倍/.test(sentence)) {
+    return { type: "diagram", motif: "pick_1of100", title: "100枚から、奇跡の1枚" };
+  }
+  if (/から、36倍/.test(sentence)) {
+    return { type: "diagram", motif: "calendar_10", title: "投稿したくなる日は、1年に10日" };
+  }
+  if (/から、2倍/.test(sentence)) {
+    return { type: "diagram", motif: "rank_up", title: "人気の投稿ほど、上に表示" };
+  }
+  if (/(三段まとめて|100かける)/.test(sentence)) {
     return { type: "diagram", motif: "multiply_calc", title: "三段まとめて、掛け算" };
   }
   if (/(くらべる勝負|勝負をし|勝てません)/.test(sentence)) {
@@ -1031,10 +1048,19 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(7回は失敗|10回のうち)/.test(sentence)) {
     return { type: "diagram", motif: "fail_7of10", title: "超一流でも、7回は失敗" };
   }
-  if (/(NG集|道に迷った|無言の電車)/.test(sentence)) {
+  if (/道に迷った/.test(sentence)) {
+    return { type: "diagram", motif: "troubles_rain", title: "道に迷った1時間も、ぜんぶ" };
+  }
+  if (/(NG集|無言の電車)/.test(sentence)) {
     return { type: "diagram", motif: "ng_film", title: "あなただけが見られる、NG集" };
   }
-  if (/(カメラロール|ブレた写真|変な顔)/.test(sentence)) {
+  if (/ブレた写真/.test(sentence)) {
+    return { type: "diagram", motif: "photo_flood", title: "ダメ写真が、ぎっしり" };
+  }
+  if (/眠ったまま/.test(sentence)) {
+    return { type: "diagram", motif: "camera_roll_sleep", title: "カメラロールの底で、眠ったまま" };
+  }
+  if (/(カメラロール|変な顔)/.test(sentence)) {
     return { type: "diagram", motif: "camera_roll", title: "あなたのカメラロール" };
   }
   if (/(奇跡の1枚|選んで投稿|一段目|100枚|100倍濃縮)/.test(sentence)) {
@@ -1045,6 +1071,9 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   }
   if (/(三段目|上に表示|2倍と)/.test(sentence)) {
     return { type: "diagram", motif: "rank_up", title: "人気の投稿ほど、上に表示" };
+  }
+  if (/存在しないように見え/.test(sentence)) {
+    return { type: "diagram", motif: "vanish_posts", title: "存在しないように、見えてしまう" };
   }
   if (/投稿されない/.test(sentence)) {
     return { type: "diagram", motif: "sink_posts", title: "投稿されないものは、海の底へ" };
@@ -1068,7 +1097,13 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     };
   }
   // --- 第3章 (和紙の世界) ---
-  if (/(数えてしまう病|手元に残った)/.test(sentence)) {
+  if (/落とし穴に、名前/.test(sentence)) {
+    return { type: "diagram", motif: "pitfall_people", title: "落とし穴に、名前をつけるなら" };
+  }
+  if (/手元に残った/.test(sentence)) {
+    return { type: "diagram", motif: "count_only_hand", title: "人類共通のクセ" };
+  }
+  if (/数えてしまう病/.test(sentence)) {
     return { type: "diagram", motif: "count_disease", title: "帰ってきたものだけ、数えてしまう病" };
   }
   if (/届かなかった/.test(sentence)) {
@@ -1107,6 +1142,9 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   }
   if (/それでは、まいりましょう/.test(sentence)) {
     return { type: "diagram", motif: "lets_go", title: "それでは、まいりましょう" };
+  }
+  if (/見破/.test(sentence)) {
+    return { type: "diagram", motif: "unmask", title: "選ばれ方を、見破る" };
   }
   if (/選ばれ/.test(sentence)) {
     return { type: "diagram", motif: "selection_gates", title: "世界は、選ばれてから届く" };

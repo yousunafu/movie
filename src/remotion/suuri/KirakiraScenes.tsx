@@ -56,6 +56,8 @@ export const KIRAKIRA_WASHI_MOTIFS = [
   "whisper_question",
   "ww2_year",
   "wald_profile",
+  "pitfall_people",
+  "count_only_hand",
 ] as const;
 // 第1章 (野球の世界) → 黒地に夜の球場の背景を薄く敷く
 export const KIRAKIRA_STADIUM_MOTIFS = [
@@ -103,6 +105,13 @@ export const KIRAKIRA_DARK_MOTIFS = [
   "futon_think",
   "declare_finger",
   "lets_go",
+  "unmask",
+  "preview_ch12",
+  "preview_ch34",
+  "photo_flood",
+  "camera_roll_sleep",
+  "troubles_rain",
+  "vanish_posts",
 ] as const;
 // orz はどのリストにも入れない (前の場面の背景を引き継ぐ中立の絵)
 
@@ -314,7 +323,8 @@ export const BulletMapScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
           穴は <span style={{ color: SP.accent }}>翼としっぽ</span> ばかり ─ エンジンにはゼロ
         </div>
       )}
-      {mode === 2 && (
+      {/* 「守るべきは〜エンジンです」の瞬間は答えの説明をまだ出さない (次の文で種明かしするため) */}
+      {mode === 2 && !/守るべき/.test(text) && (
         <div style={labelStyle}>
           穴がひとつもない場所こそ、<span style={{ color: SP.accent }}>撃たれたら帰れない場所</span>
         </div>
@@ -1121,9 +1131,8 @@ export const BatterScene: React.FC<SceneProps> = ({ scene }) => {
       <DiagramTitle text={scene?.title ?? "一流のホームランバッター"} />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <line x1={240} y1={780} x2={1680} y2={780} stroke={SP.dim} strokeWidth={4} />
-        {/* バッター */}
-        <Person x={430} y={560} scale={2.1} />
-        <line x1={460} y1={590} x2={560} y2={470} stroke={SP.line} strokeWidth={10} strokeLinecap="round" />
+        {/* バッター (帽子・ユニフォーム・木のバットのカラー版) */}
+        <ColorBatter x={430} y={560} scale={2.1} bat={[460, 590, 560, 470]} />
         {/* 打球 (赤い縫い目つきの野球ボール) */}
         <path d="M 560 480 Q 980 220 1430 330" fill="none" stroke={SP.faint} strokeWidth={4} strokeDasharray="4 14" opacity={fly} />
         {(() => {
@@ -1583,8 +1592,8 @@ export const TimelineWinsScene: React.FC<SceneProps> = ({ scene }) => {
 // ===== 第2章: あなたの画面は何倍濃縮か =====
 // ============================================================
 
-// ===== camera_roll: あなたのカメラロール (NGだらけ) =====
-export const CameraRollScene: React.FC<SceneProps> = ({ scene }) => {
+// ===== カメラロールの12コマグリッド (camera_roll と camera_roll_sleep で共用) =====
+const CameraRollGrid: React.FC<{ idPrefix?: string }> = ({ idPrefix = "cam" }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const kinds = [
@@ -1598,9 +1607,7 @@ export const CameraRollScene: React.FC<SceneProps> = ({ scene }) => {
   const x0 = 960 - (4 * cw + 3 * gap) / 2;
   const y0 = 230;
   return (
-    <Frame>
-      <DiagramTitle text={scene?.title ?? "あなたのカメラロール"} />
-      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+    <g>
         {kinds.map((k, i) => {
           const col = i % 4;
           const row = Math.floor(i / 4);
@@ -1648,10 +1655,10 @@ export const CameraRollScene: React.FC<SceneProps> = ({ scene }) => {
               )}
               {k === "finger" && (
                 <g>
-                  <clipPath id={`camcell-${i}`}>
+                  <clipPath id={`camcell-${idPrefix}-${i}`}>
                     <rect x={x} y={y} width={cw} height={ch} rx={10} />
                   </clipPath>
-                  <g clipPath={`url(#camcell-${i})`}>
+                  <g clipPath={`url(#camcell-${idPrefix}-${i})`}>
                     <circle cx={x + cw / 2} cy={y + ch / 2} r={24} fill="none" stroke={SP.faint} strokeWidth={4} />
                     <ellipse cx={x + cw - 30} cy={y + ch - 24} rx={64} ry={46} fill={SP.dim} />
                   </g>
@@ -1677,7 +1684,49 @@ export const CameraRollScene: React.FC<SceneProps> = ({ scene }) => {
             </g>
           );
         })}
-        <SmallLabel x={960} y={768} text="ブレ・ゆび・変な顔が、ぎっしり" color={SP.faint} size={30} />
+    </g>
+  );
+};
+
+// ===== camera_roll: あなたのカメラロール (NGだらけ) =====
+export const CameraRollScene: React.FC<SceneProps> = ({ scene }) => (
+  <Frame>
+    <DiagramTitle text={scene?.title ?? "あなたのカメラロール"} />
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+      <CameraRollGrid />
+      <SmallLabel x={960} y={768} text="ブレ・ゆび・変な顔が、ぎっしり" color={SP.faint} size={30} />
+    </svg>
+  </Frame>
+);
+
+// ===== camera_roll_sleep: 99枚のダメ写真は、底で眠ったまま =====
+// 写真のグリッドがゆっくりフェードアウトして「眠り」につく
+export const CameraRollSleepScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  // 1.2秒後から約2.5秒かけて、ゆっくり暗くなる (完全には消さない・下限0.18)
+  const sleepT = Math.min(Math.max((frame - 1.2 * fps) / (2.5 * fps), 0), 1);
+  const fade = 1 - 0.82 * sleepT;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "カメラロールの底で、眠ったまま"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <g opacity={fade}>
+          <CameraRollGrid idPrefix="sleep" />
+        </g>
+        {/* 眠りの z z z (暗くなるのに合わせて浮かぶ) */}
+        <g opacity={appearAt(frame, fps, Math.round(1.8 * fps))}>
+          <text x={1420} y={330} fontSize={44} fontWeight={700} fill={SP.faint} fontFamily={SUURI_FONT}>
+            z
+          </text>
+          <text x={1466} y={278} fontSize={56} fontWeight={700} fill={SP.faint} fontFamily={SUURI_FONT}>
+            z
+          </text>
+          <text x={1520} y={222} fontSize={70} fontWeight={700} fill={SP.faint} fontFamily={SUURI_FONT}>
+            z
+          </text>
+        </g>
+        <SmallLabel x={960} y={768} text="99枚のダメ写真は、眠ったまま" color={SP.faint} size={30} />
       </svg>
     </Frame>
   );
@@ -1726,7 +1775,7 @@ export const Pick1of100Scene: React.FC<SceneProps> = ({ scene }) => {
             textAnchor="middle"
             fontSize={64}
             fontWeight={800}
-            fill={SP.accent}
+            fill={KC.orange}
             fontFamily={SUURI_FONT}
             letterSpacing={3}
             opacity={appearAt(frame, fps, 34)}
@@ -1784,7 +1833,7 @@ export const Calendar10Scene: React.FC<SceneProps> = ({ scene }) => {
             </tspan>
             だけ
           </text>
-          <text x={960} y={706} textAnchor="middle" fontSize={44} fontWeight={800} fill={has36 ? SP.accent : SP.faint} fontFamily={SUURI_FONT} letterSpacing={3}>
+          <text x={960} y={706} textAnchor="middle" fontSize={44} fontWeight={800} fill={has36 ? KC.yellow : SP.faint} fontFamily={SUURI_FONT} letterSpacing={3}>
             {has36 ? "365 ÷ 10 ≒ 36倍" : "何もない355日は、画面に出ない"}
           </text>
         </g>
@@ -1802,12 +1851,13 @@ export const RankUpScene: React.FC<SceneProps> = ({ scene }) => {
     <Frame>
       <DiagramTitle text={scene?.title ?? "人気の投稿ほど、上に表示"} />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-        {/* 上: 人気投稿 */}
+        {/* 上: 人気投稿 (画面の中のキラキラ=カラー) */}
         <g opacity={appearAt(frame, fps, 8)}>
-          <FeedCard x={760} y={220} w={400} h={170} kind="travel" />
-          <Sparkle x={1190} y={250} s={15} phase={1} />
-          <Sparkle x={730} y={300} s={12} phase={3} />
-          <SmallLabel x={1330} y={320} text="いいね 1200" color={SP.ink} size={34} weight={700} anchor="start" />
+          <FeedCard x={760} y={220} w={400} h={170} kind="travel" colored />
+          <Sparkle x={1190} y={250} s={15} phase={1} color={KC.yellow} />
+          <Sparkle x={730} y={300} s={12} phase={3} color={KC.yellow} />
+          <Heart x={1310} y={308} s={13} color={KC.pink} />
+          <SmallLabel x={1345} y={320} text="いいね 1200" color={SP.ink} size={34} weight={700} anchor="start" />
         </g>
         {/* 下: ふつうの投稿 (うすい) */}
         <g opacity={0.45}>
@@ -1823,15 +1873,15 @@ export const RankUpScene: React.FC<SceneProps> = ({ scene }) => {
         </g>
         {has2 && (
           <g opacity={appearAt(frame, fps, 26)}>
-            {/* 赤い ×2 バッジ */}
-            <circle cx={1540} cy={445} r={76} fill="none" stroke={SP.accent} strokeWidth={8} />
+            {/* ×2 バッジ (2の色=ライム。赤は上向き矢印1要素だけに) */}
+            <circle cx={1540} cy={445} r={76} fill="none" stroke={KC.lime} strokeWidth={8} />
             <text
               x={1540}
               y={472}
               textAnchor="middle"
               fontSize={66}
               fontWeight={800}
-              fill={SP.accent}
+              fill={KC.lime}
               fontFamily={SUURI_FONT}
             >
               ×2
@@ -1850,10 +1900,11 @@ export const MultiplyCalcScene: React.FC<SceneProps> = ({ scene }) => {
   const t = scene?.text ?? "";
   const revealed = /7200/.test(t);
   const hl = revealed ? -1 : /100倍/.test(t) ? 0 : /36倍/.test(t) ? 1 : /2倍/.test(t) ? 2 : -1;
+  // 数字の色は濃縮ジュースのフルーツと同じ (100=オレンジ / 36=レモン / 2=ライム)
   const factors = [
-    { v: "100", cap: "奇跡の1枚", cx: 350 },
-    { v: "36", cap: "特別な10日", cx: 690 },
-    { v: "2", cap: "上に表示", cx: 1030 },
+    { v: "100", cap: "奇跡の1枚", cx: 350, color: KC.orange },
+    { v: "36", cap: "特別な10日", cx: 690, color: KC.yellow },
+    { v: "2", cap: "上に表示", cx: 1030, color: KC.lime },
   ];
   return (
     <Frame>
@@ -1871,7 +1922,7 @@ export const MultiplyCalcScene: React.FC<SceneProps> = ({ scene }) => {
               stroke={hl === i ? SP.accent : SP.line}
               strokeWidth={hl === i ? 8 : 5}
             />
-            <text x={f.cx} y={478} textAnchor="middle" fontSize={64} fontWeight={800} fill={SP.ink} fontFamily={SUURI_FONT}>
+            <text x={f.cx} y={478} textAnchor="middle" fontSize={64} fontWeight={800} fill={f.color} fontFamily={SUURI_FONT}>
               {f.v}
             </text>
             <SmallLabel x={f.cx} y={580} text={f.cap} color={SP.faint} size={27} />
@@ -2050,10 +2101,10 @@ export const NothingTuesdayScene: React.FC<SceneProps> = ({ scene, variant = 0 }
             <g opacity={appearAt(frame, fps, 16)}>
               <ellipse cx={740} cy={450} rx={470} ry={225} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
               <g transform="translate(740, 470) scale(0.62) translate(-960, -500)">
-                {/* ミニ火曜日: カレンダー */}
-                <rect x={560} y={320} width={210} height={230} rx={14} fill={SP.background} stroke={SP.line} strokeWidth={6} />
-                <rect x={560} y={320} width={210} height={56} rx={14} fill={SP.dim} />
-                <text x={665} y={500} textAnchor="middle" fontSize={90} fontWeight={800} fill={SP.ink} fontFamily={SUURI_FONT}>
+                {/* ミニ火曜日: 上が赤・下が白地の一般的なカレンダー */}
+                <rect x={560} y={320} width={210} height={230} rx={14} fill="#F4F0E6" stroke={SP.line} strokeWidth={6} />
+                <path d="M 560 334 q 0 -14 14 -14 h 182 q 14 0 14 14 v 42 h -210 Z" fill={SP.accent} />
+                <text x={665} y={500} textAnchor="middle" fontSize={90} fontWeight={800} fill="#2A2A30" fontFamily={SUURI_FONT}>
                   火
                 </text>
                 {/* ミニ火曜日: ソファでだらだら */}
@@ -2070,13 +2121,13 @@ export const NothingTuesdayScene: React.FC<SceneProps> = ({ scene, variant = 0 }
           </>
         ) : (
           <>
-            {/* カレンダーの一枚 */}
+            {/* カレンダーの一枚 (上が赤・下が白地の一般的なカレンダー) */}
             <g opacity={appearAt(frame, fps, 6)}>
-              <rect x={400} y={280} width={240} height={270} rx={14} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-              <rect x={400} y={280} width={240} height={64} rx={14} fill={SP.dim} />
+              <rect x={400} y={280} width={240} height={270} rx={14} fill="#F4F0E6" stroke={SP.line} strokeWidth={5} />
+              <path d="M 400 294 q 0 -14 14 -14 h 212 q 14 0 14 14 v 50 h -240 Z" fill={SP.accent} />
               <circle cx={460} cy={280} r={9} fill={SP.background} stroke={SP.line} strokeWidth={4} />
               <circle cx={580} cy={280} r={9} fill={SP.background} stroke={SP.line} strokeWidth={4} />
-              <text x={520} y={490} textAnchor="middle" fontSize={96} fontWeight={800} fill={SP.ink} fontFamily={SUURI_FONT}>
+              <text x={520} y={490} textAnchor="middle" fontSize={96} fontWeight={800} fill="#2A2A30" fontFamily={SUURI_FONT}>
                 火
               </text>
               <SmallLabel x={520} y={600} text="なんでもない平日" color={SP.faint} size={27} />
@@ -3616,6 +3667,496 @@ export const LetsGoScene: React.FC<SceneProps> = ({ scene }) => {
             <line x1={560} y1={760} x2={730} y2={752} />
             <line x1={600} y1={828} x2={760} y2={824} />
           </g>
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ============================================================
+// ===== 修正第三弾で追加した専用イラスト =====
+// ============================================================
+
+// ===== unmask: 選ばれ方を、虫めがねで見破る =====
+// キラキラ投稿の後ろに隠れた「選ばれなかったもの」を、レンズの中にだけ映す
+export const UnmaskScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  // 虫めがねが右からすっと入ってくる
+  const slide = appearAt(frame, fps, 10);
+  const lensX = 1130 - (1 - slide) * 260;
+  const lensY = 505;
+  const lensR = 215;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "選ばれ方を、見破る"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <defs>
+          <clipPath id="unmask-lens">
+            <circle cx={lensX} cy={lensY} r={lensR - 8} />
+          </clipPath>
+        </defs>
+        {/* 表の顔: キラキラの投稿 (カラー) */}
+        <FeedCard x={540} y={330} w={400} h={200} kind="travel" colored />
+        <Sparkle x={980} y={330} s={15} phase={1} color={KC.yellow} />
+        <Sparkle x={510} y={420} s={11} phase={3} color={KC.yellow} />
+        <SmallLabel x={740} y={620} text="キラキラの投稿" color={SP.faint} size={28} />
+        {/* レンズの中: 隠れていた「選ばれなかった99枚」(点線のゴースト) */}
+        <g clipPath="url(#unmask-lens)" opacity={slide}>
+          <rect x={lensX - lensR} y={lensY - lensR} width={lensR * 2} height={lensR * 2} fill={SP.panel} />
+          {[0, 1, 2, 3, 4, 5].map((i) => {
+            const gx = lensX - 165 + (i % 3) * 115;
+            const gy = lensY - 125 + Math.floor(i / 3) * 125;
+            return (
+              <g key={i} opacity={appearAt(frame, fps, 18 + i * 4)}>
+                <rect
+                  x={gx}
+                  y={gy}
+                  width={95}
+                  height={100}
+                  rx={8}
+                  fill="none"
+                  stroke={SP.faint}
+                  strokeWidth={4}
+                  strokeDasharray="10 8"
+                />
+                <path
+                  d={`M ${gx + 16} ${gy + 56} q 16 -12 32 0 q 16 12 32 0`}
+                  fill="none"
+                  stroke={SP.dim}
+                  strokeWidth={4}
+                  strokeLinecap="round"
+                />
+              </g>
+            );
+          })}
+          <text
+            x={lensX}
+            y={lensY + 165}
+            textAnchor="middle"
+            fontSize={34}
+            fontWeight={700}
+            fill={SP.ink}
+            fontFamily={SUURI_FONT}
+            opacity={appearAt(frame, fps, 40)}
+          >
+            隠れた99枚
+          </text>
+        </g>
+        {/* 虫めがね本体 (枠と柄) */}
+        <g opacity={Math.min(slide * 2, 1)}>
+          <circle cx={lensX} cy={lensY} r={lensR} fill="none" stroke={SP.line} strokeWidth={11} />
+          <line
+            x1={lensX + lensR * 0.72}
+            y1={lensY + lensR * 0.72}
+            x2={lensX + lensR * 0.72 + 150}
+            y2={lensY + lensR * 0.72 + 150}
+            stroke={SP.line}
+            strokeWidth={22}
+            strokeLinecap="round"
+          />
+        </g>
+        <SmallLabel x={960} y={810} text="かんたんな計算で、カラクリが見える" color={SP.ink} size={30} weight={700} />
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== preview_ch12: 章予告・前半 (第1章=ホームラン / 第2章=濃縮ジュース) =====
+// 斜めの線で画面を2分割して、左右に章の顔を置く (カラー)
+export const PreviewCh12Scene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const right = appearAt(frame, fps, Math.round(1.6 * fps));
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "今日の流れ・前半"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 斜めの仕切り線 */}
+        <line x1={1075} y1={195} x2={845} y2={880} stroke={SP.line} strokeWidth={6} strokeLinecap="round" />
+        {/* 左: 第1章 ホームラン集 */}
+        <g opacity={appearAt(frame, fps, 6)}>
+          <SmallLabel x={520} y={280} text="第1章" color={SP.ink} size={40} weight={800} />
+          <ColorBatter x={450} y={520} scale={1.8} bat={[476, 545, 560, 445]} />
+          {/* 打球 */}
+          <circle cx={700} cy={360} r={11} fill={SP.ink} />
+          <path d="M 560 450 Q 630 390 694 364" fill="none" stroke={SP.faint} strokeWidth={4} strokeDasharray="4 12" />
+          <SmallLabel x={520} y={700} text="ホームラン集のひみつ" color={SP.ink} size={32} weight={700} />
+        </g>
+        {/* 右: 第2章 何倍濃縮かを計算 */}
+        <g opacity={right}>
+          <SmallLabel x={1400} y={280} text="第2章" color={SP.ink} size={40} weight={800} />
+          {/* 濃縮ジュースのグラス (オレンジの原液) */}
+          <g transform="translate(1400, 470) scale(1.2)">
+            <path d="M -62 -58 L 62 -58 L 52 80 Q 0 96 -52 80 Z" fill={KC.orange} opacity={0.92} />
+            <path d="M -70 -95 L 70 -95 L 52 80 Q 0 96 -52 80 Z" fill="none" stroke={SP.line} strokeWidth={5} />
+            <line x1={26} y1={-130} x2={48} y2={-40} stroke={KC.pink} strokeWidth={9} strokeLinecap="round" />
+          </g>
+          <Sparkle x={1560} y={300} s={13} phase={2} color={KC.yellow} />
+          <text x={1400} y={660} textAnchor="middle" fontSize={44} fontWeight={800} fill={KC.orange} fontFamily={SUURI_FONT}>
+            何倍濃縮?
+          </text>
+          <SmallLabel x={1400} y={714} text="あなたの画面を計算" color={SP.ink} size={32} weight={700} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== preview_ch34: 章予告・後半 (第3章=飛行機 / 第4章=付き合い方) =====
+export const PreviewCh34Scene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const right = appearAt(frame, fps, Math.round(1.6 * fps));
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "今日の流れ・後半"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 斜めの仕切り線 */}
+        <line x1={1075} y1={195} x2={845} y2={880} stroke={SP.line} strokeWidth={6} strokeLinecap="round" />
+        {/* 左: 第3章 飛行機の名推理 */}
+        <g opacity={appearAt(frame, fps, 6)}>
+          <SmallLabel x={520} y={280} text="第3章" color={SP.ink} size={40} weight={800} />
+          <PlaneSilhouette x={500} y={470} scale={0.95} rotate={-8} />
+          {/* 飛行機雲 */}
+          <path d="M 700 530 Q 820 570 900 640" fill="none" stroke={SP.faint} strokeWidth={5} strokeDasharray="4 14" />
+          <SmallLabel x={520} y={700} text="80年前の飛行機の名推理" color={SP.ink} size={32} weight={700} />
+        </g>
+        {/* 右: 第4章 キラキラ画面との付き合い方 */}
+        <g opacity={right}>
+          <SmallLabel x={1400} y={280} text="第4章" color={SP.ink} size={40} weight={800} />
+          {/* スマホ (画面の中はカラー) と、となりに立つ人 (なかよし) */}
+          <rect x={1270} y={370} width={150} height={260} rx={18} fill={SP.background} stroke={SP.line} strokeWidth={6} />
+          <rect x={1286} y={390} width={118} height={100} rx={8} fill={KC.skyBlue} opacity={0.9} />
+          <rect x={1286} y={502} width={118} height={100} rx={8} fill={KC.pink} opacity={0.85} />
+          <Sparkle x={1438} y={376} s={12} phase={1} color={KC.yellow} />
+          <Person x={1545} y={460} scale={1.5} />
+          {/* 握手がわりの線 (スマホと人がなかよくつながる) */}
+          <path d="M 1424 520 Q 1472 540 1512 530" fill="none" stroke={SP.faint} strokeWidth={5} strokeLinecap="round" />
+          <SmallLabel x={1420} y={714} text="キラキラ画面との付き合い方" color={SP.ink} size={32} weight={700} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== photo_flood: スクロールしても次々あふれるダメ写真 =====
+// カメラロールを開くと、ブレ・ゆび・変な顔が延々と流れてくる
+export const PhotoFloodScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  // 5段×2列 = 10コマがループして、延々と上へ流れていく
+  const kinds = ["blur", "finger", "face", "blur", "face", "blur", "finger", "blur", "face", "finger"] as const;
+  const step = 150;
+  const band = 5 * step; // ループ1周ぶんの高さ
+  const cw = 170;
+  const ch = 130;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "ダメ写真が、ぎっしり"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <defs>
+          <clipPath id="floodClip">
+            <rect x={768} y={244} width={384} height={540} rx={20} />
+          </clipPath>
+        </defs>
+        {/* 縦に長いスマホ (カメラロール画面) */}
+        <Phone x={750} y={190} w={420} h={620} />
+        <g clipPath="url(#floodClip)">
+          {kinds.map((k, i) => {
+            const row = Math.floor(i / 2);
+            const col = i % 2;
+            const x = 782 + col * (cw + 16);
+            // 下から次々わいてくる (正のループ: 負の剰余にならないよう2回足す)
+            const y = 244 - step + ((((row * step - frame * 3.0) % band) + band) % band);
+            return (
+              <g key={i}>
+                <rect x={x} y={y} width={cw} height={ch} rx={10} fill={SP.panel} stroke={SP.dim} strokeWidth={3} />
+                {k === "blur" && (
+                  <g stroke={SP.faint} strokeWidth={5} fill="none" strokeLinecap="round">
+                    <path d={`M ${x + 24} ${y + 50} q 30 -18 60 0 q 30 18 60 0`} />
+                    <path d={`M ${x + 24} ${y + 84} q 30 -18 60 0 q 30 18 60 0`} />
+                  </g>
+                )}
+                {k === "finger" && (
+                  <g>
+                    <circle cx={x + cw / 2 - 20} cy={y + ch / 2} r={20} fill="none" stroke={SP.faint} strokeWidth={4} />
+                    <ellipse cx={x + cw - 26} cy={y + ch - 20} rx={52} ry={38} fill={SP.dim} />
+                  </g>
+                )}
+                {k === "face" && (
+                  <g stroke={SP.faint} strokeWidth={4} fill="none">
+                    <circle cx={x + cw / 2} cy={y + ch / 2 - 4} r={28} />
+                    <line x1={x + cw / 2 - 12} y1={y + ch / 2 - 12} x2={x + cw / 2 - 4} y2={y + ch / 2 - 7} />
+                    <line x1={x + cw / 2 + 12} y1={y + ch / 2 - 12} x2={x + cw / 2 + 4} y2={y + ch / 2 - 7} />
+                    <path d={`M ${x + cw / 2 - 12} ${y + ch / 2 + 12} q 6 -8 12 0 q 6 8 12 0`} />
+                  </g>
+                )}
+              </g>
+            );
+          })}
+        </g>
+        {/* 画面の外の流れ線 (上へ) */}
+        <g stroke={SP.dim} strokeWidth={4} strokeLinecap="round">
+          {[690, 714, 1206, 1230].map((x, i) => {
+            const t = ((frame * 5 + i * 60) % 240) / 240;
+            const y = 760 - t * 520;
+            return <line key={x} x1={x} y1={y} x2={x} y2={y + 54} opacity={(1 - t) * 0.8} />;
+          })}
+        </g>
+        {/* 指のスワイプ軌跡 */}
+        <g stroke={SP.faint} strokeWidth={5} strokeLinecap="round" fill="none">
+          <path d="M 1310 640 Q 1350 500 1310 360" strokeDasharray="2 16" />
+          <path d="M 1296 390 L 1310 352 L 1326 390" />
+        </g>
+        <SmallLabel x={520} y={480} text="ブレ・ゆび・変な顔が" color={SP.faint} size={30} />
+        <SmallLabel x={520} y={522} text="延々と出てくる" color={SP.faint} size={30} />
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== troubles_rain: 道に迷った1時間も、無言の電車も (困りごとが降る) =====
+// 中央の人のまわりに、傾いた困りごとアイコンがゆっくりランダムに降りつもる
+export const TroublesRainScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  // 降りもの: [x, 開始オフセット, 傾き, 種類, 大きさ]
+  const drops: [number, number, number, "maze" | "train" | "clock" | "photo", number][] = [
+    [430, 0, -14, "maze", 1.0],
+    [700, 260, 10, "train", 0.9],
+    [1240, 120, -8, "clock", 1.0],
+    [1520, 330, 14, "photo", 0.9],
+    [560, 480, 8, "clock", 0.8],
+    [1390, 560, -12, "train", 0.8],
+    [820, 640, 12, "photo", 0.75],
+    [1100, 420, -10, "maze", 0.8],
+  ];
+  const fallSpan = 1050;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "道に迷った1時間も、ぜんぶ"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <line x1={420} y1={820} x2={1500} y2={820} stroke={SP.dim} strokeWidth={4} />
+        {/* 降る困りごと (ゆっくり・ループ) */}
+        {drops.map(([dx, d0, rot, kind, s], i) => {
+          const y = ((frame * 2.1 + d0) % fallSpan) - 120;
+          const fadeIn = Math.min(Math.max((y + 80) / 120, 0), 1);
+          const fadeOut = Math.min(Math.max((860 - y) / 120, 0), 1);
+          return (
+            <g
+              key={i}
+              transform={`translate(${dx} ${y}) rotate(${rot}) scale(${s})`}
+              opacity={0.85 * fadeIn * fadeOut}
+            >
+              {kind === "maze" && (
+                <g stroke={SP.faint} strokeWidth={4} fill="none">
+                  {/* 迷い道 (ぐるぐるの矢印) */}
+                  <path d="M -34 10 Q -34 -34 0 -34 Q 34 -34 34 0 Q 34 24 6 24" />
+                  <path d="M 14 14 L 4 26 L 18 32" />
+                </g>
+              )}
+              {kind === "train" && (
+                <g stroke={SP.faint} strokeWidth={4} fill="none">
+                  <rect x={-46} y={-28} width={92} height={56} rx={10} />
+                  <line x1={-14} y1={-28} x2={-14} y2={28} />
+                  <line x1={16} y1={-28} x2={16} y2={28} />
+                  <circle cx={-30} cy={-8} r={7} />
+                </g>
+              )}
+              {kind === "clock" && (
+                <g stroke={SP.faint} strokeWidth={4} fill="none">
+                  <circle r={30} />
+                  <line x1={0} y1={0} x2={0} y2={-18} />
+                  <line x1={0} y1={0} x2={13} y2={7} />
+                </g>
+              )}
+              {kind === "photo" && (
+                <g stroke={SP.faint} strokeWidth={4} fill="none" strokeLinecap="round">
+                  <rect x={-36} y={-28} width={72} height={56} rx={6} />
+                  <path d="M -22 4 q 11 -9 22 0 q 11 9 22 0" />
+                </g>
+              )}
+            </g>
+          );
+        })}
+        {/* 中央の人 (ぜんぶ知っている本人) */}
+        <Person x={960} y={600} scale={2.2} />
+        <SmallLabel x={960} y={790} text="ぜんぶ、あなたは知っている" color={SP.ink} size={30} weight={700} />
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== vanish_posts: 投稿されないものは、存在しないように見える =====
+// カラーの投稿はそのまま、投稿されなかった2枚がすーっと消えて点線だけ残る
+export const VanishPostsScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  // 1秒後からゆっくり消えていく
+  const vanish = Math.min(Math.max((frame - 1.0 * fps) / (2.2 * fps), 0), 1);
+  const ghosts = [
+    { x: 820, y: 430, kind: "plain" as const },
+    { x: 1190, y: 530, kind: "plain" as const },
+  ];
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "存在しないように、見えてしまう"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 残る1枚: 投稿されたキラキラ (カラー) */}
+        <g opacity={appearAt(frame, fps, 6)}>
+          <FeedCard x={430} y={300} w={330} h={170} kind="travel" colored />
+          <Sparkle x={790} y={310} s={14} phase={1} color={KC.yellow} />
+          <SmallLabel x={595} y={540} text="投稿された1枚" color={SP.ink} size={28} weight={700} />
+        </g>
+        {/* 消えていく2枚: 投稿されなかった日々 */}
+        {ghosts.map((gc, i) => (
+          <g key={i}>
+            <FeedCard x={gc.x} y={gc.y} w={330} h={170} kind={gc.kind} opacity={(1 - vanish) * 0.9} />
+            {/* 消えたあとに残る点線の輪郭と ? */}
+            <g opacity={vanish}>
+              <rect
+                x={gc.x}
+                y={gc.y}
+                width={330}
+                height={170}
+                rx={12}
+                fill="none"
+                stroke={SP.dim}
+                strokeWidth={4}
+                strokeDasharray="12 10"
+              />
+              <text
+                x={gc.x + 165}
+                y={gc.y + 102}
+                textAnchor="middle"
+                fontSize={54}
+                fontWeight={800}
+                fill={SP.faint}
+                fontFamily={SUURI_FONT}
+              >
+                ?
+              </text>
+            </g>
+          </g>
+        ))}
+        <SmallLabel x={960} y={790} text="投稿されない日々は、ないことになってしまう" color={SP.ink} size={30} weight={700} />
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== pitfall_people: 落とし穴に、人が次々落ちていく (和紙) =====
+export const PitfallPeopleScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const groundY = 560;
+  const pitL = 880;
+  const pitR = 1100;
+  const pitDepth = 380; // 深い穴
+  // 5人が0.75秒間隔でテンポよく歩いてきて、次々落ちる
+  const walkers = [0, 0.75, 1.5, 2.25, 3.0].map((delay) => {
+    const t = Math.max(0, (frame - delay * fps) / fps); // 経過秒
+    const walkDur = 0.85;
+    const fallDur = 0.6;
+    const walkT = Math.min(t / walkDur, 1);
+    const fallT = Math.min(Math.max((t - walkDur) / fallDur, 0), 1);
+    return { walkT, fallT, started: t > 0 };
+  });
+  const someoneFalling = walkers.some((w) => w.fallT > 0.05 && w.fallT < 0.95);
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "落とし穴に、名前をつけるなら"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 地面 (穴の左右) */}
+        <line x1={320} y1={groundY} x2={pitL} y2={groundY} stroke={SP.line} strokeWidth={6} />
+        <line x1={pitR} y1={groundY} x2={1620} y2={groundY} stroke={SP.line} strokeWidth={6} />
+        {/* 深い落とし穴 (縦の壁と底) */}
+        <line x1={pitL} y1={groundY} x2={pitL} y2={groundY + pitDepth} stroke={SP.line} strokeWidth={6} />
+        <line x1={pitR} y1={groundY} x2={pitR} y2={groundY + pitDepth} stroke={SP.line} strokeWidth={6} />
+        <line x1={pitL} y1={groundY + pitDepth} x2={pitR} y2={groundY + pitDepth} stroke={SP.line} strokeWidth={6} />
+        {/* 穴の中の暗がり (深いほど濃い) */}
+        <rect x={pitL + 4} y={groundY + 6} width={pitR - pitL - 8} height={pitDepth * 0.45} fill={SP.ink} opacity={0.1} />
+        <rect x={pitL + 4} y={groundY + pitDepth * 0.45} width={pitR - pitL - 8} height={pitDepth * 0.55 - 6} fill={SP.ink} opacity={0.22} />
+        {/* 歩いてきて、次々落ちる人たち */}
+        {walkers.map(({ walkT, fallT, started }, i) => {
+          if (!started) return null;
+          const x = 430 + walkT * (980 - 430) + (i % 3) * 14;
+          const y = groundY - 78 + fallT * fallT * (pitDepth + 40);
+          const rot = fallT * 150;
+          const bob = fallT === 0 ? Math.abs(Math.sin((frame + i * 20) / 4)) * 8 : 0;
+          return (
+            <g key={i} opacity={1 - fallT * 0.55}>
+              <g transform={`translate(${x} ${y - bob}) rotate(${rot})`}>
+                <Person x={0} y={0} scale={1.35} />
+              </g>
+            </g>
+          );
+        })}
+        {/* 「!」(落ちる瞬間の声) */}
+        <text
+          x={990}
+          y={470}
+          textAnchor="middle"
+          fontSize={52}
+          fontWeight={800}
+          fill={SP.accent}
+          fontFamily={SUURI_FONT}
+          opacity={someoneFalling ? 0.9 : 0}
+        >
+          !
+        </text>
+        <SmallLabel x={1370} y={660} text="人類みんなが落ちる、考え方の穴" color={SP.ink} size={30} weight={700} />
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== count_only_hand: 手元に残ったものだけ数えて、沈んだぶんを忘れる (和紙) =====
+export const CountOnlyHandScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "人類共通のクセ"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 左: 数える人と、手元に残ったもの (カラー) */}
+        <Person x={430} y={370} scale={1.7} />
+        <g opacity={appearAt(frame, fps, 8)}>
+          {/* 机 */}
+          <line x1={280} y1={610} x2={760} y2={610} stroke={SP.line} strokeWidth={5} />
+          {/* 手元に残ったもの: 色つきの3つ */}
+          <circle cx={380} cy={578} r={26} fill={KC.yellow} stroke={SP.line} strokeWidth={4} />
+          <rect x={460} y={552} width={56} height={52} rx={8} fill={KC.skyBlue} stroke={SP.line} strokeWidth={4} />
+          <circle cx={600} cy={578} r={26} fill={KC.orange} stroke={SP.line} strokeWidth={4} />
+          <text x={430} y={700} textAnchor="middle" fontSize={40} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT} letterSpacing={6}>
+            正 一
+          </text>
+          <SmallLabel x={430} y={756} text="手元に残ったものだけ、数える" color={SP.faint} size={27} />
+        </g>
+        {/* 右: 海面と、沈んで忘れられるもの */}
+        <path
+          d="M 880 480 Q 940 466 1000 480 T 1120 480 T 1240 480 T 1360 480 T 1480 480 T 1600 480 T 1700 480"
+          fill="none"
+          stroke={KC.sea}
+          strokeWidth={5}
+        />
+        <g opacity={appearAt(frame, fps, 20)}>
+          {[0, 1, 2].map((i) => (
+            <g key={i} opacity={0.7}>
+              <rect
+                x={960 + i * 210}
+                y={570 + (i % 2) * 70}
+                width={120}
+                height={90}
+                rx={10}
+                fill="none"
+                stroke={SP.faint}
+                strokeWidth={4}
+                strokeDasharray="10 8"
+                transform={`rotate(${-8 + i * 7} ${1020 + i * 210} ${615 + (i % 2) * 70})`}
+              />
+            </g>
+          ))}
+          <SmallLabel x={1280} y={790} text="沈んだぶんは、忘れてしまう" color={SP.ink} size={30} weight={700} />
         </g>
       </svg>
     </Frame>

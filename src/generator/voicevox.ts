@@ -37,6 +37,30 @@ async function resolveStyleId(): Promise<number> {
   return style.id;
 }
 
+// アクセント修正表: 先頭モーラ列が一致したアクセント句の accent (山の位置) を指定値に直す。
+// 例:「スクショ」が語尾上がり (平板) に読まれる → 頭高 (accent=1) に固定する。
+const ACCENT_FIXES: { moras: string[]; accent: number }[] = [
+  { moras: ["ス", "ク", "ショ"], accent: 1 },
+];
+
+// audio_query の accent_phrases を後処理してアクセントを直す (読み・字幕には影響しない)
+function fixAccents(query: Record<string, unknown>): void {
+  const phrases = query.accent_phrases as
+    | { moras: { text: string }[]; accent: number }[]
+    | undefined;
+  if (!Array.isArray(phrases)) return;
+  for (const ph of phrases) {
+    for (const fix of ACCENT_FIXES) {
+      if (
+        ph.moras.length >= fix.moras.length &&
+        fix.moras.every((m, i) => ph.moras[i]?.text === m)
+      ) {
+        ph.accent = fix.accent;
+      }
+    }
+  }
+}
+
 export async function synthesizeVoicevox(
   text: string,
   outFile: string,
@@ -60,6 +84,7 @@ export async function synthesizeVoicevox(
       // 文末の余白 (シーン間の間はRemotion側でも付くため基本は短めに)
       query.postPhonemeLength = style?.postPhonemeLength ?? 0.15;
       query.intonationScale = style?.intonationScale ?? 1.0;
+      fixAccents(query);
 
       const sRes = await fetch(`${BASE()}/synthesis?speaker=${speaker}`, {
         method: "POST",

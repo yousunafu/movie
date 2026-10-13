@@ -16,7 +16,7 @@ export function splitScript(raw: string): string[] {
 
   // 10字未満でも前の文に結合せず、1文=1シーンとして独立させたい掛け声。
   // 絵の切り替え (プレスが搾る瞬間など) をこの文にぴったり同期させるため。
-  const KEEP_ALONE: RegExp[] = [/^濃縮、[一二三]段目。?$/];
+  const KEEP_ALONE: RegExp[] = [/^濃縮、[一二三]段目。?$/, /^想像してください。?$/];
 
   // 10字未満は前の文に結合、100字超は読点で分割を試みる
   const merged: string[] = [];

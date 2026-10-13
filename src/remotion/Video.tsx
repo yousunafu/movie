@@ -86,6 +86,8 @@ const SUBTITLE_BREAK_AFTER: string[] = [
   // --- キラキラ画面の回 ---
   "あなたのキラキラスマホ画面も、",
   "何もない火曜日は、",
+  "生きづらさから、",
+  "等倍の毎日」と、",
 ];
 
 const Subtitle: React.FC<{

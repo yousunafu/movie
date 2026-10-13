@@ -14,10 +14,16 @@ export function splitScript(raw: string): string[] {
     sentences.push(...parts);
   }
 
+  // 10字未満でも前の文に結合せず、1文=1シーンとして独立させたい掛け声。
+  // 絵の切り替え (プレスが搾る瞬間など) をこの文にぴったり同期させるため。
+  const KEEP_ALONE: RegExp[] = [/^濃縮、[一二三]段目。?$/];
+
   // 10字未満は前の文に結合、100字超は読点で分割を試みる
   const merged: string[] = [];
   for (const s of sentences) {
-    if (s.length < 10 && merged.length > 0) {
+    if (s.length < 10 && merged.length > 0 && KEEP_ALONE.some((re) => re.test(s))) {
+      merged.push(s);
+    } else if (s.length < 10 && merged.length > 0) {
       merged[merged.length - 1] += s;
     } else if (s.length > 100) {
       const half = Math.floor(s.length / 2);

@@ -31,9 +31,10 @@ export const wrapJa = (
       if (i < arr.length - 1) {
         nodes.push(
           <span key={`h-${i}`} style={{ display: "inline-block" }}>
-            {unit.startsWith("「") && "「"}
+            {/* unit !== hl のときだけカッコを外側に描く (hl 自体が「」付きなら二重にしない) */}
+            {unit !== hl && "「"}
             <span style={hlStyle}>{hl}</span>
-            {unit.endsWith("」") && "」"}
+            {unit !== hl && "」"}
           </span>,
         );
       }

@@ -99,6 +99,10 @@ export const KIRAKIRA_DARK_MOTIFS = [
   "drink_fall",
   "boxer_champ",
   "sofa_clock",
+  "sparkle_overflow",
+  "futon_think",
+  "declare_finger",
+  "lets_go",
 ] as const;
 // orz はどのリストにも入れない (前の場面の背景を引き継ぐ中立の絵)
 
@@ -460,12 +464,14 @@ const CenterNote: React.FC<{ top: number; size?: number; children: React.ReactNo
   </div>
 );
 
-// きらきら (白い4点星・またたく)。赤は使わない約束 (§9-4)
-const Sparkle: React.FC<{ x: number; y: number; s?: number; phase?: number }> = ({
+// きらきら (4点星・またたく)。赤は使わない約束 (§9-4)
+// 基本は白。「画面の中のキラキラ」ではcolorにKCの色を渡してカラフルにできる
+const Sparkle: React.FC<{ x: number; y: number; s?: number; phase?: number; color?: string }> = ({
   x,
   y,
   s = 16,
   phase = 0,
+  color = SP.ink,
 }) => {
   const frame = useCurrentFrame();
   const tw = 0.55 + 0.45 * Math.sin(frame / 9 + phase);
@@ -473,7 +479,7 @@ const Sparkle: React.FC<{ x: number; y: number; s?: number; phase?: number }> = 
   return (
     <path
       d={`M ${x} ${y - s} Q ${x + p} ${y - p} ${x + s} ${y} Q ${x + p} ${y + p} ${x} ${y + s} Q ${x - p} ${y + p} ${x - s} ${y} Q ${x - p} ${y - p} ${x} ${y - s} Z`}
-      fill={SP.ink}
+      fill={color}
       opacity={tw}
     />
   );
@@ -591,23 +597,20 @@ const FeedCard: React.FC<{
       )}
       {kind === "win" && (
         <g>
-          <circle
-            cx={px + ps / 2}
-            cy={py + ps / 2}
-            r={ps * 0.3}
+          {/* ガチャカプセル (上=黄・下=ピンク) — gacha_shine と同じ配色で統一 */}
+          <path
+            d={`M ${px + ps / 2 - ps * 0.3} ${py + ps / 2} a ${ps * 0.3} ${ps * 0.3} 0 0 1 ${ps * 0.6} 0 Z`}
             fill={colored ? KC.yellow : "none"}
             stroke={SP.line}
             strokeWidth={4}
           />
-          <line
-            x1={px + ps / 2 - ps * 0.3}
-            y1={py + ps / 2}
-            x2={px + ps / 2 + ps * 0.3}
-            y2={py + ps / 2}
+          <path
+            d={`M ${px + ps / 2 - ps * 0.3} ${py + ps / 2} a ${ps * 0.3} ${ps * 0.3} 0 0 0 ${ps * 0.6} 0 Z`}
+            fill={colored ? KC.pink : "none"}
             stroke={SP.line}
-            strokeWidth={3}
+            strokeWidth={4}
           />
-          <Sparkle x={px + ps - 12} y={py + 14} s={10} />
+          <Sparkle x={px + ps - 12} y={py + 14} s={10} color={colored ? KC.yellow : SP.ink} />
         </g>
       )}
       <line x1={px + ps + 14} y1={y + 46} x2={x + w - 18} y2={y + 46} stroke={SP.faint} strokeWidth={4} strokeLinecap="round" />
@@ -640,6 +643,40 @@ const Bubble: React.FC<{
   </g>
 );
 
+// ===== テレビ画面の中のバッター (カラー版) =====
+// 「テレビの中 = 画面の世界 = カラフル」の約束に合わせて、
+// ユニフォーム=水色 / 肌=はだ色 / 帽子=青 / バット=木の茶色 でそろえる
+const BATTER_SKIN = "#E7BD92"; // はだ色
+const BATTER_WOOD = "#A9744F"; // 木のバット
+const ColorBatter: React.FC<{
+  x: number;
+  y: number;
+  scale?: number;
+  bat?: [number, number, number, number]; // バットの絶対座標 [x1,y1,x2,y2]
+}> = ({ x, y, scale = 1, bat }) => (
+  <g>
+    <g transform={`translate(${x}, ${y}) scale(${scale})`}>
+      {/* 体 (ユニフォーム=水色) */}
+      <path
+        d="M -26 66 q 2 -34 26 -36 q 24 2 26 36 Z"
+        fill={KC.skyBlue}
+        stroke={SP.line}
+        strokeWidth={5}
+        strokeLinejoin="round"
+      />
+      {/* 顔 (はだ色) */}
+      <circle r={16} fill={BATTER_SKIN} stroke={SP.line} strokeWidth={5} />
+      {/* 帽子 (青) : 頭の上半分 + つば */}
+      <path d="M -16 -5 A 16 16 0 0 1 16 -5 Z" fill={KC.blue} stroke={SP.line} strokeWidth={4} strokeLinejoin="round" />
+      <line x1={-24} y1={-5} x2={16} y2={-5} stroke={KC.blue} strokeWidth={6} strokeLinecap="round" />
+    </g>
+    {/* バット (木の茶色) */}
+    {bat && (
+      <line x1={bat[0]} y1={bat[1]} x2={bat[2]} y2={bat[3]} stroke={BATTER_WOOD} strokeWidth={9} strokeLinecap="round" />
+    )}
+  </g>
+);
+
 // ===== futon_phone: 夜、ふとんの中でスマホ (導入の顔) =====
 // 文で芝居が変わる: 「スマホを開く」= 歩いてきて→ふとんへ→画面が点く (約4秒)
 //                   「おやすみ」= スマホを伏せて置き、明かりが消えて月と星だけ残る
@@ -649,24 +686,30 @@ export const FutonPhoneScene: React.FC<SceneProps> = ({ scene }) => {
   const text = scene?.text ?? "";
   const mode = /開く/.test(text) ? "open" : /おやすみ/.test(text) ? "sleep" : "default";
 
-  // open: 0-2秒 歩く → 2-2.7秒 ふとんへもぐる → 2.7秒〜 画面が点く
-  const walkEnd = 2.0 * fps;
-  const lieEnd = 2.7 * fps;
+  // open: 0-1.1秒 少しだけ歩く (ベッドのすぐそばから) → 1.1-1.9秒 ふとんへもぐる
+  //       → 1.9-2.7秒 スマホを顔の上へかかげる → 2.8秒〜 画面が点く (芝居を長めに)
+  const walkEnd = 1.1 * fps;
+  const lieEnd = 1.9 * fps;
+  const liftEnd = 2.7 * fps;
   const walkT = Math.min(frame / walkEnd, 1);
   const lieT = Math.max(0, Math.min((frame - walkEnd) / (lieEnd - walkEnd), 1));
-  const personX = 1700 - (1700 - 1180) * walkT;
+  // スマホをかかげる動き (0→1): ふとんの中から顔の上へすっと持ち上げる
+  const liftT = Math.max(0, Math.min((frame - lieEnd) / (liftEnd - lieEnd), 1));
+  const personX = 1440 - (1440 - 1180) * walkT;
   const bob = walkT < 1 ? Math.abs(Math.sin(frame / 4.5)) * 10 : 0;
 
-  // 画面の明かり: open=もぐり終わってから点く / sleep=最初から消えていく / default=すっと点く
+  // 画面の明かり: open=かかげ終わってから点く / sleep=最初から消えていく / default=すっと点く
   const defaultGlow = useAppear(10);
   const glow =
     mode === "open"
-      ? appearAt(frame, fps, Math.round(lieEnd) + 4)
+      ? appearAt(frame, fps, Math.round(liftEnd) + 4)
       : mode === "sleep"
         ? 1 - Math.min(frame / (1.6 * fps), 1)
         : defaultGlow;
   // open では、もぐり終わるまで ふとんの顔は見せない
   const faceIn = mode === "open" ? lieT : 1;
+  // open では、スマホはふとんの中 (低い位置) から顔の上へ上がってくる
+  const phoneRise = mode === "open" ? liftT : 1;
 
   return (
     <Frame>
@@ -694,21 +737,31 @@ export const FutonPhoneScene: React.FC<SceneProps> = ({ scene }) => {
           <path d="M 610 756 Q 1050 724 1504 756" fill="none" stroke={SP.dim} strokeWidth={4} />
           {/* スマホと画面の明かり (sleep では持たず、伏せて置いてある) */}
           {mode !== "sleep" && (
-            <g opacity={glow}>
-              <polygon points="590,560 700,560 760,660 530,660" fill={SP.ink} opacity={0.1} />
-              <rect
-                x={596}
-                y={470}
-                width={96}
-                height={150}
-                rx={16}
-                transform="rotate(14 644 545)"
-                fill={SP.panel}
-                stroke={SP.line}
-                strokeWidth={5}
-              />
-              <Sparkle x={700} y={450} s={13} phase={0} />
-              <Sparkle x={590} y={414} s={10} phase={2} />
+            <g opacity={mode === "open" ? Math.max(faceIn, phoneRise) : 1}>
+              {/* スマホ本体: ふとんの中 (低い位置) から顔の上へかかげる */}
+              <g transform={`translate(0 ${(1 - phoneRise) * 110})`}>
+                {/* 画面の明かり (点いてから) */}
+                <g opacity={glow}>
+                  <polygon points="590,560 700,560 760,660 530,660" fill={SP.ink} opacity={0.1} />
+                </g>
+                <rect
+                  x={596}
+                  y={470}
+                  width={96}
+                  height={150}
+                  rx={16}
+                  transform="rotate(14 644 545)"
+                  fill={SP.panel}
+                  stroke={SP.line}
+                  strokeWidth={5}
+                />
+                {/* 腕 (ふとんから出てスマホを支える) */}
+                <path d="M 640 640 Q 630 600 640 566" fill="none" stroke={SP.line} strokeWidth={5} strokeLinecap="round" opacity={faceIn} />
+              </g>
+              <g opacity={glow}>
+                <Sparkle x={700} y={450} s={13} phase={0} />
+                <Sparkle x={590} y={414} s={10} phase={2} />
+              </g>
             </g>
           )}
         </g>
@@ -963,17 +1016,51 @@ export const SelectionGatesScene: React.FC<SceneProps> = ({ scene }) => {
               key={i}
               cx={x}
               cy={isFinal ? y0 + (504 - y0) * prog : y}
-              r={isFinal ? 11 : 9}
+              r={isFinal ? 14 : 9}
               fill={isFinal && x > gates[2] ? SP.accent : KC.yellow}
               opacity={stopped ? 0.25 : arrived ? 1 : 0.95}
             />
           );
         })}
-        {/* 右端のスマホ (あなたの画面) */}
-        <g>
-          <rect x={1650} y={400} width={120} height={208} rx={18} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-          <SmallLabel x={1710} y={660} text="あなたの画面" color={SP.ink} size={26} weight={700} />
-        </g>
+        {/* 右端のスマホ (あなたの画面): 最後の1粒が届いた瞬間、画面がカラフルに「点く」 */}
+        {(() => {
+          // 最後の粒 (i=9) の到着フレームを逆算して、点灯のきっかけにする
+          const fx0 = 250 + (9 % 4) * 90 + (9 % 3) * 14;
+          const popFrame = 10 + (9 % 5) * 3 + Math.ceil((1700 - fx0) / speed);
+          const pop = appearAt(frame, fps, popFrame);
+          return (
+            <g>
+              <g transform={`translate(1710 504) scale(${1 + 0.06 * Math.sin(Math.min(pop, 1) * Math.PI)}) translate(-1710 -504)`}>
+                <rect x={1650} y={400} width={120} height={208} rx={18} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+                {/* 点いた画面の中身 (ミニのカラフルなフィード) */}
+                <g opacity={pop}>
+                  <rect x={1664} y={428} width={92} height={42} rx={6} fill={KC.skyBlue} opacity={0.9} />
+                  <rect x={1664} y={478} width={92} height={42} rx={6} fill={KC.orange} opacity={0.9} />
+                  <rect x={1664} y={528} width={92} height={42} rx={6} fill={KC.yellow} opacity={0.9} />
+                </g>
+              </g>
+              {/* 点いた瞬間の放射線ときらめき */}
+              <g opacity={pop}>
+                <g stroke={SP.line} strokeWidth={4} strokeLinecap="round">
+                  {[-150, -120, -90, -60, -30].map((deg) => {
+                    const rad = (deg * Math.PI) / 180;
+                    return (
+                      <line
+                        key={deg}
+                        x1={1710 + Math.cos(rad) * 120}
+                        y1={504 + Math.sin(rad) * 130}
+                        x2={1710 + Math.cos(rad) * (120 + 34 * pop)}
+                        y2={504 + Math.sin(rad) * (130 + 36 * pop)}
+                      />
+                    );
+                  })}
+                </g>
+                <Sparkle x={1630} y={370} s={13} phase={1} color={KC.yellow} />
+              </g>
+              <SmallLabel x={1710} y={660} text="あなたの画面" color={SP.ink} size={26} weight={700} />
+            </g>
+          );
+        })()}
         {/* 流れの矢印 */}
         <g stroke={SP.dim} strokeWidth={4} fill="none">
           <line x1={640} y1={508} x2={790} y2={508} />
@@ -999,10 +1086,9 @@ export const HomerunTvScene: React.FC<SceneProps> = ({ scene }) => {
         <rect x={610} y={240} width={700} height={440} rx={22} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
         <line x1={860} y1={690} x2={820} y2={760} stroke={SP.line} strokeWidth={7} strokeLinecap="round" />
         <line x1={1060} y1={690} x2={1100} y2={760} stroke={SP.line} strokeWidth={7} strokeLinecap="round" />
-        {/* 画面の中: 打った瞬間 */}
+        {/* 画面の中: 打った瞬間 (テレビの中=カラー) */}
         <g>
-          <Person x={790} y={520} scale={1.5} />
-          <line x1={810} y1={540} x2={880} y2={460} stroke={SP.line} strokeWidth={8} strokeLinecap="round" />
+          <ColorBatter x={790} y={520} scale={1.5} bat={[810, 540, 880, 460]} />
           <path
             d={`M 880 470 Q 1020 330 1200 310`}
             fill="none"
@@ -1013,11 +1099,12 @@ export const HomerunTvScene: React.FC<SceneProps> = ({ scene }) => {
           />
           <circle cx={880 + 320 * fly} cy={470 - 158 * fly} r={11} fill={SP.ink} opacity={fly} />
         </g>
-        <text x={1250} y={310} textAnchor="end" fontSize={30} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT} letterSpacing={2}>
+        {/* テロップ (打球の軌道と重ならないよう、画面の右下へ) */}
+        <text x={1272} y={652} textAnchor="end" fontSize={30} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT} letterSpacing={2}>
           ホームラン集
         </text>
-        <Sparkle x={700} y={310} s={13} phase={0} />
-        <Sparkle x={1240} y={610} s={12} phase={3} />
+        <Sparkle x={700} y={310} s={13} phase={0} color={KC.yellow} />
+        <Sparkle x={680} y={620} s={12} phase={3} color={KC.pink} />
       </svg>
       <CenterNote top={812} size={30}>打った瞬間だけが、次々と流れる</CenterNote>
     </Frame>
@@ -1073,13 +1160,12 @@ export const NotSadViewerScene: React.FC<SceneProps> = ({ scene }) => {
       <DiagramTitle text={scene?.title ?? "くらべて落ち込む人は、いない"} />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <line x1={300} y1={780} x2={1620} y2={780} stroke={SP.dim} strokeWidth={4} />
-        {/* テレビ (小) */}
+        {/* テレビ (小): 画面の中はカラーのバッター */}
         <rect x={380} y={370} width={420} height={290} rx={16} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
         <line x1={540} y1={665} x2={515} y2={720} stroke={SP.line} strokeWidth={6} strokeLinecap="round" />
         <line x1={660} y1={665} x2={685} y2={720} stroke={SP.line} strokeWidth={6} strokeLinecap="round" />
-        <Person x={500} y={520} scale={1.0} />
-        <line x1={515} y1={535} x2={560} y2={482} stroke={SP.line} strokeWidth={6} strokeLinecap="round" />
-        <Sparkle x={700} y={440} s={11} phase={1} />
+        <ColorBatter x={500} y={520} scale={1.0} bat={[515, 535, 560, 482]} />
+        <Sparkle x={700} y={440} s={11} phase={1} color={KC.yellow} />
         {/* ソファの人 */}
         <rect x={1120} y={640} width={420} height={120} rx={26} fill="none" stroke={SP.line} strokeWidth={5} />
         <rect x={1120} y={530} width={420} height={120} rx={26} fill="none" stroke={SP.line} strokeWidth={5} />
@@ -1320,9 +1406,9 @@ export const LifeHomerunScene: React.FC<SceneProps> = ({ scene }) => {
       <DiagramTitle text={scene?.title ?? "友達の投稿の、正体"} />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <Phone x={430} y={210} w={340} h={580}>
-          <FeedCard x={466} y={266} w={268} h={150} kind="travel" />
-          <FeedCard x={466} y={436} w={268} h={150} kind="food" />
-          <FeedCard x={466} y={606} w={268} h={150} kind="pass" />
+          <FeedCard x={466} y={266} w={268} h={150} kind="travel" colored />
+          <FeedCard x={466} y={436} w={268} h={150} kind="food" colored />
+          <FeedCard x={466} y={606} w={268} h={150} kind="pass" colored />
         </Phone>
         <Sparkle x={400} y={260} s={13} phase={0} />
         <Sparkle x={820} y={320} s={15} phase={2} />
@@ -1332,11 +1418,10 @@ export const LifeHomerunScene: React.FC<SceneProps> = ({ scene }) => {
           <line x1={930} y1={470} x2={1030} y2={470} />
           <line x1={930} y1={520} x2={1030} y2={520} />
         </g>
-        {/* 右: ベスト盤 (ホームラン集のジャケット) */}
+        {/* 右: ベスト盤 (ホームラン集のジャケット) — テレビの中と同じカラーのバッター */}
         <g opacity={appearAt(frame, fps, 24)}>
           <rect x={1130} y={300} width={400} height={400} rx={18} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
-          <Person x={1270} y={500} scale={1.3} />
-          <line x1={1288} y1={518} x2={1350} y2={448} stroke={SP.line} strokeWidth={7} strokeLinecap="round" />
+          <ColorBatter x={1270} y={500} scale={1.3} bat={[1288, 518, 1350, 448]} />
           <path d="M 1350 455 Q 1420 390 1480 380" fill="none" stroke={SP.faint} strokeWidth={4} strokeDasharray="4 12" />
           <circle cx={1472} cy={382} r={9} fill={SP.ink} />
           <text x={1330} y={660} textAnchor="middle" fontSize={34} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT} letterSpacing={2}>
@@ -1416,11 +1501,11 @@ export const GachaCloseScene: React.FC<SceneProps> = ({ scene }) => {
       <DiagramTitle text={scene?.title ?? "外れた人は、何も言わない"} />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <line x1={380} y1={760} x2={1540} y2={760} stroke={SP.dim} strokeWidth={4} />
-        {/* 外れカプセル (薄い) */}
-        <g opacity={0.5}>
-          <circle cx={560} cy={560} r={95} fill="none" stroke={SP.dim} strokeWidth={6} />
-          <line x1={465} y1={560} x2={655} y2={560} stroke={SP.dim} strokeWidth={5} />
-          <g stroke={SP.faint} strokeWidth={6} strokeLinecap="round">
+        {/* 外れカプセル (gacha_shine と同じ 上=黄・下=ピンク。現実側なので彩度ひかえめに薄く) */}
+        <g opacity={0.55}>
+          <path d="M 465 560 a 95 95 0 0 1 190 0 Z" fill={KC.yellow} stroke={SP.dim} strokeWidth={6} />
+          <path d="M 465 570 a 95 95 0 0 0 190 0 Z" fill={KC.pink} stroke={SP.dim} strokeWidth={6} />
+          <g stroke={SP.faint} strokeWidth={7} strokeLinecap="round">
             <line x1={520} y1={520} x2={600} y2={600} />
             <line x1={600} y1={520} x2={520} y2={600} />
           </g>
@@ -1961,10 +2046,10 @@ export const NothingTuesdayScene: React.FC<SceneProps> = ({ scene, variant = 0 }
             {/* 思考の泡 */}
             <circle cx={1360} cy={480} r={10} fill="none" stroke={SP.line} strokeWidth={4} opacity={appearAt(frame, fps, 8)} />
             <circle cx={1290} cy={420} r={16} fill="none" stroke={SP.line} strokeWidth={4} opacity={appearAt(frame, fps, 12)} />
-            {/* 泡の中: あの人にも、何もない火曜日 */}
+            {/* 泡の中: あの人にも、何もない火曜日 (タイトル帯と重ならない高さに) */}
             <g opacity={appearAt(frame, fps, 16)}>
-              <ellipse cx={740} cy={400} rx={470} ry={235} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-              <g transform="translate(740, 420) scale(0.62) translate(-960, -500)">
+              <ellipse cx={740} cy={450} rx={470} ry={225} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+              <g transform="translate(740, 470) scale(0.62) translate(-960, -500)">
                 {/* ミニ火曜日: カレンダー */}
                 <rect x={560} y={320} width={210} height={230} rx={14} fill={SP.background} stroke={SP.line} strokeWidth={6} />
                 <rect x={560} y={320} width={210} height={56} rx={14} fill={SP.dim} />
@@ -1978,7 +2063,7 @@ export const NothingTuesdayScene: React.FC<SceneProps> = ({ scene, variant = 0 }
                 </g>
                 <path d="M 1285 638 L 1302 566 L 1356 566 L 1373 638 Z" fill="none" stroke={SP.faint} strokeWidth={5} strokeLinejoin="round" />
               </g>
-              <SmallLabel x={740} y={676} text="あの人にも、何もない火曜日" color={SP.ink} size={30} weight={700} />
+              <SmallLabel x={740} y={740} text="あの人にも、何もない火曜日" color={SP.ink} size={30} weight={700} />
             </g>
             {/* 月 (黄色) */}
             <path d="M 1740 200 a 60 60 0 1 0 46 98 a 60 60 0 0 1 -46 -98 Z" fill={KC.yellow} opacity={0.9} />
@@ -2034,9 +2119,9 @@ export const SinkPostsScene: React.FC<SceneProps> = ({ scene }) => {
     <Frame>
       <DiagramTitle text={scene?.title ?? "投稿されないものは、海の底へ"} />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
-        {/* 水面より上: 投稿された1枚 */}
+        {/* 水面より上: 投稿された1枚 (画面に出る投稿=カラフル) */}
         <g opacity={appearAt(frame, fps, 6)}>
-          <FeedCard x={820} y={220} w={280} h={150} kind="travel" />
+          <FeedCard x={820} y={220} w={280} h={150} kind="travel" colored />
           <Sparkle x={1130} y={240} s={14} phase={1} />
           <SmallLabel x={660} y={310} text="投稿される" color={SP.ink} size={32} weight={700} anchor="end" />
         </g>
@@ -2047,16 +2132,16 @@ export const SinkPostsScene: React.FC<SceneProps> = ({ scene }) => {
           stroke={KC.sea}
           strokeWidth={6}
         />
-        {/* 水面より下: 沈んでいく投稿たち */}
-        <g opacity={0.4} transform={`translate(0, ${sink})`}>
+        {/* 水面より下: 沈んでいく投稿たち (色はあるのに、沈んで見えなくなる) */}
+        <g opacity={0.45} transform={`translate(0, ${sink})`}>
           <g transform="rotate(-14 600 560)">
-            <FeedCard x={460} y={490} w={280} h={150} kind="plain" />
+            <FeedCard x={460} y={490} w={280} h={150} kind="food" colored />
           </g>
           <g transform="rotate(10 1040 630)">
-            <FeedCard x={900} y={555} w={280} h={150} kind="plain" />
+            <FeedCard x={900} y={555} w={280} h={150} kind="win" colored />
           </g>
           <g transform="rotate(-7 1460 550)">
-            <FeedCard x={1320} y={480} w={280} h={150} kind="plain" />
+            <FeedCard x={1320} y={480} w={280} h={150} kind="travel" colored />
           </g>
         </g>
         <circle cx={700} cy={470} r={7} fill="none" stroke={SP.faint} strokeWidth={3} opacity={0.6} />
@@ -2490,9 +2575,65 @@ export const RunwayPhonesScene: React.FC<SceneProps> = ({ scene }) => {
 };
 
 // ===== whisper_question: 「ここに届いていないものは、なんだろう?」 (和紙) =====
+// 文で見せ方が変わる (絵が育つ):
+// - 「だから画面を見るときは…」 → スマホを見る人 + 思考の泡 (導入の絵)
+// - 「ここに届いていないものは、なんだろう?」 → つぶやきの言葉が画面中央に
+//   大きくゆっくり浮かび上がる (このときは字幕を消す: Video.tsx 側で抑制)
 export const WhisperQuestionScene: React.FC<SceneProps> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const centerMode = /ここに届いていない/.test(scene?.text ?? "");
+
+  if (centerMode) {
+    // ゆっくりフェードイン (約2.5秒)
+    const slowFade = Math.min(frame / (2.5 * fps), 1);
+    const drift = (1 - slowFade) * 18; // すこしだけ下から浮かび上がる
+    return (
+      <Frame>
+        <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+          {/* 背景にうっすら飛行機 (第3章の余韻) */}
+          <PlaneSilhouette x={320} y={240} scale={0.7} opacity={0.14 * slowFade} />
+          <PlaneSilhouette x={1620} y={720} scale={0.55} rotate={6} opacity={0.12 * slowFade} />
+          {/* 右下: 小さくつぶやく人 */}
+          <g opacity={Math.min(slowFade * 1.6, 1)}>
+            <Person x={1600} y={760} scale={1.1} />
+            <circle cx={1530} cy={720} r={7} fill="none" stroke={SP.line} strokeWidth={3} opacity={0.7} />
+            <circle cx={1486} cy={688} r={11} fill="none" stroke={SP.line} strokeWidth={3} opacity={0.7} />
+          </g>
+        </svg>
+        {/* つぶやきの言葉: 中央に大きく、ゆっくり浮かび上がる */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            opacity: slowFade,
+            transform: `translateY(${drift}px)`,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: SUURI_FONT,
+              fontSize: 62,
+              fontWeight: 800,
+              color: SP.ink,
+              letterSpacing: 4,
+              textAlign: "center",
+              lineHeight: 1.9,
+            }}
+          >
+            「ここに届いていないものは、
+            <br />
+            なんだろう<span style={{ color: SP.accent }}>?</span>」
+          </div>
+        </div>
+      </Frame>
+    );
+  }
+
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? "ウォールドさんのつぶやき"} />
@@ -2501,16 +2642,17 @@ export const WhisperQuestionScene: React.FC<SceneProps> = ({ scene }) => {
         <Person x={1480} y={560} scale={1.7} />
         <rect x={1330} y={600} width={100} height={160} rx={14} fill={SP.panel} stroke={SP.line} strokeWidth={5} transform="rotate(-12 1380 680)" />
         {/* 思考の泡 */}
-        <circle cx={1350} cy={520} r={10} fill="none" stroke={SP.line} strokeWidth={4} opacity={appearAt(frame, fps, 8)} />
-        <circle cx={1270} cy={460} r={17} fill="none" stroke={SP.line} strokeWidth={4} opacity={appearAt(frame, fps, 12)} />
+        <circle cx={1350} cy={545} r={10} fill="none" stroke={SP.line} strokeWidth={4} opacity={appearAt(frame, fps, 8)} />
+        <circle cx={1280} cy={500} r={17} fill="none" stroke={SP.line} strokeWidth={4} opacity={appearAt(frame, fps, 12)} />
+        {/* 泡 (タイトル帯と重ならない高さに) */}
         <g opacity={appearAt(frame, fps, 16)}>
-          <ellipse cx={810} cy={350} rx={440} ry={185} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-          <PlaneSilhouette x={680} y={360} scale={0.75} opacity={0.3} />
-          <text x={1020} y={395} textAnchor="middle" fontSize={88} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
+          <ellipse cx={810} cy={405} rx={440} ry={180} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+          <PlaneSilhouette x={680} y={415} scale={0.75} opacity={0.3} />
+          <text x={1020} y={450} textAnchor="middle" fontSize={88} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
             ?
           </text>
         </g>
-        <SmallLabel x={810} y={700} text="ここに届いていないものは、なんだろう?" color={SP.ink} size={34} weight={700} />
+        <SmallLabel x={810} y={730} text="ここに届いていないものは、なんだろう?" color={SP.ink} size={34} weight={700} />
       </svg>
     </Frame>
   );
@@ -2547,14 +2689,17 @@ export const MutualShineScene: React.FC<SceneProps> = ({ scene }) => {
           <Sparkle x={1160} y={400} s={12} phase={4} />
         </g>
         <SmallLabel x={1440} y={800} text="誰か" color={SP.ink} size={30} weight={700} />
-        {/* 交差する矢印 */}
-        <g opacity={appearAt(frame, fps, 18)} fill="none" stroke={SP.faint} strokeWidth={6}>
-          <path d="M 480 420 Q 960 220 1180 360" />
-          <path d="M 1205 350 l -48 -6 l 28 40 Z" fill={SP.faint} stroke="none" />
-          <path d="M 1440 420 Q 960 250 742 362" />
-          <path d="M 718 374 l 48 4 l -26 -42 Z" fill={SP.faint} stroke="none" />
+        {/* 行き交う矢印: スマホとスマホの間に水平の「⇄」。
+            上段=あなたの画面→誰かの画面 (右向き)、下段=誰かの画面→あなたの画面 (左向き)。
+            矢じりは相手のスマホの手前20pxで止めて、本体には触れない */}
+        <g opacity={appearAt(frame, fps, 18)} stroke={SP.faint} strokeWidth={6} strokeLinecap="round">
+          <line x1={800} y1={470} x2={1110} y2={470} />
+          <path d="M 1150 470 l -40 -20 l 0 40 Z" fill={SP.faint} stroke="none" />
+          <line x1={1120} y1={560} x2={810} y2={560} />
+          <path d="M 770 560 l 40 -20 l 0 40 Z" fill={SP.faint} stroke="none" />
         </g>
-        <text x={960} y={620} textAnchor="middle" fontSize={60} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT} letterSpacing={4} opacity={appearAt(frame, fps, 26)}>
+        {/* 下段矢印 (y=560) と重ならないよう、文字は y=680 に置く */}
+        <text x={960} y={680} textAnchor="middle" fontSize={60} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT} letterSpacing={4} opacity={appearAt(frame, fps, 26)}>
           お互いさま
         </text>
       </svg>
@@ -2580,6 +2725,13 @@ export const NotConsolationScene: React.FC<SceneProps> = ({ scene }) => {
     <Frame>
       <DiagramTitle text={scene?.title ?? "なぐさめではなく、数字の話"} />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 炎のグラデーション (下=オレンジ → 上=赤)。根性論の熱血感を出す */}
+        <defs>
+          <linearGradient id="kirakiraFlameGrad" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stopColor={KC.orange} />
+            <stop offset="100%" stopColor={SP.accent} />
+          </linearGradient>
+        </defs>
         {panels.map(({ label, cx }, i) => {
           const a = appearAt(frame, fps, 10 + i * 10);
           const mark = appearAt(frame, fps, 44 + i * 8);
@@ -2587,16 +2739,16 @@ export const NotConsolationScene: React.FC<SceneProps> = ({ scene }) => {
             <g key={label} opacity={a}>
               <rect x={cx - 150} y={py - 150} width={300} height={300} rx={20} fill={SP.panel} stroke={SP.dim} strokeWidth={4} />
               {i === 0 && (
-                // ハート (なぐさめ)
+                // ハート (なぐさめ): ピンクで塗る (線は残す)
                 <path
                   d={`M ${cx} ${py + 74} C ${cx - 96} ${py - 20} ${cx - 40} ${py - 92} ${cx} ${py - 22} C ${cx + 40} ${py - 92} ${cx + 96} ${py - 20} ${cx} ${py + 74} Z`}
-                  fill="none"
+                  fill={KC.pink}
                   stroke={SP.line}
                   strokeWidth={6}
                 />
               )}
               {i === 1 && (
-                // 炎 (根性論): 先端が右に流れ、左に小さな二つ目の舌がある炎形 + 内炎
+                // 炎 (根性論): オレンジ→赤のグラデーションで塗る (線は残す)
                 <>
                   <path
                     d={`M ${cx + 16} ${py - 90}
@@ -2607,18 +2759,19 @@ export const NotConsolationScene: React.FC<SceneProps> = ({ scene }) => {
                         C ${cx - 44} ${py - 28} ${cx - 36} ${py - 36} ${cx - 34} ${py - 48}
                         C ${cx - 22} ${py - 36} ${cx - 10} ${py - 38} ${cx - 6} ${py - 54}
                         C ${cx - 2} ${py - 68} ${cx + 6} ${py - 78} ${cx + 16} ${py - 90} Z`}
-                    fill="none"
+                    fill="url(#kirakiraFlameGrad)"
                     stroke={SP.line}
                     strokeWidth={6}
                     strokeLinejoin="round"
                   />
+                  {/* 内炎 (明るい芯): 黄色で中心を照らす */}
                   <path
                     d={`M ${cx + 2} ${py - 4}
                         C ${cx + 18} ${py + 14} ${cx + 26} ${py + 34} ${cx + 22} ${py + 52}
                         C ${cx + 18} ${py + 68} ${cx + 8} ${py + 76} ${cx - 2} ${py + 74}
                         C ${cx - 14} ${py + 72} ${cx - 22} ${py + 60} ${cx - 22} ${py + 44}
                         C ${cx - 22} ${py + 24} ${cx - 10} ${py + 12} ${cx + 2} ${py - 4} Z`}
-                    fill="none"
+                    fill={KC.yellow}
                     stroke={SP.line}
                     strokeWidth={5}
                     strokeLinejoin="round"
@@ -2681,16 +2834,17 @@ export const BatterRallyScene: React.FC<SceneProps> = ({ scene }) => {
           const swing = Math.sin(t * Math.PI) * 95; // 0→95→0 度
           return (
             <g key={by}>
-              <Person x={bx} y={by - 40} scale={1.15} />
-              {/* バット (構え -50度 → 振り抜き) */}
-              <line
-                x1={bx + 20}
-                y1={by + 10}
-                x2={bx + 20 + Math.cos(((-60 + swing) * Math.PI) / 180) * 95}
-                y2={by + 10 + Math.sin(((-60 + swing) * Math.PI) / 180) * 95}
-                stroke={SP.line}
-                strokeWidth={9}
-                strokeLinecap="round"
+              {/* テレビの中=カラーのバッター。バット (構え -60度 → 振り抜き) は木の色 */}
+              <ColorBatter
+                x={bx}
+                y={by - 40}
+                scale={1.15}
+                bat={[
+                  bx + 20,
+                  by + 10,
+                  bx + 20 + Math.cos(((-60 + swing) * Math.PI) / 180) * 95,
+                  by + 10 + Math.sin(((-60 + swing) * Math.PI) / 180) * 95,
+                ]}
               />
             </g>
           );
@@ -2735,24 +2889,46 @@ export const OrzScene: React.FC<SceneProps> = ({ scene }) => {
       <DiagramTitle text={scene?.title ?? "落ち込む必要は、ありません"} />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <line x1={480} y1={groundY} x2={1440} y2={groundY} stroke={SP.dim} strokeWidth={4} />
-        {/* 四つんばい (orz) の姿勢 */}
-        <g opacity={1 - up} stroke={SP.line} strokeWidth={6} fill="none" strokeLinecap="round">
-          {/* 頭 (うなだれて低い) */}
-          <circle cx={800} cy={700} r={36} />
-          {/* 腕 (頭の下に) */}
-          <line x1={816} y1={726} x2={820} y2={760} />
-          <line x1={784} y1={728} x2={778} y2={760} />
-          {/* 背中 (弧) */}
-          <path d="M 834 690 Q 950 596 1072 648" />
-          {/* 脚 (ひざ立ち) */}
-          <path d="M 1072 648 L 1096 736 L 1060 760" />
-          <path d="M 1086 672 L 1130 744 L 1098 760" />
-          {/* どんより線 (頭の上) */}
-          <g stroke={SP.faint} strokeWidth={5}>
-            <line x1={760} y1={610} x2={752} y2={646} />
-            <line x1={800} y1={598} x2={798} y2={636} />
-            <line x1={842} y1={610} x2={848} y2={646} />
+        {/* 四つんばい (orz) の姿勢: 頭を落とし、背中を丸め、ひざと手を床について落ち込む */}
+        <g opacity={1 - up}>
+          {/* 床の影 (落ち込みの重さ) */}
+          <ellipse cx={960} cy={groundY + 6} rx={260} ry={14} fill={SP.ink} opacity={0.08} />
+          <g stroke={SP.line} strokeWidth={6} fill="none" strokeLinecap="round" strokeLinejoin="round">
+            {/* 頭 (床近くまでうなだれる) */}
+            <circle cx={792} cy={694} r={32} />
+            {/* 腕 2本 (肩から床へ、手をつく) */}
+            <path d="M 824 712 Q 828 736 822 756" />
+            <path d="M 798 722 Q 792 742 784 756" />
+            {/* 背中 (首から腰まで、丸い一本の弧) */}
+            <path d="M 818 680 Q 900 606 990 616 Q 1056 624 1072 672" />
+            {/* もも (腰からひざへ) と すね (ひざから後ろへ床沿い) */}
+            <path d="M 1072 672 Q 1082 716 1046 752 L 1172 752" />
+            <path d="M 1086 692 Q 1096 726 1068 756 L 1186 744" />
           </g>
+          {/* どんより (頭上から垂れる縦線) */}
+          <g stroke={SP.faint} strokeWidth={5} strokeLinecap="round">
+            <line x1={742} y1={586} x2={742} y2={634} />
+            <line x1={782} y1={570} x2={782} y2={626} />
+            <line x1={822} y1={580} x2={822} y2={630} />
+            <line x1={860} y1={598} x2={860} y2={638} />
+          </g>
+          {/* ため息のもや */}
+          {[0, 1, 2].map((i) => {
+            const t = ((frame * 0.8 + i * 34) % 100) / 100;
+            return (
+              <circle
+                key={i}
+                cx={716 - t * 70 - i * 12}
+                cy={668 - t * 90}
+                r={6 + i * 4}
+                fill="none"
+                stroke={SP.faint}
+                strokeWidth={4}
+                opacity={(1 - t) * 0.7}
+              />
+            );
+          })}
+          <SmallLabel x={620} y={520} text="はぁ…" color={SP.faint} size={38} />
         </g>
         {/* 立ち上がった姿 (+小さなきらめき) */}
         {standUp && (
@@ -2777,18 +2953,21 @@ export const FruitPressScene: React.FC<SceneProps & { fruit: "orange" | "lemon" 
   const { fps } = useVideoConfig();
   const color = fruit === "orange" ? KC.orange : fruit === "lemon" ? KC.yellow : KC.lime;
   const fruitName = fruit === "orange" ? "オレンジ" : fruit === "lemon" ? "レモン" : "ライム";
-  // プレス板が下りる (0→1)
-  const press = appearAt(frame, fps, 20);
-  const plateY = 270 + press * 130;
+  // プレス板が下りる (0→1)。「しぼる」が主役なので、ほぼ最初から
+  // ゆっくり下り始め、しっかり押しつぶすまで約2秒かける
+  const press = Math.min(Math.max((frame - 4) / (2.0 * fps), 0), 1);
+  // イージング (はじめゆっくり→ぐっと押し込む)
+  const pressE = press * press * (3 - 2 * press);
+  const plateY = 250 + pressE * 230;
   // 果汁: プレスが進むとしたたり、グラスにたまる
-  const drip = Math.max(0, press - 0.3) / 0.7;
+  const drip = Math.max(0, pressE - 0.25) / 0.75;
   const fill = Math.min(drip * (0.4 + frame / (3 * fps)), 1);
   // くだもの (2段にぎっしり) : プレスでつぶれる (縦につぶす)
   const fruits: [number, number, number][] = [
     [700, 470, 46], [790, 462, 50], [884, 472, 44], [976, 460, 50], [1068, 470, 46], [1160, 464, 48],
     [746, 548, 48], [840, 554, 46], [934, 548, 50], [1028, 554, 46], [1120, 548, 48],
   ];
-  const squashY = 1 - press * 0.45;
+  const squashY = 1 - pressE * 0.5;
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? `${fruitName}を、ぎゅっとしぼる`} />
@@ -2821,7 +3000,19 @@ export const FruitPressScene: React.FC<SceneProps & { fruit: "orange" | "lemon" 
           <line x1={930} y1={150} x2={930} y2={plateY} stroke={SP.line} strokeWidth={10} />
           <path d={`M 900 ${plateY - 34} h 60 v 14 h -60 Z`} fill={SP.line} />
         </g>
-        {/* したたる果汁 */}
+        {/* ぎゅっと押した勢いの線 (プレス板の左右) */}
+        {pressE > 0.5 && (
+          <g stroke={SP.faint} strokeWidth={5} strokeLinecap="round" opacity={(pressE - 0.5) * 2}>
+            <line x1={596} y1={plateY + 2} x2={566} y2={plateY - 24} />
+            <line x1={596} y1={plateY + 30} x2={560} y2={plateY + 30} />
+            <line x1={1264} y1={plateY + 2} x2={1294} y2={plateY - 24} />
+            <line x1={1264} y1={plateY + 30} x2={1300} y2={plateY + 30} />
+          </g>
+        )}
+        {/* したたる果汁 (しぼりが進むと、ひと筋の流れになる) */}
+        {drip > 0.55 && (
+          <rect x={926} y={648} width={8} height={92} rx={4} fill={color} opacity={(drip - 0.55) * 2} />
+        )}
         {drip > 0 &&
           [0, 1, 2].map((i) => {
             const t = ((frame * 2.4 + i * 34) % 100) / 100;
@@ -2845,17 +3036,21 @@ export const FruitPressScene: React.FC<SceneProps & { fruit: "orange" | "lemon" 
             opacity={0.95}
           />
         </g>
-        <SmallLabel x={1430} y={520} text={`たくさんの${fruitName}が`} color={SP.faint} size={30} />
-        <SmallLabel x={1430} y={562} text="ひとしぼりに" color={SP.faint} size={30} />
+        {/* 側注: 右側の勢いの線 (x〜1300) に触れないよう、少し右に離して置く */}
+        <SmallLabel x={1480} y={520} text={`たくさんの${fruitName}が`} color={SP.faint} size={30} />
+        <SmallLabel x={1480} y={562} text="ひとしぼりに" color={SP.faint} size={30} />
       </svg>
     </Frame>
   );
 };
 
 // ===== drink_fall: 原液をそのまま飲んだら、むせてひっくり返る =====
+// 「むせているかも」の文 (第4章) では左右を反転して、
+// 「あなたの濃縮ジュースで、画面のむこうの誰かがむせている」絵に変わる
 export const DrinkFallScene: React.FC<SceneProps> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const mirror = /むせているかも/.test(scene?.text ?? "");
   // 0〜1.2秒: ごくごく飲む → 1.2秒〜: 後ろへひっくり返る (コミカルに)
   const fall = appearAt(frame, fps, Math.round(1.2 * fps));
   const tilt = -fall * 100; // 後ろへ100度
@@ -2863,41 +3058,55 @@ export const DrinkFallScene: React.FC<SceneProps> = ({ scene }) => {
   const groundY = 750;
   return (
     <Frame>
-      <DiagramTitle text={scene?.title ?? "そのまま飲んだら、むせる"} />
+      <DiagramTitle text={scene?.title ?? (mirror ? "誰かが、あなたのジュースでむせる" : "そのまま飲んだら、むせる")} />
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         <line x1={480} y1={groundY} x2={1440} y2={groundY} stroke={SP.dim} strokeWidth={4} />
-        {/* 人 (足もとを軸に後ろへ倒れる) */}
-        <g transform={`rotate(${tilt} 900 ${groundY})`}>
-          <g stroke={SP.line} strokeWidth={6} fill="none" strokeLinecap="round">
-            {/* 頭 (上を向いて飲む) */}
-            <circle cx={900} cy={470 + gulp} r={40} />
-            {/* 体 */}
-            <line x1={900} y1={510} x2={900} y2={650} />
-            {/* 脚 */}
-            <line x1={900} y1={650} x2={862} y2={groundY} />
-            <line x1={900} y1={650} x2={938} y2={groundY} />
-            {/* 腕 (グラスを口へ) */}
-            <line x1={900} y1={556} x2={964} y2={470 + gulp} />
+        {/* 絵の部分だけ左右反転 (文字は反転しないよう外に出す) */}
+        <g transform={mirror ? `translate(${W} 0) scale(-1 1)` : undefined}>
+          {/* 人 (足もとを軸に後ろへ倒れる) */}
+          <g transform={`rotate(${tilt} 900 ${groundY})`}>
+            <g stroke={SP.line} strokeWidth={6} fill="none" strokeLinecap="round">
+              {/* 頭 (上を向いて飲む) */}
+              <circle cx={900} cy={470 + gulp} r={40} />
+              {/* 体 */}
+              <line x1={900} y1={510} x2={900} y2={650} />
+              {/* 脚 */}
+              <line x1={900} y1={650} x2={862} y2={groundY} />
+              <line x1={900} y1={650} x2={938} y2={groundY} />
+              {/* 腕 (グラスを口へ) */}
+              <line x1={900} y1={556} x2={964} y2={470 + gulp} />
+            </g>
+            {/* グラス (オレンジの原液) */}
+            <g transform={`rotate(${-40 - gulp * 2} 1000 ${440 + gulp})`}>
+              <path d={`M 972 ${404 + gulp} L 1028 ${404 + gulp} L 1020 ${472 + gulp} L 980 ${472 + gulp} Z`} fill="none" stroke={SP.line} strokeWidth={5} strokeLinejoin="round" />
+              <path d={`M 976 ${424 + gulp} L 1024 ${424 + gulp} L 1019 ${470 + gulp} L 981 ${470 + gulp} Z`} fill={KC.orange} opacity={0.95} />
+            </g>
           </g>
-          {/* グラス (オレンジの原液) */}
-          <g transform={`rotate(${-40 - gulp * 2} 1000 ${440 + gulp})`}>
-            <path d={`M 972 ${404 + gulp} L 1028 ${404 + gulp} L 1020 ${472 + gulp} L 980 ${472 + gulp} Z`} fill="none" stroke={SP.line} strokeWidth={5} strokeLinejoin="round" />
-            <path d={`M 976 ${424 + gulp} L 1024 ${424 + gulp} L 1019 ${470 + gulp} L 981 ${470 + gulp} Z`} fill={KC.orange} opacity={0.95} />
-          </g>
+          {/* むせた飛まつ と 勢い線 */}
+          {fall > 0.15 && (
+            <g opacity={Math.min(fall * 1.6, 1)}>
+              <g stroke={SP.faint} strokeWidth={5} strokeLinecap="round">
+                <line x1={1010} y1={420} x2={1070} y2={380} />
+                <line x1={1030} y1={470} x2={1100} y2={450} />
+                <line x1={1020} y1={520} x2={1086} y2={520} />
+              </g>
+              {[0, 1, 2, 3].map((i) => (
+                <circle key={i} cx={1060 + i * 36} cy={400 - (i % 2) * 40} r={8 - i} fill={KC.orange} opacity={0.8} />
+              ))}
+            </g>
+          )}
         </g>
-        {/* むせた飛まつ と 勢い線 */}
+        {/* 文字 (反転させない) */}
         {fall > 0.15 && (
           <g opacity={Math.min(fall * 1.6, 1)}>
-            <g stroke={SP.faint} strokeWidth={5} strokeLinecap="round">
-              <line x1={1010} y1={420} x2={1070} y2={380} />
-              <line x1={1030} y1={470} x2={1100} y2={450} />
-              <line x1={1020} y1={520} x2={1086} y2={520} />
-            </g>
-            {[0, 1, 2, 3].map((i) => (
-              <circle key={i} cx={1060 + i * 36} cy={400 - (i % 2) * 40} r={8 - i} fill={KC.orange} opacity={0.8} />
-            ))}
-            <SmallLabel x={1240} y={340} text="ゲホッ…!" color={SP.ink} size={40} weight={700} />
+            <SmallLabel x={mirror ? 680 : 1240} y={340} text="ゲホッ…!" color={SP.ink} size={40} weight={700} />
           </g>
+        )}
+        {mirror && (
+          <>
+            <SmallLabel x={1020} y={810} text="画面のむこうの、誰か" color={SP.faint} size={30} />
+            <SmallLabel x={1560} y={560} text="あなたの濃縮ジュース" color={SP.faint} size={28} />
+          </>
         )}
       </svg>
     </Frame>
@@ -3169,6 +3378,245 @@ export const WaldProfileScene: React.FC<SceneProps> = ({ scene }) => {
             </g>
           );
         })}
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== sparkle_overflow: スマホからきらきらがあふれ出す (「きらきら、きらきら。」) =====
+export const SparkleOverflowScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(6);
+  // あふれるきらきら: 色・出発位置・ゆらぎを変えてループで立ちのぼる
+  const sparks = [
+    { dx: -90, color: KC.yellow, s: 18, speed: 1.0, sway: 36, phase: 0 },
+    { dx: -30, color: KC.pink, s: 14, speed: 1.3, sway: -30, phase: 2 },
+    { dx: 40, color: KC.skyBlue, s: 16, speed: 0.9, sway: 44, phase: 4 },
+    { dx: 100, color: KC.green, s: 12, speed: 1.2, sway: -40, phase: 1 },
+    { dx: -60, color: KC.orange, s: 13, speed: 1.1, sway: 26, phase: 3 },
+    { dx: 70, color: KC.yellow, s: 11, speed: 1.4, sway: -22, phase: 5 },
+    { dx: 0, color: KC.pink, s: 20, speed: 0.8, sway: 18, phase: 2 },
+    { dx: -110, color: KC.skyBlue, s: 10, speed: 1.25, sway: -34, phase: 0 },
+  ];
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "きらきら、きらきら"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <g opacity={a}>
+          {/* 中央のスマホ (画面の中はカラフルな投稿) */}
+          <Phone x={790} y={330} w={340} h={560}>
+            <g opacity={appearAt(frame, fps, 8)}>
+              <FeedCard x={828} y={386} w={264} h={150} kind="travel" colored />
+            </g>
+            <g opacity={appearAt(frame, fps, 16)}>
+              <FeedCard x={828} y={556} w={264} h={150} kind="food" colored />
+            </g>
+            <g opacity={appearAt(frame, fps, 24)}>
+              <FeedCard x={828} y={726} w={264} h={150} kind="win" colored />
+            </g>
+          </Phone>
+          {/* 画面の光があふれるイメージ */}
+          <polygon points="800,336 1120,336 1310,150 610,150" fill={SP.ink} opacity={0.07} />
+        </g>
+        {/* あふれ出すきらきら: 画面の上端からループで立ちのぼる */}
+        {sparks.map(({ dx, color, s, speed, sway, phase }, i) => {
+          const loop = 2.4 * fps; // 1本あたり2.4秒で1周
+          const t = ((frame * speed + i * 23) % loop) / loop; // 0→1
+          const x = 960 + dx + Math.sin(t * Math.PI * 2 + i) * sway;
+          const y = 360 - t * 300; // 画面上端 (約360) から上へ
+          const fade = t < 0.15 ? t / 0.15 : t > 0.75 ? (1 - t) / 0.25 : 1; // 出現→消滅
+          return (
+            <g key={i} opacity={fade * a}>
+              <Sparkle x={x} y={y} s={s * (0.7 + 0.3 * fade)} phase={phase} color={color} />
+            </g>
+          );
+        })}
+        {/* 画面のふち付近にも常駐のきらめき */}
+        <Sparkle x={760} y={430} s={12} phase={1} color={KC.yellow} />
+        <Sparkle x={1170} y={520} s={14} phase={3} color={KC.pink} />
+        <Sparkle x={740} y={700} s={10} phase={5} color={KC.skyBlue} />
+        <Sparkle x={1180} y={790} s={11} phase={0} color={KC.green} />
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== futon_think: ふとんの中、画面の明かりに照らされて ふと思う =====
+export const FutonThinkScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(6);
+  const glow = useAppear(10);
+  // 「…」が1文字ずつ浮かぶ
+  const dots = [0, 1, 2].map((i) => appearAt(frame, fps, 26 + i * 10));
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "ふと、思う"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 月と星 (夜) */}
+        <path d="M 1610 240 a 56 56 0 1 0 50 82 a 44 44 0 0 1 -50 -82 Z" fill={KC.yellow} opacity={0.92} />
+        <Sparkle x={1450} y={200} s={10} phase={1} />
+        <Sparkle x={1720} y={380} s={8} phase={3} />
+        {/* 床 */}
+        <line x1={320} y1={820} x2={1620} y2={820} stroke={SP.dim} strokeWidth={4} />
+        {/* ふとん一式 (futon_phone と同じ構図) */}
+        <g transform="translate(960 820) scale(0.75) translate(-960 -820)" opacity={a}>
+          {/* まくら と 顔 */}
+          <rect x={470} y={716} width={170} height={56} rx={18} fill="none" stroke={SP.line} strokeWidth={5} />
+          <circle cx={556} cy={676} r={34} fill="none" stroke={SP.line} strokeWidth={5} />
+          {/* ふとん (体を覆う) */}
+          <path
+            d="M 610 820 L 610 740 Q 620 668 720 660 L 1420 660 Q 1500 668 1504 740 L 1504 820 Z"
+            fill={SP.panel}
+            stroke={SP.line}
+            strokeWidth={5}
+          />
+          <path d="M 610 756 Q 1050 724 1504 756" fill="none" stroke={SP.dim} strokeWidth={4} />
+          {/* スマホ (顔の上にかかげたまま) と 画面の明かりが顔を照らす */}
+          <g opacity={glow}>
+            <polygon points="590,560 700,560 760,660 530,660" fill={SP.ink} opacity={0.14} />
+          </g>
+          <rect
+            x={596}
+            y={470}
+            width={96}
+            height={150}
+            rx={16}
+            transform="rotate(14 644 545)"
+            fill={SP.panel}
+            stroke={SP.line}
+            strokeWidth={5}
+          />
+          <path d="M 640 640 Q 630 600 640 566" fill="none" stroke={SP.line} strokeWidth={5} strokeLinecap="round" />
+        </g>
+        {/* 考えごとの泡 → 「…」のふきだし (顔の上あたり) */}
+        <circle cx={520} cy={560} r={9} fill="none" stroke={SP.line} strokeWidth={4} opacity={appearAt(frame, fps, 14)} />
+        <circle cx={480} cy={500} r={14} fill="none" stroke={SP.line} strokeWidth={4} opacity={appearAt(frame, fps, 20)} />
+        <g opacity={appearAt(frame, fps, 26)}>
+          <ellipse cx={420} cy={390} rx={130} ry={80} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+        </g>
+        {dots.map((d, i) => (
+          <circle key={i} cx={370 + i * 50} cy={398} r={10} fill={SP.ink} opacity={d} />
+        ))}
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== declare_finger: 正面向きの人が人さし指を立てて宣言 (「先に、結論を言います。」) =====
+export const DeclareFingerScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(6);
+  // 指を立てる動き: 0.5秒かけてすっと上がる
+  const raise = appearAt(frame, fps, 10);
+  const lines = appearAt(frame, fps, 20);
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "先に、結論"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 床 */}
+        <line x1={520} y1={850} x2={1400} y2={850} stroke={SP.dim} strokeWidth={4} />
+        <g opacity={a}>
+          {/* 正面向きの人 (大きめ) */}
+          <g transform="translate(960 560) scale(2.4)">
+            {/* 体 */}
+            <path d="M -26 120 q 2 -56 26 -58 q 24 2 26 58 Z" fill="none" stroke={SP.line} strokeWidth={5} strokeLinejoin="round" />
+            {/* 頭 */}
+            <circle cy={40} r={17} fill="none" stroke={SP.line} strokeWidth={5} />
+            {/* 目 (まっすぐこちらを見る) */}
+            <circle cx={-6} cy={38} r={2} fill={SP.ink} />
+            <circle cx={6} cy={38} r={2} fill={SP.ink} />
+            {/* 口 (きゅっと結ぶ) */}
+            <path d="M -5 48 q 5 3 10 0" fill="none" stroke={SP.line} strokeWidth={3} strokeLinecap="round" />
+          </g>
+          {/* 腕 と 人さし指: raise で上がる */}
+          <g opacity={raise}>
+            {/* 腕 (体の右側から上へ) */}
+            <path
+              d={`M 1016 760 Q 1070 ${700 - raise * 110} 1082 ${640 - raise * 160}`}
+              fill="none"
+              stroke={SP.line}
+              strokeWidth={11}
+              strokeLinecap="round"
+            />
+            {/* こぶし */}
+            <circle cx={1082} cy={640 - raise * 160} r={17} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+            {/* 人さし指 (1本だけ立てる) */}
+            <line
+              x1={1082}
+              y1={628 - raise * 160}
+              x2={1082}
+              y2={586 - raise * 160}
+              stroke={SP.line}
+              strokeWidth={9}
+              strokeLinecap="round"
+            />
+          </g>
+          {/* 強調の放射線 (指先のまわり) */}
+          <g opacity={lines} stroke={SP.line} strokeWidth={5} strokeLinecap="round">
+            {[-150, -115, -80, -45, -10].map((deg) => {
+              const rad = (deg * Math.PI) / 180;
+              const cx = 1082;
+              const cy = 420;
+              return (
+                <line
+                  key={deg}
+                  x1={cx + Math.cos(rad) * 58}
+                  y1={cy + Math.sin(rad) * 58}
+                  x2={cx + Math.cos(rad) * 100}
+                  y2={cy + Math.sin(rad) * 100}
+                />
+              );
+            })}
+          </g>
+          {/* 「結論」を指す赤い点 */}
+          <circle cx={1082} cy={420} r={8} fill={SP.accent} opacity={lines} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== lets_go: 腕を突き上げて出発 (「それでは、まいりましょう。」) =====
+export const LetsGoScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(6);
+  // 歩き出し: ばねで一歩前へふみ出す (007の「指差し宣言」とは別の絵にする)
+  const step = appearAt(frame, fps, 12);
+  const lines = appearAt(frame, fps, 18);
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "それでは、まいりましょう"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 床 */}
+        <line x1={420} y1={850} x2={1500} y2={850} stroke={SP.dim} strokeWidth={4} />
+        {/* 目的地の旗 (赤ワンポイント) */}
+        <g opacity={lines}>
+          <line x1={1380} y1={850} x2={1380} y2={730} stroke={SP.line} strokeWidth={6} strokeLinecap="round" />
+          <path d="M 1380 730 l 76 24 l -76 24 Z" fill={SP.accent} />
+        </g>
+        <g opacity={a}>
+          {/* 人 (前のめりで、旗へ向かって歩き出す) */}
+          <g transform={`translate(${820 + step * 70} 622) scale(2.3) rotate(${8 * step})`}>
+            <path d="M -26 100 q 2 -50 26 -52 q 24 2 26 52 Z" fill="none" stroke={SP.line} strokeWidth={5} strokeLinejoin="round" />
+            <circle cy={26} r={17} fill="none" stroke={SP.line} strokeWidth={5} />
+            {/* 口 (元気よく開く) */}
+            <path d="M -4 32 q 4 7 10 2" fill="none" stroke={SP.line} strokeWidth={3} strokeLinecap="round" />
+            {/* 前へ差し出す腕 (旗の方向へ、水平ぎみ) */}
+            <path d="M 16 62 Q 48 46 86 40" fill="none" stroke={SP.line} strokeWidth={5} strokeLinecap="round" />
+            <circle cx={86} cy={40} r={8} fill={SP.panel} stroke={SP.line} strokeWidth={3} />
+          </g>
+          {/* 勢いの流線 (体の左うしろ、強め) */}
+          <g opacity={lines} stroke={SP.faint} strokeWidth={5} strokeLinecap="round">
+            <line x1={560} y1={600} x2={740} y2={580} />
+            <line x1={530} y1={680} x2={720} y2={668} />
+            <line x1={560} y1={760} x2={730} y2={752} />
+            <line x1={600} y1={828} x2={760} y2={824} />
+          </g>
+        </g>
       </svg>
     </Frame>
   );

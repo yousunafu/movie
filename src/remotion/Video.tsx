@@ -31,7 +31,7 @@ import {
   kouzouCardShowsFullText,
 } from "./kouzou/KouzouScenes";
 import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
-import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, computeSuuriVariants, computeSuuriWashi, WashiCtx, computeSuuriStadium, StadiumCtx, splitPunchline } from "./suuri/SuuriScenes";
+import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, suuriSceneHidesSubtitle, computeSuuriVariants, computeSuuriWashi, WashiCtx, computeSuuriStadium, StadiumCtx, splitPunchline } from "./suuri/SuuriScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -80,6 +80,14 @@ const SceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
 // 日本語の文節で改行する (「たんぱ\nく質」のような変な折り返しを防ぐ)
 const jaParser = loadDefaultJapaneseParser();
 
+// 字幕の改行位置を手で指定する表 (読みやすさ優先)。
+// ここに書いた文字列が字幕に含まれていたら、その「直後」で改行する。
+const SUBTITLE_BREAK_AFTER: string[] = [
+  // --- キラキラ画面の回 ---
+  "あなたのキラキラスマホ画面も、",
+  "何もない火曜日は、",
+];
+
 const Subtitle: React.FC<{
   text: string;
   onImage?: boolean;
@@ -98,23 +106,35 @@ const Subtitle: React.FC<{
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
   });
-  const text =
+  const revealed =
     tailReveal && frame < tailReveal.atFrame
       ? fullText.slice(0, tailReveal.headChars)
       : fullText;
+  // 字幕の改行位置を手で指定する (読みやすさ優先)。該当文字列の直後で改行
+  let text = revealed;
+  for (const b of SUBTITLE_BREAK_AFTER) {
+    text = text.replace(b, `${b}\n`);
+  }
   // 強調語 (emphasis) が字幕の中にあれば、その部分だけ黄色にする
   const hl = highlight?.replace(/[「」]/g, "").trim();
   const useHl = Boolean(hl && hl.length >= 2 && text.includes(hl!));
   const nodes: React.ReactNode[] = [];
-  if (useHl) {
-    text.split(hl!).forEach((part, i, arr) => {
-      jaParser.parse(part).forEach((chunk, j) => {
+  // 改行指定 (\n) があれば <br/> を入れつつ、文節ごとに span を作る
+  const pushText = (s: string, keyPrefix: string) => {
+    s.split("\n").forEach((seg, li) => {
+      if (li > 0) nodes.push(<br key={`${keyPrefix}-br-${li}`} />);
+      jaParser.parse(seg).forEach((chunk, j) => {
         nodes.push(
-          <span key={`${i}-${j}`} style={{ display: "inline-block" }}>
+          <span key={`${keyPrefix}-${li}-${j}`} style={{ display: "inline-block" }}>
             {chunk}
           </span>,
         );
       });
+    });
+  };
+  if (useHl) {
+    text.split(hl!).forEach((part, i, arr) => {
+      pushText(part, `p${i}`);
       if (i < arr.length - 1) {
         nodes.push(
           <span
@@ -127,13 +147,7 @@ const Subtitle: React.FC<{
       }
     });
   } else {
-    jaParser.parse(text).forEach((chunk, i) => {
-      nodes.push(
-        <span key={i} style={{ display: "inline-block" }}>
-          {chunk}
-        </span>,
-      );
-    });
+    pushText(text, "t");
   }
   // rekishi / kouzou: 下端の黒帯 (各 SceneView が描く) の中央に白ゴシックで全文。帯は敷かない
   if (rekishi || kouzou) {
@@ -361,7 +375,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 !(isRekishi && rekishiCardShowsFullText(scene)) &&
                 !(isKouzou && kouzouCardShowsFullText(scene)) &&
                 !(isKeizai && keizaiCardShowsFullText(scene)) &&
-                !(isSuuri && suuriCardShowsFullText(scene)) && (
+                !(isSuuri && suuriCardShowsFullText(scene)) &&
+                !(isSuuri && suuriSceneHidesSubtitle(scene)) && (
                 <Subtitle
                   text={scene.text}
                   onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi && !isKouzou && !isKeizai}

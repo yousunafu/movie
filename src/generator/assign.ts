@@ -963,17 +963,22 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(落ち込む人は、いません|くらべて自分の毎日|落ち込む必要もありません)/.test(sentence)) {
     return { type: "diagram", motif: "orz", title: "落ち込む必要は、ありません" };
   }
-  if (/ブレた写真/.test(sentence)) {
-    return { type: "diagram", motif: "orange_press", title: "現実を、ぎゅっとしぼる" };
+  // 「濃縮、○段目。」は各段の締めの掛け声: その瞬間にフルーツプレスが搾るアニメを見せる
+  if (/濃縮、一段目/.test(sentence)) {
+    return { type: "diagram", motif: "orange_press", title: "濃縮、一段目" };
   }
   if (/濃縮、二段目/.test(sentence)) {
     return { type: "diagram", motif: "lemon_press", title: "濃縮、二段目" };
   }
-  if (/ひかえめに2倍/.test(sentence)) {
-    return { type: "diagram", motif: "lime_press", title: "ひかえめに、2倍" };
+  if (/濃縮、三段目/.test(sentence)) {
+    return { type: "diagram", motif: "lime_press", title: "濃縮、三段目" };
   }
   if (/上に表示される/.test(sentence)) {
     return { type: "diagram", motif: "rank_up", title: "人気の投稿ほど、上に表示" };
+  }
+  // 第4章の伏線回収: 「誰かがあなたの濃縮ジュースでむせている」は飲む人を左右反転して見せる
+  if (/むせているかも/.test(sentence)) {
+    return { type: "diagram", motif: "drink_fall", title: "今ごろ誰かが、むせているかも" };
   }
   if (/むせる/.test(sentence)) {
     return { type: "diagram", motif: "drink_fall", title: "そのまま飲んだら、むせる" };
@@ -1091,6 +1096,18 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "diagram", motif: "runway_phones", title: "帰ってきたものだけの滑走路" };
   }
   // --- 導入 (夜のスマホの世界) ---
+  if (/^きらきら、きらきら/.test(sentence)) {
+    return { type: "diagram", motif: "sparkle_overflow", title: "きらきら、きらきら" };
+  }
+  if (/ふと思うのです/.test(sentence)) {
+    return { type: "diagram", motif: "futon_think", title: "そして、ふと思う" };
+  }
+  if (/先に、結論/.test(sentence)) {
+    return { type: "diagram", motif: "declare_finger", title: "先に、結論を言います" };
+  }
+  if (/それでは、まいりましょう/.test(sentence)) {
+    return { type: "diagram", motif: "lets_go", title: "それでは、まいりましょう" };
+  }
   if (/選ばれ/.test(sentence)) {
     return { type: "diagram", motif: "selection_gates", title: "世界は、選ばれてから届く" };
   }

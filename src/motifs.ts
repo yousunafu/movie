@@ -304,6 +304,7 @@ export const SUURI_GROW_MOTIFS: readonly string[] = [
   "many_sides",
   "apply_anywhere",
   "one_plate",
+  "whisper_question", // 本文で絵が変わる (「ここに届いていないものは」は中央大文字表示) ので連続散らしの対象外
 ];
 
 export const ALL_SUURI_MOTIFS = [

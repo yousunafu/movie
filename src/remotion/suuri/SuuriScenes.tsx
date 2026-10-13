@@ -111,9 +111,14 @@ import {
   SofaClockScene,
   Ww2YearScene,
   WaldProfileScene,
+  SparkleOverflowScene,
+  FutonThinkScene,
+  DeclareFingerScene,
+  LetsGoScene,
   KIRAKIRA_WASHI_MOTIFS,
   KIRAKIRA_DARK_MOTIFS,
   KIRAKIRA_STADIUM_MOTIFS,
+  KC,
 } from "./KirakiraScenes";
 
 // ===== 語り・つなぎの人物 =====
@@ -512,6 +517,11 @@ export const suuriCardShowsFullText = (scene: Scene): boolean => {
   return !hl && text.length <= 52;
 };
 
+// 図解自体が本文をまるごと大きく見せるシーンでは、下の字幕を重ねない
+// (whisper_question の「ここに届いていないものは、なんだろう?」中央表示など)
+export const suuriSceneHidesSubtitle = (scene: Scene): boolean =>
+  /whisper/.test(scene.motif ?? "") && /ここに届いていない/.test(scene.text ?? "");
+
 const CHAPTER_NUM_RE = /第[0-9０-９一二三四五六七八九十]+章/;
 const ChapterCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const frame = useCurrentFrame();
@@ -659,6 +669,9 @@ const SuuriCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
   const text = scene.text.replace(/[。]$/, "");
   const useFull = Boolean(hl && text.includes(hl) && text.length <= 52);
   const display = useFull ? text : (hl ?? (text.length <= 52 ? text : scene.title ?? text.slice(0, 40)));
+  // カード全体がカギカッコ付きの引用そのもの (例:「見えないものは、ないことになってしまう」) なら
+  // 「」まで含めてまるごと赤にする
+  const hlUnit = hl && text === `「${hl}」` ? `「${hl}」` : hl;
 
   const rise = interpolate(inP, [0, 1], [26, 0]);
   return (
@@ -684,7 +697,7 @@ const SuuriCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
             letterSpacing: 2,
           }}
         >
-          {useFull && hl ? wrapJa(text, hl, { color: SP.accent }) : wrapJa(String(display))}
+          {useFull && hlUnit ? wrapJa(text, hlUnit, { color: SP.accent }) : wrapJa(String(display))}
         </div>
         <div style={{ width: 64, height: 4, background: SP.accent, marginTop: 56, borderRadius: 2 }} />
       </AbsoluteFill>
@@ -1376,7 +1389,7 @@ const ThreePointIcon: React.FC<{ label: string }> = ({ label }) => {
     return (
       <svg width={64} height={64} viewBox="0 0 64 64">
         <path d="M 18 14 L 46 14 L 42 52 L 22 52 Z" fill="none" stroke={SP.line} strokeWidth={4} strokeLinejoin="round" />
-        <path d="M 20.5 30 L 43.5 30 L 42 52 L 22 52 Z" fill="#E08A3C" opacity={0.9} />
+        <path d="M 20.5 30 L 43.5 30 L 42 52 L 22 52 Z" fill={KC.orange} opacity={0.9} />
         <line x1={40} y1={10} x2={48} y2={2} stroke={SP.line} strokeWidth={4} />
       </svg>
     );
@@ -1400,8 +1413,9 @@ const ThreePointIcon: React.FC<{ label: string }> = ({ label }) => {
     return (
       <svg width={64} height={64} viewBox="0 0 64 64">
         <rect x={20} y={8} width={26} height={48} rx={6} fill="none" stroke={SP.line} strokeWidth={4} />
-        <path d="M 33 24 L 35.5 31 L 42 33.5 L 35.5 36 L 33 43 L 30.5 36 L 24 33.5 L 30.5 31 Z" fill={SP.ink} />
-        <path d="M 50 12 L 51.5 16 L 55.5 17.5 L 51.5 19 L 50 23 L 48.5 19 L 44.5 17.5 L 48.5 16 Z" fill={SP.line} />
+        {/* 画面の中のきらめきはカラフル (画面の中=カラー、のルールに合わせる) */}
+        <path d="M 33 24 L 35.5 31 L 42 33.5 L 35.5 36 L 33 43 L 30.5 36 L 24 33.5 L 30.5 31 Z" fill={KC.yellow} />
+        <path d="M 50 12 L 51.5 16 L 55.5 17.5 L 51.5 19 L 50 23 L 48.5 19 L 44.5 17.5 L 48.5 16 Z" fill={KC.pink} />
       </svg>
     );
   }
@@ -2768,6 +2782,11 @@ const resolveSuuriMotif = (m: string): string | undefined => {
   if (/drink_fall|drink/.test(m)) return "drink_fall";
   if (/boxer|champ/.test(m)) return "boxer_champ";
   if (/sofa_clock|sofa/.test(m)) return "sofa_clock";
+  // 修正第二弾の新イラスト4種 (futon_think が futon_phone に吸収されないよう先に見る)
+  if (/sparkle_overflow|overflow/.test(m)) return "sparkle_overflow";
+  if (/futon_think|think_futon/.test(m)) return "futon_think";
+  if (/declare_finger|declare|finger_up/.test(m)) return "declare_finger";
+  if (/lets_go|letsgo|start_now/.test(m)) return "lets_go";
   if (/bullet|hole_map|wald_map|shot_map/.test(m)) return "bullet_map";
   if (/sea_bottom|sunken|ocean_floor|under_sea/.test(m)) return "sea_bottom";
   // (専用トークンだけ使う: 裸の scroll / timeline / pick / count / multiply は下の既存判定に残す)
@@ -3099,6 +3118,10 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
     if (m === "sofa_clock") return <SofaClockScene scene={scene} />;
     if (m === "ww2_year") return <Ww2YearScene scene={scene} />;
     if (m === "wald_profile") return <WaldProfileScene scene={scene} />;
+    if (m === "sparkle_overflow") return <SparkleOverflowScene scene={scene} />;
+    if (m === "futon_think") return <FutonThinkScene scene={scene} />;
+    if (m === "declare_finger") return <DeclareFingerScene scene={scene} />;
+    if (m === "lets_go") return <LetsGoScene scene={scene} />;
     // --- 寿司回 (37%ルール) ---
     if (m === "sushi_lane") return <SushiLaneScene scene={scene} variant={variant} />;
     if (m === "one_plate") return <OnePlateScene scene={scene} variant={variant} />;

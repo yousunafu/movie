@@ -31,7 +31,7 @@ import {
   kouzouCardShowsFullText,
 } from "./kouzou/KouzouScenes";
 import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
-import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, suuriSceneHidesSubtitle, computeSuuriVariants, computeSuuriWashi, WashiCtx, computeSuuriStadium, StadiumCtx, splitPunchline } from "./suuri/SuuriScenes";
+import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, suuriSceneHidesSubtitle, computeSuuriVariants, computeSuuriWashi, WashiCtx, computeSuuriStadium, StadiumCtx, computeSuuriRenai, RenaiCtx, splitPunchline } from "./suuri/SuuriScenes";
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -100,10 +100,11 @@ const Subtitle: React.FC<{
   keizai?: boolean;
   suuri?: boolean;
   washi?: boolean; // suuri の和紙背景モード (字幕を墨色にする)
+  renai?: boolean; // suuri の恋愛モード (白地なので字幕をチャコールにする)
   highlight?: string;
   // オチ字幕: atFrame までは先頭 headChars 文字だけ表示する (ネタバレ防止)
   tailReveal?: { headChars: number; atFrame: number };
-}> = ({ text: fullText, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, washi, highlight, tailReveal }) => {
+}> = ({ text: fullText, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, washi, renai, highlight, tailReveal }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
@@ -240,14 +241,16 @@ const Subtitle: React.FC<{
           fontFamily: ashi ? ASHI_FONT : manabi ? MANABI_FONT : suuri ? SUURI_FONT : FONT,
           fontSize: SUBTITLE.fontSize,
           fontWeight: SUBTITLE.weight,
-          color: ashi ? AP.sub : manabi ? MP.ink : suuri ? (washi ? "#2A2622" : SP.ink) : PALETTE.subtitle,
+          color: ashi ? AP.sub : manabi ? MP.ink : suuri ? (washi ? "#2A2622" : renai ? "#3A3A40" : SP.ink) : PALETTE.subtitle,
           lineHeight: 1.55,
           textShadow:
             suuri && washi
               ? "0 2px 10px rgba(242, 235, 219, 0.9)"
-              : ashi || manabi || suuri
-                ? "0 2px 12px rgba(0,0,0,0.9)"
-                : undefined,
+              : suuri && renai
+                ? "0 2px 10px rgba(253, 249, 250, 0.9)"
+                : ashi || manabi || suuri
+                  ? "0 2px 12px rgba(0,0,0,0.9)"
+                  : undefined,
           // 画像の上では、読みやすいよう帯を敷く
           backgroundColor: onImage ? band : undefined,
           boxShadow: onImage ? `0 0 0 14px ${band}` : undefined,
@@ -275,6 +278,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const suuriWashi = isSuuri ? computeSuuriWashi(data.scenes) : [];
   // suuri (キラキラ回): 第1章の野球の場面だけ夜の球場背景 (和紙が優先)
   const suuriStadium = isSuuri ? computeSuuriStadium(data.scenes) : [];
+  // suuri (恋愛ドレイク回): つかみだけ白ベース+ピンク装飾の恋愛モード背景
+  const suuriRenai = isSuuri ? computeSuuriRenai(data.scenes) : [];
   if (data.scenes.length === 0) {
     return (
       <AbsoluteFill
@@ -366,7 +371,9 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
               ) : isSuuri ? (
                 <WashiCtx.Provider value={suuriWashi[sceneI] ?? false}>
                   <StadiumCtx.Provider value={suuriStadium[sceneI] ?? false}>
-                    <SuuriSceneView scene={scene} variant={suuriVariants[sceneI] ?? 0} />
+                    <RenaiCtx.Provider value={suuriRenai[sceneI] ?? false}>
+                      <SuuriSceneView scene={scene} variant={suuriVariants[sceneI] ?? 0} />
+                    </RenaiCtx.Provider>
                   </StadiumCtx.Provider>
                 </WashiCtx.Provider>
               ) : (
@@ -389,6 +396,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   keizai={isKeizai}
                   suuri={isSuuri}
                   washi={isSuuri && (suuriWashi[sceneI] ?? false)}
+                  renai={isSuuri && (suuriRenai[sceneI] ?? false)}
                   highlight={v2 ? scene.emphasis : undefined}
                   tailReveal={
                     punch

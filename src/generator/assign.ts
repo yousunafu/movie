@@ -944,6 +944,194 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (isManabiQuizText(sentence) || /ここで質問です/.test(sentence)) {
     return { type: "card", motif: "quiz" };
   }
+  // --- 恋愛版ドレイク回 (運命の人は、東京に40人しかいない): 具体的な言葉から順に判定する ---
+  // (previewルールより前に置く: 「第1章で宇宙人を〜」はキラキラ回の予告絵ではなく恋愛回の道標の絵)
+  // つかみ (恋愛モード・白ベース+ピンク)
+  if (/(最近の調査に|恋人がいません)/.test(sentence)) {
+    return { type: "diagram", motif: "love_stat_7wari" };
+  }
+  if (/デートをしたことが一度もない/.test(sentence)) {
+    return { type: "diagram", motif: "love_no_date" };
+  }
+  if (/しない人が多数派/.test(sentence)) {
+    return { type: "diagram", motif: "love_minority" };
+  }
+  if (/4組に1組は、アプリ/.test(sentence)) {
+    return { type: "diagram", motif: "love_app_couple" };
+  }
+  if (/いいね/.test(sentence)) {
+    return { type: "diagram", motif: "love_like_rain" };
+  }
+  if (/(道具は増えた|奇妙なねじれ)/.test(sentence)) {
+    return { type: "diagram", motif: "love_twist" };
+  }
+  if (/行動あるのみ/.test(sentence)) {
+    return { type: "diagram", motif: "love_act_only" };
+  }
+  if (/数学で解きます/.test(sentence)) {
+    return { type: "diagram", motif: "love_math" };
+  }
+  if (/宇宙人を探すために作られた数式/.test(sentence)) {
+    return { type: "diagram", motif: "love_alien_hint" };
+  }
+  if (/(日本でいちばん人が多い街|「出会い」を求めて集まる街|本気で数えます)/.test(sentence)) {
+    return { type: "diagram", motif: "love_tokyo" };
+  }
+  if (/(今日の流れは、4つの章|第[1１]章で宇宙人|第[3３]章で答え)/.test(sentence)) {
+    return { type: "diagram", motif: "love_roadmap" };
+  }
+  if (/それでは、まいりましょう/.test(sentence)) {
+    return { type: "diagram", motif: "love_to_black" };
+  }
+  // 第1章 宇宙人の数え方 (黒モード)
+  if (/(フランク・ドレイク|議題は、)/.test(sentence)) {
+    return { type: "diagram", motif: "drake_blackboard" };
+  }
+  if (/(出席者は、わずか|地球側の人数)/.test(sentence)) {
+    return { type: "diagram", motif: "drake_meeting" };
+  }
+  if (/(ドレイクの発想|わからない大問題)/.test(sentence)) {
+    return { type: "diagram", motif: "drake_decompose" };
+  }
+  if (/(式の中身を、ざっくり|生まれる星の数|惑星を持つ星|生命が住める環境|実際に生命が生まれる|知的な文明に進化|電波を使うようになる|うっかり滅びず)/.test(sentence)) {
+    return { type: "diagram", motif: "drake_terms" };
+  }
+  if (/どんぶり勘定/.test(sentence)) {
+    return { type: "diagram", motif: "drake_donburi" };
+  }
+  if (/(桁なら議論できる|フェルミ推定と呼び)/.test(sentence)) {
+    return { type: "diagram", motif: "drake_order" };
+  }
+  if (/(有名な練習問題|ピアノの調律師|調律の頻度|答えはおよそ100人)/.test(sentence)) {
+    return { type: "diagram", motif: "fermi_piano" };
+  }
+  if (/電話帳/.test(sentence)) {
+    return { type: "diagram", motif: "fermi_phonebook" };
+  }
+  if (/いちばんの発明は/.test(sentence)) {
+    return { type: "card", motif: "quiz" };
+  }
+  if (/何を調べればいいか/.test(sentence)) {
+    return { type: "diagram", motif: "drake_legacy" };
+  }
+  if (/(まったく別の問い|なぜ、僕に彼女ができないのか)/.test(sentence)) {
+    return { type: "diagram", motif: "drake_to_love" };
+  }
+  // 第2章 運命の人を数える (黒モード+ピンク差し色)
+  if (/(ピーター・バッカス|なぜ僕に彼女ができないのか|れっきとした研究論文)/.test(sentence)) {
+    return { type: "diagram", motif: "backus_paper" };
+  }
+  if (/(「恋人の候補」|失礼な研究)/.test(sentence)) {
+    return { type: "diagram", motif: "backus_swap" };
+  }
+  if (/(東京版で計算|あなたを想像して|スタートは、東京都の人口)/.test(sentence)) {
+    return { type: "diagram", motif: "tokyo_dots_start" };
+  }
+  if (/(恋愛対象の性別|残りは、700万人|余裕の表情)/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_gender" };
+  }
+  if (/(次は、年齢の条件|上下5歳くらいまで|残りは、105万人)/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_age" };
+  }
+  if (/(独身かどうか|先約|残りは52万人)/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_single" };
+  }
+  if (/鳥取県/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_tottori" };
+  }
+  if (/ここからが本番/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_honban" };
+  }
+  if (/(価値観がなんとなく合い|残りは、16万人)/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_values" };
+  }
+  if (/(外見や雰囲気が好み|面食い|残りは、8000人)/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_looks" };
+  }
+  if (/(いちばん大事な掛け算|向こうも、あなたを|自分では決められません|公平に、こちらも|残りは、400人)/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_mutual" };
+  }
+  if (/生活のリズム/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_rhythm" };
+  }
+  if (/(さあ、答えが出ました|東京に、あなたの運命の人|たった40人)/.test(sentence)) {
+    return { type: "diagram", motif: "answer_40" };
+  }
+  if (/すれちがって出会える確率/.test(sentence)) {
+    return { type: "diagram", motif: "street_chance" };
+  }
+  if (/(東京ドーム|反対側の外野席)/.test(sentence)) {
+    return { type: "diagram", motif: "tokyo_dome" };
+  }
+  if (/(気のせいではありません|数字として、本当にない)/.test(sentence)) {
+    return { type: "diagram", motif: "no_deai_proof" };
+  }
+  if (/(絶望するしかない|いいえ、そんなことは|美しい抜け道)/.test(sentence)) {
+    return { type: "diagram", motif: "hope_slit" };
+  }
+  // 第3章 掛け算の抜け道 (黒モード)
+  if (/(さっきの式|7つの数字の掛け算|単純で強力な性質|まるごと2倍)/.test(sentence)) {
+    return { type: "diagram", motif: "formula_seven" };
+  }
+  if (/40人は何人になる/.test(sentence)) {
+    return { type: "card", motif: "quiz" };
+  }
+  if (/^答えは、80人/.test(sentence)) {
+    return { type: "card", motif: "concept", emphasis: "80人" };
+  }
+  if (/(条件をひとつ緩めた|話してみたら好きかも|関東圏)/.test(sentence)) {
+    return { type: "diagram", motif: "slider_up" };
+  }
+  if (/(逆のこと|年収は、1000万円|数十万人が消え|身長は、180センチ|また大勢が消え)/.test(sentence)) {
+    return { type: "diagram", motif: "jouken_vanish" };
+  }
+  if (/(容赦なく人数を削り|逆戻り)/.test(sentence)) {
+    return { type: "diagram", motif: "gyakumodori" };
+  }
+  if (/(天が決めた定数|変数なのです)/.test(sentence)) {
+    return { type: "diagram", motif: "hensu_card" };
+  }
+  if (/(言い出しっぺのバッカス|イギリス全土)/.test(sentence)) {
+    return { type: "diagram", motif: "backus_26" };
+  }
+  if (/(宇宙人の文明は、1万個|400倍近く|切ない結果)/.test(sentence)) {
+    return { type: "diagram", motif: "alien_scale" };
+  }
+  if (/(この話には続き|その続きは、第[4４]章で)/.test(sentence)) {
+    return { type: "diagram", motif: "tsuzuku" };
+  }
+  // 第4章 確率は動かせる (黒モード)
+  if (/(条件を見直せば|ここに落とし穴|確率はゼロ)/.test(sentence)) {
+    return { type: "diagram", motif: "zero_prob" };
+  }
+  if (/宝くじ/.test(sentence)) {
+    return { type: "diagram", motif: "takarakuji" };
+  }
+  if (/(ソファ(?!ー)|それはもう家族)/.test(sentence)) {
+    return { type: "diagram", motif: "sofa_family" };
+  }
+  if (/(効いてくるのが、分母|新しく知り合う人の数|職場と家の往復|仕事の話しか|35万分の1はほとんど動き)/.test(sentence)) {
+    return { type: "diagram", motif: "bunbo_grow" };
+  }
+  if (/(趣味の集まり|出会う数を10倍)/.test(sentence)) {
+    return { type: "diagram", motif: "deai_x10" };
+  }
+  if (/(試行回数|確率の世界のただひとつ)/.test(sentence)) {
+    return { type: "diagram", motif: "dice_many" };
+  }
+  if (/(バッカスのその後|あの切ない経済学者|論文の結び|ゼロではない|実際に、結婚しました|26人のうちの1人)/.test(sentence)) {
+    return { type: "diagram", motif: "backus_wedding" };
+  }
+  // 結論
+  if (/(今日の話を、まとめます|運命の人は、東京におよそ40人|増えも減りもする|出会う数という分母)/.test(sentence)) {
+    return { type: "diagram", motif: "renai_matome" };
+  }
+  if (/(空から降ってくる奇跡|一本の計算問題|宇宙の広さではなく|人生の道具)/.test(sentence)) {
+    return { type: "diagram", motif: "final_tool" };
+  }
+  if (/(緩めてみませんか|明日、80人に)/.test(sentence)) {
+    return { type: "diagram", motif: "yurumeru" };
+  }
   // 予告の文 (「第1章で〜、第2章で〜」) は中身の言葉より先に道筋の絵へ。
   // キラキラ回は前半 (第1章・第2章) と後半 (第3章・第4章) で絵を分ける (斜め線の2分割予告)
   if (/第[1１一]章で/.test(sentence)) {

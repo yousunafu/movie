@@ -33,7 +33,7 @@ import {
 } from "./parts";
 
 // Video.tsx など外から使う口は従来どおり SuuriScenes から import できるよう再輸出
-export { SP, SUURI_FONT, SUURI_SERIF, WashiCtx, StadiumCtx, splitPunchline } from "./parts";
+export { SP, SUURI_FONT, SUURI_SERIF, WashiCtx, StadiumCtx, RenaiCtx, splitPunchline } from "./parts";
 
 // 37%ルール回 (回転寿司×結婚) の専用シーン
 import {
@@ -129,6 +129,69 @@ import {
   KIRAKIRA_STADIUM_MOTIFS,
   KC,
 } from "./KirakiraScenes";
+
+// 恋愛版ドレイク回 (運命の人は、東京に40人しかいない) の専用シーン
+import {
+  LoveStatScene,
+  LoveNoDateScene,
+  LoveMinorityScene,
+  LoveAppCoupleScene,
+  LoveLikeRainScene,
+  LoveTwistScene,
+  LoveActOnlyScene,
+  LoveMathScene,
+  LoveAlienHintScene,
+  LoveTokyoScene,
+  LoveRoadmapScene,
+  LoveToBlackScene,
+  DrakeBlackboardScene,
+  DrakeMeetingScene,
+  DrakeDecomposeScene,
+  DrakeTermsScene,
+  DrakeDonburiScene,
+  DrakeOrderScene,
+  FermiPianoScene,
+  FermiPhonebookScene,
+  DrakeLegacyScene,
+  DrakeToLoveScene,
+  BackusPaperScene,
+  BackusSwapScene,
+  TokyoDotsStartScene,
+  CountdownGenderScene,
+  CountdownAgeScene,
+  CountdownSingleScene,
+  CountdownTottoriScene,
+  CountdownHonbanScene,
+  CountdownValuesScene,
+  CountdownLooksScene,
+  CountdownMutualScene,
+  CountdownRhythmScene,
+  Answer40Scene,
+  StreetChanceScene,
+  TokyoDomeScene,
+  NoDeaiProofScene,
+  HopeSlitScene,
+  FormulaSevenScene,
+  SliderUpScene,
+  JoukenVanishScene,
+  GyakumodoriScene,
+  HensuCardScene,
+  Backus26Scene,
+  AlienScaleScene,
+  TsuzukuScene,
+  ZeroProbScene,
+  TakarakujiScene,
+  SofaFamilyScene,
+  BunboGrowScene,
+  DeaiX10Scene,
+  DiceManyScene,
+  BackusWeddingScene,
+  RenaiMatomeScene,
+  FinalToolScene,
+  YurumeruScene,
+  RENAI_PINK_MOTIFS,
+  RENAI_DARK_MOTIFS,
+} from "./RenaiScenes";
 
 // ===== 語り・つなぎの人物 =====
 
@@ -529,7 +592,10 @@ export const suuriCardShowsFullText = (scene: Scene): boolean => {
 // 図解自体が本文をまるごと大きく見せるシーンでは、下の字幕を重ねない
 // (whisper_question の「ここに届いていないものは、なんだろう?」中央表示など)
 export const suuriSceneHidesSubtitle = (scene: Scene): boolean =>
-  /whisper/.test(scene.motif ?? "") && /ここに届いていない/.test(scene.text ?? "");
+  (/whisper/.test(scene.motif ?? "") && /ここに届いていない/.test(scene.text ?? "")) ||
+  // 恋愛ドレイク回: 決めゼリフを絵の中央に大きく出すシーンは字幕を重ねない
+  (/drake_to_love/.test(scene.motif ?? "") && /なぜ、僕に彼女ができないのか/.test(scene.text ?? "")) ||
+  (/backus_wedding/.test(scene.motif ?? "") && /ゼロではない/.test(scene.text ?? ""));
 
 const CHAPTER_NUM_RE = /第[0-9０-９一二三四五六七八九十]+章/;
 const ChapterCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
@@ -2777,6 +2843,65 @@ const YamabaScene: React.FC = () => {
 };
 
 const resolveSuuriMotif = (m: string): string | undefined => {
+  // 恋愛版ドレイク回の専用トークンを最優先で見る
+  // (sofa_family→sofa_clock / drake_blackboard→math_talk などの誤吸収を防ぐため順番が大事)
+  if (/love_stat|7wari/.test(m)) return "love_stat_7wari";
+  if (/love_no_date/.test(m)) return "love_no_date";
+  if (/love_minority/.test(m)) return "love_minority";
+  if (/love_app/.test(m)) return "love_app_couple";
+  if (/love_like_rain|like_rain/.test(m)) return "love_like_rain";
+  if (/love_twist/.test(m)) return "love_twist";
+  if (/love_act/.test(m)) return "love_act_only";
+  if (/love_math/.test(m)) return "love_math";
+  if (/love_alien/.test(m)) return "love_alien_hint";
+  if (/love_tokyo/.test(m)) return "love_tokyo";
+  if (/love_roadmap/.test(m)) return "love_roadmap";
+  if (/love_to_black/.test(m)) return "love_to_black";
+  if (/drake_blackboard/.test(m)) return "drake_blackboard";
+  if (/drake_meeting/.test(m)) return "drake_meeting";
+  if (/drake_decompose/.test(m)) return "drake_decompose";
+  if (/drake_terms/.test(m)) return "drake_terms";
+  if (/drake_donburi|donburi/.test(m)) return "drake_donburi";
+  if (/drake_order/.test(m)) return "drake_order";
+  if (/fermi_piano/.test(m)) return "fermi_piano";
+  if (/fermi_phonebook|phonebook/.test(m)) return "fermi_phonebook";
+  if (/drake_legacy/.test(m)) return "drake_legacy";
+  if (/drake_to_love/.test(m)) return "drake_to_love";
+  if (/backus_paper/.test(m)) return "backus_paper";
+  if (/backus_swap/.test(m)) return "backus_swap";
+  if (/tokyo_dots/.test(m)) return "tokyo_dots_start";
+  if (/countdown_gender/.test(m)) return "countdown_gender";
+  if (/countdown_age/.test(m)) return "countdown_age";
+  if (/countdown_single/.test(m)) return "countdown_single";
+  if (/countdown_tottori|tottori/.test(m)) return "countdown_tottori";
+  if (/countdown_honban|honban/.test(m)) return "countdown_honban";
+  if (/countdown_values/.test(m)) return "countdown_values";
+  if (/countdown_looks/.test(m)) return "countdown_looks";
+  if (/countdown_mutual/.test(m)) return "countdown_mutual";
+  if (/countdown_rhythm/.test(m)) return "countdown_rhythm";
+  if (/answer_40/.test(m)) return "answer_40";
+  if (/street_chance/.test(m)) return "street_chance";
+  if (/tokyo_dome/.test(m)) return "tokyo_dome";
+  if (/no_deai/.test(m)) return "no_deai_proof";
+  if (/hope_slit/.test(m)) return "hope_slit";
+  if (/formula_seven/.test(m)) return "formula_seven";
+  if (/slider_up/.test(m)) return "slider_up";
+  if (/jouken_vanish/.test(m)) return "jouken_vanish";
+  if (/gyakumodori/.test(m)) return "gyakumodori";
+  if (/hensu_card/.test(m)) return "hensu_card";
+  if (/backus_26/.test(m)) return "backus_26";
+  if (/alien_scale/.test(m)) return "alien_scale";
+  if (/tsuzuku/.test(m)) return "tsuzuku";
+  if (/zero_prob/.test(m)) return "zero_prob";
+  if (/takarakuji/.test(m)) return "takarakuji";
+  if (/sofa_family/.test(m)) return "sofa_family";
+  if (/bunbo_grow/.test(m)) return "bunbo_grow";
+  if (/deai_x10/.test(m)) return "deai_x10";
+  if (/dice_many/.test(m)) return "dice_many";
+  if (/backus_wedding/.test(m)) return "backus_wedding";
+  if (/renai_matome/.test(m)) return "renai_matome";
+  if (/final_tool/.test(m)) return "final_tool";
+  if (/yurumeru/.test(m)) return "yurumeru";
   // キラキラ画面回 (帰ってこなかった飛行機) の題材をいちばん先に見る
   // (bullet→lottery / sea→see_off などの誤吸収を防ぐため順番が大事)
   // 専用イラスト11種 (batter_rally→batter / ww2_year→war_planes などの誤吸収を防ぐため最優先)
@@ -2988,6 +3113,9 @@ export const computeSuuriWashi = (scenes: Scene[]): boolean[] => {
     // キラキラ画面回: 第3章 (飛行機の資料の世界) だけ和紙、それ以外は黒
     if ((KIRAKIRA_WASHI_MOTIFS as readonly string[]).includes(m)) return true;
     if ((KIRAKIRA_DARK_MOTIFS as readonly string[]).includes(m)) return false;
+    // 恋愛版ドレイク回: 和紙は使わない (恋愛モードは computeSuuriRenai が担当)
+    if ((RENAI_PINK_MOTIFS as readonly string[]).includes(m)) return false;
+    if ((RENAI_DARK_MOTIFS as readonly string[]).includes(m)) return false;
     return undefined;
   });
   // 2) 中立を埋める: 章扉は「次の分類」を先取り、それ以外は前を引き継ぐ (冒頭は黒)
@@ -3045,6 +3173,58 @@ export const computeSuuriStadium = (scenes: Scene[]): boolean[] => {
     if (WASHI_MOTIFS.has(m) || DARK_MOTIFS.has(m)) return false;
     if ((KIRAKIRA_WASHI_MOTIFS as readonly string[]).includes(m)) return false;
     if ((KIRAKIRA_DARK_MOTIFS as readonly string[]).includes(m)) return false;
+    if ((RENAI_PINK_MOTIFS as readonly string[]).includes(m)) return false;
+    if ((RENAI_DARK_MOTIFS as readonly string[]).includes(m)) return false;
+    return undefined;
+  });
+  const filled: boolean[] = new Array(n).fill(false);
+  let prev = false;
+  for (let i = 0; i < n; i++) {
+    if (raw[i] !== undefined) {
+      prev = raw[i] as boolean;
+      filled[i] = prev;
+      continue;
+    }
+    if (scenes[i].type === "card" && scenes[i].motif === "chapter") {
+      let v: boolean = prev;
+      for (let j = i + 1; j < n; j++) {
+        if (raw[j] !== undefined) {
+          v = raw[j] as boolean;
+          break;
+        }
+      }
+      prev = v;
+    }
+    filled[i] = prev;
+  }
+  const out = filled.slice();
+  let i = 0;
+  while (i < n) {
+    let j = i;
+    while (j < n && out[j] === out[i]) j++;
+    if (j - i <= 2 && i > 0 && j < n && out[i - 1] === out[j]) {
+      for (let k = i; k < j; k++) out[k] = out[i - 1];
+    }
+    i = j;
+  }
+  return out;
+};
+
+// ===== 恋愛モードの場面判定 (恋愛ドレイク回のつかみ = 白ベース+ピンク装飾) =====
+// computeSuuriWashi と同じ考え方: 恋愛(true)/他の分類あり(false)/中立(undefined) に分け、
+// 中立は前を引き継ぎ、章扉は次を先取りし、2場面以下の飛び地はならす。
+// Frame 側では和紙・球場より優先される想定はなく、恋愛回では和紙・球場は出ない設計。
+export const computeSuuriRenai = (scenes: Scene[]): boolean[] => {
+  const n = scenes.length;
+  const raw: (boolean | undefined)[] = scenes.map((s) => {
+    if (s.isEnding || s.image) return undefined;
+    const m = resolveSuuriMotif(s.motif ?? "") ?? s.motif ?? "";
+    if ((RENAI_PINK_MOTIFS as readonly string[]).includes(m)) return true;
+    if ((RENAI_DARK_MOTIFS as readonly string[]).includes(m)) return false;
+    if (WASHI_MOTIFS.has(m) || DARK_MOTIFS.has(m)) return false;
+    if ((KIRAKIRA_WASHI_MOTIFS as readonly string[]).includes(m)) return false;
+    if ((KIRAKIRA_DARK_MOTIFS as readonly string[]).includes(m)) return false;
+    if ((KIRAKIRA_STADIUM_MOTIFS as readonly string[]).includes(m)) return false;
     return undefined;
   });
   const filled: boolean[] = new Array(n).fill(false);
@@ -3090,6 +3270,64 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
   // --- 寿司回 (37%ルール): カード以外なら type が chart でも専用の絵を出す ---
   // (gain_fade などは機械割り当てが type=chart を返すが、汎用チャートに落とさない)
   if (scene.type !== "card") {
+    // --- 恋愛版ドレイク回 (運命の人は、東京に40人しかいない) ---
+    if (m === "love_stat_7wari") return <LoveStatScene scene={scene} variant={variant} />;
+    if (m === "love_no_date") return <LoveNoDateScene scene={scene} variant={variant} />;
+    if (m === "love_minority") return <LoveMinorityScene scene={scene} variant={variant} />;
+    if (m === "love_app_couple") return <LoveAppCoupleScene scene={scene} variant={variant} />;
+    if (m === "love_like_rain") return <LoveLikeRainScene scene={scene} variant={variant} />;
+    if (m === "love_twist") return <LoveTwistScene scene={scene} variant={variant} />;
+    if (m === "love_act_only") return <LoveActOnlyScene scene={scene} variant={variant} />;
+    if (m === "love_math") return <LoveMathScene scene={scene} variant={variant} />;
+    if (m === "love_alien_hint") return <LoveAlienHintScene scene={scene} variant={variant} />;
+    if (m === "love_tokyo") return <LoveTokyoScene scene={scene} variant={variant} />;
+    if (m === "love_roadmap") return <LoveRoadmapScene scene={scene} variant={variant} />;
+    if (m === "love_to_black") return <LoveToBlackScene scene={scene} variant={variant} />;
+    if (m === "drake_blackboard") return <DrakeBlackboardScene scene={scene} variant={variant} />;
+    if (m === "drake_meeting") return <DrakeMeetingScene scene={scene} variant={variant} />;
+    if (m === "drake_decompose") return <DrakeDecomposeScene scene={scene} variant={variant} />;
+    if (m === "drake_terms") return <DrakeTermsScene scene={scene} variant={variant} />;
+    if (m === "drake_donburi") return <DrakeDonburiScene scene={scene} variant={variant} />;
+    if (m === "drake_order") return <DrakeOrderScene scene={scene} variant={variant} />;
+    if (m === "fermi_piano") return <FermiPianoScene scene={scene} variant={variant} />;
+    if (m === "fermi_phonebook") return <FermiPhonebookScene scene={scene} variant={variant} />;
+    if (m === "drake_legacy") return <DrakeLegacyScene scene={scene} variant={variant} />;
+    if (m === "drake_to_love") return <DrakeToLoveScene scene={scene} variant={variant} />;
+    if (m === "backus_paper") return <BackusPaperScene scene={scene} variant={variant} />;
+    if (m === "backus_swap") return <BackusSwapScene scene={scene} variant={variant} />;
+    if (m === "tokyo_dots_start") return <TokyoDotsStartScene scene={scene} variant={variant} />;
+    if (m === "countdown_gender") return <CountdownGenderScene scene={scene} variant={variant} />;
+    if (m === "countdown_age") return <CountdownAgeScene scene={scene} variant={variant} />;
+    if (m === "countdown_single") return <CountdownSingleScene scene={scene} variant={variant} />;
+    if (m === "countdown_tottori") return <CountdownTottoriScene scene={scene} variant={variant} />;
+    if (m === "countdown_honban") return <CountdownHonbanScene scene={scene} variant={variant} />;
+    if (m === "countdown_values") return <CountdownValuesScene scene={scene} variant={variant} />;
+    if (m === "countdown_looks") return <CountdownLooksScene scene={scene} variant={variant} />;
+    if (m === "countdown_mutual") return <CountdownMutualScene scene={scene} variant={variant} />;
+    if (m === "countdown_rhythm") return <CountdownRhythmScene scene={scene} variant={variant} />;
+    if (m === "answer_40") return <Answer40Scene scene={scene} variant={variant} />;
+    if (m === "street_chance") return <StreetChanceScene scene={scene} variant={variant} />;
+    if (m === "tokyo_dome") return <TokyoDomeScene scene={scene} variant={variant} />;
+    if (m === "no_deai_proof") return <NoDeaiProofScene scene={scene} variant={variant} />;
+    if (m === "hope_slit") return <HopeSlitScene scene={scene} variant={variant} />;
+    if (m === "formula_seven") return <FormulaSevenScene scene={scene} variant={variant} />;
+    if (m === "slider_up") return <SliderUpScene scene={scene} variant={variant} />;
+    if (m === "jouken_vanish") return <JoukenVanishScene scene={scene} variant={variant} />;
+    if (m === "gyakumodori") return <GyakumodoriScene scene={scene} variant={variant} />;
+    if (m === "hensu_card") return <HensuCardScene scene={scene} variant={variant} />;
+    if (m === "backus_26") return <Backus26Scene scene={scene} variant={variant} />;
+    if (m === "alien_scale") return <AlienScaleScene scene={scene} variant={variant} />;
+    if (m === "tsuzuku") return <TsuzukuScene scene={scene} variant={variant} />;
+    if (m === "zero_prob") return <ZeroProbScene scene={scene} variant={variant} />;
+    if (m === "takarakuji") return <TakarakujiScene scene={scene} variant={variant} />;
+    if (m === "sofa_family") return <SofaFamilyScene scene={scene} variant={variant} />;
+    if (m === "bunbo_grow") return <BunboGrowScene scene={scene} variant={variant} />;
+    if (m === "deai_x10") return <DeaiX10Scene scene={scene} variant={variant} />;
+    if (m === "dice_many") return <DiceManyScene scene={scene} variant={variant} />;
+    if (m === "backus_wedding") return <BackusWeddingScene scene={scene} variant={variant} />;
+    if (m === "renai_matome") return <RenaiMatomeScene scene={scene} variant={variant} />;
+    if (m === "final_tool") return <FinalToolScene scene={scene} variant={variant} />;
+    if (m === "yurumeru") return <YurumeruScene scene={scene} variant={variant} />;
     // --- キラキラ画面回 (帰ってこなかった飛行機) ---
     if (m === "bullet_map") return <BulletMapScene scene={scene} variant={variant} />;
     if (m === "sea_bottom") return <SeaBottomScene scene={scene} />;

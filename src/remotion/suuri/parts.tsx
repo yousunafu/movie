@@ -40,6 +40,59 @@ export const H = 1080;
 
 export const WashiCtx = React.createContext(false);
 
+// ===== 恋愛モード (恋愛ドレイク回のつかみ = 白ベース+ピンク装飾) =====
+// 和紙モードと違い色反転はしない。恋愛モードの絵 (love_*) は最初から
+// 白地用の配色 (RNP) で描く。つかみが終わる「それでは、まいりましょう。」で黒に暗転する。
+export const RenaiCtx = React.createContext(false);
+
+// 恋愛モードの配色 (白地・チャコール・ピンク3段階)
+export const RNP = {
+  bg: "#FDF9FA", // 白ベース (ほんのり桜色)
+  ink: "#3A3A40", // チャコール (文字・線)
+  faint: "#8E8E96", // 補足の薄い文字
+  dim: "#C9C9CE", // 消えた線・グレーの人
+  pinkSoft: "#F2C4D0", // 淡ピンク (装飾)
+  pink: "#E68FA8", // 中ピンク (差し色)
+  pinkDeep: "#D6487A", // 濃ピンク (最強調。1画面1要素)
+} as const;
+
+// 白地の上のピンク装飾: 四隅のぼかしブラシ + ふちに小さなハートを散らす (絵の邪魔をしない)
+const RenaiBg: React.FC = () => {
+  const heart = (x: number, y: number, s: number, o: number, key: string) => (
+    <g key={key} transform={`translate(${x}, ${y}) scale(${s})`} opacity={o}>
+      <path
+        d="M 0 6 C -7 -4 -18 -2 -18 7 C -18 15 -8 21 0 28 C 8 21 18 15 18 7 C 18 -2 7 -4 0 6 Z"
+        fill="none"
+        stroke={RNP.pinkSoft}
+        strokeWidth={3}
+      />
+    </g>
+  );
+  return (
+    <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+      <defs>
+        <radialGradient id="renaiBlushA" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor={RNP.pinkSoft} stopOpacity={0.4} />
+          <stop offset="100%" stopColor={RNP.pinkSoft} stopOpacity={0} />
+        </radialGradient>
+      </defs>
+      {/* 四隅のぼかし (淡ピンク) */}
+      <circle cx={-60} cy={-40} r={460} fill="url(#renaiBlushA)" />
+      <circle cx={1980} cy={1120} r={520} fill="url(#renaiBlushA)" />
+      <circle cx={1980} cy={-80} r={340} fill="url(#renaiBlushA)" />
+      <circle cx={-80} cy={1140} r={340} fill="url(#renaiBlushA)" />
+      {/* ふちに散らした小さなハート (中央の絵のじゃまをしない) */}
+      {heart(120, 150, 1, 0.8, "h1")}
+      {heart(1800, 120, 0.8, 0.7, "h2")}
+      {heart(1860, 600, 0.7, 0.6, "h3")}
+      {heart(70, 560, 0.7, 0.6, "h4")}
+      {heart(170, 950, 0.9, 0.8, "h5")}
+      {heart(1780, 940, 1, 0.8, "h6")}
+      {heart(960, 64, 0.6, 0.55, "h7")}
+    </svg>
+  );
+};
+
 // ===== 夜の球場モード (キラキラ回の第1章 = 野球の世界) =====
 // 黒地のまま、外野フェンスの弧・芝のグラデ・照明塔を薄く敷いて「球場にいる」空気を出す。
 // 和紙が優先 (washi のときは球場は描かない)。
@@ -151,25 +204,39 @@ const Seigaiha: React.FC = () => {
   );
 };
 
-export const Header: React.FC = () => (
-  <div
-    style={{
-      position: "absolute",
-      top: 34,
-      left: 60,
-      fontFamily: SUURI_FONT,
-      fontSize: 26,
-      letterSpacing: 4,
-      color: SP.faint,
-    }}
-  >
-    <span style={{ color: SP.accent }}>—</span> {SUURI_CHANNEL.name}
-  </div>
-);
+export const Header: React.FC = () => {
+  const renai = React.useContext(RenaiCtx);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: 34,
+        left: 60,
+        fontFamily: SUURI_FONT,
+        fontSize: 26,
+        letterSpacing: 4,
+        color: renai ? RNP.faint : SP.faint,
+      }}
+    >
+      <span style={{ color: renai ? RNP.pinkDeep : SP.accent }}>—</span> {SUURI_CHANNEL.name}
+    </div>
+  );
+};
 
 export const Frame: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const washi = React.useContext(WashiCtx);
   const stadium = React.useContext(StadiumCtx);
+  const renai = React.useContext(RenaiCtx);
+  // 恋愛モード: 白地+ピンク装飾。絵 (love_*) は RNP 配色で直接描くので反転しない
+  if (renai) {
+    return (
+      <AbsoluteFill style={{ backgroundColor: RNP.bg }}>
+        <RenaiBg />
+        {children}
+        <Header />
+      </AbsoluteFill>
+    );
+  }
   if (!washi) {
     return (
       <AbsoluteFill style={{ backgroundColor: SP.background }}>
@@ -198,6 +265,7 @@ export const Frame: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
 // 図解の見出し (上部中央・赤い細線つき)
 export const DiagramTitle: React.FC<{ text?: string }> = ({ text }) => {
+  const renai = React.useContext(RenaiCtx);
   if (!text) return null;
   return (
     <div
@@ -209,7 +277,7 @@ export const DiagramTitle: React.FC<{ text?: string }> = ({ text }) => {
         fontFamily: SUURI_FONT,
         fontSize: 44,
         fontWeight: 700,
-        color: SP.ink,
+        color: renai ? RNP.ink : SP.ink,
         letterSpacing: 2,
       }}
     >
@@ -220,7 +288,7 @@ export const DiagramTitle: React.FC<{ text?: string }> = ({ text }) => {
           style={{
             width: "100%",
             height: 4,
-            background: SP.accent,
+            background: renai ? RNP.pinkDeep : SP.accent,
             margin: "18px 0 0",
             borderRadius: 2,
           }}
@@ -238,13 +306,22 @@ export const splitPunchline = (scene?: {
   motif?: string;
 }): { head: string; tail: string; ratio: number } | null => {
   const text = scene?.text ?? "";
-  if (scene?.motif !== "gari") return null;
-  const m = text.match(/^(.+[。!?！？])(ガリでした。?)$/);
-  if (!m) return null;
-  const head = m[1];
-  const tail = m[2];
-  const ratio = head.length / (head.length + tail.length);
-  return { head, tail, ratio };
+  if (scene?.motif === "gari") {
+    const m = text.match(/^(.+[。!?！？])(ガリでした。?)$/);
+    if (!m) return null;
+    const head = m[1];
+    const tail = m[2];
+    return { head, tail, ratio: head.length / (head.length + tail.length) };
+  }
+  // 恋愛ドレイク回のオチ「およそ40人。」はナレーションが読む瞬間までネタバレ禁止
+  if (scene?.motif === "answer_40") {
+    const m = text.match(/^(.+[、。])(およそ40人。?)$/);
+    if (!m) return null;
+    const head = m[1];
+    const tail = m[2];
+    return { head, tail, ratio: head.length / (head.length + tail.length) };
+  }
+  return null;
 };
 
 // 人のピクトグラム (頭+肩)。(x, y) が頭の中心

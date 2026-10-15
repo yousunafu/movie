@@ -1191,6 +1191,9 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(緩めてみませんか|明日、80人に)/.test(sentence)) {
     return { type: "diagram", motif: "yurumeru" };
   }
+  if (/(分母を増やせば|きっと出会える)/.test(sentence)) {
+    return { type: "diagram", motif: "yurumeru" }; // 最後のオチ: v2 (動きだして、出会える)
+  }
   // 予告の文 (「第1章で〜、第2章で〜」) は中身の言葉より先に道筋の絵へ。
   // キラキラ回は前半 (第1章・第2章) と後半 (第3章・第4章) で絵を分ける (斜め線の2分割予告)
   if (/第[1１一]章で/.test(sentence)) {

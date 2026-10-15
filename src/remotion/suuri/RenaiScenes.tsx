@@ -400,9 +400,9 @@ export const LoveNoDateScene: React.FC<SceneProps> = ({ scene }) => {
   const a = appearAt(frame, fps, 8);
   const BLUE = "#5B8DD9";
   const walk = Math.sin(frame / 5) * 5; // 歩きの上下ゆれ
-  const gone = frame >= Math.round(fps * 1.6); // 片方が消える瞬間
-  const poof = appearAt(frame, fps, Math.round(fps * 1.6));
-  const shock = appearAt(frame, fps, Math.round(fps * 1.9));
+  // 女性はゆっくり薄くなって消えていく (スローフェード・跡は残さない)
+  const fadeT = interpolate(frame, [fps * 1.6, fps * 3.4], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const shock = appearAt(frame, fps, Math.round(fps * 2.8));
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? "デート経験なし、約4割"} />
@@ -411,43 +411,31 @@ export const LoveNoDateScene: React.FC<SceneProps> = ({ scene }) => {
         {Array.from({ length: 9 }).map((_, i) => {
           const x = 240 + i * 190 + (jitter(i, 41) - 0.5) * 70;
           const y = 430 + jitter(i, 42) * 220;
-          if (Math.abs(x - 960) < 220) return null; // 主役の場所は空ける
+          if (Math.abs(x - 960) < 265) return null; // 主役の場所は空ける
           return <RPerson key={i} x={x} y={y} scale={1.0 + jitter(i, 43) * 0.3} color={RNP.dim} opacity={a * 0.75} />;
         })}
-        {/* 主役カップル (中央・大きめ) */}
+        {/* 主役カップル (中央・ふたりとも大きく) */}
         <g opacity={a}>
           {/* 男 (青) */}
           <g transform={`translate(0, ${walk})`}>
-            <RPerson x={880} y={520} scale={1.7} color={BLUE} />
+            <RPerson x={865} y={500} scale={2.1} color={BLUE} />
           </g>
-          {/* 女 (ピンク) → 途中でふっと消える */}
-          {!gone && (
-            <g transform={`translate(0, ${-walk})`}>
-              <RPerson x={1050} y={520} scale={1.7} color={RNP.pink} />
+          {/* 女 (ピンク) → ゆっくり薄くなって消える (跡は残さない) */}
+          {fadeT < 1 && (
+            <g transform={`translate(0, ${-walk})`} opacity={1 - fadeT}>
+              <RPerson x={1065} y={500} scale={2.1} color={RNP.pink} />
             </g>
           )}
-          {/* 消えたあとは点線の輪郭だけ残る */}
-          {gone && (
-            <g opacity={0.85}>
-              <g stroke={RNP.dim} strokeWidth={5} fill="none" strokeDasharray="10 10">
-                <circle cx={1050} cy={520} r={27} />
-                <path d="M 1006 632 q 3 -58 44 -61 q 41 3 44 61 Z" />
-              </g>
-              {/* 消滅のポフッ */}
-              <g opacity={1 - poof} stroke={RNP.pinkSoft} strokeWidth={6} fill="none" strokeLinecap="round">
-                <circle cx={1050} cy={560} r={30 + poof * 90} />
-                <path d="M 980 480 l -18 -18 M 1120 480 l 18 -18 M 1050 440 l 0 -26" />
-              </g>
-            </g>
+          {/* ラブラブのハート (消えるのに合わせて落ちながら薄れる) */}
+          <Heart x={965} y={385 + fadeT * 180} scale={0.6} color={RNP.pink} opacity={1 - fadeT} />
+          {/* つないだ手 (消えかけたらほどける) */}
+          {fadeT < 0.5 && (
+            <path d="M 910 600 Q 965 626 1020 600" stroke={RNP.ink} strokeWidth={5} fill="none" strokeLinecap="round" opacity={1 - fadeT * 2} />
           )}
-          {/* ラブラブのハート (消えたら落ちる) */}
-          <Heart x={965} y={400 + (gone ? poof * 180 : 0)} scale={0.6} color={RNP.pink} opacity={gone ? 1 - poof : 1} />
-          {/* つないだ手 (消える前だけ) */}
-          {!gone && <path d="M 920 600 Q 965 622 1010 600" stroke={RNP.ink} strokeWidth={5} fill="none" strokeLinecap="round" />}
           {/* 残った方のびっくり */}
-          {gone && (
+          {fadeT > 0.6 && (
             <g opacity={shock}>
-              <text x={880} y={420} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={64} fontWeight={800} fill={RNP.pinkDeep}>
+              <text x={865} y={400} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={64} fontWeight={800} fill={RNP.pinkDeep}>
                 !?
               </text>
             </g>
@@ -490,24 +478,26 @@ export const LoveMinorityScene: React.FC<SceneProps> = ({ scene }) => {
           />
         </g>
         <g opacity={label}>
-          <text x={cx - 70} y={cy - 10} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={62} fontWeight={800} fill={RNP.ink}>
+          {/* しない派 (グレーの扇のまんなかに収める) */}
+          <text x={cx + 85} y={cy + 36} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={52} fontWeight={800} fill={RNP.ink}>
             しない派
           </text>
-          <text x={cx - 70} y={cy + 64} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={56} fontWeight={800} fill={RNP.pinkDeep}>
+          <text x={cx + 85} y={cy + 102} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={46} fontWeight={800} fill={RNP.pinkDeep}>
             約7割
           </text>
-          {/* 「多数派」スタンプ */}
-          <g transform={`rotate(-10 ${cx - 350} 300)`}>
-            <rect x={cx - 480} y={254} width={260} height={92} rx={14} fill="none" stroke={RNP.pinkDeep} strokeWidth={6} />
-            <text x={cx - 350} y={318} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={48} fontWeight={800} fill={RNP.pinkDeep}>
+          {/* する派 (白い扇のまんなかに収める) */}
+          <text x={cx - 105} y={cy - 92} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={30} fontWeight={700} fill={RNP.faint}>
+            する派
+          </text>
+          <Heart x={cx - 105} y={cy - 66} scale={0.28} color={RNP.pinkSoft} />
+          {/* 「多数派」スタンプ (右上からグレーの扇を指す) */}
+          <g transform={`rotate(8 ${cx + 385} 300)`}>
+            <rect x={cx + 255} y={254} width={260} height={92} rx={14} fill="none" stroke={RNP.pinkDeep} strokeWidth={6} />
+            <text x={cx + 385} y={318} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={48} fontWeight={800} fill={RNP.pinkDeep}>
               多数派
             </text>
           </g>
-          <path d={`M ${cx - 240} 330 Q ${cx - 160} 380 ${cx - 120} 430`} fill="none" stroke={RNP.pinkDeep} strokeWidth={5} strokeLinecap="round" />
-          <text x={cx + 212} y={cy - 160} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={32} fontWeight={700} fill={RNP.faint}>
-            する派
-          </text>
-          <Heart x={cx + 212} y={cy - 140} scale={0.35} color={RNP.pinkSoft} />
+          <path d={`M ${cx + 290} 362 Q ${cx + 230} 400 ${cx + 180} 436`} fill="none" stroke={RNP.pinkDeep} strokeWidth={5} strokeLinecap="round" />
         </g>
       </svg>
     </Frame>
@@ -616,19 +606,19 @@ export const LoveLikeRainScene: React.FC<SceneProps> = ({ scene }) => {
           <circle cx={500} cy={380} r={10} fill={RNP.pink} opacity={draw} />
           <circle cx={1480} cy={660} r={11} fill={RNP.pinkDeep} opacity={seg >= 4.9 ? 1 : 0} />
           <g opacity={draw}>
-            <text x={500} y={330} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={30} fontWeight={700} fill={RNP.ink}>
+            <text x={640} y={340} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={30} fontWeight={700} fill={RNP.ink}>
               1972年 約110万組
             </text>
           </g>
           <g opacity={seg >= 4.9 ? 1 : 0}>
-            <text x={1420} y={620} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={30} fontWeight={800} fill={RNP.pinkDeep}>
+            <text x={1280} y={528} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={30} fontWeight={800} fill={RNP.pinkDeep}>
               2023年 約47.5万組
             </text>
             <text x={1420} y={760} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={34} fontWeight={800} fill={RNP.pinkDeep}>
               戦後最少
             </text>
           </g>
-          <SmallLabel x={960} y={840} text="婚姻数のうつりかわり" color={RNP.faint} size={30} />
+          <SmallLabel x={700} y={780} text="婚姻数のうつりかわり" color={RNP.faint} size={30} />
         </g>
       </svg>
     </Frame>
@@ -685,6 +675,51 @@ export const LoveTwistScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
   const up = appearAt(frame, fps, 10);
   const down = appearAt(frame, fps, 26);
   const seishin = variant >= 1; // 行9「精神論では解けません」
+  if (seishin) {
+    // 気合で引っぱっても、ガチガチのねじれはほどけない
+    const a2 = appearAt(frame, fps, 10);
+    const b = appearAt(frame, fps, Math.round(fps * 0.9));
+    const c = appearAt(frame, fps, Math.round(fps * 1.8));
+    const tug = c > 0.5 ? Math.sin(frame / 4) * 4 : 0; // 引っぱってもビクともしない震え
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title ?? "このねじれは、精神論では解けない"} />
+        <svg width={W} height={H}>
+          {/* ガチガチにねじれたひも */}
+          <g opacity={a2} fill="none" strokeLinecap="round" transform={`translate(${tug}, 0)`}>
+            <path
+              d="M 820 380 Q 1010 430 950 520 Q 890 610 1070 570 Q 1210 530 1130 440 Q 1060 360 960 440 Q 860 520 1010 640"
+              stroke={RNP.pinkDeep}
+              strokeWidth={13}
+            />
+            <path
+              d="M 1120 660 Q 940 610 1000 510 Q 1060 410 880 470 Q 740 510 830 610"
+              stroke={RNP.dim}
+              strokeWidth={13}
+            />
+            <SmallLabel x={980} y={760} text="奇妙なねじれ" color={RNP.faint} size={30} />
+          </g>
+          {/* 気合の人 (鉢巻で叫ぶ) */}
+          <g opacity={b}>
+            <RPerson x={480} y={520} scale={1.9} color={RNP.ink} />
+            {/* 鉢巻 */}
+            <path d="M 448 504 L 512 504 M 512 504 l 26 -12 M 512 504 l 24 12" stroke={RNP.pinkDeep} strokeWidth={7} fill="none" strokeLinecap="round" />
+            {/* 吹き出し */}
+            <ellipse cx={430} cy={330} rx={160} ry={66} fill="#FFFFFF" stroke={RNP.ink} strokeWidth={5} />
+            <path d="M 452 388 L 470 432 L 492 390" fill="#FFFFFF" stroke={RNP.ink} strokeWidth={5} />
+            <text x={430} y={346} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={42} fontWeight={800} fill={RNP.pinkDeep}>
+              気合だー!
+            </text>
+          </g>
+          {/* それでも、ほどけない */}
+          <g opacity={c}>
+            <path d="M 1320 390 L 1470 540 M 1470 390 L 1320 540" stroke={RNP.pinkDeep} strokeWidth={12} strokeLinecap="round" />
+            <SmallLabel x={1395} y={620} text="ほどけない" color={RNP.pinkDeep} size={34} weight={800} />
+          </g>
+        </svg>
+      </Frame>
+    );
+  }
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? (seishin ? "このねじれは、精神論では解けない" : "道具は増えた。出会いは減った")} />
@@ -704,13 +739,6 @@ export const LoveTwistScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
           <Heart x={462} y={290} scale={0.6} color={RNP.pink} />
           <SmallLabel x={1300} y={740} text="出会いは減った" color={RNP.pinkDeep} size={34} weight={700} />
         </g>
-        {seishin && (
-          <g opacity={appearAt(frame, fps, 42)}>
-            <text x={960} y={520} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={40} fontWeight={700} fill={RNP.ink}>
-              気合では、ほどけない
-            </text>
-          </g>
-        )}
       </svg>
     </Frame>
   );
@@ -778,14 +806,13 @@ export const LoveMathScene: React.FC<SceneProps> = ({ scene }) => {
   const { fps } = useVideoConfig();
   const a = appearAt(frame, fps, 8);
   const summon = appearAt(frame, fps, Math.round(fps * 1.5)); // 運命の人が現れる
-  const rot = frame * 0.6; // 魔法陣がゆっくり回る
   const cx = 960;
   const cy = 560;
   const runes = ["×", "÷", "Σ", "π", "√", "%", "=", "∞"];
   const formulas = [
     { t: "N = R × fp × ne", x: 360, y: 320, s: 36 },
     { t: "1/20 × 1/20", x: 1560, y: 340, s: 32 },
-    { t: "× 15%", x: 300, y: 640, s: 34 },
+    { t: "× 1/7", x: 300, y: 640, s: 34 },
     { t: "P = 1/350000", x: 1600, y: 660, s: 30 },
   ];
   return (
@@ -808,10 +835,10 @@ export const LoveMathScene: React.FC<SceneProps> = ({ scene }) => {
             {f.t}
           </text>
         ))}
-        {/* 魔法陣 (回転する二重円+星型+数学ルーン) */}
-        <g opacity={a} transform={`rotate(${rot} ${cx} ${cy})`}>
-          <ellipse cx={cx} cy={cy + 160} rx={330} ry={100} fill="none" stroke={RNP.pinkDeep} strokeWidth={5} />
-          <ellipse cx={cx} cy={cy + 160} rx={270} ry={78} fill="none" stroke={RNP.pink} strokeWidth={4} />
+        {/* 魔法陣 (位置は固定。破線が流れて、その場で回って見える) */}
+        <g opacity={a}>
+          <ellipse cx={cx} cy={cy + 160} rx={330} ry={100} fill="none" stroke={RNP.pinkDeep} strokeWidth={5} strokeDasharray="30 16" strokeDashoffset={-frame * 1.4} />
+          <ellipse cx={cx} cy={cy + 160} rx={270} ry={78} fill="none" stroke={RNP.pink} strokeWidth={4} strokeDasharray="18 12" strokeDashoffset={frame * 1.1} />
         </g>
         {/* ルーン文字 (数学記号) が円周をまわる */}
         {runes.map((r, i) => {
@@ -974,18 +1001,14 @@ export const LoveCountSeriousScene: React.FC<SceneProps> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const a = appearAt(frame, fps, 8);
-  const strokes = Math.min(13, Math.floor(Math.max(0, frame - fps * 0.6) / 7)); // 正の字が増えていく
-  // 正の字 1文字 = 5画。ストローク単位で描く
-  const seiStroke = (n: number, ox: number, oy: number) => {
-    const paths = [
-      `M ${ox} ${oy} L ${ox + 76} ${oy}`, // 一
-      `M ${ox + 38} ${oy} L ${ox + 38} ${oy + 72}`, // 縦
-      `M ${ox + 16} ${oy + 36} L ${ox + 66} ${oy + 36}`, // 中横
-      `M ${ox + 12} ${oy + 10} L ${ox + 12} ${oy + 72}`, // 左縦
-      `M ${ox} ${oy + 72} L ${ox + 76} ${oy + 72}`, // 下
-    ];
-    return paths.slice(0, n);
-  };
+  // カチカチに合わせて、数字がどんどん増えていく
+  const count = Math.floor(
+    interpolate(frame, [fps * 0.5, fps * 6], [0, 1398642], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.quad),
+    }),
+  );
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? "これを、本気で数える"} />
@@ -995,19 +1018,15 @@ export const LoveCountSeriousScene: React.FC<SceneProps> = ({ scene }) => {
           const x = ((i * 240 - frame * 2.2) % 1920 + 1920) % 1920;
           return <RPerson key={i} x={x} y={330} scale={0.9} color={RNP.dim} opacity={a * 0.7} />;
         })}
-        {/* 正の字ボード */}
+        {/* カウンターボード (数字がどんどん増える) */}
         <g opacity={a}>
           <rect x={420} y={420} width={760} height={320} rx={18} fill="#FFFFFF" stroke={RNP.ink} strokeWidth={6} />
-          {[0, 1, 2].map((ci) => {
-            const n = Math.max(0, Math.min(5, strokes - ci * 5));
-            return (
-              <g key={ci} stroke={RNP.pinkDeep} strokeWidth={9} strokeLinecap="round" fill="none">
-                {seiStroke(n, 500 + ci * 180, 520).map((d, i) => (
-                  <path key={i} d={d} />
-                ))}
-              </g>
-            );
-          })}
+          <text x={800} y={600} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={92} fontWeight={700} fill={RNP.pinkDeep}>
+            {count.toLocaleString("ja-JP")}
+          </text>
+          <text x={1130} y={650} textAnchor="end" fontFamily={SUURI_FONT} fontSize={32} fontWeight={700} fill={RNP.ink}>
+            人
+          </text>
           <text x={800} y={700} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={28} fill={RNP.faint}>
             ガチのカウント中
           </text>
@@ -1231,12 +1250,19 @@ export const DrakeBlackboardScene: React.FC<SceneProps> = ({ scene }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const board = appearAt(frame, fps, 8);
-  const formula = "N = R*・fp・ne・fl・fi・fc・L";
-  const chars = Math.max(0, Math.min(formula.length, Math.floor((frame - fps * 0.7) / 2.4)));
-  const writing = chars > 0 && chars < formula.length;
+  // 黒板からはみ出さないよう、式は2行に分けて書く
+  const line1 = "N = R*・fp・ne・fl";
+  const line2 = "・fi・fc・L";
+  const total = line1.length + line2.length;
+  const chars = Math.max(0, Math.min(total, Math.floor((frame - fps * 0.7) / 2.4)));
+  const chars1 = Math.min(chars, line1.length);
+  const chars2 = Math.max(0, chars - line1.length);
+  const writing = chars > 0 && chars < total;
   const armSwing = writing ? Math.sin(frame / 2.5) * 10 : 0;
-  // 書き進みに合わせてチョーク位置が右へ
-  const tipX = 395 + (chars / formula.length) * 660;
+  // 書き進みに合わせてチョーク位置が右へ (2行目は下の行を追う)
+  const onLine2 = chars > line1.length;
+  const tipX = onLine2 ? 395 + (chars2 / line2.length) * 400 : 395 + (chars1 / line1.length) * 600;
+  const tipY = onLine2 ? 540 : 452;
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? "1961年、ドレイクの黒板"} />
@@ -1262,15 +1288,18 @@ export const DrakeBlackboardScene: React.FC<SceneProps> = ({ scene }) => {
           <text x={750} y={340} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={32} fill={SP.faint}>
             1961年・ある会議室
           </text>
-          {/* 式が一文字ずつ書かれていく */}
-          <text x={395} y={470} textAnchor="start" fontFamily={SUURI_SERIF} fontSize={62} fill={SP.ink}>
-            {formula.slice(0, chars)}
+          {/* 式が一文字ずつ書かれていく (2行) */}
+          <text x={395} y={460} textAnchor="start" fontFamily={SUURI_SERIF} fontSize={58} fill={SP.ink}>
+            {line1.slice(0, chars1)}
+          </text>
+          <text x={395} y={560} textAnchor="start" fontFamily={SUURI_SERIF} fontSize={58} fill={SP.ink}>
+            {line2.slice(0, chars2)}
           </text>
           {/* 書いている最中のチョーク粉 */}
           {writing && (
             <g opacity={0.8}>
-              <circle cx={tipX + 10} cy={452} r={3.5} fill={SP.faint} />
-              <circle cx={tipX + 22} cy={466} r={2.5} fill={SP.faint} opacity={0.6} />
+              <circle cx={tipX + 10} cy={tipY} r={3.5} fill={SP.faint} />
+              <circle cx={tipX + 22} cy={tipY + 14} r={2.5} fill={SP.faint} opacity={0.6} />
             </g>
           )}
         </g>
@@ -1354,13 +1383,13 @@ export const DrakeGalaxyScene: React.FC<SceneProps> = ({ scene }) => {
             <circle key={i} cx={dx} cy={4} r={6} fill={[KC.yellow, KC.pink, KC.skyBlue, KC.lime][i]} opacity={0.5 + 0.5 * Math.sin(frame / 5 + i)} />
           ))}
         </g>
-        {/* 議題が中央に大きくフェードイン */}
+        {/* 議題が中央に大きくフェードイン (下字幕は消して、この文字で読ませる) */}
         <g opacity={agenda}>
-          <rect x={300} y={470} width={1320} height={160} rx={16} fill={SP.panel} opacity={0.92} stroke={SP.accent} strokeWidth={5} />
-          <text x={960} y={545} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={44} fontWeight={700} fill={SP.ink}>
+          <rect x={230} y={440} width={1460} height={230} rx={18} fill={SP.panel} opacity={0.94} stroke={SP.accent} strokeWidth={6} />
+          <text x={960} y={540} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={60} fontWeight={700} fill={SP.ink}>
             「この銀河に、電波で交信できる
           </text>
-          <text x={960} y={602} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={44} fontWeight={700} fill={SP.ink}>
+          <text x={960} y={626} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={60} fontWeight={700} fill={SP.ink}>
             宇宙人の文明はいくつあるか」
           </text>
         </g>
@@ -1428,8 +1457,11 @@ export const DrakeDecomposeScene: React.FC<SceneProps> = ({ scene, variant = 0 }
   const { fps } = useVideoConfig();
   const broken = variant >= 1; // 行26: 「小さな掛け算に分解すればいい」
   const crack = appearAt(frame, fps, 24);
-  const blocksIn = appearAt(frame, fps, 14);
   const blockColors = [KC.yellow, KC.orange, KC.green, KC.sea, KC.skyBlue, KC.pink, KC.lime];
+  // v1: 大きな箱を刃物でスパッと分解する
+  const chop = appearAt(frame, fps, 10);
+  const sliceT = interpolate(frame, [fps * 0.4, fps * 0.8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const split = interpolate(frame, [fps * 0.9, fps * 1.5], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? (broken ? "小さな掛け算に、分解する" : "ドレイクの発想")} />
@@ -1449,34 +1481,45 @@ export const DrakeDecomposeScene: React.FC<SceneProps> = ({ scene, variant = 0 }
         )}
         {broken && (
           <>
-            {/* 割れた ? のかけら (上) */}
-            <g opacity={0.5}>
-              <text x={760} y={330} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={120} fill={SP.faint} transform="rotate(-14 760 300)">
-                ?
-              </text>
-              <text x={1160} y={320} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={120} fill={SP.faint} transform="rotate(12 1160 290)">
+            {/* 大きな問題の箱 (刃物でスパッと割れて左右に開く) */}
+            <g transform={`translate(${-split * 80}, ${split * 16}) rotate(${-split * 8} 850 340)`}>
+              <path d="M 740 240 L 958 240 L 958 450 L 740 450 Z" fill="none" stroke={SP.ink} strokeWidth={6} strokeLinejoin="round" />
+              <text x={860} y={382} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={92} fill={SP.ink}>
                 ?
               </text>
             </g>
+            <g transform={`translate(${split * 80}, ${split * 16}) rotate(${split * 8} 1070 340)`}>
+              <path d="M 962 240 L 1180 240 L 1180 450 L 962 450 Z" fill="none" stroke={SP.ink} strokeWidth={6} strokeLinejoin="round" />
+            </g>
+            <SmallLabel x={520} y={300} text="わからない大問題" size={28} />
+            {/* 刃物が振り下ろされる */}
+            <g opacity={chop * (1 - split)} transform={`rotate(${(1 - sliceT) * -46} 1270 140) translate(0, ${sliceT * 70})`}>
+              <path d="M 930 110 L 1130 110 L 1130 184 Q 1020 224 930 184 Z" fill={SP.panel} stroke={SP.ink} strokeWidth={5} strokeLinejoin="round" />
+              <rect x={1130} y={126} width={104} height={34} rx={14} fill="none" stroke={SP.ink} strokeWidth={5} />
+            </g>
+            {/* 切れ込みの光 */}
+            {sliceT > 0.6 && split < 0.7 && (
+              <path d="M 960 226 L 960 462" stroke={SP.accent} strokeWidth={7} strokeLinecap="round" strokeDasharray="20 12" opacity={1 - split} />
+            )}
             {/* 小さな掛け算ブロック (KC 7色)。中は小さな「?」、ブロックの間に × */}
             {blockColors.map((c, i) => {
-              const pop = appearAt(frame, fps, 16 + i * 6);
+              const pop = appearAt(frame, fps, Math.round(fps * 1.2) + i * 5);
               const x = 400 + i * 165;
               return (
-                <g key={i} opacity={pop * blocksIn} transform={`translate(0, ${(1 - pop) * -40})`}>
-                  <rect x={x} y={500} width={130} height={130} rx={16} fill="none" stroke={c} strokeWidth={6} />
-                  <text x={x + 65} y={582} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={46} fill={c}>
+                <g key={i} opacity={pop} transform={`translate(0, ${(1 - pop) * -40})`}>
+                  <rect x={x} y={540} width={130} height={130} rx={16} fill="none" stroke={c} strokeWidth={6} />
+                  <text x={x + 65} y={622} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={46} fill={c}>
                     ?
                   </text>
                   {i < 6 && (
-                    <text x={x + 148} y={580} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={30} fill={SP.faint}>
+                    <text x={x + 148} y={620} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={30} fill={SP.faint}>
                       ×
                     </text>
                   )}
                 </g>
               );
             })}
-            <SmallLabel x={960} y={730} text="ひとつひとつなら、議論できる" size={34} color={SP.ink} weight={700} />
+            <SmallLabel x={960} y={770} text="ひとつひとつなら、議論できる" size={34} color={SP.ink} weight={700} />
           </>
         )}
       </svg>
@@ -1885,6 +1928,49 @@ export const FermiPhonebookScene: React.FC<SceneProps> = ({ scene, variant = 0 }
   const paperX = interpolate(frame, [fps * 0.4, fps * 1.6], [480, 1430], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const bookX = interpolate(frame, [fps * 0.4, fps * 2.6], [480, 1180], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const match = variant >= 1; // 行43: 物理学者は電話帳より先に答えを出す
+  if (!match) {
+    // 行42: 大勢の人が机で電話帳をペラペラめくって、実際に数える
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title ?? "電話帳で、答え合わせ"} />
+        <svg width={W} height={H}>
+          {[0, 1, 2].map((i) => {
+            const x = 480 + i * 480;
+            const pop = appearAt(frame, fps, 10 + i * 8);
+            const flip = Math.cos((frame / fps) * Math.PI * (2.0 + i * 0.45) + i * 2.1);
+            return (
+              <g key={i} opacity={pop}>
+                {/* 数える人 (机に前のめり) */}
+                <g stroke={SP.line} strokeWidth={5} fill="none" strokeLinecap="round">
+                  <circle cx={x} cy={430} r={34} />
+                  <path d={`M ${x} 464 L ${x} 556 M ${x} 498 L ${x - 54} 578 M ${x} 498 L ${x + 54} 578`} />
+                </g>
+                {/* 机 */}
+                <path d={`M ${x - 170} 650 L ${x + 170} 650 M ${x - 136} 650 L ${x - 136} 760 M ${x + 136} 650 L ${x + 136} 760`} stroke={SP.line} strokeWidth={6} fill="none" strokeLinecap="round" />
+                {/* 机の上の電話帳 (ページがパタパタめくれる) */}
+                <g transform={`translate(${x}, 612)`}>
+                  <path d="M -82 -38 Q 0 -64 82 -38 L 82 34 Q 0 8 -82 34 Z" fill="none" stroke={KC.sea} strokeWidth={6} strokeLinejoin="round" />
+                  <path d="M 0 -54 L 0 16" stroke={KC.sea} strokeWidth={5} />
+                  <g transform={`scale(${flip}, 1)`} opacity={0.85}>
+                    <path d="M 2 -50 Q 44 -62 78 -36 L 78 26 Q 44 4 2 12 Z" fill={SP.panel} stroke={KC.sea} strokeWidth={4} strokeLinejoin="round" />
+                  </g>
+                  {/* めくりの風 */}
+                  <path d="M 96 -56 q 16 -10 30 -2 M 100 -34 q 14 -8 26 -2" stroke={SP.faint} strokeWidth={3.5} fill="none" strokeLinecap="round" opacity={0.5 + 0.5 * Math.sin(frame / 4 + i)} />
+                </g>
+                <SmallLabel x={x} y={810} text={["12人目…", "41人目…", "96人目…"][i]} size={26} color={SP.faint} />
+              </g>
+            );
+          })}
+          {/* 数え終わると: 計算とほぼ一致 */}
+          <g opacity={appearAt(frame, fps, Math.round(fps * 2.2))}>
+            <text x={960} y={330} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={58} fontWeight={700} fill={SP.accent}>
+              計算と、ほぼ一致
+            </text>
+          </g>
+        </svg>
+      </Frame>
+    );
+  }
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? (match ? "物理学者は、計算が先" : "電話帳で答え合わせ")} />
@@ -2028,7 +2114,7 @@ export const DrakeToLoveScene: React.FC<SceneProps> = ({ scene, variant = 0 }) =
         </g>
         {/* 中央: 半世紀 */}
         <g opacity={appearAt(frame, fps, Math.round(fps * 0.9))}>
-          <text x={960} y={500} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={44} fontWeight={800} fill={SP.ink}>
+          <text x={960} y={438} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={44} fontWeight={800} fill={SP.ink}>
             半世紀
           </text>
           <path d="M 620 530 Q 960 420 1300 530" fill="none" stroke={SP.faint} strokeWidth={4} strokeDasharray="12 10" />
@@ -2064,12 +2150,9 @@ export const BackusWritingScene: React.FC<SceneProps> = ({ scene }) => {
     <Frame>
       <DiagramTitle text={scene?.title ?? "2010年、イギリス"} />
       <svg width={W} height={H}>
-        {/* 年号ドン */}
+        {/* 人物紹介 (大きな年号は出さない) */}
         <g opacity={yearIn}>
-          <text x={960} y={330} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={130} fontWeight={700} fill={SP.ink}>
-            2010
-          </text>
-          <SmallLabel x={960} y={388} text="イギリスの経済学者、ピーター・バッカス" size={30} />
+          <SmallLabel x={700} y={330} text="イギリスの経済学者、ピーター・バッカス" size={36} weight={700} />
         </g>
         {/* 机 */}
         <g opacity={a}>
@@ -2101,6 +2184,14 @@ export const BackusWritingScene: React.FC<SceneProps> = ({ scene }) => {
           </g>
         </g>
         <SmallLabel x={1160} y={760} text="一本の論文を、発表" size={30} />
+        {/* 書き上がった瞬間の「できた!」 */}
+        <g opacity={appearAt(frame, fps, Math.round(fps * 3.0))}>
+          <ellipse cx={1430} cy={400} rx={135} ry={66} fill="none" stroke={SP.ink} strokeWidth={5} />
+          <path d="M 1330 446 L 1252 496 L 1352 462" fill="none" stroke={SP.ink} strokeWidth={5} strokeLinejoin="round" />
+          <text x={1430} y={416} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={46} fontWeight={800} fill={SP.accent}>
+            できた!
+          </text>
+        </g>
       </svg>
     </Frame>
   );
@@ -2179,6 +2270,61 @@ export const BackusSwapScene: React.FC<SceneProps> = ({ scene, variant = 0 }) =>
   const a = appearAt(frame, fps, 8);
   const t = interpolate(frame, [fps * 0.6, fps * 1.6], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const rude = variant >= 1; // 行55: 史上まれに見る失礼な研究
+  if (rude) {
+    // ドレイク本人と宇宙人が「自分の研究を変に使われた」と大きく驚くリアクション
+    const sh = appearAt(frame, fps, Math.round(fps * 0.6));
+    const wob = Math.sin(frame / 5) * 3;
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title ?? "史上まれに見る、失礼な研究"} />
+        <svg width={W} height={H}>
+          {/* 下: ハートが収まってしまった式 */}
+          <g opacity={a}>
+            <rect x={560} y={660} width={800} height={150} rx={16} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+            <text x={770} y={755} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={54} fill={SP.ink}>
+              N =
+            </text>
+            <Heart x={910} y={735} scale={0.6} color={PINK_DEEP} />
+            <text x={1170} y={752} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={44} fill={SP.ink}>
+              の掛け算
+            </text>
+          </g>
+          {/* 左: 本人ドレイク (大きく驚く) */}
+          <g opacity={sh} transform={`translate(0, ${wob})`}>
+            <g stroke={SP.line} strokeWidth={6} fill="none" strokeLinecap="round">
+              <circle cx={520} cy={430} r={105} />
+              {/* 眼鏡 */}
+              <circle cx={480} cy={426} r={29} />
+              <circle cx={560} cy={426} r={29} />
+              <path d="M 509 426 L 531 426 M 451 426 l -28 -8 M 589 426 l 28 -8" />
+              {/* まんまる驚き目 + あんぐり口 */}
+              <circle cx={480} cy={424} r={6} fill={SP.ink} />
+              <circle cx={560} cy={424} r={6} fill={SP.ink} />
+              <ellipse cx={520} cy={494} rx={19} ry={26} />
+            </g>
+            {/* 驚きの飛び線 */}
+            <path d="M 420 318 l -24 -32 M 520 308 l 0 -34 M 620 318 l 24 -32" stroke={SP.accent} strokeWidth={6} fill="none" strokeLinecap="round" />
+            {/* 吹き出し (タイトル帯に被らない高さまで下げる) */}
+            <ellipse cx={530} cy={216} rx={210} ry={48} fill="none" stroke={SP.ink} strokeWidth={5} />
+            <text x={530} y={228} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={34} fontWeight={800} fill={SP.accent}>
+              「俺の式を、そう使う!?」
+            </text>
+            <SmallLabel x={520} y={600} text="本人 (ドレイク)" size={28} />
+          </g>
+          {/* 右: 宇宙人 (大きく驚く) */}
+          <g opacity={sh} transform={`translate(0, ${-wob})`}>
+            <Alien x={1390} y={440} scale={1.5} color={SP.line} face="eh" />
+            <path d="M 1290 318 l -24 -32 M 1390 308 l 0 -34 M 1490 318 l 24 -32" stroke={SP.accent} strokeWidth={6} fill="none" strokeLinecap="round" />
+            <ellipse cx={1390} cy={216} rx={200} ry={48} fill="none" stroke={SP.ink} strokeWidth={5} />
+            <text x={1390} y={228} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={34} fontWeight={800} fill={SP.accent}>
+              「恋人と、同じ扱い!?」
+            </text>
+            <SmallLabel x={1390} y={650} text="宇宙人" size={28} />
+          </g>
+        </svg>
+      </Frame>
+    );
+  }
   // 宇宙人は式の席 (960, 530) から外 (560, 300) へ。ハートは逆向き
   const ax = 960 + (560 - 960) * t;
   const ay = 530 + (300 - 530) * t;
@@ -2186,7 +2332,7 @@ export const BackusSwapScene: React.FC<SceneProps> = ({ scene, variant = 0 }) =>
   const hy = 300 + (505 - 300) * t;
   return (
     <Frame>
-      <DiagramTitle text={scene?.title ?? (rude ? "史上まれに見る、失礼な研究" : "「宇宙人」→「恋人の候補」")} />
+      <DiagramTitle text={scene?.title ?? "「宇宙人」→「恋人の候補」"} />
       <svg width={W} height={H}>
         <g opacity={a}>
           <rect x={360} y={420} width={1200} height={240} rx={18} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
@@ -2200,33 +2346,10 @@ export const BackusSwapScene: React.FC<SceneProps> = ({ scene, variant = 0 }) =>
           <path d="M 700 360 Q 760 300 830 330" fill="none" stroke={SP.faint} strokeWidth={4} strokeDasharray="10 8" opacity={1 - t} />
           {/* 宇宙人 (え、俺?) が席を外れる */}
           <Alien x={ax} y={ay} scale={0.62} color={SP.line} face="eh" />
-          {rude && t > 0.9 && (
-            <text x={560} y={180} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={30} fill={SP.faint}>
-              「え、俺と同じ式?」
-            </text>
-          )}
-          {/* 式の生みの親ドレイクも、あきれ顔で見ている */}
-          {rude && (
-            <g opacity={appearAt(frame, fps, Math.round(fps * 1.2))}>
-              <g stroke={SP.line} strokeWidth={5} fill="none" strokeLinecap="round">
-                <circle cx={1440} cy={270} r={40} />
-                {/* 眼鏡 */}
-                <circle cx={1424} cy={264} r={12} />
-                <circle cx={1456} cy={264} r={12} />
-                <path d="M 1436 264 L 1444 264" />
-                {/* あきれた口 (への字) */}
-                <path d="M 1428 298 Q 1440 292 1452 298" />
-              </g>
-              <text x={1440} y={178} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={30} fill={SP.faint}>
-                「マジかよ・・・」
-              </text>
-              <SmallLabel x={1440} y={356} text="ドレイク" size={24} />
-            </g>
-          )}
           {/* ハートが式の席へ */}
           <Heart x={hx} y={hy} scale={1.0} color={PINK_DEEP} />
         </g>
-        <SmallLabel x={960} y={760} text={rude ? "宇宙人と恋人を、同じ式で数える" : "置き換えは、たった1か所"} size={32} />
+        <SmallLabel x={960} y={760} text="置き換えは、たった1か所" size={32} />
       </svg>
     </Frame>
   );
@@ -2823,11 +2946,86 @@ export const TokyoDomeScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
   const far = variant >= 1; // 行87: たぶん反対側の外野席
   const unseen = variant >= 2; // 行88: 存在すら気づかれない
   const mark = appearAt(frame, fps, Math.round(fps * 1.2));
+  if (far) {
+    // v1 (行87) / v2 (行88): 1つの大きなドームを画面いっぱいに
+    const a = appearAt(frame, fps, 8);
+    const shout = appearAt(frame, fps, Math.round(fps * 1.1));
+    const wob = Math.sin(frame / 5) * 2;
+    // 内野スタンドの観客ドット (弧に沿って並べる)
+    const seats: Array<{ x: number; y: number }> = [];
+    for (let row = 0; row < 3; row++) {
+      const baseY = 600 + row * 48;
+      const halfW = 520 - row * 90;
+      const n = 22 - row * 4;
+      for (let k = 0; k < n; k++) {
+        seats.push({ x: 960 - halfW + (k * (halfW * 2)) / (n - 1), y: baseY + Math.sin((k / (n - 1)) * Math.PI) * -26 });
+      }
+    }
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title ?? (unseen ? "存在すら、気づかれない" : "しかも、反対側の外野席")} />
+        <svg width={W} height={H}>
+          <g opacity={a}>
+            {/* 大きなドーム */}
+            <path d="M 330 740 Q 960 180 1590 740 Z" fill="none" stroke={SP.line} strokeWidth={7} strokeLinejoin="round" />
+            <path d="M 330 740 L 1590 740" stroke={SP.line} strokeWidth={7} />
+            {/* グラウンド */}
+            <ellipse cx={960} cy={700} rx={330} ry={46} fill="none" stroke={SP.faint} strokeWidth={4} />
+            {/* 満員の観客 */}
+            {seats.map((s, j) => (
+              <circle key={j} cx={s.x} cy={s.y} r={5} fill={SP.faint} />
+            ))}
+          </g>
+          {/* あなた (左端の席・赤) */}
+          <g opacity={a}>
+            <circle cx={470} cy={656} r={11} fill={SP.accent} />
+            <SmallLabel x={470} y={796} text="あなた" size={30} color={SP.accent} weight={700} />
+          </g>
+          {/* 運命の人 (反対側の外野席・ピンク) */}
+          <g opacity={mark} transform={unseen ? `translate(${wob}, 0)` : undefined}>
+            <circle cx={1452} cy={652} r={24} fill="none" stroke={SP.accent} strokeWidth={5} />
+            <circle cx={1452} cy={652} r={9} fill={PINK} />
+            <SmallLabel x={1452} y={796} text="運命の人" size={30} color={PINK} weight={700} />
+          </g>
+          {unseen ? (
+            <g opacity={shout}>
+              {/* あなたの叫び: 好きだー! */}
+              <g>
+                <ellipse cx={560} cy={470} rx={158} ry={62} fill="none" stroke={SP.accent} strokeWidth={5} />
+                <path d="M 505 522 L 480 620 L 560 530" fill="none" stroke={SP.accent} strokeWidth={5} strokeLinejoin="round" />
+                <text x={560} y={486} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={44} fontWeight={800} fill={SP.accent}>
+                  好きだー!
+                </text>
+                {/* 叫び飛び線 */}
+                <path d="M 710 420 L 760 396" stroke={SP.accent} strokeWidth={5} strokeLinecap="round" />
+                <path d="M 724 462 L 782 456" stroke={SP.accent} strokeWidth={5} strokeLinecap="round" />
+              </g>
+              {/* 向こうは気づかない: … */}
+              <g opacity={appearAt(frame, fps, Math.round(fps * 1.9))}>
+                <text x={1452} y={560} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={56} fontWeight={800} fill={SP.faint}>
+                  …
+                </text>
+              </g>
+            </g>
+          ) : (
+            <g opacity={shout}>
+              {/* 遠さを示す点線 */}
+              <path d="M 500 630 Q 960 360 1424 628" fill="none" stroke={SP.faint} strokeWidth={5} strokeDasharray="4 18" strokeLinecap="round" />
+            </g>
+          )}
+          <SmallLabel
+            x={960}
+            y={880}
+            text={unseen ? "声はおろか、視界にも入らない" : "見渡しても、たぶん届かない距離"}
+            size={32}
+          />
+        </svg>
+      </Frame>
+    );
+  }
   return (
     <Frame>
-      <DiagramTitle
-        text={scene?.title ?? (unseen ? "存在すら、気づかれない" : far ? "しかも、反対側の外野席" : "満員の東京ドーム、6回ぶん")}
-      />
+      <DiagramTitle text={scene?.title ?? "満員の東京ドーム、6回ぶん"} />
       <svg width={W} height={H}>
         {Array.from({ length: 6 }).map((_, i) => {
           const pop = appearAt(frame, fps, 10 + i * 6);
@@ -2845,19 +3043,14 @@ export const TokyoDomeScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
               ))}
               {last && (
                 <g opacity={mark}>
-                  <circle cx={far ? x + 104 : x} cy={y + 30} r={26} fill="none" stroke={SP.accent} strokeWidth={6} />
-                  <circle cx={far ? x + 104 : x} cy={y + 30} r={5} fill={PINK} />
+                  <circle cx={x} cy={y + 30} r={26} fill="none" stroke={SP.accent} strokeWidth={6} />
+                  <circle cx={x} cy={y + 30} r={5} fill={PINK} />
                 </g>
               )}
             </g>
           );
         })}
-        <SmallLabel
-          x={960}
-          y={830}
-          text={unseen ? "声はおろか、視界にも入らない" : far ? "見渡しても、たぶん届かない距離" : "6回見渡して、ようやく1人"}
-          size={32}
-        />
+        <SmallLabel x={960} y={830} text="6回見渡して、ようやく1人" size={32} />
       </svg>
     </Frame>
   );
@@ -2987,10 +3180,10 @@ export const HopeSlitScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
 
 // formula_seven の7要素 (要素名+数値+色)。第2章のカウントダウンと同じ順
 const FS_TERMS = [
-  { name: "性別", num: "½", color: "#5B8DD9" },
-  { name: "年齢", num: "15%", color: KC.yellow },
-  { name: "独身", num: "½", color: PINK },
-  { name: "価値観", num: "3割", color: KC.green },
+  { name: "性別", num: "1/2", color: "#5B8DD9" },
+  { name: "年齢", num: "1/7", color: KC.yellow },
+  { name: "独身", num: "1/2", color: PINK },
+  { name: "価値観", num: "1/3", color: KC.green },
   { name: "外見", num: "1/20", color: "#B48CDB" },
   { name: "両想い", num: "1/20", color: SP.accentSoft },
   { name: "相性", num: "1/10", color: KC.orange },
@@ -3159,12 +3352,12 @@ export const SliderUpScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
               strokeWidth={5}
               strokeLinejoin="round"
             />
-            {/* 東京の点 */}
-            <circle cx={1060} cy={600} r={10} fill={KC.skyBlue} />
-            <SmallLabel x={1060} y={656} text="東京" size={24} />
+            {/* 東京の点 (地図の見た目の中心に合わせる) */}
+            <circle cx={960} cy={585} r={10} fill={KC.skyBlue} />
+            <SmallLabel x={960} y={641} text="東京" size={24} />
             {/* 広がる円 */}
-            <circle cx={1060} cy={600} r={spread} fill={KC.skyBlue} opacity={0.12} />
-            <circle cx={1060} cy={600} r={spread} fill="none" stroke={KC.skyBlue} strokeWidth={5} opacity={0.8} />
+            <circle cx={960} cy={585} r={spread} fill={KC.skyBlue} opacity={0.12} />
+            <circle cx={960} cy={585} r={spread} fill="none" stroke={KC.skyBlue} strokeWidth={5} opacity={0.8} />
             <SmallLabel x={1300} y={740} text="関東圏" size={28} />
           </g>
         )}
@@ -3429,6 +3622,20 @@ export const Backus26Scene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
           {/* アイルランドの端 */}
           <path d="M 720 480 Q 760 450 780 500 Q 790 560 740 590 Q 700 570 700 520 Q 700 490 720 480 Z" fill="none" stroke={SP.dim} strokeWidth={4} />
           <SmallLabel x={930} y={850} text="イギリス" size={30} />
+          {/* ユニオンジャック (左側の目印) */}
+          <g>
+            <path d="M 408 296 L 408 560" stroke={SP.line} strokeWidth={6} strokeLinecap="round" />
+            <g transform="translate(414, 300)">
+              <rect x={0} y={0} width={250} height={150} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+              {/* 斜め十字 */}
+              <path d="M 4 4 L 246 146 M 246 4 L 4 146" stroke="#E8E8E8" strokeWidth={18} opacity={0.9} />
+              <path d="M 4 4 L 246 146 M 246 4 L 4 146" stroke={SP.accent} strokeWidth={7} />
+              {/* 十字 */}
+              <path d="M 125 0 L 125 150 M 0 75 L 250 75" stroke="#E8E8E8" strokeWidth={28} opacity={0.9} />
+              <path d="M 125 0 L 125 150 M 0 75 L 250 75" stroke={SP.accent} strokeWidth={15} />
+              <rect x={0} y={0} width={250} height={150} fill="none" stroke={SP.line} strokeWidth={5} />
+            </g>
+          </g>
         </g>
         {/* ぽつんと26人 */}
         {showNum &&
@@ -3463,11 +3670,71 @@ export const AlienScaleScene: React.FC<SceneProps> = ({ scene, variant = 0 }) =>
   const { fps } = useVideoConfig();
   const a = appearAt(frame, fps, 8);
   const tilt = interpolate(frame, [fps * 0.5, fps * 1.5], [0, 9], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const compare = variant >= 1; // 行115: 400倍近く多い
-  const publish = variant >= 2; // 行116: 堂々と発表
+  const compare = variant >= 1; // 行117: 400倍近く多い
+  const publish = variant >= 2; // 行118: 堂々と発表
+  if (compare) {
+    // v1以降: 天秤をやめて「宇宙人 > 彼女候補」の不等号でシンプルに
+    const gtIn = appearAt(frame, fps, Math.round(fps * 0.8));
+    const timesIn = appearAt(frame, fps, Math.round(fps * 1.4));
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title ?? (publish ? "この結果を、堂々と発表" : "宇宙人のほうが、400倍多い")} />
+        <svg width={W} height={H}>
+          {/* 左: 宇宙人の文明 (たくさん) */}
+          <g opacity={a}>
+            {Array.from({ length: 9 }).map((_, i) => (
+              <Alien key={i} x={400 + (i % 3) * 115} y={330 + Math.floor(i / 3) * 105} scale={0.42} color={KC.lime} face="smile" />
+            ))}
+            <text x={515} y={690} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={74} fontWeight={800} fill={KC.lime}>
+              1万個
+            </text>
+            <SmallLabel x={515} y={752} text="宇宙人の文明" size={30} color={KC.lime} weight={700} />
+          </g>
+          {/* 中央: 不等号 */}
+          <g opacity={gtIn}>
+            <text x={960} y={560} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={190} fontWeight={800} fill={SP.accent}>
+              &gt;
+            </text>
+          </g>
+          {/* 右: 彼女候補 26人 (ぽつぽつ) */}
+          <g opacity={a}>
+            {Array.from({ length: 26 }).map((_, i) => {
+              const x = 1310 + jitter(i, 83) * 230;
+              const y = 320 + jitter(i, 84) * 250;
+              return <circle key={i} cx={x} cy={y} r={7} fill={PINK} />;
+            })}
+            <text x={1425} y={690} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={74} fontWeight={800} fill={PINK}>
+              26人
+            </text>
+            <SmallLabel x={1425} y={752} text="彼の彼女候補" size={30} color={PINK} weight={700} />
+          </g>
+          {/* 下: 約400倍 */}
+          <g opacity={timesIn}>
+            <text x={960} y={810} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={64} fontWeight={700} fill={SP.accent}>
+              約400倍
+            </text>
+          </g>
+          {/* すまなそうな宇宙人 */}
+          <g opacity={appearAt(frame, fps, 24)}>
+            <Alien x={190} y={680} scale={0.6} color={KC.lime} face="sorry" />
+            {publish && (
+              <text x={190} y={800} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={26} fill={SP.faint}>
+                「なんか、ごめん」
+              </text>
+            )}
+          </g>
+        </svg>
+      </Frame>
+    );
+  }
+  // 皿のカーブ (M x0 450 Q x0+100 530 x0+200 450) 上の y 座標
+  const panY = (x: number, x0: number) => {
+    const t = (x - x0) / 200;
+    return 450 + 160 * t * (1 - t);
+  };
   return (
     <Frame>
-      <DiagramTitle text={scene?.title ?? (publish ? "この結果を、堂々と発表" : compare ? "宇宙人のほうが、400倍多い" : "宇宙人の文明: 1万個")} />
+      <DiagramTitle text={scene?.title ?? "宇宙人の文明: 1万個"} />
       <svg width={W} height={H}>
         <g opacity={a}>
           {/* 支柱 */}
@@ -3475,51 +3742,35 @@ export const AlienScaleScene: React.FC<SceneProps> = ({ scene, variant = 0 }) =>
           {/* 竿 (宇宙人側が下がる) */}
           <g transform={`rotate(${tilt} 960 380)`}>
             <path d="M 560 380 L 1360 380" stroke={SP.line} strokeWidth={8} strokeLinecap="round" />
-            {/* 左皿: 宇宙人ぎっしり */}
+            {/* 左皿: 宇宙人ぎっしり (皿のカーブに載せる) */}
             <path d="M 560 380 L 560 450" stroke={SP.line} strokeWidth={5} />
             <path d="M 460 450 Q 560 530 660 450" fill="none" stroke={SP.line} strokeWidth={6} />
-            {Array.from({ length: 12 }).map((_, i) => (
-              <g key={i} transform={`translate(${480 + (i % 6) * 34}, ${415 - Math.floor(i / 6) * 30}) scale(0.22)`}>
-                <ellipse rx={52} ry={46} fill="none" stroke={KC.lime} strokeWidth={14} />
-                <path d="M -22 -40 Q -34 -66 -44 -74 M 22 -40 Q 34 -66 44 -74" stroke={KC.lime} strokeWidth={12} fill="none" strokeLinecap="round" />
-              </g>
-            ))}
-            {/* 右皿: 26人ぽつぽつ */}
+            {Array.from({ length: 11 }).map((_, i) => {
+              const row = i < 6 ? 0 : 1;
+              const k = row === 0 ? i : i - 6;
+              const x = row === 0 ? 485 + k * 30 : 503 + k * 30;
+              const y = panY(x, 460) - 11 - row * 22;
+              return (
+                <g key={i} transform={`translate(${x}, ${y}) scale(0.22)`}>
+                  <ellipse rx={52} ry={46} fill="none" stroke={KC.lime} strokeWidth={14} />
+                  <path d="M -22 -40 Q -34 -66 -44 -74 M 22 -40 Q 34 -66 44 -74" stroke={KC.lime} strokeWidth={12} fill="none" strokeLinecap="round" />
+                </g>
+              );
+            })}
+            {/* 右皿: 26人ぽつぽつ (皿のカーブに載せる) */}
             <path d="M 1360 380 L 1360 450" stroke={SP.line} strokeWidth={5} />
             <path d="M 1260 450 Q 1360 530 1460 450" fill="none" stroke={SP.line} strokeWidth={6} />
-            {Array.from({ length: 5 }).map((_, i) => (
-              <circle key={i} cx={1310 + i * 25} cy={440} r={7} fill={PINK} />
-            ))}
-            {/* 竿にぶら下がる赤タグ「×400」 */}
-            {compare && (
-              <g opacity={appearAt(frame, fps, Math.round(fps * 0.9))}>
-                <path d="M 760 383 L 760 440" stroke={SP.accent} strokeWidth={4} />
-                <g transform="rotate(-8 760 500)">
-                  <rect x={690} y={444} width={140} height={90} rx={10} fill={SP.panel} stroke={SP.accent} strokeWidth={6} />
-                  <circle cx={760} cy={462} r={6} fill="none" stroke={SP.accent} strokeWidth={3} />
-                  <text x={760} y={516} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={42} fontWeight={800} fill={SP.accent}>
-                    ×400
-                  </text>
-                </g>
-              </g>
-            )}
+            {Array.from({ length: 5 }).map((_, i) => {
+              const x = 1310 + i * 25;
+              return <circle key={i} cx={x} cy={panY(x, 1260) - 8} r={7} fill={PINK} />;
+            })}
           </g>
           <SmallLabel x={560} y={620} text="宇宙人の文明 1万個" size={30} color={KC.lime} weight={700} />
           <SmallLabel x={1380} y={620} text="彼女候補 26人" size={30} color={PINK} weight={700} />
-          {compare && (
-            <text x={960} y={800} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={64} fontWeight={700} fill={SP.accent}>
-              約400倍
-            </text>
-          )}
         </g>
         {/* すまなそうな宇宙人 */}
         <g opacity={appearAt(frame, fps, 24)}>
           <Alien x={300} y={760} scale={0.8} color={KC.lime} face="sorry" />
-          {publish && (
-            <text x={300} y={920} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={26} fill={SP.faint}>
-              「なんか、ごめん」
-            </text>
-          )}
         </g>
       </svg>
     </Frame>
@@ -3793,15 +4044,6 @@ export const SofaFamilyScene: React.FC<SceneProps> = ({ scene, variant = 0 }) =>
           <rect x={500} y={560} width={920} height={130} rx={26} fill="none" stroke={KC.orange} strokeWidth={8} />
           <path d="M 540 690 L 540 740 M 1380 690 L 1380 740" stroke={KC.orange} strokeWidth={8} strokeLinecap="round" />
         </g>
-        {!family && (
-          // v0: 空っぽのソファに点線の「?」
-          <g opacity={appearAt(frame, fps, 24)}>
-            <circle cx={960} cy={470} r={30} fill="none" stroke={SP.dim} strokeWidth={5} strokeDasharray="10 9" />
-            <text x={960} y={360} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={62} fill={SP.dim}>
-              ?
-            </text>
-          </g>
-        )}
         {family && (
           <>
             {/* どっかり座る「家族」(お母さん感: おだんご頭+湯のみ)。ソファの真ん中にどっかり */}
@@ -3984,6 +4226,26 @@ export const FractionStuckScene: React.FC<SceneProps> = ({ scene }) => {
     <Frame>
       <DiagramTitle text={scene?.title ?? "これでは、ほとんど動かない"} />
       <svg width={W} height={H}>
+        {/* 35万の出どころ: 東京1400万人 ÷ 運命の人40人 */}
+        <g opacity={a}>
+          <text x={600} y={330} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={44} fill={SP.ink}>
+            1400万人
+          </text>
+          <SmallLabel x={600} y={378} text="東京の人口" size={24} />
+          <text x={790} y={330} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={44} fill={SP.faint}>
+            ÷
+          </text>
+          <text x={930} y={330} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={44} fill={SP.ink}>
+            40人
+          </text>
+          <SmallLabel x={930} y={378} text="運命の人" size={24} />
+          <text x={1070} y={330} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={44} fill={SP.faint}>
+            =
+          </text>
+          <text x={1230} y={330} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={44} fontWeight={700} fill={SP.accent}>
+            35万
+          </text>
+        </g>
         <g opacity={a} transform={`translate(${shake}, 0)`}>
           <text x={820} y={470} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={92} fill={SP.ink}>
             1
@@ -4115,7 +4377,7 @@ export const DiceManyScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
           <path d="M 480 480 L 420 560 M 540 512 L 520 580 M 610 505 L 620 575" />
           <path d="M 640 300 q 20 -30 8 -56 M 700 330 q 30 -20 34 -50 M 740 390 q 36 -4 54 -28" strokeWidth={4} opacity={0.7} />
         </g>
-        {/* 転がるサイコロたち (目は赤) */}
+        {/* 転がるサイコロたち (1の目だけ赤、ほかは黒) */}
         {Array.from({ length: 6 }).map((_, i) => {
           const pop = appearAt(frame, fps, 14 + i * 7);
           const x = 820 + (i % 3) * 260 + jitter(i, 97) * 60;
@@ -4135,7 +4397,7 @@ export const DiceManyScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
               <rect x={-44} y={-44} width={88} height={88} rx={16} fill="#FFFFFF" opacity={0.95} />
               <rect x={-44} y={-44} width={88} height={88} rx={16} fill="none" stroke={SP.faint} strokeWidth={3} />
               {pipPos[pips].map(([px, py], j) => (
-                <circle key={j} cx={px} cy={py} r={7.5} fill={SP.accent} />
+                <circle key={j} cx={px} cy={py} r={7.5} fill={pips === 1 ? SP.accent : "#26262B"} />
               ))}
             </g>
           );
@@ -4216,10 +4478,86 @@ export const BackusWeddingScene: React.FC<SceneProps> = ({ scene, variant = 0 })
       </Frame>
     );
   }
-  // v0-v2: その後の語り (経済学者の再登場)
+  if (variant === 1) {
+    // v1 (行138): イギリスに26人と計算した、あの経済学者 → 地図と26点の回想
+    const dotsIn = appearAt(frame, fps, Math.round(fps * 0.5));
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title ?? "26人と計算した、あの人"} />
+        <svg width={W} height={H}>
+          {/* 回想の枠 (点線) */}
+          <g opacity={a}>
+            <rect x={420} y={260} width={1080} height={560} rx={26} fill="none" stroke={SP.dim} strokeWidth={5} strokeDasharray="18 14" />
+            <SmallLabel x={520} y={310} text="回想" size={28} color={SP.faint} />
+          </g>
+          {/* イギリス地図 (回想なので控えめの線) */}
+          <g opacity={a * 0.9} transform="translate(-90, 40) scale(0.82) translate(180, 60)">
+            <path
+              d="M 900 240 Q 960 220 990 270 Q 1030 300 1010 360 Q 1050 400 1030 460 Q 1080 520 1050 590 Q 1090 660 1040 720 Q 980 780 910 750 Q 850 770 820 710 Q 780 660 810 600 Q 770 540 810 480 Q 790 420 830 370 Q 820 300 870 270 Q 880 250 900 240 Z"
+              fill="none"
+              stroke={SP.dim}
+              strokeWidth={6}
+              strokeLinejoin="round"
+            />
+            {Array.from({ length: 26 }).map((_, i) => {
+              const x = 840 + jitter(i, 81) * 170;
+              const y = 320 + jitter(i, 82) * 380;
+              return <circle key={i} cx={x} cy={y} r={7} fill={PINK} opacity={dotsIn} />;
+            })}
+          </g>
+          {/* 右: 26人 */}
+          <g opacity={appearAt(frame, fps, Math.round(fps * 0.9))}>
+            <text x={1230} y={540} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={110} fontWeight={700} fill={PINK}>
+              26人
+            </text>
+            <SmallLabel x={1230} y={620} text="イギリス全土で" size={30} />
+          </g>
+          <SmallLabel x={960} y={880} text="あの切ない経済学者の、続報" size={30} />
+        </svg>
+      </Frame>
+    );
+  }
+  if (variant >= 2) {
+    // v2 (行139): 論文の結びページのクローズアップ (中身は v3 の決めゼリフまで見せない)
+    const markIn = appearAt(frame, fps, Math.round(fps * 1.0));
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title ?? "彼は、悲観していなかった"} />
+        <svg width={W} height={H}>
+          {/* 論文の最終ページ */}
+          <g opacity={a}>
+            <rect x={600} y={250} width={720} height={540} rx={10} fill="#FFFFFF" opacity={0.08} />
+            <rect x={600} y={250} width={720} height={540} rx={10} fill="none" stroke={SP.line} strokeWidth={6} />
+            <text x={680} y={330} textAnchor="start" fontFamily={SUURI_SERIF} fontSize={38} fontWeight={700} fill={SP.ink}>
+              結び (Conclusion)
+            </text>
+            <path d="M 680 360 L 1240 360" stroke={SP.faint} strokeWidth={3} />
+            {/* 本文 (ぼかした線) */}
+            {Array.from({ length: 6 }).map((_, i) => (
+              <path key={i} d={`M 680 ${410 + i * 44} L ${i === 5 ? 1000 : 1240} ${410 + i * 44}`} stroke={SP.faint} strokeWidth={6} strokeLinecap="round" opacity={0.6} />
+            ))}
+            {/* 結びの一文 (ここだけ強調。中身は次のシーンで) */}
+            <g opacity={markIn}>
+              <rect x={660} y={682} width={600} height={64} rx={10} fill={SP.accent} opacity={0.16} />
+              <path d="M 680 714 L 1240 714" stroke={SP.accent} strokeWidth={7} strokeLinecap="round" />
+            </g>
+          </g>
+          {/* 虫めがね */}
+          <g opacity={markIn} stroke={SP.line} strokeWidth={7} fill="none">
+            <circle cx={1300} cy={720} r={62} />
+            <path d="M 1344 764 L 1420 840" strokeLinecap="round" />
+          </g>
+          <SmallLabel x={430} y={520} text="最後の段落に" size={32} />
+          <SmallLabel x={430} y={572} text="彼の答えが" size={32} />
+          <SmallLabel x={960} y={880} text="切ない計算の、その先へ" size={30} />
+        </svg>
+      </Frame>
+    );
+  }
+  // v0 (行137): さて、バッカスのその後 (経済学者の再登場+26人の回想吹き出し)
   return (
     <Frame>
-      <DiagramTitle text={scene?.title ?? (variant >= 2 ? "彼は、悲観していなかった" : variant >= 1 ? "26人と計算した、あの人" : "さて、バッカスのその後")} />
+      <DiagramTitle text={scene?.title ?? "さて、バッカスのその後"} />
       <svg width={W} height={H}>
         {/* 経済学者 (眼鏡) と論文 */}
         <g opacity={a} stroke={SP.line} strokeWidth={5} fill="none" strokeLinecap="round">
@@ -4227,7 +4565,7 @@ export const BackusWeddingScene: React.FC<SceneProps> = ({ scene, variant = 0 })
           <circle cx={738} cy={462} r={16} />
           <circle cx={782} cy={462} r={16} />
           <path d="M 754 462 L 766 462 M 722 462 l -14 -4 M 798 462 l 14 -4" />
-          <path d={variant >= 2 ? "M 748 506 Q 760 514 772 506" : "M 748 510 L 772 510"} />
+          <path d="M 748 510 L 772 510" />
           <path d="M 710 620 q 4 -70 50 -72 q 46 2 50 72" strokeLinejoin="round" />
           <path d="M 722 580 L 680 640 M 798 580 L 850 600" />
         </g>
@@ -4236,31 +4574,16 @@ export const BackusWeddingScene: React.FC<SceneProps> = ({ scene, variant = 0 })
           <rect x={860} y={560} width={220} height={150} rx={8} fill="none" stroke={SP.line} strokeWidth={5} transform="rotate(6 970 635)" />
           <path d="M 892 606 L 1044 622 M 888 642 L 1040 658" stroke={SP.faint} strokeWidth={4} />
         </g>
-        {variant === 0 && (
-          // 26人回想の思い出し吹き出し (小さく)
-          <g opacity={appearAt(frame, fps, 22)}>
-            <circle cx={842} cy={398} r={5} fill={SP.dim} />
-            <circle cx={874} cy={354} r={8} fill={SP.dim} />
-            <ellipse cx={990} cy={288} rx={124} ry={66} fill="none" stroke={SP.dim} strokeWidth={4} />
-            <text x={990} y={302} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={40} fill={SP.faint}>
-              26人…
-            </text>
-          </g>
-        )}
-        {variant >= 1 && (
-          <g opacity={appearAt(frame, fps, 20)}>
-            <text x={1360} y={480} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={96} fontWeight={700} fill={PINK}>
-              26人
-            </text>
-            <SmallLabel x={1360} y={560} text="イギリス全土で" size={30} />
-          </g>
-        )}
-        {variant >= 2 && (
-          <g opacity={appearAt(frame, fps, 30)}>
-            <SmallLabel x={1360} y={660} text="それでも、結びは前向き" size={32} color={SP.ink} weight={700} />
-          </g>
-        )}
-        <SmallLabel x={960} y={830} text={variant >= 2 ? "切ない計算の、その先へ" : "あの切ない経済学者の、続報"} size={30} />
+        {/* 26人回想の思い出し吹き出し (小さく) */}
+        <g opacity={appearAt(frame, fps, 22)}>
+          <circle cx={842} cy={398} r={5} fill={SP.dim} />
+          <circle cx={874} cy={354} r={8} fill={SP.dim} />
+          <ellipse cx={990} cy={288} rx={124} ry={66} fill="none" stroke={SP.dim} strokeWidth={4} />
+          <text x={990} y={302} textAnchor="middle" fontFamily={SUURI_SERIF} fontSize={40} fill={SP.faint}>
+            26人…
+          </text>
+        </g>
+        <SmallLabel x={960} y={830} text="あの切ない経済学者の、続報" size={30} />
       </svg>
     </Frame>
   );
@@ -4375,11 +4698,60 @@ export const FinalToolScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
 };
 
 // yurumeru (行149-150): スライダーをひとつ緩める指 + 40→80
+// v2 (最終行): 動きだして分母を増やせば、運命の人にきっと出会える
 export const YurumeruScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const a = appearAt(frame, fps, 8);
   const show80 = variant >= 1; // 行150: 明日、80人になる
+  if (variant >= 2) {
+    const ring1 = appearAt(frame, fps, Math.round(fps * 0.5));
+    const ring2 = appearAt(frame, fps, Math.round(fps * 1.0));
+    const meet = appearAt(frame, fps, Math.round(fps * 1.7));
+    const step = Math.min(1, frame / (fps * 1.2));
+    const px = 430 + step * 60; // 一歩ふみ出す
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title ?? "動きだせば、きっと出会える"} />
+        <svg width={W} height={H}>
+          {/* 歩き出すあなた */}
+          <g opacity={a}>
+            <g stroke={SP.ink} strokeWidth={6} fill="none" strokeLinecap="round">
+              <circle cx={px} cy={430} r={34} />
+              <path d={`M ${px} 464 L ${px} 580 M ${px} 500 L ${px - 46} 540 M ${px} 500 L ${px + 56} 528 M ${px} 580 L ${px - 50} 668 M ${px} 580 L ${px + 62} 664`} />
+            </g>
+            {/* 進む勢いの線 */}
+            <path d={`M ${px - 110} 470 L ${px - 162} 470 M ${px - 100} 530 L ${px - 144} 530 M ${px - 114} 590 L ${px - 158} 590`} stroke={SP.faint} strokeWidth={5} strokeLinecap="round" />
+            <SmallLabel x={px} y={740} text="あなた" size={28} />
+          </g>
+          {/* 広がる出会いの輪 */}
+          <g opacity={ring1}>
+            <circle cx={1150} cy={520} r={150 * (0.7 + ring1 * 0.3)} fill="none" stroke={KC.skyBlue} strokeWidth={6} />
+            {Array.from({ length: 6 }).map((_, i) => {
+              const ang = jitter(i, 71) * Math.PI * 2;
+              return <circle key={i} cx={1150 + Math.cos(ang) * 150} cy={520 + Math.sin(ang) * 150} r={8} fill={SP.faint} />;
+            })}
+          </g>
+          <g opacity={ring2}>
+            <circle cx={1150} cy={520} r={260 * (0.7 + ring2 * 0.3)} fill="none" stroke={KC.yellow} strokeWidth={6} />
+            {Array.from({ length: 9 }).map((_, i) => {
+              const ang = jitter(i, 72) * Math.PI * 2;
+              return <circle key={i} cx={1150 + Math.cos(ang) * 260} cy={520 + Math.sin(ang) * 260} r={8} fill={SP.faint} />;
+            })}
+            <SmallLabel x={1150} y={330} text="出会う数 (分母) を増やす" size={28} color={KC.yellow} weight={700} />
+          </g>
+          {/* 輪の中の、運命の人 */}
+          <g opacity={meet}>
+            <circle cx={1330} cy={470} r={26} fill="none" stroke={PINK} strokeWidth={6} />
+            <circle cx={1330} cy={470} r={10} fill={PINK} />
+            <Heart x={1330} y={398} scale={0.42} color={PINK} />
+            <SmallLabel x={1330} y={548} text="運命の人" size={28} color={PINK} weight={700} />
+          </g>
+          <SmallLabel x={960} y={830} text="増やした分母の、その先に" size={32} color={SP.ink} weight={700} />
+        </svg>
+      </Frame>
+    );
+  }
   const t = interpolate(frame, [fps * 0.5, fps * 1.6], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const knobX = 760 + t * 400;
   const num = Math.round(40 + t * 40);

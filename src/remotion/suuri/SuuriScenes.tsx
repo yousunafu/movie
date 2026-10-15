@@ -613,6 +613,8 @@ export const suuriSceneHidesSubtitle = (scene: Scene): boolean =>
   (/whisper/.test(scene.motif ?? "") && /ここに届いていない/.test(scene.text ?? "")) ||
   // 恋愛ドレイク回: 決めゼリフを絵の中央に大きく出すシーンは字幕を重ねない
   (/drake_to_love/.test(scene.motif ?? "") && /なぜ、僕に彼女ができないのか/.test(scene.text ?? "")) ||
+  // 恋愛ドレイク回: 議題を画面中央に大きく出すシーンは字幕を重ねない
+  (/drake_galaxy/.test(scene.motif ?? "") && /いくつあるか/.test(scene.text ?? "")) ||
   (/backus_wedding/.test(scene.motif ?? "") && /ゼロではない/.test(scene.text ?? ""));
 
 const CHAPTER_NUM_RE = /第[0-9０-９一二三四五六七八九十]+章/;

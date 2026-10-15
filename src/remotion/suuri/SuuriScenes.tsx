@@ -137,30 +137,41 @@ import {
   LoveMinorityScene,
   LoveAppCoupleScene,
   LoveLikeRainScene,
+  LoveIihitoScene,
   LoveTwistScene,
   LoveActOnlyScene,
   LoveMathScene,
   LoveAlienHintScene,
   LoveTokyoScene,
+  LoveCountSeriousScene,
   LoveRoadmapScene,
+  LovePreviewCh12Scene,
+  LovePreviewCh34Scene,
   LoveToBlackScene,
   DrakeBlackboardScene,
+  DrakeGalaxyScene,
   DrakeMeetingScene,
   DrakeDecomposeScene,
   DrakeTermsScene,
   DrakeDonburiScene,
   DrakeOrderScene,
+  FermiNameScene,
+  FermiQuestionScene,
   FermiPianoScene,
+  FermiFourScene,
   FermiPhonebookScene,
   DrakeLegacyScene,
   DrakeToLoveScene,
+  BackusWritingScene,
   BackusPaperScene,
   BackusSwapScene,
   TokyoDotsStartScene,
   CountdownGenderScene,
+  CountdownYoyuScene,
   CountdownAgeScene,
   CountdownSingleScene,
   CountdownTottoriScene,
+  CountdownDaijobuScene,
   CountdownHonbanScene,
   CountdownValuesScene,
   CountdownLooksScene,
@@ -178,12 +189,19 @@ import {
   HensuCardScene,
   Backus26Scene,
   AlienScaleScene,
+  BackusProudScene,
   TsuzukuScene,
   ZeroProbScene,
+  PitfallScene,
+  FadeWordsScene,
   TakarakujiScene,
   SofaFamilyScene,
   BunboGrowScene,
+  CommuteTenScene,
+  WorkTalkHalfScene,
+  FractionStuckScene,
   DeaiX10Scene,
+  FractionX10Scene,
   DiceManyScene,
   BackusWeddingScene,
   RenaiMatomeScene,
@@ -2850,30 +2868,41 @@ const resolveSuuriMotif = (m: string): string | undefined => {
   if (/love_minority/.test(m)) return "love_minority";
   if (/love_app/.test(m)) return "love_app_couple";
   if (/love_like_rain|like_rain/.test(m)) return "love_like_rain";
+  if (/love_iihito/.test(m)) return "love_iihito";
   if (/love_twist/.test(m)) return "love_twist";
   if (/love_act/.test(m)) return "love_act_only";
   if (/love_math/.test(m)) return "love_math";
   if (/love_alien/.test(m)) return "love_alien_hint";
   if (/love_tokyo/.test(m)) return "love_tokyo";
+  if (/love_count_serious/.test(m)) return "love_count_serious";
   if (/love_roadmap/.test(m)) return "love_roadmap";
+  if (/love_preview_ch12/.test(m)) return "love_preview_ch12";
+  if (/love_preview_ch34/.test(m)) return "love_preview_ch34";
   if (/love_to_black/.test(m)) return "love_to_black";
   if (/drake_blackboard/.test(m)) return "drake_blackboard";
+  if (/drake_galaxy/.test(m)) return "drake_galaxy";
   if (/drake_meeting/.test(m)) return "drake_meeting";
   if (/drake_decompose/.test(m)) return "drake_decompose";
   if (/drake_terms/.test(m)) return "drake_terms";
   if (/drake_donburi|donburi/.test(m)) return "drake_donburi";
   if (/drake_order/.test(m)) return "drake_order";
+  if (/fermi_name/.test(m)) return "fermi_name";
+  if (/fermi_question/.test(m)) return "fermi_question";
   if (/fermi_piano/.test(m)) return "fermi_piano";
+  if (/fermi_four/.test(m)) return "fermi_four";
   if (/fermi_phonebook|phonebook/.test(m)) return "fermi_phonebook";
   if (/drake_legacy/.test(m)) return "drake_legacy";
   if (/drake_to_love/.test(m)) return "drake_to_love";
+  if (/backus_writing/.test(m)) return "backus_writing";
   if (/backus_paper/.test(m)) return "backus_paper";
   if (/backus_swap/.test(m)) return "backus_swap";
   if (/tokyo_dots/.test(m)) return "tokyo_dots_start";
   if (/countdown_gender/.test(m)) return "countdown_gender";
+  if (/countdown_yoyu/.test(m)) return "countdown_yoyu";
   if (/countdown_age/.test(m)) return "countdown_age";
   if (/countdown_single/.test(m)) return "countdown_single";
   if (/countdown_tottori|tottori/.test(m)) return "countdown_tottori";
+  if (/countdown_daijobu/.test(m)) return "countdown_daijobu";
   if (/countdown_honban|honban/.test(m)) return "countdown_honban";
   if (/countdown_values/.test(m)) return "countdown_values";
   if (/countdown_looks/.test(m)) return "countdown_looks";
@@ -2891,12 +2920,19 @@ const resolveSuuriMotif = (m: string): string | undefined => {
   if (/hensu_card/.test(m)) return "hensu_card";
   if (/backus_26/.test(m)) return "backus_26";
   if (/alien_scale/.test(m)) return "alien_scale";
+  if (/backus_proud/.test(m)) return "backus_proud";
   if (/tsuzuku/.test(m)) return "tsuzuku";
   if (/zero_prob/.test(m)) return "zero_prob";
+  if (m === "pitfall") return "pitfall"; // キラキラ回の pitfall_people と区別するため厳密一致
+  if (/fade_words/.test(m)) return "fade_words";
   if (/takarakuji/.test(m)) return "takarakuji";
   if (/sofa_family/.test(m)) return "sofa_family";
   if (/bunbo_grow/.test(m)) return "bunbo_grow";
+  if (/commute_10/.test(m)) return "commute_10";
+  if (/work_talk_half/.test(m)) return "work_talk_half";
+  if (/fraction_stuck/.test(m)) return "fraction_stuck";
   if (/deai_x10/.test(m)) return "deai_x10";
+  if (/fraction_x10/.test(m)) return "fraction_x10";
   if (/dice_many/.test(m)) return "dice_many";
   if (/backus_wedding/.test(m)) return "backus_wedding";
   if (/renai_matome/.test(m)) return "renai_matome";
@@ -3276,30 +3312,41 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
     if (m === "love_minority") return <LoveMinorityScene scene={scene} variant={variant} />;
     if (m === "love_app_couple") return <LoveAppCoupleScene scene={scene} variant={variant} />;
     if (m === "love_like_rain") return <LoveLikeRainScene scene={scene} variant={variant} />;
+    if (m === "love_iihito") return <LoveIihitoScene scene={scene} variant={variant} />;
     if (m === "love_twist") return <LoveTwistScene scene={scene} variant={variant} />;
     if (m === "love_act_only") return <LoveActOnlyScene scene={scene} variant={variant} />;
     if (m === "love_math") return <LoveMathScene scene={scene} variant={variant} />;
     if (m === "love_alien_hint") return <LoveAlienHintScene scene={scene} variant={variant} />;
     if (m === "love_tokyo") return <LoveTokyoScene scene={scene} variant={variant} />;
+    if (m === "love_count_serious") return <LoveCountSeriousScene scene={scene} variant={variant} />;
     if (m === "love_roadmap") return <LoveRoadmapScene scene={scene} variant={variant} />;
+    if (m === "love_preview_ch12") return <LovePreviewCh12Scene scene={scene} variant={variant} />;
+    if (m === "love_preview_ch34") return <LovePreviewCh34Scene scene={scene} variant={variant} />;
     if (m === "love_to_black") return <LoveToBlackScene scene={scene} variant={variant} />;
     if (m === "drake_blackboard") return <DrakeBlackboardScene scene={scene} variant={variant} />;
+    if (m === "drake_galaxy") return <DrakeGalaxyScene scene={scene} variant={variant} />;
     if (m === "drake_meeting") return <DrakeMeetingScene scene={scene} variant={variant} />;
     if (m === "drake_decompose") return <DrakeDecomposeScene scene={scene} variant={variant} />;
     if (m === "drake_terms") return <DrakeTermsScene scene={scene} variant={variant} />;
     if (m === "drake_donburi") return <DrakeDonburiScene scene={scene} variant={variant} />;
     if (m === "drake_order") return <DrakeOrderScene scene={scene} variant={variant} />;
+    if (m === "fermi_name") return <FermiNameScene scene={scene} variant={variant} />;
+    if (m === "fermi_question") return <FermiQuestionScene scene={scene} variant={variant} />;
     if (m === "fermi_piano") return <FermiPianoScene scene={scene} variant={variant} />;
+    if (m === "fermi_four") return <FermiFourScene scene={scene} variant={variant} />;
     if (m === "fermi_phonebook") return <FermiPhonebookScene scene={scene} variant={variant} />;
     if (m === "drake_legacy") return <DrakeLegacyScene scene={scene} variant={variant} />;
     if (m === "drake_to_love") return <DrakeToLoveScene scene={scene} variant={variant} />;
+    if (m === "backus_writing") return <BackusWritingScene scene={scene} variant={variant} />;
     if (m === "backus_paper") return <BackusPaperScene scene={scene} variant={variant} />;
     if (m === "backus_swap") return <BackusSwapScene scene={scene} variant={variant} />;
     if (m === "tokyo_dots_start") return <TokyoDotsStartScene scene={scene} variant={variant} />;
     if (m === "countdown_gender") return <CountdownGenderScene scene={scene} variant={variant} />;
+    if (m === "countdown_yoyu") return <CountdownYoyuScene scene={scene} variant={variant} />;
     if (m === "countdown_age") return <CountdownAgeScene scene={scene} variant={variant} />;
     if (m === "countdown_single") return <CountdownSingleScene scene={scene} variant={variant} />;
     if (m === "countdown_tottori") return <CountdownTottoriScene scene={scene} variant={variant} />;
+    if (m === "countdown_daijobu") return <CountdownDaijobuScene scene={scene} variant={variant} />;
     if (m === "countdown_honban") return <CountdownHonbanScene scene={scene} variant={variant} />;
     if (m === "countdown_values") return <CountdownValuesScene scene={scene} variant={variant} />;
     if (m === "countdown_looks") return <CountdownLooksScene scene={scene} variant={variant} />;
@@ -3317,12 +3364,19 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
     if (m === "hensu_card") return <HensuCardScene scene={scene} variant={variant} />;
     if (m === "backus_26") return <Backus26Scene scene={scene} variant={variant} />;
     if (m === "alien_scale") return <AlienScaleScene scene={scene} variant={variant} />;
+    if (m === "backus_proud") return <BackusProudScene scene={scene} variant={variant} />;
     if (m === "tsuzuku") return <TsuzukuScene scene={scene} variant={variant} />;
     if (m === "zero_prob") return <ZeroProbScene scene={scene} variant={variant} />;
+    if (m === "pitfall") return <PitfallScene scene={scene} variant={variant} />;
+    if (m === "fade_words") return <FadeWordsScene scene={scene} variant={variant} />;
     if (m === "takarakuji") return <TakarakujiScene scene={scene} variant={variant} />;
     if (m === "sofa_family") return <SofaFamilyScene scene={scene} variant={variant} />;
     if (m === "bunbo_grow") return <BunboGrowScene scene={scene} variant={variant} />;
+    if (m === "commute_10") return <CommuteTenScene scene={scene} variant={variant} />;
+    if (m === "work_talk_half") return <WorkTalkHalfScene scene={scene} variant={variant} />;
+    if (m === "fraction_stuck") return <FractionStuckScene scene={scene} variant={variant} />;
     if (m === "deai_x10") return <DeaiX10Scene scene={scene} variant={variant} />;
+    if (m === "fraction_x10") return <FractionX10Scene scene={scene} variant={variant} />;
     if (m === "dice_many") return <DiceManyScene scene={scene} variant={variant} />;
     if (m === "backus_wedding") return <BackusWeddingScene scene={scene} variant={variant} />;
     if (m === "renai_matome") return <RenaiMatomeScene scene={scene} variant={variant} />;

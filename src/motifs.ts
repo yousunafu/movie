@@ -363,6 +363,25 @@ export const SUURI_GROW_MOTIFS: readonly string[] = [
   "renai_matome",
   "final_tool",
   "yurumeru",
+  // --- 恋愛版ドレイク回 v2 で追加した絵 (連続散らしの対象外にする) ---
+  "love_iihito",
+  "love_count_serious",
+  "love_preview_ch12",
+  "love_preview_ch34",
+  "drake_galaxy",
+  "fermi_name",
+  "fermi_question",
+  "fermi_four",
+  "backus_writing",
+  "countdown_yoyu",
+  "countdown_daijobu",
+  "backus_proud",
+  "pitfall",
+  "fade_words",
+  "commute_10",
+  "work_talk_half",
+  "fraction_stuck",
+  "fraction_x10",
 ];
 
 export const ALL_SUURI_MOTIFS = [

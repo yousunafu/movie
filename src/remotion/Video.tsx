@@ -396,7 +396,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   keizai={isKeizai}
                   suuri={isSuuri}
                   washi={isSuuri && (suuriWashi[sceneI] ?? false)}
-                  renai={isSuuri && (suuriRenai[sceneI] ?? false)}
+                  renai={isSuuri && (suuriRenai[sceneI] ?? false) && scene.motif !== "love_to_black"}
                   highlight={v2 ? scene.emphasis : undefined}
                   tailReveal={
                     punch

@@ -956,8 +956,12 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/しない人が多数派/.test(sentence)) {
     return { type: "diagram", motif: "love_minority" };
   }
-  if (/4組に1組は、アプリ/.test(sentence)) {
+  if (/4組に(1組|ひと組)は、アプリ/.test(sentence)) {
     return { type: "diagram", motif: "love_app_couple" };
+  }
+  // 「いいねは来るのに、いい人は来ない」は専用の絵 (/いいね/ より先に見る)
+  if (/いいねは来るのに/.test(sentence)) {
+    return { type: "diagram", motif: "love_iihito" };
   }
   if (/いいね/.test(sentence)) {
     return { type: "diagram", motif: "love_like_rain" };
@@ -968,24 +972,36 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/行動あるのみ/.test(sentence)) {
     return { type: "diagram", motif: "love_act_only" };
   }
-  if (/数学で解きます/.test(sentence)) {
+  if (/数学で召喚します/.test(sentence)) {
     return { type: "diagram", motif: "love_math" };
   }
   if (/宇宙人を探すために作られた数式/.test(sentence)) {
     return { type: "diagram", motif: "love_alien_hint" };
   }
-  if (/(日本でいちばん人が多い街|「出会い」を求めて集まる街|本気で数えます)/.test(sentence)) {
+  if (/(日本でいちばん人が多い街|出会いを求めて集まる街)/.test(sentence)) {
     return { type: "diagram", motif: "love_tokyo" };
   }
-  if (/(今日の流れは、4つの章|第[1１]章で宇宙人|第[3３]章で答え)/.test(sentence)) {
+  if (/本気で数えます/.test(sentence)) {
+    return { type: "diagram", motif: "love_count_serious" };
+  }
+  if (/今日の流れは、4つの章/.test(sentence)) {
     return { type: "diagram", motif: "love_roadmap" };
+  }
+  if (/第[1１]章で宇宙人/.test(sentence)) {
+    return { type: "diagram", motif: "love_preview_ch12" };
+  }
+  if (/第[3３]章で答え/.test(sentence)) {
+    return { type: "diagram", motif: "love_preview_ch34" };
   }
   if (/それでは、まいりましょう/.test(sentence)) {
     return { type: "diagram", motif: "love_to_black" };
   }
   // 第1章 宇宙人の数え方 (黒モード)
-  if (/(フランク・ドレイク|議題は、)/.test(sentence)) {
+  if (/フランク・ドレイク/.test(sentence)) {
     return { type: "diagram", motif: "drake_blackboard" };
+  }
+  if (/議題は、/.test(sentence)) {
+    return { type: "diagram", motif: "drake_galaxy" };
   }
   if (/(出席者は、わずか|地球側の人数)/.test(sentence)) {
     return { type: "diagram", motif: "drake_meeting" };
@@ -999,11 +1015,20 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/どんぶり勘定/.test(sentence)) {
     return { type: "diagram", motif: "drake_donburi" };
   }
-  if (/(桁なら議論できる|フェルミ推定と呼び)/.test(sentence)) {
+  if (/桁なら議論できる/.test(sentence)) {
     return { type: "diagram", motif: "drake_order" };
   }
-  if (/(有名な練習問題|ピアノの調律師|調律の頻度|答えはおよそ100人)/.test(sentence)) {
+  if (/フェルミ推定と呼び/.test(sentence)) {
+    return { type: "diagram", motif: "fermi_name" };
+  }
+  if (/有名な練習問題/.test(sentence)) {
+    return { type: "diagram", motif: "fermi_question" };
+  }
+  if (/ピアノの調律師/.test(sentence)) {
     return { type: "diagram", motif: "fermi_piano" };
+  }
+  if (/(調律の頻度|答えはおよそ100人)/.test(sentence)) {
+    return { type: "diagram", motif: "fermi_four" };
   }
   if (/電話帳/.test(sentence)) {
     return { type: "diagram", motif: "fermi_phonebook" };
@@ -1018,7 +1043,10 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "diagram", motif: "drake_to_love" };
   }
   // 第2章 運命の人を数える (黒モード+ピンク差し色)
-  if (/(ピーター・バッカス|なぜ僕に彼女ができないのか|れっきとした研究論文)/.test(sentence)) {
+  if (/ピーター・バッカス/.test(sentence)) {
+    return { type: "diagram", motif: "backus_writing" };
+  }
+  if (/(なぜ僕に彼女ができないのか|れっきとした研究論文)/.test(sentence)) {
     return { type: "diagram", motif: "backus_paper" };
   }
   if (/(「恋人の候補」|失礼な研究)/.test(sentence)) {
@@ -1027,8 +1055,11 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(東京版で計算|あなたを想像して|スタートは、東京都の人口)/.test(sentence)) {
     return { type: "diagram", motif: "tokyo_dots_start" };
   }
-  if (/(恋愛対象の性別|残りは、700万人|余裕の表情)/.test(sentence)) {
+  if (/(恋愛対象の性別|残りは、700万人)/.test(sentence)) {
     return { type: "diagram", motif: "countdown_gender" };
+  }
+  if (/余裕の表情/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_yoyu" };
   }
   if (/(次は、年齢の条件|上下5歳くらいまで|残りは、105万人)/.test(sentence)) {
     return { type: "diagram", motif: "countdown_age" };
@@ -1038,6 +1069,9 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   }
   if (/鳥取県/.test(sentence)) {
     return { type: "diagram", motif: "countdown_tottori" };
+  }
+  if (/気分が悪そう/.test(sentence)) {
+    return { type: "diagram", motif: "countdown_daijobu" };
   }
   if (/ここからが本番/.test(sentence)) {
     return { type: "diagram", motif: "countdown_honban" };
@@ -1060,7 +1094,7 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/すれちがって出会える確率/.test(sentence)) {
     return { type: "diagram", motif: "street_chance" };
   }
-  if (/(東京ドーム|反対側の外野席)/.test(sentence)) {
+  if (/(東京ドーム|反対側の外野席|存在すら気づかない)/.test(sentence)) {
     return { type: "diagram", motif: "tokyo_dome" };
   }
   if (/(気のせいではありません|数字として、本当にない)/.test(sentence)) {
@@ -1077,7 +1111,8 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "card", motif: "quiz" };
   }
   if (/^答えは、80人/.test(sentence)) {
-    return { type: "card", motif: "concept", emphasis: "80人" };
+    // 式スライド上で年齢カードが×2に光り 40→80 とカウントアップする演出 (カードではなく図解)
+    return { type: "diagram", motif: "formula_seven" };
   }
   if (/(条件をひとつ緩めた|話してみたら好きかも|関東圏)/.test(sentence)) {
     return { type: "diagram", motif: "slider_up" };
@@ -1094,15 +1129,24 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(言い出しっぺのバッカス|イギリス全土)/.test(sentence)) {
     return { type: "diagram", motif: "backus_26" };
   }
-  if (/(宇宙人の文明は、1万個|400倍近く|切ない結果)/.test(sentence)) {
+  if (/(宇宙人の文明は、1万個|400倍近く)/.test(sentence)) {
     return { type: "diagram", motif: "alien_scale" };
+  }
+  if (/切ない結果/.test(sentence)) {
+    return { type: "diagram", motif: "backus_proud" };
   }
   if (/(この話には続き|その続きは、第[4４]章で)/.test(sentence)) {
     return { type: "diagram", motif: "tsuzuku" };
   }
   // 第4章 確率は動かせる (黒モード)
-  if (/(条件を見直せば|ここに落とし穴|確率はゼロ)/.test(sentence)) {
+  if (/条件を見直せば/.test(sentence)) {
     return { type: "diagram", motif: "zero_prob" };
+  }
+  if (/ここに落とし穴/.test(sentence)) {
+    return { type: "diagram", motif: "pitfall" };
+  }
+  if (/確率はゼロ/.test(sentence)) {
+    return { type: "diagram", motif: "fade_words" };
   }
   if (/宝くじ/.test(sentence)) {
     return { type: "diagram", motif: "takarakuji" };
@@ -1110,11 +1154,23 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/(ソファ(?!ー)|それはもう家族)/.test(sentence)) {
     return { type: "diagram", motif: "sofa_family" };
   }
-  if (/(効いてくるのが、分母|新しく知り合う人の数|職場と家の往復|仕事の話しか|35万分の1はほとんど動き)/.test(sentence)) {
+  if (/(効いてくるのが、分母|新しく知り合う人の数)/.test(sentence)) {
     return { type: "diagram", motif: "bunbo_grow" };
   }
-  if (/(趣味の集まり|出会う数を10倍)/.test(sentence)) {
+  if (/職場と家の往復/.test(sentence)) {
+    return { type: "diagram", motif: "commute_10" };
+  }
+  if (/仕事の話しか/.test(sentence)) {
+    return { type: "diagram", motif: "work_talk_half" };
+  }
+  if (/35万分の1はほとんど動き/.test(sentence)) {
+    return { type: "diagram", motif: "fraction_stuck" };
+  }
+  if (/趣味の集まり/.test(sentence)) {
     return { type: "diagram", motif: "deai_x10" };
+  }
+  if (/出会う数を10倍/.test(sentence)) {
+    return { type: "diagram", motif: "fraction_x10" };
   }
   if (/(試行回数|確率の世界のただひとつ)/.test(sentence)) {
     return { type: "diagram", motif: "dice_many" };
@@ -1125,6 +1181,9 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   // 結論
   if (/(今日の話を、まとめます|運命の人は、東京におよそ40人|増えも減りもする|出会う数という分母)/.test(sentence)) {
     return { type: "diagram", motif: "renai_matome" };
+  }
+  if (/わからないものは、分解すれば/.test(sentence)) {
+    return { type: "diagram", motif: "fade_words" };
   }
   if (/(空から降ってくる奇跡|一本の計算問題|宇宙の広さではなく|人生の道具)/.test(sentence)) {
     return { type: "diagram", motif: "final_tool" };

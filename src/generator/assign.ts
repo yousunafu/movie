@@ -944,6 +944,242 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (isManabiQuizText(sentence) || /ここで質問です/.test(sentence)) {
     return { type: "card", motif: "quiz" };
   }
+  // --- のぞき見くんと絵の具のマジック回 (鍵交換): 最新作なので先頭に置く (先行ルールに飲まれない) ---
+  // つかみ (行1-21)
+  if (/突然ですが、想像してください|教室の窓ぎわ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_classroom" };
+  }
+  if (/ひみつのメモを|席を立つのは禁止/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_memo_plan" };
+  }
+  if (/30人の手から手へ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_memo_relay" };
+  }
+  if (/こっそり開いて読む/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_memo_peek" };
+  }
+  if (/もうおわかりですね|学年中に知れわたっ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_memo_spread" };
+  }
+  if (/インターネットは、これとまったく同じ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_class_to_net" };
+  }
+  if (/カード番号は、知らない人の機械|ときには10台以上/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_card_relay" };
+  }
+  if (/途中の機械が中身をのぞく/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_peek_servers" };
+  }
+  if (/カード番号は、盗まれません|ひみつが無事に届く/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_card_safe" };
+  }
+  if (/絵の具だけで説明します/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_magic_tube" };
+  }
+  if (/暗号よりも大きなおみやげ|「考え方」そのもの/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_omiyage_box" };
+  }
+  if (/今日の流れは、4つの章/.test(sentence)) {
+    return { type: "diagram", motif: "roadmap", title: "今日の流れ" };
+  }
+  // 予告2文はroadmapの3連続を避けて2分割パネルの絵にする (variantで前半/後半)
+  if (/第[1１]章で、ひみつ|第[3３]章で、のぞき見くん/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_preview" };
+  }
+  if (/それでは、まいりましょう|マジック開始/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_magic_curtain" };
+  }
+  // 第1章 ひみつと鍵のジレンマ (行23-45)
+  if (/ひみつを守る方法は、大昔から|箱に入れて、鍵をかける|途中の人は開けられません/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_box_lock" };
+  }
+  if (/めでたし|受け取った人も、開けられない/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_box_stuck" };
+  }
+  if (/鍵も送らないといけません|鍵をそのままバケツリレー/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_key_on_relay" };
+  }
+  if (/合鍵を作られるか|どちらにしても、おしまい/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_key_stolen" };
+  }
+  if (/鍵を箱に入れて送る|その箱の鍵は、どうやって|無限ループ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_infinite_box" };
+  }
+  if (/2000年のあいだ、誰にも解けなかった/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_year2000" };
+  }
+  if (/王様も、忍者も/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_king_ninja_spy" };
+  }
+  if (/鍵の受け渡し/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_key_handover" };
+  }
+  if (/今から約50年前|数学者たちが、信じられない答え/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_mathematicians" };
+  }
+  if (/鍵は、送らなければいい|いっしょに作ればいい/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_key_not_send" };
+  }
+  if (/全員にのぞかれながら|そんなことが、できるのでしょうか/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_eyes_around" };
+  }
+  if (/^(できるんです|絵の具なら)。?$/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_paint_reveal" };
+  }
+  // 第2章 絵の具のマジック (行47-114)
+  if (/役者は、3人|途中で必ずのぞいてくる/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_three_actors" };
+  }
+  if (/同じ「ひみつの色」を持つこと|なぜ、同じ色が欲しい|それを合言葉にして/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_goal_brown" };
+  }
+  if (/茶色で鍵をかけて送り|茶色を知らないのぞき見くん/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_brown_lock" };
+  }
+  if (/「ふたりだけの同じ色」こそが/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_color_is_key" };
+  }
+  if (/^ルールは、シンプル|相手に送ったものは|自分のポケットの中だけは/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_rule_board" };
+  }
+  if (/ひとつだけ確認|混ぜたら最後|「元の2色に分けて」|「戻せない」が、今日の主役/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_no_unmix" };
+  }
+  if (/^その[1-3１-３]。/.test(sentence)) {
+    // 「その3。最後の仕上げです。」のように短文が後ろに結合しても拾う
+    return { type: "diagram", motif: "nozoki_step_card" };
+  }
+  if (/同じスタート地点から始める|出発の色がバラバラ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_same_start" };
+  }
+  if (/そこで、ふたりで宣言します|黄色からスタートしまーす|丸聞こえ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_ex_declare" };
+  }
+  if (/スタート地点は、知られても困りません|ひみつにするのは、このあと混ぜる色/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_start_vs_secret" };
+  }
+  if (/ポケットに入れます|今日は、赤にしましょう|この赤は、絶対に送りません/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_ex_pocket" };
+  }
+  if (/できたオレンジを、お店に送ります/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_ex_orange" };
+  }
+  if (/黄色に青を混ぜた緑を/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_ex_green" };
+  }
+  if (/オレンジと緑は、もちろん|メモまで取っています/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_memo" };
+  }
+  if (/届いた緑に、ポケットの赤を混ぜます/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_ex_mix_you" };
+  }
+  if (/届いたオレンジに、ポケットの青/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_ex_mix_shop" };
+  }
+  if (/気づきましたか|入っている色は、黄と赤と青|混ぜた順番がちがうだけ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_same_ingredients" };
+  }
+  if (/カレー/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_curry" };
+  }
+  if (/同じ「ひみつの茶色」ができあがり/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_ex_brown" };
+  }
+  if (/今日いちばん大事なこと|一度も、バケツリレーに乗っていません|ずっと、ポケットの中に|混ぜたあとの絵の具だけ|ふたりは同じ色にたどり着けた/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_ex_recap" };
+  }
+  if (/のぞき見くんの手元を見てみましょう|集めたのは、黄色と、オレンジと、緑|黄と赤と青の茶色です/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_hands" };
+  }
+  if (/オレンジから赤だけ取り出す|できません、絵の具は戻せない/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_attack_unmix" };
+  }
+  if (/オレンジと緑を混ぜてしまえ|できた色の中身は|黄色が2倍入った/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_attack_mixall" };
+  }
+  if (/^(実に)?惜しい。?$/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_oshii" };
+  }
+  if (/最強の作戦をひらめき|片っ端から試せばいい/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_attack_brute_idea" };
+  }
+  if (/オレンジと見比べる|ちがったら、次の色|当たるまで、ぜんぶ試す/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_brute_force" };
+  }
+  if (/実はこれ、大正解です|12回で必ず破れます/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_correct_stamp" };
+  }
+  if (/マジック、大ピンチ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_paint_pinch" };
+  }
+  // 第3章 のぞき見くんの敗北 (行116-147)
+  if (/総当たり作戦を倒すには|^答えは単純です。?$|色の数を、増やせばいい/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_more_colors" };
+  }
+  if (/絵の具のかわりに、数字を使います/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_paint_to_number" };
+  }
+  if (/17かける23|筆算すれば/.test(sentence)) {
+    return { type: "card", motif: "concept" };
+  }
+  if (/^では、逆向きの問題|391は、何かける何|急に、難しくなりました|1個ずつ試すしかありません/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_reverse_problem" };
+  }
+  if (/掛け算は一瞬|「混ぜたら戻せない」と、そっくり/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_oneway_arrows" };
+  }
+  if (/この数字を、300桁に|1のあとに0が300個|10の300乗種類ある|この数が、どれだけおかしいか/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_digits300" };
+  }
+  if (/世界最速のコンピュータ|1兆個のハズレ/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_super_computer" };
+  }
+  if (/ぜんぶ試し終わるまで、何年|1万年でしょうか/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_years_quiz" };
+  }
+  if (/ぜんぶ試し終わるより先に|宇宙の寿命が、尽きます/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_universe_end" };
+  }
+  if (/およそ138億年|まるごと1兆回|さらに、1兆回|まだ、終わらないのです/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_universe_repeat" };
+  }
+  if (/のぞき見くんの作戦は、正しい|正しいけれど、間に合わない/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_correct_but_late" };
+  }
+  if (/暗号の守り方の正体|「破るのにかかる時間」で守る/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_time_wall" };
+  }
+  // 第4章 きみのスマホの中 (行149-157) + 結論 (行158-172)
+  if (/遠い世界のこと|スマホでこの動画を見ている|アドレスの横を見て|小さな、鍵マーク/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_your_phone" };
+  }
+  if (/^見つけましたね。?$|作動中」のサイン/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_magic_sign" };
+  }
+  if (/サイトをひとつ開くたびに|世界中で、1秒間に、何百万回/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_world_handshake" };
+  }
+  if (/宇宙規模の空ぶり/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_karaburi" };
+  }
+  if (/今日の話を、まとめます|送ったら、のぞかれる|見られながら、その場で作る|総当たりは、正しい作戦|宇宙が終わるまで間に合わない/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_matome", title: "今日のまとめ" };
+  }
+  if (/ポチッと買う0.1秒の裏|宇宙規模の鍵を、こっそり|^安心して、お買い物を/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_pochi_backstage" };
+  }
+  if (/使いすぎは、どんな暗号も/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_receipt_joke" };
+  }
+  if (/今日いちばんのおみやげです|新しい機械でも、天才の計算でも/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_omiyage_open" };
+  }
+  if (/どうやって鍵を安全に送るか|全人類がそう考えつづける|そもそも、送らなくていいのでは/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_question_flip" };
+  }
+  if (/問いの立て方なのかもしれません/.test(sentence)) {
+    return { type: "diagram", motif: "nozoki_flip_your_problem" };
+  }
   // --- 恋愛版ドレイク回 (運命の人は、東京に40人しかいない): 具体的な言葉から順に判定する ---
   // (previewルールより前に置く: 「第1章で宇宙人を〜」はキラキラ回の予告絵ではなく恋愛回の道標の絵)
   // つかみ (恋愛モード・白ベース+ピンク)

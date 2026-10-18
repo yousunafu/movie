@@ -130,6 +130,12 @@ import {
   KC,
 } from "./KirakiraScenes";
 
+// のぞき見くんと絵の具のマジック回 (暗号/鍵交換) の専用シーン
+import { ExchangeScene, NoUnmixScene } from "./NozokiScenes";
+import { NozokiIntroScene, NOZOKI_INTRO_MOTIFS } from "./NozokiIntro";
+import { NozokiCh2Scene, NOZOKI_CH2_MOTIFS } from "./NozokiCh2";
+import { NozokiCh3Scene, NOZOKI_CH3_MOTIFS } from "./NozokiCh3";
+
 // 恋愛版ドレイク回 (運命の人は、東京に40人しかいない) の専用シーン
 import {
   LoveStatScene,
@@ -615,7 +621,10 @@ export const suuriSceneHidesSubtitle = (scene: Scene): boolean =>
   (/drake_to_love/.test(scene.motif ?? "") && /なぜ、僕に彼女ができないのか/.test(scene.text ?? "")) ||
   // 恋愛ドレイク回: 議題を画面中央に大きく出すシーンは字幕を重ねない
   (/drake_galaxy/.test(scene.motif ?? "") && /いくつあるか/.test(scene.text ?? "")) ||
-  (/backus_wedding/.test(scene.motif ?? "") && /ゼロではない/.test(scene.text ?? ""));
+  (/backus_wedding/.test(scene.motif ?? "") && /ゼロではない/.test(scene.text ?? "")) ||
+  // のぞき見くん回: 決めゼリフ (行40-41) は絵の中央に大きく出すので字幕を重ねない
+  (/nozoki_key_not_send/.test(scene.motif ?? "") &&
+    /送らなければいい|いっしょに作ればいい/.test(scene.text ?? ""));
 
 const CHAPTER_NUM_RE = /第[0-9０-９一二三四五六七八九十]+章/;
 const ChapterCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
@@ -2863,6 +2872,9 @@ const YamabaScene: React.FC = () => {
 };
 
 const resolveSuuriMotif = (m: string): string | undefined => {
+  // のぞき見くん回 (絵の具のマジック) の専用トークンを最優先で見る
+  // すべて nozoki_ 接頭辞なので他作品のルールと衝突しない (名前そのまま通す)
+  if (/^nozoki_/.test(m)) return m;
   // 恋愛版ドレイク回の専用トークンを最優先で見る
   // (sofa_family→sofa_clock / drake_blackboard→math_talk などの誤吸収を防ぐため順番が大事)
   if (/love_stat|7wari/.test(m)) return "love_stat_7wari";
@@ -3151,6 +3163,8 @@ export const computeSuuriWashi = (scenes: Scene[]): boolean[] => {
     // キラキラ画面回: 第3章 (飛行機の資料の世界) だけ和紙、それ以外は黒
     if ((KIRAKIRA_WASHI_MOTIFS as readonly string[]).includes(m)) return true;
     if ((KIRAKIRA_DARK_MOTIFS as readonly string[]).includes(m)) return false;
+    // のぞき見くん回: 和紙は使わない (反転フィルタで絵の具の色が狂うため全編黒)
+    if (m.startsWith("nozoki_")) return false;
     // 恋愛版ドレイク回: 和紙は使わない (恋愛モードは computeSuuriRenai が担当)
     if ((RENAI_PINK_MOTIFS as readonly string[]).includes(m)) return false;
     if ((RENAI_DARK_MOTIFS as readonly string[]).includes(m)) return false;
@@ -3308,6 +3322,22 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
   // --- 寿司回 (37%ルール): カード以外なら type が chart でも専用の絵を出す ---
   // (gain_fade などは機械割り当てが type=chart を返すが、汎用チャートに落とさない)
   if (scene.type !== "card") {
+    // --- のぞき見くん回 (絵の具のマジック) ---
+    if (m === "nozoki_ex_declare") return <ExchangeScene scene={scene} variant={variant} stage="declare" />;
+    if (m === "nozoki_ex_pocket") return <ExchangeScene scene={scene} variant={variant} stage="pocket" />;
+    if (m === "nozoki_ex_orange") return <ExchangeScene scene={scene} variant={variant} stage="orange" />;
+    if (m === "nozoki_ex_green") return <ExchangeScene scene={scene} variant={variant} stage="green" />;
+    if (m === "nozoki_ex_mix_you") return <ExchangeScene scene={scene} variant={variant} stage="mix_you" />;
+    if (m === "nozoki_ex_mix_shop") return <ExchangeScene scene={scene} variant={variant} stage="mix_shop" />;
+    if (m === "nozoki_ex_brown") return <ExchangeScene scene={scene} variant={variant} stage="brown" />;
+    if (m === "nozoki_ex_recap") return <ExchangeScene scene={scene} variant={variant} stage="recap" />;
+    if (m === "nozoki_no_unmix") return <NoUnmixScene scene={scene} variant={variant} />;
+    if (m && (NOZOKI_INTRO_MOTIFS as readonly string[]).includes(m))
+      return <NozokiIntroScene scene={scene} variant={variant} motif={m} />;
+    if (m && (NOZOKI_CH2_MOTIFS as readonly string[]).includes(m))
+      return <NozokiCh2Scene scene={scene} variant={variant} motif={m} />;
+    if (m && (NOZOKI_CH3_MOTIFS as readonly string[]).includes(m))
+      return <NozokiCh3Scene scene={scene} variant={variant} motif={m} />;
     // --- 恋愛版ドレイク回 (運命の人は、東京に40人しかいない) ---
     if (m === "love_stat_7wari") return <LoveStatScene scene={scene} variant={variant} />;
     if (m === "love_no_date") return <LoveNoDateScene scene={scene} variant={variant} />;

@@ -321,6 +321,22 @@ export const splitPunchline = (scene?: {
     const tail = m[2];
     return { head, tail, ratio: head.length / (head.length + tail.length) };
   }
+  // のぞき見くん回: 「大正解です。」は発声の瞬間までネタバレ禁止 (赤ハンコと同期)
+  if (scene?.motif === "nozoki_correct_stamp") {
+    const m = text.match(/^(.+[、。])(大正解です。?)$/);
+    if (!m) return null;
+    const head = m[1];
+    const tail = m[2];
+    return { head, tail, ratio: head.length / (head.length + tail.length) };
+  }
+  // のぞき見くん回: 「尽きます。」は発声の瞬間までネタバレ禁止 (星の一斉消灯と同期)
+  if (scene?.motif === "nozoki_universe_end") {
+    const m = text.match(/^(.+、)(尽きます。?)$/);
+    if (!m) return null;
+    const head = m[1];
+    const tail = m[2];
+    return { head, tail, ratio: head.length / (head.length + tail.length) };
+  }
   return null;
 };
 

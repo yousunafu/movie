@@ -1,5 +1,1379 @@
 {
-  "scenes": [],
-  "hasBgm": false,
-  "generatedAt": ""
+  "preset": "suuri",
+  "scenes": [
+    {
+      "index": 0,
+      "text": "突然ですが、想像してください。",
+      "type": "diagram",
+      "motif": "nozoki_classroom",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 1,
+      "text": "あなたは、教室の窓ぎわの席。",
+      "type": "diagram",
+      "motif": "nozoki_classroom",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 2,
+      "text": "ひみつのメモを、ろうか側のいちばん向こうの席まで、届けたい。",
+      "type": "diagram",
+      "motif": "nozoki_memo_plan",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.4
+    },
+    {
+      "index": 3,
+      "text": "でも、机から立つのは禁止。",
+      "type": "diagram",
+      "motif": "nozoki_memo_plan",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 4,
+      "text": "メモは、間に座る30人の手から手へ、渡っていきます。",
+      "type": "diagram",
+      "motif": "nozoki_memo_relay",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.7
+    },
+    {
+      "index": 5,
+      "text": "30人もいれば、途中でこっそり開いて読む人が、必ずいます。",
+      "type": "diagram",
+      "motif": "nozoki_memo_peek",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.2
+    },
+    {
+      "index": 6,
+      "text": "はい、もうおわかりですね。",
+      "type": "diagram",
+      "motif": "nozoki_memo_spread",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 7,
+      "text": "あなたのひみつは、昼休みには学年中に知れわたっています。",
+      "type": "diagram",
+      "motif": "nozoki_memo_spread",
+      "audio": "audio/silent.wav",
+      "durationSec": 5
+    },
+    {
+      "index": 8,
+      "text": "実は、インターネットは、これとまったく同じ仕組みです。",
+      "type": "diagram",
+      "motif": "nozoki_class_to_net",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.9
+    },
+    {
+      "index": 9,
+      "text": "あなたがネットで買い物をすると、カード番号は、知らない人の機械を、バケツリレーで渡っていきます。",
+      "type": "diagram",
+      "motif": "nozoki_card_relay",
+      "audio": "audio/silent.wav",
+      "durationSec": 8.6
+    },
+    {
+      "index": 10,
+      "text": "その数、ときには10台以上。",
+      "type": "diagram",
+      "motif": "nozoki_card_relay",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 11,
+      "text": "そして途中の機械は、やろうと思えば、中身をのぞくことができてしまいます。",
+      "type": "diagram",
+      "motif": "nozoki_peek_servers",
+      "audio": "audio/silent.wav",
+      "durationSec": 6.5
+    },
+    {
+      "index": 12,
+      "text": "なのに──あなたのカード番号は、盗まれません。",
+      "type": "diagram",
+      "motif": "nozoki_card_safe",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.1
+    },
+    {
+      "index": 13,
+      "text": "のぞかれ放題の通り道を、ひみつが無事に届くのです。",
+      "type": "diagram",
+      "motif": "nozoki_card_safe",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.5
+    },
+    {
+      "index": 14,
+      "text": "今日は、このマジックのタネを、絵の具だけで説明します。",
+      "type": "diagram",
+      "motif": "nozoki_magic_tube",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.9
+    },
+    {
+      "index": 15,
+      "text": "そしてタネあかしの先には、暗号よりも大きなおみやげが待っています。",
+      "type": "diagram",
+      "motif": "nozoki_omiyage_box",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.9
+    },
+    {
+      "index": 16,
+      "text": "行きづまった問題を解くための、「考え方」そのものです。",
+      "type": "diagram",
+      "motif": "nozoki_omiyage_box",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.9
+    },
+    {
+      "index": 17,
+      "text": "今日の流れは、4つの章です。",
+      "type": "diagram",
+      "motif": "roadmap",
+      "title": "今日の流れ",
+      "items": [
+        {
+          "label": "ひみつの届け方は、むずかしい"
+        },
+        {
+          "label": "絵の具のマジック"
+        },
+        {
+          "label": "正しい作戦が、間に合わない"
+        },
+        {
+          "label": "マジックは今、動いている"
+        }
+      ],
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 18,
+      "text": "第1章で、ひみつを届けるのが実はとても難しいことを確かめ、第2章で、絵の具のマジックを見ます。",
+      "type": "diagram",
+      "motif": "nozoki_preview",
+      "audio": "audio/silent.wav",
+      "durationSec": 8.5
+    },
+    {
+      "index": 19,
+      "text": "第3章で、のぞき見くんの最強の作戦がなぜ負けるのかを数え、第4章で、このマジックがあなたのスマホで今まさに動いている証拠を見つけます。",
+      "type": "diagram",
+      "motif": "nozoki_preview",
+      "audio": "audio/silent.wav",
+      "durationSec": 12.1
+    },
+    {
+      "index": 20,
+      "text": "それでは、まいりましょう。",
+      "type": "diagram",
+      "motif": "nozoki_magic_curtain",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 21,
+      "text": "まず第1章、ひみつの届け方は、むずかしい。",
+      "type": "card",
+      "motif": "chapter",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.8
+    },
+    {
+      "index": 22,
+      "text": "ひみつを守る方法は、大昔から決まっています。",
+      "type": "diagram",
+      "motif": "nozoki_box_lock",
+      "audio": "audio/silent.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 23,
+      "text": "箱に入れて、鍵をかける。",
+      "type": "diagram",
+      "motif": "nozoki_box_lock",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 24,
+      "text": "これなら、途中の人は開けられません。",
+      "type": "diagram",
+      "motif": "nozoki_box_lock",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 25,
+      "text": "めでたし、めでたし──とは、いきません。",
+      "type": "diagram",
+      "motif": "nozoki_box_stuck",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.6
+    },
+    {
+      "index": 26,
+      "text": "鍵のかかった箱が届いても、受け取った人も、開けられないのです。",
+      "type": "diagram",
+      "motif": "nozoki_box_stuck",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.6
+    },
+    {
+      "index": 27,
+      "text": "開けてほしいなら、鍵も送らないといけません。",
+      "type": "diagram",
+      "motif": "nozoki_key_on_relay",
+      "audio": "audio/silent.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 28,
+      "text": "でも、鍵を送る道も、さっきと同じで、知らない人の手を次々と通っていくしかないのです。",
+      "type": "diagram",
+      "motif": "nozoki_key_on_relay",
+      "audio": "audio/silent.wav",
+      "durationSec": 7.6
+    },
+    {
+      "index": 29,
+      "text": "途中で箱を開けられるか、合鍵を作られるか。",
+      "type": "diagram",
+      "motif": "nozoki_key_stolen",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.8
+    },
+    {
+      "index": 30,
+      "text": "どちらにしても、おしまいです。",
+      "type": "diagram",
+      "motif": "nozoki_key_stolen",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 31,
+      "text": "じゃあ、鍵を箱に入れて送る？",
+      "type": "diagram",
+      "motif": "nozoki_infinite_box",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 32,
+      "text": "その箱の鍵は、どうやって送るんですか。",
+      "type": "diagram",
+      "motif": "nozoki_infinite_box",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.4
+    },
+    {
+      "index": 33,
+      "text": "はい、無限ループです。",
+      "type": "diagram",
+      "motif": "nozoki_infinite_box",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 34,
+      "text": "実はこれ、2000年のあいだ、誰にも解けなかった問題です。",
+      "type": "diagram",
+      "motif": "nozoki_year2000",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.2
+    },
+    {
+      "index": 35,
+      "text": "王様も、忍者も、スパイも、みんなここで悩みました。",
+      "type": "diagram",
+      "motif": "nozoki_king_ninja_spy",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.5
+    },
+    {
+      "index": 36,
+      "text": "ひみつそのものより、「鍵の受け渡し」が、いちばん危ない。",
+      "type": "diagram",
+      "motif": "nozoki_key_handover",
+      "audio": "audio/silent.wav",
+      "durationSec": 5
+    },
+    {
+      "index": 37,
+      "text": "ところが、今から約50年前。",
+      "type": "diagram",
+      "motif": "nozoki_mathematicians",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 38,
+      "text": "数学者たちが、信じられない答えを見つけます。",
+      "type": "diagram",
+      "motif": "nozoki_mathematicians",
+      "audio": "audio/silent.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 39,
+      "text": "「鍵は、送らなければいい」。",
+      "type": "diagram",
+      "motif": "nozoki_key_not_send",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 40,
+      "text": "「見られながら、その場で、いっしょに作ればいい」。",
+      "type": "diagram",
+      "motif": "nozoki_key_not_send",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.5
+    },
+    {
+      "index": 41,
+      "text": "全員にのぞかれながら、ふたりだけのひみつを作る。",
+      "type": "diagram",
+      "motif": "nozoki_eyes_around",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.3
+    },
+    {
+      "index": 42,
+      "text": "そんなことが、できるのでしょうか。",
+      "type": "diagram",
+      "motif": "nozoki_eyes_around",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.1
+    },
+    {
+      "index": 43,
+      "text": "できるんです。",
+      "type": "diagram",
+      "motif": "nozoki_paint_reveal",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 44,
+      "text": "絵の具なら。",
+      "type": "diagram",
+      "motif": "nozoki_paint_reveal",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 45,
+      "text": "続いて第2章、絵の具のマジック。",
+      "type": "card",
+      "motif": "chapter",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 46,
+      "text": "役者は、3人です。",
+      "type": "diagram",
+      "motif": "nozoki_three_actors",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 47,
+      "text": "あなたと、お店と、途中で必ずのぞいてくる、のぞき見くん。",
+      "type": "diagram",
+      "motif": "nozoki_three_actors",
+      "audio": "audio/silent.wav",
+      "durationSec": 5
+    },
+    {
+      "index": 48,
+      "text": "目標は、あなたとお店のふたりだけで、同じ「ひみつの色」を持つことです。",
+      "type": "diagram",
+      "motif": "nozoki_goal_brown",
+      "audio": "audio/silent.wav",
+      "durationSec": 6.3
+    },
+    {
+      "index": 49,
+      "text": "なぜ、同じ色が欲しいのか。",
+      "type": "diagram",
+      "motif": "nozoki_goal_brown",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 50,
+      "text": "ふたりだけの同じ色があれば、それを合言葉にして、カード番号に鍵をかけられるからです。",
+      "type": "diagram",
+      "motif": "nozoki_goal_brown",
+      "audio": "audio/silent.wav",
+      "durationSec": 7.6
+    },
+    {
+      "index": 51,
+      "text": "あなたが茶色で鍵をかけて送り、お店が同じ茶色で開ける。",
+      "type": "diagram",
+      "motif": "nozoki_brown_lock",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.9
+    },
+    {
+      "index": 52,
+      "text": "茶色を知らないのぞき見くんは、開けられない。",
+      "type": "diagram",
+      "motif": "nozoki_brown_lock",
+      "audio": "audio/silent.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 53,
+      "text": "つまり「ふたりだけの同じ色」こそが、さっきから探していた「鍵」そのものなのです。",
+      "type": "diagram",
+      "motif": "nozoki_color_is_key",
+      "audio": "audio/silent.wav",
+      "durationSec": 7.2
+    },
+    {
+      "index": 54,
+      "text": "ルールは、シンプル。",
+      "type": "diagram",
+      "motif": "nozoki_rule_board",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 55,
+      "text": "相手に送ったものは、ぜんぶ、のぞき見くんに見られます。",
+      "type": "diagram",
+      "motif": "nozoki_rule_board",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.9
+    },
+    {
+      "index": 56,
+      "text": "自分のポケットの中だけは、見られません。",
+      "type": "diagram",
+      "motif": "nozoki_rule_board",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.6
+    },
+    {
+      "index": 57,
+      "text": "そして、始める前に、ひとつだけ確認です。",
+      "type": "diagram",
+      "motif": "nozoki_no_unmix",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.6
+    },
+    {
+      "index": 58,
+      "text": "絵の具は、混ぜたら最後、二度と元に戻せません。",
+      "type": "diagram",
+      "motif": "nozoki_no_unmix",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.1
+    },
+    {
+      "index": 59,
+      "text": "オレンジ色を見せられて「元の2色に分けて」と言われても、無理ですよね。",
+      "type": "diagram",
+      "motif": "nozoki_no_unmix",
+      "audio": "audio/silent.wav",
+      "durationSec": 6.3
+    },
+    {
+      "index": 60,
+      "text": "この「戻せない」が、今日の主役です。",
+      "type": "diagram",
+      "motif": "nozoki_no_unmix",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 61,
+      "text": "では、マジック開始。",
+      "type": "diagram",
+      "motif": "nozoki_magic_curtain",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 62,
+      "text": "その1。",
+      "type": "diagram",
+      "motif": "nozoki_step_card",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 63,
+      "text": "離れたふたりが、最後に同じ色にたどり着くには、同じスタート地点から始める必要があります。",
+      "type": "diagram",
+      "motif": "nozoki_same_start",
+      "audio": "audio/silent.wav",
+      "durationSec": 7.9
+    },
+    {
+      "index": 64,
+      "text": "出発の色がバラバラだったら、この先なにを混ぜても、同じ色にはなりませんから。",
+      "type": "diagram",
+      "motif": "nozoki_same_start",
+      "audio": "audio/silent.wav",
+      "durationSec": 6.8
+    },
+    {
+      "index": 65,
+      "text": "そこで、ふたりで宣言します。",
+      "type": "diagram",
+      "motif": "nozoki_ex_declare",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 66,
+      "text": "「黄色からスタートしまーす」。",
+      "type": "diagram",
+      "motif": "nozoki_ex_declare",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 67,
+      "text": "のぞき見くんにも、丸聞こえです。いいんです。",
+      "type": "diagram",
+      "motif": "nozoki_ex_declare",
+      "audio": "audio/silent.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 68,
+      "text": "スタート地点は、知られても困りません。",
+      "type": "diagram",
+      "motif": "nozoki_start_vs_secret",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.4
+    },
+    {
+      "index": 69,
+      "text": "ひみつにするのは、このあと混ぜる色のほうです。",
+      "type": "diagram",
+      "motif": "nozoki_start_vs_secret",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.1
+    },
+    {
+      "index": 70,
+      "text": "その2。",
+      "type": "diagram",
+      "motif": "nozoki_step_card",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 71,
+      "text": "あなたは、ひみつの色を1色だけ選んで、ポケットに入れます。",
+      "type": "diagram",
+      "motif": "nozoki_ex_pocket",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.2
+    },
+    {
+      "index": 72,
+      "text": "今日は、赤にしましょう。",
+      "type": "diagram",
+      "motif": "nozoki_ex_pocket",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 73,
+      "text": "この赤は、絶対に送りません。",
+      "type": "diagram",
+      "motif": "nozoki_ex_pocket",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 74,
+      "text": "そして、黄色に赤を混ぜて──できたオレンジを、お店に送ります。",
+      "type": "diagram",
+      "motif": "nozoki_ex_orange",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.6
+    },
+    {
+      "index": 75,
+      "text": "お店も、ポケットにひみつの青を持っていて、黄色に青を混ぜた緑を、あなたに送ります。",
+      "type": "diagram",
+      "motif": "nozoki_ex_green",
+      "audio": "audio/silent.wav",
+      "durationSec": 7.4
+    },
+    {
+      "index": 76,
+      "text": "オレンジと緑は、もちろん、のぞき見くんに丸見えです。",
+      "type": "diagram",
+      "motif": "nozoki_memo",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.7
+    },
+    {
+      "index": 77,
+      "text": "メモまで取っています。",
+      "type": "diagram",
+      "motif": "nozoki_memo",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 78,
+      "text": "その3。最後の仕上げです。",
+      "type": "diagram",
+      "motif": "nozoki_step_card",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 79,
+      "text": "あなたは、届いた緑に、ポケットの赤を混ぜます。黄と青に、赤。",
+      "type": "diagram",
+      "motif": "nozoki_ex_mix_you",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.4
+    },
+    {
+      "index": 80,
+      "text": "お店は、届いたオレンジに、ポケットの青を混ぜます。黄と赤に、青。",
+      "type": "diagram",
+      "motif": "nozoki_ex_mix_shop",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.8
+    },
+    {
+      "index": 81,
+      "text": "──気づきましたか。",
+      "type": "diagram",
+      "motif": "nozoki_same_ingredients",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 82,
+      "text": "どちらも、入っている色は、黄と赤と青。",
+      "type": "diagram",
+      "motif": "nozoki_same_ingredients",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.4
+    },
+    {
+      "index": 83,
+      "text": "混ぜた順番がちがうだけです。",
+      "type": "diagram",
+      "motif": "nozoki_same_ingredients",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 84,
+      "text": "カレーの具を、どの順番で鍋に入れても、同じカレーになるのと一緒です。",
+      "type": "diagram",
+      "motif": "nozoki_curry",
+      "audio": "audio/silent.wav",
+      "durationSec": 6.1
+    },
+    {
+      "index": 85,
+      "text": "こうして、ふたりの手元に、まったく同じ「ひみつの茶色」ができあがりました。",
+      "type": "diagram",
+      "motif": "nozoki_ex_brown",
+      "audio": "audio/silent.wav",
+      "durationSec": 6.7
+    },
+    {
+      "index": 86,
+      "text": "ここで、今日いちばん大事なことを言います。",
+      "type": "diagram",
+      "motif": "nozoki_ex_recap",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.8
+    },
+    {
+      "index": 87,
+      "text": "あなたの赤も、お店の青も、一度も、バケツリレーに乗っていません。",
+      "type": "diagram",
+      "motif": "nozoki_ex_recap",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.8
+    },
+    {
+      "index": 88,
+      "text": "ずっと、ポケットの中にありました。",
+      "type": "diagram",
+      "motif": "nozoki_ex_recap",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.1
+    },
+    {
+      "index": 89,
+      "text": "送られたのは、混ぜたあとの絵の具だけ。",
+      "type": "diagram",
+      "motif": "nozoki_ex_recap",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.4
+    },
+    {
+      "index": 90,
+      "text": "なのに、ふたりは同じ色にたどり着けたのです。",
+      "type": "diagram",
+      "motif": "nozoki_ex_recap",
+      "audio": "audio/silent.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 91,
+      "text": "さて、のぞき見くんの手元を見てみましょう。",
+      "type": "diagram",
+      "motif": "nozoki_hands",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.8
+    },
+    {
+      "index": 92,
+      "text": "集めたのは、黄色と、オレンジと、緑。",
+      "type": "diagram",
+      "motif": "nozoki_hands",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 93,
+      "text": "欲しいのは、黄と赤と青の茶色です。",
+      "type": "diagram",
+      "motif": "nozoki_hands",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.1
+    },
+    {
+      "index": 94,
+      "text": "作戦その1、オレンジから赤だけ取り出す。",
+      "type": "diagram",
+      "motif": "nozoki_attack_unmix",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.6
+    },
+    {
+      "index": 95,
+      "text": "──できません、絵の具は戻せないので。",
+      "type": "diagram",
+      "motif": "nozoki_attack_unmix",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.4
+    },
+    {
+      "index": 96,
+      "text": "作戦その2、ならば、オレンジと緑を混ぜてしまえ。おっ、頭いい。",
+      "type": "diagram",
+      "motif": "nozoki_attack_mixall",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.6
+    },
+    {
+      "index": 97,
+      "text": "でも、できた色の中身は、黄、赤、黄、青。",
+      "type": "diagram",
+      "motif": "nozoki_attack_mixall",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.6
+    },
+    {
+      "index": 98,
+      "text": "黄色が2倍入った、ちょっとちがう茶色です。",
+      "type": "diagram",
+      "motif": "nozoki_attack_mixall",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.8
+    },
+    {
+      "index": 99,
+      "text": "惜しい。",
+      "type": "diagram",
+      "motif": "nozoki_oshii",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 100,
+      "text": "実に惜しい。",
+      "type": "diagram",
+      "motif": "nozoki_oshii",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 101,
+      "text": "そしてここで、のぞき見くんが、最強の作戦をひらめきます。",
+      "type": "diagram",
+      "motif": "nozoki_attack_brute_idea",
+      "audio": "audio/silent.wav",
+      "durationSec": 5
+    },
+    {
+      "index": 102,
+      "text": "「ひみつの色なんて、片っ端から試せばいいんじゃないか？」",
+      "type": "diagram",
+      "motif": "nozoki_attack_brute_idea",
+      "audio": "audio/silent.wav",
+      "durationSec": 5
+    },
+    {
+      "index": 103,
+      "text": "黄色に赤を混ぜて、オレンジと見比べる。",
+      "type": "diagram",
+      "motif": "nozoki_brute_force",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.4
+    },
+    {
+      "index": 104,
+      "text": "ちがったら、次の色。",
+      "type": "diagram",
+      "motif": "nozoki_brute_force",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 105,
+      "text": "当たるまで、ぜんぶ試す。",
+      "type": "diagram",
+      "motif": "nozoki_brute_force",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 106,
+      "text": "……実はこれ、大正解です。",
+      "type": "diagram",
+      "motif": "nozoki_correct_stamp",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 107,
+      "text": "絵の具が12色セットなら、12回で必ず破れます。",
+      "type": "diagram",
+      "motif": "nozoki_correct_stamp",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.3
+    },
+    {
+      "index": 108,
+      "text": "マジック、大ピンチです。",
+      "type": "diagram",
+      "motif": "nozoki_paint_pinch",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 109,
+      "text": "続いて第3章、正しい作戦が、間に合わない。",
+      "type": "card",
+      "motif": "chapter",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.8
+    },
+    {
+      "index": 110,
+      "text": "のぞき見くんの総当たり作戦を倒すには、どうすればいいでしょうか。",
+      "type": "diagram",
+      "motif": "nozoki_more_colors",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.8
+    },
+    {
+      "index": 111,
+      "text": "答えは単純です。",
+      "type": "diagram",
+      "motif": "nozoki_more_colors",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 112,
+      "text": "色の数を、増やせばいい。",
+      "type": "diagram",
+      "motif": "nozoki_more_colors",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 113,
+      "text": "そのために、本物の暗号は、絵の具のかわりに、数字を使います。",
+      "type": "diagram",
+      "motif": "nozoki_paint_to_number",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.4
+    },
+    {
+      "index": 114,
+      "text": "さて、ここで問題です。",
+      "type": "card",
+      "motif": "quiz",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 115,
+      "text": "17かける23は、いくつでしょう。",
+      "type": "card",
+      "motif": "concept",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.1
+    },
+    {
+      "index": 116,
+      "text": "筆算すれば、小学生でも解けます。",
+      "type": "card",
+      "motif": "concept",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 117,
+      "text": "答えは、391、です。",
+      "type": "card",
+      "motif": "concept",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 118,
+      "text": "では、逆向きの問題。",
+      "type": "diagram",
+      "motif": "nozoki_reverse_problem",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 119,
+      "text": "391は、何かける何でしょう。",
+      "type": "diagram",
+      "motif": "nozoki_reverse_problem",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 120,
+      "text": "……急に、難しくなりましたね。",
+      "type": "diagram",
+      "motif": "nozoki_reverse_problem",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 121,
+      "text": "2で割れるかな、3で割れるかな、と1個ずつ試すしかありません。",
+      "type": "diagram",
+      "motif": "nozoki_reverse_problem",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.6
+    },
+    {
+      "index": 122,
+      "text": "掛け算は一瞬、逆もどりは大仕事。",
+      "type": "diagram",
+      "motif": "nozoki_oneway_arrows",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 123,
+      "text": "絵の具の「混ぜたら戻せない」と、そっくり同じ形です。",
+      "type": "diagram",
+      "motif": "nozoki_oneway_arrows",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.7
+    },
+    {
+      "index": 124,
+      "text": "そして本物の暗号は、この数字を、300桁にします。",
+      "type": "diagram",
+      "motif": "nozoki_digits300",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.5
+    },
+    {
+      "index": 125,
+      "text": "300桁とは、1のあとに0が300個ならぶ長さ。",
+      "type": "diagram",
+      "motif": "nozoki_digits300",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.3
+    },
+    {
+      "index": 126,
+      "text": "つまり、ひみつの色が、10の300乗種類あるということです。",
+      "type": "diagram",
+      "motif": "nozoki_digits300",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.4
+    },
+    {
+      "index": 127,
+      "text": "この数が、どれだけおかしいか。",
+      "type": "diagram",
+      "motif": "nozoki_digits300",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 128,
+      "text": "のぞき見くんが、世界最速のコンピュータで、1秒に1兆色試したとしましょう。",
+      "type": "diagram",
+      "motif": "nozoki_super_computer",
+      "audio": "audio/silent.wav",
+      "durationSec": 6.7
+    },
+    {
+      "index": 129,
+      "text": "1秒ごとに、1兆個のハズレが消えていきます。",
+      "type": "diagram",
+      "motif": "nozoki_super_computer",
+      "audio": "audio/silent.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 130,
+      "text": "さて、ぜんぶ試し終わるまで、何年かかるでしょうか。",
+      "type": "diagram",
+      "motif": "nozoki_years_quiz",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.5
+    },
+    {
+      "index": 131,
+      "text": "1万年でしょうか、1億年でしょうか。",
+      "type": "diagram",
+      "motif": "nozoki_years_quiz",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 132,
+      "text": "いいえ、ぜんぶ試し終わるより先に──",
+      "type": "diagram",
+      "motif": "nozoki_universe_end",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 133,
+      "text": "宇宙の寿命が、尽きます。",
+      "type": "diagram",
+      "motif": "nozoki_universe_end",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 134,
+      "text": "宇宙が生まれてから今日まで、およそ138億年。",
+      "type": "diagram",
+      "motif": "nozoki_universe_repeat",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.1
+    },
+    {
+      "index": 135,
+      "text": "その138億年を、まるごと1兆回くり返しても。",
+      "type": "diagram",
+      "motif": "nozoki_universe_repeat",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.1
+    },
+    {
+      "index": 136,
+      "text": "それをさらに、1兆回くり返しても。",
+      "type": "diagram",
+      "motif": "nozoki_universe_repeat",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.1
+    },
+    {
+      "index": 137,
+      "text": "まだ、終わらないのです。",
+      "type": "diagram",
+      "motif": "nozoki_universe_repeat",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 138,
+      "text": "のぞき見くんの作戦は、正しい。",
+      "type": "diagram",
+      "motif": "nozoki_correct_but_late",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 139,
+      "text": "正しいけれど、間に合わない。",
+      "type": "diagram",
+      "motif": "nozoki_correct_but_late",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 140,
+      "text": "これが、暗号の守り方の正体です。",
+      "type": "diagram",
+      "motif": "nozoki_time_wall",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 141,
+      "text": "頑丈な壁で守るのではなく、「破るのにかかる時間」で守る。",
+      "type": "diagram",
+      "motif": "nozoki_time_wall",
+      "audio": "audio/silent.wav",
+      "durationSec": 5
+    },
+    {
+      "index": 142,
+      "text": "最後の第4章、マジックは今、動いている。",
+      "type": "card",
+      "motif": "chapter",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.6
+    },
+    {
+      "index": 143,
+      "text": "ここまでの話、遠い世界のことに聞こえましたか。",
+      "type": "diagram",
+      "motif": "nozoki_your_phone",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.1
+    },
+    {
+      "index": 144,
+      "text": "では、スマホでこの動画を見ているあなた。",
+      "type": "diagram",
+      "motif": "nozoki_your_phone",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.6
+    },
+    {
+      "index": 145,
+      "text": "画面のいちばん上、アドレスの横を見てください。",
+      "type": "diagram",
+      "motif": "nozoki_your_phone",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.1
+    },
+    {
+      "index": 146,
+      "text": "小さな、鍵マークがありませんか。",
+      "type": "diagram",
+      "motif": "nozoki_your_phone",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 147,
+      "text": "見つけましたね。",
+      "type": "diagram",
+      "motif": "nozoki_magic_sign",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 148,
+      "text": "それが、「ただいま絵の具のマジック、作動中」のサインです。",
+      "type": "diagram",
+      "motif": "nozoki_magic_sign",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.2
+    },
+    {
+      "index": 149,
+      "text": "あなたがサイトをひとつ開くたびに、スマホと相手は、さっきの絵の具の交換を、1秒もかけずに済ませています。",
+      "type": "diagram",
+      "motif": "nozoki_world_handshake",
+      "audio": "audio/silent.wav",
+      "durationSec": 9.4
+    },
+    {
+      "index": 150,
+      "text": "世界中で、1秒間に、何百万回。",
+      "type": "diagram",
+      "motif": "nozoki_world_handshake",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 151,
+      "text": "のぞき見くんたちは今日も、世界中で、宇宙規模の空ぶりをしています。",
+      "type": "diagram",
+      "motif": "nozoki_karaburi",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.9
+    },
+    {
+      "index": 152,
+      "text": "今日の話を、まとめます。",
+      "type": "diagram",
+      "motif": "nozoki_matome",
+      "title": "今日のまとめ",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 153,
+      "text": "ひみつの鍵は、送ったら、のぞかれる。",
+      "type": "diagram",
+      "motif": "nozoki_matome",
+      "title": "今日のまとめ",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 154,
+      "text": "だから、混ぜたら戻せない絵の具で、見られながら、その場で作る。",
+      "type": "diagram",
+      "motif": "nozoki_matome",
+      "title": "今日のまとめ",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.6
+    },
+    {
+      "index": 155,
+      "text": "総当たりは、正しい作戦。",
+      "type": "diagram",
+      "motif": "nozoki_matome",
+      "title": "今日のまとめ",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 156,
+      "text": "でも、色を10の300乗種類にすれば、正しい作戦でも、宇宙が終わるまで間に合わない。",
+      "type": "diagram",
+      "motif": "nozoki_matome",
+      "title": "今日のまとめ",
+      "audio": "audio/silent.wav",
+      "durationSec": 7.6
+    },
+    {
+      "index": 157,
+      "text": "あなたが今夜、何かをポチッと買う0.1秒の裏で──",
+      "type": "diagram",
+      "motif": "nozoki_pochi_backstage",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.5
+    },
+    {
+      "index": 158,
+      "text": "絵の具のマジックが、宇宙規模の鍵を、こっそり作ってくれています。",
+      "type": "diagram",
+      "motif": "nozoki_pochi_backstage",
+      "audio": "audio/silent.wav",
+      "durationSec": 5.8
+    },
+    {
+      "index": 159,
+      "text": "安心して、お買い物を。",
+      "type": "diagram",
+      "motif": "nozoki_pochi_backstage",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 160,
+      "text": "ただし使いすぎは、どんな暗号も、守ってくれません。",
+      "type": "diagram",
+      "motif": "nozoki_receipt_joke",
+      "audio": "audio/silent.wav",
+      "durationSec": 4.5
+    },
+    {
+      "index": 161,
+      "text": "さて、最後に、今日いちばんのおみやげです。",
+      "type": "diagram",
+      "motif": "nozoki_omiyage_open",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.8
+    },
+    {
+      "index": 162,
+      "text": "2000年の難問を解いた武器は、新しい機械でも、天才の計算でもありませんでした。",
+      "type": "diagram",
+      "motif": "nozoki_omiyage_open",
+      "audio": "audio/silent.wav",
+      "durationSec": 7.2
+    },
+    {
+      "index": 163,
+      "text": "「どうやって鍵を安全に送るか」。",
+      "type": "diagram",
+      "motif": "nozoki_question_flip",
+      "audio": "audio/silent.wav",
+      "durationSec": 3
+    },
+    {
+      "index": 164,
+      "text": "2000年間、全人類がそう考えつづけるなか、誰かがこう問い直しただけです。",
+      "type": "diagram",
+      "motif": "nozoki_question_flip",
+      "audio": "audio/silent.wav",
+      "durationSec": 6.7
+    },
+    {
+      "index": 165,
+      "text": "「そもそも、送らなくていいのでは？」。",
+      "type": "diagram",
+      "motif": "nozoki_question_flip",
+      "audio": "audio/silent.wav",
+      "durationSec": 3.4
+    },
+    {
+      "index": 166,
+      "text": "行きづまったとき、疑うべきは、努力の量ではなく、問いの立て方なのかもしれません。",
+      "type": "diagram",
+      "motif": "nozoki_flip_your_problem",
+      "audio": "audio/silent.wav",
+      "durationSec": 7.2
+    },
+    {
+      "index": 167,
+      "text": "あなたの目の前の難問にも、「送らなくていい鍵」が、きっと隠れています。",
+      "type": "card",
+      "motif": "concept",
+      "audio": "audio/silent.wav",
+      "durationSec": 6.3
+    },
+    {
+      "index": 168,
+      "text": "ご視聴ありがとうございました。",
+      "type": "card",
+      "motif": "ending",
+      "isEnding": true,
+      "audio": "audio/silent.wav",
+      "durationSec": 4
+    }
+  ],
+  "generatedAt": "2026-10-18T22:47:22.982Z"
 }

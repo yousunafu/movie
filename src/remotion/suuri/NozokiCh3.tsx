@@ -106,11 +106,22 @@ const TimeTape: React.FC<{ x: number; y: number; wdt: number; label?: string; op
   </g>
 );
 
-// ===== 行116-118: 色の数を増やす (パレット横増殖・端ほどモノクロ) =====
+// ===== 行116-118: 色の数を増やす (多色パレットの横増殖) =====
 const MoreColorsScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const { frame, fps, progOf } = useProg();
   const prog = progOf(scene?.durationSec);
-  const pcColors = [PC.yellow, PC.red, PC.blue, PC.orange, PC.green, PC.brown];
+  const pcColors = [
+    PC.yellow,
+    PC.red,
+    PC.blue,
+    PC.orange,
+    PC.green,
+    PC.brown,
+    PC.gold,
+    PC.sky,
+    PC.wood,
+    PC.fakeBrown,
+  ];
   // v0: 問いかけ (のぞき見くん+少数) / v1: 増え始める / v2: ズザーッと大量増殖
   const cols = variant === 0 ? 6 : variant === 1 ? 12 : 20;
   const rows = variant === 2 ? 4 : 2;
@@ -128,12 +139,8 @@ const MoreColorsScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
           [...Array(cols)].map((_, c) => {
             const idx = r * cols + c;
             if (idx >= shown) return null;
-            // 中央付近はカラー、端へ行くほどモノクロ (世界の切り替え予告)
-            const distFromCenter = Math.abs(c - (cols - 1) / 2) / ((cols - 1) / 2);
-            const isColor = distFromCenter < 0.45;
-            const color = isColor
-              ? pcColors[(idx * 5) % pcColors.length]
-              : GRAYS[Math.min(Math.floor((distFromCenter - 0.45) * 8) + 1, GRAYS.length - 1)];
+            // 端まで色とりどり (多色。隣どうしが同色にならないよう7飛びで巡回)
+            const color = pcColors[(idx * 7 + r * 3) % pcColors.length];
             return (
               <PaintChip
                 key={`${r}-${c}`}
@@ -237,13 +244,13 @@ const ReverseProblemScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
             <text x={960} y={480} textAnchor="middle" fill={SP.ink} fontSize={110} fontWeight={800} fontFamily={SUURI_FONT}>
               391 = <tspan fill={SP.accent}>?</tspan> × <tspan fill={SP.accent}>?</tspan>
             </text>
-            {/* 汗マーク (急に難しい) */}
+            {/* 汗マーク (急に難しい・水色) */}
             {[0, 1, 2].map((i) => (
               <path
                 key={i}
                 d={`M ${1360 + i * 56} ${330 + (i % 2) * 24} q 10 18 0 30 q -10 -12 0 -30`}
-                fill={SP.faint}
-                opacity={0.4 + Math.sin(frame / 7 + i * 2) * 0.25}
+                fill={PC.sky}
+                opacity={0.5 + Math.sin(frame / 7 + i * 2) * 0.3}
               />
             ))}
             <SmallLabel x={960} y={650} text="急に、むずかしい……" color={SP.faint} size={36} />
@@ -279,52 +286,88 @@ const ReverseProblemScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   );
 };
 
-// ===== 行128-129: 掛け算は一方通行 / 逆もどりは茨道 =====
+// ===== 行128-129: 掛け算はスイスイ一方通行 / 逆もどりは途切れ途切れの大仕事 =====
 const OnewayArrowsScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const { frame, fps } = useProg();
+  const slide = ((frame * 5) % 150) / 150; // 行きのスイスイ流れ
   return (
     <Frame>
       <svg width={W} height={H}>
         <DiagramTitle text="一方通行のかたち" />
-        {/* 左: 掛け算 = 太い一方通行 (一瞬) */}
+        {/* 左: 掛け算 = 太く滑らかな一方通行 (スイスイ) */}
         <g opacity={appearAt(frame, fps, 0.2)}>
-          <SmallLabel x={580} y={330} text="掛け算 (順方向)" color={SP.ink} size={36} weight={700} />
-          <line x1={330} y1={460} x2={830} y2={460} stroke={SP.ink} strokeWidth={22} strokeLinecap="round" />
-          <path d="M 870 460 L 806 424 L 806 496 Z" fill={SP.ink} />
-          <SmallLabel x={580} y={560} text="一瞬で進める" color={SP.faint} size={30} />
+          <SmallLabel x={580} y={320} text="掛け算 (順方向)" color={SP.ink} size={36} weight={700} />
+          <line x1={320} y1={450} x2={810} y2={450} stroke={SP.ink} strokeWidth={28} strokeLinecap="round" />
+          <path d="M 880 450 L 802 406 L 802 494 Z" fill={SP.ink} />
+          {/* スイスイの流れ線 (矢印の上を走る) */}
+          {[0, 1].map((i) => (
+            <line
+              key={i}
+              x1={330 + slide * 280 + i * 130}
+              y1={396 - i * 14}
+              x2={404 + slide * 280 + i * 130}
+              y2={396 - i * 14}
+              stroke={SP.faint}
+              strokeWidth={5}
+              strokeLinecap="round"
+              opacity={0.75}
+            />
+          ))}
+          <SmallLabel x={580} y={548} text="スイスイ、一瞬" color={SP.faint} size={30} />
         </g>
         {/* 中央仕切り */}
         <line x1={960} y1={300} x2={960} y2={700} stroke={SP.dim} strokeWidth={3} strokeDasharray="10 12" />
-        {/* 右: 逆もどり = 細い茨道 */}
+        {/* 右: 逆もどり = 細く、途切れ途切れの矢印 (右→左) */}
         <g opacity={appearAt(frame, fps, 0.9)}>
-          <SmallLabel x={1340} y={330} text="逆もどり" color={SP.accent} size={36} weight={700} />
-          <path
-            d="M 1590 460 C 1500 420, 1460 500, 1380 460 C 1300 420, 1260 500, 1180 460 C 1140 440, 1120 470, 1090 460"
-            fill="none"
-            stroke={SP.accent}
-            strokeWidth={5}
-          />
-          {/* 茨のトゲ */}
-          {[...Array(8)].map((_, i) => {
-            const tx = 1140 + i * 58;
-            const ty = 445 + (i % 2) * 28;
-            return <path key={i} d={`M ${tx} ${ty} l 10 -20 l 10 20`} fill="none" stroke={SP.accent} strokeWidth={4} />;
-          })}
-          <path d="M 1060 460 L 1108 436 L 1108 484 Z" fill={SP.accent} />
-          <SmallLabel x={1340} y={560} text="大仕事" color={SP.faint} size={30} />
+          <SmallLabel x={1340} y={320} text="逆もどり" color={SP.accent} size={36} weight={700} />
+          {[
+            [1600, 1534],
+            [1500, 1444],
+            [1410, 1360],
+            [1324, 1282],
+            [1246, 1212],
+            [1178, 1152],
+          ].map(([ax, bx], i) => (
+            <line
+              key={i}
+              x1={ax}
+              y1={450 + (i % 2 === 0 ? -8 : 8)}
+              x2={bx}
+              y2={450 + (i % 2 === 0 ? 8 : -8)}
+              stroke={SP.faint}
+              strokeWidth={4}
+              strokeLinecap="round"
+            />
+          ))}
+          <path d="M 1078 450 L 1124 426 L 1124 474 Z" fill={SP.faint} />
+          {/* 行く手をはばむバツ (赤・最強調) */}
+          <g stroke={SP.accent} strokeWidth={9} strokeLinecap="round">
+            <line x1={1332} y1={416} x2={1396} y2={482} />
+            <line x1={1396} y1={416} x2={1332} y2={482} />
+          </g>
+          {/* ヘトヘトの汗 (水色) */}
+          {[0, 1, 2].map((i) => (
+            <path
+              key={i}
+              d={`M ${1190 + i * 150} ${356 + (i % 2) * 26} q 10 18 0 30 q -10 -12 0 -30`}
+              fill={PC.sky}
+              opacity={0.5 + Math.sin(frame / 7 + i * 2) * 0.3}
+            />
+          ))}
+          <SmallLabel x={1340} y={548} text="途切れ途切れの、大仕事" color={SP.faint} size={30} />
         </g>
         {variant === 1 && (
           <g opacity={appearAt(frame, fps, 1.4)}>
-            {/* 下: 絵の具の「戻せない」を小さく併記 (モノクロ章なのでグレーチップ) */}
-            <rect x={620} y={640} width={680} height={130} rx={14} fill={SP.panel} stroke={SP.dim} strokeWidth={3} />
-            <PaintChip x={740} y={705} color={GRAYS[1]} scale={0.55} />
-            <text x={820} y={717} textAnchor="middle" fill={SP.faint} fontSize={34} fontWeight={700} fontFamily={SUURI_FONT}>
+            {/* 下: 絵の具の「戻せない」を実色で併記 (黄+赤→オレンジ) */}
+            <rect x={560} y={636} width={800} height={134} rx={14} fill={SP.panel} stroke={SP.dim} strokeWidth={3} />
+            <PaintChip x={680} y={703} color={PC.yellow} scale={0.55} />
+            <text x={760} y={715} textAnchor="middle" fill={SP.faint} fontSize={34} fontWeight={700} fontFamily={SUURI_FONT}>
               +
             </text>
-            <PaintChip x={900} y={705} color={GRAYS[3]} scale={0.55} />
-            <path d="M 980 705 L 1040 705 M 1040 705 L 1022 693 M 1040 705 L 1022 717" stroke={SP.faint} strokeWidth={4} fill="none" />
-            <PaintChip x={1110} y={705} color={GRAYS[2]} scale={0.55} />
-            <text x={1230} y={717} textAnchor="middle" fill={SP.faint} fontSize={30} fontFamily={SUURI_FONT}>
+            <PaintChip x={840} y={703} color={PC.red} scale={0.55} />
+            <path d="M 920 703 L 980 703 M 980 703 L 962 691 M 980 703 L 962 715" stroke={SP.line} strokeWidth={4} fill="none" />
+            <PaintChip x={1050} y={703} color={PC.orange} scale={0.55} />
+            <text x={1210} y={715} textAnchor="middle" fill={SP.faint} fontSize={30} fontFamily={SUURI_FONT}>
               戻せない
             </text>
           </g>
@@ -334,17 +377,107 @@ const OnewayArrowsScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   );
 };
 
-// ===== 行130-133: 0が300個 (帯スクロール) =====
+// ===== 行130-133: 0が300個 (帯スクロール) / v2=カラーチップだらけ / v3=帯はみ出し比較 =====
 const Digits300Scene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const { frame, fps, progOf } = useProg();
   const prog = progOf(scene?.durationSec);
   const scroll = easeInOut(prog);
   const zeroCount = Math.min(Math.floor(scroll * 300) + 1, 300);
-  const bandY = variant === 3 ? 430 : 470;
+  const bandY = 470;
+  const chipColors = [
+    PC.yellow,
+    PC.red,
+    PC.blue,
+    PC.orange,
+    PC.green,
+    PC.brown,
+    PC.gold,
+    PC.sky,
+    PC.wood,
+    PC.fakeBrown,
+  ];
+  if (variant === 2) {
+    // s: 「ひみつの色が10の300乗種類」→ 画面を色とりどりのチップで埋めつくしても、全然足りない
+    const cols = 22;
+    const rows = 7;
+    const shown = Math.floor(easeInOut(clamp01(prog * 1.5)) * cols * rows);
+    return (
+      <Frame>
+        <svg width={W} height={H}>
+          <DiagramTitle text="10の300乗種類" />
+          {[...Array(rows)].map((_, r) =>
+            [...Array(cols)].map((_, c) => {
+              const idx = r * cols + c;
+              if (idx >= shown) return null;
+              return (
+                <PaintChip
+                  key={`${r}-${c}`}
+                  x={100 + c * 82 + (r % 2) * 30}
+                  y={232 + r * 86}
+                  color={chipColors[(idx * 7 + r * 3) % chipColors.length]}
+                  scale={0.52}
+                  opacity={0.9}
+                />
+              );
+            })
+          )}
+          {/* 中央の帯: 埋めつくしても全然足りない (途方もなさ) */}
+          <g opacity={appearAt(frame, fps, 1.8)}>
+            <rect x={520} y={468} width={880} height={112} rx={16} fill={SP.panel} stroke={SP.accent} strokeWidth={5} />
+            <text x={960} y={540} textAnchor="middle" fill={SP.accent} fontSize={44} fontWeight={800} fontFamily={SUURI_FONT}>
+              画面を埋めつくしても、まだ全然足りない
+            </text>
+          </g>
+        </svg>
+      </Frame>
+    );
+  }
+  if (variant === 3) {
+    // s: 「この数が、どれだけおかしいか」→ 比較対象 (宇宙の原子) + 帯が画面からはみ出す
+    const reach = easeInOut(clamp01(prog * 1.3));
+    return (
+      <Frame>
+        <svg width={W} height={H}>
+          <DiagramTitle text="この数の、おかしさ" />
+          {/* 比較: 宇宙にある原子ぜんぶ (短い帯で収まる) */}
+          <g opacity={appearAt(frame, fps, 0.3)}>
+            <SmallLabel x={590} y={296} text="宇宙にある原子、ぜんぶ" color={SP.ink} size={34} weight={700} />
+            <rect x={330} y={330} width={520} height={72} rx={12} fill={SP.panel} stroke={SP.line} strokeWidth={4} />
+            <text x={590} y={380} textAnchor="middle" fill={SP.ink} fontSize={40} fontWeight={800} fontFamily={SUURI_FONT}>
+              およそ 10の80乗 個
+            </text>
+            <SmallLabel x={960} y={370} text="← 画面に収まる" color={SP.faint} size={28} anchor="start" />
+          </g>
+          {/* ひみつの色の数: 帯が画面右端を突き抜ける */}
+          <g opacity={appearAt(frame, fps, 1.0)}>
+            <SmallLabel x={590} y={516} text="ひみつの色の数" color={SP.accent} size={34} weight={700} />
+            <rect
+              x={330}
+              y={550}
+              width={Math.max(10, (W - 330 + 100) * reach)}
+              height={72}
+              rx={12}
+              fill={SP.panel}
+              stroke={SP.accent}
+              strokeWidth={5}
+            />
+            <text x={620} y={600} textAnchor="middle" fill={SP.accent} fontSize={40} fontWeight={800} fontFamily={SUURI_FONT}>
+              10の300乗 種類
+            </text>
+            {reach > 0.9 && (
+              <SmallLabel x={1560} y={516} text="画面の外へ、まだ続く…" color={SP.faint} size={28} />
+            )}
+          </g>
+          {/* 帯を見上げて腕組み */}
+          <NozokiKun x={420} y={740} scale={1.1} pose="arms" frame={frame} />
+        </svg>
+      </Frame>
+    );
+  }
   return (
     <Frame>
       <svg width={W} height={H}>
-        <DiagramTitle text={variant === 2 ? "10の300乗種類" : "300桁の数"} />
+        <DiagramTitle text="300桁の数" />
         {/* 「1」固定 */}
         <text x={330} y={bandY + 26} textAnchor="middle" fill={SP.ink} fontSize={96} fontWeight={800} fontFamily={SUURI_FONT}>
           1
@@ -385,13 +518,6 @@ const Digits300Scene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
           </text>
         </g>
         {variant === 1 && <SmallLabel x={960} y={780} text="1のあとに、0が300個" color={SP.faint} size={32} />}
-        {variant === 2 && (
-          <SmallLabel x={960} y={780} text="ひみつの色が、10の300乗種類" color={SP.faint} size={32} />
-        )}
-        {variant === 3 && (
-          /* 帯の前で腕組み (この数のおかしさを見上げる) */
-          <NozokiKun x={1560} y={720} scale={1.15} pose="arms" frame={frame} />
-        )}
       </svg>
     </Frame>
   );
@@ -441,17 +567,17 @@ const SuperComputerScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
             </g>
           );
         })}
-        {/* 赤メーター (ハズレカウンタ) */}
+        {/* 赤メーター (ハズレカウンタ・少し上に配置) */}
         <g opacity={appearAt(frame, fps, variant === 0 ? 1.2 : 0.3)}>
-          <rect x={1180} y={620} width={460} height={110} rx={14} fill={SP.panel} stroke={SP.accent} strokeWidth={4} />
-          <text x={1410} y={668} textAnchor="middle" fill={SP.accent} fontSize={38} fontWeight={800} fontFamily={SUURI_FONT}>
+          <rect x={1180} y={560} width={460} height={110} rx={14} fill={SP.panel} stroke={SP.accent} strokeWidth={4} />
+          <text x={1410} y={608} textAnchor="middle" fill={SP.accent} fontSize={38} fontWeight={800} fontFamily={SUURI_FONT}>
             ハズレ {Math.floor(easeInOut(prog) * 9999).toLocaleString()} 兆個
           </text>
-          <rect x={1210} y={686} width={400} height={16} rx={8} fill={SP.dim} opacity={0.5} />
-          <rect x={1210} y={686} width={400 * easeInOut(prog)} height={16} rx={8} fill={SP.accent} />
+          <rect x={1210} y={626} width={400} height={16} rx={8} fill={SP.dim} opacity={0.5} />
+          <rect x={1210} y={626} width={400 * easeInOut(prog)} height={16} rx={8} fill={SP.accent} />
         </g>
         {variant === 1 && (
-          <SmallLabel x={1410} y={780} text="1秒ごとに、1兆個消える" color={SP.faint} size={30} />
+          <SmallLabel x={1410} y={730} text="1秒ごとに、1兆個消える" color={SP.faint} size={30} />
         )}
       </svg>
     </Frame>
@@ -493,6 +619,9 @@ const YearsQuizScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
 };
 
 // ===== 行138-139: 満天の星 → 一斉消灯 (tailReveal) =====
+// 実際の恒星っぽい色 (彩度控えめ: 青白・白・黄・オレンジ・赤)。白〜青白を多めに
+const STAR_COLORS = ["#A9BFE0", "#E9E9ED", "#E3D49A", "#D9A06B", "#C9736A"];
+const starColorOf = (i: number) => STAR_COLORS[[1, 0, 1, 2, 1, 0, 3, 1, 2, 0, 1, 4][i % 12]];
 const STAR_SEEDS = [...Array(90)].map((_, i) => ({
   x: ((i * 487 + 131) % 1700) + 110,
   y: ((i * 263 + 97) % 560) + 180,
@@ -516,18 +645,21 @@ const UniverseEndScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
             cx={s.x}
             cy={s.y}
             r={s.r}
-            fill={SP.ink}
+            fill={starColorOf(i)}
             opacity={(0.45 + Math.sin((frame + s.tw * 4) / 14) * 0.35) * (1 - lightsOut)}
           />
         ))}
-        {/* ひときわ明るい星たち */}
-        {[300, 700, 1200, 1550].map((sx, i) => (
-          <g key={i} opacity={(0.9 - i * 0.1) * (1 - lightsOut)}>
-            <circle cx={sx} cy={240 + i * 110} r={5} fill={SP.ink} />
-            <line x1={sx - 14} y1={240 + i * 110} x2={sx + 14} y2={240 + i * 110} stroke={SP.ink} strokeWidth={2} opacity={0.6} />
-            <line x1={sx} y1={226 + i * 110} x2={sx} y2={254 + i * 110} stroke={SP.ink} strokeWidth={2} opacity={0.6} />
-          </g>
-        ))}
+        {/* ひときわ明るい星たち (青白・黄・オレンジ・白) */}
+        {[300, 700, 1200, 1550].map((sx, i) => {
+          const bc = [STAR_COLORS[0], STAR_COLORS[2], STAR_COLORS[3], STAR_COLORS[1]][i];
+          return (
+            <g key={i} opacity={(0.9 - i * 0.1) * (1 - lightsOut)}>
+              <circle cx={sx} cy={240 + i * 110} r={5} fill={bc} />
+              <line x1={sx - 14} y1={240 + i * 110} x2={sx + 14} y2={240 + i * 110} stroke={bc} strokeWidth={2} opacity={0.6} />
+              <line x1={sx} y1={226 + i * 110} x2={sx} y2={254 + i * 110} stroke={bc} strokeWidth={2} opacity={0.6} />
+            </g>
+          );
+        })}
         {variant === 0 && (
           <SmallLabel x={960} y={760} text="ぜんぶ試し終わるより、先に──" color={SP.faint} size={34} />
         )}
@@ -540,6 +672,25 @@ const UniverseEndScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
 };
 
 // ===== 行140-143: 138億年×1兆×1兆でも終わらない (絵が育つ) =====
+// テープのまわりに散らす色とりどりの星 (テープと被らない余白に配置)
+const REPEAT_STARS: Array<[number, number, number]> = [
+  // [x, y, 色index]
+  [260, 215, 0],
+  [520, 236, 1],
+  [780, 206, 2],
+  [1040, 232, 1],
+  [1300, 210, 3],
+  [1560, 238, 0],
+  [1720, 212, 1],
+  [230, 380, 1],
+  [300, 520, 4],
+  [240, 650, 0],
+  [1750, 330, 2],
+  [1810, 560, 1],
+  [1760, 700, 3],
+  [350, 760, 1],
+];
+
 const UniverseRepeatScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const { frame, fps, progOf } = useProg();
   const prog = progOf(scene?.durationSec);
@@ -547,6 +698,17 @@ const UniverseRepeatScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
     <Frame>
       <svg width={W} height={H}>
         <DiagramTitle text="138億年を、くり返しても" />
+        {/* 宇宙の星 (色とりどり・控えめに瞬く) */}
+        {REPEAT_STARS.map(([sx, sy, ci], i) => (
+          <circle
+            key={i}
+            cx={sx}
+            cy={sy}
+            r={3 + (i % 3)}
+            fill={STAR_COLORS[ci]}
+            opacity={0.35 + Math.sin((frame + i * 9) / 13) * 0.2}
+          />
+        ))}
         {/* 1本目のテープ: 宇宙の歴史 */}
         <TimeTape x={420} y={300} wdt={1080} label="宇宙の歴史 138億年" />
         {variant >= 1 && (
@@ -598,10 +760,13 @@ const CorrectButLateScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
     <Frame>
       <svg width={W} height={H}>
         <DiagramTitle text="正しい。でも、間に合わない" />
-        {/* 左看板: 正しい○ (白) */}
+        {/* 左看板: 作戦ボード (木のピン) + 正しい○ (緑) */}
         <g opacity={appearAt(frame, fps, 0.2)}>
           <rect x={400} y={300} width={500} height={420} rx={20} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-          <circle cx={650} cy={460} r={90} fill="none" stroke={SP.ink} strokeWidth={14} />
+          {/* ボードのピン (木の色) */}
+          <circle cx={440} cy={336} r={10} fill={PC.wood} stroke={SP.line} strokeWidth={3} />
+          <circle cx={860} cy={336} r={10} fill={PC.wood} stroke={SP.line} strokeWidth={3} />
+          <circle cx={650} cy={460} r={90} fill="none" stroke={PC.green} strokeWidth={14} />
           <text x={650} y={650} textAnchor="middle" fill={SP.ink} fontSize={52} fontWeight={800} fontFamily={SUURI_FONT}>
             作戦は、正しい
           </text>
@@ -647,15 +812,15 @@ const TimeWallScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
         <DiagramTitle text="「時間」で守る" />
         {variant === 0 && (
           <>
-            {/* 巨大砂時計 (赤) + 中に鍵 */}
+            {/* 巨大砂時計 (赤) + 中に鍵 (金) */}
             <Hourglass x={960} y={500} scale={2.1} color={SP.accent} frame={frame} />
-            <KeyIcon x={960} y={505} scale={1.1} color={SP.ink} />
+            <KeyIcon x={960} y={505} scale={1.1} color={PC.gold} />
             <SmallLabel x={960} y={820} text="破るのにかかる時間が、守りになる" color={SP.faint} size={32} />
           </>
         )}
         {variant === 1 && (
           <>
-            {/* 左: 頑丈な壁 (グレー・×) */}
+            {/* 左: 頑丈なレンガの壁 (茶系・×) */}
             <g opacity={appearAt(frame, fps, 0.2)}>
               {[0, 1, 2, 3].map((r) =>
                 [0, 1, 2].map((c) => (
@@ -665,7 +830,8 @@ const TimeWallScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
                     y={360 + r * 80}
                     width={116}
                     height={76}
-                    fill={SP.panel}
+                    fill={PC.wood}
+                    fillOpacity={0.55 + ((r * 3 + c) % 3) * 0.12}
                     stroke={SP.dim}
                     strokeWidth={3}
                   />
@@ -678,7 +844,7 @@ const TimeWallScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
             {/* 右: 砂時計 (赤) */}
             <g opacity={appearAt(frame, fps, 0.9)}>
               <Hourglass x={1310} y={510} scale={1.5} color={SP.accent} frame={frame} />
-              <KeyIcon x={1310} y={514} scale={0.8} color={SP.ink} />
+              <KeyIcon x={1310} y={514} scale={0.8} color={PC.gold} />
               <SmallLabel x={1310} y={760} text="「時間」で守る" color={SP.ink} size={34} weight={700} />
             </g>
           </>
@@ -699,10 +865,14 @@ const YourPhoneScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
           <>
             <DiagramTitle text={variant === 0 ? "遠い世界の話？" : "スマホで見ている、あなた"} />
             <Phone x={960} y={500} scale={variant === 0 ? 0.9 : 1.1}>
-              {/* 画面の中: 動画再生イメージ */}
+              {/* 画面の中: 動画再生イメージ (再生ボタン=赤・シークバー=水色) */}
               <rect x={-70} y={-60} width={140} height={90} rx={8} fill={SP.panel} stroke={SP.dim} strokeWidth={2} />
-              <path d="M -14 -30 L 18 -15 L -14 0 Z" fill={SP.line} />
-              <line x1={-70} y1={60} x2={70} y2={60} stroke={SP.dim} strokeWidth={4} />
+              <path d="M -14 -30 L 18 -15 L -14 0 Z" fill={PC.red} />
+              {/* ミニアドレスバー (鍵=金) */}
+              <rect x={-70} y={-110} width={140} height={28} rx={14} fill={SP.background} stroke={SP.dim} strokeWidth={2} />
+              <circle cx={-52} cy={-96} r={6} fill={PC.gold} />
+              <rect x={-38} y={-100} width={86} height={8} rx={4} fill={SP.dim} />
+              <line x1={-70} y1={60} x2={70} y2={60} stroke={PC.sky} strokeWidth={4} strokeLinecap="round" opacity={0.8} />
               <line x1={-70} y1={95} x2={30} y2={95} stroke={SP.dim} strokeWidth={4} />
             </Phone>
             {variant === 1 && (
@@ -716,10 +886,11 @@ const YourPhoneScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
             {/* ズームイン途中: スマホ上部を拡大 */}
             <g transform={`translate(960, 520) scale(${1.6 + easeInOut(prog) * 0.9})`}>
               <rect x={-310} y={-150} width={620} height={300} rx={30} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-              {/* アドレスバー */}
+              {/* アドレスバー (鍵マーク=金) */}
               <rect x={-260} y={-60} width={520} height={74} rx={37} fill="#0A0A0C" stroke={SP.line} strokeWidth={3} />
-              <LockPad x={-210} y={-23} scale={0.42} color={SP.ink} />
-              <rect x={-160} y={-36} width={320} height={10} rx={5} fill={SP.dim} />
+              <LockPad x={-210} y={-23} scale={0.42} color={PC.gold} />
+              <rect x={-160} y={-36} width={90} height={10} rx={5} fill={PC.sky} opacity={0.75} />
+              <rect x={-58} y={-36} width={218} height={10} rx={5} fill={SP.dim} />
               <rect x={-160} y={-14} width={210} height={10} rx={5} fill={SP.dim} opacity={0.6} />
             </g>
             <SmallLabel x={960} y={830} text="アドレスの、横" color={SP.faint} size={34} />
@@ -728,9 +899,9 @@ const YourPhoneScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
         {variant === 3 && (
           <>
             <DiagramTitle text="小さな、鍵マーク" />
-            {/* 拡大済みアドレスバー + 鍵マークに赤マル */}
+            {/* 拡大済みアドレスバー + 鍵マーク (金) に赤マル */}
             <rect x={400} y={380} width={1120} height={150} rx={75} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-            <LockPad x={520} y={455} scale={0.85} color={SP.ink} />
+            <LockPad x={520} y={455} scale={0.85} color={PC.gold} />
             <rect x={620} y={430} width={640} height={18} rx={9} fill={SP.dim} />
             <rect x={620} y={472} width={420} height={18} rx={9} fill={SP.dim} opacity={0.6} />
             {/* 赤マル (じわっと描かれる) */}
@@ -767,8 +938,8 @@ const MagicSignScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
     <Frame>
       <svg width={W} height={H}>
         <DiagramTitle text="ただいま、作動中" />
-        {/* 鍵マーク本体 */}
-        <LockPad x={960} y={490} scale={2.0} color={SP.ink} />
+        {/* 鍵マーク本体 (金) */}
+        <LockPad x={960} y={490} scale={2.0} color={PC.gold} />
         {/* 漏れる絵の具の色 (カラー回帰) */}
         {wisps.map((wi, i) => {
           const rise = leak * (60 + i * 14);
@@ -820,11 +991,11 @@ const WorldHandshakeScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
         <ellipse cx={1080} cy={540} rx={100} ry={100} fill={SP.dim} opacity={0.35} />
         <ellipse cx={1420} cy={420} rx={210} ry={120} fill={SP.dim} opacity={0.35} />
         <ellipse cx={1530} cy={620} rx={90} ry={55} fill={SP.dim} opacity={0.35} />
-        {/* 鍵マーク連打点灯 (黄) */}
+        {/* 鍵マーク連打点灯 (金) */}
         {WORLD_KEYS.slice(0, Math.max(litCount, variant === 0 ? 2 : 0)).map((k, i) => (
           <g key={i} opacity={0.9}>
-            <circle cx={k.x} cy={k.y} r={22} fill={PC.yellow} opacity={0.14 + Math.sin((frame + k.at) / 10) * 0.08} />
-            <KeyIcon x={k.x} y={k.y} scale={0.42} color={PC.yellow} />
+            <circle cx={k.x} cy={k.y} r={22} fill={PC.gold} opacity={0.14 + Math.sin((frame + k.at) / 10) * 0.08} />
+            <KeyIcon x={k.x} y={k.y} scale={0.42} color={PC.gold} />
           </g>
         ))}
         {variant === 0 && (
@@ -867,13 +1038,13 @@ const KaraburiScene: React.FC<SceneProps> = ({ scene }) => {
         {/* 手前の2人 (大きめ・ガックリ) */}
         <NozokiKun x={480} y={700} scale={1.05} pose="gakkuri" frame={frame} />
         <NozokiKun x={1380} y={690} scale={0.88} pose="gakkuri" frame={frame + 17} opacity={0.9} />
-        {/* ヘトヘトの汗 */}
+        {/* ヘトヘトの汗 (水色) */}
         {[0, 1, 2, 3].map((i) => (
           <path
             key={i}
             d={`M ${560 + i * 300} ${430 + (i % 2) * 40} q 11 20 0 34 q -11 -14 0 -34`}
-            fill={SP.faint}
-            opacity={0.35 + Math.sin(frame / 8 + i * 1.7) * 0.2}
+            fill={PC.sky}
+            opacity={0.45 + Math.sin(frame / 8 + i * 1.7) * 0.25}
           />
         ))}
         <SmallLabel x={960} y={800} text="今日も、世界中でヘトヘト" color={SP.faint} size={34} />
@@ -965,7 +1136,7 @@ const PochiBackstageScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
               <rect x={-70} y={50} width={140} height={12} rx={6} fill={SP.dim} />
               <rect x={-70} y={80} width={96} height={12} rx={6} fill={SP.dim} opacity={0.6} />
             </Phone>
-            <LockPad x={1330} y={450} scale={0.9} color={SP.line} />
+            <LockPad x={1330} y={450} scale={0.9} color={PC.gold} />
             <SmallLabel x={1330} y={560} text="守られています" color={SP.faint} size={30} />
           </>
         )}
@@ -1191,7 +1362,7 @@ const FlipYourProblemScene: React.FC<SceneProps> = ({ scene }) => {
   );
 };
 
-// ===== 行158-162: 今日のまとめ (1行ずつ点灯) =====
+// ===== 行158-162: 今日のまとめ (1行ずつ点灯・本編とそろえた色付きアイコン) =====
 const NozokiMatomeScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const { frame, fps } = useProg();
   const a = appearAt(frame, fps, 8);
@@ -1210,27 +1381,70 @@ const NozokiMatomeScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
           const on = i < lit;
           const isNew = i === lit - 1;
           const pop = isNew ? appearAt(frame, fps, 14) : 1;
-          const y = 290 + i * 145;
+          const y = 272 + i * 150;
+          const cy = y + 59;
           return (
             <g key={i} opacity={on ? pop * a : a * 0.35}>
               <rect
-                x={340}
+                x={300}
                 y={y}
-                width={1240}
-                height={110}
+                width={1320}
+                height={118}
                 rx={16}
                 fill={on ? SP.panel : "none"}
                 stroke={on ? (l.color === SP.accent ? SP.accent : SP.line) : SP.dim}
                 strokeWidth={on ? 6 : 4}
                 strokeDasharray={on ? "none" : "12 10"}
               />
-              <circle cx={420} cy={y + 55} r={22} fill="none" stroke={on ? SP.accent : SP.dim} strokeWidth={5} />
-              <text x={420} y={y + 67} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={32} fontWeight={700} fill={on ? SP.accent : SP.dim}>
+              <circle cx={380} cy={cy} r={22} fill="none" stroke={on ? SP.accent : SP.dim} strokeWidth={5} />
+              <text x={380} y={cy + 12} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={32} fontWeight={700} fill={on ? SP.accent : SP.dim}>
                 {i + 1}
               </text>
-              <text x={490} y={y + 69} fontFamily={SUURI_FONT} fontSize={36} fontWeight={on ? 700 : 400} fill={on ? l.color : SP.dim}>
+              <text x={450} y={cy + 13} fontFamily={SUURI_FONT} fontSize={36} fontWeight={on ? 700 : 400} fill={on ? l.color : SP.dim}>
                 {l.text}
               </text>
+              {/* 行ごとのアイコン (点灯時のみ色が立つ) */}
+              {i === 0 && (
+                <g opacity={on ? 1 : 0.4}>
+                  {/* 金の鍵 + のぞく目 */}
+                  <KeyIcon x={1435} y={cy} scale={0.6} color={on ? PC.gold : SP.dim} />
+                  <ellipse cx={1550} cy={cy} rx={30} ry={18} fill="none" stroke={on ? SP.line : SP.dim} strokeWidth={4} />
+                  <circle cx={1550} cy={cy} r={9} fill={on ? PC.sky : SP.dim} />
+                  <circle cx={1550} cy={cy} r={4} fill={SP.ink} />
+                </g>
+              )}
+              {i === 1 && (
+                <g opacity={on ? 1 : 0.4}>
+                  {/* 黄 + 赤 → オレンジ */}
+                  <PaintChip x={1398} y={cy} color={on ? PC.yellow : SP.dim} scale={0.38} />
+                  <text x={1442} y={cy + 10} textAnchor="middle" fill={on ? SP.ink : SP.dim} fontSize={28} fontWeight={700} fontFamily={SUURI_FONT}>
+                    +
+                  </text>
+                  <PaintChip x={1486} y={cy} color={on ? PC.red : SP.dim} scale={0.38} />
+                  <path
+                    d={`M 1518 ${cy} L 1548 ${cy} M 1548 ${cy} L 1536 ${cy - 8} M 1548 ${cy} L 1536 ${cy + 8}`}
+                    stroke={on ? SP.line : SP.dim}
+                    strokeWidth={3}
+                    fill="none"
+                  />
+                  <PaintChip x={1584} y={cy} color={on ? PC.orange : SP.dim} scale={0.38} />
+                </g>
+              )}
+              {i === 2 && (
+                /* 正しい作戦の丸印 (緑) */
+                <circle cx={1500} cy={cy} r={28} fill="none" stroke={on ? PC.green : SP.dim} strokeWidth={7} opacity={on ? 1 : 0.4} />
+              )}
+              {i === 3 && (
+                <g opacity={on ? 1 : 0.4}>
+                  {/* 多色チップ + 色とりどりの星 */}
+                  <PaintChip x={1398} y={cy} color={on ? PC.yellow : SP.dim} scale={0.3} />
+                  <PaintChip x={1440} y={cy} color={on ? PC.blue : SP.dim} scale={0.3} />
+                  <PaintChip x={1482} y={cy} color={on ? PC.green : SP.dim} scale={0.3} />
+                  <circle cx={1538} cy={cy - 12} r={5} fill={on ? STAR_COLORS[0] : SP.dim} />
+                  <circle cx={1566} cy={cy + 10} r={4} fill={on ? STAR_COLORS[2] : SP.dim} />
+                  <circle cx={1592} cy={cy - 6} r={4} fill={on ? STAR_COLORS[3] : SP.dim} />
+                </g>
+              )}
             </g>
           );
         })}

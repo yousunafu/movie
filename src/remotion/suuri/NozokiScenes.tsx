@@ -31,6 +31,11 @@ export const PC = {
   green: "#5FA86A", // 黄+青 (お店が送る色)
   brown: "#8A5A3B", // ひみつの茶色 (完成した鍵)
   fakeBrown: "#9A6B35", // 黄が2倍入ったニセ茶 (のぞき見くんの作戦2)
+  // ===== v2で追加した脇役の色 (主役の絵の具を食わない控えめトーン) =====
+  wood: "#8A6A47", // 机・木箱
+  sky: "#7FA8D9", // 窓の空
+  paper: "#EDE4CC", // 手紙・封筒
+  gold: "#D9A441", // 鍵・錠前
 } as const;
 
 // 背景分類 (全編黒地)。SuuriScenes の computeSuuriWashi から参照する
@@ -276,7 +281,8 @@ export const NozokiKun: React.FC<{
   pose?: NozokiPose;
   frame?: number;
   opacity?: number;
-}> = ({ x, y, scale = 1, pose = "binocular", frame = 0, opacity = 1 }) => {
+  hoodColor?: string; // ほっかむりの色 (v2から泥棒の唐草イメージで緑が標準)
+}> = ({ x, y, scale = 1, pose = "binocular", frame = 0, opacity = 1, hoodColor = PC.green }) => {
   const droop = pose === "gakkuri" ? 14 : 0; // ガックリはうなだれる
   return (
     <g transform={`translate(${x}, ${y + droop}) scale(${scale})`} opacity={opacity}>
@@ -293,12 +299,12 @@ export const NozokiKun: React.FC<{
       {/* ほっかむり (頭の上半分をおおう布+てっぺんの結び目) */}
       <path
         d="M -24 -2 Q -26 -30 0 -30 Q 26 -30 24 -2 Q 12 -14 0 -14 Q -12 -14 -24 -2 Z"
-        fill={SP.ink}
+        fill={hoodColor}
         stroke={SP.line}
         strokeWidth={3}
       />
-      <path d="M -8 -30 Q -16 -44 -4 -42" fill="none" stroke={SP.ink} strokeWidth={6} strokeLinecap="round" />
-      <path d="M 8 -30 Q 16 -44 4 -42" fill="none" stroke={SP.ink} strokeWidth={6} strokeLinecap="round" />
+      <path d="M -8 -30 Q -16 -44 -4 -42" fill="none" stroke={hoodColor} strokeWidth={6} strokeLinecap="round" />
+      <path d="M 8 -30 Q 16 -44 4 -42" fill="none" stroke={hoodColor} strokeWidth={6} strokeLinecap="round" />
       {/* 大きな丸い目 (上目づかい) */}
       {pose !== "binocular" && (
         <g>
@@ -793,11 +799,12 @@ export const ExchangeScene: React.FC<SceneProps & { stage: ExStage }> = ({ scene
   }
 
   // --- 総集編: 赤と青は一度も旅していない ---
+  // v0 (行86「今日いちばん大事なこと」) は、赤帯の核心バッジ+スポットライトで「ここが本日の核心」と一目で分かる見せ方にする
   const v = variant % 5;
   const ringPulse = 0.55 + Math.sin(frame / 6) * 0.35;
   return (
     <Frame>
-      <DiagramTitle text={scene?.title ?? "ひみつは、一度も旅していない"} />
+      <DiagramTitle text={scene?.title ?? (v === 0 ? "ここが、本日の核心" : "ひみつは、一度も旅していない")} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
         <ExchangeBoard
           frame={frame}
@@ -806,14 +813,47 @@ export const ExchangeScene: React.FC<SceneProps & { stage: ExStage }> = ({ scene
           youPulse={v === 1 || v === 2 ? ringPulse : 0}
           shopPulse={v === 1 || v === 2 ? ringPulse : 0}
           nozokiPose={v >= 3 ? "gakkuri" : "arms"}
-          laneDim={v === 1 || v === 2}
+          laneDim={v === 0 || v === 1 || v === 2}
         >
           {/* レーンを通った色だけ点灯 (オレンジ・緑。黄は宣言で伝えただけでレーンは通っていない) */}
-          <g opacity={v === 1 || v === 2 ? 0.3 : 1}>
+          <g opacity={v === 0 ? 0.35 : v === 1 || v === 2 ? 0.3 : 1}>
             <PaintChip x={860} y={EX.chipY} color={PC.orange} scale={0.85} />
             <PaintChip x={1060} y={EX.chipY} color={PC.green} scale={0.85} />
           </g>
-          {(v === 0 || v === 3) && (
+          {v === 0 && (
+            <g>
+              {/* スポットライト (バッジの上から光が落ちる) */}
+              <path
+                d={`M 820 150 L 1100 150 L 1260 470 L 660 470 Z`}
+                fill={SP.ink}
+                opacity={0.06 + Math.sin(frame / 9) * 0.02}
+              />
+              {/* 赤帯の核心バッジ (ハンコ風にドン) */}
+              <g transform={`translate(960, 300) rotate(-4) scale(${1.6 - Math.min(a1, 1) * 0.6})`} opacity={a1}>
+                <rect x={-356} y={-76} width={712} height={152} rx={18} fill={SP.panel} stroke={SP.accent} strokeWidth={10} />
+                <text
+                  x={0}
+                  y={24}
+                  textAnchor="middle"
+                  fill={SP.accent}
+                  fontSize={62}
+                  fontWeight={800}
+                  fontFamily={SUURI_FONT}
+                  letterSpacing={6}
+                >
+                  ここが、本日の核心
+                </text>
+              </g>
+              {/* バッジまわりの集中線 */}
+              <g stroke={SP.accent} strokeWidth={5} strokeLinecap="round" opacity={a2 * ringPulse}>
+                <line x1={540} y1={214} x2={586} y2={242} />
+                <line x1={1380} y1={214} x2={1334} y2={242} />
+                <line x1={540} y1={386} x2={586} y2={358} />
+                <line x1={1380} y1={386} x2={1334} y2={358} />
+              </g>
+            </g>
+          )}
+          {v === 3 && (
             <g opacity={a2}>
               <SmallLabel x={960} y={452} text="レーンを通ったのは、混ぜたあとの色だけ" color={SP.ink} size={30} weight={700} />
             </g>

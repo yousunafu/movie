@@ -23,7 +23,6 @@ import {
   YouFigure,
   ShopFigure,
   NozokiKun,
-  Bubble,
   easeInOut,
   clamp01,
 } from "./NozokiScenes";
@@ -77,13 +76,33 @@ const IngredientRow: React.FC<{ x: number; y: number; colors: string[]; opacity?
   </g>
 );
 
+// 総当たり候補の追加色 (ピンク・紫・水色・黄緑・青緑・梅。主役の6色と同じく彩度ひかえめで上品に)
+const EXTRA = {
+  pink: "#C9708F",
+  purple: "#8A68B0",
+  mizu: "#6FB3C9",
+  kimidori: "#9FB554",
+  teal: "#4F9E8F",
+  plum: "#A04A6E",
+} as const;
+
 // ===== 行47-48: 役者は3人 =====
+// 登場人物の区別がつくよう、足元の光とふちどり名札をキャラごとの淡い色で塗り分ける
 const ThreeActorsScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const { frame, fps } = useProg();
   const v = variant % 2;
   const a1 = appearAt(frame, fps, 8);
   const a2 = appearAt(frame, fps, 22);
   const a3 = appearAt(frame, fps, v === 1 ? 20 : 999);
+  // キャラの色つき名札
+  const namePlate = (x: number, y: number, text: string, color: string, w: number) => (
+    <g>
+      <rect x={x - w / 2} y={y - 38} width={w} height={60} rx={12} fill={SP.panel} stroke={color} strokeWidth={4} />
+      <text x={x} y={y + 6} textAnchor="middle" fill={SP.ink} fontSize={32} fontWeight={700} fontFamily={SUURI_FONT}>
+        {text}
+      </text>
+    </g>
+  );
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? (v === 0 ? "役者は、3人" : "途中で必ず、のぞいてくる")} />
@@ -91,19 +110,21 @@ const ThreeActorsScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
         {/* 舞台の床 */}
         <line x1={280} y1={740} x2={1640} y2={740} stroke={SP.line} strokeWidth={5} />
         <g opacity={a1}>
-          <ellipse cx={560} cy={736} rx={170} ry={22} fill={SP.panel} opacity={0.8} />
+          <ellipse cx={560} cy={736} rx={170} ry={22} fill={PC.sky} opacity={0.24} />
           <YouFigure x={560} y={430} scale={2.1} />
-          <SmallLabel x={560} y={660} text="あなた" color={SP.ink} size={34} weight={700} />
+          {namePlate(560, 660, "あなた", PC.sky, 210)}
         </g>
         <g opacity={a2}>
-          <ellipse cx={1360} cy={736} rx={170} ry={22} fill={SP.panel} opacity={0.8} />
-          <ShopFigure x={1360} y={430} scale={2.1} />
+          <ellipse cx={1360} cy={736} rx={170} ry={22} fill={PC.orange} opacity={0.22} />
+          <ShopFigure x={1360} y={430} scale={2.1} sign={false} />
+          {namePlate(1360, 660, "お店", PC.orange, 170)}
         </g>
         {v === 1 && (
           <g opacity={a3}>
-            <ellipse cx={960} cy={736} rx={150} ry={20} fill={SP.panel} opacity={0.8} />
+            <ellipse cx={960} cy={736} rx={150} ry={20} fill={PC.green} opacity={0.24} />
             <NozokiKun x={960} y={560} scale={1.6} pose="binocular" frame={frame} />
-            <SmallLabel x={960} y={700} text="のぞき見くん" color={SP.ink} size={32} weight={700} />
+            {/* 名札はイラストと被らないよう、床ラインの下に出す (字幕帯 y≒855 より上) */}
+            {namePlate(960, 798, "のぞき見くん", PC.green, 300)}
           </g>
         )}
       </svg>
@@ -112,41 +133,58 @@ const ThreeActorsScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
 };
 
 // ===== 行49-51: 目標 = ふたりで同じ「ひみつの茶色」 =====
+// ふたりが同じ茶色を持ち、その茶色が「同じ金の鍵」に変わるのが一目で分かる図
 const GoalBrownScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const { frame, fps } = useProg();
   const v = variant % 3;
   const a1 = appearAt(frame, fps, 8);
   const a2 = appearAt(frame, fps, 24);
-  const a3 = appearAt(frame, fps, 40);
+  const a3 = appearAt(frame, fps, 42);
   return (
     <Frame>
       <DiagramTitle
-        text={scene?.title ?? (v === 0 ? "目標: 同じ「ひみつの色」" : v === 1 ? "なぜ、同じ色が欲しい？" : "同じ色 = 合言葉")}
+        text={scene?.title ?? (v === 0 ? "目標: 同じ「ひみつの色」" : v === 1 ? "同じ色が、同じ鍵になる" : "同じ色 = 合言葉")}
       />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
-        <YouFigure x={480} y={520} scale={2} />
-        <SmallLabel x={480} y={740} text="あなた" color={SP.ink} size={32} weight={700} />
-        <ShopFigure x={1440} y={520} scale={2} sign={false} />
-        <SmallLabel x={1440} y={740} text="お店" color={SP.ink} size={32} weight={700} />
-        {/* 頭上の同じ茶色 */}
+        {/* 人物は小さめ。お店の看板上端が y≥160 に収まる高さにする */}
+        <YouFigure x={480} y={330} scale={1.5} />
+        <SmallLabel x={480} y={520} text="あなた" color={SP.ink} size={30} weight={700} />
+        <ShopFigure x={1440} y={330} scale={1.5} />
+        {/* ふたりが手に持つ、同じ茶色 */}
         <g opacity={a1}>
-          <PaintChip x={480} y={310} color={PC.brown} scale={1.25} />
-          <PaintChip x={1440} y={310} color={PC.brown} scale={1.25} />
-        </g>
-        <g opacity={a2}>
-          <text x={960} y={332} textAnchor="middle" fill={SP.ink} fontSize={86} fontWeight={800} fontFamily={SUURI_FONT}>
+          <PaintChip x={660} y={430} color={PC.brown} scale={1.15} />
+          <PaintChip x={1260} y={430} color={PC.brown} scale={1.15} />
+          <text x={960} y={452} textAnchor="middle" fill={SP.ink} fontSize={76} fontWeight={800} fontFamily={SUURI_FONT}>
             ＝
           </text>
-          <SmallLabel x={960} y={420} text="ふたりだけの、同じ色" color={SP.faint} size={30} />
+          <SmallLabel x={960} y={340} text="ふたりで、同じ茶色" color={SP.faint} size={30} />
         </g>
         {v >= 1 && (
-          <g opacity={v === 1 ? a3 : 1}>
-            {/* 合言葉でカードに鍵をかけるイメージ */}
-            <rect x={790} y={520} width={340} height={150} rx={14} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-            <rect x={830} y={556} width={120} height={78} rx={8} fill={PC.blue} stroke={SP.line} strokeWidth={4} />
-            <LockPad x={1050} y={586} scale={0.95} color={SP.line} />
-            <rect x={1032} y={576} width={36} height={28} rx={6} fill={PC.brown} />
-            <SmallLabel x={960} y={722} text="カード番号に、鍵をかけられる" color={SP.faint} size={28} />
+          <g opacity={v === 1 ? a2 : 1}>
+            {/* 茶色 → 鍵 の変換 (2つの茶色が、1本の同じ金の鍵に集まる) */}
+            <defs>
+              <marker id="gb-arrow" markerWidth={10} markerHeight={10} refX={7} refY={5} orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 Z" fill={PC.gold} />
+              </marker>
+            </defs>
+            <g stroke={PC.gold} strokeWidth={5} fill="none">
+              <path d="M 680 490 Q 730 610 860 660" markerEnd="url(#gb-arrow)" />
+              <path d="M 1240 490 Q 1190 610 1060 660" markerEnd="url(#gb-arrow)" />
+            </g>
+            <KeyIcon x={v === 2 ? 820 : 960} y={690} scale={1.4} color={PC.gold} />
+            {v === 1 && <SmallLabel x={960} y={800} text="同じ色が、同じ「鍵」になる" color={SP.ink} size={30} weight={700} />}
+          </g>
+        )}
+        {v === 2 && (
+          <g opacity={a3}>
+            {/* 鍵でカード番号に鍵をかけるイメージ */}
+            <g stroke={PC.gold} strokeWidth={5} fill="none">
+              <line x1={920} y1={690} x2={1050} y2={690} markerEnd="url(#gb-arrow)" />
+            </g>
+            <rect x={1090} y={620} width={300} height={140} rx={14} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+            <rect x={1120} y={652} width={110} height={74} rx={8} fill={PC.blue} stroke={SP.line} strokeWidth={4} />
+            <LockPad x={1320} y={682} scale={0.9} color={PC.gold} />
+            <SmallLabel x={960} y={810} text="カード番号に、鍵をかけられる" color={SP.ink} size={30} weight={700} />
           </g>
         )}
       </svg>
@@ -169,7 +207,7 @@ const BrownLockScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
         <g opacity={a1}>
           <YouFigure x={420} y={330} scale={1.6} />
           <rect x={330} y={520} width={190} height={120} rx={12} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-          <LockPad x={425} y={508} scale={0.95} />
+          <LockPad x={425} y={508} scale={0.95} color={PC.gold} />
           <rect x={407} y={498} width={36} height={28} rx={6} fill={PC.brown} />
           <SmallLabel x={425} y={700} text="茶色で、カチャ" color={SP.faint} size={28} />
         </g>
@@ -185,7 +223,7 @@ const BrownLockScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
         <g opacity={a2}>
           <ShopFigure x={1560} y={330} scale={1.6} />
           <rect x={1400} y={520} width={190} height={120} rx={12} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-          <LockPad x={1495} y={508} scale={0.95} openShackle />
+          <LockPad x={1495} y={508} scale={0.95} color={PC.gold} openShackle />
           <rect x={1477} y={498} width={36} height={28} rx={6} fill={PC.brown} />
           <SmallLabel x={1495} y={700} text="同じ茶色で、パカ" color={SP.faint} size={28} />
         </g>
@@ -268,9 +306,15 @@ const RuleBoardScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
           "送ったものは、ぜんぶ見られる",
           hi1,
           <g>
-            <line x1={620} y1={470} x2={1000} y2={470} stroke={SP.line} strokeWidth={4} />
-            <path d="M 1316 452 Q 1346 430 1376 452 Q 1346 474 1316 452 Z" fill="none" stroke={SP.faint} strokeWidth={4} />
-            <circle cx={1346} cy={452} r={6} fill={SP.faint} />
+            {/* 送る色 (オレンジ) が流れていき、のぞき見くんの目 (緑の瞳) に見られている。行の中心 y=400 にそろえる */}
+            <g stroke={PC.orange} strokeWidth={4} strokeLinecap="round" opacity={0.6}>
+              <line x1={1228} y1={392} x2={1262} y2={392} />
+              <line x1={1236} y1={410} x2={1260} y2={410} />
+            </g>
+            <PaintChip x={1296} y={400} color={PC.orange} scale={0.6} />
+            <path d="M 1360 400 Q 1402 366 1444 400 Q 1402 434 1360 400 Z" fill="none" stroke={SP.line} strokeWidth={4} />
+            <circle cx={1402} cy={400} r={12} fill={PC.green} stroke={SP.line} strokeWidth={3} />
+            <circle cx={1402} cy={400} r={4.5} fill={SP.background} />
           </g>,
         )}
         {row(
@@ -279,8 +323,10 @@ const RuleBoardScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
           "ポケットの中は、見えない",
           hi2,
           <g>
-            <rect x={1330} y={590} width={60} height={54} rx={8} fill={SP.background} stroke={SP.line} strokeWidth={4} />
-            <text x={1360} y={632} textAnchor="middle" fill={SP.faint} fontSize={34} fontWeight={700} fontFamily={SUURI_FONT}>
+            {/* 金ぶちのポケット。中身は赤い ? (見えない) */}
+            <rect x={1330} y={590} width={64} height={58} rx={10} fill={SP.background} stroke={PC.gold} strokeWidth={4} />
+            <path d="M 1330 604 Q 1362 616 1394 604" fill="none" stroke={PC.gold} strokeWidth={3.5} />
+            <text x={1362} y={634} textAnchor="middle" fill={PC.red} fontSize={34} fontWeight={800} fontFamily={SUURI_FONT}>
               ?
             </text>
           </g>,
@@ -625,8 +671,9 @@ const AttackMixallScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const a1 = appearAt(frame, fps, 8);
   const a2 = appearAt(frame, fps, 28);
   if (v === 0) {
-    // 行101+102 (結合): 作戦2の足し算 → 混ぜるアニメ → ひらめきポーズまで1シーンで見せる
+    // 行101+102 (結合): 作戦2の足し算 → 混ぜるアニメ → 「おっ、頭いい。」でひらめき+ドヤ顔
     const mixT = easeInOut(clamp01((prog - 0.25) / 0.45));
+    const doyaT = easeInOut(clamp01((prog - 0.6) / 0.12)); // セリフ終盤「おっ、頭いい」に同期
     return (
       <Frame>
         <DiagramTitle text={scene?.title ?? "オレンジと緑を、混ぜてしまえ"} />
@@ -648,7 +695,24 @@ const AttackMixallScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
             </defs>
           </g>
           <MixBowl x={960} y={640} scale={1.3} colorA={PC.orange} colorB={PC.green} result={PC.fakeBrown} mix={mixT} frame={frame} opacity={a2} />
-          <NozokiKun x={1500} y={430} scale={1.4} pose={prog > 0.55 ? "idea" : "arms"} frame={frame} />
+          {/* のぞき見くん: ひらめいてドヤ顔 (電球+ニヤリ+得意げの光。ちょっと胸を張る) */}
+          <g transform={`translate(1500, 430) scale(${1 + doyaT * 0.12}) translate(-1500, -430)`}>
+            <NozokiKun x={1500} y={430} scale={1.4} pose={doyaT > 0.01 ? "idea" : "arms"} frame={frame} />
+            {doyaT > 0.01 && (
+              <g opacity={doyaT}>
+                {/* ニヤリ口 */}
+                <path d="M 1486 446 Q 1500 458 1516 443" fill="none" stroke={SP.line} strokeWidth={4} strokeLinecap="round" />
+                {/* 得意げのキラキラ */}
+                <g stroke={PC.yellow} strokeWidth={4} strokeLinecap="round">
+                  <line x1={1404} y1={332} x2={1382} y2={314} />
+                  <line x1={1596} y1={332} x2={1618} y2={314} />
+                  <line x1={1416} y1={522} x2={1396} y2={538} />
+                  <line x1={1584} y1={522} x2={1604} y2={538} />
+                </g>
+                <SmallLabel x={1500} y={640} text="ドヤッ" color={SP.faint} size={28} weight={700} />
+              </g>
+            )}
+          </g>
         </svg>
       </Frame>
     );
@@ -724,6 +788,7 @@ const AttackBruteIdeaScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   const { frame, fps } = useProg();
   const v = variant % 2;
   const a1 = appearAt(frame, fps, 10);
+  const a2 = appearAt(frame, fps, 28);
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? (v === 0 ? "最強の作戦、ひらめく" : "片っ端から、試す")} />
@@ -731,14 +796,24 @@ const AttackBruteIdeaScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
         <NozokiKun x={760} y={520} scale={2.2} pose="idea" frame={frame} />
         {v === 1 && (
           <g opacity={a1}>
-            <Bubble x={1300} y={260} w={520} h={190} tailTo={[900, 500]}>
-              <text x={1300} y={336} textAnchor="middle" fill={SP.ink} fontSize={40} fontWeight={800} fontFamily={SUURI_FONT}>
-                ひみつの色なんて、
+            {/* ふきだし (しっぽは頭にまっすぐ向ける。本体を後から描いて継ぎ目を隠す) */}
+            <path d="M 1100 450 L 870 540 L 1200 456 Z" fill={SP.panel} stroke={SP.line} strokeWidth={4} strokeLinejoin="round" />
+            <rect x={1020} y={200} width={660} height={260} rx={26} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+            <text x={1350} y={284} textAnchor="middle" fill={SP.ink} fontSize={44} fontWeight={800} fontFamily={SUURI_FONT}>
+              ひみつの色なんて、
+            </text>
+            <text x={1350} y={348} textAnchor="middle" fill={SP.ink} fontSize={44} fontWeight={800} fontFamily={SUURI_FONT}>
+              片っ端から試せばいい
+            </text>
+            {/* 候補の色をぜんぶ試すイメージ */}
+            <g opacity={a2}>
+              {[EXTRA.pink, EXTRA.purple, EXTRA.mizu, EXTRA.kimidori].map((c, i) => (
+                <PaintChip key={c} x={1170 + i * 108} y={414} color={c} scale={0.55} />
+              ))}
+              <text x={1560} y={428} textAnchor="middle" fill={SP.faint} fontSize={40} fontWeight={800} fontFamily={SUURI_FONT}>
+                …
               </text>
-              <text x={1300} y={398} textAnchor="middle" fill={SP.ink} fontSize={40} fontWeight={800} fontFamily={SUURI_FONT}>
-                片っ端から試せばいい
-              </text>
-            </Bubble>
+            </g>
           </g>
         )}
       </svg>
@@ -746,7 +821,7 @@ const AttackBruteIdeaScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
   );
 };
 
-// 12色パレット (総当たり用)
+// 12色パレット (総当たり用。白・灰ではなく、すべて違う色をひかえめな彩度で)
 const PALETTE = [
   PC.red,
   PC.blue,
@@ -754,12 +829,12 @@ const PALETTE = [
   PC.orange,
   PC.yellow,
   PC.brown,
-  "#8A8A94",
-  "#B9B9C2",
-  "#5A5A64",
-  "#D0C9B5",
-  "#6E7E8A",
-  "#4A4A52",
+  EXTRA.pink,
+  EXTRA.purple,
+  EXTRA.mizu,
+  EXTRA.kimidori,
+  EXTRA.teal,
+  EXTRA.plum,
 ];
 
 // ===== 行109-111: 総当たり (12色を1色ずつ試す) =====

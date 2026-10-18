@@ -949,7 +949,7 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/突然ですが、想像してください|教室の窓ぎわ/.test(sentence)) {
     return { type: "diagram", motif: "nozoki_classroom" };
   }
-  if (/ひみつのメモを|席を立つのは禁止/.test(sentence)) {
+  if (/ひみつのメモを|机から立つのは禁止/.test(sentence)) {
     return { type: "diagram", motif: "nozoki_memo_plan" };
   }
   if (/30人の手から手へ/.test(sentence)) {
@@ -967,7 +967,7 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/カード番号は、知らない人の機械|ときには10台以上/.test(sentence)) {
     return { type: "diagram", motif: "nozoki_card_relay" };
   }
-  if (/途中の機械が中身をのぞく/.test(sentence)) {
+  if (/途中の機械は、やろうと思えば|途中の機械が中身をのぞく/.test(sentence)) {
     return { type: "diagram", motif: "nozoki_peek_servers" };
   }
   if (/カード番号は、盗まれません|ひみつが無事に届く/.test(sentence)) {
@@ -996,7 +996,7 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
   if (/めでたし|受け取った人も、開けられない/.test(sentence)) {
     return { type: "diagram", motif: "nozoki_box_stuck" };
   }
-  if (/鍵も送らないといけません|鍵をそのままバケツリレー/.test(sentence)) {
+  if (/鍵も送らないといけません|鍵を送る道も/.test(sentence)) {
     return { type: "diagram", motif: "nozoki_key_on_relay" };
   }
   if (/合鍵を作られるか|どちらにしても、おしまい/.test(sentence)) {

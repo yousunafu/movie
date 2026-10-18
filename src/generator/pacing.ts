@@ -36,6 +36,15 @@ export function voiceStyleFor(
       intonationScale: 1.05,
     };
   }
+  // 感嘆・ひらめきの相づち (「おっ、頭いい。」など): 元気よく速め + 抑揚強め
+  if (/^(おっ|おお|お見事|なるほど)、/.test(text.trim())) {
+    return {
+      speedScale: base() * 1.06,
+      prePhonemeLength: 0.05,
+      postPhonemeLength: 0.3,
+      intonationScale: 1.2,
+    };
+  }
   // 問いかけ: ゆっくり + 抑揚強め + 視聴者が考える間
   if (/か[。？?]?$/.test(text.trim())) {
     return {
@@ -89,7 +98,6 @@ const TTS_READINGS: [RegExp, string][] = [
   [/外れた人/g, "外れたひと"],
   [/あの人/g, "あのひと"],
   [/人は、特別な日/g, "ひとは、特別な日"],
-  [/「選ばれて」います/g, "選ばれています"], // カギカッコ起因の不自然な間を読み上げだけ除去
   [/15分の1/g, "じゅうごぶんのいち"], // 「じゅうごふんのいち」と読まれる対策
   // --- 運命の人は東京に40人の回 ---
   [/いい人/g, "いいひと"], // 「いいじん」と読まれる対策 (実際に発生)
@@ -104,18 +112,25 @@ const TTS_READINGS: [RegExp, string][] = [
   [/合鍵/g, "あいかぎ"], // 「ごうかぎ」と読まれる対策
   [/大仕事/g, "おおしごと"], // 「だいしごと」と読まれる対策
   [/空ぶり/g, "からぶり"], // 「そらぶり」と読まれる対策
+  [/はい、/g, "はい。"], // 「はぁい」と伸ばされる対策。句点で短く切る
+  [/オレンジ色/g, "オレンジいろ"], // 「おれんじしょく」と読まれる対策 (実際に発生)
+  [/黄色/g, "きいろ"], // 「おうしょく」と読まれる対策 (実際に発生)
+  [/画面のいちばん上/g, "画面のいちばんうえ"], // 「いちばんじょう」と読まれる対策 (実際に発生)
 ];
 
 // 読み上げ専用テキスト (字幕には影響しない)。
 // 「答えは」「つまり」などの後に読点を足し、大事な言葉の前にタメを作る。
+// カギカッコ「」は読み上げでは一律除去する (VOICEVOXが不自然な間を入れるため)。字幕はそのまま。
 export function ttsTextFor(text: string): string {
-  let t = text.replace(/(答えは|つまり|実は|ところが|なんと)(?![、。])/g, "$1、");
+  let t = text.replace(/[「」]/g, "");
+  t = t.replace(/(答えは|つまり|実は|ところが|なんと)(?![、。])/g, "$1、");
   for (const [pattern, reading] of TTS_READINGS) t = t.replace(pattern, reading);
   return t;
 }
 
 // ログ用の短い説明 (どの話し方になったか一目でわかるように)
 export function styleLabel(style: VoiceStyle): string {
+  if (style.speedScale > base()) return "元気";
   if (style.prePhonemeLength >= 0.4) return "章扉・間";
   if (style.intonationScale > 1.05) return "問いかけ";
   if (style.postPhonemeLength >= 0.5) return "結論・余韻";

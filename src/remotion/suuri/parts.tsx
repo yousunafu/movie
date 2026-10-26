@@ -25,6 +25,18 @@ export const SP = {
   ikura: "#E07A3E", // イクラのオレンジ
 } as const;
 
+// 道長回の配色 (黒地のまま「金」と「藤色」を差す)
+// 金 = 望月・権力の輝き (寿司回の卵色 #E8C34A を流用して全体の統一感を保つ)
+// 藤色 = 藤原氏の「藤」。最強調は従来どおり赤1色のまま、金と藤は準強調にとどめる
+export const MC = {
+  gold: "#E8C34A", // 金 (望月・冠・権力)
+  goldDim: "#8A742F", // 金の薄め (補助線・残光)
+  fuji: "#A58BD4", // 藤色 (藤原の藤・家系のつながり)
+  fujiDim: "#584C7E", // 藤色の薄め (霞・背景装飾)
+  // 十二単の重ね色 (紅梅・藤・縹・萌黄・山吹)。皇族・姫君まわりの彩り
+  kasane: ["#C4556A", "#A58BD4", "#5B8AC4", "#5BA87A", "#E8C34A"],
+} as const;
+
 export const SUURI_FONT =
   "'Noto Sans JP', 'Noto Sans CJK JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif";
 export const SUURI_SERIF =

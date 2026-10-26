@@ -220,6 +220,8 @@ export const SUURI_DIAGRAM_MOTIFS = [
   "hatoko", // はとこ夫婦の系図。共通の曽祖父母が2か所で赤く灯る
   "japan_net", // 日本列島が家系の網で覆われる (日本人全体がひとつの親戚)
   "michinaga", // 藤原道長の人物図 (束帯・烏帽子・扇)
+  "mich_preview_ch12", // 道長回の章予告・前半 (第1章=先祖の倍々ツリー / 第2章=席10億vs人口700万)
+  "mich_preview_ch34", // 道長回の章予告・後半 (第3章=望月と道長 / 第4章=DNA半減の種明かし)
   "three_points", // ポイント3つの箱が順に点灯 (なぜ道長か)
   "descend_tree", // 道長から下へ倍々に広がる子孫の系図
   "extinct_line", // 家系の線が途中で×印とともに途切れる (断絶)
@@ -487,3 +489,35 @@ export const KEIZAI_MOTIFS = [
 ] as const;
 
 export const ALL_KEIZAI_MOTIFS = [...KEIZAI_MOTIFS, "ending"] as const;
+
+// ===== karakuri (身の回りの機械のからくり図解・クラフト紙+丸頭キャラ) 用の題材 =====
+// 自販機ニセ硬貨回 (docs/jihanki-coin-script.txt) の21文に1対1で対応する専用絵。
+export const KARAKURI_MOTIFS = [
+  "jihanki_intro", // 夕方の街角の自販機+硬貨を入れる人 (導入)
+  "coin_reject", // メダル・外国コインがするりと返却口へ
+  "jihanki_inside", // 自販機の中をのぞく?「中に人はいない」
+  "coin_question", // 硬貨の「何」を見ている? (大きな?と硬貨)
+  "answer_three", // 答え: 大きさ・厚み・材質の3枚フリップ
+  "coinmech", // コインメック装置の紹介 (機械+名前ラベル)
+  "coin_rail", // レールを転がる硬貨+センサー通過 (転がりアニメ)
+  "size_check", // 直径・厚みの計測ゲージ
+  "fake_same", // サイズそっくりの偽物→これだけでは見抜けない
+  "material_intro", // 本命の検査「材質チェック」見出し
+  "coil", // センサーの正体=電気を流したコイル
+  "eddy", // 硬貨の中に渦電流が生まれる (渦アニメ)
+  "eddy_compare", // 金属の種類で渦のでき方が違う比較図
+  "coin_lineup", // 100円=白銅・5円=黄銅など硬貨の材質一覧
+  "electric_eye", // 目で見るのではなく電気で見分ける対比図
+  "breach", // かつて仕組みが破られた (ひび割れ演出)
+  "won_fake", // 1990年代・変造500円の大流行 (穴あき硬貨+犯人シルエット)
+  "new_coin_2000", // 2000年・新素材の500円玉に交代
+  "bicolor_2021", // 2021年・2種の金属の3層構造 (組み上がりアニメ・オチ図解)
+  "battle_end", // 自販機とニセ硬貨の静かな戦い (結び)
+  "concept", // その他 (汎用: 紙背景+キーワード)
+] as const;
+
+export const ALL_KARAKURI_MOTIFS = [
+  ...KARAKURI_MOTIFS,
+  "quiz", // クイズ出題カード (type は card で使う)
+  "ending",
+] as const;

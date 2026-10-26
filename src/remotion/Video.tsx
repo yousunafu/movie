@@ -32,6 +32,15 @@ import {
 } from "./kouzou/KouzouScenes";
 import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
 import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, suuriSceneHidesSubtitle, computeSuuriVariants, computeSuuriWashi, WashiCtx, computeSuuriStadium, StadiumCtx, computeSuuriRenai, RenaiCtx, splitPunchline } from "./suuri/SuuriScenes";
+import { KarakuriSceneView, KRP, karakuriCardShowsFullText } from "./karakuri/KarakuriScenes";
+import { J2AllSceneView } from "./karakuri/Jihanki2000Index";
+
+// 自販機2000年史 (モチーフ名が j2_ で始まる専用絵) を本編プレイヤーで描くためのつなぎ。
+// J2AllSceneView は (motif, f) を受けるので、Sequence内の経過フレームを渡す。
+const J2SceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return <J2AllSceneView motif={motif} f={f} />;
+};
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
 // ユーザーの指定 (2026-10): 行列アニメ / 数字チャート / 最初のカード だけv2、他はv1の落ち着いた画面。
@@ -90,6 +99,12 @@ const SUBTITLE_BREAK_AFTER: string[] = [
   "等倍の毎日」と、",
   // --- のぞき見くんと絵の具のマジックの回 ---
   "コンピュータで、1秒に", // 「1兆色試したとしましょう」を2行目に (ユーザー指定)
+  // --- 恋愛版ドレイク (運命の人) の回 --- (ユーザー指定の改行位置)
+  "「行動あるのみ」と言われて行動できる人は、",
+  "日本中の若者が出会いを求めて集まる街で、",
+  "第1章で宇宙人を数える式を手に入れ、",
+  "第3章で答えをひっくり返す掛け算の性質を知り、",
+  "人口、ピアノのある家の割合、調律の頻度、",
 ];
 
 const Subtitle: React.FC<{
@@ -103,10 +118,11 @@ const Subtitle: React.FC<{
   suuri?: boolean;
   washi?: boolean; // suuri の和紙背景モード (字幕を墨色にする)
   renai?: boolean; // suuri の恋愛モード (白地なので字幕をチャコールにする)
+  karakuri?: boolean; // karakuri: 下部の黒い角丸帯に白字 (お手本の字幕スタイル)
   highlight?: string;
   // オチ字幕: atFrame までは先頭 headChars 文字だけ表示する (ネタバレ防止)
   tailReveal?: { headChars: number; atFrame: number };
-}> = ({ text: fullText, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, washi, renai, highlight, tailReveal }) => {
+}> = ({ text: fullText, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, washi, renai, karakuri, highlight, tailReveal }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
@@ -183,6 +199,40 @@ const Subtitle: React.FC<{
         >
           {nodes}
         </div>
+      </div>
+    );
+  }
+  // karakuri: 下部の黒い角丸帯の中に白いゴシック太字 (お手本: 最高の老後 の字幕スタイル)
+  if (karakuri) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          bottom: 56,
+          left: "50%",
+          transform: "translateX(-50%)",
+          maxWidth: "86%",
+          textAlign: "center",
+          opacity,
+        }}
+      >
+        <span
+          style={{
+            display: "inline",
+            fontFamily: FONT,
+            fontSize: 50,
+            fontWeight: 800,
+            color: "#FFFFFF",
+            lineHeight: 1.6,
+            backgroundColor: "rgba(34, 30, 27, 0.88)",
+            boxShadow: "0 0 0 16px rgba(34, 30, 27, 0.88)",
+            boxDecorationBreak: "clone",
+            WebkitBoxDecorationBreak: "clone",
+            borderRadius: 14,
+          }}
+        >
+          {nodes}
+        </span>
       </div>
     );
   }
@@ -274,6 +324,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const isKouzou = data.preset === "kouzou";
   const isKeizai = data.preset === "keizai";
   const isSuuri = data.preset === "suuri";
+  const isKarakuri = data.preset === "karakuri";
   // suuri: 同じ絵の2回目以降は姿を変える (絵が育つ仕組み)
   const suuriVariants = isSuuri ? computeSuuriVariants(data.scenes) : [];
   // suuri: 寿司の場面だけ和紙背景にする (題材から場面ごとに判定)
@@ -330,7 +381,9 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   ? EP.bgTop
                   : isSuuri
                     ? SP.background
-                    : PALETTE.background,
+                    : isKarakuri
+                      ? KRP.paper
+                      : PALETTE.background,
       }}
     >
       {data.bgmFile && (
@@ -378,6 +431,12 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                     </RenaiCtx.Provider>
                   </StadiumCtx.Provider>
                 </WashiCtx.Provider>
+              ) : isKarakuri ? (
+                scene.motif.startsWith("j2_") ? (
+                  <J2SceneInVideo motif={scene.motif} />
+                ) : (
+                  <KarakuriSceneView scene={scene} />
+                )
               ) : (
                 <SceneView scene={scene} />
               )}
@@ -387,10 +446,11 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 !(isKouzou && kouzouCardShowsFullText(scene)) &&
                 !(isKeizai && keizaiCardShowsFullText(scene)) &&
                 !(isSuuri && suuriCardShowsFullText(scene)) &&
-                !(isSuuri && suuriSceneHidesSubtitle(scene)) && (
+                !(isSuuri && suuriSceneHidesSubtitle(scene)) &&
+                !(isKarakuri && karakuriCardShowsFullText(scene)) && (
                 <Subtitle
                   text={scene.text}
-                  onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi && !isKouzou && !isKeizai}
+                  onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi && !isKouzou && !isKeizai && !isKarakuri}
                   ashi={isAshi}
                   manabi={isManabi}
                   rekishi={isRekishi}
@@ -399,7 +459,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   suuri={isSuuri}
                   washi={isSuuri && (suuriWashi[sceneI] ?? false)}
                   renai={isSuuri && (suuriRenai[sceneI] ?? false) && scene.motif !== "love_to_black"}
-                  highlight={v2 ? scene.emphasis : undefined}
+                  karakuri={isKarakuri}
+                  highlight={v2 || isKarakuri ? scene.emphasis : undefined}
                   tailReveal={
                     punch
                       ? {

@@ -1,0 +1,201 @@
+{
+  "scenes": [
+    {
+      "index": 0,
+      "text": "自動販売機に硬貨を入れると、わずか1秒足らずで本物かどうか判定されます。",
+      "type": "character",
+      "motif": "jihanki_intro",
+      "audio": "audio/scene-000.wav",
+      "durationSec": 5.930666666666666
+    },
+    {
+      "index": 1,
+      "text": "ゲームセンターのメダルや外国のコインを入れても、するりと返却口に戻ってくる。",
+      "type": "character",
+      "motif": "coin_reject",
+      "audio": "audio/scene-001.wav",
+      "durationSec": 5.44
+    },
+    {
+      "index": 2,
+      "text": "中に人が入って見ているわけでもないのに、なぜ見抜けるのでしょうか。",
+      "type": "diagram",
+      "motif": "jihanki_inside",
+      "audio": "audio/scene-002.wav",
+      "durationSec": 5.226666666666667
+    },
+    {
+      "index": 3,
+      "text": "さて、ここで問題です。",
+      "type": "card",
+      "motif": "quiz",
+      "audio": "audio/scene-003.wav",
+      "durationSec": 2.72
+    },
+    {
+      "index": 4,
+      "text": "自動販売機は、硬貨の「何」を見て本物だと判断しているのでしょうか。",
+      "type": "object",
+      "motif": "coin_question",
+      "audio": "audio/scene-004.wav",
+      "durationSec": 5.728
+    },
+    {
+      "index": 5,
+      "text": "答えは、大きさ、厚み、そして材質の3つです。",
+      "type": "diagram",
+      "motif": "answer_three",
+      "title": "硬貨を見分ける3つの手がかり",
+      "items": [
+        {
+          "label": "大きさ"
+        },
+        {
+          "label": "厚み"
+        },
+        {
+          "label": "材質"
+        }
+      ],
+      "audio": "audio/scene-005.wav",
+      "durationSec": 4.928
+    },
+    {
+      "index": 6,
+      "text": "硬貨を見分ける装置は「コインメック」と呼ばれています。",
+      "type": "diagram",
+      "motif": "coinmech",
+      "emphasis": "コインメック",
+      "audio": "audio/scene-006.wav",
+      "durationSec": 3.3813333333333335
+    },
+    {
+      "index": 7,
+      "text": "投入された硬貨は、レールの上を転がりながらセンサーの前を通過します。",
+      "type": "diagram",
+      "motif": "coin_rail",
+      "audio": "audio/scene-007.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 8,
+      "text": "まずセンサーが、直径と厚みが規格どおりかを測ります。",
+      "type": "diagram",
+      "motif": "size_check",
+      "audio": "audio/scene-008.wav",
+      "durationSec": 4.245333333333333
+    },
+    {
+      "index": 9,
+      "text": "しかし、サイズをそっくりに作った偽物なら、これだけでは見抜けません。",
+      "type": "diagram",
+      "motif": "fake_same",
+      "audio": "audio/scene-009.wav",
+      "durationSec": 5.482666666666667
+    },
+    {
+      "index": 10,
+      "text": "そこで本命の検査、「材質チェック」の出番です。",
+      "type": "diagram",
+      "motif": "material_intro",
+      "emphasis": "材質チェック",
+      "audio": "audio/scene-010.wav",
+      "durationSec": 3.8293333333333335
+    },
+    {
+      "index": 11,
+      "text": "センサーの正体は、電気を流したコイルです。",
+      "type": "diagram",
+      "motif": "coil",
+      "audio": "audio/scene-011.wav",
+      "durationSec": 3.562666666666667
+    },
+    {
+      "index": 12,
+      "text": "コイルのそばを硬貨が通ると、硬貨の中に「渦電流」という小さな電気の渦が生まれます。",
+      "type": "diagram",
+      "motif": "eddy",
+      "emphasis": "渦電流",
+      "audio": "audio/scene-012.wav",
+      "durationSec": 6.208
+    },
+    {
+      "index": 13,
+      "text": "この渦のでき方は、金属の種類によってまったく違います。",
+      "type": "diagram",
+      "motif": "eddy_compare",
+      "audio": "audio/scene-013.wav",
+      "durationSec": 4.309333333333333
+    },
+    {
+      "index": 14,
+      "text": "100円玉は白銅、5円玉は黄銅と、日本の硬貨は材質が少しずつ違うのです。",
+      "type": "diagram",
+      "motif": "coin_lineup",
+      "audio": "audio/scene-014.wav",
+      "durationSec": 6.858666666666666
+    },
+    {
+      "index": 15,
+      "text": "つまり自動販売機は、硬貨を目で見るのではなく、電気の反応で見分けているのです。",
+      "type": "diagram",
+      "motif": "electric_eye",
+      "audio": "audio/scene-015.wav",
+      "durationSec": 6.8053333333333335
+    },
+    {
+      "index": 16,
+      "text": "ところが、かつてこの仕組みが破られたことがあります。",
+      "type": "diagram",
+      "motif": "breach",
+      "audio": "audio/scene-016.wav",
+      "durationSec": 3.6906666666666665
+    },
+    {
+      "index": 17,
+      "text": "1990年代、よく似た外国の硬貨に穴を開けて軽くした「変造500円」が大流行しました。",
+      "type": "character",
+      "motif": "won_fake",
+      "emphasis": "変造500円",
+      "audio": "audio/scene-017.wav",
+      "durationSec": 7.562666666666667
+    },
+    {
+      "index": 18,
+      "text": "そこで2000年、500円玉は電気の性質が違う新素材に作り替えられました。",
+      "type": "diagram",
+      "motif": "new_coin_2000",
+      "audio": "audio/scene-018.wav",
+      "durationSec": 6.165333333333334
+    },
+    {
+      "index": 19,
+      "text": "さらに2021年には、2種類の金属を組み合わせた3層構造になり、偽造はほぼ不可能に。",
+      "type": "diagram",
+      "motif": "bicolor_2021",
+      "emphasis": "3層構造",
+      "audio": "audio/scene-019.wav",
+      "durationSec": 7.594666666666667
+    },
+    {
+      "index": 20,
+      "text": "自動販売機とニセ硬貨の戦いは、今日も静かに続いています。",
+      "type": "card",
+      "motif": "battle_end",
+      "audio": "audio/scene-020.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 21,
+      "text": "最後までご覧いただきありがとうございました。身の回りのからくりは、まだまだあります。",
+      "type": "card",
+      "motif": "ending",
+      "isEnding": true,
+      "audio": "audio/scene-end.wav",
+      "durationSec": 6.634666666666667
+    }
+  ],
+  "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
+  "generatedAt": "2026-10-19T15:07:16.552Z",
+  "preset": "karakuri"
+}

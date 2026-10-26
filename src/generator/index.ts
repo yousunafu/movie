@@ -11,7 +11,7 @@ import { enforceRatios } from "./enforce";
 import { generateImage, imagesAvailable, imagesDisabledReason } from "./images";
 import { checkCredits, synthesize } from "./tts";
 import { synthesizeVoicevox } from "./voicevox";
-import { VOICE, getPreset, getChannel } from "../channel";
+import { VOICE, getPreset, getChannel, applyPresetVoice, type Preset } from "../channel";
 import { pickBgm } from "../bgm";
 import { voiceStyleFor, ttsTextFor, styleLabel } from "./pacing";
 import type { Scene, ScenesData } from "../types";
@@ -50,8 +50,40 @@ async function main() {
     process.exit(1);
   }
 
-  const preset = getPreset();
+  console.log("=== 工程1: 台本の読込 ===");
+  const rawFetched = await fetchScript(url);
+
+  // 台本1行目の「作風: suuri」宣言を読む。
+  // (2026-10 PRESET付け忘れで恋愛回がgenkiで生成された事故の再発防止。
+  //  台本自身が作風を知っていれば、コマンドの打ち方に依存しない)
+  const PRESET_NAMES = ["ashi", "manabi", "rekishi", "kouzou", "keizai", "suuri", "karakuri", "genki"];
+  let scriptPreset: Preset | undefined;
+  const scriptLines = rawFetched.split("\n");
+  const presetLine = scriptLines[0]?.match(/^(?:作風|preset)\s*[:：]\s*([a-zA-Z]+)/);
+  if (presetLine) {
+    const p = presetLine[1].toLowerCase();
+    if (!PRESET_NAMES.includes(p)) {
+      throw new Error(`台本1行目の作風「${presetLine[1]}」が不明です (使えるのは ${PRESET_NAMES.join(" / ")})`);
+    }
+    scriptPreset = p as Preset;
+    scriptLines.shift(); // 宣言行は本文に含めない
+  }
+  const scriptBody = scriptLines.join("\n");
+
+  const envPreset: Preset | undefined = process.env.PRESET ? getPreset() : undefined;
+  if (scriptPreset && envPreset && scriptPreset !== envPreset) {
+    throw new Error(
+      `作風の指定が食い違っています: 台本「作風: ${scriptPreset}」 vs 環境変数 PRESET=${envPreset}。台本の宣言を直すか、PRESETを外してください`,
+    );
+  }
+  const preset = scriptPreset ?? envPreset;
+  if (!preset) {
+    throw new Error(
+      "作風が指定されていません。台本の1行目に「作風: suuri」のように書いてください (黙ってgenkiで生成する事故を防ぐため、無指定は止める仕様です)",
+    );
+  }
   const channel = getChannel(preset);
+  applyPresetVoice(preset); // 台本の作風宣言を声の設定にも反映 (PRESET未設定でも正しい声になる)
   console.log(
     `作風プリセット: ${
       preset === "ashi"
@@ -66,13 +98,14 @@ async function main() {
                 ? "keizai (経済ニュース解説)"
                 : preset === "suuri"
                   ? "suuri (数理・統計の図解)"
-                  : "genki (健康解説)"
+                  : preset === "karakuri"
+                    ? "karakuri (身の回りの機械のからくり図解)"
+                    : "genki (健康解説)"
     }`,
   );
 
-  console.log("=== 工程1: 台本の読込 ===");
-  const raw = await fetchScript(url);
-  const sentences = splitScript(raw);
+  // karakuri の専用台本は「1行=1文=1枚の絵」で設計しているので、行をそのまま文として使う
+  const sentences = splitScript(scriptBody, { lineMode: preset === "karakuri" });
   const totalChars = sentences.reduce((a, s) => a + s.length, 0);
   console.log(`${sentences.length}シーン / ${totalChars}文字`);
   if (sentences.length === 0) throw new Error("台本が空です");
@@ -184,6 +217,18 @@ async function main() {
   console.log("=== 生成器 完了 ===");
   console.log(`合計 ${scenes.length}シーン / 尺 約${Math.floor(totalSec / 60)}分${Math.round(totalSec % 60)}秒`);
   console.log(`音声使用: ${ttsChars}文字`);
+
+  // 作風とモチーフの一覧を出す (2026-10 PRESET付け忘れ事故の再発防止・3段目)。
+  // 見慣れないモチーフ (他の作風専用のもの) が混ざっていたら、ここで気付ける。
+  const motifCount = new Map<string, number>();
+  for (const s of scenes) motifCount.set(s.motif, (motifCount.get(s.motif) ?? 0) + 1);
+  const motifList = [...motifCount.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([m, n]) => `${m}×${n}`)
+    .join(" / ");
+  console.log(`作風: ${preset}`);
+  console.log(`使用モチーフ: ${motifList}`);
+  console.log("↑ この一覧に見慣れないモチーフが並んでいたら、作風の指定ミスを疑ってください");
 }
 
 main().catch((e) => {

@@ -66,6 +66,14 @@ export async function synthesizeVoicevox(
   outFile: string,
   style?: VoiceStyle,
 ): Promise<number> {
+  // 途中で止まった合成の再開用: RESUME_AUDIO=1 のとき、既にある音声ファイルをそのまま使う。
+  // 注意: 台本や声の設定を変えた直後は使わないこと (古い音声が残ったままになる)
+  if (process.env.RESUME_AUDIO === "1" && fs.existsSync(outFile) && fs.statSync(outFile).size > 1000) {
+    const meta = await parseBuffer(fs.readFileSync(outFile), { mimeType: "audio/wav" });
+    const dur = meta.format.duration ?? 0;
+    if (dur > 0) return dur;
+  }
+
   if (cachedStyleId === null) cachedStyleId = await resolveStyleId();
   const speaker = cachedStyleId;
 

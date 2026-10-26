@@ -213,20 +213,33 @@ const GlobeBack: React.FC<{ opacity?: number }> = ({ opacity = 1 }) => (
 
 // 行1-2: 教室俯瞰 → あなたの席が点灯
 const ClassroomScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
-  const { frame, fps } = useProg();
+  const { frame, fps, progOf } = useProg();
   const v = variant % 2;
   const youA = v === 0 ? 0 : appearAt(frame, fps, 10);
   const pulse = 0.5 + Math.sin(frame / 7) * 0.5;
+  // v1: 1枚目と同じ教室のまま「あなた」が出現し、あなたの席に向かって少しズーム
+  const prog = progOf(scene?.durationSec);
+  const zoom = v === 1 ? 1 + 0.12 * easeInOut(clamp01((prog - 0.12) / 0.6)) : 1;
   return (
     <Frame>
       <DiagramTitle text={scene?.title ?? (v === 0 ? "想像してください" : "あなたは、窓ぎわの席")} />
-      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ position: "absolute", inset: 0 }}>
+      <svg
+        width={W}
+        height={H}
+        viewBox={`0 0 ${W} ${H}`}
+        style={{
+          position: "absolute",
+          inset: 0,
+          transform: `scale(${zoom})`,
+          transformOrigin: `${deskX(YOU_COL)}px ${deskY(YOU_ROW)}px`,
+        }}
+      >
         <Windows />
         {Array.from({ length: 5 }).map((_, row) =>
           Array.from({ length: 6 }).map((__, col) => {
             const isYou = col === YOU_COL && row === YOU_ROW;
             return (
-              <g key={`${row}-${col}`} opacity={appearAt(frame, fps, 4 + row * 4 + col * 2)}>
+              <g key={`${row}-${col}`} opacity={v === 1 ? 1 : appearAt(frame, fps, 4 + row * 4 + col * 2)}>
                 <Desk x={deskX(col)} y={deskY(row)} you={isYou && v === 1} />
               </g>
             );
@@ -424,8 +437,8 @@ const MemoSpreadScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
         )}
         {bubbles.map(([x, y, dist], i) => {
           const a = appearAt(frame, fps, 6 + dist * maxDelay + (i % 3) * 2);
-          // 「はい、もうおわかりですね。」(v0) は吹き出しの内側を暗めの緑に (点の可読性は保つ)
-          const bubbleFill = v === 0 ? "#2E5940" : SP.dim;
+          // 吹き出しの内側は両シーンとも暗めの緑に (点の可読性は保つ)
+          const bubbleFill = "#2E5940";
           return (
             <g key={i} opacity={a * 0.9}>
               <rect x={x - 34} y={y - 92} width={68} height={40} rx={14} fill={bubbleFill} />
@@ -1517,9 +1530,9 @@ const PaintRevealScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
               })}
             </g>
           </g>
-          {/* 光るチューブのシルエット (色はまだ見せない) */}
+          {/* 光るチューブ (うっすら赤を透かして予告。本当の色見せは行45) */}
           <g transform={`translate(960, 430) scale(${Math.min(slamIn, 1)}) translate(-960, -430)`} opacity={slamIn}>
-            <PaintTube x={960} y={430} color={SP.panel} scale={1.6} />
+            <PaintTube x={960} y={430} color="rgba(214, 72, 59, 0.32)" scale={1.6} />
           </g>
           <g opacity={textA}>
             <text x={960} y={790} textAnchor="middle" fill={SP.ink} fontSize={104} fontWeight={800} fontFamily={SUURI_FONT} letterSpacing={6}>

@@ -32,12 +32,15 @@ export function enforceRatios(
   // manabi (図解解説) / rekishi (資料図版) / kouzou (構造図解) / keizai (フリップ図解) は
   // 図版が主役なので、人物比率などの補正はしない。
   // カードは「最後の結論カード (keizai はまとめフリップ)」+ 各作風の章カードだけ守る。
+  // karakuri (からくり図解) も同様に図版が主役 + 専用台本に1文1絵の割り当て済みなので、
+  // 比率補正はせず「最後の結論カード」だけ守る。
   if (
     preset === "manabi" ||
     preset === "rekishi" ||
     preset === "kouzou" ||
     preset === "keizai" ||
-    preset === "suuri"
+    preset === "suuri" ||
+    preset === "karakuri"
   ) {
     // 章扉カード (manabi / suuri): 章タイトルを宣言する文 (「第1章」などを含む) は
     // AIが type を揺らしても card + motif=chapter にそろえる
@@ -162,7 +165,9 @@ export function enforceRatios(
         }
       }
     }
-    if (n >= 3 && out[n - 1].type !== "card") {
+    // 自販機2000年史 (j2_ の専用絵) は最終シーンが「夜道の絵+ご挨拶」の設計なので、
+    // 結論カードへの強制変換はしない (1文1絵の設計書どおりに出す)
+    if (n >= 3 && out[n - 1].type !== "card" && !out[n - 1].motif.startsWith("j2_")) {
       out[n - 1].type = "card";
       out[n - 1].motif = "concept";
       log.push(`シーン${n - 1}を結論カードに変更`);

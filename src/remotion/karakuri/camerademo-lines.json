@@ -1,0 +1,87 @@
+[
+ {
+  "text": "今回は、カメラ演出のおためし版です。",
+  "file": "audio/camerademo/line-01.wav",
+  "sec": 3.413
+ },
+ {
+  "text": "舞台は、いつもの自動販売機。",
+  "file": "audio/camerademo/line-02.wav",
+  "sec": 2.784
+ },
+ {
+  "text": "技その1、カメラの寄り。",
+  "file": "audio/camerademo/line-03.wav",
+  "sec": 2.528
+ },
+ {
+  "text": "気になる投入口へ、ぐっと近づいていく。",
+  "file": "audio/camerademo/line-04.wav",
+  "sec": 3.509
+ },
+ {
+  "text": "技その2、絵の中の変化。",
+  "file": "audio/camerademo/line-05.wav",
+  "sec": 2.571
+ },
+ {
+  "text": "カメラが止まっても、絵は動き続ける。",
+  "file": "audio/camerademo/line-06.wav",
+  "sec": 3.029
+ },
+ {
+  "text": "技その3、書き込み。",
+  "file": "audio/camerademo/line-07.wav",
+  "sec": 2.229
+ },
+ {
+  "text": "大事なところに、赤いしるしが描かれる。",
+  "file": "audio/camerademo/line-08.wav",
+  "sec": 3.243
+ },
+ {
+  "text": "技その4、虫めがね。",
+  "file": "audio/camerademo/line-09.wav",
+  "sec": 2.411
+ },
+ {
+  "text": "細かいところだけ、丸く拡大して見せる。",
+  "file": "audio/camerademo/line-10.wav",
+  "sec": 3.552
+ },
+ {
+  "text": "技その5、アングルの切り替え。",
+  "file": "audio/camerademo/line-11.wav",
+  "sec": 2.603
+ },
+ {
+  "text": "正面から、横の断面へ。",
+  "file": "audio/camerademo/line-12.wav",
+  "sec": 2.752
+ },
+ {
+  "text": "技その6、カメラの横移動。",
+  "file": "audio/camerademo/line-13.wav",
+  "sec": 2.763
+ },
+ {
+  "text": "転がる硬貨を、カメラが追いかける。",
+  "file": "audio/camerademo/line-14.wav",
+  "sec": 2.869
+ },
+ {
+  "text": "技その7、章扉は場面に重ねる。",
+  "file": "audio/camerademo/line-15.wav",
+  "sec": 3.403
+ },
+ {
+  "text": "最後は引きで、全体を見わたして、おしまい。",
+  "file": "audio/camerademo/line-16.wav",
+  "sec": 4.085
+ },
+ {
+  "text": "ご視聴、ありがとうございました。",
+  "file": "audio/camerademo/line-17.wav",
+  "sec": 2.795
+ }
+]

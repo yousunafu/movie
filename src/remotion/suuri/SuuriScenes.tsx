@@ -20,6 +20,7 @@ import { wrapJa } from "../wrapJa";
 // 共通の部品 (配色・枠・ピクトグラム・出現アニメ・和紙モード) は parts.tsx に集約した
 import {
   SP,
+  MC,
   SUURI_FONT,
   SUURI_SERIF,
   W,
@@ -124,6 +125,22 @@ import {
   VanishPostsScene,
   PitfallPeopleScene,
   CountOnlyHandScene,
+  KiraMathRescueScene,
+  KiraImagineTvScene,
+  KiraBestCountScene,
+  KiraBats600Scene,
+  KiraGachaJuicerScene,
+  KiraProbMeterScene,
+  KiraCalVanishScene,
+  KiraStampX2Scene,
+  KiraVsMatchScene,
+  KiraCurtainScene,
+  KiraMagnifyHolesScene,
+  KiraFlipQScene,
+  KiraPlaneUnrecordedScene,
+  KiraSameQScene,
+  KiraEngineQScene,
+  KiraNoticeEyeScene,
   KIRAKIRA_WASHI_MOTIFS,
   KIRAKIRA_DARK_MOTIFS,
   KIRAKIRA_STADIUM_MOTIFS,
@@ -482,6 +499,18 @@ const LotteryScene: React.FC = () => {
             : 0;
           return (
             <g key={i} transform={`translate(${x}, ${win ? 420 - lit * 60 : 460}) scale(${s})`}>
+              {/* 当たりくじは金色に光る */}
+              {win && lit > 0.5 && (
+                <>
+                  <defs>
+                    <radialGradient id="lotGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor={MC.gold} stopOpacity={0.35} />
+                      <stop offset="100%" stopColor={MC.gold} stopOpacity={0} />
+                    </radialGradient>
+                  </defs>
+                  <circle cx={0} cy={165} r={260} fill="url(#lotGlow)" opacity={lit} />
+                </>
+              )}
               <rect
                 x={-62}
                 y={0}
@@ -489,10 +518,10 @@ const LotteryScene: React.FC = () => {
                 height={330}
                 rx={10}
                 fill={win && lit > 0.5 ? SP.panel : SP.background}
-                stroke={win && lit > 0.5 ? SP.accent : SP.line}
+                stroke={win && lit > 0.5 ? MC.gold : SP.line}
                 strokeWidth={win && lit > 0.5 ? 7 : 5}
               />
-              <line x1={-62} y1={70} x2={62} y2={70} stroke={win && lit > 0.5 ? SP.accent : SP.dim} strokeWidth={4} strokeDasharray="10 10" />
+              <line x1={-62} y1={70} x2={62} y2={70} stroke={win && lit > 0.5 ? MC.gold : SP.dim} strokeWidth={4} strokeDasharray="10 10" />
               {win && lit > 0.5 ? (
                 <text y={230} textAnchor="middle" fontSize={76} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
                   当
@@ -528,30 +557,35 @@ const ScrollScene: React.FC<{ variant?: number }> = ({ variant = 0 }) => {
   return (
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        {/* 紙 (中央から左右へ開く) */}
-        <rect x={960 - paperW / 2} y={300} width={paperW} height={480} fill={SP.panel} stroke={SP.line} strokeWidth={5} />
-        {/* 軸 */}
-        <rect x={960 - paperW / 2 - 34} y={270} width={34} height={540} rx={14} fill={SP.background} stroke={SP.line} strokeWidth={5} />
-        <rect x={960 + paperW / 2} y={270} width={34} height={540} rx={14} fill={SP.background} stroke={SP.line} strokeWidth={5} />
-        {/* 系図の線 (開いた分だけ見える) */}
+        {/* 紙 (和紙色。中央から左右へ開く) */}
+        <rect x={960 - paperW / 2} y={300} width={paperW} height={480} fill="#EFE6CF" stroke="#C9BA92" strokeWidth={5} />
+        {/* 軸 (両端に金の飾り) */}
+        {[960 - paperW / 2 - 34, 960 + paperW / 2].map((rx0) => (
+          <g key={rx0}>
+            <rect x={rx0} y={270} width={34} height={540} rx={14} fill="#2A2420" stroke={SP.line} strokeWidth={4} />
+            <rect x={rx0 - 4} y={262} width={42} height={26} rx={10} fill={MC.gold} opacity={0.9} />
+            <rect x={rx0 - 4} y={792} width={42} height={26} rx={10} fill={MC.gold} opacity={0.9} />
+          </g>
+        ))}
+        {/* 系図の線 (和紙の上は墨の線。開いた分だけ見える) */}
         <g clipPath="url(#scrollClip)">
           <clipPath id="scrollClip">
             <rect x={960 - paperW / 2} y={300} width={paperW} height={480} />
           </clipPath>
-          <g stroke={SP.line} strokeWidth={4} fill="none">
+          <g stroke="#4A4238" strokeWidth={4} fill="none">
             <line x1={620} y1={400} x2={1300} y2={400} />
             <line x1={700} y1={400} x2={700} y2={520} />
             <line x1={960} y1={400} x2={960} y2={520} />
             <line x1={1220} y1={400} x2={1220} y2={520} />
-            <line x1={620} y1={520} x2={1040} y2={520} strokeDasharray="14 12" stroke={SP.faint} />
-            <line x1={840} y1={520} x2={840} y2={640} strokeDasharray="14 12" stroke={SP.faint} />
-            <line x1={700} y1={640} x2={1300} y2={640} strokeDasharray="14 12" stroke={SP.faint} />
+            <line x1={620} y1={520} x2={1040} y2={520} strokeDasharray="14 12" stroke="#8A7B60" />
+            <line x1={840} y1={520} x2={840} y2={640} strokeDasharray="14 12" stroke="#8A7B60" />
+            <line x1={700} y1={640} x2={1300} y2={640} strokeDasharray="14 12" stroke="#8A7B60" />
           </g>
           {[700, 960, 1220].map((x) => (
-            <rect key={x} x={x - 52} y={340} width={104} height={56} fill={SP.background} stroke={SP.line} strokeWidth={4} />
+            <rect key={x} x={x - 52} y={340} width={104} height={56} fill="#EFE6CF" stroke="#4A4238" strokeWidth={4} />
           ))}
           {[840, 1100].map((x) => (
-            <rect key={x} x={x - 52} y={560} width={104} height={56} fill={SP.background} stroke={SP.faint} strokeWidth={4} strokeDasharray="10 8" />
+            <rect key={x} x={x - 52} y={560} width={104} height={56} fill="#EFE6CF" stroke="#8A7B60" strokeWidth={4} strokeDasharray="10 8" />
           ))}
         </g>
         {/* 赤い印 (variantで文言と位置が変わる) */}
@@ -576,8 +610,10 @@ const NengajoScene: React.FC = () => {
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <g transform={`translate(960, 560) rotate(${(1 - pop) * 8}) scale(${0.6 + pop * 0.4})`} opacity={pop}>
           <rect x={-280} y={-380} width={560} height={760} rx={8} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
-          {/* 切手と郵便番号枠 */}
+          {/* 切手 (絵柄は金の望月) と郵便番号枠 */}
           <rect x={-240} y={-340} width={110} height={130} fill="none" stroke={SP.faint} strokeWidth={4} />
+          <circle cx={-185} cy={-275} r={32} fill={MC.gold} opacity={0.28} />
+          <circle cx={-185} cy={-275} r={32} fill="none" stroke={MC.gold} strokeWidth={4} />
           {[0, 1, 2].map((i) => (
             <rect key={i} x={60 + i * 62} y={-340} width={50} height={64} fill="none" stroke={SP.accent} strokeWidth={4} />
           ))}
@@ -648,8 +684,29 @@ const ChapterCardScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       .replace(/[。]$/, "")
       .trim();
   }
+  // 道長回の章扉だけ、平安絵巻ふうの藤色の霞を添える (他作品の章扉には出さない)
+  const isMichinaga = /道長|先祖の倍々|人口が足りない|種明かし/.test(
+    `${scene.title ?? ""}${scene.text}`,
+  );
+  const drift = frame * 0.18;
   return (
     <Frame>
+      {isMichinaga && (
+        <AbsoluteFill style={{ opacity: fade * 0.55 }}>
+          <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+            <g fill={MC.fujiDim} opacity={0.4}>
+              <rect x={-260 + drift} y={150} width={720} height={54} rx={27} />
+              <rect x={-120 + drift} y={222} width={500} height={54} rx={27} />
+              <rect x={1460 - drift} y={818} width={720} height={54} rx={27} />
+              <rect x={1600 - drift} y={890} width={500} height={54} rx={27} />
+            </g>
+            <g fill={MC.goldDim} opacity={0.3}>
+              <rect x={-40 + drift} y={294} width={300} height={34} rx={17} />
+              <rect x={1680 - drift} y={962} width={300} height={34} rx={17} />
+            </g>
+          </svg>
+        </AbsoluteFill>
+      )}
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: fade }}>
         <div style={{ width: 170, height: 3, background: SP.accent, borderRadius: 2 }} />
         {num && (
@@ -929,16 +986,47 @@ const ExpCurveScene: React.FC<{ scene: Scene; variant?: number }> = ({ scene, va
     <Frame>
       <DiagramTitle text={scene.title ?? "さかのぼるほど爆発する"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 時代の帯 (江戸・鎌倉室町・平安)。平安だけ藤色で浮かび上がる */}
+        <g opacity={appearAt(frame, fps, 20) * 0.9}>
+          {[
+            { t0: 0.38, t1: 0.6, label: "江戸", color: SP.dim, op: 0.3 },
+            { t0: 0.6, t1: 0.82, label: "鎌倉・室町", color: SP.dim, op: 0.42 },
+            { t0: 0.82, t1: 1.04, label: "平安", color: MC.fujiDim, op: 0.5 },
+          ].map((e, i) => {
+            const x0 = ox + (ex2 - ox) * e.t0;
+            const x1 = ox + (ex2 - ox) * Math.min(e.t1, 1.04);
+            return (
+              <g key={i}>
+                <rect x={x0} y={ey - 40} width={x1 - x0} height={oy - ey + 40} fill={e.color} opacity={e.op} />
+                <SmallLabel
+                  x={(x0 + x1) / 2}
+                  y={oy + 44}
+                  text={e.label}
+                  color={i === 2 ? MC.fuji : SP.faint}
+                  size={28}
+                  weight={i === 2 ? 800 : 400}
+                />
+              </g>
+            );
+          })}
+        </g>
         <g stroke={SP.faint} strokeWidth={4}>
           <line x1={ox} y1={oy} x2={ex2 + 40} y2={oy} />
           <line x1={ox} y1={oy} x2={ox} y2={ey - 40} />
         </g>
-        <SmallLabel x={ex2 + 40} y={oy + 48} text="さかのぼる代数 →" anchor="end" />
+        <SmallLabel x={ox + 40} y={oy + 44} text="さかのぼる代数 →" anchor="start" />
         <SmallLabel x={ox - 20} y={ey - 60} text="先祖の人数" anchor="start" />
+        <defs>
+          <linearGradient id="expGold" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor={SP.line} />
+            <stop offset="70%" stopColor={SP.line} />
+            <stop offset="100%" stopColor={MC.gold} />
+          </linearGradient>
+        </defs>
         <path
           d={d}
           fill="none"
-          stroke={SP.line}
+          stroke="url(#expGold)"
           strokeWidth={7}
           strokeLinecap="round"
           strokeDasharray={len}
@@ -1083,11 +1171,56 @@ const GlobePopScene: React.FC<{ scene: Scene }> = ({ scene }) => {
     <Frame>
       <DiagramTitle text={scene.title ?? "地球の人口でも足りない"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g transform="translate(560, 560)" opacity={g} stroke={SP.line} strokeWidth={5} fill="none">
-          <circle r={230} />
-          <ellipse rx={230} ry={90} />
-          <ellipse rx={90} ry={230} />
-          <line x1={-230} y1={0} x2={230} y2={0} />
+        <g transform="translate(560, 560)" opacity={g}>
+          {/* ちゃんとした地球: 海の球体 + 見覚えのある大陸シルエット (グリッド線なし) */}
+          <circle r={230} fill="#1C2A40" />
+          <clipPath id="globeClip">
+            <circle r={226} />
+          </clipPath>
+          <g clipPath="url(#globeClip)" fill="#47704F" opacity={0.95}>
+            {/* ユーラシア大陸 (上半分に大きく) */}
+            <path d="M -214 -40 Q -196 -118 -112 -142 Q -30 -168 58 -142 Q 148 -120 180 -62 Q 192 -22 150 -2 Q 112 18 62 0 Q 22 -14 -18 6 Q -70 26 -122 6 Q -198 -2 -214 -40 Z" />
+            {/* アフリカ大陸ふう (左下) */}
+            <path d="M -152 30 Q -110 8 -78 40 Q -58 80 -78 130 Q -98 170 -130 152 Q -168 122 -170 72 Q -170 42 -152 30 Z" />
+            {/* オーストラリアふう (右下) */}
+            <path d="M 88 110 Q 128 88 164 108 Q 186 128 166 154 Q 132 174 100 160 Q 76 140 88 110 Z" />
+            {/* 南の島々 */}
+            <circle cx={10} cy={120} r={10} />
+            <circle cx={44} cy={140} r={8} />
+          </g>
+          {/* 日本列島 (金色でさりげなく) */}
+          <g fill={MC.gold} opacity={0.9}>
+            <ellipse cx={186} cy={-78} rx={7} ry={12} transform="rotate(38 186 -78)" />
+            <ellipse cx={198} cy={-54} rx={6} ry={10} transform="rotate(30 198 -54)" />
+            <circle cx={204} cy={-34} r={5} />
+          </g>
+          {/* 左上の光のハイライト */}
+          <path
+            d="M -152 -148 A 212 212 0 0 1 36 -209"
+            fill="none"
+            stroke={SP.line}
+            strokeWidth={10}
+            strokeLinecap="round"
+            opacity={0.35}
+          />
+          <circle r={230} fill="none" stroke={SP.line} strokeWidth={5} />
+          {/* 席が地球からあふれ出す (人のピクトグラムがまわりに飛び出す) */}
+          {[
+            { a: -80, r: 300, d: 40 },
+            { a: -40, r: 330, d: 48 },
+            { a: -120, r: 320, d: 56 },
+            { a: 10, r: 310, d: 64 },
+            { a: -160, r: 300, d: 72 },
+            { a: 40, r: 330, d: 80 },
+            { a: 180, r: 310, d: 88 },
+            { a: 140, r: 330, d: 96 },
+          ].map((q, i) => {
+            const pp = appearAt(frame, fps, q.d);
+            const rad = (q.a * Math.PI) / 180;
+            const px = Math.cos(rad) * q.r * (0.7 + 0.3 * pp);
+            const py = Math.sin(rad) * q.r * (0.7 + 0.3 * pp);
+            return <Person key={i} x={px} y={py} scale={0.8} opacity={pp} />;
+          })}
         </g>
         <g opacity={bar1}>
           <rect x={bx} y={base - h1} width={180} height={h1} fill={SP.accent} opacity={0.92} />
@@ -1118,8 +1251,9 @@ const SeatShareScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       <DiagramTitle text={scene.title ?? "1人で何役も掛け持ち"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <g opacity={pp}>
-          <Person x={480} y={440} scale={3.2} />
-          <SmallLabel x={480} y={760} text="同じ1人のご先祖" size={34} color={SP.ink} weight={700} />
+          <circle cx={480} cy={520} r={230} fill={MC.gold} opacity={0.1} />
+          <Person x={480} y={440} scale={3.2} color={MC.gold} />
+          <SmallLabel x={480} y={760} text="同じ1人のご先祖" size={34} color={MC.gold} weight={700} />
         </g>
         {seats.map((s, i) => {
           const p = appearAt(frame, fps, 16 + i * 2);
@@ -1362,7 +1496,7 @@ const JapanNetScene: React.FC<{ scene: Scene; variant?: number }> = ({ scene, va
     <Frame>
       <DiagramTitle text={scene.title ?? "日本中が遠い親戚"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g opacity={p * 0.9} stroke={SP.dim} strokeWidth={4} fill="none">
+        <g opacity={p * 0.9} stroke={SP.dim} strokeWidth={4} fill="#2E4638">
           <path d="M 540 860 Q 500 800 580 760 Q 660 730 720 760 Q 760 800 700 850 Q 620 890 540 860 Z" />
           <path d="M 760 780 Q 740 700 840 640 Q 980 560 1120 480 Q 1240 410 1300 360 Q 1360 320 1380 360 Q 1360 440 1240 520 Q 1080 630 920 720 Q 820 770 760 780 Z" />
           <path d="M 1380 240 Q 1360 180 1440 160 Q 1520 170 1500 250 Q 1450 300 1400 280 Z" />
@@ -1396,27 +1530,103 @@ const JapanNetScene: React.FC<{ scene: Scene; variant?: number }> = ({ scene, va
 
 // 藤原道長本人 (烏帽子・束帯・扇・望月)。
 // 「この世をば」の歌の文では望月の歌モード、variant で構図を変える
+// 金色の望月 (ゆっくり昇る+柔らかい光)。道長まわりの絵の共通部品
+const GoldenMoon: React.FC<{ cx: number; cy: number; r: number; opacity?: number; rise?: number }> = ({
+  cx,
+  cy,
+  r,
+  opacity = 1,
+  rise = 0,
+}) => {
+  const id = `moonGlow-${cx}-${cy}-${r}`;
+  const y = cy + rise; // rise>0 のあいだは下にいて、0 に近づくほど定位置へ昇る
+  return (
+    <g opacity={opacity}>
+      <defs>
+        <radialGradient id={id} cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor={MC.gold} stopOpacity={0.5} />
+          <stop offset="60%" stopColor={MC.gold} stopOpacity={0.14} />
+          <stop offset="100%" stopColor={MC.gold} stopOpacity={0} />
+        </radialGradient>
+      </defs>
+      <circle cx={cx} cy={y} r={r * 2.1} fill={`url(#${id})`} />
+      <circle cx={cx} cy={y} r={r} fill={MC.gold} opacity={0.22} />
+      <circle cx={cx} cy={y} r={r} fill="none" stroke={MC.gold} strokeWidth={6} />
+      {/* 月面の影 (うっすら) */}
+      <circle cx={cx - r * 0.3} cy={y - r * 0.2} r={r * 0.16} fill={MC.goldDim} opacity={0.35} />
+      <circle cx={cx + r * 0.25} cy={y + r * 0.3} r={r * 0.11} fill={MC.goldDim} opacity={0.3} />
+    </g>
+  );
+};
+
+// 束帯姿の道長 (顔つき)。(x, y) = 顔の中心。笏を胸の前に持つ
+const MichinagaFigure: React.FC<{ x: number; y: number; scale?: number; opacity?: number }> = ({
+  x,
+  y,
+  scale = 1,
+  opacity = 1,
+}) => (
+  <g transform={`translate(${x}, ${y}) scale(${scale})`} opacity={opacity}>
+    {/* 烏帽子 (頭に少し重ねる) */}
+    <path
+      d="M -58 -50 Q -50 -170 0 -177 Q 50 -170 58 -50 Z"
+      fill={SP.background}
+      stroke={SP.line}
+      strokeWidth={6}
+      strokeLinejoin="round"
+    />
+    {/* 顔 */}
+    <circle r={72} fill={SP.background} stroke={SP.line} strokeWidth={6} />
+    {/* 眉・目・口 (堂々とした表情) */}
+    <path d="M -40 -18 q 14 -10 28 -4 M 12 -22 q 14 -6 28 4" fill="none" stroke={SP.line} strokeWidth={5} strokeLinecap="round" />
+    <circle cx={-24} cy={2} r={5.5} fill={SP.line} />
+    <circle cx={26} cy={2} r={5.5} fill={SP.line} />
+    <path d="M -14 38 q 14 10 28 0" fill="none" stroke={SP.line} strokeWidth={5} strokeLinecap="round" />
+    {/* 束帯 (大きく広がる袍)。裾に藤色の重ね */}
+    <path
+      d="M -260 500 Q -240 240 -120 160 L 0 100 L 120 160 Q 240 240 260 500 Z"
+      fill={SP.background}
+      stroke={SP.line}
+      strokeWidth={6}
+      strokeLinejoin="round"
+    />
+    {/* 袖の線と藤色の重ね色 */}
+    <path d="M -120 220 L -180 500 M 120 220 L 180 500" fill="none" stroke={SP.line} strokeWidth={5} />
+    <path d="M -248 470 Q -230 300 -140 210 M 248 470 Q 230 300 140 210" fill="none" stroke={MC.fuji} strokeWidth={6} opacity={0.85} />
+    <path d="M -236 500 L 236 500" stroke={MC.fujiDim} strokeWidth={8} />
+    {/* 笏 (胸の前) と、それを握る両手 */}
+    <g transform="rotate(-8)">
+      <rect x={-16} y={190} width={32} height={150} rx={8} fill={SP.background} stroke={SP.line} strokeWidth={6} />
+      <circle cx={0} cy={268} r={17} fill={SP.background} stroke={SP.line} strokeWidth={5} />
+      <circle cx={0} cy={312} r={17} fill={SP.background} stroke={SP.line} strokeWidth={5} />
+    </g>
+  </g>
+);
+
 const MichinagaScene: React.FC<{ scene?: Scene; variant?: number }> = ({ scene, variant = 0 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const moon = appearAt(frame, fps, 8);
   const body = appearAt(frame, fps, 20);
   const tag = appearAt(frame, fps, 54);
+  const moonRise = interpolate(frame, [0, 70], [60, 0], {
+    extrapolateRight: "clamp",
+  });
   const poem = /この世をば|望月の歌|欠けたる/.test(scene?.text ?? "");
 
   if (poem) {
-    // 望月の歌: 大きな満月と歌 (縦書き)
+    // 望月の歌: 金色の大きな満月がゆっくり昇り、歌が縦書きで現れる
+    const bigRise = interpolate(frame, [0, 90], [110, 0], { extrapolateRight: "clamp" });
     return (
       <Frame>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-          <circle cx={700} cy={540} r={250} fill="none" stroke={SP.line} strokeWidth={6} opacity={moon} />
-          <circle cx={700} cy={540} r={290} fill="none" stroke={SP.dim} strokeWidth={2} opacity={moon * 0.7} />
-          <SmallLabel x={700} y={900} text="望月 = 欠けたところのない満月" size={30} />
+          <GoldenMoon cx={640} cy={520} r={250} opacity={moon} rise={bigRise} />
+          <SmallLabel x={640} y={920} text="望月 = 欠けたところのない満月" size={30} />
           {["この世をば", "わが世とぞ思ふ", "望月の…"].map((ln, i) => (
             <text
               key={i}
-              x={1420 - i * 110}
-              y={300}
+              x={1460 - i * 110}
+              y={280}
               fontFamily={SUURI_SERIF}
               fontSize={54}
               fontWeight={700}
@@ -1435,14 +1645,26 @@ const MichinagaScene: React.FC<{ scene?: Scene; variant?: number }> = ({ scene, 
 
   const v = variant % 3;
   if (v === 2) {
-    // 3回目は顔のクローズアップ (烏帽子を大きく)
+    // 3回目は顔のクローズアップ (烏帽子を大きく・表情つき)
     return (
       <Frame>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-          <g opacity={body} stroke={SP.line} strokeWidth={7} fill="none">
-            <path d="M 700 460 Q 720 220 820 200 Q 920 220 940 460 Z" strokeLinejoin="round" />
-            <circle cx={820} cy={600} r={140} />
-            <path d="M 540 1000 q 20 -260 280 -270 q 260 10 280 270" />
+          <GoldenMoon cx={1500} cy={240} r={110} opacity={moon} rise={moonRise} />
+          <g opacity={body}>
+            <path
+              d="M 700 460 Q 720 220 820 200 Q 920 220 940 460 Z"
+              fill={SP.background}
+              stroke={SP.line}
+              strokeWidth={7}
+              strokeLinejoin="round"
+            />
+            <circle cx={820} cy={600} r={140} fill={SP.background} stroke={SP.line} strokeWidth={7} />
+            <path d="M 740 570 q 26 -18 52 -8 M 848 562 q 26 -10 52 8" fill="none" stroke={SP.line} strokeWidth={7} strokeLinecap="round" />
+            <circle cx={772} cy={608} r={10} fill={SP.line} />
+            <circle cx={868} cy={608} r={10} fill={SP.line} />
+            <path d="M 792 672 q 28 20 56 0" fill="none" stroke={SP.line} strokeWidth={7} strokeLinecap="round" />
+            <path d="M 540 1000 q 20 -260 280 -270 q 260 10 280 270" fill="none" stroke={SP.line} strokeWidth={7} />
+            <path d="M 560 980 q 30 -200 260 -236" fill="none" stroke={MC.fuji} strokeWidth={6} opacity={0.8} />
           </g>
           <g opacity={tag}>
             <text x={1340} y={560} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={64} fontWeight={800} fill={SP.ink} letterSpacing={8}>
@@ -1455,29 +1677,146 @@ const MichinagaScene: React.FC<{ scene?: Scene; variant?: number }> = ({ scene, 
     );
   }
   const flip = v === 1; // 2回目は左右を入れ替える
-  const mx = flip ? 1100 : 820; // 人物の中心
-  const moonX = flip ? 480 : 1360;
-  const dx = mx - 820;
+  const mx = flip ? 1120 : 800; // 人物の中心
+  const moonX = flip ? 480 : 1400;
   return (
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <GoldenMoon cx={moonX} cy={280} r={130} opacity={moon} rise={moonRise} />
         <g opacity={moon}>
-          <circle cx={moonX} cy={300} r={130} fill="none" stroke={SP.line} strokeWidth={5} opacity={0.9} />
-          <SmallLabel x={moonX} y={490} text="望月 (満月)" color={SP.faint} size={30} />
+          <SmallLabel x={moonX} y={500} text="望月 (満月)" color={MC.gold} size={30} />
         </g>
-        <g opacity={body} stroke={SP.line} strokeWidth={6} fill="none" transform={`translate(${dx}, 0)`}>
-          <path d="M 760 330 Q 770 220 820 210 Q 870 220 880 330 Z" strokeLinejoin="round" />
-          <circle cx={820} cy={400} r={72} />
-          <path d="M 560 900 Q 580 640 700 560 L 820 500 L 940 560 Q 1060 640 1080 900 Z" strokeLinejoin="round" />
-          <path d="M 700 620 L 640 900 M 940 620 L 1000 900" />
-          <path d="M 1030 700 L 1120 600 M 1030 700 L 1150 640 M 1030 700 L 1160 690" />
-          <path d="M 1120 600 Q 1160 640 1160 690" />
-        </g>
+        <MichinagaFigure x={mx} y={420} opacity={body} />
         <g opacity={tag}>
-          <text x={moonX} y={640} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={58} fontWeight={800} fill={SP.ink} letterSpacing={6}>
+          <text x={moonX} y={660} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={58} fontWeight={800} fill={SP.ink} letterSpacing={6}>
             藤原道長
           </text>
-          <SmallLabel x={moonX} y={700} text={flip ? "権力も子孫も桁違い" : "966 - 1028 平安貴族の頂点"} size={28} />
+          <SmallLabel x={moonX} y={720} text={flip ? "権力も子孫も桁違い" : "966 - 1028 平安貴族の頂点"} size={28} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== mich_preview_ch12: 道長回の章予告・前半 (第1章=先祖の倍々 / 第2章=人口が足りない) =====
+// キラキラ回と同じ「斜め2分割」レイアウトだが、中身は道長回専用の絵
+const MichPreviewCh12Scene: React.FC<{ scene?: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const right = appearAt(frame, fps, Math.round(1.6 * fps));
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "今日の流れ・前半"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 斜めの仕切り線 */}
+        <line x1={1075} y1={195} x2={845} y2={880} stroke={SP.line} strokeWidth={6} strokeLinecap="round" />
+        {/* 左: 第1章 先祖の倍々ゲーム (ミニ家系ツリー 1→2→4) */}
+        <g opacity={appearAt(frame, fps, 6)}>
+          <SmallLabel x={520} y={280} text="第1章" color={SP.ink} size={40} weight={800} />
+          {/* あなた → 親2人 → 祖父母4人 と、上へ倍々に増える */}
+          <line x1={520} y1={634} x2={440} y2={586} stroke={SP.line} strokeWidth={5} />
+          <line x1={520} y1={634} x2={600} y2={586} stroke={SP.line} strokeWidth={5} />
+          <line x1={440} y1={538} x2={385} y2={488} stroke={SP.line} strokeWidth={5} />
+          <line x1={440} y1={538} x2={478} y2={488} stroke={SP.line} strokeWidth={5} />
+          <line x1={600} y1={538} x2={562} y2={488} stroke={SP.line} strokeWidth={5} />
+          <line x1={600} y1={538} x2={655} y2={488} stroke={SP.line} strokeWidth={5} />
+          <circle cx={520} cy={660} r={27} fill={SP.background} stroke={SP.line} strokeWidth={6} />
+          <circle cx={440} cy={562} r={23} fill={SP.background} stroke={SP.line} strokeWidth={6} />
+          <circle cx={600} cy={562} r={23} fill={SP.background} stroke={SP.line} strokeWidth={6} />
+          {[385, 478, 562, 655].map((x) => (
+            <circle key={x} cx={x} cy={468} r={19} fill={SP.background} stroke={SP.line} strokeWidth={5} />
+          ))}
+          {/* 上はまだまだ続く気配 (点々) */}
+          {[414, 520, 626].map((x) => (
+            <circle key={x} cx={x} cy={396} r={6} fill={SP.faint} />
+          ))}
+          <SmallLabel x={520} y={736} text="あなた" color={SP.faint} size={26} />
+          {/* 倍々の掛け算 (金) */}
+          <text x={722} y={560} textAnchor="middle" fontSize={44} fontWeight={800} fill={MC.gold} fontFamily={SUURI_FONT}>
+            ×2
+          </text>
+          <text x={746} y={470} textAnchor="middle" fontSize={44} fontWeight={800} fill={MC.gold} fontFamily={SUURI_FONT}>
+            ×2…
+          </text>
+          <SmallLabel x={520} y={806} text="先祖の数を数える" color={SP.ink} size={32} weight={700} />
+        </g>
+        {/* 右: 第2章 日本の人口と比べる (席10億 vs 人口700万の棒) */}
+        <g opacity={right}>
+          <SmallLabel x={1400} y={280} text="第2章" color={SP.ink} size={40} weight={800} />
+          <line x1={1230} y1={640} x2={1570} y2={640} stroke={SP.line} strokeWidth={5} />
+          <rect x={1272} y={340} width={96} height={300} fill={MC.gold} opacity={0.3} />
+          <rect x={1272} y={340} width={96} height={300} fill="none" stroke={MC.gold} strokeWidth={6} />
+          <rect x={1448} y={606} width={96} height={34} fill={SP.background} stroke={SP.line} strokeWidth={6} />
+          <SmallLabel x={1320} y={312} text="先祖の席 10億" color={MC.gold} size={28} weight={700} />
+          <SmallLabel x={1496} y={578} text="人口 700万" color={SP.ink} size={28} weight={700} />
+          <text x={1400} y={706} textAnchor="middle" fontSize={42} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
+            足りない!?
+          </text>
+          <SmallLabel x={1400} y={756} text="日本の人口と比べる" color={SP.ink} size={32} weight={700} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== mich_preview_ch34: 道長回の章予告・後半 (第3章=なぜ道長か / 第4章=種明かし) =====
+const MichPreviewCh34Scene: React.FC<{ scene?: Scene }> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const right = appearAt(frame, fps, Math.round(1.6 * fps));
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "今日の流れ・後半"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 斜めの仕切り線 */}
+        <line x1={1075} y1={195} x2={845} y2={880} stroke={SP.line} strokeWidth={6} strokeLinecap="round" />
+        {/* 左: 第3章 なぜ道長なのか (望月と束帯姿) */}
+        <g opacity={appearAt(frame, fps, 6)}>
+          <SmallLabel x={520} y={280} text="第3章" color={SP.ink} size={40} weight={800} />
+          <GoldenMoon cx={372} cy={380} r={74} />
+          <MichinagaFigure x={568} y={448} scale={0.48} />
+          <SmallLabel x={520} y={752} text="なぜ、藤原道長なのか" color={SP.ink} size={32} weight={700} />
+        </g>
+        {/* 右: 第4章 意地悪な種明かし (DNAは半分の半分の…でほぼ0に) */}
+        <g opacity={right}>
+          <SmallLabel x={1400} y={280} text="第4章" color={SP.ink} size={40} weight={800} />
+          {/* 受け継ぐDNAが半分ずつ小さくなっていく (掛け算は上に1行でまとめる) */}
+          <text x={1400} y={372} textAnchor="middle" fontSize={38} fontWeight={800} fill={MC.gold} fontFamily={SUURI_FONT}>
+            ½ × ½ × ½ × …
+          </text>
+          {[
+            { x: 1180, s: 120 },
+            { x: 1372, s: 60 },
+            { x: 1498, s: 30 },
+            { x: 1590, s: 14 },
+          ].map((b, i) => (
+            <g key={i}>
+              <rect
+                x={b.x}
+                y={530 - b.s}
+                width={b.s}
+                height={b.s}
+                rx={8}
+                fill={MC.fuji}
+                opacity={0.55 - i * 0.1}
+              />
+              <rect x={b.x} y={530 - b.s} width={b.s} height={b.s} rx={8} fill="none" stroke={SP.line} strokeWidth={5} />
+              {i < 3 && (
+                <path
+                  d={`M ${b.x + b.s + 14} 492 L ${b.x + b.s + 42} 492`}
+                  stroke={SP.faint}
+                  strokeWidth={5}
+                  strokeLinecap="round"
+                  markerEnd="none"
+                />
+              )}
+            </g>
+          ))}
+          <SmallLabel x={1400} y={586} text="受け継ぐDNAは、半分ずつ" color={SP.faint} size={26} />
+          <text x={1400} y={672} textAnchor="middle" fontSize={42} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
+            残りは、ほぼ0%?
+          </text>
+          <SmallLabel x={1400} y={732} text="少し意地悪な種明かし" color={SP.ink} size={32} weight={700} />
         </g>
       </svg>
     </Frame>
@@ -1608,9 +1947,8 @@ const DescendTreeScene: React.FC<{ scene: Scene; variant?: number }> = ({ scene,
       <DiagramTitle text={scene.title ?? "子孫は下へ広がり続ける"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <g opacity={top}>
-          <path d="M 932 316 Q 938 252 960 247 Q 982 252 988 316 Z" fill="none" stroke={SP.line} strokeWidth={5} strokeLinejoin="round" />
-          <Person x={960} y={340} scale={1.2} />
-          <SmallLabel x={1110} y={350} text="道長" anchor="start" color={SP.ink} size={36} weight={700} />
+          <MichinagaFigure x={960} y={320} scale={0.2} />
+          <SmallLabel x={1080} y={340} text="道長" anchor="start" color={MC.gold} size={36} weight={700} />
         </g>
         {rows.map((row, ri) => {
           const p = appearAt(frame, fps, 26 + ri * 16);
@@ -1626,7 +1964,7 @@ const DescendTreeScene: React.FC<{ scene: Scene; variant?: number }> = ({ scene,
                 const redDot = v === 2 && ri === rows.length - 1 && j % 4 === 1;
                 return (
                   <g key={j}>
-                    <line x1={px} y1={py} x2={x} y2={row.y - 20} stroke={SP.dim} strokeWidth={3} />
+                    <line x1={px} y1={py} x2={x} y2={row.y - 20} stroke={MC.fujiDim} strokeWidth={3} />
                     <Person x={x} y={row.y} scale={row.sc} color={redDot ? SP.accentSoft : SP.line} />
                   </g>
                 );
@@ -1721,22 +2059,29 @@ const CrownScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       <DiagramTitle text={scene.title ?? "一家三后 — 娘3人がきさきに"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <g opacity={base}>
-          <Person x={960} y={820} scale={1.3} />
-          <SmallLabel x={790} y={835} text="藤原道長" color={SP.ink} size={34} weight={700} anchor="end" />
+          <MichinagaFigure x={960} y={730} scale={0.21} />
+          <SmallLabel x={860} y={745} text="藤原道長" color={SP.ink} size={34} weight={700} anchor="end" />
         </g>
         {daughters.map((x, i) => {
           const p = appearAt(frame, fps, 26 + i * 14);
+          const robe = MC.kasane[i % MC.kasane.length];
           return (
             <g key={i} opacity={p}>
-              <line x1={960} y1={800} x2={x} y2={610} stroke={SP.dim} strokeWidth={4} />
-              <Person x={x} y={555} scale={1} />
-              <path d={crownPath(x, 512, 1)} fill="none" stroke={SP.accent} strokeWidth={5} strokeLinejoin="round" />
+              <line x1={960} y1={700} x2={x} y2={610} stroke={MC.fujiDim} strokeWidth={4} />
+              {/* 十二単の重ね色の姫君 */}
+              <path d={`M ${x - 52} 648 q 4 -60 52 -64 q 48 4 52 64 Z`} fill="none" stroke={robe} strokeWidth={6} strokeLinejoin="round" />
+              <circle cx={x} cy={555} r={18} fill="none" stroke={SP.line} strokeWidth={5} />
+              <path d={`M ${x - 36} 640 q 10 -34 36 -40 M ${x + 36} 640 q -10 -34 -36 -40`} fill="none" stroke={SP.line} strokeWidth={4} opacity={0.9} />
+              <path d={crownPath(x, 520, 1)} fill="none" stroke={MC.gold} strokeWidth={5} strokeLinejoin="round" />
             </g>
           );
         })}
         <g opacity={topP}>
-          <line x1={960} y1={470} x2={960} y2={330} stroke={SP.accent} strokeWidth={5} strokeDasharray="12 10" />
-          <path d={crownPath(960, 290, 1.7)} fill="none" stroke={SP.accent} strokeWidth={6} strokeLinejoin="round" />
+          <line x1={960} y1={470} x2={960} y2={330} stroke={MC.gold} strokeWidth={5} strokeDasharray="12 10" />
+          <path d={crownPath(960, 290, 1.7)} fill={SP.background} stroke={MC.gold} strokeWidth={6} strokeLinejoin="round" />
+          <circle cx={926} cy={280} r={7} fill={MC.gold} />
+          <circle cx={960} cy={272} r={7} fill={MC.gold} />
+          <circle cx={994} cy={280} r={7} fill={MC.gold} />
           <SmallLabel x={1090} y={300} text="天皇家へ" color={SP.accent} size={38} weight={800} anchor="start" />
         </g>
       </svg>
@@ -1792,8 +2137,8 @@ const PathCountScene: React.FC<{ scene: Scene }> = ({ scene }) => {
         <g opacity={grid}>
           <circle cx={gx(0)} cy={gy(3)} r={22} fill="none" stroke={SP.line} strokeWidth={5} />
           <SmallLabel x={gx(0) - 50} y={gy(3) + 12} text="あなた" anchor="end" color={SP.ink} size={34} weight={700} />
-          <circle cx={gx(5)} cy={gy(0)} r={26} fill="none" stroke={SP.accent} strokeWidth={5} />
-          <SmallLabel x={gx(5)} y={gy(0) - 56} text="道長" color={SP.accent} size={36} weight={800} />
+          <circle cx={gx(5)} cy={gy(0)} r={26} fill={MC.gold} fillOpacity={0.25} stroke={MC.gold} strokeWidth={5} />
+          <SmallLabel x={gx(5)} y={gy(0) - 56} text="道長" color={MC.gold} size={36} weight={800} />
         </g>
       </svg>
     </Frame>
@@ -1900,6 +2245,7 @@ const ChainLightsScene: React.FC<{ scene: Scene; variant?: number }> = ({ scene,
     <Frame>
       <DiagramTitle text={scene.title ?? "千年、一度も途切れなかった"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        {/* 命のリレーは金の灯で流れていく */}
         {Array.from({ length: n - 1 }, (_, i) => (
           <line
             key={i}
@@ -1907,25 +2253,27 @@ const ChainLightsScene: React.FC<{ scene: Scene; variant?: number }> = ({ scene,
             y1={yi(i)}
             x2={xi(i + 1) - 20}
             y2={yi(i + 1)}
-            stroke={i < lit ? SP.accentSoft : SP.dim}
+            stroke={i < lit ? MC.gold : SP.dim}
             strokeWidth={i < lit ? 5 : 3}
-            opacity={appearAt(frame, fps, 10 + i * 4)}
+            opacity={appearAt(frame, fps, 10 + i * 4) * (i < lit ? 0.85 : 1)}
           />
         ))}
         {Array.from({ length: n }, (_, i) => {
           const p = appearAt(frame, fps, 8 + i * 4);
           const isLit = i === lit;
+          const isYou = i === n - 1;
           return (
             <g key={i} opacity={p}>
+              {i <= lit && <circle cx={xi(i)} cy={yi(i)} r={30} fill={MC.gold} opacity={0.16} />}
               <circle
                 cx={xi(i)}
                 cy={yi(i)}
                 r={isLit ? 22 : 14}
-                fill={i <= lit ? SP.accent : "none"}
-                stroke={i <= lit ? SP.accent : SP.line}
+                fill={isYou && i <= lit ? SP.accent : i <= lit ? MC.gold : "none"}
+                stroke={isYou && i <= lit ? SP.accent : i <= lit ? MC.gold : SP.line}
                 strokeWidth={4}
               />
-              {isLit && <circle cx={xi(i)} cy={yi(i)} r={36} fill="none" stroke={SP.accentSoft} strokeWidth={3} opacity={0.6} />}
+              {isLit && <circle cx={xi(i)} cy={yi(i)} r={36} fill="none" stroke={MC.gold} strokeWidth={3} opacity={0.6} />}
             </g>
           );
         })}
@@ -1988,6 +2336,7 @@ const VillageScene: React.FC = () => {
   return (
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
+        <GoldenMoon cx={1520} cy={230} r={95} opacity={m * 0.9} />
         <path
           d="M 240 560 L 460 360 L 680 560 M 560 460 L 760 300 L 980 480"
           fill="none"
@@ -2005,7 +2354,7 @@ const VillageScene: React.FC = () => {
           <path d="M 1020 680 L 1150 560 L 1280 680 Z" />
           <rect x={1055} y={680} width={190} height={120} />
         </g>
-        <g opacity={f} stroke={SP.faint} strokeWidth={4}>
+        <g opacity={f * 0.85} stroke="#5BA87A" strokeWidth={4}>
           {Array.from({ length: 3 }, (_, r) =>
             Array.from({ length: 10 }, (_, c) => (
               <line key={`${r}-${c}`} x1={420 + c * 110} y1={848 + r * 34} x2={470 + c * 110} y2={848 + r * 34} />
@@ -2366,12 +2715,16 @@ const TimelineScene: React.FC<{ scene: Scene }> = ({ scene }) => {
         <path d={`M 380 ${y} l 34 -20 v 40 Z`} fill={SP.line} opacity={lineP} />
         {eras.map((e, i) => {
           const p = appearAt(frame, fps, 16 + i * 12);
+          // 時代ごとの差し色 (平安=藤色・戦国=萌黄・江戸=縹)。赤く灯る時代はそのまま赤
+          const eraColor =
+            e.name === "平安" ? MC.fuji : e.name === "戦国" ? "#5BA87A" : e.name === "江戸" ? "#5B8AC4" : SP.faint;
           return (
             <g key={i} opacity={p}>
-              <circle cx={e.x} cy={y} r={e.red ? 20 : 14} fill={e.red ? SP.accent : SP.line} />
+              <circle cx={e.x} cy={y} r={e.red ? 20 : 14} fill={e.red ? SP.accent : eraColor} />
+              <rect x={e.x - 50} y={y - 36} width={100} height={7} rx={3} fill={e.red ? SP.accent : eraColor} opacity={0.8} />
               <SmallLabel
                 x={e.x}
-                y={y - 46}
+                y={y - 52}
                 text={e.name}
                 color={e.red ? SP.accent : SP.ink}
                 size={e.red ? 52 : 42}
@@ -2403,7 +2756,7 @@ const JapanPopScene: React.FC<{ scene: Scene }> = ({ scene }) => {
     <Frame>
       <DiagramTitle text={scene.title ?? "当時の日本の人口"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g opacity={p * 0.9} stroke={SP.dim} strokeWidth={4} fill="none">
+        <g opacity={p * 0.9} stroke={SP.dim} strokeWidth={4} fill="#2E4638">
           <path d="M 540 860 Q 500 800 580 760 Q 660 730 720 760 Q 760 800 700 850 Q 620 890 540 860 Z" />
           <path d="M 760 780 Q 740 700 840 640 Q 980 560 1120 480 Q 1240 410 1300 360 Q 1360 320 1380 360 Q 1360 440 1240 520 Q 1080 630 920 720 Q 820 770 760 780 Z" />
           <path d="M 1380 240 Q 1360 180 1440 160 Q 1520 170 1500 250 Q 1450 300 1400 280 Z" />
@@ -2432,11 +2785,11 @@ const ThanksScene: React.FC = () => {
   return (
     <Frame>
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g opacity={anc * 0.7}>
-          <Person x={420} y={260} scale={1.1} color={SP.faint} />
-          <Person x={560} y={200} scale={0.9} color={SP.faint} />
-          <Person x={690} y={160} scale={0.75} color={SP.faint} />
-          <Person x={800} y={130} scale={0.6} color={SP.faint} />
+        <g opacity={anc * 0.8}>
+          <Person x={420} y={260} scale={1.1} color={MC.gold} />
+          <Person x={560} y={200} scale={0.9} color={MC.goldDim} />
+          <Person x={690} y={160} scale={0.75} color={MC.goldDim} />
+          <Person x={800} y={130} scale={0.6} color={MC.goldDim} />
         </g>
         <g transform={`rotate(${-35 * bow}, 1060, 850)`}>
           <Person x={1060} y={520} scale={5} />
@@ -2470,7 +2823,13 @@ const HierarchyTopScene: React.FC<{ scene: Scene }> = ({ scene }) => {
         {rows.map((row, i) => (
           <g key={i} opacity={appearAt(frame, fps, 12 + i * 14)}>
             {Array.from({ length: row.n }).map((_, j) => (
-              <Person key={j} x={960 + (j - (row.n - 1) / 2) * row.sp} y={row.y} scale={row.sc} color={SP.faint} />
+              <Person
+                key={j}
+                x={960 + (j - (row.n - 1) / 2) * row.sp}
+                y={row.y}
+                scale={row.sc}
+                color={i === 0 ? SP.faint : i === 1 ? MC.fujiDim : MC.fuji}
+              />
             ))}
           </g>
         ))}
@@ -2570,7 +2929,7 @@ const SwallowJapanScene: React.FC<{ scene: Scene }> = ({ scene }) => {
     <Frame>
       <DiagramTitle text={scene.title ?? "日本を丸ごと飲み込む"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
-        <g opacity={land * 0.9} stroke={SP.line} strokeWidth={4} fill="none">
+        <g opacity={land * 0.9} stroke={SP.line} strokeWidth={4} fill="#2E4638">
           <path d="M 540 860 Q 500 800 580 760 Q 660 730 720 760 Q 760 800 700 850 Q 620 890 540 860 Z" />
           <path d="M 760 780 Q 740 700 840 640 Q 980 560 1120 480 Q 1240 410 1300 360 Q 1360 320 1380 360 Q 1360 440 1240 520 Q 1080 630 920 720 Q 820 770 760 780 Z" />
           <path d="M 1380 240 Q 1360 180 1440 160 Q 1520 170 1500 250 Q 1450 300 1400 280 Z" />
@@ -2596,19 +2955,19 @@ const TwelveChildrenScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       <DiagramTitle text={scene.title ?? "道長の子は12人"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <g opacity={p0}>
-          <Person x={960} y={300} scale={1.4} />
-          <path d="M 942 278 Q 950 210 978 220 L 984 282 Z" fill={SP.line} />
-          <SmallLabel x={1090} y={310} text="藤原道長" color={SP.ink} size={36} weight={700} anchor="start" />
-          <line x1={960} y1={400} x2={960} y2={460} stroke={SP.dim} strokeWidth={4} />
-          <line x1={585} y1={460} x2={1335} y2={460} stroke={SP.dim} strokeWidth={4} />
+          <MichinagaFigure x={960} y={280} scale={0.34} />
+          <SmallLabel x={1120} y={310} text="藤原道長" color={SP.ink} size={36} weight={700} anchor="start" />
+          <line x1={960} y1={430} x2={960} y2={470} stroke={MC.fujiDim} strokeWidth={4} />
+          <line x1={585} y1={470} x2={1335} y2={470} stroke={MC.fujiDim} strokeWidth={4} />
         </g>
         {Array.from({ length: 12 }).map((_, i) => {
           const x = 585 + (i % 6) * 150;
-          const y = i < 6 ? 580 : 740;
+          const y = i < 6 ? 590 : 750;
+          const c = MC.kasane[i % MC.kasane.length];
           return (
             <g key={i} opacity={appearAt(frame, fps, 24 + i * 6)}>
-              {i < 6 && <line x1={x} y1={460} x2={x} y2={530} stroke={SP.dim} strokeWidth={3} />}
-              <Person x={x} y={y} scale={0.95} />
+              {i < 6 && <line x1={x} y1={470} x2={x} y2={540} stroke={MC.fujiDim} strokeWidth={3} />}
+              <Person x={x} y={y} scale={0.95} color={c} />
             </g>
           );
         })}
@@ -2637,21 +2996,26 @@ const EmperorGrandsonsScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       <DiagramTitle text={scene.title ?? "孫が天皇になった"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <g opacity={base}>
-          <Person x={960} y={830} scale={1.3} />
-          <SmallLabel x={790} y={845} text="藤原道長" color={SP.ink} size={34} weight={700} anchor="end" />
+          <MichinagaFigure x={960} y={765} scale={0.21} />
+          <SmallLabel x={860} y={780} text="藤原道長" color={SP.ink} size={34} weight={700} anchor="end" />
         </g>
         <g opacity={mid}>
-          <line x1={960} y1={810} x2={960} y2={670} stroke={SP.dim} strokeWidth={4} />
-          <Person x={960} y={620} scale={1.05} />
-          <SmallLabel x={1070} y={635} text="娘 (きさき)" color={SP.faint} size={30} anchor="start" />
+          <line x1={960} y1={740} x2={960} y2={716} stroke={MC.fujiDim} strokeWidth={4} />
+          {/* 娘 (十二単の藤色) */}
+          <path d="M 906 712 q 4 -62 54 -66 q 50 4 54 66 Z" fill="none" stroke={MC.fuji} strokeWidth={6} strokeLinejoin="round" />
+          <circle cx={960} cy={620} r={19} fill="none" stroke={SP.line} strokeWidth={5} />
+          <SmallLabel x={1070} y={635} text="娘 (きさき)" color={MC.fuji} size={30} anchor="start" />
         </g>
         {sons.map((s, i) => {
           const p = appearAt(frame, fps, 54 + i * 16);
           return (
             <g key={i} opacity={p}>
-              <line x1={960} y1={600} x2={s.x} y2={450} stroke={SP.dim} strokeWidth={4} />
+              <line x1={960} y1={600} x2={s.x} y2={450} stroke={MC.fujiDim} strokeWidth={4} />
               <Person x={s.x} y={395} scale={1.15} />
-              <path d={crownPath(s.x, 345, 1.15)} fill="none" stroke={SP.accent} strokeWidth={5} strokeLinejoin="round" />
+              <path d={crownPath(s.x, 345, 1.15)} fill={SP.background} stroke={MC.gold} strokeWidth={5} strokeLinejoin="round" />
+              <circle cx={s.x - 20} cy={332} r={5} fill={MC.gold} />
+              <circle cx={s.x} cy={326} r={5} fill={MC.gold} />
+              <circle cx={s.x + 20} cy={332} r={5} fill={MC.gold} />
               <SmallLabel x={s.x} y={520} text={s.name} color={SP.accent} size={38} weight={800} />
             </g>
           );
@@ -2683,15 +3047,19 @@ const SpreadSamuraiScene: React.FC<{ scene: Scene }> = ({ scene }) => {
       <DiagramTitle text={scene.title ?? "貴族から武家へ"} />
       <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         <g opacity={p0}>
-          <Person x={420} y={570} scale={1.4} />
-          <path d="M 402 548 Q 410 480 438 490 L 444 552 Z" fill={SP.line} />
-          <SmallLabel x={420} y={790} text="道長" color={SP.ink} size={36} weight={700} />
+          <MichinagaFigure x={420} y={530} scale={0.44} />
+          <SmallLabel x={420} y={790} text="道長" color={MC.gold} size={36} weight={700} />
         </g>
         {arrow(530, 740, 24)}
-        {grid(960, 32, SP.line)}
-        <SmallLabel x={960} y={790} text="貴族のほとんど" color={SP.ink} size={36} weight={700} />
+        {grid(960, 32, MC.fuji)}
+        <SmallLabel x={960} y={790} text="貴族のほとんど" color={MC.fuji} size={36} weight={700} />
         {arrow(1120, 1330, 62)}
-        {grid(1500, 70, SP.faint)}
+        {grid(1500, 70, SP.line)}
+        {/* 武家のしるし: 刀 */}
+        <g opacity={appearAt(frame, fps, 100)}>
+          <line x1={1580} y1={700} x2={1680} y2={610} stroke={SP.line} strokeWidth={7} strokeLinecap="round" />
+          <line x1={1568} y1={712} x2={1596} y2={686} stroke={SP.line} strokeWidth={12} strokeLinecap="round" />
+        </g>
         <SmallLabel x={1500} y={790} text="武家 (源氏・平家)" color={SP.ink} size={36} weight={700} />
       </svg>
     </Frame>
@@ -2748,16 +3116,20 @@ const KakeizuBusinessScene: React.FC = () => {
             家系図、お作りします
           </text>
         </g>
-        <g opacity={goods} stroke={SP.line} strokeWidth={6} fill="none">
-          <rect x={620} y={600} width={420} height={200} rx={10} />
-          <circle cx={620} cy={700} r={34} />
-          <circle cx={1040} cy={700} r={34} />
-          <line x1={700} y1={660} x2={960} y2={660} stroke={SP.dim} strokeWidth={4} />
-          <line x1={700} y1={700} x2={960} y2={700} stroke={SP.dim} strokeWidth={4} />
-          <line x1={700} y1={740} x2={960} y2={740} stroke={SP.dim} strokeWidth={4} />
+        {/* 商品の巻物 (和紙色) */}
+        <g opacity={goods}>
+          <rect x={620} y={600} width={420} height={200} rx={10} fill="#EFE6CF" stroke="#C9BA92" strokeWidth={5} />
+          <circle cx={620} cy={700} r={34} fill="#2A2420" stroke={SP.line} strokeWidth={5} />
+          <circle cx={1040} cy={700} r={34} fill="#2A2420" stroke={SP.line} strokeWidth={5} />
+          <line x1={700} y1={660} x2={960} y2={660} stroke="#8A7B60" strokeWidth={4} />
+          <line x1={700} y1={700} x2={960} y2={700} stroke="#8A7B60" strokeWidth={4} />
+          <line x1={700} y1={740} x2={960} y2={740} stroke="#8A7B60" strokeWidth={4} />
         </g>
+        {/* 代金は金の小判 */}
         <g opacity={coin}>
-          <circle cx={1330} cy={700} r={90} fill="none" stroke={SP.accent} strokeWidth={7} />
+          <ellipse cx={1330} cy={700} rx={100} ry={74} fill={MC.gold} opacity={0.25} />
+          <ellipse cx={1330} cy={700} rx={100} ry={74} fill="none" stroke={MC.gold} strokeWidth={7} />
+          <ellipse cx={1330} cy={700} rx={64} ry={42} fill="none" stroke={MC.goldDim} strokeWidth={4} />
           <text x={1330} y={732} textAnchor="middle" fontSize={84} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>
             ¥
           </text>
@@ -2790,16 +3162,17 @@ const YouHereScene: React.FC<{ scene: Scene }> = ({ scene }) => {
                   y1={830 - Math.sin(((i - 1) / (n - 1)) * Math.PI * 0.5) * 220}
                   x2={x}
                   y2={y}
-                  stroke={SP.dim}
+                  stroke={MC.goldDim}
                   strokeWidth={4}
                 />
               )}
-              <circle cx={x} cy={y} r={11} fill={SP.line} />
+              <circle cx={x} cy={y} r={11} fill={MC.gold} />
             </g>
           );
         })}
         <g opacity={you}>
           <line x1={1300} y1={610} x2={1430} y2={580} stroke={SP.accent} strokeWidth={5} strokeDasharray="10 8" />
+          <circle cx={1500} cy={610} r={210} fill={MC.gold} opacity={0.12} />
           <Person x={1500} y={520} scale={3} color={SP.accent} />
           <SmallLabel x={1500} y={370} text="あなた" color={SP.accent} size={52} weight={800} />
         </g>
@@ -2875,6 +3248,9 @@ const resolveSuuriMotif = (m: string): string | undefined => {
   // のぞき見くん回 (絵の具のマジック) の専用トークンを最優先で見る
   // すべて nozoki_ 接頭辞なので他作品のルールと衝突しない (名前そのまま通す)
   if (/^nozoki_/.test(m)) return m;
+  // キラキラ回 最終調整 (2026-10) の専用トークン。kira_ 接頭辞は名前そのまま通す
+  // (/question/ や /think/ などの広いルールに吸収されるのを防ぐため最優先)
+  if (/^kira_/.test(m)) return m;
   // 恋愛版ドレイク回の専用トークンを最優先で見る
   // (sofa_family→sofa_clock / drake_blackboard→math_talk などの誤吸収を防ぐため順番が大事)
   if (/love_stat|7wari/.test(m)) return "love_stat_7wari";
@@ -2892,6 +3268,9 @@ const resolveSuuriMotif = (m: string): string | undefined => {
   if (/love_roadmap/.test(m)) return "love_roadmap";
   if (/love_preview_ch12/.test(m)) return "love_preview_ch12";
   if (/love_preview_ch34/.test(m)) return "love_preview_ch34";
+  // 道長回の章予告 (キラキラ回の preview_ch12 正規表現に飲まれないよう、ここで先に判定)
+  if (/mich_preview_ch12/.test(m)) return "mich_preview_ch12";
+  if (/mich_preview_ch34/.test(m)) return "mich_preview_ch34";
   if (/love_to_black/.test(m)) return "love_to_black";
   if (/drake_blackboard/.test(m)) return "drake_blackboard";
   if (/drake_galaxy/.test(m)) return "drake_galaxy";
@@ -3474,6 +3853,23 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
     if (m === "futon_think") return <FutonThinkScene scene={scene} />;
     if (m === "declare_finger") return <DeclareFingerScene scene={scene} />;
     if (m === "lets_go") return <LetsGoScene scene={scene} />;
+    // --- キラキラ回 最終調整 (2026-10): thinking×13を専用イラストに差し替え ---
+    if (m === "kira_math_rescue") return <KiraMathRescueScene scene={scene} />;
+    if (m === "kira_imagine_tv") return <KiraImagineTvScene scene={scene} />;
+    if (m === "kira_best_count") return <KiraBestCountScene scene={scene} />;
+    if (m === "kira_bats600") return <KiraBats600Scene scene={scene} />;
+    if (m === "kira_gacha_juicer") return <KiraGachaJuicerScene scene={scene} />;
+    if (m === "kira_prob_meter") return <KiraProbMeterScene scene={scene} />;
+    if (m === "kira_cal_vanish") return <KiraCalVanishScene scene={scene} />;
+    if (m === "kira_stamp_x2") return <KiraStampX2Scene scene={scene} />;
+    if (m === "kira_vs_match") return <KiraVsMatchScene scene={scene} />;
+    if (m === "kira_curtain") return <KiraCurtainScene scene={scene} />;
+    if (m === "kira_magnify_holes") return <KiraMagnifyHolesScene scene={scene} />;
+    if (m === "kira_flip_q") return <KiraFlipQScene scene={scene} />;
+    if (m === "kira_plane_unrecorded") return <KiraPlaneUnrecordedScene scene={scene} />;
+    if (m === "kira_same_q") return <KiraSameQScene scene={scene} />;
+    if (m === "kira_engine_q") return <KiraEngineQScene scene={scene} />;
+    if (m === "kira_notice_eye") return <KiraNoticeEyeScene scene={scene} />;
     // --- 寿司回 (37%ルール) ---
     if (m === "sushi_lane") return <SushiLaneScene scene={scene} variant={variant} />;
     if (m === "one_plate") return <OnePlateScene scene={scene} variant={variant} />;
@@ -3526,6 +3922,8 @@ export const SuuriSceneView: React.FC<{ scene: Scene; variant?: number }> = ({ s
     if (m === "hatoko") return <HatokoScene scene={scene} />;
     if (m === "japan_net") return <JapanNetScene scene={scene} variant={variant} />;
     if (m === "michinaga") return <MichinagaScene scene={scene} variant={variant} />;
+    if (m === "mich_preview_ch12") return <MichPreviewCh12Scene scene={scene} />;
+    if (m === "mich_preview_ch34") return <MichPreviewCh34Scene scene={scene} />;
     if (m === "three_points") return <ThreePointsScene scene={scene} />;
     if (m === "descend_tree") return <DescendTreeScene scene={scene} variant={variant} />;
     if (m === "extinct_line") return <ExtinctLineScene scene={scene} />;

@@ -22,6 +22,8 @@ const BGM_BY_PRESET: Record<Preset, string[]> = {
   keizai: ["lnplusmusic-suspense-tension-suspenseful-tense-323181.mp3"],
   // 静かでダークな数理トーン (黒背景の図解。ashiと同曲を共用)
   suuri: ["audiocopper-dark-571483.mp3"],
+  // 落ち着いた知的トーン (からくり図解。kouzouと同曲を共用)
+  karakuri: ["sigmamusicart-no-copyright-music-537751.mp3"],
 };
 
 // 未割り当ての予備曲 (public/bgm/ に入っているが現在どの作風にも使っていない):

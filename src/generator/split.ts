@@ -1,12 +1,15 @@
 // 台本を1文=1シーンに切り分ける。
 // 改行と句点(。)で区切る。見出し・話者表記・番号は想定しない (ただのテキスト)。
+// lineMode: true のときは「1行=1文」としてそのまま使う (句点での分割や短文の結合をしない)。
+// 自販機2000年史のように、台本と絵を1行1枚で厳密に対応させた作品用。
 
-export function splitScript(raw: string): string[] {
+export function splitScript(raw: string, opts?: { lineMode?: boolean }): string[] {
   const lines = raw
     .replace(/\r\n/g, "\n")
     .split("\n")
     .map((l) => l.trim())
     .filter((l) => l.length > 0);
+  if (opts?.lineMode) return lines;
 
   const sentences: string[] = [];
   for (const line of lines) {

@@ -173,6 +173,37 @@ const GhostPlane: React.FC<{
   </g>
 );
 
+// 上から見た飛行機 (機首が上)。bullet_map の山場の絵と同じ機体。
+// 他のシーンで「上から見た飛行機」を描くときは必ずこれを流用する (機体の形がブレるのを防ぐ)
+const PlaneTopView: React.FC<{ opacity?: number }> = ({ opacity = 1 }) => (
+  <g opacity={opacity}>
+    <g stroke={SP.line} strokeWidth={5} strokeLinejoin="round">
+      {/* 主翼 (後退角つき) */}
+      <path d="M 912 470 L 420 570 L 420 622 L 912 556 Z" fill={SP.background} />
+      <path d="M 1008 470 L 1500 570 L 1500 622 L 1008 556 Z" fill={SP.background} />
+      {/* 水平尾翼 */}
+      <path d="M 920 706 L 706 766 L 706 800 L 920 752 Z" fill={SP.background} />
+      <path d="M 1000 706 L 1214 766 L 1214 800 L 1000 752 Z" fill={SP.background} />
+      {/* 胴体 (機首 → 尾部) */}
+      <path
+        d="M 960 206 Q 1014 258 1008 420 L 1008 660 Q 1004 744 982 806 L 938 806 Q 916 744 912 660 L 912 420 Q 906 258 960 206 Z"
+        fill={SP.background}
+      />
+      {/* コックピットの窓 */}
+      <path d="M 936 300 Q 960 286 984 300" fill="none" strokeWidth={4} />
+    </g>
+    {/* エンジン2基 (翼の上・プロペラつき)。穴はひとつもない */}
+    {[742, 1178].map((ex) => (
+      <g key={ex} stroke={SP.line} strokeWidth={5}>
+        <rect x={ex - 36} y={474} width={72} height={104} rx={18} fill={SP.background} />
+        <circle cx={ex} cy={468} r={10} fill={SP.line} />
+        <line x1={ex - 34} y1={444} x2={ex + 34} y2={492} strokeWidth={4} />
+        <line x1={ex + 34} y1={444} x2={ex - 34} y2={492} strokeWidth={4} />
+      </g>
+    ))}
+  </g>
+);
+
 // ===== bullet_map: 弾痕の図 (この動画の山場の絵・和紙) =====
 // 育ち方 (文の内容で選び直す §9-3):
 //   mode 0 = 帰還機の弾痕が翼としっぽに増えていく
@@ -208,39 +239,15 @@ export const BulletMapScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
         ? "軍の案 : 穴だらけの場所に鉄板?"
         : "帰ってきた飛行機の、銃弾の穴の記録");
 
-  const bodyFill = SP.background;
-
   return (
     <Frame>
-      <DiagramTitle text={title} />
+      {/* mode0 は下ラベルに情報があるので上タイトルは出さない (文字が3段になりうるさい) */}
+      {mode !== 0 && <DiagramTitle text={title} />}
       <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
         {/* 全体を少し縮めて下げ、上のラベル (y180) と機首が重ならないようにする */}
         <g transform="translate(960 524) scale(0.9) translate(-960 -506)">
-        {/* ===== 飛行機の上面図 (機首が上) ===== */}
-        <g stroke={SP.line} strokeWidth={5} strokeLinejoin="round">
-          {/* 主翼 (後退角つき) */}
-          <path d="M 912 470 L 420 570 L 420 622 L 912 556 Z" fill={bodyFill} />
-          <path d="M 1008 470 L 1500 570 L 1500 622 L 1008 556 Z" fill={bodyFill} />
-          {/* 水平尾翼 */}
-          <path d="M 920 706 L 706 766 L 706 800 L 920 752 Z" fill={bodyFill} />
-          <path d="M 1000 706 L 1214 766 L 1214 800 L 1000 752 Z" fill={bodyFill} />
-          {/* 胴体 (機首 → 尾部) */}
-          <path
-            d="M 960 206 Q 1014 258 1008 420 L 1008 660 Q 1004 744 982 806 L 938 806 Q 916 744 912 660 L 912 420 Q 906 258 960 206 Z"
-            fill={bodyFill}
-          />
-          {/* コックピットの窓 */}
-          <path d="M 936 300 Q 960 286 984 300" fill="none" strokeWidth={4} />
-        </g>
-        {/* エンジン2基 (翼の上・プロペラつき)。穴はひとつもない */}
-        {[742, 1178].map((ex) => (
-          <g key={ex} stroke={SP.line} strokeWidth={5}>
-            <rect x={ex - 36} y={474} width={72} height={104} rx={18} fill={bodyFill} />
-            <circle cx={ex} cy={468} r={10} fill={SP.line} />
-            <line x1={ex - 34} y1={444} x2={ex + 34} y2={492} strokeWidth={4} />
-            <line x1={ex + 34} y1={444} x2={ex - 34} y2={492} strokeWidth={4} />
-          </g>
-        ))}
+        {/* 機体 (共通部品。84の虫眼鏡シーンと同じ絵) */}
+        <PlaneTopView />
         <SmallLabel x={742} y={445 - 24} text="エンジン" size={28} color={SP.faint} />
         <SmallLabel x={1178} y={445 - 24} text="エンジン" size={28} color={SP.faint} />
 
@@ -4157,6 +4164,1008 @@ export const CountOnlyHandScene: React.FC<SceneProps> = ({ scene }) => {
             </g>
           ))}
           <SmallLabel x={1280} y={790} text="沈んだぶんは、忘れてしまう" color={SP.ink} size={30} weight={700} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// =====================================================================
+// 2026-10 最終調整: thinking (棒人間+?吹き出し) の使い回し13シーンを
+// それぞれ専用のイラスト+演出に差し替える。
+// モチーフ名はすべて kira_ 接頭辞 (resolveSuuriMotif が名前そのまま通す)。
+// 背景分類はどれにも登録しない = thinking と同じく前のシーンを引き継ぐ。
+// =====================================================================
+
+// 0〜1 に収める進み (線形)。spring を使わないゆっくりした動き用
+const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
+
+// ===== kira_math_rescue: ため息の雲を、数学のレスキュー隊が吸い取る =====
+// 「今日は、その夜のため息──SNS時代の生きづらさから、数学があなたを救います。」
+export const KiraMathRescueScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(4);
+  const ladder = appearAt(frame, fps, 16);
+  const walk = clamp01((frame - 34) / 40); // 隊員がはしごを降りる
+  const suck = clamp01((frame - 86) / 34); // 雲が吸われて小さくなる
+  const star = appearAt(frame, fps, 126);
+  const bob = Math.sin(frame / 16) * 6;
+  // はしご (右上から雲のそばへ)
+  const lx1 = 1560, ly1 = 210, lx2 = 1030, ly2 = 560;
+  const rx = lx1 + (lx2 - lx1) * walk;
+  const ry = ly1 + (ly2 - ly1) * walk;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "夜のため息"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 月 (futon_phone と同じ三日月。夜のしるし) */}
+        <path d="M 290 250 a 56 56 0 1 0 50 82 a 44 44 0 0 1 -50 -82 Z" fill={KC.yellow} opacity={0.92} />
+        {/* 床とふとんの人 (左下) */}
+        <line x1={260} y1={820} x2={900} y2={820} stroke={SP.dim} strokeWidth={4} />
+        <g opacity={a}>
+          <rect x={330} y={726} width={150} height={50} rx={16} fill="none" stroke={SP.line} strokeWidth={5} />
+          <circle cx={405} cy={692} r={30} fill="none" stroke={SP.line} strokeWidth={5} />
+          <path d="M 450 820 L 450 752 Q 458 690 540 684 L 790 684 Q 854 690 858 752 L 858 820 Z" fill={SP.panel} stroke={SP.line} strokeWidth={5} />
+        </g>
+        {/* ため息の雲 (吸われて縮む) */}
+        <g transform={`translate(560 ${440 + bob}) scale(${(1 - suck * 0.82) * a})`} opacity={1 - suck * 0.75}>
+          <ellipse rx={150} ry={86} fill={SP.panel} stroke={SP.faint} strokeWidth={5} />
+          <text y={16} textAnchor="middle" fontSize={52} fill={SP.faint} fontFamily={SUURI_FONT}>はぁ…</text>
+        </g>
+        {/* 雲が消えた場所に小さな星 */}
+        <g opacity={star} transform={`translate(560 430) scale(${star})`}>
+          <path d="M 0 -26 L 7 -7 L 26 0 L 7 7 L 0 26 L -7 7 L -26 0 L -7 -7 Z" fill={KC.yellow} />
+        </g>
+        {/* √ のはしご (右上から降りてくる) */}
+        <g opacity={ladder}>
+          <line x1={lx1 - 18} y1={ly1} x2={lx2 - 18} y2={ly2} stroke={SP.line} strokeWidth={5} />
+          <line x1={lx1 + 18} y1={ly1} x2={lx2 + 18} y2={ly2} stroke={SP.line} strokeWidth={5} />
+          {[0.12, 0.3, 0.48, 0.66, 0.84].map((t) => (
+            <line
+              key={t}
+              x1={lx1 - 18 + (lx2 - lx1) * t}
+              y1={ly1 + (ly2 - ly1) * t}
+              x2={lx1 + 18 + (lx2 - lx1) * t}
+              y2={ly1 + (ly2 - ly1) * t}
+              stroke={SP.line}
+              strokeWidth={4}
+            />
+          ))}
+          <SmallLabel x={lx1 + 60} y={ly1 - 10} text="√" color={SP.ink} size={64} weight={700} />
+        </g>
+        {/* レスキュー隊員 Σ (はしごを降りて、雲にホースを向ける)。隊員バッジは金色 */}
+        <g opacity={ladder} transform={`translate(${rx} ${ry})`}>
+          <circle r={44} fill={KC.yellow} stroke={SP.line} strokeWidth={5} />
+          <text y={18} textAnchor="middle" fontSize={52} fontWeight={700} fill={SP.background} fontFamily={SUURI_FONT}>Σ</text>
+          <line x1={-14} y1={44} x2={-22} y2={78} stroke={SP.line} strokeWidth={5} strokeLinecap="round" />
+          <line x1={14} y1={44} x2={22} y2={78} stroke={SP.line} strokeWidth={5} strokeLinecap="round" />
+        </g>
+        {/* 2人目 π (少し遅れて降りる) */}
+        <g
+          opacity={ladder}
+          transform={`translate(${lx1 + (lx2 - lx1) * clamp01(walk - 0.28)} ${ly1 + (ly2 - ly1) * clamp01(walk - 0.28)}) scale(0.82) translate(60 -40)`}
+        >
+          <circle r={44} fill={KC.pink} stroke={SP.line} strokeWidth={5} />
+          <text y={16} textAnchor="middle" fontSize={48} fontWeight={700} fill={SP.background} fontFamily={SUURI_FONT}>π</text>
+        </g>
+        {/* 吸い取りホース (Σ から雲へ)。吸引中は点線が流れる */}
+        {walk >= 1 && (
+          <g>
+            <path
+              d={`M ${lx2 - 40} ${ly2 + 10} Q 820 600 ${660 + suck * 40} ${470}`}
+              fill="none"
+              stroke={SP.line}
+              strokeWidth={7}
+              strokeLinecap="round"
+              strokeDasharray="18 14"
+              strokeDashoffset={-frame * 3}
+            />
+            <SmallLabel x={1200} y={700} text="数学レスキュー隊、到着" color={SP.ink} size={30} weight={700} />
+          </g>
+        )}
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_imagine_tv: 想像の雲の中にテレビが点灯する (次のシーンへのつなぎ) =====
+// 「想像してください。」(1.5秒しかないので全部すぐ出す)
+export const KiraImagineTvScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(2);
+  const cloud = appearAt(frame, fps, 6);
+  const tvOn = appearAt(frame, fps, 14);
+  const flash = Math.max(0, 1 - Math.abs(frame - 18) / 6); // 点灯の一瞬のまぶしさ
+  const ballT = clamp01((frame - 20) / 22); // 画面の中をボールが飛ぶ
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "想像の中へ"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 左下: 考える人の横顔シルエット */}
+        <g opacity={a}>
+          <circle cx={470} cy={640} r={120} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+          <path d="M 350 840 q 10 -120 120 -124 q 110 4 120 124" fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+          {/* 閉じた目 (想像に集中) */}
+          <path d="M 430 630 q 14 10 28 0" fill="none" stroke={SP.line} strokeWidth={4} strokeLinecap="round" />
+          <path d="M 500 630 q 14 10 28 0" fill="none" stroke={SP.line} strokeWidth={4} strokeLinecap="round" />
+        </g>
+        {/* 考えの泡 → 大きな想像の雲 */}
+        <circle cx={620} cy={520} r={12} fill="none" stroke={SP.line} strokeWidth={4} opacity={cloud} />
+        <circle cx={690} cy={450} r={18} fill="none" stroke={SP.line} strokeWidth={4} opacity={cloud} />
+        <g opacity={cloud} transform={`translate(1160 430) scale(${0.7 + cloud * 0.3})`}>
+          <path
+            d="M -380 60 q -60 -10 -56 -70 q 4 -78 90 -74 q 20 -84 116 -80 q 76 2 104 54 q 40 -40 110 -30 q 86 12 88 86 q 70 10 64 76 q -6 64 -84 64 L -330 86 q -44 -2 -50 -26 Z"
+            fill={SP.panel}
+            stroke={SP.line}
+            strokeWidth={6}
+          />
+          {/* 雲の中のテレビ */}
+          <g opacity={tvOn}>
+            <line x1={-60} y1={-120} x2={-20} y2={-72} stroke={SP.line} strokeWidth={5} strokeLinecap="round" />
+            <line x1={40} y1={-124} x2={10} y2={-72} stroke={SP.line} strokeWidth={5} strokeLinecap="round" />
+            <rect x={-150} y={-72} width={300} height={176} rx={18} fill={SP.background} stroke={SP.line} strokeWidth={6} />
+            {/* 画面: 点灯の光 (暖色でパッと点く) */}
+            <rect x={-132} y={-54} width={264} height={140} rx={10} fill={KC.yellow} opacity={0.42 + flash * 0.35} />
+            {/* 画面の中: 小さなボールが飛ぶ */}
+            <circle
+              cx={-100 + ballT * 190}
+              cy={60 - Math.sin(ballT * Math.PI) * 86}
+              r={9}
+              fill={SP.ink}
+              opacity={tvOn}
+            />
+            <line x1={-100} y1={66} x2={-66} y2={46} stroke={SP.faint} strokeWidth={4} strokeLinecap="round" />
+          </g>
+        </g>
+        {/* 想像の雲のまわりのきらきら (homerun_tv と同じ色使い) */}
+        <g opacity={tvOn}>
+          <Sparkle x={1560} y={290} s={12} phase={1} color={KC.yellow} />
+          <Sparkle x={800} y={330} s={10} phase={4} color={KC.pink} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_best_count: ベスト盤のパッケージを「正」の字で数え始める =====
+// 「では、どれくらい『ベスト』なのか、数えてみましょう。」
+export const KiraBestCountScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(4);
+  const shineT = clamp01((frame - 12) / 26); // パッケージを光が走る
+  // 「正」の5画を順に書く
+  const strokes = [0, 1, 2, 3, 4].map((i) => appearAt(frame, fps, 40 + i * 12));
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "ベスト盤を、数えてみる"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 左: ベスト盤のパッケージ */}
+        <g opacity={a}>
+          <rect x={330} y={300} width={400} height={470} rx={16} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+          <rect x={366} y={344} width={328} height={230} rx={10} fill="none" stroke={SP.faint} strokeWidth={4} />
+          {/* ジャケット: 打球の軌道 */}
+          <path d="M 400 540 Q 520 360 668 400" fill="none" stroke={SP.line} strokeWidth={5} />
+          <circle cx={668} cy={400} r={10} fill={SP.ink} />
+          <text x={530} y={650} textAnchor="middle" fontSize={44} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT}>ホームラン集</text>
+          <text x={530} y={710} textAnchor="middle" fontSize={30} fill={SP.faint} fontFamily={SUURI_FONT} letterSpacing={4}>永久保存版</text>
+          {/* きらーんと走る金の光の帯 (ベスト盤の豪華さ) */}
+          <g clipPath="url(#bestcase)">
+            <rect
+              x={160 + shineT * 700}
+              y={240}
+              width={70}
+              height={600}
+              fill={KC.yellow}
+              opacity={0.3}
+              transform={`rotate(18 ${195 + shineT * 700} 540)`}
+            />
+          </g>
+          <clipPath id="bestcase">
+            <rect x={330} y={300} width={400} height={470} rx={16} />
+          </clipPath>
+          <Sparkle x={330} y={300} s={13} phase={1} color={KC.yellow} />
+          <Sparkle x={736} y={360} s={10} phase={4} color={KC.pink} />
+        </g>
+        {/* 右: 「正」の字を1画ずつ書いて数える */}
+        <g strokeLinecap="round">
+          {/* 1画目: 上の横棒 */}
+          <line x1={1060} y1={380} x2={1060 + 320 * Math.min(strokes[0], 1)} y2={380} stroke={SP.ink} strokeWidth={16} opacity={strokes[0] > 0.02 ? 1 : 0} />
+          {/* 2画目: 中央のたて棒 */}
+          <line x1={1220} y1={380} x2={1220} y2={380 + 300 * Math.min(strokes[1], 1)} stroke={SP.ink} strokeWidth={16} opacity={strokes[1] > 0.02 ? 1 : 0} />
+          {/* 3画目: 中段の横棒 (右半分) */}
+          <line x1={1220} y1={530} x2={1220 + 160 * Math.min(strokes[2], 1)} y2={530} stroke={SP.ink} strokeWidth={16} opacity={strokes[2] > 0.02 ? 1 : 0} />
+          {/* 4画目: 左のたて棒 */}
+          <line x1={1110} y1={470} x2={1110} y2={470 + 210 * Math.min(strokes[3], 1)} stroke={SP.ink} strokeWidth={16} opacity={strokes[3] > 0.02 ? 1 : 0} />
+          {/* 5画目: 下の横棒 */}
+          <line x1={1060} y1={680} x2={1060 + 320 * Math.min(strokes[4], 1)} y2={680} stroke={SP.ink} strokeWidth={16} opacity={strokes[4] > 0.02 ? 1 : 0} />
+        </g>
+        {/* 数え上げのラベル */}
+        <g opacity={strokes[0]}>
+          <SmallLabel x={1220} y={780} text="1本、2本…と数えてみる" color={SP.faint} size={30} />
+        </g>
+        {/* 鉛筆 (最後の画の先で止まる) */}
+        <g opacity={strokes[0]} transform={`translate(${1395 + 20}, ${strokes[4] > 0 ? 680 : strokes[3] > 0 ? 600 : strokes[2] > 0 ? 530 : strokes[1] > 0 ? 500 : 380}) rotate(40)`}>
+          <rect x={-8} y={-110} width={16} height={92} rx={4} fill={KC.yellow} stroke={SP.line} strokeWidth={3} />
+          <path d="M -8 -18 L 0 6 L 8 -18 Z" fill={SP.ink} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_bats600: 600打席のドットの海に、40本だけ金色が灯る =====
+// 「1年に600回打席に立って、ホームランが40本」
+export const KiraBats600Scene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const COLS = 30;
+  const ROWS = 20;
+  const x0 = 390, y0 = 260, dx = 39, dy = 27;
+  // 40本のホームラン: 600 を 40 で割って均等+少し散らす (毎回同じ並び)
+  const golds = new Set<number>();
+  for (let k = 0; k < 40; k++) golds.add((k * 15 + (k * 7) % 11) % 600);
+  const goldPop = appearAt(frame, fps, 58);
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "一流バッターの1年"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <SmallLabel x={620} y={224} text="打席 600回" color={SP.faint} size={29} />
+        <g opacity={goldPop}>
+          <SmallLabel x={1300} y={224} text="ホームラン 40本" color={KC.yellow} size={29} weight={700} />
+        </g>
+        {Array.from({ length: 600 }, (_, i) => {
+          const r = Math.floor(i / COLS);
+          const c = i % COLS;
+          const show = appearAt(frame, fps, 6 + r * 1.6);
+          const isGold = golds.has(i);
+          return (
+            <g key={i}>
+              <circle cx={x0 + c * dx} cy={y0 + r * dy} r={6.5} fill={SP.dim} opacity={show} />
+              {isGold && (
+                <circle
+                  cx={x0 + c * dx}
+                  cy={y0 + r * dy}
+                  r={6.5 + goldPop * 3.5}
+                  fill={KC.yellow}
+                  opacity={goldPop}
+                />
+              )}
+            </g>
+          );
+        })}
+        {/* 下の注釈 */}
+        <g opacity={goldPop}>
+          <SmallLabel x={960} y={836} text="600個のうち、光るのは40個だけ" color={SP.ink} size={31} weight={700} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_gacha_juicer: ジューサーにガチャカプセルが投入されて、しぼられる =====
+// 「ちなみにこの濃縮ジュース、ゲームの世界でも毎日しぼられています。」
+export const KiraGachaJuicerScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(4);
+  // カプセル3個が順に落ちる
+  const drops = [0, 1, 2].map((i) => clamp01((frame - 14 - i * 22) / 20));
+  const juice = clamp01((frame - 50) / 60); // ジュースがたまる
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "ゲームの世界でも、濃縮"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <g opacity={a}>
+          {/* じょうご (投入口) */}
+          <path d="M 760 330 L 1160 330 L 1030 470 L 890 470 Z" fill="none" stroke={SP.line} strokeWidth={6} strokeLinejoin="round" />
+          {/* 本体 (プレス機) */}
+          <rect x={850} y={470} width={220} height={150} rx={14} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+          <circle cx={884} cy={590} r={9} fill="none" stroke={SP.faint} strokeWidth={4} />
+          <circle cx={1036} cy={590} r={9} fill="none" stroke={SP.faint} strokeWidth={4} />
+          <SmallLabel x={960} y={540} text="濃縮" color={SP.ink} size={34} weight={700} />
+          {/* 注ぎ口 */}
+          <path d="M 940 620 L 940 650 L 980 650 L 980 620" fill="none" stroke={SP.line} strokeWidth={5} />
+          {/* コップ */}
+          <path d="M 880 700 L 902 830 L 1018 830 L 1040 700" fill="none" stroke={SP.line} strokeWidth={6} strokeLinejoin="round" />
+          {/* たまっていくジュース (虹色っぽく3層) */}
+          <g clipPath="url(#gjglass)">
+            <rect x={880} y={830 - juice * 110} width={160} height={juice * 110} fill={KC.orange} opacity={0.85} />
+            <rect x={880} y={830 - juice * 110} width={160} height={juice * 34} fill={KC.pink} opacity={0.8} />
+          </g>
+          <clipPath id="gjglass">
+            <path d="M 880 700 L 902 830 L 1018 830 L 1040 700 Z" />
+          </clipPath>
+          {/* しずく */}
+          {juice > 0.04 && (
+            <circle cx={960} cy={660 + ((frame * 7) % 60)} r={7} fill={KC.orange} opacity={0.9} />
+          )}
+        </g>
+        {/* 落ちてくるガチャカプセル (2色) */}
+        {drops.map((t, i) => {
+          const cx = 900 + i * 60;
+          const cy = 140 + t * 230; // じょうごの口まで落ちる
+          const fade = t >= 1 ? 0 : 1;
+          return (
+            <g key={i} opacity={a * fade} transform={`translate(${cx} ${cy}) rotate(${t * 70 * (i % 2 === 0 ? 1 : -1)})`}>
+              <path d="M -30 0 A 30 30 0 0 1 30 0 Z" fill={i === 1 ? KC.pink : KC.yellow} stroke={SP.line} strokeWidth={4} />
+              <path d="M -30 0 A 30 30 0 0 0 30 0 Z" fill={SP.ink} opacity={0.9} stroke={SP.line} strokeWidth={4} />
+              {/* 2個目のカプセルはびっくり顔 */}
+              {i === 1 && (
+                <g>
+                  <circle cx={-9} cy={-10} r={3.5} fill={SP.background} />
+                  <circle cx={9} cy={-10} r={3.5} fill={SP.background} />
+                  <circle cx={0} cy={9} r={5} fill="none" stroke={SP.background} strokeWidth={3} />
+                </g>
+              )}
+            </g>
+          );
+        })}
+        {/* 「えっ」の吹き出し (2個目が落ちる瞬間) */}
+        <g opacity={drops[1] > 0.05 && drops[1] < 0.9 ? 1 : 0}>
+          <SmallLabel x={1120} y={210} text="えっ!?" color={SP.ink} size={36} weight={700} />
+        </g>
+        <g opacity={juice}>
+          <SmallLabel x={1320} y={780} text="当たりだけが、しぼり出される" color={SP.ink} size={30} weight={700} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_prob_meter: 確率メーターの針が振り切れて壊れる =====
+// 「ベスト盤だけを見せられると、確率の感覚まで狂ってしまうのです。」
+export const KiraProbMeterScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(4);
+  const cx = 960, cy = 660, R = 320;
+  // 針: 1% の位置から始まり、キラキラ投稿が流れるたびに跳ね上がり、最後は振り切れて壊れる
+  const bump1 = appearAt(frame, fps, 24);
+  const bump2 = appearAt(frame, fps, 48);
+  const bump3 = appearAt(frame, fps, 72);
+  const broken = frame > 100;
+  const wobble = broken ? Math.sin(frame / 2.2) * 5 * Math.exp(-(frame - 100) / 50) : 0;
+  // 角度: -176° (左端=0%) → -4° (右端=100%)
+  const deg = -176 + bump1 * 50 + bump2 * 60 + bump3 * 62 + wobble;
+  const rad = (deg * Math.PI) / 180;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "確率の感覚が、狂う"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <g opacity={a}>
+          {/* メーターの弧と目盛り */}
+          <path d={`M ${cx - R} ${cy} A ${R} ${R} 0 0 1 ${cx + R} ${cy}`} fill="none" stroke={SP.line} strokeWidth={7} />
+          {[0, 25, 50, 75, 100].map((p) => {
+            const d2 = (-180 + (p / 100) * 180) * (Math.PI / 180);
+            return (
+              <g key={p}>
+                <line
+                  x1={cx + Math.cos(d2) * (R - 24)}
+                  y1={cy + Math.sin(d2) * (R - 24)}
+                  x2={cx + Math.cos(d2) * (R + 2)}
+                  y2={cy + Math.sin(d2) * (R + 2)}
+                  stroke={SP.faint}
+                  strokeWidth={4}
+                />
+                <SmallLabel
+                  x={cx + Math.cos(d2) * (R + 52)}
+                  y={cy + Math.sin(d2) * (R + 52) + 10}
+                  text={`${p}`}
+                  color={SP.faint}
+                  size={26}
+                />
+              </g>
+            );
+          })}
+          {/* ほんとうの値: 1% の赤い目盛り */}
+          {(() => {
+            const d1 = (-180 + 1.8) * (Math.PI / 180);
+            return (
+              <g>
+                <line
+                  x1={cx + Math.cos(d1) * (R - 30)}
+                  y1={cy + Math.sin(d1) * (R - 30)}
+                  x2={cx + Math.cos(d1) * (R + 6)}
+                  y2={cy + Math.sin(d1) * (R + 6)}
+                  stroke={SP.accent}
+                  strokeWidth={6}
+                />
+                <SmallLabel x={cx - R + 10} y={cy - 70} text="ほんとは 1%" color={SP.accent} size={28} weight={700} anchor="start" />
+              </g>
+            );
+          })()}
+          {/* 流れてくるキラキラ投稿 (針を押し上げる犯人) */}
+          {[bump1, bump2, bump3].map((b, i) => {
+            const t = clamp01(b);
+            const px = 1700 - t * (520 + i * 120);
+            const py = 280 + i * 10;
+            return (
+              <g key={i} opacity={t > 0.02 && t < 0.98 ? 0.9 : 0} transform={`translate(${px} ${py})`}>
+                <rect x={-52} y={-38} width={104} height={76} rx={10} fill={SP.panel} stroke={SP.line} strokeWidth={4} />
+                <Sparkle x={0} y={-6} s={10} phase={i * 2} />
+              </g>
+            );
+          })}
+          {/* 針 */}
+          <line
+            x1={cx}
+            y1={cy}
+            x2={cx + Math.cos(rad) * (R - 60)}
+            y2={cy + Math.sin(rad) * (R - 60)}
+            stroke={SP.ink}
+            strokeWidth={10}
+            strokeLinecap="round"
+          />
+          <circle cx={cx} cy={cy} r={22} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+          {/* 壊れた演出: 軸から飛び出たバネと、ひび */}
+          {broken && (
+            <g>
+              <path
+                d="M 985 640 q 18 -12 8 -26 q -16 -10 -6 -26 q 14 -10 6 -26 q -12 -12 2 -24"
+                fill="none"
+                stroke={SP.faint}
+                strokeWidth={5}
+                strokeLinecap="round"
+              />
+              <g stroke={SP.line} strokeWidth={4} strokeLinecap="round">
+                <line x1={930} y1={636} x2={906} y2={616} />
+                <line x1={936} y1={648} x2={908} y2={646} />
+              </g>
+            </g>
+          )}
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_cal_vanish: 365マスのうち10マスだけ残り、355マスが消えていく =====
+// 「投稿したくなる日が10日だとすると、何もない355日は最初から画面に存在しません。」
+export const KiraCalVanishScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const COLS = 27;
+  const ROWS = 14;
+  const x0 = 430, y0 = 250, step = 40, size = 30;
+  // 投稿される10日 (毎回同じ並びになるよう固定)
+  const posts = [23, 61, 97, 133, 170, 204, 241, 277, 314, 350];
+  const postColor = [KC.skyBlue, KC.orange, KC.yellow, KC.pink, KC.green, KC.skyBlue, KC.orange, KC.yellow, KC.pink, KC.green];
+  const fadeT = clamp01((frame - 64) / 90); // 左から波のように消えていく
+  const labels = appearAt(frame, fps, 130);
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "投稿したくなる日は、1年に10日"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <SmallLabel x={620} y={224} text="1年 365日" color={SP.faint} size={28} />
+        {Array.from({ length: 365 }, (_, i) => {
+          const r = Math.floor(i / COLS);
+          const c = i % COLS;
+          const show = appearAt(frame, fps, 4 + r * 1.8);
+          const pi = posts.indexOf(i);
+          if (pi >= 0) {
+            return (
+              <g key={i} opacity={show}>
+                <rect x={x0 + c * step} y={y0 + r * step} width={size} height={size} rx={6} fill={postColor[pi]} opacity={0.92} />
+                <circle cx={x0 + c * step + 8} cy={y0 + r * step + 8} r={3} fill={SP.ink} opacity={0.9} />
+              </g>
+            );
+          }
+          // 消える355マス: 列ごとに時間差で薄くなっていく
+          const localFade = clamp01(fadeT * 1.6 - c / COLS / 1.4);
+          return (
+            <rect
+              key={i}
+              x={x0 + c * step}
+              y={y0 + r * step}
+              width={size}
+              height={size}
+              rx={6}
+              fill="none"
+              stroke={SP.faint}
+              strokeWidth={2.5}
+              opacity={show * (0.75 - localFade * 0.68)}
+            />
+          );
+        })}
+        <g opacity={labels}>
+          <SmallLabel x={660} y={850} text="355日は、画面に存在しない" color={SP.ink} size={31} weight={700} />
+          <SmallLabel x={1330} y={850} text="残るのは、この10日だけ" color={SP.faint} size={29} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_stamp_x2: ダイヤルを2に合わせて「×2」のハンコを押す =====
+// 「これを、ひかえめに2倍としましょう。」(2.6秒なので全部すぐ出す)
+export const KiraStampX2Scene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(2);
+  const turn = appearAt(frame, fps, 6); // ダイヤルが2へ回る
+  const slam = appearAt(frame, fps, 24); // ハンコがドン
+  const lines = appearAt(frame, fps, 34);
+  // ダイヤル: 10 (上) から 2 の位置へ。目盛り1〜10 を円周に
+  const dialDeg = -90 + 36 * 10 - turn * 36 * 8; // 10の位置から2の位置へ回転
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "ひかえめに、2倍"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 左: ダイヤル */}
+        <g opacity={a}>
+          <circle cx={600} cy={560} r={170} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+          {Array.from({ length: 10 }, (_, i) => {
+            const d2 = ((-90 + (i + 1) * 36) * Math.PI) / 180;
+            return (
+              <SmallLabel
+                key={i}
+                x={600 + Math.cos(d2) * 212}
+                y={560 + Math.sin(d2) * 212 + 10}
+                text={`${i + 1}`}
+                color={i + 1 === 2 ? SP.ink : SP.faint}
+                size={i + 1 === 2 ? 34 : 26}
+                weight={i + 1 === 2 ? 700 : 400}
+              />
+            );
+          })}
+          {/* つまみ */}
+          <g transform={`rotate(${dialDeg} 600 560)`}>
+            <line x1={600} y1={560} x2={600 + 128} y2={560} stroke={SP.ink} strokeWidth={12} strokeLinecap="round" />
+          </g>
+          <circle cx={600} cy={560} r={26} fill={SP.background} stroke={SP.line} strokeWidth={6} />
+          <SmallLabel x={600} y={810} text="ひかえめ設定" color={SP.faint} size={30} />
+        </g>
+        {/* 右: 紙に「×2」のハンコがドン */}
+        <g opacity={a}>
+          <rect x={1080} y={360} width={440} height={400} rx={14} fill={SP.panel} stroke={SP.faint} strokeWidth={4} />
+          <line x1={1130} y1={460} x2={1470} y2={460} stroke={SP.dim} strokeWidth={4} />
+          <line x1={1130} y1={530} x2={1470} y2={530} stroke={SP.dim} strokeWidth={4} />
+        </g>
+        <g transform={`translate(1300 600) scale(${slam > 0 ? 2.4 - 1.4 * Math.min(slam, 1) : 0}) rotate(-8)`} opacity={slam}>
+          <circle r={110} fill="none" stroke={SP.accent} strokeWidth={10} />
+          <text y={34} textAnchor="middle" fontSize={100} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT}>×2</text>
+        </g>
+        {/* 着地の衝撃線 */}
+        <g opacity={lines} stroke={SP.line} strokeWidth={5} strokeLinecap="round">
+          {[-35, -75, -115, 215, 255].map((deg) => {
+            const rd = (deg * Math.PI) / 180;
+            return (
+              <line
+                key={deg}
+                x1={1300 + Math.cos(rd) * 140}
+                y1={600 + Math.sin(rd) * 140}
+                x2={1300 + Math.cos(rd) * 180}
+                y2={600 + Math.sin(rd) * 180}
+              />
+            );
+          })}
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_vs_match: 格闘ゲーム風の対戦画面。等倍の自分 vs 巨大な7200倍パック =====
+// 「自分の『NG集こみの等倍の毎日』と、他人の『7200倍濃縮』をくらべる勝負。」
+export const KiraVsMatchScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(4);
+  const packIn = appearAt(frame, fps, 18); // 巨大パックが右からスライドイン
+  const vsPop = appearAt(frame, fps, 40);
+  const shake = frame > 34 && frame < 52 ? Math.sin(frame * 2.4) * 7 * ((52 - frame) / 18) : 0;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "これは、勝てない勝負"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <g transform={`translate(0 ${shake})`}>
+          {/* 床 */}
+          <line x1={240} y1={830} x2={1680} y2={830} stroke={SP.dim} strokeWidth={4} />
+          {/* 左: 等倍の自分 (小さい) + NGフィルムが巻きつく */}
+          <g opacity={a}>
+            <Person x={480} y={600} scale={2.1} />
+            {/* 巻きつくフィルム帯 */}
+            <g transform="rotate(-14 480 700)">
+              <rect x={330} y={678} width={300} height={56} rx={8} fill={SP.panel} stroke={SP.line} strokeWidth={4} />
+              {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+                <rect key={i} x={344 + i * 40} y={690} width={22} height={32} rx={4} fill="none" stroke={SP.faint} strokeWidth={3} />
+              ))}
+              <SmallLabel x={480} y={760} text="" />
+            </g>
+            <SmallLabel x={480} y={800} text="等倍の毎日 (NG集こみ)" color={SP.ink} size={29} />
+          </g>
+          {/* 右: 7200倍濃縮の巨大ジュースパック (画面からはみ出す) */}
+          <g transform={`translate(${(1 - packIn) * 560} 0)`} opacity={packIn}>
+            <path d="M 1190 300 L 1270 190 L 1610 190 L 1680 300 Z" fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+            <rect x={1190} y={300} width={490} height={530} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+            {/* ストロー */}
+            <line x1={1600} y1={200} x2={1660} y2={120} stroke={SP.line} strokeWidth={10} strokeLinecap="round" />
+            {/* パッケージのしずくマークと表記 */}
+            <path d="M 1340 420 q 30 -52 60 0 a 30 30 0 1 1 -60 0 Z" fill={KC.orange} opacity={0.9} />
+            <text x={1435} y={560} textAnchor="middle" fontSize={64} fontWeight={800} fill={SP.ink} fontFamily={SUURI_FONT}>7200倍</text>
+            <text x={1435} y={630} textAnchor="middle" fontSize={38} fontWeight={700} fill={SP.faint} fontFamily={SUURI_FONT}>濃縮</text>
+            <SmallLabel x={1435} y={800} text="他人のハイライト" color={SP.ink} size={29} />
+          </g>
+          {/* 中央: VS の稲妻 */}
+          <g opacity={vsPop} transform={`translate(880 480) scale(${0.6 + vsPop * 0.4})`}>
+            <path d="M 18 -170 L -34 -20 L 6 -20 L -22 130 L 52 -46 L 10 -46 Z" fill={KC.yellow} stroke={SP.line} strokeWidth={4} strokeLinejoin="round" />
+            <text x={10} y={230} textAnchor="middle" fontSize={94} fontWeight={800} fill={SP.accent} fontFamily={SUURI_FONT} letterSpacing={6}>VS</text>
+          </g>
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_curtain: スポットライトと垂れ幕。「今日一番大事な言葉」の前フリ =====
+// 「ここで、今日一番大事な言葉が出てきます。」(中身は次のシーンまで見せない)
+export const KiraCurtainScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const light = appearAt(frame, fps, 6);
+  const drop = appearAt(frame, fps, 22); // 垂れ幕が降りてくる
+  const seal = appearAt(frame, fps, 54);
+  const bannerH = 420 * Math.min(drop, 1);
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "今日、一番大事な言葉"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* スポットライトの光条 */}
+        <g opacity={light}>
+          <polygon points="960,170 640,830 1280,830" fill={SP.ink} opacity={0.08} />
+          <ellipse cx={960} cy={830} rx={330} ry={26} fill={SP.ink} opacity={0.1} />
+        </g>
+        {/* 吊り棒 */}
+        <line x1={700} y1={230} x2={1220} y2={230} stroke={SP.line} strokeWidth={7} strokeLinecap="round" opacity={drop} />
+        <circle cx={700} cy={230} r={10} fill={SP.ink} opacity={drop} />
+        <circle cx={1220} cy={230} r={10} fill={SP.ink} opacity={drop} />
+        {/* 垂れ幕 (降りてくる)。中身はまだ伏せる */}
+        <g opacity={drop}>
+          <rect x={790} y={236} width={340} height={bannerH} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+          {/* 伏せ字 (文字はまだ見えない) */}
+          {bannerH > 300 && (
+            <g opacity={clamp01((bannerH - 300) / 120)}>
+              <rect x={850} y={320} width={220} height={40} rx={8} fill={SP.dim} />
+              <rect x={850} y={400} width={220} height={40} rx={8} fill={SP.dim} />
+              <rect x={850} y={480} width={150} height={40} rx={8} fill={SP.dim} />
+            </g>
+          )}
+          {/* 下端のふさ */}
+          {[0, 1, 2, 3].map((i) => (
+            <line
+              key={i}
+              x1={820 + i * 94}
+              y1={236 + bannerH}
+              x2={820 + i * 94 + (i % 2 === 0 ? -6 : 6)}
+              y2={236 + bannerH + 34}
+              stroke={SP.faint}
+              strokeWidth={5}
+              strokeLinecap="round"
+            />
+          ))}
+        </g>
+        {/* 赤い封印 (大事な言葉のしるし) */}
+        <g opacity={seal} transform={`translate(1100 610) scale(${seal})`}>
+          <circle r={38} fill="none" stroke={SP.accent} strokeWidth={6} />
+          <text y={14} textAnchor="middle" fontSize={36} fontWeight={700} fill={SP.accent} fontFamily={SUURI_FONT}>要</text>
+        </g>
+        <Sparkle x={640} y={330} s={11} phase={1} />
+        <Sparkle x={1300} y={420} s={9} phase={3} />
+        <g opacity={seal}>
+          <SmallLabel x={960} y={780} text="この後すぐ" color={SP.faint} size={30} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_magnify_holes: 虫眼鏡が飛行機の上を進み、通った所に弾痕が見つかる =====
+// 「すると、翼やしっぽに、穴がたくさん見つかりました。」(和紙の章)
+export const KiraMagnifyHolesScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(4);
+  // 虫眼鏡の旅: 左翼 → 右翼 → しっぽ (座標は bullet_map と同じ機体のもの)
+  const t = clamp01((frame - 16) / 86);
+  const path = [
+    { x: 560, y: 596 },
+    { x: 1340, y: 596 },
+    { x: 960, y: 750 },
+  ];
+  const seg = t < 0.62 ? 0 : 1;
+  const lt = seg === 0 ? t / 0.62 : (t - 0.62) / 0.38;
+  const gx = path[seg].x + (path[seg + 1].x - path[seg].x) * lt;
+  const gy = path[seg].y + (path[seg + 1].y - path[seg].y) * lt;
+  // 弾痕: bullet_map と同じ位置 (直後に出る弾痕の図とつながるように)。
+  // d は出現の遅れ (虫眼鏡の通過に同期)
+  const holes: [number, number, number][] = [
+    // 左翼
+    [490, 586, 4], [545, 564, 6], [600, 556, 9], [650, 575, 12], [848, 516, 24], [884, 540, 27],
+    // 右翼
+    [1036, 540, 34], [1072, 516, 36], [1270, 580, 48], [1320, 556, 51], [1375, 590, 54], [1430, 586, 57],
+    // 後部胴体 → 水平尾翼
+    [942, 660, 64], [978, 700, 67], [952, 730, 70], [860, 744, 73], [790, 762, 76], [1060, 744, 79], [1130, 762, 82],
+  ];
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "穴は、どこに?"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* bullet_map と同じ配置 (同じ機体・同じ弾痕位置で、次の弾痕の図へ自然につなぐ) */}
+        <g transform="translate(960 524) scale(0.9) translate(-960 -506)">
+          <PlaneTopView opacity={a} />
+          {/* 見つかった弾痕 (bullet_map と同じ見た目) */}
+          {holes.map(([hx, hy, d], i) => (
+            <BulletHole key={i} x={hx} y={hy} appear={appearAt(frame, fps, 16 + d)} />
+          ))}
+          {/* 虫眼鏡 */}
+          <g opacity={a} transform={`translate(${gx} ${gy})`}>
+            <circle r={105} fill={SP.background} opacity={0.35} />
+            <circle r={105} fill="none" stroke={SP.ink} strokeWidth={11} />
+            <line x1={75} y1={75} x2={162} y2={162} stroke={SP.ink} strokeWidth={18} strokeLinecap="round" />
+            {/* レンズの中: 拡大された穴 */}
+            <circle cx={-22} cy={-9} r={19} fill={SP.accent} opacity={0.95} />
+            <circle cx={33} cy={20} r={14} fill={SP.accent} opacity={0.8} />
+          </g>
+        </g>
+        <g opacity={appearAt(frame, fps, 104)}>
+          <SmallLabel x={1500} y={820} text="翼としっぽに、たくさん" color={SP.ink} size={30} weight={700} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_flip_q: 大きな「?」が裏返りかけて「!」が見えかける =====
+// 「よく考えてみてください。」(1.8秒。逆転の発想の予告)
+export const KiraFlipQScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(2);
+  // 裏返り: 0° → 148° まで回って止まる (裏の「!」がちらりと見える)
+  const flip = appearAt(frame, fps, 10);
+  const deg = flip * 148;
+  const rad = (deg * Math.PI) / 180;
+  const sx = Math.cos(rad); // 横方向のつぶれ = 回転して見える仕掛け
+  const showBack = sx < 0;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "逆から、考える"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <line x1={620} y1={820} x2={1300} y2={820} stroke={SP.dim} strokeWidth={4} opacity={a} />
+        {/* 回転を示す矢印 */}
+        <g opacity={a * 0.9} stroke={SP.faint} strokeWidth={5} fill="none">
+          <path d="M 640 540 A 330 330 0 0 1 960 240" />
+          <path d="M 940 252 L 964 236 L 948 214" strokeLinejoin="round" />
+          <path d="M 1280 540 A 330 330 0 0 1 960 840" opacity={0.5} />
+        </g>
+        {/* 裏返るカード */}
+        <g transform={`translate(960 540) scale(${sx} 1)`} opacity={a}>
+          <circle r={210} fill={SP.panel} stroke={SP.line} strokeWidth={7} />
+          {!showBack ? (
+            <text y={76} textAnchor="middle" fontSize={230} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT}>?</text>
+          ) : (
+            // 裏面: まだ答えじゃない。薄い「!」だけちらりと (scale(-1,1) で鏡写しを戻す)
+            <g transform="scale(-1 1)">
+              <text y={76} textAnchor="middle" fontSize={230} fontWeight={700} fill={SP.faint} fontFamily={SUURI_FONT}>!</text>
+            </g>
+          )}
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_plane_unrecorded: 帳簿に載らない1機が、海へ沈んでいく =====
+// 「エンジンを撃たれた飛行機は帰ってこられないから、記録のどこにも残らなかったのです。」(和紙の章)
+export const KiraPlaneUnrecordedScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(4);
+  const sink = clamp01((frame - 60) / 70); // 幽霊機が沈んでいく
+  const label = appearAt(frame, fps, 96);
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "帰ってこなかった飛行機のゆくえ"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 帳簿 */}
+        <g opacity={a}>
+          <rect x={430} y={250} width={880} height={430} rx={14} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+          <line x1={470} y1={330} x2={1270} y2={330} stroke={SP.faint} strokeWidth={4} />
+          <SmallLabel x={560} y={308} text="帰還機 記録簿" color={SP.ink} size={32} weight={700} />
+        </g>
+        {/* 記録された8機 + チェック */}
+        {Array.from({ length: 8 }, (_, i) => {
+          const r = Math.floor(i / 3);
+          const c = i % 3;
+          const pop = appearAt(frame, fps, 10 + i * 7);
+          return (
+            <g key={i} opacity={pop} transform={`translate(${560 + c * 270} ${410 + r * 110}) scale(${0.7 + pop * 0.3})`}>
+              {/* 他シーンと同じ横向きシルエット (絵のブレ防止で部品を流用) */}
+              <PlaneSilhouette x={-10} y={0} scale={0.3} />
+              <path d="M 62 -6 L 74 8 L 98 -22" fill="none" stroke={SP.line} strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />
+            </g>
+          );
+        })}
+        {/* 9機目の欄: 空白 (赤い点線 = 記録されなかった場所) */}
+        <g opacity={appearAt(frame, fps, 70)}>
+          <rect x={1095} y={585} width={170} height={70} rx={10} fill="none" stroke={SP.accent} strokeWidth={4} strokeDasharray="12 10" />
+        </g>
+        {/* 海 (右下) */}
+        <g opacity={a}>
+          <path
+            d="M 1180 800 Q 1240 786 1300 800 T 1420 800 T 1540 800 T 1660 800"
+            fill="none"
+            stroke={KC.sea}
+            strokeWidth={5}
+          />
+        </g>
+        {/* 帳簿に載らない1機: 空欄から海へ沈んでいく (点線の幽霊機 = 記録に残らない機の共通部品)。
+            scale(-1 1) で右向きにし、機首を下げながら海へ */}
+        <g
+          opacity={a * (1 - sink * 0.5)}
+          transform={`translate(${1180 + sink * 250} ${615 + sink * 175}) scale(-1 1)`}
+        >
+          <GhostPlane x={0} y={0} scale={0.5} rotate={-(16 + sink * 26)} />
+        </g>
+        {/* 沈んだ跡の泡 */}
+        {sink > 0.8 && (
+          <g opacity={(sink - 0.8) * 5}>
+            <circle cx={1452} cy={792} r={6} fill="none" stroke={SP.faint} strokeWidth={3} />
+            <circle cx={1478} cy={780} r={4} fill="none" stroke={SP.faint} strokeWidth={3} />
+          </g>
+        )}
+        <g opacity={label}>
+          <SmallLabel x={780} y={790} text="撃たれた機は、ここに戻れない = 記録に残らない" color={SP.ink} size={30} weight={700} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_same_q: 投稿とホームラン集のあいだで「？」が揺れる =====
+// 「何かちがいが、あるでしょうか。」(直前の life_homerun と同じ絵で、= が ? に変わる)
+export const KiraSameQScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(2);
+  const qIn = appearAt(frame, fps, 12);
+  // ？が首をかしげるようにゆらゆら
+  const tilt = Math.sin(frame / 11) * 9 * qIn;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "ちがいは、ある？"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* 左: 友達の投稿 (life_homerun と同じ絵。ブレ防止で同じ部品・同じ座標) */}
+        <g opacity={a}>
+          <Phone x={430} y={210} w={340} h={580}>
+            <FeedCard x={466} y={266} w={268} h={150} kind="travel" colored />
+            <FeedCard x={466} y={436} w={268} h={150} kind="food" colored />
+            <FeedCard x={466} y={606} w={268} h={150} kind="pass" colored />
+          </Phone>
+          <Sparkle x={400} y={260} s={13} phase={0} />
+          <Sparkle x={820} y={320} s={15} phase={2} />
+        </g>
+        {/* 右: ホームラン集のジャケット (これも life_homerun と同じ絵) */}
+        <g opacity={a}>
+          <rect x={1130} y={300} width={400} height={400} rx={18} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+          <ColorBatter x={1270} y={500} scale={1.3} bat={[1288, 518, 1350, 448]} />
+          <path d="M 1350 455 Q 1420 390 1480 380" fill="none" stroke={SP.faint} strokeWidth={4} strokeDasharray="4 12" />
+          <circle cx={1472} cy={382} r={9} fill={SP.ink} />
+          <text x={1330} y={660} textAnchor="middle" fontSize={34} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT} letterSpacing={2}>
+            人生の<tspan fill={SP.accent}>ホームラン集</tspan>
+          </text>
+        </g>
+        {/* まんなか: 「=」が点線になり、上で「？」が首をかしげる */}
+        <g stroke={SP.line} strokeWidth={10} strokeLinecap="round" strokeDasharray="20 18" opacity={a}>
+          <line x1={930} y1={530} x2={1030} y2={530} />
+          <line x1={930} y1={580} x2={1030} y2={580} />
+        </g>
+        <g opacity={qIn} transform={`translate(980 420) rotate(${tilt})`}>
+          <text y={0} textAnchor="middle" fontSize={150} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT}>?</text>
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_engine_q: 穴ゼロのエンジンの上で「？」がはてなと浮かぶ =====
+// 「どういうことでしょうか。」(直前の bullet_map mode2 と同じ機体・同じ赤丸)
+export const KiraEngineQScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(2);
+  // bullet_map と同じ弾痕位置 (薄く残す = 前のシーンの続きだと分かる)
+  const holes: [number, number][] = [
+    [490, 586], [545, 564], [600, 556], [650, 575], [848, 516], [884, 540],
+    [1036, 540], [1072, 516], [1270, 580], [1320, 556], [1375, 590], [1430, 586],
+    [790, 762], [860, 744], [1060, 744], [1130, 762],
+    [942, 660], [978, 700], [952, 730],
+  ];
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "どういうこと？"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        {/* bullet_map と同じラッパー (同じ絵の続きに見せる) */}
+        <g transform="translate(960 524) scale(0.9) translate(-960 -506)">
+          <PlaneTopView opacity={a * 0.45} />
+          {holes.map(([hx, hy], i) => (
+            <BulletHole key={i} x={hx} y={hy} appear={a * 0.3} />
+          ))}
+          {/* エンジンを守る赤丸 (bullet_map mode2 と同じ位置・同じ太さ) */}
+          {[742, 1178].map((ex, i) => {
+            const bob = Math.sin(frame / 9 + i * 2) * 10;
+            const q = appearAt(frame, fps, 10 + i * 8);
+            return (
+              <g key={ex}>
+                <circle cx={ex} cy={514} r={86} fill="none" stroke={SP.accent} strokeWidth={9} opacity={a} />
+                {/* 穴ゼロの場所の上に「？」がぽかんと浮かぶ */}
+                <g opacity={q} transform={`translate(${ex} ${360 + bob})`}>
+                  <text textAnchor="middle" fontSize={130} fontWeight={700} fill={SP.ink} fontFamily={SUURI_FONT}>?</text>
+                </g>
+              </g>
+            );
+          })}
+        </g>
+        <g opacity={appearAt(frame, fps, 30)}>
+          <SmallLabel x={960} y={880} text="穴が ひとつもない 場所を、守る…？" color={SP.ink} size={34} weight={700} />
+        </g>
+      </svg>
+    </Frame>
+  );
+};
+
+// ===== kira_notice_eye: ハッと見開く目。ひとみに小さなきらきらが映っている =====
+// 「そして、お気づきでしょうか。」(答えの滑走路はまだ見せない。ひとみの反射だけで匂わせる)
+export const KiraNoticeEyeScene: React.FC<SceneProps> = ({ scene }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const a = useAppear(2);
+  const open = appearAt(frame, fps, 14); // 半目 → ぱちっと見開く
+  const spark = appearAt(frame, fps, 42); // ひとみに映るきらきら
+  const topY = 520 - (90 + open * 120);
+  const botY = 520 + (70 + open * 90);
+  const eyePath = `M 640 520 Q 960 ${topY} 1280 520 Q 960 ${botY} 640 520 Z`;
+  return (
+    <Frame>
+      <DiagramTitle text={scene?.title ?? "ふと、気がつく"} />
+      <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+        <defs>
+          <clipPath id="kiraNoticeEye">
+            <path d={eyePath} />
+          </clipPath>
+        </defs>
+        {/* ハッと気づいた放射線 (見開いた瞬間に出る) */}
+        <g stroke={SP.line} strokeWidth={5} strokeLinecap="round" opacity={Math.max(0, open - 0.6) * 2.2}>
+          {[-150, -115, -65, -30, 30, 65, 115, 150].map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            return (
+              <line
+                key={deg}
+                x1={960 + Math.cos(rad) * 390}
+                y1={520 + Math.sin(rad) * 290}
+                x2={960 + Math.cos(rad) * 450}
+                y2={520 + Math.sin(rad) * 340}
+              />
+            );
+          })}
+        </g>
+        {/* 目 (まぶたが開く) */}
+        <g opacity={a}>
+          <path d={eyePath} fill={SP.background} stroke={SP.line} strokeWidth={7} />
+          <g clipPath="url(#kiraNoticeEye)">
+            {/* 虹彩とひとみ */}
+            <circle cx={960} cy={520} r={118} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
+            <circle cx={960} cy={520} r={58} fill={SP.ink} />
+            {/* ひとみに映る、小さなキラキラ画面の反射 */}
+            <g opacity={spark}>
+              <Sparkle x={944} y={506} s={13} phase={0} color={KC.yellow} />
+              <Sparkle x={982} y={534} s={9} phase={3} color={KC.pink} />
+            </g>
+            <circle cx={922} cy={488} r={12} fill={SP.background} opacity={0.9} />
+          </g>
         </g>
       </svg>
     </Frame>

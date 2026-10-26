@@ -11,3 +11,4 @@ public/images/
 tmp/*
 !tmp/fake-sushi.ts
 !tmp/stills.ts
+!tmp/jihanki-v2-fixlist.md

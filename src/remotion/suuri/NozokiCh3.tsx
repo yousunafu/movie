@@ -1285,18 +1285,22 @@ const QuestionFlipScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => {
             strokeWidth={6}
           />
           {!showBack ? (
-            <text x={0} y={-10} textAnchor="middle" fill={SP.ink} fontSize={56} fontWeight={800} fontFamily={SUURI_FONT}>
-              どうやって鍵を、
-              <tspan x={0} dy={80}>
-                安全に送るか？
-              </tspan>
-            </text>
+            <g>
+              {/* 2000年の大問題らしく、大きく重く掲げる */}
+              <text x={0} y={-28} textAnchor="middle" fill={SP.ink} fontSize={74} fontWeight={900} fontFamily={SUURI_FONT} letterSpacing={2}>
+                どうやって鍵を
+                <tspan x={0} dy={96}>
+                  安全に送るか？
+                </tspan>
+              </text>
+              <rect x={-272} y={92} width={544} height={10} rx={5} fill={SP.accent} />
+            </g>
           ) : (
             /* 裏面は scaleX が負なので、文字をもう一度反転して正しく読ませる */
             <g transform="scale(-1, 1)">
-              <text x={0} y={-10} textAnchor="middle" fill={SP.accent} fontSize={56} fontWeight={800} fontFamily={SUURI_FONT}>
+              <text x={0} y={-28} textAnchor="middle" fill={SP.accent} fontSize={74} fontWeight={900} fontFamily={SUURI_FONT} letterSpacing={2}>
                 そもそも、
-                <tspan x={0} dy={80}>
+                <tspan x={0} dy={96}>
                   送らなくていいのでは？
                 </tspan>
               </text>
@@ -1339,7 +1343,7 @@ const FlipYourProblemScene: React.FC<SceneProps> = ({ scene }) => {
         <g transform={`translate(960, 480) rotate(${-tilt})`}>
           <rect x={-440} y={-150} width={880} height={300} rx={20} fill={SP.panel} stroke={SP.line} strokeWidth={6} />
           <text x={0} y={-16} textAnchor="middle" fill={SP.ink} fontSize={52} fontWeight={800} fontFamily={SUURI_FONT}>
-            あなたの、
+            あなたの
             <tspan x={0} dy={72}>
               解けない問題
             </tspan>

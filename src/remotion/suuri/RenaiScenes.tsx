@@ -1203,8 +1203,9 @@ export const LovePreviewCh34Scene: React.FC<SceneProps> = ({ scene }) => {
           <g stroke={RNP.ink} strokeWidth={5} fill="#FFFFFF">
             <rect x={1170} y={520} width={90} height={90} rx={16} transform="rotate(-8 1215 565)" />
           </g>
-          <circle cx={1200} cy={550} r={7} fill={RNP.pinkDeep} />
-          <circle cx={1236} cy={586} r={7} fill={RNP.pinkDeep} />
+          {/* サイコロの2の目は黒点 (ユーザー指定) */}
+          <circle cx={1200} cy={550} r={7} fill={RNP.ink} />
+          <circle cx={1236} cy={586} r={7} fill={RNP.ink} />
           <text x={1390} y={700} textAnchor="middle" fontFamily={SUURI_FONT} fontSize={28} fill={RNP.faint}>
             確率は、動かせる
           </text>
@@ -3669,7 +3670,8 @@ export const AlienScaleScene: React.FC<SceneProps> = ({ scene, variant = 0 }) =>
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const a = appearAt(frame, fps, 8);
-  const tilt = interpolate(frame, [fps * 0.5, fps * 1.5], [0, 9], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  // 宇宙人側 (左) が重くて下がる = 反時計回り (負の角度)。ユーザー指摘で逆向きを修正
+  const tilt = interpolate(frame, [fps * 0.5, fps * 1.5], [0, -9], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const compare = variant >= 1; // 行117: 400倍近く多い
   const publish = variant >= 2; // 行118: 堂々と発表
   if (compare) {
@@ -3734,7 +3736,7 @@ export const AlienScaleScene: React.FC<SceneProps> = ({ scene, variant = 0 }) =>
   };
   return (
     <Frame>
-      <DiagramTitle text={scene?.title ?? "宇宙人の文明: 1万個"} />
+      <DiagramTitle text={scene?.title ?? "宇宙人の文明は1万個"} />
       <svg width={W} height={H}>
         <g opacity={a}>
           {/* 支柱 */}
@@ -4665,7 +4667,80 @@ export const FinalToolScene: React.FC<SceneProps> = ({ scene, variant = 0 }) => 
       </Frame>
     );
   }
-  // v2-v3: 式が道具箱に収まる
+  // v2: 望遠鏡で宇宙をのぞいたら、レンズに映っていたのは自分だった (ユーザー指定の新スライド)
+  // 「式が教えてくれたのは、宇宙の広さではなく」= 視線が自分に返ってくる絵
+  if (variant === 2) {
+    const lensIn = appearAt(frame, fps, Math.round(fps * 0.5));
+    // 1.4秒すぎ: レンズの中の星空がすっと消えて、鏡のように自分が映る
+    const mirrorT = interpolate(frame, [fps * 1.4, fps * 2.2], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+    const crossIn = appearAt(frame, fps, Math.round(fps * 2.5));
+    return (
+      <Frame>
+        <DiagramTitle text={scene?.title ?? "式が教えてくれたのは"} />
+        <svg width={W} height={H}>
+          <defs>
+            <clipPath id="finalLensClip">
+              <circle cx={1320} cy={480} r={206} />
+            </clipPath>
+          </defs>
+          {/* 夜空の星 (またたく) */}
+          <g opacity={a}>
+            {Array.from({ length: 12 }).map((_, i) => {
+              const x = 220 + jitter(i, 91) * 680;
+              const y = 170 + jitter(i, 92) * 200;
+              const tw = 0.35 + 0.55 * Math.abs(Math.sin(frame / 9 + i * 1.7));
+              return <circle key={i} cx={x} cy={y} r={2.5 + jitter(i, 93) * 2.5} fill={SP.ink} opacity={tw} />;
+            })}
+            {/* 「宇宙の広さ」に赤の× (ではなく、の否定) */}
+            <g opacity={crossIn}>
+              <path d="M 520 210 L 620 310 M 620 210 L 520 310" stroke={SP.accent} strokeWidth={8} strokeLinecap="round" />
+              <SmallLabel x={570} y={360} text="宇宙の広さ" size={26} />
+            </g>
+          </g>
+          {/* 望遠鏡をのぞくあなた */}
+          <g opacity={a} stroke={SP.ink} strokeWidth={6} fill="none" strokeLinecap="round">
+            <circle cx={410} cy={640} r={30} />
+            <path d="M 410 670 L 410 745 M 410 695 L 452 652 M 410 695 L 368 740 M 410 745 L 372 820 M 410 745 L 450 820" />
+          </g>
+          {/* 望遠鏡 (筒+三脚) */}
+          <g opacity={a} stroke={SP.ink} strokeLinecap="round">
+            <path d="M 455 622 L 690 462" strokeWidth={20} />
+            <path d="M 648 492 L 700 456" strokeWidth={30} />
+            <path d="M 565 548 L 515 730 M 575 548 L 635 730" strokeWidth={6} />
+          </g>
+          {/* 視線 (望遠鏡→レンズの丸) */}
+          <path d="M 715 450 L 1085 472" stroke={SP.faint} strokeWidth={5} strokeDasharray="4 14" strokeLinecap="round" opacity={lensIn} />
+          {/* レンズの丸 (視界) */}
+          <g opacity={lensIn}>
+            <circle cx={1320} cy={480} r={206} fill={SP.panel} stroke={SP.line} strokeWidth={7} />
+            {/* 中の星空 (鏡になるとすっと消える) */}
+            <g clipPath="url(#finalLensClip)" opacity={1 - mirrorT}>
+              {Array.from({ length: 10 }).map((_, i) => {
+                const x = 1150 + jitter(i, 95) * 340;
+                const y = 320 + jitter(i, 96) * 320;
+                const tw = 0.4 + 0.5 * Math.abs(Math.sin(frame / 8 + i * 2.1));
+                return <circle key={i} cx={x} cy={y} r={3 + jitter(i, 97) * 3} fill={SP.ink} opacity={tw} />;
+              })}
+            </g>
+            {/* 鏡に映る自分 (ゆっくり浮かび上がる) */}
+            <g clipPath="url(#finalLensClip)" opacity={mirrorT}>
+              <circle cx={1320} cy={420} r={64} fill="none" stroke={SP.ink} strokeWidth={6} />
+              <circle cx={1298} cy={414} r={5} fill={SP.ink} />
+              <circle cx={1342} cy={414} r={5} fill={SP.ink} />
+              <path d="M 1306 448 Q 1320 456 1334 448" fill="none" stroke={SP.ink} strokeWidth={5} strokeLinecap="round" />
+              <path d="M 1230 690 q 12 -140 90 -150 q 78 10 90 150" fill="none" stroke={SP.ink} strokeWidth={6} strokeLinejoin="round" />
+              {/* 鏡のつや */}
+              <path d="M 1198 340 L 1252 286 M 1226 384 L 1312 298" stroke={SP.faint} strokeWidth={6} strokeLinecap="round" opacity={0.7} />
+            </g>
+          </g>
+          <g opacity={mirrorT}>
+            <SmallLabel x={1320} y={752} text="映っていたのは、自分" size={30} color={SP.ink} weight={700} />
+          </g>
+        </svg>
+      </Frame>
+    );
+  }
+  // v3: 式が道具箱に収まる
   const dropT = variant >= 3 ? interpolate(frame, [fps * 0.4, fps * 1.4], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 0;
   const fy = 330 + dropT * 230;
   return (

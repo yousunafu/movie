@@ -197,6 +197,7 @@ export const YouFigure: React.FC<{
 }> = ({ x, y, scale = 1, pocketColor, pocketPulse = 0 }) => (
   <g transform={`translate(${x}, ${y}) scale(${scale})`}>
     <circle r={16} fill="none" stroke={SP.line} strokeWidth={5} />
+    {/* 胴体 */}
     <path
       d="M -30 80 q 2 -44 30 -46 q 28 2 30 46 Z"
       fill={SP.background}
@@ -237,8 +238,6 @@ export const ShopFigure: React.FC<{
   <g transform={`translate(${x}, ${y}) scale(${scale})`}>
     {sign && (
       <g>
-        <line x1={-26} y1={-74} x2={-18} y2={-38} stroke={SP.faint} strokeWidth={3} />
-        <line x1={26} y1={-74} x2={18} y2={-38} stroke={SP.faint} strokeWidth={3} />
         <rect x={-44} y={-104} width={88} height={34} rx={8} fill={SP.panel} stroke={SP.line} strokeWidth={3.5} />
         <text x={0} y={-79} textAnchor="middle" fill={SP.ink} fontSize={22} fontWeight={700} fontFamily={SUURI_FONT}>
           お店
@@ -255,7 +254,7 @@ export const ShopFigure: React.FC<{
     />
     {/* エプロン (首ひも+前かけ) */}
     <path d="M -10 40 L 0 34 L 10 40" fill="none" stroke={SP.line} strokeWidth={3.5} />
-    <path d="M -16 44 L 16 44 L 13 78 L -13 78 Z" fill={SP.panel} stroke={SP.line} strokeWidth={3.5} />
+    <path d="M -16 44 L 16 44 L 13 78 L -13 78 Z" fill={SP.background} stroke={SP.line} strokeWidth={3.5} />
     {/* エプロンのポケット (ひみつの青が入る) */}
     <rect x={-10} y={54} width={20} height={16} rx={4} fill={SP.background} stroke={SP.line} strokeWidth={3} />
     {pocketColor && <rect x={-7} y={57} width={14} height={11} rx={3} fill={pocketColor} />}

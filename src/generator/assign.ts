@@ -14,6 +14,7 @@ import {
   ALL_SUURI_MOTIFS,
 } from "../motifs";
 import type { Preset } from "../channel";
+import { J2_ALL_MOTIFS } from "../remotion/karakuri/Jihanki2000Index";
 
 export type Assignment = {
   type: SceneType;
@@ -407,6 +408,18 @@ export async function assignScenes(
   sentences: string[],
   preset: Preset = "genki",
 ): Promise<Assignment[]> {
+  // karakuri は番外編の専用台本 (自販機ニセ硬貨回) に1文1絵の専用モチーフを
+  // 用意しているため、AIに任せず必ずキーワード機械割り当てを使う
+  // (AIの揺れで専用絵が汎用絵に飲まれる事故を防ぐ)。
+  if (preset === "karakuri") {
+    const j2 = j2OrderedAssign(sentences);
+    if (j2) {
+      console.log(`絵づけ: 自販機2000年史の順番割り当て (1文1絵・${j2.length}枚)`);
+      return j2;
+    }
+    console.log("絵づけ: karakuri は専用キーワード割り当てを使用");
+    return sentences.map(karakuriHeuristicAssign);
+  }
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (apiKey) {
     for (let attempt = 0; attempt < 2; attempt++) {
@@ -1431,6 +1444,14 @@ export function suuriHeuristicAssign(sentence: string): Assignment {
     return { type: "diagram", motif: "yurumeru" }; // 最後のオチ: v2 (動きだして、出会える)
   }
   // 予告の文 (「第1章で〜、第2章で〜」) は中身の言葉より先に道筋の絵へ。
+  // 道長回の予告はキラキラ回のルールに飲まれないよう、先に専用スライドへ振る
+  // (2026-10 事故: 道長改訂版にキラキラ回の章予告スライドが混入した反省)
+  if (/第[1１一]章で.*先祖/.test(sentence)) {
+    return { type: "diagram", motif: "mich_preview_ch12", title: "今日の流れ・前半" };
+  }
+  if (/第[3３三]章で.*道長/.test(sentence)) {
+    return { type: "diagram", motif: "mich_preview_ch34", title: "今日の流れ・後半" };
+  }
   // キラキラ回は前半 (第1章・第2章) と後半 (第3章・第4章) で絵を分ける (斜め線の2分割予告)
   if (/第[1１一]章で/.test(sentence)) {
     return { type: "diagram", motif: "preview_ch12", title: "今日の流れ・前半" };
@@ -1927,4 +1948,98 @@ export function ashiHeuristicAssign(sentence: string): Assignment {
     if (sentence.includes(w)) return { type: "object", motif };
   }
   return { type: "character", motif: "talking" };
+}
+
+// ===== karakuri: 自販機2000年史 (docs/jihanki2000-script-v5.txt・239文) 用の順番割り当て =====
+// 専用シーン (Jihanki2000Index の J2_ALL_MOTIFS) は台本の文の順番どおりに並んでいるので、
+// キーワードに頼らず「文i → 絵i」で1対1に割り当てる (設計書: docs/jihanki2000-motifs.md)。
+// 文3「そう、自動販売機です。」だけは、シーン1の夜道の絵 (j2_night) を再利用する (設計書 導入#3)。
+function j2OrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[0]?.includes("現金を積んだ無人の箱")) return null;
+  const order = [...J2_ALL_MOTIFS];
+  order.splice(2, 0, "j2_night"); // 文3 = シーン1の夜道を再利用 (正体あかし)
+  if (sentences.length !== order.length) {
+    throw new Error(
+      `自販機2000年史: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
+        `台本 (docs/jihanki2000-script-v5.txt) か J2_ALL_MOTIFS の数を確認してください`,
+    );
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri (身の回りの機械のからくり図解) 用のキーワード機械割り当て =====
+// 自販機ニセ硬貨回 (docs/jihanki-coin-script.txt) の21文に1対1で対応。
+// 具体的な語のルールを先、広い語 (自動販売機 など) のルールを後に置くこと。
+export function karakuriHeuristicAssign(sentence: string): Assignment {
+  // 「さて、ここで問題です。」はクイズ出題カード
+  if (isManabiQuizText(sentence)) {
+    return { type: "card", motif: "quiz" };
+  }
+  if (/返却口|メダル|外国のコイン/.test(sentence)) {
+    return { type: "character", motif: "coin_reject" };
+  }
+  if (/中に人/.test(sentence)) {
+    return { type: "diagram", motif: "jihanki_inside" };
+  }
+  if (/「何」を見て/.test(sentence)) {
+    return { type: "object", motif: "coin_question" };
+  }
+  if (/答えは/.test(sentence)) {
+    return {
+      type: "diagram",
+      motif: "answer_three",
+      title: "硬貨を見分ける3つの手がかり",
+      items: [{ label: "大きさ" }, { label: "厚み" }, { label: "材質" }],
+    };
+  }
+  if (/コインメック/.test(sentence)) {
+    return { type: "diagram", motif: "coinmech", emphasis: "コインメック" };
+  }
+  if (/レール/.test(sentence)) {
+    return { type: "diagram", motif: "coin_rail" };
+  }
+  if (/直径と厚み/.test(sentence)) {
+    return { type: "diagram", motif: "size_check" };
+  }
+  if (/そっくり|見抜けません/.test(sentence)) {
+    return { type: "diagram", motif: "fake_same" };
+  }
+  if (/材質チェック/.test(sentence)) {
+    return { type: "diagram", motif: "material_intro", emphasis: "材質チェック" };
+  }
+  // 注意: 文13は「コイル」も含むので、渦電流のルールをコイルより先に置く
+  if (/渦電流/.test(sentence)) {
+    return { type: "diagram", motif: "eddy", emphasis: "渦電流" };
+  }
+  if (/渦のでき方/.test(sentence)) {
+    return { type: "diagram", motif: "eddy_compare" };
+  }
+  if (/コイル/.test(sentence)) {
+    return { type: "diagram", motif: "coil" };
+  }
+  if (/白銅|黄銅/.test(sentence)) {
+    return { type: "diagram", motif: "coin_lineup" };
+  }
+  if (/目で見るのではなく|電気の反応/.test(sentence)) {
+    return { type: "diagram", motif: "electric_eye" };
+  }
+  if (/破られた/.test(sentence)) {
+    return { type: "diagram", motif: "breach" };
+  }
+  if (/変造|穴を開け/.test(sentence)) {
+    return { type: "character", motif: "won_fake", emphasis: "変造500円" };
+  }
+  if (/新素材|2000年/.test(sentence)) {
+    return { type: "diagram", motif: "new_coin_2000" };
+  }
+  if (/3層|２０２１|2021/.test(sentence)) {
+    return { type: "diagram", motif: "bicolor_2021", emphasis: "3層構造" };
+  }
+  if (/戦い/.test(sentence)) {
+    return { type: "card", motif: "battle_end" };
+  }
+  if (/自動販売機|自販機/.test(sentence)) {
+    return { type: "character", motif: "jihanki_intro" };
+  }
+  return { type: "diagram", motif: "concept" };
 }

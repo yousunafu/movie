@@ -1,1379 +1,1928 @@
 {
-  "preset": "suuri",
   "scenes": [
     {
       "index": 0,
-      "text": "突然ですが、想像してください。",
+      "text": "夜道に、現金を積んだ無人の箱が置かれています。",
       "type": "diagram",
-      "motif": "nozoki_classroom",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_night",
+      "audio": "audio/scene-000.wav",
+      "durationSec": 4.416
     },
     {
       "index": 1,
-      "text": "あなたは、教室の窓ぎわの席。",
+      "text": "壊されもせず、盗まれもせず、今夜も黙って光り続けています。",
       "type": "diagram",
-      "motif": "nozoki_classroom",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_night_close",
+      "audio": "audio/scene-001.wav",
+      "durationSec": 5.728
     },
     {
       "index": 2,
-      "text": "ひみつのメモを、ろうか側のいちばん向こうの席まで、届けたい。",
+      "text": "そう、自動販売機です。",
       "type": "diagram",
-      "motif": "nozoki_memo_plan",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.4
+      "motif": "j2_night",
+      "audio": "audio/scene-002.wav",
+      "durationSec": 2.474666666666667
     },
     {
       "index": 3,
-      "text": "でも、机から立つのは禁止。",
+      "text": "実はこの風景が成立する国は、世界でも日本くらいです。",
       "type": "diagram",
-      "motif": "nozoki_memo_plan",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_globe_japan",
+      "audio": "audio/scene-003.wav",
+      "durationSec": 5.685333333333333
     },
     {
       "index": 4,
-      "text": "メモは、間に座る30人の手から手へ、渡っていきます。",
+      "text": "でも今日の主役は、日本ではありません。",
       "type": "diagram",
-      "motif": "nozoki_memo_relay",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.7
+      "motif": "j2_globe_back",
+      "audio": "audio/scene-004.wav",
+      "durationSec": 3.498666666666667
     },
     {
       "index": 5,
-      "text": "30人もいれば、途中でこっそり開いて読む人が、必ずいます。",
+      "text": "この箱の、いちばん最初のご先祖さまの話です。",
       "type": "diagram",
-      "motif": "nozoki_memo_peek",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.2
+      "motif": "j2_morph_pot",
+      "audio": "audio/scene-005.wav",
+      "durationSec": 4.245333333333333
     },
     {
       "index": 6,
-      "text": "はい、もうおわかりですね。",
+      "text": "記録に残る最古の「コインを入れると出てくる機械」は、いまからおよそ2000年前。",
       "type": "diagram",
-      "motif": "nozoki_memo_spread",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_pot_2000",
+      "audio": "audio/scene-006.wav",
+      "durationSec": 6.261333333333333
     },
     {
       "index": 7,
-      "text": "あなたのひみつは、昼休みには学年中に知れわたっています。",
+      "text": "置かれていたのは、神殿でした。",
       "type": "diagram",
-      "motif": "nozoki_memo_spread",
-      "audio": "audio/silent.wav",
-      "durationSec": 5
+      "motif": "j2_temple",
+      "audio": "audio/scene-007.wav",
+      "durationSec": 2.7093333333333334
     },
     {
       "index": 8,
-      "text": "実は、インターネットは、これとまったく同じ仕組みです。",
+      "text": "売っていたのは、聖水。神様の水です。",
       "type": "diagram",
-      "motif": "nozoki_class_to_net",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.9
+      "motif": "j2_holy_water",
+      "audio": "audio/scene-008.wav",
+      "durationSec": 4.181333333333333
     },
     {
       "index": 9,
-      "text": "あなたがネットで買い物をすると、カード番号は、知らない人の機械を、バケツリレーで渡っていきます。",
+      "text": "神様の水を売る機械は、2000年かけて、どう進化して日本の夜道にたどり着いたのか。",
       "type": "diagram",
-      "motif": "nozoki_card_relay",
-      "audio": "audio/silent.wav",
-      "durationSec": 8.6
+      "motif": "j2_journey",
+      "audio": "audio/scene-009.wav",
+      "durationSec": 8.128
     },
     {
       "index": 10,
-      "text": "その数、ときには10台以上。",
+      "text": "コイン1枚で動くこの箱には、2000年ぶんの発明が詰まっています。",
       "type": "diagram",
-      "motif": "nozoki_card_relay",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_xray",
+      "audio": "audio/scene-010.wav",
+      "durationSec": 5.653333333333333
     },
     {
       "index": 11,
-      "text": "そして途中の機械は、やろうと思えば、中身をのぞくことができてしまいます。",
+      "text": "第1章、神殿のコイン仕掛け。",
       "type": "diagram",
-      "motif": "nozoki_peek_servers",
-      "audio": "audio/silent.wav",
-      "durationSec": 6.5
+      "motif": "j2_ch1_door",
+      "audio": "audio/scene-011.wav",
+      "durationSec": 3.04
     },
     {
       "index": 12,
-      "text": "なのに──あなたのカード番号は、盗まれません。",
+      "text": "舞台は、エジプトの大都市アレクサンドリア。",
       "type": "diagram",
-      "motif": "nozoki_card_safe",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.1
+      "motif": "j2_alexandria",
+      "audio": "audio/scene-012.wav",
+      "durationSec": 3.7013333333333334
     },
     {
       "index": 13,
-      "text": "のぞかれ放題の通り道を、ひみつが無事に届くのです。",
+      "text": "当時の神殿では、お参りの前に聖水で身を清める習わしがありました。",
       "type": "diagram",
-      "motif": "nozoki_card_safe",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.5
+      "motif": "j2_purify",
+      "audio": "audio/scene-013.wav",
+      "durationSec": 6.08
     },
     {
       "index": 14,
-      "text": "今日は、このマジックのタネを、絵の具だけで説明します。",
+      "text": "ところが、この聖水に悩みがありました。",
       "type": "diagram",
-      "motif": "nozoki_magic_tube",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.9
+      "motif": "j2_priest_mumu",
+      "audio": "audio/scene-014.wav",
+      "durationSec": 3.466666666666667
     },
     {
       "index": 15,
-      "text": "そしてタネあかしの先には、暗号よりも大きなおみやげが待っています。",
+      "text": "多めに持っていってしまう人が、いたのです。",
       "type": "diagram",
-      "motif": "nozoki_omiyage_box",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.9
+      "motif": "j2_greedy",
+      "audio": "audio/scene-015.wav",
+      "durationSec": 3.36
     },
     {
       "index": 16,
-      "text": "行きづまった問題を解くための、「考え方」そのものです。",
+      "text": "そこで神殿に置かれたのが、謎の壺型マシン。",
       "type": "diagram",
-      "motif": "nozoki_omiyage_box",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.9
+      "motif": "j2_pot_arrive",
+      "audio": "audio/scene-016.wav",
+      "durationSec": 4
     },
     {
       "index": 17,
-      "text": "今日の流れは、4つの章です。",
+      "text": "コインを入れると、聖水が出て、勝手に止まる。",
       "type": "diagram",
-      "motif": "roadmap",
-      "title": "今日の流れ",
-      "items": [
-        {
-          "label": "ひみつの届け方は、むずかしい"
-        },
-        {
-          "label": "絵の具のマジック"
-        },
-        {
-          "label": "正しい作戦が、間に合わない"
-        },
-        {
-          "label": "マジックは今、動いている"
-        }
-      ],
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_pot_flow",
+      "audio": "audio/scene-017.wav",
+      "durationSec": 4.352
     },
     {
       "index": 18,
-      "text": "第1章で、ひみつを届けるのが実はとても難しいことを確かめ、第2章で、絵の具のマジックを見ます。",
+      "text": "店員はいません。電気もありません。",
       "type": "diagram",
-      "motif": "nozoki_preview",
-      "audio": "audio/silent.wav",
-      "durationSec": 8.5
+      "motif": "j2_no_staff",
+      "audio": "audio/scene-018.wav",
+      "durationSec": 3.2213333333333334
     },
     {
       "index": 19,
-      "text": "第3章で、のぞき見くんの最強の作戦がなぜ負けるのかを数え、第4章で、このマジックがあなたのスマホで今まさに動いている証拠を見つけます。",
+      "text": "からくりの正体は、シーソーです。",
       "type": "diagram",
-      "motif": "nozoki_preview",
-      "audio": "audio/silent.wav",
-      "durationSec": 12.1
+      "motif": "j2_cut_open",
+      "audio": "audio/scene-019.wav",
+      "durationSec": 2.88
     },
     {
       "index": 20,
-      "text": "それでは、まいりましょう。",
+      "text": "壺の中には、てんびんのような棒が1本、入っています。",
       "type": "diagram",
-      "motif": "nozoki_magic_curtain",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_cut_rod",
+      "audio": "audio/scene-020.wav",
+      "durationSec": 5.077333333333334
     },
     {
       "index": 21,
-      "text": "まず第1章、ひみつの届け方は、むずかしい。",
-      "type": "card",
-      "motif": "chapter",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.8
+      "text": "コインが受け皿に落ちると、その重さで棒がかたむき、水の栓が開きます。",
+      "type": "diagram",
+      "motif": "j2_cut_tilt",
+      "audio": "audio/scene-021.wav",
+      "durationSec": 6.410666666666667
     },
     {
       "index": 22,
-      "text": "ひみつを守る方法は、大昔から決まっています。",
+      "text": "コインが皿からすべり落ちると、棒が戻り、栓が閉まる。",
       "type": "diagram",
-      "motif": "nozoki_box_lock",
-      "audio": "audio/silent.wav",
-      "durationSec": 4
+      "motif": "j2_cut_cycle",
+      "audio": "audio/scene-022.wav",
+      "durationSec": 4.992
     },
     {
       "index": 23,
-      "text": "箱に入れて、鍵をかける。",
+      "text": "コインの重さ、ただそれだけで動く自動販売機です。",
       "type": "diagram",
-      "motif": "nozoki_box_lock",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_cut_label",
+      "audio": "audio/scene-023.wav",
+      "durationSec": 4.416
     },
     {
       "index": 24,
-      "text": "これなら、途中の人は開けられません。",
+      "text": "この装置は、ヘロンという学者の本に、図面つきで残っています。",
       "type": "diagram",
-      "motif": "nozoki_box_lock",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.2
+      "motif": "j2_heron",
+      "audio": "audio/scene-024.wav",
+      "durationSec": 5.717333333333333
     },
     {
       "index": 25,
-      "text": "めでたし、めでたし──とは、いきません。",
+      "text": "蒸気で回る球や、神殿の自動ドアまで考えた、風変わりな発明家です。",
       "type": "diagram",
-      "motif": "nozoki_box_stuck",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.6
+      "motif": "j2_heron_inv",
+      "audio": "audio/scene-025.wav",
+      "durationSec": 6.666666666666667
     },
     {
       "index": 26,
-      "text": "鍵のかかった箱が届いても、受け取った人も、開けられないのです。",
+      "text": "ただし、この聖水マシンが本人の発明か、師匠ゆずりかは、実は分かっていません。",
       "type": "diagram",
-      "motif": "nozoki_box_stuck",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.6
+      "motif": "j2_heron_q",
+      "audio": "audio/scene-026.wav",
+      "durationSec": 7.978666666666666
     },
     {
       "index": 27,
-      "text": "開けてほしいなら、鍵も送らないといけません。",
+      "text": "分かっているのは、2000年前にはもう「人を信じず、仕組みで解決する」という発想があったことです。",
       "type": "diagram",
-      "motif": "nozoki_key_on_relay",
-      "audio": "audio/silent.wav",
-      "durationSec": 4
+      "motif": "j2_creed_card",
+      "audio": "audio/scene-027.wav",
+      "durationSec": 7.904
     },
     {
       "index": 28,
-      "text": "でも、鍵を送る道も、さっきと同じで、知らない人の手を次々と通っていくしかないのです。",
+      "text": "自販機のご先祖さまは、神殿で生まれました。",
       "type": "diagram",
-      "motif": "nozoki_key_on_relay",
-      "audio": "audio/silent.wav",
-      "durationSec": 7.6
+      "motif": "j2_pot_stamp",
+      "audio": "audio/scene-028.wav",
+      "durationSec": 3.872
     },
     {
       "index": 29,
-      "text": "途中で箱を開けられるか、合鍵を作られるか。",
+      "text": "第2章、機械が、人を信じていたころ。",
       "type": "diagram",
-      "motif": "nozoki_key_stolen",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.8
+      "motif": "j2_ch2_door",
+      "audio": "audio/scene-029.wav",
+      "durationSec": 3.7973333333333334
     },
     {
       "index": 30,
-      "text": "どちらにしても、おしまいです。",
+      "text": "ところで、ヘロンの壺はその後どうなったのでしょうか。",
       "type": "diagram",
-      "motif": "nozoki_key_stolen",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_pot_dust",
+      "audio": "audio/scene-030.wav",
+      "durationSec": 4.661333333333333
     },
     {
       "index": 31,
-      "text": "じゃあ、鍵を箱に入れて送る？",
+      "text": "ローマ帝国の衰退とともに、コイン仕掛けの技術は忘れられてしまいます。",
       "type": "diagram",
-      "motif": "nozoki_infinite_box",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_rome_fall",
+      "audio": "audio/scene-031.wav",
+      "durationSec": 5.781333333333333
     },
     {
       "index": 32,
-      "text": "その箱の鍵は、どうやって送るんですか。",
+      "text": "図面は本の中で眠り続け、ふたたび注目されたのは、およそ1500年後のルネサンス期でした。",
       "type": "diagram",
-      "motif": "nozoki_infinite_box",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.4
+      "motif": "j2_book_sleep",
+      "audio": "audio/scene-032.wav",
+      "durationSec": 8.245333333333333
     },
     {
       "index": 33,
-      "text": "はい、無限ループです。",
+      "text": "長い眠りから覚めた仕掛けは、17世紀、イギリスの酒場に現れます。",
       "type": "diagram",
-      "motif": "nozoki_infinite_box",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_tavern",
+      "audio": "audio/scene-033.wav",
+      "durationSec": 6.368
     },
     {
       "index": 34,
-      "text": "実はこれ、2000年のあいだ、誰にも解けなかった問題です。",
+      "text": "その名も、オナーボックス。タバコを売る、真鍮の小箱です。",
       "type": "diagram",
-      "motif": "nozoki_year2000",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.2
+      "motif": "j2_honour_box",
+      "audio": "audio/scene-034.wav",
+      "durationSec": 5.525333333333333
     },
     {
       "index": 35,
-      "text": "王様も、忍者も、スパイも、みんなここで悩みました。",
+      "text": "1ペニー硬貨を入れると、フタのロックがカチリと外れます。",
       "type": "diagram",
-      "motif": "nozoki_king_ninja_spy",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.5
+      "motif": "j2_honour_cut",
+      "audio": "audio/scene-035.wav",
+      "durationSec": 4.736
     },
     {
       "index": 36,
-      "text": "ひみつそのものより、「鍵の受け渡し」が、いちばん危ない。",
+      "text": "ただしこの箱、量を測ってくれません。",
       "type": "diagram",
-      "motif": "nozoki_key_handover",
-      "audio": "audio/silent.wav",
-      "durationSec": 5
+      "motif": "j2_honour_nometer",
+      "audio": "audio/scene-036.wav",
+      "durationSec": 3.3493333333333335
     },
     {
       "index": 37,
-      "text": "ところが、今から約50年前。",
+      "text": "パイプ1服ぶんだけ取ってフタを閉めるのは、お客の良心まかせ。",
       "type": "diagram",
-      "motif": "nozoki_mathematicians",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_smoker_honest",
+      "audio": "audio/scene-037.wav",
+      "durationSec": 5.504
     },
     {
       "index": 38,
-      "text": "数学者たちが、信じられない答えを見つけます。",
+      "text": "名前の「オナー」は、「良心」という意味です。",
       "type": "diagram",
-      "motif": "nozoki_mathematicians",
-      "audio": "audio/silent.wav",
-      "durationSec": 4
+      "motif": "j2_honour_label",
+      "audio": "audio/scene-038.wav",
+      "durationSec": 3.232
     },
     {
       "index": 39,
-      "text": "「鍵は、送らなければいい」。",
+      "text": "仕組みで足りないぶんを、人を信じることで埋めていた箱。",
       "type": "diagram",
-      "motif": "nozoki_key_not_send",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_scale",
+      "audio": "audio/scene-039.wav",
+      "durationSec": 4.544
     },
     {
       "index": 40,
-      "text": "「見られながら、その場で、いっしょに作ればいい」。",
+      "text": "この「人を信じる機械」、物語の最後にもう一度、顔を出します。",
       "type": "diagram",
-      "motif": "nozoki_key_not_send",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.5
+      "motif": "j2_scale_mark",
+      "audio": "audio/scene-040.wav",
+      "durationSec": 5.717333333333333
     },
     {
       "index": 41,
-      "text": "全員にのぞかれながら、ふたりだけのひみつを作る。",
+      "text": "そして1822年のロンドンには、とんでもない使い方を考えた男が現れます。",
       "type": "diagram",
-      "motif": "nozoki_eyes_around",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.3
+      "motif": "j2_london_1822",
+      "audio": "audio/scene-041.wav",
+      "durationSec": 7.232
     },
     {
       "index": 42,
-      "text": "そんなことが、できるのでしょうか。",
+      "text": "書店主の、リチャード・カーライル。",
       "type": "diagram",
-      "motif": "nozoki_eyes_around",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.1
+      "motif": "j2_carlile",
+      "audio": "audio/scene-042.wav",
+      "durationSec": 3.4133333333333336
     },
     {
       "index": 43,
-      "text": "できるんです。",
+      "text": "発売禁止の本を売って、牢屋に入れられた経験の持ち主です。",
       "type": "diagram",
-      "motif": "nozoki_paint_reveal",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_carlile_jail",
+      "audio": "audio/scene-043.wav",
+      "durationSec": 5.226666666666667
     },
     {
       "index": 44,
-      "text": "絵の具なら。",
+      "text": "彼はひらめきました。人間が手渡さなければ、罪に問われないのではないか。",
       "type": "diagram",
-      "motif": "nozoki_paint_reveal",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_carlile_idea",
+      "audio": "audio/scene-044.wav",
+      "durationSec": 6.997333333333334
     },
     {
       "index": 45,
-      "text": "続いて第2章、絵の具のマジック。",
-      "type": "card",
-      "motif": "chapter",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "text": "ダイヤルを回してお金を入れると、発禁本がポトリと落ちてくる機械を、店に置いたのです。",
+      "type": "diagram",
+      "motif": "j2_book_vendo",
+      "audio": "audio/scene-045.wav",
+      "durationSec": 7.36
     },
     {
       "index": 46,
-      "text": "役者は、3人です。",
+      "text": "機械を、法律の抜け穴に使った男。",
       "type": "diagram",
-      "motif": "nozoki_three_actors",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_law_hole",
+      "audio": "audio/scene-046.wav",
+      "durationSec": 3.648
     },
     {
       "index": 47,
-      "text": "あなたと、お店と、途中で必ずのぞいてくる、のぞき見くん。",
+      "text": "ちなみに作戦の甲斐なく、その後も彼は牢屋の常連でした。",
       "type": "diagram",
-      "motif": "nozoki_three_actors",
-      "audio": "audio/silent.wav",
-      "durationSec": 5
+      "motif": "j2_carlile_stamp",
+      "audio": "audio/scene-047.wav",
+      "durationSec": 5.024
     },
     {
       "index": 48,
-      "text": "目標は、あなたとお店のふたりだけで、同じ「ひみつの色」を持つことです。",
+      "text": "それでもコイン仕掛けは、こうして歴史の表舞台へ戻ってきたのです。",
       "type": "diagram",
-      "motif": "nozoki_goal_brown",
-      "audio": "audio/silent.wav",
-      "durationSec": 6.3
+      "motif": "j2_stage",
+      "audio": "audio/scene-048.wav",
+      "durationSec": 5.248
     },
     {
       "index": 49,
-      "text": "なぜ、同じ色が欲しいのか。",
+      "text": "第3章、駅と切手と、いたずらと。",
       "type": "diagram",
-      "motif": "nozoki_goal_brown",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_ch3_door",
+      "audio": "audio/scene-049.wav",
+      "durationSec": 3.6586666666666665
     },
     {
       "index": 50,
-      "text": "ふたりだけの同じ色があれば、それを合言葉にして、カード番号に鍵をかけられるからです。",
+      "text": "時は流れて、1883年のロンドン。",
       "type": "diagram",
-      "motif": "nozoki_goal_brown",
-      "audio": "audio/silent.wav",
-      "durationSec": 7.6
+      "motif": "j2_industrial",
+      "audio": "audio/scene-050.wav",
+      "durationSec": 4.384
     },
     {
       "index": 51,
-      "text": "あなたが茶色で鍵をかけて送り、お店が同じ茶色で開ける。",
+      "text": "産業革命のまっただ中、街には鉄道と郵便があふれていました。",
       "type": "diagram",
-      "motif": "nozoki_brown_lock",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.9
+      "motif": "j2_train_mail",
+      "audio": "audio/scene-051.wav",
+      "durationSec": 5.8133333333333335
     },
     {
       "index": 52,
-      "text": "茶色を知らないのぞき見くんは、開けられない。",
+      "text": "パーシヴァル・エヴェリットという発明家が、ある機械で特許を取ります。",
       "type": "diagram",
-      "motif": "nozoki_brown_lock",
-      "audio": "audio/silent.wav",
-      "durationSec": 4
+      "motif": "j2_everitt",
+      "audio": "audio/scene-052.wav",
+      "durationSec": 5.1306666666666665
     },
     {
       "index": 53,
-      "text": "つまり「ふたりだけの同じ色」こそが、さっきから探していた「鍵」そのものなのです。",
+      "text": "お金を入れると、郵便はがきが1枚出てくる機械です。",
       "type": "diagram",
-      "motif": "nozoki_color_is_key",
-      "audio": "audio/silent.wav",
-      "durationSec": 7.2
+      "motif": "j2_postcard_machine",
+      "audio": "audio/scene-053.wav",
+      "durationSec": 4.714666666666667
     },
     {
       "index": 54,
-      "text": "ルールは、シンプル。",
+      "text": "設置されたのは、地下鉄の駅でした。",
       "type": "diagram",
-      "motif": "nozoki_rule_board",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_station_platform",
+      "audio": "audio/scene-054.wav",
+      "durationSec": 3.1893333333333334
     },
     {
       "index": 55,
-      "text": "相手に送ったものは、ぜんぶ、のぞき見くんに見られます。",
+      "text": "これが、近代自販機の1号機と呼ばれています。",
       "type": "diagram",
-      "motif": "nozoki_rule_board",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.9
+      "motif": "j2_first_modern",
+      "audio": "audio/scene-055.wav",
+      "durationSec": 4.096
     },
     {
       "index": 56,
-      "text": "自分のポケットの中だけは、見られません。",
+      "text": "中身は、びっくりするほど素直な作りでした。",
       "type": "diagram",
-      "motif": "nozoki_rule_board",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.6
+      "motif": "j2_postcard_cut",
+      "audio": "audio/scene-056.wav",
+      "durationSec": 3.7546666666666666
     },
     {
       "index": 57,
-      "text": "そして、始める前に、ひとつだけ確認です。",
+      "text": "コインが落ちると、その重みでロックが外れ、はがきを1枚だけ取り出せる。",
       "type": "diagram",
-      "motif": "nozoki_no_unmix",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.6
+      "motif": "j2_postcard_lock",
+      "audio": "audio/scene-057.wav",
+      "durationSec": 6.048
     },
     {
       "index": 58,
-      "text": "絵の具は、混ぜたら最後、二度と元に戻せません。",
+      "text": "取り出すと、またロックがかかる。",
       "type": "diagram",
-      "motif": "nozoki_no_unmix",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.1
+      "motif": "j2_lock_return",
+      "audio": "audio/scene-058.wav",
+      "durationSec": 2.6453333333333333
     },
     {
       "index": 59,
-      "text": "オレンジ色を見せられて「元の2色に分けて」と言われても、無理ですよね。",
+      "text": "ヘロンのシーソーと同じく、主役はコインの重さでした。",
       "type": "diagram",
-      "motif": "nozoki_no_unmix",
-      "audio": "audio/silent.wav",
-      "durationSec": 6.3
+      "motif": "j2_heron_compare",
+      "audio": "audio/scene-059.wav",
+      "durationSec": 4.490666666666667
     },
     {
       "index": 60,
-      "text": "この「戻せない」が、今日の主役です。",
+      "text": "手紙が主役の時代、はがきがいつでも買える箱は大当たりします。",
       "type": "diagram",
-      "motif": "nozoki_no_unmix",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.2
+      "motif": "j2_postcard_hit",
+      "audio": "audio/scene-060.wav",
+      "durationSec": 5.312
     },
     {
       "index": 61,
-      "text": "では、マジック開始。",
+      "text": "駅や郵便局に、どんどん増えていきました。",
       "type": "diagram",
-      "motif": "nozoki_magic_curtain",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_map_spread",
+      "audio": "audio/scene-061.wav",
+      "durationSec": 3.7333333333333334
     },
     {
       "index": 62,
-      "text": "その1。",
+      "text": "ところが、です。",
       "type": "diagram",
-      "motif": "nozoki_step_card",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_tokoroga",
+      "audio": "audio/scene-062.wav",
+      "durationSec": 1.632
     },
     {
       "index": 63,
-      "text": "離れたふたりが、最後に同じ色にたどり着くには、同じスタート地点から始める必要があります。",
+      "text": "発明者本人が、こんな嘆きを記録に残しています。",
       "type": "diagram",
-      "motif": "nozoki_same_start",
-      "audio": "audio/silent.wav",
-      "durationSec": 7.9
+      "motif": "j2_everitt_sigh",
+      "audio": "audio/scene-063.wav",
+      "durationSec": 4.533333333333333
     },
     {
       "index": 64,
-      "text": "出発の色がバラバラだったら、この先なにを混ぜても、同じ色にはなりませんから。",
+      "text": "コインの投入口に、紙くずや、オレンジの皮を詰められる、と。",
       "type": "diagram",
-      "motif": "nozoki_same_start",
-      "audio": "audio/silent.wav",
-      "durationSec": 6.8
+      "motif": "j2_orange_peel",
+      "audio": "audio/scene-064.wav",
+      "durationSec": 6.1546666666666665
     },
     {
       "index": 65,
-      "text": "そこで、ふたりで宣言します。",
+      "text": "機械が世に出た瞬間から、いたずらとの戦いも始まったのです。",
       "type": "diagram",
-      "motif": "nozoki_ex_declare",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_machine_vs_man",
+      "audio": "audio/scene-065.wav",
+      "durationSec": 5.226666666666667
     },
     {
       "index": 66,
-      "text": "「黄色からスタートしまーす」。",
+      "text": "それでも、便利さは止まりません。",
       "type": "diagram",
-      "motif": "nozoki_ex_declare",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_map_spread2",
+      "audio": "audio/scene-066.wav",
+      "durationSec": 2.8906666666666667
     },
     {
       "index": 67,
-      "text": "のぞき見くんにも、丸聞こえです。いいんです。",
+      "text": "1888年には、海を越えてニューヨークへ。",
       "type": "diagram",
-      "motif": "nozoki_ex_declare",
-      "audio": "audio/silent.wav",
-      "durationSec": 4
+      "motif": "j2_to_ny",
+      "audio": "audio/scene-067.wav",
+      "durationSec": 4.725333333333333
     },
     {
       "index": 68,
-      "text": "スタート地点は、知られても困りません。",
+      "text": "ガム会社のアダムスが、高架鉄道の駅のホームに、ガムの自販機を置きました。",
       "type": "diagram",
-      "motif": "nozoki_start_vs_secret",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.4
+      "motif": "j2_ny_station",
+      "audio": "audio/scene-068.wav",
+      "durationSec": 6.570666666666667
     },
     {
       "index": 69,
-      "text": "ひみつにするのは、このあと混ぜる色のほうです。",
+      "text": "電車を待つ数分のひまつぶしに、フルーツガムをひとつ。",
       "type": "diagram",
-      "motif": "nozoki_start_vs_secret",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.1
+      "motif": "j2_newsboy_gum",
+      "audio": "audio/scene-069.wav",
+      "durationSec": 4.565333333333333
     },
     {
       "index": 70,
-      "text": "その2。",
+      "text": "「駅」と「自販機」は、このころからの名コンビです。",
       "type": "diagram",
-      "motif": "nozoki_step_card",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_station_combo",
+      "audio": "audio/scene-070.wav",
+      "durationSec": 3.7546666666666666
     },
     {
       "index": 71,
-      "text": "あなたは、ひみつの色を1色だけ選んで、ポケットに入れます。",
+      "text": "第4章、レストランまるごと自販機。",
       "type": "diagram",
-      "motif": "nozoki_ex_pocket",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.2
+      "motif": "j2_ch4_door",
+      "audio": "audio/scene-071.wav",
+      "durationSec": 3.36
     },
     {
       "index": 72,
-      "text": "今日は、赤にしましょう。",
+      "text": "1902年、アメリカのフィラデルフィア。",
       "type": "diagram",
-      "motif": "nozoki_ex_pocket",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_automat_sign",
+      "audio": "audio/scene-072.wav",
+      "durationSec": 3.6266666666666665
     },
     {
       "index": 73,
-      "text": "この赤は、絶対に送りません。",
+      "text": "「オートマット」という、奇妙なレストランが開店します。",
       "type": "diagram",
-      "motif": "nozoki_ex_pocket",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_automat_front",
+      "audio": "audio/scene-073.wav",
+      "durationSec": 4.064
     },
     {
       "index": 74,
-      "text": "そして、黄色に赤を混ぜて──できたオレンジを、お店に送ります。",
+      "text": "店に入ると、壁一面にズラリと並んだ、小さなガラスの窓。",
       "type": "diagram",
-      "motif": "nozoki_ex_orange",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.6
+      "motif": "j2_wall_windows",
+      "audio": "audio/scene-074.wav",
+      "durationSec": 5.76
     },
     {
       "index": 75,
-      "text": "お店も、ポケットにひみつの青を持っていて、黄色に青を混ぜた緑を、あなたに送ります。",
+      "text": "窓の向こうには、パイや、豆料理や、コーヒーが待っています。",
       "type": "diagram",
-      "motif": "nozoki_ex_green",
-      "audio": "audio/silent.wav",
-      "durationSec": 7.4
+      "motif": "j2_window_foods",
+      "audio": "audio/scene-075.wav",
+      "durationSec": 5.568
     },
     {
       "index": 76,
-      "text": "オレンジと緑は、もちろん、のぞき見くんに丸見えです。",
+      "text": "5セント硬貨を入れてつまみを回すと、窓のロックがカチリと外れ、料理を取り出せる。",
       "type": "diagram",
-      "motif": "nozoki_memo",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.7
+      "motif": "j2_nickel_knob",
+      "audio": "audio/scene-076.wav",
+      "durationSec": 6.9013333333333335
     },
     {
       "index": 77,
-      "text": "メモまで取っています。",
+      "text": "レストランをまるごと自販機にしてしまったのです。",
       "type": "diagram",
-      "motif": "nozoki_memo",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_whole_vending",
+      "audio": "audio/scene-077.wav",
+      "durationSec": 3.466666666666667
     },
     {
       "index": 78,
-      "text": "その3。最後の仕上げです。",
+      "text": "もともとはベルリン生まれのアイデアを、アメリカが大きく育てました。",
       "type": "diagram",
-      "motif": "nozoki_step_card",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_berlin_idea",
+      "audio": "audio/scene-078.wav",
+      "durationSec": 5.141333333333334
     },
     {
       "index": 79,
-      "text": "あなたは、届いた緑に、ポケットの赤を混ぜます。黄と青に、赤。",
+      "text": "では、空っぽになった窓に、料理を戻していたのは誰か。",
       "type": "diagram",
-      "motif": "nozoki_ex_mix_you",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.4
+      "motif": "j2_empty_q",
+      "audio": "audio/scene-079.wav",
+      "durationSec": 5.610666666666667
     },
     {
       "index": 80,
-      "text": "お店は、届いたオレンジに、ポケットの青を混ぜます。黄と赤に、青。",
+      "text": "種明かしをすると、壁の裏は、巨大な厨房でした。",
       "type": "diagram",
-      "motif": "nozoki_ex_mix_shop",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.8
+      "motif": "j2_behind_wall",
+      "audio": "audio/scene-080.wav",
+      "durationSec": 4.8
     },
     {
       "index": 81,
-      "text": "──気づきましたか。",
+      "text": "コックたちが料理を作り、係の人が窓の裏からせっせと補充していたのです。",
       "type": "diagram",
-      "motif": "nozoki_same_ingredients",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_kitchen_refill",
+      "audio": "audio/scene-081.wav",
+      "durationSec": 6.272
     },
     {
       "index": 82,
-      "text": "どちらも、入っている色は、黄と赤と青。",
+      "text": "つまりオートマットは、無人に見える、超・有人レストランでした。",
       "type": "diagram",
-      "motif": "nozoki_same_ingredients",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.4
+      "motif": "j2_super_manned",
+      "audio": "audio/scene-082.wav",
+      "durationSec": 6.464
     },
     {
       "index": 83,
-      "text": "混ぜた順番がちがうだけです。",
+      "text": "入口には両替ブースがあり、お札を5セント硬貨の山に替えてくれます。",
       "type": "diagram",
-      "motif": "nozoki_same_ingredients",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_change_booth",
+      "audio": "audio/scene-083.wav",
+      "durationSec": 6.005333333333334
     },
     {
       "index": 84,
-      "text": "カレーの具を、どの順番で鍋に入れても、同じカレーになるのと一緒です。",
+      "text": "両替係の女性たちは、早業すぎて「ニッケル投げ」と呼ばれていました。",
       "type": "diagram",
-      "motif": "nozoki_curry",
-      "audio": "audio/silent.wav",
-      "durationSec": 6.1
+      "motif": "j2_nickel_throw",
+      "audio": "audio/scene-084.wav",
+      "durationSec": 5.728
     },
     {
       "index": 85,
-      "text": "こうして、ふたりの手元に、まったく同じ「ひみつの茶色」ができあがりました。",
+      "text": "安くて、早くて、ひとりでも気楽。",
       "type": "diagram",
-      "motif": "nozoki_ex_brown",
-      "audio": "audio/silent.wav",
-      "durationSec": 6.7
+      "motif": "j2_pie_alone",
+      "audio": "audio/scene-085.wav",
+      "durationSec": 3.3813333333333335
     },
     {
       "index": 86,
-      "text": "ここで、今日いちばん大事なことを言います。",
+      "text": "オートマットは大都市の働く人たちの台所になり、100店舗を超える巨大チェーンに育ちます。",
       "type": "diagram",
-      "motif": "nozoki_ex_recap",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.8
+      "motif": "j2_chain_100",
+      "audio": "audio/scene-086.wav",
+      "durationSec": 7.530666666666667
     },
     {
       "index": 87,
-      "text": "あなたの赤も、お店の青も、一度も、バケツリレーに乗っていません。",
+      "text": "ただ、この物語には続きがあります。",
       "type": "diagram",
-      "motif": "nozoki_ex_recap",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.8
+      "motif": "j2_sepia",
+      "audio": "audio/scene-087.wav",
+      "durationSec": 3.3706666666666667
     },
     {
       "index": 88,
-      "text": "ずっと、ポケットの中にありました。",
+      "text": "時代の波に押され、オートマットは少しずつ消えていきました。",
       "type": "diagram",
-      "motif": "nozoki_ex_recap",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.1
+      "motif": "j2_lights_off",
+      "audio": "audio/scene-088.wav",
+      "durationSec": 4.746666666666667
     },
     {
       "index": 89,
-      "text": "送られたのは、混ぜたあとの絵の具だけ。",
+      "text": "最後の1店が閉まったのは、1991年のニューヨーク。",
       "type": "diagram",
-      "motif": "nozoki_ex_recap",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.4
+      "motif": "j2_closed_1991",
+      "audio": "audio/scene-089.wav",
+      "durationSec": 5.536
     },
     {
       "index": 90,
-      "text": "なのに、ふたりは同じ色にたどり着けたのです。",
+      "text": "自販機の先進国だったアメリカで、なぜか機械は街から減っていく。",
       "type": "diagram",
-      "motif": "nozoki_ex_recap",
-      "audio": "audio/silent.wav",
-      "durationSec": 4
+      "motif": "j2_machines_indoor",
+      "audio": "audio/scene-090.wav",
+      "durationSec": 5.589333333333333
     },
     {
       "index": 91,
-      "text": "さて、のぞき見くんの手元を見てみましょう。",
+      "text": "この「なぜか」は、あとで日本の夜道につながります。",
       "type": "diagram",
-      "motif": "nozoki_hands",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.8
+      "motif": "j2_why_bookmark",
+      "audio": "audio/scene-091.wav",
+      "durationSec": 3.989333333333333
     },
     {
       "index": 92,
-      "text": "集めたのは、黄色と、オレンジと、緑。",
+      "text": "第5章、日本の1号機は、木でできていた。",
       "type": "diagram",
-      "motif": "nozoki_hands",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.2
+      "motif": "j2_ch5_door",
+      "audio": "audio/scene-092.wav",
+      "durationSec": 4.224
     },
     {
       "index": 93,
-      "text": "欲しいのは、黄と赤と青の茶色です。",
+      "text": "ふたたび時をもどして、明治時代の日本。",
       "type": "diagram",
-      "motif": "nozoki_hands",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.1
+      "motif": "j2_meiji_port",
+      "audio": "audio/scene-093.wav",
+      "durationSec": 3.6266666666666665
     },
     {
       "index": 94,
-      "text": "作戦その1、オレンジから赤だけ取り出す。",
+      "text": "山口県の下関に、俵谷高七という職人がいました。",
       "type": "diagram",
-      "motif": "nozoki_attack_unmix",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.6
+      "motif": "j2_tawaraya",
+      "audio": "audio/scene-094.wav",
+      "durationSec": 5.386666666666667
     },
     {
       "index": 95,
-      "text": "──できません、絵の具は戻せないので。",
+      "text": "仕事は指物師。釘を使わず、木だけで家具を組み上げる職人です。",
       "type": "diagram",
-      "motif": "nozoki_attack_unmix",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.4
+      "motif": "j2_sashimono",
+      "audio": "audio/scene-095.wav",
+      "durationSec": 6.016
     },
     {
       "index": 96,
-      "text": "作戦その2、ならば、オレンジと緑を混ぜてしまえ。おっ、頭いい。",
+      "text": "郵便局から道具づくりを頼まれるうちに、あるうわさを耳にします。",
       "type": "diagram",
-      "motif": "nozoki_attack_mixall",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.6
+      "motif": "j2_post_rumor",
+      "audio": "audio/scene-096.wav",
+      "durationSec": 5.493333333333333
     },
     {
       "index": 97,
-      "text": "でも、できた色の中身は、黄、赤、黄、青。",
+      "text": "外国には、お金を入れると品物が出てくる機械があるらしい。",
       "type": "diagram",
-      "motif": "nozoki_attack_mixall",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.6
+      "motif": "j2_foreign_shadow",
+      "audio": "audio/scene-097.wav",
+      "durationSec": 5.066666666666666
     },
     {
       "index": 98,
-      "text": "黄色が2倍入った、ちょっとちがう茶色です。",
+      "text": "実物を見たことは、ありません。",
       "type": "diagram",
-      "motif": "nozoki_attack_mixall",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.8
+      "motif": "j2_never_seen",
+      "audio": "audio/scene-098.wav",
+      "durationSec": 2.7733333333333334
     },
     {
       "index": 99,
-      "text": "惜しい。",
+      "text": "それでも俵谷は、木で作ってしまいました。",
       "type": "diagram",
-      "motif": "nozoki_oshii",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_build_wood",
+      "audio": "audio/scene-099.wav",
+      "durationSec": 3.584
     },
     {
       "index": 100,
-      "text": "実に惜しい。",
+      "text": "1888年、たばこの自動販売機を発明し、特許を出願します。",
       "type": "diagram",
-      "motif": "nozoki_oshii",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_tobacco_patent",
+      "audio": "audio/scene-100.wav",
+      "durationSec": 7.253333333333333
     },
     {
       "index": 101,
-      "text": "そしてここで、のぞき見くんが、最強の作戦をひらめきます。",
+      "text": "日本の自販機の、1号機です。",
       "type": "diagram",
-      "motif": "nozoki_attack_brute_idea",
-      "audio": "audio/silent.wav",
-      "durationSec": 5
+      "motif": "j2_japan_first",
+      "audio": "audio/scene-101.wav",
+      "durationSec": 3.1573333333333333
     },
     {
       "index": 102,
-      "text": "「ひみつの色なんて、片っ端から試せばいいんじゃないか？」",
+      "text": "しかも、ただの木箱ではありませんでした。",
       "type": "diagram",
-      "motif": "nozoki_attack_brute_idea",
-      "audio": "audio/silent.wav",
-      "durationSec": 5
+      "motif": "j2_not_just_box",
+      "audio": "audio/scene-102.wav",
+      "durationSec": 3.296
     },
     {
       "index": 103,
-      "text": "黄色に赤を混ぜて、オレンジと見比べる。",
+      "text": "当時の欧米の機械にもなかった仕掛け、「ニセ金よけ」が入っていたのです。",
       "type": "diagram",
-      "motif": "nozoki_brute_force",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.4
+      "motif": "j2_nisegane_badge",
+      "audio": "audio/scene-103.wav",
+      "durationSec": 5.632
     },
     {
       "index": 104,
-      "text": "ちがったら、次の色。",
+      "text": "入ってきた硬貨を、木の仕掛けが重さと大きさでふるいにかけます。",
       "type": "diagram",
-      "motif": "nozoki_brute_force",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_wood_rail",
+      "audio": "audio/scene-104.wav",
+      "durationSec": 5.066666666666666
     },
     {
       "index": 105,
-      "text": "当たるまで、ぜんぶ試す。",
+      "text": "本物なら奥へ進み、違うものは、はじいて突き返す。",
       "type": "diagram",
-      "motif": "nozoki_brute_force",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_wood_reject",
+      "audio": "audio/scene-105.wav",
+      "durationSec": 4.938666666666666
     },
     {
       "index": 106,
-      "text": "……実はこれ、大正解です。",
+      "text": "さらに、売り切れのときはお金をそのまま返す、親切設計まで付いていました。",
       "type": "diagram",
-      "motif": "nozoki_correct_stamp",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_soldout_return",
+      "audio": "audio/scene-106.wav",
+      "durationSec": 6.741333333333333
     },
     {
       "index": 107,
-      "text": "絵の具が12色セットなら、12回で必ず破れます。",
+      "text": "世界の最先端を、下関の職人が独学で作っていたのです。",
       "type": "diagram",
-      "motif": "nozoki_correct_stamp",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.3
+      "motif": "j2_world_shimonoseki",
+      "audio": "audio/scene-107.wav",
+      "durationSec": 5.589333333333333
     },
     {
       "index": 108,
-      "text": "マジック、大ピンチです。",
+      "text": "俵谷が1904年に作った「切手とはがきの自販機」は、いまも残っています。",
       "type": "diagram",
-      "motif": "nozoki_paint_pinch",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_kitte_jihanki",
+      "audio": "audio/scene-108.wav",
+      "durationSec": 6.517333333333333
     },
     {
       "index": 109,
-      "text": "続いて第3章、正しい作戦が、間に合わない。",
-      "type": "card",
-      "motif": "chapter",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.8
+      "text": "現存する、日本最古の自動販売機です。",
+      "type": "diagram",
+      "motif": "j2_genson_saiko",
+      "audio": "audio/scene-109.wav",
+      "durationSec": 4.042666666666666
     },
     {
       "index": 110,
-      "text": "のぞき見くんの総当たり作戦を倒すには、どうすればいいでしょうか。",
+      "text": "売り切れ表示までついた木の箱を、博物館で見ることができます。",
       "type": "diagram",
-      "motif": "nozoki_more_colors",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.8
+      "motif": "j2_museum",
+      "audio": "audio/scene-110.wav",
+      "durationSec": 5.141333333333334
     },
     {
       "index": 111,
-      "text": "答えは単純です。",
+      "text": "ただ、俵谷の機械は、時代が早すぎました。",
       "type": "diagram",
-      "motif": "nozoki_more_colors",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_too_early",
+      "audio": "audio/scene-111.wav",
+      "durationSec": 4.298666666666667
     },
     {
       "index": 112,
-      "text": "色の数を、増やせばいい。",
+      "text": "小銭で買い物をする習慣も、機械を置く街の体力も、まだ足りなかったのです。",
       "type": "diagram",
-      "motif": "nozoki_more_colors",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_no_coins_town",
+      "audio": "audio/scene-112.wav",
+      "durationSec": 6.688
     },
     {
       "index": 113,
-      "text": "そのために、本物の暗号は、絵の具のかわりに、数字を使います。",
+      "text": "日本の自販機は、いったん長い眠りにつきます。",
       "type": "diagram",
-      "motif": "nozoki_paint_to_number",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.4
+      "motif": "j2_long_sleep",
+      "audio": "audio/scene-113.wav",
+      "durationSec": 4.096
     },
     {
       "index": 114,
-      "text": "さて、ここで問題です。",
-      "type": "card",
-      "motif": "quiz",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "text": "第6章、映画館をおまけにつけた男。",
+      "type": "diagram",
+      "motif": "j2_ch6_door",
+      "audio": "audio/scene-114.wav",
+      "durationSec": 3.8186666666666667
     },
     {
       "index": 115,
-      "text": "17かける23は、いくつでしょう。",
-      "type": "card",
-      "motif": "concept",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.1
+      "text": "昭和の初めの日本で、とんでもない変化球が生まれます。",
+      "type": "diagram",
+      "motif": "j2_showa_street",
+      "audio": "audio/scene-115.wav",
+      "durationSec": 4.8213333333333335
     },
     {
       "index": 116,
-      "text": "筆算すれば、小学生でも解けます。",
-      "type": "card",
-      "motif": "concept",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "text": "1931年、お菓子のグリコが作った、映画付き自動販売機です。",
+      "type": "diagram",
+      "motif": "j2_glico_machine",
+      "audio": "audio/scene-116.wav",
+      "durationSec": 6.8693333333333335
     },
     {
       "index": 117,
-      "text": "答えは、391、です。",
-      "type": "card",
-      "motif": "concept",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "text": "10銭を入れると、小さな画面で、チャンバラ映画の一場面が流れます。",
+      "type": "diagram",
+      "motif": "j2_chanbara",
+      "audio": "audio/scene-117.wav",
+      "durationSec": 6.133333333333334
     },
     {
       "index": 118,
-      "text": "では、逆向きの問題。",
+      "text": "上映が終わると、キャラメルと、おつりがポトン。",
       "type": "diagram",
-      "motif": "nozoki_reverse_problem",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_caramel_drop",
+      "audio": "audio/scene-118.wav",
+      "durationSec": 4.234666666666667
     },
     {
       "index": 119,
-      "text": "391は、何かける何でしょう。",
+      "text": "お菓子のおまけが、映画だったのです。",
       "type": "diagram",
-      "motif": "nozoki_reverse_problem",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_omake_reverse",
+      "audio": "audio/scene-119.wav",
+      "durationSec": 2.997333333333333
     },
     {
       "index": 120,
-      "text": "……急に、難しくなりましたね。",
+      "text": "そして、しれっとすごいのが「おつり」のほうです。",
       "type": "diagram",
-      "motif": "nozoki_reverse_problem",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_otsuri_spot",
+      "audio": "audio/scene-120.wav",
+      "durationSec": 3.4026666666666667
     },
     {
       "index": 121,
-      "text": "2で割れるかな、3で割れるかな、と1個ずつ試すしかありません。",
+      "text": "キャラメルの値段を引いた差額の小銭を、機械がきちんと返してくれる。",
       "type": "diagram",
-      "motif": "nozoki_reverse_problem",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.6
+      "motif": "j2_sashihiki",
+      "audio": "audio/scene-121.wav",
+      "durationSec": 5.504
     },
     {
       "index": 122,
-      "text": "掛け算は一瞬、逆もどりは大仕事。",
+      "text": "お金を受け取るだけだった箱が、お金を返せるようになったのです。",
       "type": "diagram",
-      "motif": "nozoki_oneway_arrows",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_hand_return",
+      "audio": "audio/scene-122.wav",
+      "durationSec": 5.013333333333334
     },
     {
       "index": 123,
-      "text": "絵の具の「混ぜたら戻せない」と、そっくり同じ形です。",
+      "text": "デパートや公園や地下鉄の駅など、東京を中心におよそ100台。",
       "type": "diagram",
-      "motif": "nozoki_oneway_arrows",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.7
+      "motif": "j2_tokyo_100",
+      "audio": "audio/scene-123.wav",
+      "durationSec": 5.642666666666667
     },
     {
       "index": 124,
-      "text": "そして本物の暗号は、この数字を、300桁にします。",
+      "text": "子どもたちは、行列を作りました。",
       "type": "diagram",
-      "motif": "nozoki_digits300",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.5
+      "motif": "j2_kids_line",
+      "audio": "audio/scene-124.wav",
+      "durationSec": 3.0933333333333333
     },
     {
       "index": 125,
-      "text": "300桁とは、1のあとに0が300個ならぶ長さ。",
+      "text": "売っていたのはお菓子ではなく、ワクワクする時間。",
       "type": "diagram",
-      "motif": "nozoki_digits300",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.3
+      "motif": "j2_wakuwaku",
+      "audio": "audio/scene-125.wav",
+      "durationSec": 4
     },
     {
       "index": 126,
-      "text": "つまり、ひみつの色が、10の300乗種類あるということです。",
+      "text": "「体験を売る自販機」は、90年以上前の日本で生まれていたのです。",
       "type": "diagram",
-      "motif": "nozoki_digits300",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.4
+      "motif": "j2_taiken_stamp",
+      "audio": "audio/scene-126.wav",
+      "durationSec": 5.685333333333333
     },
     {
       "index": 127,
-      "text": "この数が、どれだけおかしいか。",
+      "text": "第7章、10円玉と、噴水の魔法。",
       "type": "diagram",
-      "motif": "nozoki_digits300",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_ch7_door",
+      "audio": "audio/scene-127.wav",
+      "durationSec": 4.096
     },
     {
       "index": 128,
-      "text": "のぞき見くんが、世界最速のコンピュータで、1秒に1兆色試したとしましょう。",
+      "text": "戦争をはさんで、日本の自販機が目を覚ましたのは、1957年。",
       "type": "diagram",
-      "motif": "nozoki_super_computer",
-      "audio": "audio/silent.wav",
-      "durationSec": 6.7
+      "motif": "j2_wake_1957",
+      "audio": "audio/scene-128.wav",
+      "durationSec": 6.741333333333333
     },
     {
       "index": 129,
-      "text": "1秒ごとに、1兆個のハズレが消えていきます。",
+      "text": "名古屋のお祭りに、見たこともない機械が現れます。",
       "type": "diagram",
-      "motif": "nozoki_super_computer",
-      "audio": "audio/silent.wav",
-      "durationSec": 4
+      "motif": "j2_nagoya_fair",
+      "audio": "audio/scene-129.wav",
+      "durationSec": 4.32
     },
     {
       "index": 130,
-      "text": "さて、ぜんぶ試し終わるまで、何年かかるでしょうか。",
+      "text": "10円玉を入れると、紙コップにジュースが注がれる機械です。",
       "type": "diagram",
-      "motif": "nozoki_years_quiz",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.5
+      "motif": "j2_fountain_all",
+      "audio": "audio/scene-130.wav",
+      "durationSec": 5.1306666666666665
     },
     {
       "index": 131,
-      "text": "1万年でしょうか、1億年でしょうか。",
+      "text": "まず、紙コップがストンと落ちてきます。",
       "type": "diagram",
-      "motif": "nozoki_years_quiz",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.2
+      "motif": "j2_cup_drop",
+      "audio": "audio/scene-131.wav",
+      "durationSec": 3.4026666666666667
     },
     {
       "index": 132,
-      "text": "いいえ、ぜんぶ試し終わるより先に──",
+      "text": "そこへ1杯ぶんだけジュースが注がれて、ピタリと止まる。",
       "type": "diagram",
-      "motif": "nozoki_universe_end",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.2
+      "motif": "j2_pour_stop",
+      "audio": "audio/scene-132.wav",
+      "durationSec": 4.48
     },
     {
       "index": 133,
-      "text": "宇宙の寿命が、尽きます。",
+      "text": "2000年前にヘロンがシーソーでやった仕事を、今度は電気の弁がやっているのです。",
       "type": "diagram",
-      "motif": "nozoki_universe_end",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_heron_valve",
+      "audio": "audio/scene-133.wav",
+      "durationSec": 6.4
     },
     {
       "index": 134,
-      "text": "宇宙が生まれてから今日まで、およそ138億年。",
+      "text": "てっぺんのガラス玉の中では、オレンジジュースが噴水のように吹き上がっていました。",
       "type": "diagram",
-      "motif": "nozoki_universe_repeat",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.1
+      "motif": "j2_glass_fountain",
+      "audio": "audio/scene-134.wav",
+      "durationSec": 6.389333333333333
     },
     {
       "index": 135,
-      "text": "その138億年を、まるごと1兆回くり返しても。",
+      "text": "冷たくておいしそうな中身が、まるごと見える。",
       "type": "diagram",
-      "motif": "nozoki_universe_repeat",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.1
+      "motif": "j2_mieru_nakami",
+      "audio": "audio/scene-135.wav",
+      "durationSec": 3.7653333333333334
     },
     {
       "index": 136,
-      "text": "それをさらに、1兆回くり返しても。",
+      "text": "子どもも大人も、行列を作りました。",
       "type": "diagram",
-      "motif": "nozoki_universe_repeat",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.1
+      "motif": "j2_fountain_line",
+      "audio": "audio/scene-136.wav",
+      "durationSec": 3.3173333333333335
     },
     {
       "index": 137,
-      "text": "まだ、終わらないのです。",
+      "text": "この噴水式ジュース自販機は、デパートの屋上や商店街へ、またたく間に広がります。",
       "type": "diagram",
-      "motif": "nozoki_universe_repeat",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_depart_spread",
+      "audio": "audio/scene-137.wav",
+      "durationSec": 7.274666666666667
     },
     {
       "index": 138,
-      "text": "のぞき見くんの作戦は、正しい。",
+      "text": "多いときには、全国でおよそ1万台。",
       "type": "diagram",
-      "motif": "nozoki_correct_but_late",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_10000_count",
+      "audio": "audio/scene-138.wav",
+      "durationSec": 3.616
     },
     {
       "index": 139,
-      "text": "正しいけれど、間に合わない。",
+      "text": "自販機ブームの、最初の花火でした。",
       "type": "diagram",
-      "motif": "nozoki_correct_but_late",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_first_fireworks",
+      "audio": "audio/scene-139.wav",
+      "durationSec": 3.3173333333333335
     },
     {
       "index": 140,
-      "text": "これが、暗号の守り方の正体です。",
+      "text": "ただしこの噴水、弱点がありました。",
       "type": "diagram",
-      "motif": "nozoki_time_wall",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_but_weak",
+      "audio": "audio/scene-140.wav",
+      "durationSec": 3.424
     },
     {
       "index": 141,
-      "text": "頑丈な壁で守るのではなく、「破るのにかかる時間」で守る。",
+      "text": "あの吹き上がっていたジュース、機械の中をぐるぐる循環していたのです。",
       "type": "diagram",
-      "motif": "nozoki_time_wall",
-      "audio": "audio/silent.wav",
-      "durationSec": 5
+      "motif": "j2_junkan_arrows",
+      "audio": "audio/scene-141.wav",
+      "durationSec": 5.514666666666667
     },
     {
       "index": 142,
-      "text": "最後の第4章、マジックは今、動いている。",
-      "type": "card",
-      "motif": "chapter",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.6
+      "text": "衛生面の問題が指摘され、ルールが厳しくなり、噴水はやがて街から消えました。",
+      "type": "diagram",
+      "motif": "j2_fountain_fade",
+      "audio": "audio/scene-142.wav",
+      "durationSec": 7.285333333333333
     },
     {
       "index": 143,
-      "text": "ここまでの話、遠い世界のことに聞こえましたか。",
+      "text": "それでも「機械から飲み物を買う」楽しさは、しっかり残ります。",
       "type": "diagram",
-      "motif": "nozoki_your_phone",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.1
+      "motif": "j2_fun_remains",
+      "audio": "audio/scene-143.wav",
+      "durationSec": 4.874666666666666
     },
     {
       "index": 144,
-      "text": "では、スマホでこの動画を見ているあなた。",
+      "text": "第8章、ポケットの中の起爆剤。",
       "type": "diagram",
-      "motif": "nozoki_your_phone",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.6
+      "motif": "j2_ch8_door",
+      "audio": "audio/scene-144.wav",
+      "durationSec": 3.36
     },
     {
       "index": 145,
-      "text": "画面のいちばん上、アドレスの横を見てください。",
+      "text": "1960年代、日本は高度経済成長のまっただ中。",
       "type": "diagram",
-      "motif": "nozoki_your_phone",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.1
+      "motif": "j2_kodo_seicho",
+      "audio": "audio/scene-145.wav",
+      "durationSec": 5.8453333333333335
     },
     {
       "index": 146,
-      "text": "小さな、鍵マークがありませんか。",
+      "text": "缶入りの飲み物が登場し、自販機で売るのにぴったりでした。",
       "type": "diagram",
-      "motif": "nozoki_your_phone",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_can_juice",
+      "audio": "audio/scene-146.wav",
+      "durationSec": 4.981333333333334
     },
     {
       "index": 147,
-      "text": "見つけましたね。",
+      "text": "そして1967年、決定的な出来事が起きます。",
       "type": "diagram",
-      "motif": "nozoki_magic_sign",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_1967_spot",
+      "audio": "audio/scene-147.wav",
+      "durationSec": 5.386666666666667
     },
     {
       "index": 148,
-      "text": "それが、「ただいま絵の具のマジック、作動中」のサインです。",
+      "text": "100円と50円の硬貨が新しくなり、世の中に大量に出回り始めたのです。",
       "type": "diagram",
-      "motif": "nozoki_magic_sign",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.2
+      "motif": "j2_new_coins",
+      "audio": "audio/scene-148.wav",
+      "durationSec": 6.666666666666667
     },
     {
       "index": 149,
-      "text": "あなたがサイトをひとつ開くたびに、スマホと相手は、さっきの絵の具の交換を、1秒もかけずに済ませています。",
+      "text": "お札とちがって、機械が扱いやすい、ちょうどいいコイン。",
       "type": "diagram",
-      "motif": "nozoki_world_handshake",
-      "audio": "audio/silent.wav",
-      "durationSec": 9.4
+      "motif": "j2_bill_vs_coin",
+      "audio": "audio/scene-149.wav",
+      "durationSec": 4.8533333333333335
     },
     {
       "index": 150,
-      "text": "世界中で、1秒間に、何百万回。",
+      "text": "ポケットの小銭だけで、買い物が完結する時代が来ました。",
       "type": "diagram",
-      "motif": "nozoki_world_handshake",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_pocket_kansei",
+      "audio": "audio/scene-150.wav",
+      "durationSec": 4.906666666666666
     },
     {
       "index": 151,
-      "text": "のぞき見くんたちは今日も、世界中で、宇宙規模の空ぶりをしています。",
+      "text": "自販機は、ここから一気に街を埋めていきます。",
       "type": "diagram",
-      "motif": "nozoki_karaburi",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.9
+      "motif": "j2_machi_umaru",
+      "audio": "audio/scene-151.wav",
+      "durationSec": 3.8186666666666667
     },
     {
       "index": 152,
-      "text": "今日の話を、まとめます。",
+      "text": "ただ、台数とお金が増えるほど、避けて通れない相手がいました。",
       "type": "diagram",
-      "motif": "nozoki_matome",
-      "title": "今日のまとめ",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_sakerarenai",
+      "audio": "audio/scene-152.wav",
+      "durationSec": 5.504
     },
     {
       "index": 153,
-      "text": "ひみつの鍵は、送ったら、のぞかれる。",
+      "text": "ニセ硬貨です。",
       "type": "diagram",
-      "motif": "nozoki_matome",
-      "title": "今日のまとめ",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.2
+      "motif": "j2_nise_coin",
+      "audio": "audio/scene-153.wav",
+      "durationSec": 1.3013333333333332
     },
     {
       "index": 154,
-      "text": "だから、混ぜたら戻せない絵の具で、見られながら、その場で作る。",
+      "text": "俵谷の木の仕掛けから80年、見抜く目は大進化していました。",
       "type": "diagram",
-      "motif": "nozoki_matome",
-      "title": "今日のまとめ",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.6
+      "motif": "j2_80years_morph",
+      "audio": "audio/scene-154.wav",
+      "durationSec": 5.482666666666667
     },
     {
       "index": 155,
-      "text": "総当たりは、正しい作戦。",
+      "text": "現代の自販機の入り口には、「コインメック」という小さな検査装置が入っています。",
       "type": "diagram",
-      "motif": "nozoki_matome",
-      "title": "今日のまとめ",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_coinmech_pos",
+      "audio": "audio/scene-155.wav",
+      "durationSec": 6.442666666666667
     },
     {
       "index": 156,
-      "text": "でも、色を10の300乗種類にすれば、正しい作戦でも、宇宙が終わるまで間に合わない。",
+      "text": "投入された硬貨は、レールの上を転がりながら、センサーの前を通過します。",
       "type": "diagram",
-      "motif": "nozoki_matome",
-      "title": "今日のまとめ",
-      "audio": "audio/silent.wav",
-      "durationSec": 7.6
+      "motif": "j2_coin_rail",
+      "audio": "audio/scene-156.wav",
+      "durationSec": 6.357333333333333
     },
     {
       "index": 157,
-      "text": "あなたが今夜、何かをポチッと買う0.1秒の裏で──",
+      "text": "まず、直径と厚みが規格どおりかを測ります。",
       "type": "diagram",
-      "motif": "nozoki_pochi_backstage",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.5
+      "motif": "j2_size_check",
+      "audio": "audio/scene-157.wav",
+      "durationSec": 4.1066666666666665
     },
     {
       "index": 158,
-      "text": "絵の具のマジックが、宇宙規模の鍵を、こっそり作ってくれています。",
+      "text": "でも、サイズをそっくりに作った偽物なら、これだけでは見抜けません。",
       "type": "diagram",
-      "motif": "nozoki_pochi_backstage",
-      "audio": "audio/silent.wav",
-      "durationSec": 5.8
+      "motif": "j2_sokkuri_pass",
+      "audio": "audio/scene-158.wav",
+      "durationSec": 5.6
     },
     {
       "index": 159,
-      "text": "安心して、お買い物を。",
+      "text": "そこで本命の検査、材質チェックの出番です。",
       "type": "diagram",
-      "motif": "nozoki_pochi_backstage",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_zairyo_badge",
+      "audio": "audio/scene-159.wav",
+      "durationSec": 4.192
     },
     {
       "index": 160,
-      "text": "ただし使いすぎは、どんな暗号も、守ってくれません。",
+      "text": "センサーの正体は、電気を流したコイル。",
       "type": "diagram",
-      "motif": "nozoki_receipt_joke",
-      "audio": "audio/silent.wav",
-      "durationSec": 4.5
+      "motif": "j2_coil_sensor",
+      "audio": "audio/scene-160.wav",
+      "durationSec": 3.6266666666666665
     },
     {
       "index": 161,
-      "text": "さて、最後に、今日いちばんのおみやげです。",
+      "text": "コイルのそばを硬貨が通ると、硬貨の中に「渦電流」という小さな電気の渦が生まれます。",
       "type": "diagram",
-      "motif": "nozoki_omiyage_open",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.8
+      "motif": "j2_uzu_denryu",
+      "audio": "audio/scene-161.wav",
+      "durationSec": 6.986666666666666
     },
     {
       "index": 162,
-      "text": "2000年の難問を解いた武器は、新しい機械でも、天才の計算でもありませんでした。",
+      "text": "この渦のでき方が、金属の種類によってまったく違うのです。",
       "type": "diagram",
-      "motif": "nozoki_omiyage_open",
-      "audio": "audio/silent.wav",
-      "durationSec": 7.2
+      "motif": "j2_uzu_chigai",
+      "audio": "audio/scene-162.wav",
+      "durationSec": 4.949333333333334
     },
     {
       "index": 163,
-      "text": "「どうやって鍵を安全に送るか」。",
+      "text": "100円玉は白銅、5円玉は黄銅と、日本の硬貨は材質が少しずつ違います。",
       "type": "diagram",
-      "motif": "nozoki_question_flip",
-      "audio": "audio/silent.wav",
-      "durationSec": 3
+      "motif": "j2_coin_lineup",
+      "audio": "audio/scene-163.wav",
+      "durationSec": 7.434666666666667
     },
     {
       "index": 164,
-      "text": "2000年間、全人類がそう考えつづけるなか、誰かがこう問い直しただけです。",
+      "text": "つまり自販機は、硬貨を目で見るのではなく、電気の反応で見分けているのです。",
       "type": "diagram",
-      "motif": "nozoki_question_flip",
-      "audio": "audio/silent.wav",
-      "durationSec": 6.7
+      "motif": "j2_denki_me",
+      "audio": "audio/scene-164.wav",
+      "durationSec": 7.082666666666666
     },
     {
       "index": 165,
-      "text": "「そもそも、送らなくていいのでは？」。",
+      "text": "1990年代には、よく似た外国の硬貨を変造したニセ500円が大流行しました。",
       "type": "diagram",
-      "motif": "nozoki_question_flip",
-      "audio": "audio/silent.wav",
-      "durationSec": 3.4
+      "motif": "j2_500_warning",
+      "audio": "audio/scene-165.wav",
+      "durationSec": 7.8613333333333335
     },
     {
       "index": 166,
-      "text": "行きづまったとき、疑うべきは、努力の量ではなく、問いの立て方なのかもしれません。",
+      "text": "負けじと500円玉は素材を変えて対抗し、2021年には2種類の金属を重ねた3層構造に進化しています。",
       "type": "diagram",
-      "motif": "nozoki_flip_your_problem",
-      "audio": "audio/silent.wav",
-      "durationSec": 7.2
+      "motif": "j2_500_3layers",
+      "audio": "audio/scene-166.wav",
+      "durationSec": 9.92
     },
     {
       "index": 167,
-      "text": "あなたの目の前の難問にも、「送らなくていい鍵」が、きっと隠れています。",
-      "type": "card",
-      "motif": "concept",
-      "audio": "audio/silent.wav",
-      "durationSec": 6.3
+      "text": "下関の木の目は、80年かけて、電気の目に進化したのです。",
+      "type": "diagram",
+      "motif": "j2_wood_vs_mech",
+      "audio": "audio/scene-167.wav",
+      "durationSec": 5.792
     },
     {
       "index": 168,
-      "text": "ご視聴ありがとうございました。",
+      "text": "第9章、あったかいと、つめたいの同居。",
+      "type": "diagram",
+      "motif": "j2_ch9_door",
+      "audio": "audio/scene-168.wav",
+      "durationSec": 4.1066666666666665
+    },
+    {
+      "index": 169,
+      "text": "1970年代、日本は世界があっと驚く発明を重ねます。",
+      "type": "diagram",
+      "motif": "j2_japan_idea",
+      "audio": "audio/scene-169.wav",
+      "durationSec": 6.1546666666666665
+    },
+    {
+      "index": 170,
+      "text": "きっかけは、高速道路の休憩所で飲んだ、冷めたコーヒーでした。",
+      "type": "diagram",
+      "motif": "j2_sa_coffee",
+      "audio": "audio/scene-170.wav",
+      "durationSec": 5.536
+    },
+    {
+      "index": 171,
+      "text": "飲料メーカー、ポッカの創業者が悔しがります。",
+      "type": "diagram",
+      "motif": "j2_pokka_kuyashii",
+      "audio": "audio/scene-171.wav",
+      "durationSec": 4.2026666666666666
+    },
+    {
+      "index": 172,
+      "text": "いつでも熱いコーヒーが飲めないものか。",
+      "type": "diagram",
+      "motif": "j2_hot_dream",
+      "audio": "audio/scene-172.wav",
+      "durationSec": 3.488
+    },
+    {
+      "index": 173,
+      "text": "1973年、温かい飲み物を売る自販機が生まれます。",
+      "type": "diagram",
+      "motif": "j2_hot_jihanki",
+      "audio": "audio/scene-173.wav",
+      "durationSec": 5.557333333333333
+    },
+    {
+      "index": 174,
+      "text": "ちょうど日本では、世界初の缶コーヒーが生まれたばかり。",
+      "type": "diagram",
+      "motif": "j2_can_coffee_born",
+      "audio": "audio/scene-174.wav",
+      "durationSec": 4.661333333333333
+    },
+    {
+      "index": 175,
+      "text": "温かい缶コーヒーと自販機は、ここで運命の出会いを果たします。",
+      "type": "diagram",
+      "motif": "j2_unmei_deai",
+      "audio": "audio/scene-175.wav",
+      "durationSec": 5.226666666666667
+    },
+    {
+      "index": 176,
+      "text": "さらに1976年には、1台で「あったかい」と「つめたい」を同時に売る機械が登場しました。",
+      "type": "diagram",
+      "motif": "j2_hot_cold_both",
+      "audio": "audio/scene-176.wav",
+      "durationSec": 7.776
+    },
+    {
+      "index": 177,
+      "text": "当たり前に見えて、これは日本生まれの芸当です。",
+      "type": "diagram",
+      "motif": "j2_japan_umare",
+      "audio": "audio/scene-177.wav",
+      "durationSec": 4.1706666666666665
+    },
+    {
+      "index": 178,
+      "text": "箱の中を壁で仕切り、片側を小さな冷蔵庫に、片側を保温庫にする。",
+      "type": "diagram",
+      "motif": "j2_naka_shikiri",
+      "audio": "audio/scene-178.wav",
+      "durationSec": 6.656
+    },
+    {
+      "index": 179,
+      "text": "最近の機種はもっと賢くて、冷やすときに出た熱を捨てずに、温めるほうへ回しています。",
+      "type": "diagram",
+      "motif": "j2_netsu_recycle",
+      "audio": "audio/scene-179.wav",
+      "durationSec": 7.402666666666667
+    },
+    {
+      "index": 180,
+      "text": "冬の夜のホットのお茶は、半世紀前の悔しさから生まれたのです。",
+      "type": "diagram",
+      "motif": "j2_fuyu_no_ocha",
+      "audio": "audio/scene-180.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 181,
+      "text": "第10章、増えていく親戚たち。",
+      "type": "diagram",
+      "motif": "j2_ch10_door",
+      "audio": "audio/scene-181.wav",
+      "durationSec": 3.1573333333333333
+    },
+    {
+      "index": 182,
+      "text": "高度成長の日本では、自販機の親戚が次々に生まれます。",
+      "type": "diagram",
+      "motif": "j2_shinseki_tree",
+      "audio": "audio/scene-182.wav",
+      "durationSec": 5.365333333333333
+    },
+    {
+      "index": 183,
+      "text": "駅には切符の券売機、街角には両替機とコインロッカー。",
+      "type": "diagram",
+      "motif": "j2_eki_machines",
+      "audio": "audio/scene-183.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 184,
+      "text": "1965年には、アメリカから小さな親戚もやって来ました。",
+      "type": "diagram",
+      "motif": "j2_gacha_arrival",
+      "audio": "audio/scene-184.wav",
+      "durationSec": 5.898666666666666
+    },
+    {
+      "index": 185,
+      "text": "ハンドルを回すと、カプセルに入ったおもちゃが出てくる、ガチャガチャです。",
+      "type": "diagram",
+      "motif": "j2_gacha_front",
+      "audio": "audio/scene-185.wav",
+      "durationSec": 5.621333333333333
+    },
+    {
+      "index": 186,
+      "text": "駄菓子屋の店先で、1回10円から20円。",
+      "type": "diagram",
+      "motif": "j2_dagashiya",
+      "audio": "audio/scene-186.wav",
+      "durationSec": 4.288
+    },
+    {
+      "index": 187,
+      "text": "このガチャガチャ、実はいまも、ほとんどの機種が電気を使いません。",
+      "type": "diagram",
+      "motif": "j2_no_denki",
+      "audio": "audio/scene-187.wav",
+      "durationSec": 5.824
+    },
+    {
+      "index": 188,
+      "text": "ハンドルを回す力と、歯車だけで、お金を数えています。",
+      "type": "diagram",
+      "motif": "j2_gacha_gears",
+      "audio": "audio/scene-188.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 189,
+      "text": "2000年前の神殿と同じ「電気いらずの知恵」が、子どもの手の中で現役なのです。",
+      "type": "diagram",
+      "motif": "j2_shinden_gacha",
+      "audio": "audio/scene-189.wav",
+      "durationSec": 6.474666666666667
+    },
+    {
+      "index": 190,
+      "text": "そして1970年代、国道沿いには伝説の店が現れます。",
+      "type": "diagram",
+      "motif": "j2_auto_resto_neon",
+      "audio": "audio/scene-190.wav",
+      "durationSec": 5.962666666666666
+    },
+    {
+      "index": 191,
+      "text": "その名も、オートレストラン。",
+      "type": "diagram",
+      "motif": "j2_resto_inside",
+      "audio": "audio/scene-191.wav",
+      "durationSec": 2.304
+    },
+    {
+      "index": 192,
+      "text": "うどんも、そばも、トーストも、ハンバーガーも、ぜんぶ自販機。",
+      "type": "diagram",
+      "motif": "j2_menrui_lineup",
+      "audio": "audio/scene-192.wav",
+      "durationSec": 5.525333333333333
+    },
+    {
+      "index": 193,
+      "text": "うどんの機械の中では、どんぶりがくるくる回りながらお湯を注がれ、湯切りまでこなします。",
+      "type": "diagram",
+      "motif": "j2_udon_kaiten",
+      "audio": "audio/scene-193.wav",
+      "durationSec": 7.082666666666666
+    },
+    {
+      "index": 194,
+      "text": "お金を入れて30秒足らずで、熱々の1杯が出てくる。",
+      "type": "diagram",
+      "motif": "j2_udon_30s",
+      "audio": "audio/scene-194.wav",
+      "durationSec": 4.768
+    },
+    {
+      "index": 195,
+      "text": "24時間、無人営業。深夜のトラック運転手たちのオアシスでした。",
+      "type": "diagram",
+      "motif": "j2_trucker_udon",
+      "audio": "audio/scene-195.wav",
+      "durationSec": 6.133333333333334
+    },
+    {
+      "index": 196,
+      "text": "めん類の自販機は、全国で1万2千台以上も作られました。",
+      "type": "diagram",
+      "motif": "j2_12000_count",
+      "audio": "audio/scene-196.wav",
+      "durationSec": 5.429333333333333
+    },
+    {
+      "index": 197,
+      "text": "現役で動いているのは、いまや全国にわずか60台ほど。",
+      "type": "diagram",
+      "motif": "j2_nokori_60",
+      "audio": "audio/scene-197.wav",
+      "durationSec": 5.1626666666666665
+    },
+    {
+      "index": 198,
+      "text": "その味を求めて週末に行列ができる、レトロの聖地になっています。",
+      "type": "diagram",
+      "motif": "j2_retro_seichi",
+      "audio": "audio/scene-198.wav",
+      "durationSec": 5.685333333333333
+    },
+    {
+      "index": 199,
+      "text": "第11章、気づけば自販機大国。",
+      "type": "diagram",
+      "motif": "j2_ch11_door",
+      "audio": "audio/scene-199.wav",
+      "durationSec": 3.477333333333333
+    },
+    {
+      "index": 200,
+      "text": "現在、日本の自販機は、およそ391万台。",
+      "type": "diagram",
+      "motif": "j2_391_count",
+      "audio": "audio/scene-200.wav",
+      "durationSec": 5.568
+    },
+    {
+      "index": 201,
+      "text": "飲み物の自販機だけで、約220万台です。",
+      "type": "diagram",
+      "motif": "j2_drink_share",
+      "audio": "audio/scene-201.wav",
+      "durationSec": 4.330666666666667
+    },
+    {
+      "index": 202,
+      "text": "ざっくり、国民30人に1台。",
+      "type": "diagram",
+      "motif": "j2_30nin_1dai",
+      "audio": "audio/scene-202.wav",
+      "durationSec": 3.3066666666666666
+    },
+    {
+      "index": 203,
+      "text": "人口あたりの密度では、世界トップクラスです。",
+      "type": "diagram",
+      "motif": "j2_sekai_top",
+      "audio": "audio/scene-203.wav",
+      "durationSec": 3.957333333333333
+    },
+    {
+      "index": 204,
+      "text": "でも、本当にすごいのは、数ではありません。",
+      "type": "diagram",
+      "motif": "j2_kazu_janai",
+      "audio": "audio/scene-204.wav",
+      "durationSec": 4.032
+    },
+    {
+      "index": 205,
+      "text": "思い出してください。冒頭の、夜道です。",
+      "type": "diagram",
+      "motif": "j2_yomichi_futatabi",
+      "audio": "audio/scene-205.wav",
+      "durationSec": 3.744
+    },
+    {
+      "index": 206,
+      "text": "現金と商品を積んだ無人の箱が、屋外に置きっぱなしになっている。",
+      "type": "diagram",
+      "motif": "j2_mujin_toushi",
+      "audio": "audio/scene-206.wav",
+      "durationSec": 5.728
+    },
+    {
+      "index": 207,
+      "text": "こんな置き方ができる国は、世界でもほとんどありません。",
+      "type": "diagram",
+      "motif": "j2_sekai_batsu",
+      "audio": "audio/scene-207.wav",
+      "durationSec": 4.554666666666667
+    },
+    {
+      "index": 208,
+      "text": "多くの国では、壊されるか、持ち去られてしまうからです。",
+      "type": "diagram",
+      "motif": "j2_kowareru_kage",
+      "audio": "audio/scene-208.wav",
+      "durationSec": 4.8213333333333335
+    },
+    {
+      "index": 209,
+      "text": "海外の自販機の多くが、建物の中や壁の中に埋め込まれているのは、そのためです。",
+      "type": "diagram",
+      "motif": "j2_kabe_grille",
+      "audio": "audio/scene-209.wav",
+      "durationSec": 7.1146666666666665
+    },
+    {
+      "index": 210,
+      "text": "自販機の先進国アメリカで、機械が街から屋内へ引っ込んでいった理由も、裏返せば同じでした。",
+      "type": "diagram",
+      "motif": "j2_okunai_sepia",
+      "audio": "audio/scene-210.wav",
+      "durationSec": 8.309333333333333
+    },
+    {
+      "index": 211,
+      "text": "自販機大国を支えていたのは、機械の性能と、もうひとつ、この国の治安だったのです。",
+      "type": "diagram",
+      "motif": "j2_sasae_hashira",
+      "audio": "audio/scene-211.wav",
+      "durationSec": 7.498666666666667
+    },
+    {
+      "index": 212,
+      "text": "駅もオフィス街も人の流れが密で、置けば売れる土地柄だったことも追い風でした。",
+      "type": "diagram",
+      "motif": "j2_ekimae_nami",
+      "audio": "audio/scene-212.wav",
+      "durationSec": 6.282666666666667
+    },
+    {
+      "index": 213,
+      "text": "そして、オートマットの壁の裏の厨房を、思い出してください。",
+      "type": "diagram",
+      "motif": "j2_chubo_sepia",
+      "audio": "audio/scene-213.wav",
+      "durationSec": 5.173333333333333
+    },
+    {
+      "index": 214,
+      "text": "日本でも毎日、補充のドライバーたちが何台もの箱を回り、商品を絶やさず、売上金を回収しています。",
+      "type": "diagram",
+      "motif": "j2_hoju_driver",
+      "audio": "audio/scene-214.wav",
+      "durationSec": 9.557333333333334
+    },
+    {
+      "index": 215,
+      "text": "無人の箱は、いまも裏側の人が支えているのです。",
+      "type": "diagram",
+      "motif": "j2_ura_no_hito",
+      "audio": "audio/scene-215.wav",
+      "durationSec": 4.362666666666667
+    },
+    {
+      "index": 216,
+      "text": "2000年前の神殿は、「人を信じず、仕組みで解決」しました。",
+      "type": "diagram",
+      "motif": "j2_shinden_card2",
+      "audio": "audio/scene-216.wav",
+      "durationSec": 5.525333333333333
+    },
+    {
+      "index": 217,
+      "text": "日本の夜道は、仕組みと、人への信頼の、合わせ技でできているのです。",
+      "type": "diagram",
+      "motif": "j2_gear_heart",
+      "audio": "audio/scene-217.wav",
+      "durationSec": 6.474666666666667
+    },
+    {
+      "index": 218,
+      "text": "17世紀の酒場が、お客の良心にゆだねたもの。",
+      "type": "diagram",
+      "motif": "j2_honour_sepia",
+      "audio": "audio/scene-218.wav",
+      "durationSec": 4.522666666666667
+    },
+    {
+      "index": 219,
+      "text": "この国はそれを、街ぐるみで引き受けているのかもしれません。",
+      "type": "diagram",
+      "motif": "j2_machi_hikari",
+      "audio": "audio/scene-219.wav",
+      "durationSec": 4.629333333333333
+    },
+    {
+      "index": 220,
+      "text": "第12章、いちばん新しい進化。",
+      "type": "diagram",
+      "motif": "j2_ch12_door",
+      "audio": "audio/scene-220.wav",
+      "durationSec": 3.4133333333333336
+    },
+    {
+      "index": 221,
+      "text": "自販機の進化は、売ることだけではありませんでした。",
+      "type": "diagram",
+      "motif": "j2_uru_kieru",
+      "audio": "audio/scene-221.wav",
+      "durationSec": 4.128
+    },
+    {
+      "index": 222,
+      "text": "2011年の、東日本大震災。",
+      "type": "diagram",
+      "motif": "j2_2011_yami",
+      "audio": "audio/scene-222.wav",
+      "durationSec": 3.7866666666666666
+    },
+    {
+      "index": 223,
+      "text": "停電した街で、飲み物を配った自販機がありました。",
+      "type": "diagram",
+      "motif": "j2_teiden_hikari",
+      "audio": "audio/scene-223.wav",
+      "durationSec": 4.512
+    },
+    {
+      "index": 224,
+      "text": "災害救援ベンダー。災害のときに、無料開放できる自販機です。",
+      "type": "diagram",
+      "motif": "j2_kyuen_vendor",
+      "audio": "audio/scene-224.wav",
+      "durationSec": 6.037333333333334
+    },
+    {
+      "index": 225,
+      "text": "管理者が専用の鍵を使うと、お金を入れずに商品を取り出せるようになります。",
+      "type": "diagram",
+      "motif": "j2_kagi_kaiho",
+      "audio": "audio/scene-225.wav",
+      "durationSec": 6.421333333333333
+    },
+    {
+      "index": 226,
+      "text": "電気が止まっていても、内蔵バッテリーや、手でワイヤを引く仕掛けで動かせます。",
+      "type": "diagram",
+      "motif": "j2_wire_battery",
+      "audio": "audio/scene-226.wav",
+      "durationSec": 6.378666666666667
+    },
+    {
+      "index": 227,
+      "text": "街角の箱が、そのまま小さな備蓄倉庫になるのです。",
+      "type": "diagram",
+      "motif": "j2_bichiku_soko",
+      "audio": "audio/scene-227.wav",
+      "durationSec": 4.544
+    },
+    {
+      "index": 228,
+      "text": "この震災をきっかけに、災害対応の自販機は全国へ広がりました。",
+      "type": "diagram",
+      "motif": "j2_kyuen_hirogaru",
+      "audio": "audio/scene-228.wav",
+      "durationSec": 5.952
+    },
+    {
+      "index": 229,
+      "text": "最近では、救命装置のAEDを載せた機種や、防犯カメラで街を見守る機種まで現れています。",
+      "type": "diagram",
+      "motif": "j2_aed_camera",
+      "audio": "audio/scene-229.wav",
+      "durationSec": 8.618666666666666
+    },
+    {
+      "index": 230,
+      "text": "売る箱から、街を支える箱へ。",
+      "type": "diagram",
+      "motif": "j2_machi_sasaeru",
+      "audio": "audio/scene-230.wav",
+      "durationSec": 2.997333333333333
+    },
+    {
+      "index": 231,
+      "text": "2000年かけて進化した箱の、いちばん新しい仕事は、「売らないこと」でした。",
+      "type": "diagram",
+      "motif": "j2_uranai_card",
+      "audio": "audio/scene-231.wav",
+      "durationSec": 6.208
+    },
+    {
+      "index": 232,
+      "text": "2000年前、神様の水を売っていた箱は。",
+      "type": "diagram",
+      "motif": "j2_pot_sepia",
+      "audio": "audio/scene-232.wav",
+      "durationSec": 3.8933333333333335
+    },
+    {
+      "index": 233,
+      "text": "2000年後、災害の日に、ただで水を配る箱になりました。",
+      "type": "diagram",
+      "motif": "j2_pot_to_mizu",
+      "audio": "audio/scene-233.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 234,
+      "text": "神殿のシーソーから、酒場の良心の箱、ロンドンの引き出し、壁の裏の厨房、下関の木の目、映画とおつり、噴水、電気の目、そして夜道へ。",
+      "type": "diagram",
+      "motif": "j2_somato_tabi",
+      "audio": "audio/scene-234.wav",
+      "durationSec": 14.090666666666667
+    },
+    {
+      "index": 235,
+      "text": "コイン1枚で動く箱は、2000年ぶんの発明を抱えて、今夜も光っています。",
+      "type": "diagram",
+      "motif": "j2_hatsumei_toushi",
+      "audio": "audio/scene-235.wav",
+      "durationSec": 6.677333333333333
+    },
+    {
+      "index": 236,
+      "text": "明日、自販機の前を通ったら、少しだけ立ち止まってみてください。",
+      "type": "diagram",
+      "motif": "j2_tachidomaru",
+      "audio": "audio/scene-236.wav",
+      "durationSec": 5.472
+    },
+    {
+      "index": 237,
+      "text": "それは、いまも現役で働いている、最古の発明の子孫です。",
+      "type": "diagram",
+      "motif": "j2_2000mono_stamp",
+      "audio": "audio/scene-237.wav",
+      "durationSec": 5.578666666666667
+    },
+    {
+      "index": 238,
+      "text": "最後までご覧いただき、ありがとうございました。",
+      "type": "diagram",
+      "motif": "j2_arigato_yomichi",
+      "audio": "audio/scene-238.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 239,
+      "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
       "type": "card",
       "motif": "ending",
       "isEnding": true,
-      "audio": "audio/silent.wav",
-      "durationSec": 4
+      "audio": "audio/scene-end.wav",
+      "durationSec": 6.176
     }
   ],
-  "generatedAt": "2026-10-18T22:47:22.982Z"
+  "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
+  "generatedAt": "2026-10-25T23:21:23.747Z",
+  "preset": "karakuri"
 }

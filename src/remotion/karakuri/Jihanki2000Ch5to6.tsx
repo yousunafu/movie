@@ -1,4 +1,4 @@
-// 自販機2000年史: 第5章 (日本の1号機は木でできていた) + 第6章 (映画館をおまけにつけた男)。
+// 自販機2000年史: 第5章 (日本の1号機は木でできていた) + 第6章 (映画館をおまけにつけた自販機)。
 // 設計表 docs/jihanki2000-motifs.md #92〜#126 の35シーン。seed は 160〜194 を1つずつ使う。
 // このファイルは新規追加のみ。既存ファイルは変更しない。
 
@@ -687,7 +687,7 @@ const WoodMechScene: React.FC<{ f: number; mode: "pass" | "reject"; seed: number
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text={caption} />
+      <LabelPill x={960} y={170} centerX text={caption} />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -827,7 +827,7 @@ const SceneMeijiPort: React.FC<{ f: number }> = ({ f }) => {
           })}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="明治時代・下関の港町" />
+      <LabelPill x={960} y={170} centerX text="明治時代・下関の港町" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -900,7 +900,7 @@ const SceneTawaraya: React.FC<{ f: number }> = ({ f }) => {
           ))}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="下関の指物師・俵谷高七" />
+      <LabelPill x={960} y={170} centerX text="下関の指物師・俵谷高七" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -960,7 +960,7 @@ const SceneSashimono: React.FC<{ f: number }> = ({ f }) => {
           {nailT >= 1 && <TagPlate x={1430} y={580} text="クギを使わない" size={26} t={1} />}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="クギを使わず木を組む指物の技" />
+      <LabelPill x={960} y={170} centerX text="クギを使わず木を組む指物の技" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1006,7 +1006,7 @@ const ScenePostRumor: React.FC<{ f: number }> = ({ f }) => {
           </Bubble>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="ある日 耳よりな噂が届く" />
+      <LabelPill x={960} y={170} centerX text="ある日 耳よりな噂が届く" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1056,7 +1056,6 @@ const SceneForeignShadow: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="外国には お金を入れると物が出る箱がある" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1092,7 +1091,7 @@ const SceneNeverSeen: React.FC<{ f: number }> = ({ f }) => {
           })}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="でも実物は誰も見たことがない" />
+      <LabelPill x={960} y={170} centerX text="でも実物は誰も見たことがない" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1156,7 +1155,7 @@ const SceneBuildWood: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="見たことがないなら 木で作ってしまえ" />
+      <LabelPill x={960} y={170} centerX text="見たことがないなら 木で作ってしまえ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1195,7 +1194,7 @@ const SceneTobaccoPatent: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {f >= 86 && <Stamp x={1280} y={660} text="特許出願" size={46} />}
-      <LabelPill x={960} y={930} centerX text="1888年 たばこ自販機で特許を出願" />
+      <LabelPill x={960} y={170} centerX text="1888年 たばこ自販機で特許を出願" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1234,7 +1233,7 @@ const SceneJapanFirst: React.FC<{ f: number }> = ({ f }) => {
           <Stamp x={0} y={0} text="日本1号機" size={66} />
         </div>
       )}
-      <LabelPill x={960} y={930} centerX text="記録に残る日本初の自動販売機" />
+      <LabelPill x={960} y={170} centerX text="記録に残る日本初の自動販売機" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1270,7 +1269,7 @@ const SceneNotJustBox: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="しかもこれ ただの箱じゃない" />
+      <LabelPill x={960} y={170} centerX text="しかもこれ ただの箱じゃない" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1315,7 +1314,7 @@ const SceneNiseganeBadge: React.FC<{ f: number }> = ({ f }) => {
           <Stamp x={0} y={0} text="ニセ金よけ" size={56} />
         </div>
       )}
-      <LabelPill x={960} y={930} centerX text="中にはニセ金よけの仕掛けが" />
+      <LabelPill x={960} y={170} centerX text="中にはニセ金よけの仕掛けが" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1381,7 +1380,7 @@ const SceneSoldoutReturn: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="売り切れたらお金はちゃんと戻る" />
+      <LabelPill x={960} y={170} centerX text="売り切れたらお金はちゃんと戻る" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1414,7 +1413,7 @@ const SceneWorldShimonoseki: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="世界の中でもかなり早い挑戦だった" />
+      <LabelPill x={960} y={170} centerX text="世界の中でもかなり早い挑戦だった" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1448,7 +1447,7 @@ const SceneKitteJihanki: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {f >= 60 && <Stamp x={1280} y={300} text="1904年" size={48} />}
-      <LabelPill x={960} y={930} centerX text="切手とはがきの自働郵券売機" />
+      <LabelPill x={960} y={170} centerX text="切手とはがきの自働郵券売機" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1486,7 +1485,6 @@ const SceneGensonSaiko: React.FC<{ f: number }> = ({ f }) => {
           <Stamp x={0} y={0} text="現存最古" size={64} />
         </div>
       )}
-      <LabelPill x={960} y={930} centerX text="現存する日本最古の自販機" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1526,7 +1524,7 @@ const SceneMuseum: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="いまも郵政博物館で会える" />
+      <LabelPill x={960} y={170} centerX text="いまも郵政博物館で会える" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1574,7 +1572,7 @@ const SceneTooEarly: React.FC<{ f: number }> = ({ f }) => {
           })}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="だが時代が早すぎた" />
+      <LabelPill x={960} y={170} centerX text="だが時代が早すぎた" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1633,7 +1631,7 @@ const SceneNoCoinsTown: React.FC<{ f: number }> = ({ f }) => {
           })}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="そもそも硬貨がまだ行き渡っていない" />
+      <LabelPill x={960} y={170} centerX text="そもそも硬貨がまだ行き渡っていない" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1669,7 +1667,7 @@ const SceneLongSleep: React.FC<{ f: number }> = ({ f }) => {
           })}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="自販機はしばらく眠りにつく" />
+      <LabelPill x={960} y={170} centerX text="自販機はしばらく眠りにつく" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1698,20 +1696,28 @@ const SceneCh6Door: React.FC<{ f: number }> = ({ f }) => {
       {f >= 92 && <Stamp x={1250} y={250} text="1931年 東京" size={40} />}
       <div
         style={{
-          position: "absolute", left: 1090, top: 640, width: 780,
+          position: "absolute", left: 850, top: 660, width: 780,
           opacity: titleT, transform: `translateY(${(1 - titleT) * 30}px)`,
           fontFamily: FONT,
         }}
       >
-        <div style={{ fontSize: 40, fontWeight: 800, color: KRP.grayDark, marginBottom: 6 }}>第6章</div>
         <div
           style={{
-            fontSize: 56, fontWeight: 900, color: KRP.ink, lineHeight: 1.3,
+            fontSize: 40, fontWeight: 800, color: KRP.grayDark, marginBottom: 6,
+            display: "inline-block", background: "rgba(253,251,247,0.82)",
+            borderRadius: 8, padding: "2px 12px",
+          }}
+        >
+          第6章
+        </div>
+        <div
+          style={{
+            fontSize: 52, fontWeight: 900, color: KRP.ink, lineHeight: 1.3,
             borderBottom: `6px solid ${KRP.ink}`, paddingBottom: 10,
             background: "rgba(253,251,247,0.82)", borderRadius: 8, padding: "4px 10px 10px",
           }}
         >
-          映画館をおまけにつけた男
+          映画館をおまけにつけた自販機
         </div>
       </div>
       <J2Badge />
@@ -1781,7 +1787,7 @@ const SceneShowaStreet: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="時は流れて昭和のはじめ 東京" />
+      <LabelPill x={960} y={170} centerX text="時は流れて昭和のはじめ 東京" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1809,7 +1815,7 @@ const SceneGlicoMachine: React.FC<{ f: number }> = ({ f }) => {
           <ShowaKid x={1420} y={890} s={0.95} f={f} phase={4} kind="okappa" face="surprised" gaze={[-8, -6]} />
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="グリコのキャラメル自販機 登場" />
+      <LabelPill x={960} y={170} centerX text="グリコのキャラメル自販機 登場" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1853,7 +1859,7 @@ const SceneChanbara: React.FC<{ f: number }> = ({ f }) => {
           <path d="M 242 450 L 260 474 L 278 450" fill="none" stroke={KRP.white} strokeWidth={7} strokeLinecap="round" opacity={0.8} />
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="10銭で小さなチャンバラ映画が観られる" />
+      <LabelPill x={960} y={170} centerX text="10銭で小さなチャンバラ映画が観られる" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1910,7 +1916,6 @@ const SceneCaramelDrop: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="映画が終わるとキャラメルとおつり" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1958,7 +1963,7 @@ const SceneOmakeReverse: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="どっちがおまけか分からない" />
+      <LabelPill x={960} y={170} centerX text="どっちがおまけか分からない" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2001,7 +2006,7 @@ const SceneOtsuriSpot: React.FC<{ f: number }> = ({ f }) => {
             transform={`rotate(${f * 0.6} 1280 628)`} />
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="本当の狙いは「おつり」にあった" />
+      <LabelPill x={960} y={170} centerX text="本当の狙いは「おつり」にあった" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -2050,7 +2055,7 @@ const SceneSashihiki: React.FC<{ f: number }> = ({ f }) => {
           {t4 >= 1 && <Spark cx={1560} cy={360} s={0.9} color={KRP.gold} />}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="さしひきの計算を機械がやってのける" />
+      <LabelPill x={960} y={170} centerX text="さしひきの計算を機械がやってのける" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2101,7 +2106,7 @@ const SceneHandReturn: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="おつりまで返す機械は当時の最先端" />
+      <LabelPill x={960} y={170} centerX text="おつりまで返す機械は当時の最先端" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2169,7 +2174,7 @@ const SceneTokyo100: React.FC<{ f: number }> = ({ f }) => {
           {f >= 116 ? "約100台" : `${n}台`}
         </div>
       </div>
-      <LabelPill x={960} y={930} centerX text="東京を中心に約100台も置かれた" />
+      <LabelPill x={960} y={170} centerX text="東京を中心に約100台も置かれた" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2210,7 +2215,7 @@ const SceneKidsLine: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="自販機の前に子どもの行列ができた" />
+      <LabelPill x={960} y={170} centerX text="自販機の前に子どもの行列ができた" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2251,7 +2256,6 @@ const SceneWakuwaku: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="売っていたのはお菓子じゃなくワクワク" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2289,7 +2293,7 @@ const SceneTaikenStamp: React.FC<{ f: number }> = ({ f }) => {
           <Stamp x={0} y={0} text="体験を売る" size={64} />
         </div>
       )}
-      <LabelPill x={960} y={930} centerX text="「体験を売る」は90年以上前から" />
+      <LabelPill x={960} y={170} centerX text="「体験を売る」は90年以上前から" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>

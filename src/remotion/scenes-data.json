@@ -20,7 +20,7 @@
       "index": 2,
       "text": "そう、自動販売機です。",
       "type": "diagram",
-      "motif": "j2_night",
+      "motif": "j2_night_center",
       "audio": "audio/scene-002.wav",
       "durationSec": 2.474666666666667
     },
@@ -214,7 +214,7 @@
       "type": "diagram",
       "motif": "j2_heron_q",
       "audio": "audio/scene-026.wav",
-      "durationSec": 7.978666666666666
+      "durationSec": 8
     },
     {
       "index": 27,
@@ -278,7 +278,7 @@
       "type": "diagram",
       "motif": "j2_honour_box",
       "audio": "audio/scene-034.wav",
-      "durationSec": 5.525333333333333
+      "durationSec": 5.365333333333333
     },
     {
       "index": 35,
@@ -302,7 +302,7 @@
       "type": "diagram",
       "motif": "j2_smoker_honest",
       "audio": "audio/scene-037.wav",
-      "durationSec": 5.504
+      "durationSec": 5.290666666666667
     },
     {
       "index": 38,
@@ -366,7 +366,7 @@
       "type": "diagram",
       "motif": "j2_book_vendo",
       "audio": "audio/scene-045.wav",
-      "durationSec": 7.36
+      "durationSec": 7.349333333333333
     },
     {
       "index": 46,
@@ -518,7 +518,7 @@
       "type": "diagram",
       "motif": "j2_orange_peel",
       "audio": "audio/scene-064.wav",
-      "durationSec": 6.1546666666666665
+      "durationSec": 6.208
     },
     {
       "index": 65,
@@ -750,7 +750,7 @@
       "type": "diagram",
       "motif": "j2_meiji_port",
       "audio": "audio/scene-093.wav",
-      "durationSec": 3.6266666666666665
+      "durationSec": 3.7546666666666666
     },
     {
       "index": 94,
@@ -758,7 +758,7 @@
       "type": "diagram",
       "motif": "j2_tawaraya",
       "audio": "audio/scene-094.wav",
-      "durationSec": 5.386666666666667
+      "durationSec": 5.354666666666667
     },
     {
       "index": 95,
@@ -914,11 +914,11 @@
     },
     {
       "index": 114,
-      "text": "第6章、映画館をおまけにつけた男。",
+      "text": "第6章、映画館をおまけにつけた自販機。",
       "type": "diagram",
       "motif": "j2_ch6_door",
       "audio": "audio/scene-114.wav",
-      "durationSec": 3.8186666666666667
+      "durationSec": 3.968
     },
     {
       "index": 115,
@@ -1330,11 +1330,11 @@
     },
     {
       "index": 166,
-      "text": "負けじと500円玉は素材を変えて対抗し、2021年には2種類の金属を重ねた3層構造に進化しています。",
+      "text": "負けじと500円玉は、まず2000年に素材を変えて対抗し、2021年には2種類の金属を重ねた3層構造に進化しています。",
       "type": "diagram",
       "motif": "j2_500_3layers",
       "audio": "audio/scene-166.wav",
-      "durationSec": 9.92
+      "durationSec": 11.381333333333334
     },
     {
       "index": 167,
@@ -1550,7 +1550,7 @@
       "type": "diagram",
       "motif": "j2_udon_kaiten",
       "audio": "audio/scene-193.wav",
-      "durationSec": 7.082666666666666
+      "durationSec": 7.1146666666666665
     },
     {
       "index": 194,

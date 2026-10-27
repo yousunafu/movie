@@ -120,22 +120,19 @@ export const FlagCard: React.FC<{ kind: FlagKind; x: number; y: number; s?: numb
           </g>
         )}
         {kind === "egypt" && (
-          // 国旗のない時代なので「壺とパピルス」の紋章カード
+          // エジプト国旗 (赤・白・黒の三色+金の鷲)。v2修正: 一目で国が分かる現代国旗に
           <g>
-            <rect x={-fw / 2} y={-fh / 2} width={fw} height={fh} fill={KRP.cream} />
-            {/* パピルス2本 */}
-            <g stroke="#7A9A5E" strokeWidth={6} fill="none" strokeLinecap="round">
-              <path d="M -74 60 Q -70 -6 -62 -36" />
-              <path d="M 74 60 Q 70 -6 62 -36" />
+            <rect x={-fw / 2} y={-fh / 2} width={fw} height={fh / 3} fill={KRP.red} />
+            <rect x={-fw / 2} y={-fh / 6} width={fw} height={fh / 3} fill={KRP.white} />
+            <rect x={-fw / 2} y={fh / 6} width={fw} height={fh / 3} fill={KRP.ink} />
+            {/* 金の鷲 (サラディンの鷲を簡略化) */}
+            <g fill="#D9A62E" stroke={KRP.ink} strokeWidth={3}>
+              <path d="M -30 12 Q -28 -12 -7 -16 L -7 14 Z" />
+              <path d="M 30 12 Q 28 -12 7 -16 L 7 14 Z" />
+              <rect x={-9} y={-18} width={18} height={30} rx={7} />
+              <circle cx={0} cy={-21} r={7} />
+              <path d="M 5 -23 l 7 3 l -7 3 Z" />
             </g>
-            <g fill="#9CBB7A" stroke={KRP.ink} strokeWidth={3.5}>
-              <path d="M -62 -36 L -78 -58 L -62 -62 L -46 -58 Z" />
-              <path d="M 62 -36 L 46 -58 L 62 -62 L 78 -58 Z" />
-            </g>
-            {/* 壺 */}
-            <path d="M -26 -42 L 26 -42 L 18 -26 Q 40 -4 30 36 Q 22 58 0 58 Q -22 58 -30 36 Q -40 -4 -18 -26 Z"
-              fill={KRP.bronze} stroke={KRP.ink} strokeWidth={5} />
-            <line x1={-20} y1={-42} x2={20} y2={-42} stroke={KRP.ink} strokeWidth={5} />
           </g>
         )}
       </g>
@@ -631,11 +628,12 @@ export const AncientPerson: React.FC<{
 const SceneNightRoad: React.FC<{ f: number; close?: boolean }> = ({ f, close }) => {
   const zoom = close ? 1.28 + 0.0012 * f : 1;
   const walkerX = close ? 300 + f * 3.2 : -500;
+  const camera = `translate(${W / 2} ${H / 2}) scale(${zoom}) translate(${-W / 2} ${-H / 2})`;
   return (
     <AbsoluteFill style={{ background: "#2E3A52" }}>
       <svg width={W} height={H} style={abs}>
         <WobbleDefs seed={81} />
-        <g transform={`translate(${W / 2} ${H / 2}) scale(${zoom}) translate(${-W / 2} ${-H / 2})`}>
+        <g transform={camera}>
           <g filter="url(#wobbleSoft)">
             <NightSky f={f} />
             {/* 家並みのシルエット */}
@@ -660,7 +658,74 @@ const SceneNightRoad: React.FC<{ f: number; close?: boolean }> = ({ f, close }) 
           </g>
         </g>
       </svg>
-      {!close && <LabelPill x={460} y={150} text="現金を積んだ無人の箱" size={36} centerX />}
+      <J2Badge />
+      <Atmosphere f={f} dark />
+    </AbsoluteFill>
+  );
+};
+
+// 2: 「そう、自動販売機です」— 暗転の中、スポットライトで自販機がお披露目。左右からクラッカー (v2修正)
+const SceneSpotlight: React.FC<{ f: number }> = ({ f }) => {
+  const lightT = easeOut(seg(f, 2, 10)); // スポットライトが点く
+  const popT = Math.max(0, f - 10); // クラッカーが鳴った後の経過フレーム
+  const popped = f >= 10;
+  // 紙吹雪 (左右のクラッカーから放物線で飛び散る)
+  const colors = [KRP.red, KRP.blue, KRP.yellow, KRP.green, KRP.orange];
+  const confetti: React.ReactNode[] = [];
+  if (popped) {
+    for (const dir of [1, -1]) {
+      const ox = dir === 1 ? 190 : 1730;
+      for (let i = 0; i < 13; i++) {
+        const r1 = ((i * 37 + (dir === 1 ? 11 : 23)) % 97) / 97; // 擬似乱数
+        const r2 = ((i * 53 + 7) % 89) / 89;
+        const vx = dir * (7 + r1 * 15);
+        const vy = -(16 + r2 * 10);
+        const px = ox + vx * popT;
+        const py = 730 + vy * popT + 0.42 * popT * popT;
+        if (py > H + 40) continue;
+        const rot = popT * (8 + r1 * 16) * (i % 2 === 0 ? 1 : -1);
+        confetti.push(
+          <rect key={`${dir}-${i}`} x={-14} y={-9} width={28} height={18} rx={3}
+            fill={colors[i % colors.length]} stroke={KRP.ink} strokeWidth={3}
+            transform={`translate(${px} ${py}) rotate(${rot})`} opacity={0.95} />,
+        );
+      }
+    }
+  }
+  return (
+    <AbsoluteFill style={{ background: "#171821" }}>
+      <svg width={W} height={H} style={abs}>
+        <WobbleDefs seed={118} />
+        {/* スポットライトの光の帯 (上から円すい形に) */}
+        <polygon points={`870,-40 1050,-40 1420,900 500,900`} fill="#FFF3C4" opacity={0.17 * lightT} />
+        <polygon points={`905,-40 1015,-40 1310,900 610,900`} fill="#FFF3C4" opacity={0.14 * lightT} />
+        {/* 床のあかりだまり */}
+        <ellipse cx={960} cy={880} rx={470} ry={60} fill="#FFF3C4" opacity={0.3 * lightT} />
+        <g filter="url(#wobble)" opacity={lightT}>
+          <Jihanki x={780} y={240} s={1.0} f={f} />
+          {/* 接地の影 */}
+          <ellipse cx={960} cy={872} rx={260} ry={26} fill={KRP.ink} opacity={0.3} />
+        </g>
+        <g filter="url(#wobble)">
+          {/* クラッカー (左右の下から中央へ向けて) */}
+          {[1, -1].map((dir) => (
+            <g key={dir} transform={`translate(${dir === 1 ? 175 : 1745} 770) rotate(${dir === 1 ? 42 : -42})`}>
+              {/* 円すいの本体 (しましま)。広い口が自販機側の斜め上、とがった持ち手が下 */}
+              <polygon points="-52,0 52,0 0,150" fill={KRP.red} stroke={KRP.ink} strokeWidth={6} />
+              <polygon points="-34,50 -17,100 17,100 34,50" fill={KRP.yellow} stroke={KRP.ink} strokeWidth={4} />
+              {/* パンッの破裂線 (鳴った直後だけ) */}
+              {popped && popT < 10 && (
+                <g stroke={KRP.yellow} strokeWidth={8} strokeLinecap="round" opacity={1 - popT / 10}>
+                  <line x1={0} y1={-18} x2={0} y2={-58} />
+                  <line x1={-34} y1={-8} x2={-62} y2={-38} />
+                  <line x1={34} y1={-8} x2={62} y2={-38} />
+                </g>
+              )}
+            </g>
+          ))}
+          {confetti}
+        </g>
+      </svg>
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -669,17 +734,52 @@ const SceneNightRoad: React.FC<{ f: number; close?: boolean }> = ({ f, close }) 
 
 // 3: 地球儀初登場・日本にピン / 4: 日本から点線が西へ逆走
 const SceneGlobeIntro: React.FC<{ f: number; back?: boolean }> = ({ f, back }) => {
+  // #4 (back): 舞台のスポットライトが「日本代表の自販機」から外れて、主役は別にいると示す (v2採用案)
+  if (back) {
+    const lightX = 1240 + (520 - 1240) * easeOut(seg(f, 40, 68));
+    const off = easeOut(seg(f, 40, 62)); // 日本が暗がりへ
+    const qT = pop(seg(f, 64, 78));
+    return (
+      <AbsoluteFill style={{ background: "#241F2B" }}>
+        <svg width={W} height={H} style={abs}>
+          <WobbleDefs seed={82} />
+          <g filter="url(#wobbleSoft)">
+            <rect x={0} y={820} width={W} height={H - 820} fill="#6E5940" />
+            <line x1={0} y1={820} x2={W} y2={820} stroke={KRP.ink} strokeWidth={5} />
+          </g>
+          <g filter="url(#wobble)">
+            {/* 日本代表: 自販機 (ライトが外れると暗がりに) */}
+            <g opacity={1 - off * 0.74}>
+              <Jihanki x={1060} y={200} s={1.0} f={f} />
+            </g>
+            {/* スポットライト (横へスーッと移動) */}
+            <polygon points={`${lightX - 90},-40 ${lightX + 90},-40 ${lightX + 310},850 ${lightX - 310},850`}
+              fill="#FFF3C4" opacity={0.15} />
+            <ellipse cx={lightX} cy={845} rx={310} ry={26} fill="#FFF3C4" opacity={0.2} />
+            {/* ほんとうの主役は…？ */}
+            {qT > 0.01 && (
+              <g transform={`translate(520 660) scale(${qT})`}>
+                <text y={120} fontFamily={FONT} fontWeight={900} fontSize={360} fill={KRP.red}
+                  textAnchor="middle">？</text>
+              </g>
+            )}
+          </g>
+        </svg>
+        {f <= 52 && <LabelPill x={1240} y={150} text="日本" size={38} centerX />}
+        {f > 80 && <LabelPill x={520} y={260} text="今日の主役" color={KRP.red} size={38} centerX />}
+        <J2Badge />
+        <Atmosphere f={f} dark />
+      </AbsoluteFill>
+    );
+  }
+  // #3: 地球儀が回って日本にピン
   const cx = 960, cy = 470, r = 340;
   const spot = GLOBE_SPOT.japan;
-  const spinT = easeOut(seg(f, 0, back ? 1 : 45));
+  const spinT = easeOut(seg(f, 0, 45));
   const lon0 = spot.lon + (1 - spinT) * 300;
   const tp = globePoint(cx, cy, r, spot.lon, spot.lat, lon0);
   const tx = tp.x, ty = tp.y;
-  const pinT = back ? 1 : seg(f, 48, 62);
-  // 逆走の弧: 日本→西 (エジプトは裏側なので球の縁に寄る)
-  const ep = globePoint(cx, cy, r, GLOBE_SPOT.egypt.lon, GLOBE_SPOT.egypt.lat, lon0);
-  const ex = ep.x, ey = ep.y;
-  const arcT = back ? seg(f, 8, 70) : 0;
+  const pinT = seg(f, 48, 62);
   return (
     <AbsoluteFill style={{ background: KRP.paper }}>
       <svg width={W} height={H} style={abs}>
@@ -687,11 +787,9 @@ const SceneGlobeIntro: React.FC<{ f: number; back?: boolean }> = ({ f, back }) =
         <g filter="url(#wobbleSoft)">
           <Globe cx={cx} cy={cy} r={r} lon0={lon0} f={f} />
           <MapPin x={tx} y={ty} t={pinT} />
-          {back && <DashArc x1={tx} y1={ty} x2={ex} y2={ey} t={arcT} lift={230} />}
         </g>
       </svg>
-      {!back && pinT >= 1 && <LabelPill x={tx + 40} y={ty - 180} text="日本" size={38} />}
-      {back && arcT > 0.85 && <LabelPill x={ex - 120} y={ey - 170} text="もっと昔へ" color={KRP.red} size={38} />}
+      {pinT >= 1 && <LabelPill x={tx + 40} y={ty - 180} text="日本" size={38} />}
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -701,6 +799,10 @@ const SceneGlobeIntro: React.FC<{ f: number; back?: boolean }> = ({ f, back }) =
 // 5: 現代自販機のシルエットがセピアの壺へ画中変化
 const SceneMorphPot: React.FC<{ f: number }> = ({ f }) => {
   const t = easeOut(seg(f, 25, 70));
+  // v2修正: 変わる瞬間に煙がぶわっと出る (0→1で広がりながら薄くなる)
+  const smoke = seg(f, 25, 62);
+  // v2修正: 逆回転する時計 (時間を巻き戻すサイン)。針がぐるぐる逆回し
+  const backSpin = -f * 10;
   return (
     <AbsoluteFill style={{ background: KRP.cream }}>
       <svg width={W} height={H} style={abs}>
@@ -716,11 +818,45 @@ const SceneMorphPot: React.FC<{ f: number }> = ({ f }) => {
           <g opacity={t}>
             <HolyPot x={960} y={820} s={1.1} f={f} sepia />
           </g>
-          {/* 変化のホコリ */}
-          {t > 0.05 && t < 0.98 && [0, 1, 2, 3, 4].map((i) => (
-            <circle key={i} cx={820 + i * 70 + Math.sin((f + i * 13) / 6) * 16}
-              cy={500 - ((f * 2 + i * 47) % 300)} r={5} fill="#D8C49A" opacity={0.7} />
-          ))}
+          {/* 変身の煙 (もくもくした雲が外へ広がって消える) */}
+          {smoke > 0.01 && smoke < 0.99 && [0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
+            const a = (i / 8) * Math.PI * 2 + 0.35;
+            const dist = 210 + smoke * 190 + (i % 3) * 26;
+            const px = 960 + Math.cos(a) * dist;
+            const py = 560 + Math.sin(a) * dist * 0.62;
+            const r = (46 + (i % 3) * 14) * (0.6 + smoke * 0.7);
+            return (
+              <g key={i} opacity={0.9 * (1 - smoke)}>
+                {/* 3つの円を重ねて雲の形に。背景より濃いグレーで塗る */}
+                <circle cx={px - r * 0.55} cy={py + r * 0.15} r={r * 0.68} fill="#D5CCB4" stroke={KRP.ink} strokeWidth={5} />
+                <circle cx={px + r * 0.55} cy={py + r * 0.2} r={r * 0.62} fill="#D5CCB4" stroke={KRP.ink} strokeWidth={5} />
+                <circle cx={px} cy={py - r * 0.2} r={r * 0.8} fill="#D5CCB4" stroke={KRP.ink} strokeWidth={5} />
+                {/* 内側の線を隠して1つの雲に見せる */}
+                <circle cx={px - r * 0.55} cy={py + r * 0.15} r={r * 0.56} fill="#D5CCB4" />
+                <circle cx={px + r * 0.55} cy={py + r * 0.2} r={r * 0.5} fill="#D5CCB4" />
+                <circle cx={px} cy={py - r * 0.2} r={r * 0.68} fill="#D5CCB4" />
+              </g>
+            );
+          })}
+          {/* 逆回転する時計 (左側)。まわりの矢印も反時計回り */}
+          <g transform="translate(330 430)">
+            <circle r={115} fill={KRP.white} stroke={KRP.ink} strokeWidth={8} />
+            {[...Array(12)].map((_, i) => {
+              const a = (i / 12) * Math.PI * 2;
+              return <line key={i} x1={Math.cos(a) * 96} y1={Math.sin(a) * 96}
+                x2={Math.cos(a) * 108} y2={Math.sin(a) * 108} stroke={KRP.ink} strokeWidth={5} />;
+            })}
+            <g transform={`rotate(${backSpin})`}>
+              <line x1={0} y1={0} x2={0} y2={-82} stroke={KRP.ink} strokeWidth={8} strokeLinecap="round" />
+            </g>
+            <g transform={`rotate(${backSpin / 12})`}>
+              <line x1={0} y1={0} x2={0} y2={-54} stroke={KRP.ink} strokeWidth={11} strokeLinecap="round" />
+            </g>
+            <circle r={10} fill={KRP.ink} />
+            {/* 反時計回りの矢印 (巻き戻し感) */}
+            <path d="M -148 -58 A 160 160 0 0 0 -148 58" fill="none" stroke={KRP.red} strokeWidth={9} strokeLinecap="round" />
+            <path d="M -148 -58 l -26 2 l 16 24 Z" fill={KRP.red} />
+          </g>
         </g>
       </svg>
       <LabelPill x={960} y={130} text="いちばん最初のご先祖さま" size={40} centerX />
@@ -885,9 +1021,12 @@ const SceneJourney: React.FC<{ f: number }> = ({ f }) => {
 const SceneJihankiXray: React.FC<{ f: number }> = ({ f }) => {
   const T = 85;
   const t = (f % T) / T;
+  // v2修正: 人物の手元からコインが飛んで、ちゃんと投入口 (x≈1033, y≈282) に入る
   const inT = seg(t, 0.08, 0.4);
-  const cx = 1210 + 95 * inT;
-  const cy = 340 - 60 * Math.sin(inT * Math.PI) + 160 * seg(t, 0.4, 0.62);
+  const coinX = 1245 - 212 * easeOut(inT);
+  const coinY = 660 - 378 * inT - 70 * Math.sin(inT * Math.PI);
+  // 投入後: 透視の窓の中をコインが落ちて金庫へ
+  const dropT = seg(t, 0.44, 0.6);
   const spark = t >= 0.64 && t < 0.86;
   return (
     <AbsoluteFill style={{ background: KRP.paperCool }}>
@@ -900,8 +1039,12 @@ const SceneJihankiXray: React.FC<{ f: number }> = ({ f }) => {
           <rect x={726} y={560} width={220} height={180} rx={12} fill={KRP.cream} stroke={KRP.ink} strokeWidth={6} opacity={0.94} />
           <rect x={760} y={600} width={150} height={110} rx={10} fill={KRP.grayDark} stroke={KRP.ink} strokeWidth={6} />
           <circle cx={835} cy={655} r={22} fill="none" stroke={KRP.yellow} strokeWidth={6} />
-          {/* 飛ぶコイン */}
-          {t < 0.62 && <Coin cx={cx - 180} cy={cy} r={26} text="100" textSize={18} rotate={inT * 540} />}
+          {/* コインを入れる人 (v2修正で追加) */}
+          <Person x={1330} y={860} s={1.15} cloth="#4E6E58" clothDark="#3C5644" f={f} phase={5} gaze={[-7, -3]} />
+          {/* 飛ぶコイン: 手元→投入口 */}
+          {t >= 0.08 && t < 0.4 && <Coin cx={coinX} cy={coinY} r={26} text="100" textSize={18} rotate={inT * 540} />}
+          {/* 窓の中を落ちるコイン: 投入口→金庫 */}
+          {t >= 0.44 && t < 0.62 && <Coin cx={835} cy={575 + 73 * dropT} r={22} text="100" textSize={15} rotate={dropT * 180} />}
           {/* キラン */}
           {spark && (
             <g transform={`translate(835 655) scale(${pop(seg(t, 0.64, 0.78))})`}>
@@ -947,10 +1090,39 @@ const SceneAlexandria: React.FC<{ f: number }> = ({ f }) => (
               fill="none" stroke={KRP.ink} strokeWidth={5} strokeLinecap="round" />
           );
         })}
-        {/* 街並み */}
+        {/* 街並み (v2修正: 窓・列柱神殿・オベリスク・ヤシの木で精巧に) */}
         <path d="M 0 620 L 0 520 L 130 520 L 130 470 L 260 470 L 260 560 L 430 560 L 430 500 L 560 500 L 560 620 Z"
           fill="#E2CFA4" stroke={KRP.ink} strokeWidth={5} />
-        <path d="M 620 620 L 620 540 L 760 540 L 760 490 L 880 490 L 880 620 Z" fill="#D9C498" stroke={KRP.ink} strokeWidth={5} />
+        {/* 建物の窓と入口 */}
+        {[[40, 545], [86, 545], [160, 498], [212, 498], [300, 582], [352, 582], [456, 528], [504, 528]].map(([wx, wy], i) => (
+          <rect key={`w${i}`} x={wx} y={wy} width={26} height={34} rx={4} fill="#8A7146" stroke={KRP.ink} strokeWidth={3} />
+        ))}
+        <path d="M 62 620 L 62 586 Q 78 574 94 586 L 94 620 Z" fill="#6E5836" stroke={KRP.ink} strokeWidth={3.5} />
+        {/* ヘレニズム都市らしい列柱神殿 (三角屋根+円柱) */}
+        <g>
+          <polygon points="600,540 750,484 900,540" fill="#EBDDBE" stroke={KRP.ink} strokeWidth={5} />
+          <rect x={608} y={540} width={284} height={16} fill="#E2D2AE" stroke={KRP.ink} strokeWidth={4} />
+          {[632, 688, 744, 800, 856].map((cx2, i) => (
+            <rect key={`c${i}`} x={cx2 - 11} y={556} width={22} height={60} fill="#EFE5C8" stroke={KRP.ink} strokeWidth={4} />
+          ))}
+          <rect x={602} y={614} width={296} height={10} fill="#D9C498" stroke={KRP.ink} strokeWidth={3} />
+        </g>
+        {/* オベリスク (先端が金色) */}
+        <g>
+          <polygon points="936,620 950,412 964,620" fill="#E8D7B0" stroke={KRP.ink} strokeWidth={4.5} />
+          <polygon points="945,432 950,398 955,432" fill={KRP.yellow} stroke={KRP.ink} strokeWidth={3} />
+        </g>
+        {/* ヤシの木 */}
+        {[[1090, 1], [1340, -1]].map(([px, flip], i) => (
+          <g key={`p${i}`} transform={`translate(${px} 620) scale(${flip} 1)`}>
+            <path d="M 0 0 Q -10 -70 8 -132" stroke="#8A6B42" strokeWidth={13} fill="none" strokeLinecap="round" />
+            {[-72, -36, 0, 36, 72].map((a, j) => (
+              <path key={j} d="M 8 -132 q 44 -20 86 -2 q -42 14 -86 2 Z"
+                fill="#7BA05B" stroke={KRP.ink} strokeWidth={3.5} transform={`rotate(${a} 8 -132)`} />
+            ))}
+            <circle cx={14} cy={-126} r={7} fill="#A66A3E" stroke={KRP.ink} strokeWidth={3} />
+          </g>
+        ))}
         {/* 船 */}
         <g transform={`translate(${520 + Math.sin(f / 17) * 10} ${700 + Math.sin(f / 13) * 5}) rotate(${Math.sin(f / 15) * 2})`}>
           <path d="M -90 0 L 90 0 L 60 36 L -60 36 Z" fill="#A66A3E" stroke={KRP.ink} strokeWidth={5} />
@@ -973,6 +1145,8 @@ const SceneAlexandria: React.FC<{ f: number }> = ({ f }) => (
       <g filter="url(#wobble)">
         <rect x={0} y={840} width={W} height={H - 840} fill={KRP.floor} />
         <line x1={0} y1={840} x2={W} y2={840} stroke={KRP.ink} strokeWidth={5} />
+        {/* エジプト国旗 (v2修正: どこの国か一目で分かるように。太陽に被らない小さめサイズ) */}
+        <FlagCard kind="egypt" x={240} y={360} s={0.8} />
       </g>
     </svg>
     <LabelPill x={960} y={120} text="エジプト アレクサンドリア" size={42} centerX />
@@ -1061,7 +1235,8 @@ const SceneGreedy: React.FC<{ f: number }> = ({ f }) => {
         <g filter="url(#wobbleSoft)">
           <TempleBG y={820} f={f} />
         </g>
-        <g filter="url(#wobble)">
+        {/* v2修正: 神官〜注ぐ動作まで全員が画面中央に集まるよう全体を右へ寄せる */}
+        <g filter="url(#wobble)" transform="translate(170 0)">
           {/* 水盤 (床置きの石の台) */}
           <path d="M 480 710 L 840 710 L 800 800 L 520 800 Z" fill="#CDB184" stroke={KRP.ink} strokeWidth={6} />
           <path d="M 505 800 L 815 800 L 825 822 L 495 822 Z" fill="#B99D72" stroke={KRP.ink} strokeWidth={5} />
@@ -1102,7 +1277,7 @@ const SceneGreedy: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={880} y={380} text="多めに持っていく人が…" color={KRP.red} size={38} centerX />
+      <LabelPill x={960} y={380} text="多めに持っていく人が…" color={KRP.red} size={38} centerX />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1544,6 +1719,7 @@ export const Jihanki2000SceneView: React.FC<{ motif: string; f: number }> = ({ m
     // 導入
     case "j2_night": return <SceneNightRoad f={f} />;
     case "j2_night_close": return <SceneNightRoad f={f} close />;
+    case "j2_night_center": return <SceneSpotlight f={f} />;
     case "j2_globe_japan": return <SceneGlobeIntro f={f} />;
     case "j2_globe_back": return <SceneGlobeIntro f={f} back />;
     case "j2_morph_pot": return <SceneMorphPot f={f} />;

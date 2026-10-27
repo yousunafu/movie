@@ -493,7 +493,6 @@ const SceneAutomatSign: React.FC<{ f: number }> = ({ f }) => {
           <line x1={1360} y1={490} x2={1360} y2={560} stroke={KRP.ink} strokeWidth={10} />
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="1902年 フィラデルフィア" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -558,7 +557,6 @@ const SceneAutomatFront: React.FC<{ f: number }> = ({ f }) => {
             fill="#F7E9B8" opacity={0.5 * openT} />
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="奇妙なレストラン「オートマット」" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -584,7 +582,7 @@ const SceneWallWindows: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="壁一面に小さなガラス窓" />
+      <LabelPill x={960} y={170} centerX text="壁一面に小さなガラス窓" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -620,7 +618,7 @@ const SceneWindowFoods: React.FC<{ f: number }> = ({ f }) => {
       {items.map((it, i) => (
         <LabelPill key={i} x={it.x} y={790} centerX text={it.label} size={32} />
       ))}
-      <LabelPill x={960} y={930} centerX text="窓の向こうにできたての一皿" />
+      <LabelPill x={960} y={170} centerX text="窓の向こうにできたての一皿" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -694,7 +692,7 @@ const SceneNickelKnob: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="5セントを入れて、つまみをクルッ" />
+      <LabelPill x={960} y={170} centerX text="5セントを入れて、つまみをクルッ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -731,7 +729,6 @@ const SceneWholeVending: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {stampOn && <Stamp x={620} y={430} text="全部自販機" size={92} />}
-      <LabelPill x={960} y={930} centerX text="レストランをまるごと自販機に" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -765,7 +762,6 @@ const SceneBerlinIdea: React.FC<{ f: number }> = ({ f }) => {
         )}
       </svg>
       <LabelPill x={bp.x + 30} y={bp.y - 110} text="ベルリン" size={30} />
-      <LabelPill x={960} y={930} centerX text="もとはベルリン生まれのアイデア" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -793,19 +789,19 @@ const SceneEmptyQ: React.FC<{ f: number }> = ({ f }) => {
         <g filter="url(#wobble)">
           {/* 空の窓 (開いたまま) */}
           <Cell x={960} y={600} s={3.0} food="empty" open={1} />
-          {/* 大きな？ */}
-          <g transform={`translate(960 ${330 + bobQ}) rotate(${tilt})`}>
+          {/* 大きな？ (v3: テロップ(y170-230)に食い込まないよう下げる) */}
+          <g transform={`translate(960 ${400 + bobQ}) rotate(${tilt})`}>
             <text x={0} y={0} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={190}
               fill={KRP.blueDeep} stroke={KRP.white} strokeWidth={10} paintOrder="stroke">？</text>
           </g>
-          {/* 小さな？×2 */}
-          <text x={700} y={320 + Math.sin(fc / 11 + 2) * 12} textAnchor="middle" fontFamily={FONT}
+          {/* 小さな？×2 (v3: 同上、下げる) */}
+          <text x={700} y={340 + Math.sin(fc / 11 + 2) * 12} textAnchor="middle" fontFamily={FONT}
             fontWeight={900} fontSize={76} fill={KRP.grayDark} opacity={0.8}>？</text>
-          <text x={1240} y={280 + Math.sin(fc / 12 + 4) * 12} textAnchor="middle" fontFamily={FONT}
+          <text x={1240} y={355 + Math.sin(fc / 12 + 4) * 12} textAnchor="middle" fontFamily={FONT}
             fontWeight={900} fontSize={96} fill={KRP.grayDark} opacity={0.8}>？</text>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="空っぽの窓には、だれが補充を？" />
+      <LabelPill x={960} y={170} centerX text="空っぽの窓には、だれが補充を？" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -867,8 +863,9 @@ const SceneBehindWall: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {revealed ? (
+        /* v3: y=915は字幕帯(1行時y≥931)と衝突していた → テロップ位置(上部)に移動 */
         <div style={{
-          position: "absolute", left: 960, top: 915,
+          position: "absolute", left: 960, top: 160,
           transform: `translateX(-50%) scale(${pop(seg(f, 78, 92))})`,
           background: KRP.white, border: `4px solid ${KRP.red}`, borderRadius: 10,
           color: KRP.red, fontFamily: FONT, fontWeight: 900, fontSize: 42,
@@ -878,7 +875,7 @@ const SceneBehindWall: React.FC<{ f: number }> = ({ f }) => {
           壁の裏は、巨大な厨房！
         </div>
       ) : (
-        <LabelPill x={960} y={925} centerX text="壁のうしろは…" />
+        <LabelPill x={960} y={170} centerX text="壁のうしろは…" />
       )}
       <J2Badge />
       <Atmosphere f={f} />
@@ -960,7 +957,7 @@ const SceneKitchenRefill: React.FC<{ f: number }> = ({ f }) => {
           <g transform="translate(1230 710)"><FoodPie s={0.6} /></g>
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="コックが作り、係がせっせと補充" />
+      <LabelPill x={960} y={170} centerX text="コックが作り、係がせっせと補充" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1001,12 +998,12 @@ const SceneSuperManned: React.FC<{ f: number }> = ({ f }) => {
       {/* 左右の見出し */}
       <LabelPill x={560} y={250} centerX text="おもて" size={30} color={KRP.grayDark} />
       <LabelPill x={1340} y={250} centerX text="うら" size={30} color={KRP.grayDark} />
-      {/* 「無人」→「超・有人」 */}
+      {/* 「無人」→「超・有人」 (v3: y122のバーストが下のテロップ(y170)と重なっていた → 上下に整理) */}
       {!swap ? (
-        <LabelPill x={960} y={100 + 30} centerX text="無人レストラン…？" size={42} />
+        <LabelPill x={960} y={88} centerX text="無人レストラン…？" size={42} />
       ) : (
         <div style={{
-          position: "absolute", left: 960, top: 122,
+          position: "absolute", left: 960, top: 76,
           transform: `translateX(-50%) scale(${pop(seg(f, 70, 84))})`,
           background: KRP.white, border: `5px solid ${KRP.red}`, borderRadius: 10,
           color: KRP.red, fontFamily: FONT, fontWeight: 900, fontSize: 48,
@@ -1016,7 +1013,7 @@ const SceneSuperManned: React.FC<{ f: number }> = ({ f }) => {
           超・有人レストラン！
         </div>
       )}
-      <LabelPill x={960} y={930} centerX text="無人に見えて、裏は大勢" />
+      <LabelPill x={960} y={196} centerX text="無人に見えて、裏は大勢" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1096,7 +1093,8 @@ const SceneChangeBooth: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="まずは入口の両替ブースへ" />
+      {/* v3: 中央だとブースの「両替 CHANGE」看板(x1120〜)に被る → 左の空きへ */}
+      <LabelPill x={520} y={170} centerX text="まずは入口の両替ブースへ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1173,7 +1171,7 @@ const SceneNickelThrow: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       <LabelPill x={1240} y={300} text="あだ名は「ニッケル投げ」" size={38} />
-      <LabelPill x={960} y={960} centerX text="早業すぎる両替係" />
+      <LabelPill x={960} y={170} centerX text="早業すぎる両替係" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1242,7 +1240,6 @@ const DinerAlone: React.FC<{ f: number; dim?: number; seed?: number }> = ({ f, d
 const ScenePieAlone: React.FC<{ f: number }> = ({ f }) => (
   <AbsoluteFill style={{ background: KRP.paper, fontFamily: FONT }}>
     <DinerAlone f={f} />
-    <LabelPill x={960} y={930} centerX text="安くて、早くて、ひとりでも気楽" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -1311,7 +1308,7 @@ const SceneChain100: React.FC<{ f: number }> = ({ f }) => {
       }}>
         店舗
       </div>
-      <LabelPill x={960} y={930} centerX text="大都市の台所、100店舗超のチェーン" />
+      <LabelPill x={960} y={170} centerX text="大都市の台所、100店舗超のチェーン" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1327,7 +1324,6 @@ const SceneSepia: React.FC<{ f: number }> = ({ f }) => {
       {/* セピアのベール */}
       <AbsoluteFill style={{ background: "#6E4A2A", opacity: 0.38 * t, pointerEvents: "none" }} />
       <AbsoluteFill style={{ background: "rgba(30, 22, 12, 1)", opacity: 0.22 * t, pointerEvents: "none" }} />
-      <LabelPill x={960} y={930} centerX text="ただ、この物語には続きが" />
       <J2Badge />
       <Atmosphere f={f} dark={t > 0.6} />
     </AbsoluteFill>
@@ -1373,7 +1369,7 @@ const SceneLightsOff: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="時代の波に、少しずつ消えて" />
+      <LabelPill x={960} y={170} centerX text="時代の波に、少しずつ消えて" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1420,7 +1416,8 @@ const SceneClosed1991: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {stampOn && <Stamp x={1260} y={620} text="1991年 ニューヨーク" size={40} />}
-      <LabelPill x={960} y={930} centerX text="最後の1店が、静かに閉まった" />
+      {/* v3: y=170だと店の看板(AUTOMAT, y170-266)を隠していた → 建物の上の余白へ */}
+      <LabelPill x={960} y={56} centerX text="最後の1店が、静かに閉まった" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1491,7 +1488,7 @@ const SceneMachinesIndoor: React.FC<{ f: number }> = ({ f }) => {
           })}
         </g>
       </svg>
-      <LabelPill x={960} y={930} centerX text="機械は、街から建物の中へ" />
+      <LabelPill x={960} y={170} centerX text="機械は、街から建物の中へ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1557,7 +1554,7 @@ const SceneWhyBookmark: React.FC<{ f: number }> = ({ f }) => {
       }}>
         なぜ？
       </div>
-      <LabelPill x={960} y={930} centerX text="この謎は、のちほど日本の夜道で" size={36} />
+      <LabelPill x={960} y={170} centerX text="この謎は、のちほど日本の夜道で" size={36} />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>

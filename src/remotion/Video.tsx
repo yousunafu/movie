@@ -203,6 +203,8 @@ const Subtitle: React.FC<{
     );
   }
   // karakuri: 下部の黒い角丸帯の中に白いゴシック太字 (お手本: 最高の老後 の字幕スタイル)
+  // 字幕法 (からくり憲法§1): 1行36字まで・最大2行・3行禁止。幅92%+フォント48で実現。
+  // 帯上端は 1行:y≈931 / 2行:y≈854 → イラスト内テロップは y≤780 に置くこと (安全ライン)
   if (karakuri) {
     return (
       <div
@@ -211,7 +213,9 @@ const Subtitle: React.FC<{
           bottom: 56,
           left: "50%",
           transform: "translateX(-50%)",
-          maxWidth: "86%",
+          // width (maxWidthではない) で指定する。absolute+left:50%にmaxWidthだけだと
+          // 「画面の右半分 (960px)」を基準に早く折り返されてしまう (v1の字幕が狭かった原因)
+          width: "92%",
           textAlign: "center",
           opacity,
         }}
@@ -220,7 +224,7 @@ const Subtitle: React.FC<{
           style={{
             display: "inline",
             fontFamily: FONT,
-            fontSize: 50,
+            fontSize: 48,
             fontWeight: 800,
             color: "#FFFFFF",
             lineHeight: 1.6,

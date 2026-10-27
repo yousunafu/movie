@@ -39,26 +39,74 @@ async function resolveStyleId(): Promise<number> {
 
 // アクセント修正表: 先頭モーラ列が一致したアクセント句の accent (山の位置) を指定値に直す。
 // 例:「スクショ」が語尾上がり (平板) に読まれる → 頭高 (accent=1) に固定する。
+// accent: 0 は「平板」の意味 (句の最後まで高いまま = 山をモーラ数に合わせる)。
 const ACCENT_FIXES: { moras: string[]; accent: number }[] = [
   { moras: ["ス", "ク", "ショ"], accent: 1 },
+  // 「湯切り(ゆぎり)」が頭高 (ユ\ギリ) に訛る → 平板 (ユギリ→) に (自販機2000年史 #193)
+  { moras: ["ユ", "ギ", "リ"], accent: 0 },
+  // 「つまみ」が頭高 (ツ\マミ) に訛る → 平板 (ツマミ→) に (自販機2000年史 #76)
+  { moras: ["ツ", "マ", "ミ"], accent: 0 },
 ];
 
-// audio_query の accent_phrases を後処理してアクセントを直す (読み・字幕には影響しない)
-function fixAccents(query: Record<string, unknown>): void {
+// 無声化解除表: 先頭モーラ列が一致したアクセント句の、指定位置のモーラの無声化を解除する。
+// VOICEVOXは「し」「き」等を文脈によって無声 (ささやき声) にすることがあり、ほぼ聞こえなくなる。
+// 例:「師匠」の先頭「シ」が無声化して「しょう」に聞こえる → 有声化+少し長めに (自販機2000年史 #26)
+// lengthScale: 母音の長さの倍率 (1.3 = 3割長く)。有声化だけだと短すぎて埋もれるため。
+const VOICING_FIXES: { moras: string[]; moraIndex: number; lengthScale: number }[] = [
+  { moras: ["シ", "ショ", "オ"], moraIndex: 0, lengthScale: 1.3 },
+];
+
+// 無声モーラ (vowel が大文字 "I" "U" など) を有声 (小文字) に直す。
+// 1つでも直したら true を返す → 呼び出し側で /mora_pitch により音程だけ再計算させる
+// (/mora_data だと長さも再計算されて lengthScale が消えるので使わない)。
+function fixVoicing(query: Record<string, unknown>): boolean {
+  const phrases = query.accent_phrases as
+    | { moras: { text: string; vowel: string; vowel_length: number }[] }[]
+    | undefined;
+  if (!Array.isArray(phrases)) return false;
+  let changed = false;
+  for (const ph of phrases) {
+    for (const fix of VOICING_FIXES) {
+      if (
+        ph.moras.length >= fix.moras.length &&
+        fix.moras.every((m, i) => ph.moras[i]?.text === m)
+      ) {
+        const mora = ph.moras[fix.moraIndex];
+        if (mora && /^[AIUEO]$/.test(mora.vowel)) {
+          mora.vowel = mora.vowel.toLowerCase();
+          mora.vowel_length *= fix.lengthScale;
+          changed = true;
+        }
+      }
+    }
+  }
+  return changed;
+}
+
+// audio_query の accent_phrases を後処理してアクセントを直す (読み・字幕には影響しない)。
+// 1つでも直したら true を返す → 呼び出し側で /mora_data により音程を再計算させる。
+// (accent を書き換えるだけでは音程データが古いままで、合成結果が変わらない。2026-10 自販機回で発覚)
+function fixAccents(query: Record<string, unknown>): boolean {
   const phrases = query.accent_phrases as
     | { moras: { text: string }[]; accent: number }[]
     | undefined;
-  if (!Array.isArray(phrases)) return;
+  if (!Array.isArray(phrases)) return false;
+  let changed = false;
   for (const ph of phrases) {
     for (const fix of ACCENT_FIXES) {
       if (
         ph.moras.length >= fix.moras.length &&
         fix.moras.every((m, i) => ph.moras[i]?.text === m)
       ) {
-        ph.accent = fix.accent;
+        const next = fix.accent === 0 ? ph.moras.length : fix.accent;
+        if (ph.accent !== next) {
+          ph.accent = next;
+          changed = true;
+        }
       }
     }
   }
+  return changed;
 }
 
 export async function synthesizeVoicevox(
@@ -92,7 +140,26 @@ export async function synthesizeVoicevox(
       // 文末の余白 (シーン間の間はRemotion側でも付くため基本は短めに)
       query.postPhonemeLength = style?.postPhonemeLength ?? 0.15;
       query.intonationScale = style?.intonationScale ?? 1.0;
-      fixAccents(query);
+      if (fixAccents(query)) {
+        // 山の位置を変えたので、モーラごとの音程を VOICEVOX に再計算させる
+        const mRes = await fetch(`${BASE()}/mora_data?speaker=${speaker}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(query.accent_phrases),
+        });
+        if (!mRes.ok) throw new Error(`mora_data HTTP ${mRes.status}`);
+        query.accent_phrases = await mRes.json();
+      }
+      if (fixVoicing(query)) {
+        // 無声→有声に変えたので音程のみ再計算 (長さは手調整済みなので /mora_pitch を使う)
+        const pRes = await fetch(`${BASE()}/mora_pitch?speaker=${speaker}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(query.accent_phrases),
+        });
+        if (!pRes.ok) throw new Error(`mora_pitch HTTP ${pRes.status}`);
+        query.accent_phrases = await pRes.json();
+      }
 
       const sRes = await fetch(`${BASE()}/synthesis?speaker=${speaker}`, {
         method: "POST",

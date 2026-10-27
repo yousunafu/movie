@@ -5,7 +5,7 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 import {
-  KRP, WobbleDefs, Atmosphere, LabelPill, Stamp, Coin, seg, pop, easeOut, clamp01,
+  KRP, WobbleDefs, Atmosphere, LabelPill, Stamp, Coin, Jihanki, seg, pop, easeOut, clamp01,
 } from "./KarakuriScenes";
 import {
   W, H, FONT, abs, J2Badge, NightSky, JihankiNight, Globe, globePoint,
@@ -14,6 +14,7 @@ import {
 import { JapanMapCard, jmapXY, JmapLabel } from "./Jihanki2000JapanMap";
 import { Heart, GearIcon, HonourBox } from "./Jihanki2000Ch2to4";
 import { WindowWall, Cook } from "./Jihanki2000Ch4";
+import { Hito } from "./Jihanki2000Ch9to10";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
@@ -276,7 +277,6 @@ const SceneDrinkShare: React.FC<{ f: number }> = ({ f }) => {
             stroke={KRP.ink} strokeWidth={4} strokeDasharray="12 14" opacity={0.4 * t2} />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="飲み物の自販機だけで、約220万台" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -323,7 +323,6 @@ const Scene30Per1: React.FC<{ f: number }> = ({ f }) => (
         </text>
       </g>
     </svg>
-    <LabelPill x={960} y={966} centerX text="ざっくり、国民30人に1台" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -362,7 +361,6 @@ const SceneSekaiTop: React.FC<{ f: number }> = ({ f }) => {
           <MapPin x={jp.x} y={jp.y} t={seg(f, 8, 22)} />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="人口あたりの密度は、世界トップクラス" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -397,7 +395,6 @@ const SceneKazuJanai: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="でも、本当にすごいのは、数ではありません" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -416,7 +413,6 @@ const SceneYomichiFutatabi: React.FC<{ f: number }> = ({ f }) => (
         <JihankiNight x={1150} y={190} s={0.92} f={f} />
       </g>
     </svg>
-    <LabelPill x={960} y={966} centerX text="思い出してください。冒頭の、夜道です" />
     <J2Badge />
     <Atmosphere f={f} dark />
   </AbsoluteFill>
@@ -461,7 +457,6 @@ const SceneMujinToushi: React.FC<{ f: number }> = ({ f }) => {
             strokeWidth={8} opacity={0.3 + 0.7 * t} strokeDasharray={t > 0.1 ? "16 12" : "1 0"} />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="現金と商品を積んだ無人の箱が、屋外に" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -499,16 +494,33 @@ const SceneSekaiBatsu: React.FC<{ f: number }> = ({ f }) => {
           <MapPin x={jp.x} y={jp.y} t={seg(f, 8, 22)} />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="こんな置き方ができる国は、ほとんどない" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
   );
 };
 
-// ===== 208. 多くの国では壊されるか持ち去られる (控えめな暗示) =====
+// ===== 208. 多くの国では壊されるか持ち去られる (左=壊す/右=持ち去る の2分割) =====
 const SceneKowareruKage: React.FC<{ f: number }> = ({ f }) => {
-  const c1 = seg(f, 30, 38), c2 = seg(f, 44, 52), c3 = seg(f, 58, 66);
+  // 左: バットで3回叩く
+  const HITS = [46, 86, 126];
+  let angle = 40; // 構え (だらんと下げ気味)
+  for (const fh of HITS) {
+    if (f >= fh - 24) angle = 40 + easeOut(seg(f, fh - 24, fh - 8)) * 115; // 振り上げ →155
+    if (f >= fh - 5) angle = 155 + seg(f, fh - 5, fh) * 95; // 振り下ろし →250
+    if (f >= fh + 4) angle = 250 - easeOut(seg(f, fh + 4, fh + 14)) * 210; // 戻す →40
+  }
+  // 命中した瞬間の揺れと、叩かれるたび深くなる傾き
+  const shake = HITS.reduce((a, h) => (f >= h && f < h + 12 ? Math.sin((f - h) * 1.8) * 7 * (1 - seg(f, h, h + 12)) : a), 0);
+  const lean = HITS.reduce((a, h) => a + seg(f, h, h + 8) * 2.6, 0);
+  const c1 = seg(f, HITS[0], HITS[0] + 9), c2 = seg(f, HITS[1], HITS[1] + 9), c3 = seg(f, HITS[2], HITS[2] + 9);
+  const starAt = HITS.find((h) => f >= h && f < h + 9);
+  const starT = starAt !== undefined ? pop(seg(f, starAt, starAt + 9)) : 0;
+  const swoosh = HITS.some((h) => f >= h - 4 && f < h + 2); // 振り下ろし中のスピード線
+  // 右: 2人がかりで担いで去っていく (よいしょ、よいしょと揺れながら)
+  const tx = 1060 + f * 2.1;
+  const hop = Math.abs(Math.sin(f / 7)) * 8;
+  const sway = Math.sin(f / 7) * 2.2;
   return (
     <AbsoluteFill style={{ background: "#413B33" }}>
       <svg width={W} height={H} style={abs}>
@@ -516,29 +528,71 @@ const SceneKowareruKage: React.FC<{ f: number }> = ({ f }) => {
         <g filter="url(#wobbleSoft)">
           <rect x={0} y={860} width={W} height={220} fill="#332E27" />
           <line x1={0} y1={860} x2={W} y2={860} stroke="#1E1B17" strokeWidth={5} />
-          <ellipse cx={760} cy={560} rx={520} ry={420} fill="#FFF3C4" opacity={0.07} />
+          <ellipse cx={480} cy={560} rx={420} ry={380} fill="#FFF3C4" opacity={0.07} />
+          <ellipse cx={1440} cy={560} rx={420} ry={380} fill="#FFF3C4" opacity={0.05} />
+          {/* 仕切り */}
+          <line x1={960} y1={120} x2={960} y2={1080} stroke="#1E1B17" strokeWidth={6} strokeDasharray="26 22" opacity={0.7} />
         </g>
         <g filter="url(#wobble)">
-          {/* 自販機のシルエット */}
-          <rect x={580} y={260} width={360} height={600} rx={18} fill="#2E2A25" stroke="#1E1B17" strokeWidth={8} />
-          <rect x={612} y={300} width={296} height={200} rx={10} fill="#55493C" opacity={0.7} />
-          <rect x={626} y={740} width={268} height={70} rx={9} fill="#1E1B17" opacity={0.8} />
-          {/* ヒビ (ピシッ、控えめに) */}
-          <g stroke="#D9CBA8" strokeWidth={5} strokeLinecap="round" fill="none">
-            {c1 > 0 && <path d="M 760 330 L 742 376 L 758 410" opacity={0.85} />}
-            {c2 > 0 && <path d="M 758 410 L 730 448 M 758 410 L 788 452" opacity={0.85} />}
-            {c3 > 0 && <path d="M 788 452 L 780 492" opacity={0.7} />}
+          {/* --- 左: 壊される --- */}
+          <g transform={`translate(${560 + shake} 860) rotate(${lean} 0 0)`}>
+            <ellipse cx={0} cy={6} rx={190} ry={16} fill="#1E1B17" opacity={0.5} />
+            <rect x={-140} y={-470} width={280} height={470} rx={16} fill="#2E2A25" stroke="#1E1B17" strokeWidth={8} />
+            <rect x={-114} y={-438} width={228} height={160} rx={10} fill="#55493C" opacity={0.7} />
+            <rect x={-104} y={-96} width={208} height={56} rx={9} fill="#1E1B17" opacity={0.8} />
+            {/* ヒビ (叩かれるたびに広がる) */}
+            <g stroke="#D9CBA8" strokeWidth={5} strokeLinecap="round" fill="none">
+              {c1 > 0 && <path d="M -140 -300 L -98 -322 L -72 -296 L -40 -314" opacity={0.9} />}
+              {c2 > 0 && <path d="M -72 -296 L -58 -248 L -16 -230 M -98 -322 L -92 -372" opacity={0.9} />}
+              {c3 > 0 && <path d="M -16 -230 L 24 -244 L 48 -210 M -58 -248 L -80 -200" opacity={0.8} />}
+            </g>
           </g>
-          {/* 持ち去る影 (画面の端にうっすら) */}
-          <g opacity={0.3}>
-            <g transform={`translate(${1430 + easeOut(seg(f, 20, 140)) * 260} 0)`}>
-              <SP x={0} y={900} s={1.1} f={f} phase={4} cloth="#241F1A" silhouette hideArm="left" />
-              <rect x={-96} y={700} width={110} height={90} rx={8} fill="#241F1A" />
+          {/* 叩く人 (シルエット) + 別描きの腕とバット */}
+          <g transform="translate(200 860) scale(1.15)">
+            <SP x={0} y={0} f={f} phase={2} cloth="#241F1A" silhouette hideArm="right" lean={angle > 160 ? 6 : 0} />
+            <g transform={`rotate(${angle} 58 -148)`}>
+              <line x1={58} y1={-148} x2={58} y2={-54} stroke="#241F1A" strokeWidth={22} strokeLinecap="round" />
+              {/* バット (先が太い) */}
+              <path d="M 48 -62 L 68 -62 L 78 30 Q 78 48 58 48 Q 38 48 38 30 Z" fill="#241F1A" />
+            </g>
+            {/* ブン (振り下ろしのスピード線) */}
+            {swoosh && (
+              <g stroke="#D9CBA8" strokeWidth={6} strokeLinecap="round" fill="none" opacity={0.75}>
+                <path d="M 30 -330 Q 150 -310 196 -214" />
+                <path d="M 66 -294 Q 150 -276 184 -210" />
+              </g>
+            )}
+          </g>
+          {/* 命中の星 */}
+          {starT > 0 && (
+            <g transform={`translate(428 580) scale(${starT})`} stroke="#F2CE4C" strokeWidth={8} strokeLinecap="round">
+              <line x1={-52} y1={-40} x2={-24} y2={-18} />
+              <line x1={0} y1={-62} x2={0} y2={-28} />
+              <line x1={52} y1={-40} x2={24} y2={-18} />
+              <line x1={-58} y1={16} x2={-28} y2={8} />
+              <line x1={58} y1={16} x2={28} y2={8} />
+            </g>
+          )}
+          {/* --- 右: 持ち去られる --- */}
+          <g transform={`translate(${tx} 0)`}>
+            <ellipse cx={230} cy={866} rx={330} ry={16} fill="#1E1B17" opacity={0.5} />
+            <SP x={0} y={860} s={1.05} f={f} phase={4} cloth="#241F1A" silhouette hideArm="right" />
+            <SP x={470} y={860} s={1.05} f={f} phase={7} cloth="#241F1A" silhouette hideArm="left" />
+            {/* 横倒しの自販機 (担がれて上下にゆさゆさ) */}
+            <g transform={`translate(0 ${-hop}) rotate(${-4 + sway} 230 700)`}>
+              <rect x={-10} y={620} width={490} height={150} rx={14} fill="#2E2A25" stroke="#1E1B17" strokeWidth={8} />
+              <rect x={30} y={648} width={150} height={94} rx={8} fill="#55493C" opacity={0.7} />
+              {/* 支える腕 */}
+              <g stroke="#241F1A" strokeWidth={22} strokeLinecap="round">
+                <line x1={62} y1={700} x2={34} y2={752} />
+                <line x1={408} y1={700} x2={436} y2={752} />
+              </g>
             </g>
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="多くの国では、壊されるか持ち去られる" />
+      <LabelPill x={480} y={170} centerX text="壊される…" color={KRP.red} />
+      <LabelPill x={1440} y={170} centerX text="持ち去られる…" color={KRP.red} />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -593,7 +647,7 @@ const SceneKabeGrille: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="海外の自販機の多くは、壁の中に" />
+      <LabelPill x={960} y={170} centerX text="海外の自販機の多くは、壁の中に" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -661,7 +715,7 @@ const SceneOkunaiSepia: React.FC<{ f: number }> = ({ f }) => {
         {/* セピアの回想 */}
         <SepiaWash />
       </svg>
-      <LabelPill x={960} y={930} centerX text="アメリカで機械が屋内へ引っ込んだ理由も、同じ" />
+      <LabelPill x={960} y={170} centerX text="アメリカで機械が屋内へ引っ込んだ理由も、同じ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -703,12 +757,12 @@ const SceneSasaeHashira: React.FC<{ f: number }> = ({ f }) => {
         <g filter="url(#wobble)">
           {/* 上に乗る台と自販機 */}
           <rect x={520} y={420} width={880} height={36} rx={10} fill="#8F6B44" stroke={KRP.ink} strokeWidth={6} />
-          <Vend x={790} y={60} s={0.58} f={f} />
+          {/* v2修正 #211: 自販機を台のセンター (x=960) に。幅360×0.58=209 → x=960-104=856 */}
+          <Vend x={856} y={60} s={0.58} f={f} />
           <Pillar x={700} t={t1} label="性能" />
           <Pillar x={1220} t={t2} label="治安" />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="支えていたのは、機械の性能と、この国の治安" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -749,7 +803,6 @@ const SceneEkimaeNami: React.FC<{ f: number }> = ({ f }) => (
         <Vend x={1500} y={300} s={0.95} f={f} />
       </g>
     </svg>
-    <LabelPill x={960} y={966} centerX text="人の流れが密で、置けば売れる土地柄も追い風" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -810,7 +863,6 @@ const SceneChuboSepia: React.FC<{ f: number }> = ({ f }) => (
       {/* セピアの回想 */}
       <SepiaWash />
     </svg>
-    <LabelPill x={960} y={966} centerX text="オートマットの壁の裏の厨房を、思い出して" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -865,7 +917,7 @@ const SceneHojuDriver: React.FC<{ f: number }> = ({ f }) => {
           <Coin cx={386} cy={792} r={24} text="¥" />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="日本でも毎日、補充のドライバーたちが" />
+      <LabelPill x={960} y={170} centerX text="日本でも毎日、補充のドライバーたちが" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -892,7 +944,6 @@ const SceneUraNoHito: React.FC<{ f: number }> = ({ f }) => {
           <JihankiNight x={780} y={220} s={0.92} f={f} />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="無人の箱は、いまも裏側の人が支えている" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -968,7 +1019,6 @@ const SceneGearHeart: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="日本の夜道は、仕組みと信頼の合わせ技" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1011,7 +1061,6 @@ const SceneHonourSepia: React.FC<{ f: number }> = ({ f }) => {
           </g>
         )}
       </svg>
-      <LabelPill x={960} y={966} centerX text="17世紀の酒場が、良心にゆだねたもの" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1063,7 +1112,6 @@ const SceneMachiHikari: React.FC<{ f: number }> = ({ f }) => {
           ))}
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="この国はそれを、街ぐるみで引き受けている" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1129,7 +1177,6 @@ const SceneUruKieru: React.FC<{ f: number }> = ({ f }) => {
           </text>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="自販機の進化は、売ることだけではなかった" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1173,7 +1220,6 @@ const Scene2011Yami: React.FC<{ f: number }> = ({ f }) => {
         {/* 画面がぐっと暗く */}
         <rect x={0} y={0} width={W} height={H} fill="#000000" opacity={0.22 * dim} />
       </svg>
-      <LabelPill x={960} y={966} centerX text="2011年の、東日本大震災" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1203,7 +1249,6 @@ const SceneTeidenHikari: React.FC<{ f: number }> = ({ f }) => {
           <SP x={x2} y={910} s={0.98} f={f} phase={3} cloth="#262C3E" silhouette flip />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="停電した街で、飲み物を配った自販機が" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1237,7 +1282,6 @@ const SceneKyuenVendor: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="災害救援ベンダー。無料開放できる自販機" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1286,7 +1330,7 @@ const SceneKagiKaiho: React.FC<{ f: number }> = ({ f }) => {
           </text>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="管理者が専用の鍵を使うと、無料で" />
+      <LabelPill x={960} y={170} centerX text="管理者が専用の鍵を使うと、無料で" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1346,7 +1390,6 @@ const SceneWireBattery: React.FC<{ f: number }> = ({ f }) => {
           <line x1={1090} y1={400} x2={1180} y2={380} stroke={KRP.ink} strokeWidth={4} strokeDasharray="10 10" opacity={0.6} />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="内蔵バッテリーや、手でワイヤを引く仕掛けで" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1363,14 +1406,14 @@ const SceneBichikuSoko: React.FC<{ f: number }> = ({ f }) => {
         <g filter="url(#wobbleSoft)">
           <rect x={0} y={880} width={W} height={200} fill={KRP.floor} />
           <line x1={0} y1={880} x2={W} y2={880} stroke={KRP.ink} strokeWidth={5} />
-          {/* 倉庫の輪郭 (点線で重なる) */}
+          {/* 倉庫の輪郭 (v2修正 #227: 破線を細かく・濃く = 実線寄りにして「建物になった」と分かるように) */}
           <path d="M 480 420 L 960 220 L 1440 420 L 1440 880 L 480 880 Z"
-            fill="none" stroke={KRP.ink} strokeWidth={7} strokeDasharray="22 18" opacity={0.55 * t} />
+            fill="none" stroke={KRP.ink} strokeWidth={8} strokeDasharray="34 10" opacity={0.9 * t} />
           <line x1={480} y1={420} x2={1440} y2={420} stroke={KRP.ink} strokeWidth={5}
-            strokeDasharray="22 18" opacity={0.35 * t} />
+            strokeDasharray="34 10" opacity={0.6 * t} />
         </g>
         <g filter="url(#wobble)">
-          {/* 透ける自販機: 中は備えの棚 */}
+          {/* 備えの棚 (v2修正 #227: 棚に「水」「非常食」ラベルを付けて備蓄倉庫だと一目で分かるように) */}
           <g opacity={t}>
             <rect x={756} y={332} width={408} height={520} rx={12} fill={KRP.cream} stroke={KRP.ink} strokeWidth={5} />
             {[0, 1, 2].map((r) => (
@@ -1380,13 +1423,20 @@ const SceneBichikuSoko: React.FC<{ f: number }> = ({ f }) => {
                   <rect key={c} x={780 + c * 96} y={388 + r * 130} width={52} height={68} rx={8}
                     fill={[KRP.blue, KRP.orange, "#7FA86B", KRP.blue][c]} stroke={KRP.ink} strokeWidth={4} />
                 ))}
+                {/* 棚ラベル (上段: 水 / 中段: 非常食 / 下段: 水) */}
+                <g transform={`translate(1196 ${400 + r * 130})`}>
+                  <rect x={0} y={0} width={r === 1 ? 150 : 76} height={50} rx={8}
+                    fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
+                  <text x={r === 1 ? 75 : 38} y={37} textAnchor="middle" fontFamily={FONT}
+                    fontWeight={800} fontSize={34} fill={KRP.ink}>{r === 1 ? "非常食" : "水"}</text>
+                </g>
               </g>
             ))}
           </g>
-          <Vend x={740} y={300} s={1.22} f={f} faceOp={1 - 0.74 * t} />
+          {/* v2修正 #227: 変身後は自販機を完全フェードアウト (26%透け残りが混乱の原因だった) */}
+          <Vend x={740} y={300} s={1.22} f={f} faceOp={Math.max(0, 1 - 1.6 * t)} />
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="街角の箱が、小さな備蓄倉庫になる" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1421,7 +1471,6 @@ const SceneKyuenHirogaru: React.FC<{ f: number }> = ({ f }) => {
           </JapanMapCard>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="震災をきっかけに、全国へ広がりました" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1469,7 +1518,7 @@ const SceneAedCamera: React.FC<{ f: number }> = ({ f }) => {
           </text>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="AEDを載せた機種や、防犯カメラの機種まで" />
+      <LabelPill x={960} y={170} centerX text="AEDを載せた機種や、防犯カメラの機種まで" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1509,7 +1558,6 @@ const SceneMachiSasaeru: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="売る箱から、街を支える箱へ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1590,7 +1638,6 @@ const ScenePotSepia: React.FC<{ f: number }> = ({ f }) => {
         {/* セピアの回想 */}
         <SepiaWash op={0.24} />
       </svg>
-      <LabelPill x={960} y={966} centerX text="2000年前、神様の水を売っていた箱は" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1632,7 +1679,6 @@ const ScenePotToMizu: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="2000年後、災害の日に、ただで水を配る箱に" />
       <J2Badge />
       <Atmosphere f={f} dark={xf > 0.5} />
     </AbsoluteFill>
@@ -1769,7 +1815,7 @@ const SceneSomatoTabi: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="神殿のシーソーから…そして夜道へ" />
+      <LabelPill x={960} y={170} centerX text="神殿のシーソーから…そして夜道へ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1802,7 +1848,6 @@ const SceneHatsumeiToushi: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="コイン1枚で動く箱は、2000年ぶんの発明を抱えて" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1823,11 +1868,13 @@ const SceneTachidomaru: React.FC<{ f: number }> = ({ f }) => {
         </g>
         <g filter="url(#wobble)">
           <JihankiNight x={1150} y={190} s={0.92} f={f} />
-          <SP x={wx} y={880} s={1.12} f={f} phase={2} cloth="#55618A" clothDark="#424C6E"
-            gaze={[6, -2 - 4 * lookUp]} lean={-4 * lookUp} />
+          {/* 冬支度の人 (第10章の再登場)。立ち止まって見上げる */}
+          <g transform={`rotate(${-4 * lookUp} ${wx} 880)`}>
+            <Hito x={wx} y={880} s={1.12} role="coat" f={f} phase={2}
+              face={lookUp > 0.5 ? "smile" : "normal"} gaze={[6, -2 * lookUp]} />
+          </g>
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="明日、自販機の前を通ったら、立ち止まって" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1836,21 +1883,31 @@ const SceneTachidomaru: React.FC<{ f: number }> = ({ f }) => {
 
 // ===== 237. 最古の発明の子孫 (赤ハンコ「2000年もの」ドン) =====
 const Scene2000MonoStamp: React.FC<{ f: number }> = ({ f }) => {
-  const st = f >= 40;
-  const shake = f >= 40 && f < 48 ? Math.sin(f * 3) * 5 : 0;
+  // v3: #2・#4と同じ「舞台のスポットライト」の世界観で締める。
+  // 暗転ステージ → スポットライトが点く → センターの自販機が深々とお辞儀 (幕引きの挨拶)。
+  const lightT = easeOut(seg(f, 2, 12)); // スポットライトが点く
+  // お辞儀: 底辺を軸にゆっくり傾く → ためて → 起き上がる
+  const bowA = 13 * (easeOut(seg(f, 60, 82)) - easeOut(seg(f, 104, 126)));
+  const st = f >= 30;
   return (
-    <AbsoluteFill style={{ background: "#2E3A52" }}>
+    <AbsoluteFill style={{ background: "#171821" }}>
       <svg width={W} height={H} style={abs}>
         <WobbleDefs seed={328} />
-        <g filter="url(#wobbleSoft)">
-          <NightRoadBG f={f} />
-        </g>
-        <g filter="url(#wobble)" transform={`translate(${shake} 0)`}>
-          <JihankiNight x={1150} y={190} s={0.92} f={f} />
+        {/* スポットライトの光の帯 (#2と同じ円すい形) */}
+        <polygon points={`870,-40 1050,-40 1420,900 500,900`} fill="#FFF3C4" opacity={0.17 * lightT} />
+        <polygon points={`905,-40 1015,-40 1310,900 610,900`} fill="#FFF3C4" opacity={0.14 * lightT} />
+        {/* 床のあかりだまり */}
+        <ellipse cx={960} cy={880} rx={470} ry={60} fill="#FFF3C4" opacity={0.3 * lightT} />
+        <g filter="url(#wobble)" opacity={lightT}>
+          {/* 接地の影 (お辞儀で先端側へ少し伸びる) */}
+          <ellipse cx={960 + bowA * 14} cy={872} rx={260 + bowA * 10} ry={26} fill={KRP.ink} opacity={0.3} />
+          {/* 自販機 (センター)。底辺中央を軸に右へペコリ (左上のスタンプと反対側へ) */}
+          <g transform={`rotate(${bowA} 960 866)`}>
+            <Jihanki x={780} y={240} s={1.0} f={f} />
+          </g>
         </g>
       </svg>
-      {st && <Stamp x={520} y={300} text="2000年もの" size={64} />}
-      <LabelPill x={960} y={966} centerX text="いまも現役で働いている、最古の発明の子孫" />
+      {st && <Stamp x={260} y={270} text="2000年もの" size={64} />}
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1874,7 +1931,6 @@ const SceneArigatoYomichi: React.FC<{ f: number }> = ({ f }) => (
           opacity={0.1 + 0.1 * Math.sin(f / 26)} />
       </g>
     </svg>
-    <LabelPill x={960} y={966} centerX text="最後までご覧いただき、ありがとうございました" />
     <J2Badge />
     <Atmosphere f={f} dark />
   </AbsoluteFill>

@@ -413,6 +413,59 @@ const SceneBookSleep: React.FC<{ f: number }> = ({ f }) => {
               })}
             </g>
           )}
+          {/* v2修正: 左右に「ルネサンスだ」と分かる装飾 (本が開くと同時に現れる) */}
+          {!closed && (
+            <g opacity={openT}>
+              {/* 左: 金の額縁の肖像画 (モナリザ風) */}
+              <g transform={`translate(265 470) scale(${0.8 + 0.2 * openT})`}>
+                <rect x={-135} y={-175} width={270} height={350} rx={10} fill="#D9A62E" stroke={KRP.ink} strokeWidth={8} />
+                <rect x={-121} y={-161} width={242} height={322} rx={8} fill="none" stroke="#8F6B2A" strokeWidth={6} />
+                <rect x={-104} y={-144} width={208} height={288} rx={6} fill="#5E7055" stroke={KRP.ink} strokeWidth={5} />
+                {/* 人物: 長い髪・組んだ手 */}
+                <path d="M -58 144 Q -50 24 0 -14 Q 50 24 58 144 Z" fill="#6B4F3A" stroke={KRP.ink} strokeWidth={4.5} />
+                <circle cx={0} cy={-58} r={36} fill="#EFD3B2" stroke={KRP.ink} strokeWidth={4.5} />
+                <path d="M -36 -54 Q -46 -112 0 -110 Q 46 -112 36 -54 Q 36 20 24 42 L 14 -30 Q 18 -84 0 -84 Q -18 -84 -14 -30 L -24 42 Q -36 20 -36 -54 Z"
+                  fill="#5A4632" stroke={KRP.ink} strokeWidth={4} />
+                <circle cx={-12} cy={-62} r={3.5} fill={KRP.ink} />
+                <circle cx={12} cy={-62} r={3.5} fill={KRP.ink} />
+                <path d="M -11 -42 q 11 9 22 0" fill="none" stroke={KRP.ink} strokeWidth={3.5} strokeLinecap="round" />
+                <ellipse cx={0} cy={104} rx={42} ry={16} fill="#EFD3B2" stroke={KRP.ink} strokeWidth={4} />
+              </g>
+              {/* 右: 大理石の彫像 (台座つき) */}
+              <g transform="translate(1655 790)">
+                <rect x={-116} y={-130} width={232} height={130} fill="#DDD5C4" stroke={KRP.ink} strokeWidth={6} />
+                <rect x={-132} y={-154} width={264} height={26} rx={6} fill="#CCC2AC" stroke={KRP.ink} strokeWidth={5} />
+                <g fill={KRP.white} stroke={KRP.ink} strokeWidth={5}>
+                  <rect x={-36} y={-280} width={28} height={128} rx={13} />
+                  <rect x={8} y={-280} width={28} height={128} rx={13} />
+                  <rect x={-46} y={-384} width={92} height={116} rx={22} />
+                  <rect x={-80} y={-378} width={26} height={94} rx={13} />
+                  <rect x={50} y={-372} width={26} height={62} rx={13} transform="rotate(-42 63 -341)" />
+                  <circle cx={0} cy={-416} r={36} />
+                  {/* 月桂冠 */}
+                  <path d="M -36 -428 Q 0 -452 36 -428" fill="none" stroke={KRP.ink} strokeWidth={4} />
+                  <ellipse cx={-28} cy={-434} rx={10} ry={5} fill="#9CBB7A" strokeWidth={3} transform="rotate(-30 -28 -434)" />
+                  <ellipse cx={0} cy={-444} rx={10} ry={5} fill="#9CBB7A" strokeWidth={3} />
+                  <ellipse cx={28} cy={-434} rx={10} ry={5} fill="#9CBB7A" strokeWidth={3} transform="rotate(30 28 -434)" />
+                </g>
+              </g>
+              {/* タイトル文字の左右に月桂樹の枝 */}
+              {[[600, 1], [1320, -1]].map(([lx, flip], i) => (
+                <g key={i} transform={`translate(${lx} 236) scale(${flip} 1)`}>
+                  <path d="M 0 40 Q -34 0 -18 -46" fill="none" stroke="#7BA05B" strokeWidth={6} strokeLinecap="round" />
+                  {[0.15, 0.4, 0.65, 0.9].map((tt, j) => {
+                    const bx = -tt * 26, by = 40 - tt * 84;
+                    return (
+                      <g key={j}>
+                        <ellipse cx={bx - 14} cy={by} rx={13} ry={6} fill="#9CBB7A" stroke={KRP.ink} strokeWidth={2.5} transform={`rotate(-34 ${bx - 14} ${by})`} />
+                        <ellipse cx={bx + 10} cy={by - 8} rx={13} ry={6} fill="#9CBB7A" stroke={KRP.ink} strokeWidth={2.5} transform={`rotate(24 ${bx + 10} ${by - 8})`} />
+                      </g>
+                    );
+                  })}
+                </g>
+              ))}
+            </g>
+          )}
         </g>
       </svg>
       {/* 年号カウント */}
@@ -850,34 +903,79 @@ const SceneScale: React.FC<{ f: number }> = ({ f }) => (
   </AbsoluteFill>
 );
 
-// 40: 同上に寄り+しおりマーク (伏線)
+// 40: 劇場の幕から良心箱がひょこっと「顔を出す」(伏線。#2のスポットライトと対になる構図)
 const SceneScaleMark: React.FC<{ f: number }> = ({ f }) => {
-  const bmT = pop(seg(f, 18, 36));
+  // 幕から出てくる動き: ひょこっ (行き過ぎて戻る)
+  const peekT = easeOut(seg(f, 20, 44));
+  const over = Math.sin(Math.min(1, seg(f, 20, 56)) * Math.PI) * 0.12; // 行き過ぎぶん
+  const slide = (peekT + over) * 400; // 右幕の裏から左へ
+  const lean = -(peekT + over) * 14; // 中央へ傾いて覗き込む
+  const bob = peekT >= 1 ? Math.sin((f - 56) / 9) * 7 : 0; // 出きった後ゆらゆら
+  const sparkT = pop(seg(f, 48, 64));
   return (
-    <AbsoluteFill style={{ background: KRP.paper }}>
+    <AbsoluteFill style={{ background: "#241F2B" }}>
       <svg width={W} height={H} style={abs}>
         <WobbleDefs seed={100} />
-        <g transform={`translate(${W / 2} ${H / 2}) scale(1.22) translate(${-W / 2} ${-H / 2 - 40})`}>
-          <g filter="url(#wobbleSoft)">
-            <rect x={-200} y={820} width={W + 400} height={400} fill={KRP.floor} />
-            <line x1={-200} y1={820} x2={W + 200} y2={820} stroke={KRP.ink} strokeWidth={5} />
-          </g>
-          <g filter="url(#wobble)">
-            <ScaleDiagram f={f} />
-          </g>
+        {/* 舞台床 */}
+        <g filter="url(#wobbleSoft)">
+          <rect x={0} y={820} width={W} height={H - 820} fill="#6E5940" />
+          <line x1={0} y1={820} x2={W} y2={820} stroke={KRP.ink} strokeWidth={5} />
+          {[320, 760, 1200, 1640].map((lx, i) => (
+            <line key={i} x1={lx} y1={830} x2={lx - 60} y2={H} stroke={KRP.ink} strokeWidth={3} opacity={0.25} />
+          ))}
         </g>
-        {/* しおり (右上からペタッ) */}
+        {/* スポットライト (幕から顔を出す箱のあたりを照らす) */}
+        <g filter="url(#wobbleSoft)">
+          <polygon points="1060,-40 1180,-40 1640,860 960,860" fill="#FFF3C8" opacity={0.14} />
+          <ellipse cx={1300} cy={845} rx={380} ry={46} fill="#FFF3C8" opacity={0.22} />
+        </g>
+        {/* 良心箱: 右の幕の裏からひょこっ (幕より先に描いて、幕で隠す) */}
         <g filter="url(#wobble)">
-          {bmT > 0.01 && (
-            <g transform={`translate(1560 ${-240 + bmT * 240})`}>
-              <path d="M -46 0 L 46 0 L 46 240 L 0 196 L -46 240 Z" fill={KRP.red} stroke={KRP.ink} strokeWidth={6} />
-              <text x={0} y={92} fontFamily={FONT} fontWeight={900} fontSize={38} fill={KRP.cream}
-                textAnchor="middle" writing-mode="tb">しおり</text>
+          {/* 足元の影 (床に接していることを示す) */}
+          {peekT > 0.1 && (
+            <ellipse cx={1920 - slide - 40} cy={836} rx={220 * peekT} ry={20} fill={KRP.ink} opacity={0.22 * peekT} />
+          )}
+          <g transform={`translate(${1920 - slide} ${828 + bob}) rotate(${lean} 150 0)`}>
+            <HonourBox x={0} y={0} s={1.15} />
+          </g>
+          {/* 出てきた瞬間のキラッ (箱の左上から放射) */}
+          {sparkT > 0.01 && (
+            <g opacity={sparkT} transform={`translate(${1920 - slide - 260} 540) scale(${0.7 + sparkT * 0.3})`}>
+              {[150, 195, 240].map((a, i) => (
+                <line key={i}
+                  x1={Math.cos((a * Math.PI) / 180) * 24} y1={Math.sin((a * Math.PI) / 180) * 24}
+                  x2={Math.cos((a * Math.PI) / 180) * 72} y2={Math.sin((a * Math.PI) / 180) * 72}
+                  stroke="#FFF3C8" strokeWidth={8} strokeLinecap="round" />
+              ))}
             </g>
           )}
         </g>
+        {/* 劇場の幕 (左右+上のひだ幕) */}
+        <g filter="url(#wobble)">
+          {/* 右幕 (箱を隠す側) */}
+          <rect x={1600} y={0} width={320} height={900} fill={KRP.red} stroke={KRP.ink} strokeWidth={6} />
+          {[1650, 1710, 1770, 1830].map((cx, i) => (
+            <path key={i} d={`M ${cx} 10 Q ${cx + 14} 450 ${cx - 6} 880`} stroke="#8E2F2A" strokeWidth={10} fill="none" opacity={0.8} />
+          ))}
+          <path d="M 1600 880 Q 1760 930 1920 880 L 1920 905 Q 1760 955 1600 905 Z" fill="#8E2F2A" stroke={KRP.ink} strokeWidth={5} />
+          {/* 左幕 */}
+          <rect x={0} y={0} width={320} height={900} fill={KRP.red} stroke={KRP.ink} strokeWidth={6} />
+          {[90, 150, 210, 270].map((cx, i) => (
+            <path key={i} d={`M ${cx} 10 Q ${cx - 14} 450 ${cx + 6} 880`} stroke="#8E2F2A" strokeWidth={10} fill="none" opacity={0.8} />
+          ))}
+          <path d="M 0 880 Q 160 930 320 880 L 320 905 Q 160 955 0 905 Z" fill="#8E2F2A" stroke={KRP.ink} strokeWidth={5} />
+          {/* 上のひだ幕 (スカラップ) */}
+          <rect x={0} y={0} width={W} height={110} fill={KRP.red} stroke={KRP.ink} strokeWidth={6} />
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+            <path key={i} d={`M ${i * 240} 110 Q ${i * 240 + 120} 200 ${(i + 1) * 240} 110 Z`}
+              fill={KRP.red} stroke={KRP.ink} strokeWidth={6} />
+          ))}
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+            <circle key={i} cx={i * 240 + 120} cy={158} r={14} fill={KRP.brass} stroke={KRP.ink} strokeWidth={4} />
+          ))}
+        </g>
       </svg>
-      {f > 44 && <LabelPill x={1420} y={330} text="最後に、もう一度" size={34} color={KRP.red} centerX />}
+      {f > 60 && <LabelPill x={700} y={330} text="最後に、もう一度" size={38} color={KRP.red} centerX />}
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1158,10 +1256,30 @@ const SceneBookVendo: React.FC<{ f: number }> = ({ f }) => {
 };
 
 // 46: 法律書の壁に機械サイズの穴。カーライルがひょこっ
+// 本の自販機のミニ版 (#45の木の筐体を流用)
+const MiniBookVendo: React.FC<{ x: number; y: number; w?: number; h?: number }> = ({ x, y, w = 400, h = 510 }) => (
+  <g transform={`translate(${x} ${y})`}>
+    <rect x={0} y={0} width={w} height={h} rx={16} fill="#8F6B44" stroke={KRP.ink} strokeWidth={7} />
+    <rect x={w * 0.08} y={h * 0.06} width={w * 0.84} height={62} rx={9} fill="#4E5A48" stroke={KRP.ink} strokeWidth={5.5} />
+    <text x={w / 2} y={h * 0.06 + 44} fontFamily={FONT} fontWeight={900} fontSize={36} fill={KRP.cream}
+      textAnchor="middle" letterSpacing={6}>BOOKS</text>
+    <rect x={w * 0.1} y={h * 0.24} width={w * 0.47} height={140} rx={9} fill="#D8D2C0" stroke={KRP.ink} strokeWidth={5} />
+    {[0, 1, 2].map((i) => (
+      <rect key={i} x={w * 0.14} y={h * 0.24 + 13 + i * 38} width={w * 0.38} height={30} rx={4}
+        fill={i % 2 ? "#56688C" : "#A8653E"} stroke={KRP.ink} strokeWidth={3.5} />
+    ))}
+    <rect x={w * 0.15} y={h * 0.76} width={w * 0.7} height={74} rx={10} fill="#3B332C" stroke={KRP.ink} strokeWidth={5} />
+    <g transform={`translate(${w * 0.78} ${h * 0.38})`}>
+      <circle r={40} fill={KRP.brass} stroke={KRP.ink} strokeWidth={5} />
+      <circle r={8} fill={KRP.ink} />
+    </g>
+  </g>
+);
+
+// 46: 法律の壁の機械形の穴に、機械がぴったり収まる (v2採用案)
 const SceneLawHole: React.FC<{ f: number }> = ({ f }) => {
-  const fc = f % 140;
-  const peek = pop(seg(fc, 24, 46)) * (1 - easeOut(seg(fc, 104, 124)));
-  const headY = 790 - peek * 150;
+  const slideT = easeOut(seg(f, 16, 50));
+  const mx = -480 + (795 - -480) * slideT;
   return (
     <AbsoluteFill style={{ background: KRP.paper }}>
       <svg width={W} height={H} style={abs}>
@@ -1199,28 +1317,23 @@ const SceneLawHole: React.FC<{ f: number }> = ({ f }) => {
             fill={KRP.paper} />
           <rect x={790} y={350} width={340} height={560} rx={10} fill="none" stroke={KRP.ink}
             strokeWidth={7} strokeDasharray="22 14" />
-          {/* 穴から覗くカーライルの頭 */}
-          {peek > 0.02 && (
-            <g transform={`translate(960 ${headY})`}>
-              <ellipse cx={0} cy={0} rx={50} ry={60} fill={KRP.white} stroke={KRP.ink} strokeWidth={5.5} />
-              <g fill="#4A4038">
-                {[[-44, -42], [-24, -56], [0, -62], [24, -56], [44, -42]].map(([hx, hy], i) => (
-                  <circle key={i} cx={hx} cy={hy} r={15} />
-                ))}
-              </g>
-              <g fill="none" stroke={KRP.ink} strokeWidth={4.5}>
-                <circle cx={-20} cy={4} r={18} />
-                <circle cx={20} cy={4} r={18} />
-                <line x1={-2} y1={0} x2={2} y2={0} />
-              </g>
-              <circle cx={-20} cy={4} r={6} fill={KRP.ink} />
-              <circle cx={20} cy={4} r={6} fill={KRP.ink} />
-              <path d="M -11 38 Q 0 48 11 38" fill="none" stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round" />
-            </g>
+          {/* 機械が左からスーッと来て、穴にぴったり収まる */}
+          <g transform={`translate(${mx} 355)`}>
+            <MiniBookVendo x={0} y={0} w={330} h={548} />
+          </g>
+          {/* 手前: ニヤリと案内するカーライルと、「？」の役人 */}
+          <TownPerson x={1440} y={1062} s={0.95} role="carlile" f={f} phase={3} face="smile" gaze={[-7, -2]} hideArm="left" />
+          <line x1={1372} y1={912} x2={1222} y2={812} stroke="#56688C" strokeWidth={21} strokeLinecap="round" />
+          <circle cx={1222} cy={812} r={14} fill={KRP.white} stroke={KRP.ink} strokeWidth={4.5} />
+          <TownPerson x={330} y={1062} s={0.95} role="tophat" f={f} phase={1} face="worried" gaze={[7, -2]} />
+          {f > 60 && (
+            <text x={430} y={720} fontFamily={FONT} fontWeight={900} fontSize={110} fill={KRP.red}
+              textAnchor="middle" transform="rotate(8 430 720)">？</text>
           )}
         </g>
       </svg>
       <LabelPill x={960} y={210} text="法律の壁に、機械サイズの穴" size={38} centerX />
+      {f > 70 && <LabelPill x={1420} y={300} text="機械なら、通れる" color={KRP.red} size={36} centerX />}
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2109,7 +2222,7 @@ const SceneHeronCompare: React.FC<{ f: number }> = ({ f }) => {
       </svg>
       <LabelPill x={480} y={150} text="紀元1世紀 ヘロンの壺" size={34} centerX />
       <LabelPill x={1440} y={150} text="1883年 はがき自販機" size={34} centerX />
-      <LabelPill x={960} y={960} text="主役は コインの重さ" size={40} color={KRP.red} centerX />
+      <LabelPill x={960} y={170} text="主役は コインの重さ" size={40} color={KRP.red} centerX />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2158,7 +2271,6 @@ const SceneMapSpread: React.FC<{ f: number }> = ({ f }) => (
         <LondonMapBoard f={f} count={10} interval={9} />
       </g>
     </svg>
-    <LabelPill x={960} y={975} text="駅や郵便局に、どんどん" size={38} centerX />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -2190,7 +2302,6 @@ const SceneTokoroga: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      {f > 34 && <LabelPill x={960} y={880} text="ところが、です" size={46} centerX />}
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -2323,7 +2434,7 @@ const SceneMapSpread2: React.FC<{ f: number }> = ({ f }) => (
         <LondonMapBoard f={f} count={24} interval={4} start={12} />
       </g>
     </svg>
-    <LabelPill x={960} y={975} text="便利さは止まらない" size={38} centerX />
+    <LabelPill x={960} y={170} text="便利さは止まらない" size={38} centerX />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -2381,53 +2492,66 @@ const SceneToNY: React.FC<{ f: number }> = ({ f }) => {
 
 // 68: ニューヨーク高架鉄道の駅とガム自販機
 const SceneNYStation: React.FC<{ f: number }> = ({ f }) => {
-  const tx = -800 + ((f * 18) % (W + 1600));
+  // v2修正: カメラをホームの高さに寄せたシンプルな絵。
+  // 前半=駅の全景を列車が1回通過 / 後半=カメラが自販機にゆっくりズーム
+  const tx = -820 + f * 24; // 1回だけ通過 (f≈148で画面から抜ける)
+  const zoomT = easeOut(seg(f, 118, 168));
+  const zoom = 1 + zoomT * 0.9; // 最大1.9倍。中心は自販機
   return (
     <AbsoluteFill style={{ background: KRP.paperCool }}>
       <svg width={W} height={H} style={abs}>
         <WobbleDefs seed={129} />
-        <g filter="url(#wobbleSoft)">
-          {/* 奥のビル群 */}
-          {[[60, 260, 240], [360, 180, 300], [660, 320, 220], [980, 200, 280], [1300, 300, 260], [1620, 220, 240]].map((b, i) => (
-            <g key={i}>
-              <rect x={b[0]} y={b[1]} width={b[2]} height={900 - b[1]} fill={i % 2 ? "#B8AD9C" : "#A59A88"} stroke={KRP.ink} strokeWidth={5} />
-              {[0, 1, 2].map((r2) => (
-                [0, 1].map((c2) => (
-                  <rect key={`${r2}-${c2}`} x={b[0] + 36 + c2 * (b[2] / 2 - 20)} y={b[1] + 50 + r2 * 100}
-                    width={48} height={62} rx={5} fill={KRP.yellow} opacity={0.75} stroke={KRP.ink} strokeWidth={3} />
-                ))
-              ))}
-            </g>
+        <g transform={`translate(960 700) scale(${zoom}) translate(-960 -700)`}>
+        {/* 遠くのビル影 (薄く・窓なし。高いところにいる感じだけ出す) */}
+        <g filter="url(#wobbleSoft)" opacity={0.35}>
+          {[[10, 560, 160], [260, 470, 230], [430, 380, 300], [830, 500, 230], [1160, 410, 280], [1550, 480, 290]].map((b, i) => (
+            <rect key={i} x={b[0]} y={b[1]} width={b[2]} height={(i === 0 ? 912 : 760) - b[1]} fill="#AFA593" stroke={KRP.ink} strokeWidth={4} />
           ))}
         </g>
-        {/* 高架の列車 */}
-        <g filter="url(#wobble)">
-          <ElTrain x={tx} y={432} f={f} s={0.82} />
-        </g>
+        {/* 隣の線路 (ホームの奥) を走る列車 */}
         <g filter="url(#wobbleSoft)">
-          {/* 高架橋 */}
-          <rect x={0} y={432} width={W} height={46} fill="#6E6256" stroke={KRP.ink} strokeWidth={6} />
-          {Array.from({ length: 10 }).map((_, i) => (
-            <path key={i} d={`M ${i * 200} 478 L ${i * 200 + 100} 432 L ${i * 200 + 200} 478 Z`}
-              fill="none" stroke={KRP.ink} strokeWidth={4.5} opacity={0.7} />
-          ))}
-          <line x1={0} y1={478} x2={W} y2={478} stroke={KRP.ink} strokeWidth={5} />
-          {/* 柱 */}
-          {[240, 760, 1280, 1800].map((px2) => (
-            <g key={px2}>
-              <rect x={px2 - 26} y={478} width={52} height={462} fill="#6E6256" stroke={KRP.ink} strokeWidth={5.5} />
-              <path d={`M ${px2 - 70} 940 L ${px2 + 70} 940 L ${px2 + 44} 900 L ${px2 - 44} 900 Z`} fill="#6E6256" stroke={KRP.ink} strokeWidth={5} />
-            </g>
-          ))}
-          {/* 道 */}
-          <rect x={0} y={940} width={W} height={140} fill={KRP.floor} />
-          <line x1={0} y1={940} x2={W} y2={940} stroke={KRP.ink} strokeWidth={5} />
+          <line x1={0} y1={796} x2={W} y2={796} stroke={KRP.ink} strokeWidth={5} opacity={0.5} />
         </g>
         <g filter="url(#wobble)">
-          <GumMachine x={1000} y={940} s={1.15} />
+          <ElTrain x={tx} y={806} f={f} s={2.1} />
+        </g>
+        {/* 左端: ホームの切れ目。高架の桁+支柱+はるか下の道路 (=高い場所にいる) */}
+        <g filter="url(#wobbleSoft)">
+          {/* 道路 (下に見える) */}
+          <rect x={0} y={918} width={235} height={162} fill={KRP.floor} opacity={0.8} />
+          <line x1={0} y1={918} x2={235} y2={918} stroke={KRP.ink} strokeWidth={4} />
+          {/* 高架の桁 (線路を支える) + 支柱 */}
+          <rect x={0} y={800} width={235} height={56} fill="#6E6256" stroke={KRP.ink} strokeWidth={5.5} />
+          <rect x={76} y={856} width={44} height={60} fill="#6E6256" stroke={KRP.ink} strokeWidth={5} />
+          <path d="M 42 918 L 154 918 L 134 892 L 62 892 Z" fill="#6E6256" stroke={KRP.ink} strokeWidth={4.5} />
+        </g>
+        {/* 道を歩く小さな人 (遠近感) */}
+        <g filter="url(#wobble)">
+          <TownPerson x={190} y={914} s={0.17} role="tophat" f={f} phase={9} />
+        </g>
+        {/* ホームの床 (左端だけ切れて、下が見える) */}
+        <g filter="url(#wobbleSoft)">
+          <rect x={230} y={820} width={W - 230} height={H - 820} fill={KRP.floor} />
+          <line x1={230} y1={820} x2={W} y2={820} stroke={KRP.ink} strokeWidth={5} />
+          <line x1={230} y1={820} x2={230} y2={1080} stroke={KRP.ink} strokeWidth={5} />
+        </g>
+        {/* ホームの屋根 (上にひさしだけ) + 両端の柱 */}
+        <g filter="url(#wobbleSoft)">
+          {[240, 1680].map((px2) => (
+            <rect key={px2} x={px2 - 12} y={272} width={24} height={548} fill="#6E6256" stroke={KRP.ink} strokeWidth={5} />
+          ))}
+          <polygon points="120,278 1800,278 1770,218 150,218" fill="#8E3630" stroke={KRP.ink} strokeWidth={6} />
+        </g>
+        {/* 待つ人たち + ガム自販機 (人の背たけより少し低い=正しい大きさ) */}
+        <g filter="url(#wobble)">
+          <TownPerson x={640} y={820} s={1.0} role="tophat" f={f} phase={2} gaze={[5, -2]} />
+          <GumMachine x={960} y={820} s={0.52} />
+          <TownPerson x={1300} y={820} s={0.92} role="newsboy" f={f} phase={6} gaze={[-6, -2]} />
+        </g>
         </g>
       </svg>
       <LabelPill x={960} y={140} text="ニューヨーク 高架鉄道の駅" size={40} centerX />
+      {zoomT > 0.9 && <LabelPill x={960} y={310} text="ガムの自販機" size={38} color={KRP.red} centerX />}
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2481,7 +2605,6 @@ const SceneNewsboyGum: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={150} text="電車を待つ数分の、ひまつぶし" size={38} centerX />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>

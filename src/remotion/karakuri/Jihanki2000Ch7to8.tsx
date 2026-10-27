@@ -622,7 +622,6 @@ const SceneWake1957: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="目を覚ましたのは、1957年" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -666,7 +665,6 @@ const SceneNagoyaFair: React.FC<{ f: number }> = ({ f }) => (
         <ShowaPerson x={872} y={895} s={0.96} role="girl" f={f} phase={3} face="surprised" gaze={[7, -3]} />
       </g>
     </svg>
-    <LabelPill x={960} y={968} centerX text="見たこともない機械が現れた" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -699,7 +697,7 @@ const SceneFountainAll: React.FC<{ f: number }> = ({ f }) => {
           <polygon points="1004,585 1032,567 1036,596" fill={KRP.red} />
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="10円玉を入れると…" />
+      <LabelPill x={960} y={170} centerX text="10円玉を入れると…" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -746,7 +744,6 @@ const SceneCupDrop: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={960} centerX text="まず、紙コップがストン" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -796,7 +793,7 @@ const ScenePourStop: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="1杯ぶんだけで、ピタリ" />
+      <LabelPill x={960} y={170} centerX text="1杯ぶんだけで、ピタリ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -871,7 +868,7 @@ const SceneHeronValve: React.FC<{ f: number }> = ({ f }) => {
       </svg>
       <LabelPill x={150} y={210} text="2000年前 ヘロンのシーソー" size={30} />
       <LabelPill x={1240} y={210} text="いま 電気の弁" size={30} />
-      <LabelPill x={960} y={966} centerX text={val > 0.5 ? "開く" : "閉じる"} color={val > 0.5 ? KRP.red : KRP.ink} />
+      <LabelPill x={960} y={170} centerX text={val > 0.5 ? "開く" : "閉じる"} color={val > 0.5 ? KRP.red : KRP.ink} />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -893,7 +890,7 @@ const SceneGlassFountain: React.FC<{ f: number }> = ({ f }) => (
         <Sparkle x={1420} y={330} r={26} f={f} phase={3} />
       </g>
     </svg>
-    <LabelPill x={960} y={1000} centerX text="てっぺんで、オレンジの噴水" />
+    <LabelPill x={960} y={170} centerX text="てっぺんで、オレンジの噴水" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -916,7 +913,6 @@ const SceneMieruNakami: React.FC<{ f: number }> = ({ f }) => (
         <ShowaPerson x={1430} y={898} s={1.08} role="mother" f={f} phase={2} face="smile" gaze={[-6, -3]} />
       </g>
     </svg>
-    <LabelPill x={960} y={968} centerX text="中身が、まるごと見える" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -944,7 +940,6 @@ const SceneFountainLine: React.FC<{ f: number }> = ({ f }) => {
           ))}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="子どもも大人も、行列" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -971,7 +966,7 @@ const SceneDepartSpread: React.FC<{ f: number }> = ({ f }) => {
           </JapanMapCard>
         </g>
       </svg>
-      <LabelPill x={960} y={980} centerX text="デパートの屋上や商店街へ" />
+      <LabelPill x={960} y={170} centerX text="デパートの屋上や商店街へ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1059,7 +1054,6 @@ const SceneFirstFireworks: React.FC<{ f: number }> = ({ f }) => {
           <Burst cx={490} cy={250} t={seg(f, 100, 122)} color="#E89AB0" />
         </g>
       </svg>
-      <LabelPill x={960} y={980} centerX text="自販機ブーム、最初の花火" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1091,7 +1085,6 @@ const SceneButWeak: React.FC<{ f: number }> = ({ f }) => {
         </g>
         <rect x={0} y={0} width={W} height={H} fill="#3B332C" opacity={0.08 * seg(f, 20, 60)} />
       </svg>
-      <LabelPill x={960} y={968} centerX text="ただしこの噴水、弱点が…" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1140,7 +1133,7 @@ const SceneJunkanArrows: React.FC<{ f: number }> = ({ f }) => {
           })}
         </g>
       </svg>
-      <LabelPill x={960} y={974} centerX text="同じジュースが、ぐるぐる循環" color={KRP.red} />
+      <LabelPill x={960} y={170} centerX text="同じジュースが、ぐるぐる循環" color={KRP.red} />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1162,7 +1155,7 @@ const SceneFountainFade: React.FC<{ f: number }> = ({ f }) => {
         </g>
         <rect x={0} y={0} width={W} height={H} fill="#2A2420" opacity={0.3 * seg(f, 40, 110)} />
       </svg>
-      <LabelPill x={960} y={968} centerX text="噴水は、やがて街から消えた" />
+      <LabelPill x={960} y={170} centerX text="噴水は、やがて街から消えた" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1186,7 +1179,7 @@ const SceneFunRemains: React.FC<{ f: number }> = ({ f }) => (
         <Sparkle x={1300} y={440} r={18} f={f} phase={4} />
       </g>
     </svg>
-    <LabelPill x={960} y={968} centerX text="「買う楽しさ」は、残った" />
+    <LabelPill x={960} y={170} centerX text="「買う楽しさ」は、残った" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -1250,50 +1243,101 @@ const SceneCh8Door: React.FC<{ f: number }> = ({ f }) => {
 
 // ===== 145. 高度経済成長 (ビルが伸びる+クレーン) =====
 const SceneKodoSeicho: React.FC<{ f: number }> = ({ f }) => {
-  const grow = easeOut(seg(f, 10, 90));
-  const bH = 180 + grow * 420;
+  // v2修正: ビル群が時間差でにょきにょき建ち上がり、窓が下から灯っていく。
+  // 奥には東京タワー (1958年完成=時代の象徴) も立ち上がる
+  const GROUND = 880;
+  // [x, 幅, 最終高さ, 建ちはじめf, 色番号]
+  const BLDGS: [number, number, number, number, number][] = [
+    [110, 220, 420, 8, 0],
+    [400, 180, 560, 26, 1],
+    [640, 250, 330, 44, 0],
+    [950, 300, 620, 62, 1],
+    [1320, 200, 460, 80, 0],
+    [1590, 240, 370, 98, 1],
+  ];
+  const towerT = easeOut(seg(f, 70, 140)); // 東京タワー (奥) はゆっくり
   return (
     <AbsoluteFill style={{ background: KRP.paper }}>
       <svg width={W} height={H} style={abs}>
         <WobbleDefs seed={218} />
         <g filter="url(#wobbleSoft)">
-          <circle cx={300} cy={220} r={110} fill={KRP.yellow} opacity={0.85} stroke={KRP.ink} strokeWidth={5} />
-          <rect x={0} y={880} width={W} height={200} fill={KRP.floor} />
-          {/* うしろのビル街 */}
-          <g fill={KRP.blueSoft} stroke={KRP.ink} strokeWidth={5}>
-            <rect x={120} y={520} width={240} height={360} />
-            <rect x={430} y={610} width={200} height={270} />
-            <rect x={1560} y={560} width={260} height={320} />
-          </g>
-        </g>
-        <g filter="url(#wobble)">
-          {/* 建設中のビル (伸びる) */}
-          <rect x={820} y={880 - bH} width={360} height={bH} fill={KRP.cream} stroke={KRP.ink} strokeWidth={7} />
-          <g stroke={KRP.ink} strokeWidth={3.5} opacity={0.5}>
-            {Array.from({ length: 6 }, (_, i) => {
-              const gy = 880 - (bH / 6) * (i + 1);
-              return <line key={i} x1={820} y1={gy} x2={1180} y2={gy} />;
-            })}
-            <line x1={940} y1={880 - bH} x2={940} y2={880} />
-            <line x1={1060} y1={880 - bH} x2={1060} y2={880} />
-          </g>
-          {/* クレーン */}
-          <g transform="translate(1400 880)">
-            <rect x={-22} y={-620} width={44} height={620} fill={KRP.orange} stroke={KRP.ink} strokeWidth={5.5} />
-            <g stroke={KRP.ink} strokeWidth={3} opacity={0.55}>
-              {Array.from({ length: 7 }, (_, i) => (
-                <line key={i} x1={-22} y1={-80 - i * 84} x2={22} y2={-164 - i * 84} />
+          <circle cx={290} cy={210} r={110} fill={KRP.yellow} opacity={0.85} stroke={KRP.ink} strokeWidth={5} />
+          {/* 東京タワー (奥・シルエット気味)。下からにょきっ */}
+          {towerT > 0.01 && (
+            <g transform={`translate(830 ${GROUND}) scale(0.85 ${towerT * 0.85})`} opacity={0.75}>
+              <polygon points="-150,0 -44,-430 44,-430 150,0" fill="#C65B3C" stroke={KRP.ink} strokeWidth={5} />
+              {/* 脚の間のアーチ */}
+              <path d={`M -116 0 Q 0 -150 116 0 Z`} fill={KRP.paper} stroke={KRP.ink} strokeWidth={4.5} />
+              {/* 展望台 */}
+              <rect x={-62} y={-462} width={124} height={34} rx={8} fill="#E8E2D4" stroke={KRP.ink} strokeWidth={4.5} />
+              {/* 上部+アンテナ */}
+              <polygon points="-40,-462 -14,-650 14,-650 40,-462" fill="#C65B3C" stroke={KRP.ink} strokeWidth={4.5} />
+              <line x1={0} y1={-650} x2={0} y2={-740} stroke={KRP.ink} strokeWidth={7} />
+              {/* 横げた */}
+              {[-120, -220, -320, -400].map((ty) => (
+                <line key={ty} x1={-150 * (-ty < 430 ? 1 + ty / 430 * 0.7 : 0.3)} y1={ty} x2={150 * (-ty < 430 ? 1 + ty / 430 * 0.7 : 0.3)} y2={ty}
+                  stroke={KRP.ink} strokeWidth={3.5} opacity={0.6} />
               ))}
             </g>
-            <g transform={`rotate(${Math.sin(f / 45) * 22} 0 -620)`}>
-              <rect x={-300} y={-642} width={420} height={30} fill={KRP.orange} stroke={KRP.ink} strokeWidth={5.5} />
-              <line x1={-280} y1={-612} x2={-280} y2={-430} stroke={KRP.ink} strokeWidth={4.5} />
-              <rect x={-316} y={-430} width={72} height={46} fill={KRP.silver} stroke={KRP.ink} strokeWidth={5} />
+          )}
+          <rect x={0} y={GROUND} width={W} height={H - GROUND} fill={KRP.floor} />
+          <line x1={0} y1={GROUND} x2={W} y2={GROUND} stroke={KRP.ink} strokeWidth={5} />
+        </g>
+        {/* ビル群 (時間差でにょきにょき) */}
+        <g filter="url(#wobble)">
+          {BLDGS.map(([bx, bw, bh, start, ci], bi) => {
+            const t = easeOut(seg(f, start, start + 46));
+            if (t < 0.01) return null;
+            const h = bh * t;
+            const done = t >= 0.99;
+            // 窓: 下の階から順に灯る (建った高さより下だけ)
+            const floors = Math.floor((bh - 50) / 90);
+            const cols = Math.max(2, Math.floor(bw / 90));
+            return (
+              <g key={bi}>
+                <rect x={bx} y={GROUND - h} width={bw} height={h}
+                  fill={ci ? KRP.cream : KRP.blueSoft} stroke={KRP.ink} strokeWidth={6.5} />
+                {/* 屋上のふち (完成したら) */}
+                {done && <rect x={bx - 8} y={GROUND - h - 14} width={bw + 16} height={14} rx={4}
+                  fill={ci ? "#D8CEB4" : "#9FB3C8"} stroke={KRP.ink} strokeWidth={4.5} />}
+                {Array.from({ length: floors }, (_, fi) => {
+                  const wy = GROUND - 70 - fi * 90;
+                  if (wy < GROUND - h + 26) return null; // まだ建っていない階
+                  return Array.from({ length: cols }, (_, c2) => (
+                    <rect key={`${fi}-${c2}`} x={bx + 24 + c2 * ((bw - 48 - 46) / Math.max(1, cols - 1))} y={wy}
+                      width={46} height={52} rx={5} fill={KRP.yellow} opacity={0.8} stroke={KRP.ink} strokeWidth={3.5} />
+                  ));
+                })}
+                {/* 建ちきった瞬間の土ぼこり */}
+                {(() => {
+                  const dustT = seg(f, start + 42, start + 62);
+                  if (dustT < 0.01 || dustT > 0.99) return null;
+                  return [0, 1, 2].map((d) => (
+                    <circle key={d} cx={bx + (d * bw) / 2} cy={GROUND - 8 - dustT * 26}
+                      r={14 + dustT * 18} fill="#D8D2C4" opacity={0.5 * (1 - dustT)} />
+                  ));
+                })()}
+              </g>
+            );
+          })}
+          {/* クレーン (いちばん高いビルの隣で作業中) */}
+          <g transform="translate(1270 880)">
+            <rect x={-20} y={-660} width={40} height={660} fill={KRP.orange} stroke={KRP.ink} strokeWidth={5.5} />
+            <g stroke={KRP.ink} strokeWidth={3} opacity={0.55}>
+              {Array.from({ length: 7 }, (_, i) => (
+                <line key={i} x1={-20} y1={-90 - i * 84} x2={20} y2={-174 - i * 84} />
+              ))}
+            </g>
+            <g transform={`rotate(${Math.sin(f / 45) * 20} 0 -660)`}>
+              <rect x={-290} y={-682} width={400} height={28} fill={KRP.orange} stroke={KRP.ink} strokeWidth={5.5} />
+              {/* フックで鉄骨を吊って運ぶ */}
+              <line x1={-264} y1={-654} x2={-264} y2={-470} stroke={KRP.ink} strokeWidth={4.5} />
+              <rect x={-316} y={-470} width={104} height={26} rx={6} fill={KRP.silver} stroke={KRP.ink} strokeWidth={5} />
             </g>
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="高度経済成長の、まっただ中" />
+      <LabelPill x={960} y={140} text="1960年代 高度経済成長" size={40} centerX />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1325,7 +1369,7 @@ const SceneCanJuice: React.FC<{ f: number }> = ({ f }) => {
           <Sparkle x={1170} y={600} r={26} f={f} phase={1} />
         </g>
       </svg>
-      <LabelPill x={960} y={990} centerX text="缶入り飲料、登場" />
+      <LabelPill x={960} y={170} centerX text="缶入り飲料、登場" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1356,7 +1400,6 @@ const Scene1967Spot: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={790} centerX text="決定的な出来事が、起きる" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1397,7 +1440,7 @@ const SceneNewCoins: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={910} centerX text="100円と50円が、新しくなった" />
+      <LabelPill x={960} y={170} centerX text="100円と50円が、新しくなった" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1440,7 +1483,7 @@ const SceneBillVsCoin: React.FC<{ f: number }> = ({ f }) => {
       </svg>
       <LabelPill x={330} y={210} text="お札 ヨレヨレ" size={32} />
       <LabelPill x={1300} y={210} text="コイン カチッ" size={32} color={KRP.red} />
-      <LabelPill x={960} y={952} centerX text="機械が扱いやすいのは、どっち？" />
+      <LabelPill x={960} y={170} centerX text="機械が扱いやすいのは、どっち？" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1488,7 +1531,6 @@ const ScenePocketKansei: React.FC<{ f: number }> = ({ f }) => {
           })}
         </g>
       </svg>
-      <LabelPill x={960} y={830} centerX text="ポケットの小銭で、買い物が完結" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1526,7 +1568,6 @@ const SceneMachiUmaru: React.FC<{ f: number }> = ({ f }) => (
         })}
       </g>
     </svg>
-    <LabelPill x={960} y={966} centerX text="ここから一気に、街を埋めていく" />
     <J2Badge />
     <Atmosphere f={f} dark />
   </AbsoluteFill>
@@ -1554,7 +1595,7 @@ const SceneSakerarenai: React.FC<{ f: number }> = ({ f }) => (
           opacity={0.5 + 0.3 * Math.sin(f / 13 + 2)}>？</text>
       </g>
     </svg>
-    <LabelPill x={960} y={966} centerX text="避けて通れない相手がいた" />
+    <LabelPill x={960} y={170} centerX text="避けて通れない相手がいた" />
     <J2Badge />
     <Atmosphere f={f} dark />
   </AbsoluteFill>
@@ -1597,7 +1638,7 @@ const SceneNiseCoin: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {f >= 30 && <Stamp x={1180} y={300} text="ニセ硬貨" size={72} />}
-      <LabelPill x={960} y={960} centerX text="台数とお金が増えるほど…" />
+      <LabelPill x={960} y={170} centerX text="台数とお金が増えるほど…" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1653,7 +1694,7 @@ const Scene80YearsMorph: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       <LabelPill x={340} y={110} text={t < 0.5 ? "80年前の木の仕掛け" : "いまのコインメック"} size={30} />
-      <LabelPill x={960} y={966} centerX text="80年で、大進化" />
+      <LabelPill x={960} y={170} centerX text="80年で、大進化" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1701,7 +1742,7 @@ const SceneCoinmechPos: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="入り口に、小さな検査装置" />
+      <LabelPill x={960} y={170} centerX text="入り口に、小さな検査装置" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1736,7 +1777,7 @@ const SceneCoinRail: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={966} centerX text="転がりながら、検査の前へ" />
+      <LabelPill x={960} y={170} centerX text="転がりながら、検査の前へ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1789,7 +1830,7 @@ const SceneSizeCheck: React.FC<{ f: number }> = ({ f }) => {
       </svg>
       <LabelPill x={400} y={810} text="直径" size={34} />
       <LabelPill x={1340} y={810} text="厚み" size={34} />
-      <LabelPill x={960} y={960} centerX text="まず、規格どおりかを測る" />
+      <LabelPill x={960} y={170} centerX text="まず、規格どおりかを測る" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1836,7 +1877,7 @@ const SceneSokkuriPass: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={960} centerX text="サイズそっくりだと、見抜けない" color={KRP.red} />
+      <LabelPill x={960} y={170} centerX text="サイズそっくりだと、見抜けない" color={KRP.red} />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1869,7 +1910,8 @@ const SceneZairyoBadge: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {f >= 10 && <Stamp x={560} y={200} text="材質チェック" size={76} />}
-      <LabelPill x={960} y={940} centerX text="いよいよ、本命の検査" />
+      {/* v3: 中央だと左の「材質チェック」スタンプ(x280-840)と重なる → 右の空きへ */}
+      <LabelPill x={1300} y={170} centerX text="いよいよ、本命の検査" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1907,7 +1949,6 @@ const SceneCoilSensor: React.FC<{ f: number }> = ({ f }) => (
         <Bolt x={1330} y={300} s={1.2} opacity={0.6 + 0.4 * Math.sin(f / 5)} />
       </g>
     </svg>
-    <LabelPill x={960} y={900} centerX text="正体は、電気を流したコイル" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -1938,7 +1979,7 @@ const SceneUzuDenryu: React.FC<{ f: number }> = ({ f }) => (
         <SwirlRings cx={680} cy={540} radii={[90, 150, 205]} f={f} speed={3} />
       </g>
     </svg>
-    <LabelPill x={960} y={930} centerX text="硬貨の中に「渦電流」が生まれる" />
+    <LabelPill x={960} y={170} centerX text="硬貨の中に「渦電流」が生まれる" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -1965,7 +2006,7 @@ const SceneUzuChigai: React.FC<{ f: number }> = ({ f }) => (
     </svg>
     <LabelPill x={330} y={790} text="100円 白銅" size={32} />
     <LabelPill x={1290} y={790} text="5円 黄銅" size={32} />
-    <LabelPill x={960} y={952} centerX text="渦のでき方が、まったく違う" />
+    <LabelPill x={960} y={170} centerX text="渦のでき方が、まったく違う" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -2005,7 +2046,7 @@ const SceneCoinLineup: React.FC<{ f: number }> = ({ f }) => {
           </div>
         ) : null;
       })}
-      <LabelPill x={960} y={930} centerX text="材質が、少しずつ違う" />
+      <LabelPill x={960} y={170} centerX text="材質が、少しずつ違う" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2045,7 +2086,7 @@ const SceneDenkiMe: React.FC<{ f: number }> = ({ f }) => {
             textSize={36} rotate={f * 7} />
         </g>
       </svg>
-      <LabelPill x={960} y={950} centerX text="目ではなく、電気の反応で見分ける" />
+      <LabelPill x={960} y={170} centerX text="目ではなく、電気の反応で見分ける" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2080,7 +2121,7 @@ const Scene500Warning: React.FC<{ f: number }> = ({ f }) => {
         </g>
         <rect x={0} y={0} width={W} height={H} fill={KRP.red} opacity={0.08 * flash} />
       </svg>
-      <LabelPill x={960} y={950} centerX text="ニセ500円が、大流行" color={KRP.red} />
+      <LabelPill x={960} y={170} centerX text="ニセ500円が、大流行" color={KRP.red} />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -2089,20 +2130,53 @@ const Scene500Warning: React.FC<{ f: number }> = ({ f }) => {
 
 // ===== 166. 2021年、500円玉は3層構造に進化 =====
 const Scene500ThreeLayers: React.FC<{ f: number }> = ({ f }) => {
+  // v3: 2000年の改鋳 (白銅→ニッケル黄銅。ニセ500円対策) を左に追加した2段構え。
+  // #165のニセ500円大流行 → まず2000年に素材チェンジ → 2021年に3層構造、の流れがつながるように。
   const layers: Array<{ y: number; fill: string; name: string; t0: number }> = [
-    { y: 660, fill: KRP.silver, name: "白銅", t0: 12 },
-    { y: 596, fill: KRP.copper, name: "銅", t0: 42 },
-    { y: 532, fill: KRP.silver, name: "白銅", t0: 72 },
+    { y: 700, fill: KRP.silver, name: "白銅", t0: 76 },
+    { y: 636, fill: KRP.copper, name: "銅", t0: 94 },
+    { y: 572, fill: KRP.silver, name: "白銅", t0: 112 },
   ];
-  const frontT = pop(seg(f, 104, 120));
+  const coin1T = pop(seg(f, 8, 22));   // 白銅コイン
+  const arrowT = seg(f, 24, 36);       // 矢印
+  const coin2T = pop(seg(f, 34, 48));  // ニッケル黄銅コイン
+  const frontT = pop(seg(f, 132, 148)); // 2021年の完成コイン
   return (
     <AbsoluteFill style={{ background: KRP.paper }}>
       <svg width={W} height={H} style={abs}>
         <WobbleDefs seed={239} />
         <g filter="url(#wobbleSoft)">
-          <rect x={120} y={200} width={1100} height={660} rx={22} fill={KRP.cream} stroke={KRP.ink} strokeWidth={7} />
+          {/* 左: 2000年の素材チェンジ */}
+          <rect x={110} y={240} width={740} height={570} rx={22} fill={KRP.cream} stroke={KRP.ink} strokeWidth={7} />
+          {/* 右: 2021年の3層構造 */}
+          <rect x={950} y={240} width={850} height={570} rx={22} fill={KRP.cream} stroke={KRP.ink} strokeWidth={7} />
         </g>
         <g filter="url(#wobble)">
+          {/* 白銅コイン (〜2000年) */}
+          {coin1T > 0.02 && (
+            <g transform={`translate(295 500) scale(${coin1T}) translate(-295 -500)`}>
+              <circle cx={295} cy={500} r={105} fill={KRP.silver} stroke={KRP.ink} strokeWidth={7} />
+              <circle cx={295} cy={500} r={78} fill="none" stroke={KRP.ink} strokeWidth={3} opacity={0.4} />
+              <text x={295} y={520} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={52}
+                fill={KRP.ink} opacity={0.75}>500</text>
+            </g>
+          )}
+          {/* 矢印 */}
+          {arrowT > 0.02 && (
+            <g opacity={arrowT}>
+              <line x1={418} y1={500} x2={512} y2={500} stroke={KRP.ink} strokeWidth={10} strokeLinecap="round" />
+              <polygon points="540,500 504,482 504,518" fill={KRP.ink} />
+            </g>
+          )}
+          {/* ニッケル黄銅コイン (2000年〜。金色っぽくなった) */}
+          {coin2T > 0.02 && (
+            <g transform={`translate(665 500) scale(${coin2T}) translate(-665 -500)`}>
+              <circle cx={665} cy={500} r={105} fill={KRP.brass} stroke={KRP.ink} strokeWidth={7} />
+              <circle cx={665} cy={500} r={78} fill="none" stroke={KRP.ink} strokeWidth={3} opacity={0.4} />
+              <text x={665} y={520} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={52}
+                fill={KRP.ink} opacity={0.75}>500</text>
+            </g>
+          )}
           {/* 真横から見た3層 (1枚ずつ重なる) */}
           {layers.map((L, i) => {
             const t = seg(f, L.t0, L.t0 + 16);
@@ -2110,33 +2184,42 @@ const Scene500ThreeLayers: React.FC<{ f: number }> = ({ f }) => {
             const yy = lerp(L.y - 240, L.y, easeOut(t));
             return (
               <g key={i} opacity={Math.min(t * 3, 1)}>
-                <rect x={410} y={yy} width={520} height={58} rx={20} fill={L.fill} stroke={KRP.ink} strokeWidth={7} />
+                <rect x={1010} y={yy} width={440} height={54} rx={18} fill={L.fill} stroke={KRP.ink} strokeWidth={7} />
               </g>
             );
           })}
         </g>
       </svg>
+      {/* 素材名 (コインの下) */}
+      {f >= 18 && <LabelPill x={295} y={640} centerX text="白銅" size={28} />}
+      {f >= 46 && <LabelPill x={665} y={640} centerX text="ニッケル黄銅" size={28} />}
+      {f >= 56 && <LabelPill x={480} y={726} centerX text="ニセ硬貨対策で素材チェンジ" size={26} color={KRP.red} />}
+      {/* 3層のラベル */}
       {layers.map((L, i) => {
         const t = seg(f, L.t0 + 10, L.t0 + 22);
         return t > 0.02 ? (
-          <div key={i} style={{ position: "absolute", left: 980, top: L.y - 4, opacity: t }}>
-            <LabelPill x={0} y={0} text={L.name} size={30} />
+          <div key={i} style={{ position: "absolute", left: 1480, top: L.y - 2, opacity: t }}>
+            <LabelPill x={0} y={0} text={L.name} size={28} />
           </div>
         ) : null;
       })}
+      {/* 2021年の完成コイン (外側ニッケル黄銅+中は3層) */}
       {frontT > 0.02 && (
         <svg width={W} height={H} style={abs}>
           <WobbleDefs seed={243} />
-          <g filter="url(#wobble)" transform={`translate(1550 530) scale(${frontT}) translate(-1550 -530)`}>
-            <circle cx={1550} cy={530} r={170} fill={KRP.gold} stroke={KRP.ink} strokeWidth={9} />
-            <circle cx={1550} cy={530} r={100} fill={KRP.silver} stroke={KRP.ink} strokeWidth={5} />
-            <text x={1550} y={556} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={72}
+          <g filter="url(#wobble)" transform={`translate(1640 420) scale(${frontT}) translate(-1640 -420)`}>
+            <circle cx={1640} cy={420} r={125} fill={KRP.gold} stroke={KRP.ink} strokeWidth={8} />
+            <circle cx={1640} cy={420} r={74} fill={KRP.silver} stroke={KRP.ink} strokeWidth={5} />
+            <text x={1640} y={440} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={54}
               fill={KRP.ink} opacity={0.8}>500</text>
           </g>
         </svg>
       )}
-      {f >= 118 && <Stamp x={1400} y={760} text="2021年" size={44} />}
-      <LabelPill x={960} y={950} centerX text="2種類の金属を重ねた、3層構造" />
+      {f >= 4 && <Stamp x={160} y={268} text="2000年" size={40} />}
+      {f >= 126 && <Stamp x={1000} y={268} text="2021年" size={40} />}
+      {/* 見出し (左右それぞれ) */}
+      <LabelPill x={480} y={170} centerX text="まず、素材をチェンジ" />
+      <LabelPill x={1375} y={170} centerX text="2種類の金属を重ねた、3層構造" size={34} />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -2198,7 +2281,7 @@ const SceneWoodVsMech: React.FC<{ f: number }> = ({ f }) => {
       </svg>
       <LabelPill x={290} y={160} text="80年前 下関" size={30} />
       <LabelPill x={1230} y={160} text="現代 コインメック" size={30} />
-      <LabelPill x={960} y={952} centerX text="木の目は、電気の目へ" />
+      <LabelPill x={960} y={170} centerX text="木の目は、電気の目へ" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>

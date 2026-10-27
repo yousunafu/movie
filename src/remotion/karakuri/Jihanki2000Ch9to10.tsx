@@ -104,7 +104,7 @@ const Arm: React.FC<{ x1: number; y1: number; x2: number; y2: number; cloth: str
 // ===== 新キャラ: 昭和40〜50年代+現代の人々 (ShowaPersonと同じ骨格) =====
 type HitoRole = "pokka" | "trucker" | "papa" | "mama" | "boy" | "girl" | "coat";
 type HitoFace = "normal" | "smile" | "worried" | "surprised" | "closed";
-const Hito: React.FC<{
+export const Hito: React.FC<{
   x: number; y: number; s?: number; role: HitoRole; f?: number; phase?: number;
   face?: HitoFace; gaze?: [number, number]; hideArm?: "left" | "right";
   shiver?: number; slurp?: boolean;
@@ -398,7 +398,6 @@ const SceneJapanIdea: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="世界があっと驚く発明を" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -447,7 +446,7 @@ const SceneSaCoffee: React.FC<{ f: number }> = ({ f }) => (
         <circle cx={1070} cy={580} r={4} fill={KRP.blueDeep} opacity={0.4 + 0.3 * Math.sin(f / 9 + 2)} />
       </g>
     </svg>
-    <LabelPill x={960} y={968} centerX text="冷めたコーヒーしか、なかった" />
+    <LabelPill x={960} y={170} centerX text="冷めたコーヒーしか、なかった" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -484,7 +483,7 @@ const ScenePokkaKuyashii: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="ポッカの創業者、悔しがる" />
+      <LabelPill x={960} y={170} centerX text="ポッカの創業者、悔しがる" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -521,7 +520,6 @@ const SceneHotDream: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="いつでも熱いコーヒーを" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -554,7 +552,6 @@ const SceneHotJihanki: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {f >= 64 && <Stamp x={300} y={190} text="1973年" size={44} />}
-      <LabelPill x={960} y={968} centerX text="温かい飲み物を売る自販機" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -590,7 +587,7 @@ const SceneCanCoffeeBorn: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={980} centerX text="世界初の缶コーヒー、誕生" />
+      <LabelPill x={960} y={170} centerX text="世界初の缶コーヒー、誕生" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -637,7 +634,7 @@ const SceneUnmeiDeai: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="運命の出会い" />
+      <LabelPill x={960} y={170} centerX text="運命の出会い" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -672,7 +669,6 @@ const SceneHotColdBoth: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {f >= 60 && <Stamp x={300} y={190} text="1976年" size={44} />}
-      <LabelPill x={960} y={968} centerX text="「あったかい」と「つめたい」を同時に" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -700,7 +696,6 @@ const SceneJapanUmare: React.FC<{ f: number }> = ({ f }) => (
       </g>
     </svg>
     {f >= 78 && <Stamp x={1150} y={660} text="日本生まれ" size={56} />}
-    <LabelPill x={960} y={968} centerX text="当たり前に見えて、日本の芸当" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -771,7 +766,7 @@ const SceneNakaShikiri: React.FC<{ f: number }> = ({ f }) => (
         <HotColdBox f={f} />
       </g>
     </svg>
-    <LabelPill x={960} y={1000} centerX text="箱の中を、壁で仕切る" />
+    <LabelPill x={960} y={170} centerX text="箱の中を、壁で仕切る" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -810,7 +805,7 @@ const SceneNetsuRecycle: React.FC<{ f: number }> = ({ f }) => {
           </HotColdBox>
         </g>
       </svg>
-      <LabelPill x={960} y={1000} centerX text="冷やして出た熱を、温めに回す" />
+      <LabelPill x={960} y={170} centerX text="冷やして出た熱を、温めに回す" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -853,7 +848,7 @@ const SceneFuyuNoOcha: React.FC<{ f: number }> = ({ f }) => {
             fill={KRP.white} opacity={(1 - br) * 0.55} />
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="半世紀前の悔しさから" />
+      <LabelPill x={960} y={170} centerX text="半世紀前の悔しさから" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1018,7 +1013,8 @@ const SceneShinsekiTree: React.FC<{ f: number }> = ({ f }) => {
           ))}
         </g>
       </svg>
-      <LabelPill x={960} y={988} centerX text="親戚が、次々に生まれる" />
+      {/* v3: 中央だと家系図てっぺんの自販機アイコン(y180-400)に被る → 左上の空きへ */}
+      <LabelPill x={480} y={170} centerX text="親戚が、次々に生まれる" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1093,7 +1089,7 @@ const SceneEkiMachines: React.FC<{ f: number }> = ({ f }) => {
           <TagPlate x={1520} y={290} text="コインロッカー" size={32} />
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="駅にも街角にも、親戚が" />
+      <LabelPill x={960} y={170} centerX text="駅にも街角にも、親戚が" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1137,7 +1133,8 @@ const SceneGachaArrival: React.FC<{ f: number }> = ({ f }) => {
         </g>
       </svg>
       {f >= 84 && <Stamp x={300} y={180} text="1965年" size={44} />}
-      <LabelPill x={960} y={980} centerX text="小さな親戚が、海を渡る" />
+      {/* v3: 中央だと飛んでくるカプセルの弧(y100-300)と交差する → 右上の空きへ */}
+      <LabelPill x={1520} y={170} centerX text="小さな親戚が、海を渡る" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1220,7 +1217,8 @@ const SceneGachaFront: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="回すと、カプセルがごろん" />
+      {/* v3: y=170だとマシンのドームてっぺん(y155〜)に被る → マシンの真上の余白へ */}
+      <LabelPill x={960} y={56} centerX text="回すと、カプセルがごろん" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1270,7 +1268,6 @@ const SceneDagashiya: React.FC<{ f: number }> = ({ f }) => (
         <TagPlate x={1540} y={420} text="1回10円" size={32} color={KRP.red} op={seg(f, 24, 38)} />
       </g>
     </svg>
-    <LabelPill x={960} y={968} centerX text="駄菓子屋の店先で、1回10円" />
     <J2Badge />
     <Atmosphere f={f} />
   </AbsoluteFill>
@@ -1320,7 +1317,7 @@ const SceneNoDenki: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="いまも、ほとんど電気を使わない" />
+      <LabelPill x={960} y={170} centerX text="いまも、ほとんど電気を使わない" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1382,12 +1379,16 @@ const SceneGachaGears: React.FC<{ f: number }> = ({ f }) => {
         </g>
         <g filter="url(#wobble)">
           <GachaCross x={960} y={880} s={1.7} f={f} capCyc={easeOut(seg(cyc, 40, 76))} />
+          {/* v3: 上のテロップ「回す力と、歯車だけで」はドームに被る+内容重複なので削除し、
+              左「回す力」(ハンドル)・右「歯車だけ」(歯車) の対の札に分けた (回す→歯車の順にポン) */}
+          <TagPlate x={440} y={480} text="回す力" size={34} op={seg(f, 16, 30)} />
+          <path d="M 570 500 Q 660 525 780 495" fill="none" stroke={KRP.ink} strokeWidth={5}
+            strokeDasharray="12 12" opacity={0.6 * seg(f, 16, 30)} />
           <TagPlate x={1430} y={480} text="歯車だけ" size={34} op={seg(f, 30, 44)} />
           <path d="M 1310 500 Q 1220 520 1150 560" fill="none" stroke={KRP.ink} strokeWidth={5}
             strokeDasharray="12 12" opacity={0.6 * seg(f, 30, 44)} />
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="回す力と、歯車だけで" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1420,7 +1421,7 @@ const SceneShindenGacha: React.FC<{ f: number }> = ({ f }) => {
       </svg>
       <LabelPill x={150} y={210} text="2000年前 神殿の壺" size={30} />
       <LabelPill x={1240} y={210} text="いま ガチャガチャ" size={30} />
-      <LabelPill x={960} y={1000} centerX text="同じ「電気いらずの知恵」" />
+      <LabelPill x={960} y={170} centerX text="同じ「電気いらずの知恵」" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1475,7 +1476,7 @@ const SceneAutoRestoNeon: React.FC<{ f: number }> = ({ f }) => {
           </g>
         </g>
       </svg>
-      <LabelPill x={960} y={980} centerX text="国道沿いに、伝説の店" />
+      <LabelPill x={960} y={170} centerX text="国道沿いに、伝説の店" />
       <J2Badge />
       <Atmosphere f={f} dark />
     </AbsoluteFill>
@@ -1519,14 +1520,89 @@ const SceneRestoInside: React.FC<{ f: number }> = ({ f }) => {
         {/* 全体の暗がり (点灯につれて明るく) */}
         <rect x={0} y={0} width={W} height={H} fill="#1E2230" opacity={0.4 * (1 - avg)} />
       </svg>
-      <LabelPill x={960} y={968} centerX text="その名も、オートレストラン" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
   );
 };
 
-// ===== 192. うどん/そば/トースト/バーガー、ラベルが順にポン =====
+// ===== 192用: 自販機の屋根に乗せる食べ物 (cx=中央, 底=y400) =====
+const FoodUdon: React.FC<{ cx: number; f: number }> = ({ cx, f }) => (
+  <g>
+    <Donburi x={cx} y={400} s={0.85} noodle />
+    {/* かまぼこ (白+ピンクのうず) */}
+    <circle cx={cx + 28} cy={330} r={14} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
+    <path d={`M ${cx + 28} ${330} q 8 -3 4 -9 q -6 -5 -11 2`} fill="none" stroke="#E89AB0" strokeWidth={4} strokeLinecap="round" />
+    {/* ねぎ */}
+    {[-34, -16, 2].map((dx, i) => (
+      <circle key={i} cx={cx + dx} cy={326 + (i % 2) * 5} r={4.5} fill="#7FBF7A" stroke={KRP.ink} strokeWidth={2} />
+    ))}
+    <Steam x={cx - 22} y={312} s={0.7} f={f} />
+  </g>
+);
+const FoodSoba: React.FC<{ cx: number }> = ({ cx }) => (
+  <g>
+    <Donburi x={cx} y={400} s={0.85} noodle={false} />
+    {/* そば (黒めの麺) */}
+    <g stroke="#8A7352" strokeWidth={6} strokeLinecap="round" fill="none">
+      <path d={`M ${cx - 50} 330 Q ${cx - 25} 318 ${cx} 328 Q ${cx + 25} 318 ${cx + 50} 330`} />
+      <path d={`M ${cx - 38} 337 Q ${cx} 325 ${cx + 38} 337`} />
+    </g>
+    {/* 海老天 (衣+赤いしっぽ) */}
+    <g transform={`rotate(-28 ${cx + 20} 322)`}>
+      <ellipse cx={cx + 20} cy={322} rx={16} ry={38} fill="#E5A94E" stroke={KRP.ink} strokeWidth={4.5} />
+      {[-20, -4, 12].map((dy, i) => (
+        <circle key={i} cx={cx + 20 + (i % 2 === 0 ? 9 : -9)} cy={322 + dy} r={5} fill="#F2C57E" stroke={KRP.ink} strokeWidth={2.5} />
+      ))}
+      <path d={`M ${cx + 20} ${282} l -10 -16 l 10 6 l 10 -6 Z`} fill={KRP.red} stroke={KRP.ink} strokeWidth={3.5} />
+    </g>
+  </g>
+);
+const FoodToast: React.FC<{ cx: number }> = ({ cx }) => (
+  <g>
+    {/* お皿 */}
+    <ellipse cx={cx} cy={396} rx={84} ry={11} fill={KRP.white} stroke={KRP.ink} strokeWidth={4.5} />
+    {/* 後ろのトースト (立てかけ) */}
+    <g transform={`rotate(9 ${cx + 26} 392)`} opacity={0.92}>
+      <path d={`M ${cx - 20} 392 L ${cx - 20} 318 Q ${cx - 20} 300 ${cx + 2} 302 Q ${cx + 10} 292 ${cx + 26} 296
+        Q ${cx + 48} 294 ${cx + 48} 314 L ${cx + 48} 392 Z`} fill="#C98E52" stroke={KRP.ink} strokeWidth={5} />
+    </g>
+    {/* 手前のトースト (バター乗せ) */}
+    <g transform={`rotate(-7 ${cx - 12} 392)`}>
+      <path d={`M ${cx - 58} 392 L ${cx - 58} 314 Q ${cx - 58} 294 ${cx - 34} 297 Q ${cx - 25} 286 ${cx - 8} 291
+        Q ${cx + 16} 288 ${cx + 16} 310 L ${cx + 16} 392 Z`} fill="#A8683C" stroke={KRP.ink} strokeWidth={5.5} />
+      <path d={`M ${cx - 48} 384 L ${cx - 48} 318 Q ${cx - 48} 304 ${cx - 33} 306 Q ${cx - 25} 297 ${cx - 9} 301
+        Q ${cx + 6} 300 ${cx + 6} 314 L ${cx + 6} 384 Z`} fill="#EFC67E" stroke="none" />
+      {/* バター (とろけ) */}
+      <rect x={cx - 36} y={326} width={26} height={18} rx={4} fill="#F5D34E" stroke={KRP.ink} strokeWidth={3.5} />
+      <path d={`M ${cx - 32} 344 q 3 10 0 14 M ${cx - 18} 344 q 3 7 0 11`} fill="none" stroke="#F5D34E" strokeWidth={5} strokeLinecap="round" />
+    </g>
+  </g>
+);
+const FoodBurger: React.FC<{ cx: number }> = ({ cx }) => (
+  <g>
+    {/* 下バンズ */}
+    <rect x={cx - 70} y={378} width={140} height={22} rx={10} fill="#E0A85A" stroke={KRP.ink} strokeWidth={5} />
+    {/* パティ */}
+    <rect x={cx - 76} y={362} width={152} height={20} rx={9} fill="#6E4A32" stroke={KRP.ink} strokeWidth={5} />
+    {/* チーズ (たれ) */}
+    <path d={`M ${cx - 72} 362 L ${cx + 72} 362 L ${cx + 60} 352 L ${cx + 34} 360 L ${cx + 6} 350
+      L ${cx - 22} 360 L ${cx - 50} 350 L ${cx - 72} 358 Z`} fill="#F2C23E" stroke={KRP.ink} strokeWidth={4} />
+    {/* レタス (ひらひら) */}
+    <path d={`M ${cx - 74} 352 Q ${cx - 60} 342 ${cx - 46} 350 Q ${cx - 32} 340 ${cx - 18} 350 Q ${cx - 4} 340 ${cx + 10} 350
+      Q ${cx + 24} 340 ${cx + 38} 350 Q ${cx + 52} 340 ${cx + 66} 350 L ${cx + 74} 352 L ${cx + 60} 358 L ${cx - 60} 358 Z`}
+      fill="#7FBF7A" stroke={KRP.ink} strokeWidth={4} />
+    {/* 上バンズ (ドーム+ごま) */}
+    <path d={`M ${cx - 78} 348 Q ${cx - 78} 296 ${cx} 296 Q ${cx + 78} 296 ${cx + 78} 348 Z`}
+      fill="#E8B060" stroke={KRP.ink} strokeWidth={5.5} />
+    {[[-38, 322], [-10, 310], [22, 318], [44, 330], [-52, 336]].map(([dx, yy], i) => (
+      <ellipse key={i} cx={cx + dx} cy={yy} rx={5.5} ry={3.5} fill="#FBF3DC" stroke={KRP.ink} strokeWidth={1.8}
+        transform={`rotate(${(i * 37) % 60 - 30} ${cx + dx} ${yy})`} />
+    ))}
+  </g>
+);
+
+// ===== 192. うどん/そば/トースト/バーガー、実物が屋根にポン =====
 const SceneMenruiLineup: React.FC<{ f: number }> = ({ f }) => {
   const items: Array<[string, string]> = [
     ["うどん", "#C9573B"], ["そば", "#8C6E54"], ["トースト", "#D9A23C"], ["バーガー", "#7FBF7A"],
@@ -1542,13 +1618,25 @@ const SceneMenruiLineup: React.FC<{ f: number }> = ({ f }) => {
         <g filter="url(#wobble)">
           {items.map(([name, col], i) => {
             const mx = 160 + i * 420;
-            const t = pop(seg(f, 20 + i * 14, 34 + i * 14));
+            const cx = mx + 130;
+            const t = pop(seg(f, 20 + i * 14, 34 + i * 14));      // 名札
+            const tf = pop(seg(f, 28 + i * 14, 44 + i * 14));     // 食べ物
             return (
               <g key={i}>
                 <Jihanki x={mx} y={400} s={0.72} f={f} body={col} />
+                {/* 名札は機体の前面 (窓と取出口の間) に */}
                 {t > 0.02 && (
-                  <g transform={`translate(${mx + 130} 320) scale(${t}) translate(${-(mx + 130)} -320)`}>
-                    <TagPlate x={mx + 130} y={320} text={name} size={40} />
+                  <g transform={`translate(${mx + 109} 660) scale(${t}) translate(${-(mx + 109)} -660)`}>
+                    <TagPlate x={mx + 109} y={660} text={name} size={40} />
+                  </g>
+                )}
+                {/* 食べ物は屋根の上に (底=y400) */}
+                {tf > 0.02 && (
+                  <g transform={`translate(${cx} 400) scale(${tf}) translate(${-cx} -400)`}>
+                    {i === 0 && <FoodUdon cx={cx} f={f} />}
+                    {i === 1 && <FoodSoba cx={cx} />}
+                    {i === 2 && <FoodToast cx={cx} />}
+                    {i === 3 && <FoodBurger cx={cx} />}
                   </g>
                 )}
               </g>
@@ -1556,7 +1644,7 @@ const SceneMenruiLineup: React.FC<{ f: number }> = ({ f }) => {
           })}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="ぜんぶ、自販機" />
+      <LabelPill x={960} y={170} centerX text="ぜんぶ、自販機" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1647,7 +1735,7 @@ const SceneUdonKaiten: React.FC<{ f: number }> = ({ f }) => {
           <TagPlate x={590} y={760} text="湯切り" size={30} color={KRP.blueDeep} />
         </g>
       </svg>
-      <LabelPill x={960} y={1000} centerX text="どんぶりが、くるくる湯切り" />
+      <LabelPill x={960} y={170} centerX text="どんぶりが、くるくる湯切り" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1697,7 +1785,6 @@ const SceneUdon30s: React.FC<{ f: number }> = ({ f }) => {
           )}
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="30秒足らずで、熱々の1杯" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1751,7 +1838,7 @@ const SceneTruckerUdon: React.FC<{ f: number }> = ({ f }) => (
         </g>
       </g>
     </svg>
-    <LabelPill x={960} y={980} centerX text="24時間、無人営業のオアシス" />
+    <LabelPill x={960} y={170} centerX text="24時間、無人営業のオアシス" />
     <J2Badge />
     <Atmosphere f={f} dark />
   </AbsoluteFill>
@@ -1838,7 +1925,7 @@ const SceneNokori60: React.FC<{ f: number }> = ({ f }) => {
           </JapanMapCard>
         </g>
       </svg>
-      <LabelPill x={960} y={980} centerX text="現役は、わずか60台ほど" />
+      <LabelPill x={960} y={170} centerX text="現役は、わずか60台ほど" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>
@@ -1890,7 +1977,6 @@ const SceneRetroSeichi: React.FC<{ f: number }> = ({ f }) => {
           <Hito x={1600} y={892} s={0.96} role="boy" f={f} phase={4} face="surprised" gaze={[-7, -2]} />
         </g>
       </svg>
-      <LabelPill x={960} y={968} centerX text="週末に行列ができる、レトロの聖地" />
       <J2Badge />
       <Atmosphere f={f} />
     </AbsoluteFill>

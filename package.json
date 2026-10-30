@@ -6,6 +6,7 @@
   "description": "台本を渡すと解説動画が自動で出てくる工場",
   "scripts": {
     "generate": "tsx src/generator/index.ts",
+    "check": "tsx scripts/karakuri-check.ts",
     "render": "remotion render Main out/video.mp4",
     "studio": "remotion studio"
   },

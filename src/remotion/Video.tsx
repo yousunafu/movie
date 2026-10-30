@@ -34,12 +34,20 @@ import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./kei
 import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, suuriSceneHidesSubtitle, computeSuuriVariants, computeSuuriWashi, WashiCtx, computeSuuriStadium, StadiumCtx, computeSuuriRenai, RenaiCtx, splitPunchline } from "./suuri/SuuriScenes";
 import { KarakuriSceneView, KRP, karakuriCardShowsFullText } from "./karakuri/KarakuriScenes";
 import { J2AllSceneView } from "./karakuri/Jihanki2000Index";
+import { WAllSceneView } from "./karakuri/WatashiIndex";
 
 // 自販機2000年史 (モチーフ名が j2_ で始まる専用絵) を本編プレイヤーで描くためのつなぎ。
 // J2AllSceneView は (motif, f) を受けるので、Sequence内の経過フレームを渡す。
 const J2SceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
   const f = useCurrentFrame();
   return <J2AllSceneView motif={motif} f={f} />;
+};
+
+// 「私は何者?」4000年史 (モチーフ名が w1_〜w4_ で始まる専用絵) 用の同じつなぎ。
+export const isWatashiMotif = (motif: string) => /^w[1-4]_/.test(motif);
+const WSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return <WAllSceneView motif={motif} f={f} />;
 };
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
@@ -438,6 +446,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
               ) : isKarakuri ? (
                 scene.motif.startsWith("j2_") ? (
                   <J2SceneInVideo motif={scene.motif} />
+                ) : isWatashiMotif(scene.motif) ? (
+                  <WSceneInVideo motif={scene.motif} />
                 ) : (
                   <KarakuriSceneView scene={scene} />
                 )

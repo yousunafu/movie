@@ -15,6 +15,7 @@ import {
 } from "../motifs";
 import type { Preset } from "../channel";
 import { J2_ALL_MOTIFS } from "../remotion/karakuri/Jihanki2000Index";
+import { W_ALL_MOTIFS } from "../remotion/karakuri/WatashiIndex";
 
 export type Assignment = {
   type: SceneType;
@@ -416,6 +417,11 @@ export async function assignScenes(
     if (j2) {
       console.log(`絵づけ: 自販機2000年史の順番割り当て (1文1絵・${j2.length}枚)`);
       return j2;
+    }
+    const wt = watashiOrderedAssign(sentences);
+    if (wt) {
+      console.log(`絵づけ: 「私は何者?」4000年史の順番割り当て (1文1絵・${wt.length}枚)`);
+      return wt;
     }
     console.log("絵づけ: karakuri は専用キーワード割り当てを使用");
     return sentences.map(karakuriHeuristicAssign);
@@ -1962,6 +1968,25 @@ function j2OrderedAssign(sentences: string[]): Assignment[] | null {
     throw new Error(
       `自販機2000年史: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
         `台本 (docs/jihanki2000-script-v5.txt) か J2_ALL_MOTIFS の数を確認してください`,
+    );
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: 「私は何者?」4000年史 (docs/watashi-script-v1.txt・252文) 用の順番割り当て =====
+// 専用シーン (WatashiIndex の W_ALL_MOTIFS) は台本の文の順番どおりに並んでいるので、
+// 「文i → 絵i」で1対1に割り当てる (設計書: docs/watashi-motifs-rules.md)。
+// 自動追加の締めのご挨拶 (253文目) は、結びの星空の「?」(w4_final_q) を再利用して余韻のまま終える。
+function watashiOrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[0]?.includes("この動画を開いたあなたを、診断")) return null;
+  const order = [...W_ALL_MOTIFS];
+  if (sentences.length === order.length + 1) {
+    order.push("w4_final_q"); // 締めのご挨拶 = 星空の「?」を再利用
+  }
+  if (sentences.length !== order.length) {
+    throw new Error(
+      `「私は何者?」4000年史: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
+        `台本 (docs/watashi-script-v1.txt) か W_ALL_MOTIFS (WatashiB1〜B4のMOTIFS) の数を確認してください`,
     );
   }
   return order.map((motif) => ({ type: "diagram" as SceneType, motif }));

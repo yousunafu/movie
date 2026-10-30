@@ -2,1918 +2,2030 @@
   "scenes": [
     {
       "index": 0,
-      "text": "夜道に、現金を積んだ無人の箱が置かれています。",
+      "text": "いきなりですが、この動画を開いたあなたを、診断してみます。",
       "type": "diagram",
-      "motif": "j2_night",
+      "motif": "w1_shindan_start",
       "audio": "audio/scene-000.wav",
-      "durationSec": 4.416
+      "durationSec": 4.917333333333334
     },
     {
       "index": 1,
-      "text": "壊されもせず、盗まれもせず、今夜も黙って光り続けています。",
+      "text": "うーん……。",
       "type": "diagram",
-      "motif": "j2_night_close",
+      "motif": "w1_unun",
       "audio": "audio/scene-001.wav",
-      "durationSec": 5.728
+      "durationSec": 0.8426666666666667
     },
     {
       "index": 2,
-      "text": "そう、自動販売機です。",
+      "text": "……はあっ!",
       "type": "diagram",
-      "motif": "j2_night_center",
+      "motif": "w1_mieta",
       "audio": "audio/scene-002.wav",
-      "durationSec": 2.474666666666667
+      "durationSec": 0.8106666666666666
     },
     {
       "index": 3,
-      "text": "実はこの風景が成立する国は、世界でも日本くらいです。",
+      "text": "見えました。",
       "type": "diagram",
-      "motif": "j2_globe_japan",
+      "motif": "w1_mieta",
       "audio": "audio/scene-003.wav",
-      "durationSec": 5.685333333333333
+      "durationSec": 1.0666666666666667
     },
     {
       "index": 4,
-      "text": "でも今日の主役は、日本ではありません。",
+      "text": "あなたは、まわりから「しっかりしている」と思われがちですが、本当は心配性な一面があります。",
       "type": "diagram",
-      "motif": "j2_globe_back",
+      "motif": "w1_shindan_paper",
       "audio": "audio/scene-004.wav",
-      "durationSec": 3.498666666666667
+      "durationSec": 7.466666666666667
     },
     {
       "index": 5,
-      "text": "この箱の、いちばん最初のご先祖さまの話です。",
+      "text": "人に合わせるのは得意ですが、本当は、自分のペースを乱されたくないタイプ。",
       "type": "diagram",
-      "motif": "j2_morph_pot",
+      "motif": "w1_jibun_pace",
       "audio": "audio/scene-005.wav",
-      "durationSec": 4.245333333333333
-    },
-    {
-      "index": 6,
-      "text": "記録に残る最古の「コインを入れると出てくる機械」は、いまからおよそ2000年前。",
-      "type": "diagram",
-      "motif": "j2_pot_2000",
-      "audio": "audio/scene-006.wav",
-      "durationSec": 6.261333333333333
-    },
-    {
-      "index": 7,
-      "text": "置かれていたのは、神殿でした。",
-      "type": "diagram",
-      "motif": "j2_temple",
-      "audio": "audio/scene-007.wav",
-      "durationSec": 2.7093333333333334
-    },
-    {
-      "index": 8,
-      "text": "売っていたのは、聖水。神様の水です。",
-      "type": "diagram",
-      "motif": "j2_holy_water",
-      "audio": "audio/scene-008.wav",
-      "durationSec": 4.181333333333333
-    },
-    {
-      "index": 9,
-      "text": "神様の水を売る機械は、2000年かけて、どう進化して日本の夜道にたどり着いたのか。",
-      "type": "diagram",
-      "motif": "j2_journey",
-      "audio": "audio/scene-009.wav",
-      "durationSec": 8.128
-    },
-    {
-      "index": 10,
-      "text": "コイン1枚で動くこの箱には、2000年ぶんの発明が詰まっています。",
-      "type": "diagram",
-      "motif": "j2_xray",
-      "audio": "audio/scene-010.wav",
-      "durationSec": 5.653333333333333
-    },
-    {
-      "index": 11,
-      "text": "第1章、神殿のコイン仕掛け。",
-      "type": "diagram",
-      "motif": "j2_ch1_door",
-      "audio": "audio/scene-011.wav",
-      "durationSec": 3.04
-    },
-    {
-      "index": 12,
-      "text": "舞台は、エジプトの大都市アレクサンドリア。",
-      "type": "diagram",
-      "motif": "j2_alexandria",
-      "audio": "audio/scene-012.wav",
-      "durationSec": 3.7013333333333334
-    },
-    {
-      "index": 13,
-      "text": "当時の神殿では、お参りの前に聖水で身を清める習わしがありました。",
-      "type": "diagram",
-      "motif": "j2_purify",
-      "audio": "audio/scene-013.wav",
-      "durationSec": 6.08
-    },
-    {
-      "index": 14,
-      "text": "ところが、この聖水に悩みがありました。",
-      "type": "diagram",
-      "motif": "j2_priest_mumu",
-      "audio": "audio/scene-014.wav",
-      "durationSec": 3.466666666666667
-    },
-    {
-      "index": 15,
-      "text": "多めに持っていってしまう人が、いたのです。",
-      "type": "diagram",
-      "motif": "j2_greedy",
-      "audio": "audio/scene-015.wav",
-      "durationSec": 3.36
-    },
-    {
-      "index": 16,
-      "text": "そこで神殿に置かれたのが、謎の壺型マシン。",
-      "type": "diagram",
-      "motif": "j2_pot_arrive",
-      "audio": "audio/scene-016.wav",
-      "durationSec": 4
-    },
-    {
-      "index": 17,
-      "text": "コインを入れると、聖水が出て、勝手に止まる。",
-      "type": "diagram",
-      "motif": "j2_pot_flow",
-      "audio": "audio/scene-017.wav",
-      "durationSec": 4.352
-    },
-    {
-      "index": 18,
-      "text": "店員はいません。電気もありません。",
-      "type": "diagram",
-      "motif": "j2_no_staff",
-      "audio": "audio/scene-018.wav",
-      "durationSec": 3.2213333333333334
-    },
-    {
-      "index": 19,
-      "text": "からくりの正体は、シーソーです。",
-      "type": "diagram",
-      "motif": "j2_cut_open",
-      "audio": "audio/scene-019.wav",
-      "durationSec": 2.88
-    },
-    {
-      "index": 20,
-      "text": "壺の中には、てんびんのような棒が1本、入っています。",
-      "type": "diagram",
-      "motif": "j2_cut_rod",
-      "audio": "audio/scene-020.wav",
-      "durationSec": 5.077333333333334
-    },
-    {
-      "index": 21,
-      "text": "コインが受け皿に落ちると、その重さで棒がかたむき、水の栓が開きます。",
-      "type": "diagram",
-      "motif": "j2_cut_tilt",
-      "audio": "audio/scene-021.wav",
-      "durationSec": 6.410666666666667
-    },
-    {
-      "index": 22,
-      "text": "コインが皿からすべり落ちると、棒が戻り、栓が閉まる。",
-      "type": "diagram",
-      "motif": "j2_cut_cycle",
-      "audio": "audio/scene-022.wav",
-      "durationSec": 4.992
-    },
-    {
-      "index": 23,
-      "text": "コインの重さ、ただそれだけで動く自動販売機です。",
-      "type": "diagram",
-      "motif": "j2_cut_label",
-      "audio": "audio/scene-023.wav",
-      "durationSec": 4.416
-    },
-    {
-      "index": 24,
-      "text": "この装置は、ヘロンという学者の本に、図面つきで残っています。",
-      "type": "diagram",
-      "motif": "j2_heron",
-      "audio": "audio/scene-024.wav",
-      "durationSec": 5.717333333333333
-    },
-    {
-      "index": 25,
-      "text": "蒸気で回る球や、神殿の自動ドアまで考えた、風変わりな発明家です。",
-      "type": "diagram",
-      "motif": "j2_heron_inv",
-      "audio": "audio/scene-025.wav",
-      "durationSec": 6.666666666666667
-    },
-    {
-      "index": 26,
-      "text": "ただし、この聖水マシンが本人の発明か、師匠ゆずりかは、実は分かっていません。",
-      "type": "diagram",
-      "motif": "j2_heron_q",
-      "audio": "audio/scene-026.wav",
-      "durationSec": 8
-    },
-    {
-      "index": 27,
-      "text": "分かっているのは、2000年前にはもう「人を信じず、仕組みで解決する」という発想があったことです。",
-      "type": "diagram",
-      "motif": "j2_creed_card",
-      "audio": "audio/scene-027.wav",
-      "durationSec": 7.904
-    },
-    {
-      "index": 28,
-      "text": "自販機のご先祖さまは、神殿で生まれました。",
-      "type": "diagram",
-      "motif": "j2_pot_stamp",
-      "audio": "audio/scene-028.wav",
-      "durationSec": 3.872
-    },
-    {
-      "index": 29,
-      "text": "第2章、機械が、人を信じていたころ。",
-      "type": "diagram",
-      "motif": "j2_ch2_door",
-      "audio": "audio/scene-029.wav",
-      "durationSec": 3.7973333333333334
-    },
-    {
-      "index": 30,
-      "text": "ところで、ヘロンの壺はその後どうなったのでしょうか。",
-      "type": "diagram",
-      "motif": "j2_pot_dust",
-      "audio": "audio/scene-030.wav",
-      "durationSec": 4.661333333333333
-    },
-    {
-      "index": 31,
-      "text": "ローマ帝国の衰退とともに、コイン仕掛けの技術は忘れられてしまいます。",
-      "type": "diagram",
-      "motif": "j2_rome_fall",
-      "audio": "audio/scene-031.wav",
-      "durationSec": 5.781333333333333
-    },
-    {
-      "index": 32,
-      "text": "図面は本の中で眠り続け、ふたたび注目されたのは、およそ1500年後のルネサンス期でした。",
-      "type": "diagram",
-      "motif": "j2_book_sleep",
-      "audio": "audio/scene-032.wav",
-      "durationSec": 8.245333333333333
-    },
-    {
-      "index": 33,
-      "text": "長い眠りから覚めた仕掛けは、17世紀、イギリスの酒場に現れます。",
-      "type": "diagram",
-      "motif": "j2_tavern",
-      "audio": "audio/scene-033.wav",
-      "durationSec": 6.368
-    },
-    {
-      "index": 34,
-      "text": "その名も、オナーボックス。タバコを売る、真鍮の小箱です。",
-      "type": "diagram",
-      "motif": "j2_honour_box",
-      "audio": "audio/scene-034.wav",
-      "durationSec": 5.365333333333333
-    },
-    {
-      "index": 35,
-      "text": "1ペニー硬貨を入れると、フタのロックがカチリと外れます。",
-      "type": "diagram",
-      "motif": "j2_honour_cut",
-      "audio": "audio/scene-035.wav",
-      "durationSec": 4.736
-    },
-    {
-      "index": 36,
-      "text": "ただしこの箱、量を測ってくれません。",
-      "type": "diagram",
-      "motif": "j2_honour_nometer",
-      "audio": "audio/scene-036.wav",
-      "durationSec": 3.3493333333333335
-    },
-    {
-      "index": 37,
-      "text": "パイプ1服ぶんだけ取ってフタを閉めるのは、お客の良心まかせ。",
-      "type": "diagram",
-      "motif": "j2_smoker_honest",
-      "audio": "audio/scene-037.wav",
-      "durationSec": 5.290666666666667
-    },
-    {
-      "index": 38,
-      "text": "名前の「オナー」は、「良心」という意味です。",
-      "type": "diagram",
-      "motif": "j2_honour_label",
-      "audio": "audio/scene-038.wav",
-      "durationSec": 3.232
-    },
-    {
-      "index": 39,
-      "text": "仕組みで足りないぶんを、人を信じることで埋めていた箱。",
-      "type": "diagram",
-      "motif": "j2_scale",
-      "audio": "audio/scene-039.wav",
-      "durationSec": 4.544
-    },
-    {
-      "index": 40,
-      "text": "この「人を信じる機械」、物語の最後にもう一度、顔を出します。",
-      "type": "diagram",
-      "motif": "j2_scale_mark",
-      "audio": "audio/scene-040.wav",
-      "durationSec": 5.717333333333333
-    },
-    {
-      "index": 41,
-      "text": "そして1822年のロンドンには、とんでもない使い方を考えた男が現れます。",
-      "type": "diagram",
-      "motif": "j2_london_1822",
-      "audio": "audio/scene-041.wav",
-      "durationSec": 7.232
-    },
-    {
-      "index": 42,
-      "text": "書店主の、リチャード・カーライル。",
-      "type": "diagram",
-      "motif": "j2_carlile",
-      "audio": "audio/scene-042.wav",
-      "durationSec": 3.4133333333333336
-    },
-    {
-      "index": 43,
-      "text": "発売禁止の本を売って、牢屋に入れられた経験の持ち主です。",
-      "type": "diagram",
-      "motif": "j2_carlile_jail",
-      "audio": "audio/scene-043.wav",
-      "durationSec": 5.226666666666667
-    },
-    {
-      "index": 44,
-      "text": "彼はひらめきました。人間が手渡さなければ、罪に問われないのではないか。",
-      "type": "diagram",
-      "motif": "j2_carlile_idea",
-      "audio": "audio/scene-044.wav",
-      "durationSec": 6.997333333333334
-    },
-    {
-      "index": 45,
-      "text": "ダイヤルを回してお金を入れると、発禁本がポトリと落ちてくる機械を、店に置いたのです。",
-      "type": "diagram",
-      "motif": "j2_book_vendo",
-      "audio": "audio/scene-045.wav",
-      "durationSec": 7.349333333333333
-    },
-    {
-      "index": 46,
-      "text": "機械を、法律の抜け穴に使った男。",
-      "type": "diagram",
-      "motif": "j2_law_hole",
-      "audio": "audio/scene-046.wav",
-      "durationSec": 3.648
-    },
-    {
-      "index": 47,
-      "text": "ちなみに作戦の甲斐なく、その後も彼は牢屋の常連でした。",
-      "type": "diagram",
-      "motif": "j2_carlile_stamp",
-      "audio": "audio/scene-047.wav",
-      "durationSec": 5.024
-    },
-    {
-      "index": 48,
-      "text": "それでもコイン仕掛けは、こうして歴史の表舞台へ戻ってきたのです。",
-      "type": "diagram",
-      "motif": "j2_stage",
-      "audio": "audio/scene-048.wav",
-      "durationSec": 5.248
-    },
-    {
-      "index": 49,
-      "text": "第3章、駅と切手と、いたずらと。",
-      "type": "diagram",
-      "motif": "j2_ch3_door",
-      "audio": "audio/scene-049.wav",
-      "durationSec": 3.6586666666666665
-    },
-    {
-      "index": 50,
-      "text": "時は流れて、1883年のロンドン。",
-      "type": "diagram",
-      "motif": "j2_industrial",
-      "audio": "audio/scene-050.wav",
-      "durationSec": 4.384
-    },
-    {
-      "index": 51,
-      "text": "産業革命のまっただ中、街には鉄道と郵便があふれていました。",
-      "type": "diagram",
-      "motif": "j2_train_mail",
-      "audio": "audio/scene-051.wav",
-      "durationSec": 5.8133333333333335
-    },
-    {
-      "index": 52,
-      "text": "パーシヴァル・エヴェリットという発明家が、ある機械で特許を取ります。",
-      "type": "diagram",
-      "motif": "j2_everitt",
-      "audio": "audio/scene-052.wav",
-      "durationSec": 5.1306666666666665
-    },
-    {
-      "index": 53,
-      "text": "お金を入れると、郵便はがきが1枚出てくる機械です。",
-      "type": "diagram",
-      "motif": "j2_postcard_machine",
-      "audio": "audio/scene-053.wav",
-      "durationSec": 4.714666666666667
-    },
-    {
-      "index": 54,
-      "text": "設置されたのは、地下鉄の駅でした。",
-      "type": "diagram",
-      "motif": "j2_station_platform",
-      "audio": "audio/scene-054.wav",
-      "durationSec": 3.1893333333333334
-    },
-    {
-      "index": 55,
-      "text": "これが、近代自販機の1号機と呼ばれています。",
-      "type": "diagram",
-      "motif": "j2_first_modern",
-      "audio": "audio/scene-055.wav",
-      "durationSec": 4.096
-    },
-    {
-      "index": 56,
-      "text": "中身は、びっくりするほど素直な作りでした。",
-      "type": "diagram",
-      "motif": "j2_postcard_cut",
-      "audio": "audio/scene-056.wav",
-      "durationSec": 3.7546666666666666
-    },
-    {
-      "index": 57,
-      "text": "コインが落ちると、その重みでロックが外れ、はがきを1枚だけ取り出せる。",
-      "type": "diagram",
-      "motif": "j2_postcard_lock",
-      "audio": "audio/scene-057.wav",
-      "durationSec": 6.048
-    },
-    {
-      "index": 58,
-      "text": "取り出すと、またロックがかかる。",
-      "type": "diagram",
-      "motif": "j2_lock_return",
-      "audio": "audio/scene-058.wav",
-      "durationSec": 2.6453333333333333
-    },
-    {
-      "index": 59,
-      "text": "ヘロンのシーソーと同じく、主役はコインの重さでした。",
-      "type": "diagram",
-      "motif": "j2_heron_compare",
-      "audio": "audio/scene-059.wav",
-      "durationSec": 4.490666666666667
-    },
-    {
-      "index": 60,
-      "text": "手紙が主役の時代、はがきがいつでも買える箱は大当たりします。",
-      "type": "diagram",
-      "motif": "j2_postcard_hit",
-      "audio": "audio/scene-060.wav",
-      "durationSec": 5.312
-    },
-    {
-      "index": 61,
-      "text": "駅や郵便局に、どんどん増えていきました。",
-      "type": "diagram",
-      "motif": "j2_map_spread",
-      "audio": "audio/scene-061.wav",
-      "durationSec": 3.7333333333333334
-    },
-    {
-      "index": 62,
-      "text": "ところが、です。",
-      "type": "diagram",
-      "motif": "j2_tokoroga",
-      "audio": "audio/scene-062.wav",
-      "durationSec": 1.632
-    },
-    {
-      "index": 63,
-      "text": "発明者本人が、こんな嘆きを記録に残しています。",
-      "type": "diagram",
-      "motif": "j2_everitt_sigh",
-      "audio": "audio/scene-063.wav",
-      "durationSec": 4.533333333333333
-    },
-    {
-      "index": 64,
-      "text": "コインの投入口に、紙くずや、オレンジの皮を詰められる、と。",
-      "type": "diagram",
-      "motif": "j2_orange_peel",
-      "audio": "audio/scene-064.wav",
-      "durationSec": 6.208
-    },
-    {
-      "index": 65,
-      "text": "機械が世に出た瞬間から、いたずらとの戦いも始まったのです。",
-      "type": "diagram",
-      "motif": "j2_machine_vs_man",
-      "audio": "audio/scene-065.wav",
-      "durationSec": 5.226666666666667
-    },
-    {
-      "index": 66,
-      "text": "それでも、便利さは止まりません。",
-      "type": "diagram",
-      "motif": "j2_map_spread2",
-      "audio": "audio/scene-066.wav",
-      "durationSec": 2.8906666666666667
-    },
-    {
-      "index": 67,
-      "text": "1888年には、海を越えてニューヨークへ。",
-      "type": "diagram",
-      "motif": "j2_to_ny",
-      "audio": "audio/scene-067.wav",
-      "durationSec": 4.725333333333333
-    },
-    {
-      "index": 68,
-      "text": "ガム会社のアダムスが、高架鉄道の駅のホームに、ガムの自販機を置きました。",
-      "type": "diagram",
-      "motif": "j2_ny_station",
-      "audio": "audio/scene-068.wav",
-      "durationSec": 6.570666666666667
-    },
-    {
-      "index": 69,
-      "text": "電車を待つ数分のひまつぶしに、フルーツガムをひとつ。",
-      "type": "diagram",
-      "motif": "j2_newsboy_gum",
-      "audio": "audio/scene-069.wav",
-      "durationSec": 4.565333333333333
-    },
-    {
-      "index": 70,
-      "text": "「駅」と「自販機」は、このころからの名コンビです。",
-      "type": "diagram",
-      "motif": "j2_station_combo",
-      "audio": "audio/scene-070.wav",
-      "durationSec": 3.7546666666666666
-    },
-    {
-      "index": 71,
-      "text": "第4章、レストランまるごと自販機。",
-      "type": "diagram",
-      "motif": "j2_ch4_door",
-      "audio": "audio/scene-071.wav",
-      "durationSec": 3.36
-    },
-    {
-      "index": 72,
-      "text": "1902年、アメリカのフィラデルフィア。",
-      "type": "diagram",
-      "motif": "j2_automat_sign",
-      "audio": "audio/scene-072.wav",
-      "durationSec": 3.6266666666666665
-    },
-    {
-      "index": 73,
-      "text": "「オートマット」という、奇妙なレストランが開店します。",
-      "type": "diagram",
-      "motif": "j2_automat_front",
-      "audio": "audio/scene-073.wav",
-      "durationSec": 4.064
-    },
-    {
-      "index": 74,
-      "text": "店に入ると、壁一面にズラリと並んだ、小さなガラスの窓。",
-      "type": "diagram",
-      "motif": "j2_wall_windows",
-      "audio": "audio/scene-074.wav",
-      "durationSec": 5.76
-    },
-    {
-      "index": 75,
-      "text": "窓の向こうには、パイや、豆料理や、コーヒーが待っています。",
-      "type": "diagram",
-      "motif": "j2_window_foods",
-      "audio": "audio/scene-075.wav",
-      "durationSec": 5.568
-    },
-    {
-      "index": 76,
-      "text": "5セント硬貨を入れてつまみを回すと、窓のロックがカチリと外れ、料理を取り出せる。",
-      "type": "diagram",
-      "motif": "j2_nickel_knob",
-      "audio": "audio/scene-076.wav",
-      "durationSec": 6.9013333333333335
-    },
-    {
-      "index": 77,
-      "text": "レストランをまるごと自販機にしてしまったのです。",
-      "type": "diagram",
-      "motif": "j2_whole_vending",
-      "audio": "audio/scene-077.wav",
-      "durationSec": 3.466666666666667
-    },
-    {
-      "index": 78,
-      "text": "もともとはベルリン生まれのアイデアを、アメリカが大きく育てました。",
-      "type": "diagram",
-      "motif": "j2_berlin_idea",
-      "audio": "audio/scene-078.wav",
-      "durationSec": 5.141333333333334
-    },
-    {
-      "index": 79,
-      "text": "では、空っぽになった窓に、料理を戻していたのは誰か。",
-      "type": "diagram",
-      "motif": "j2_empty_q",
-      "audio": "audio/scene-079.wav",
-      "durationSec": 5.610666666666667
-    },
-    {
-      "index": 80,
-      "text": "種明かしをすると、壁の裏は、巨大な厨房でした。",
-      "type": "diagram",
-      "motif": "j2_behind_wall",
-      "audio": "audio/scene-080.wav",
-      "durationSec": 4.8
-    },
-    {
-      "index": 81,
-      "text": "コックたちが料理を作り、係の人が窓の裏からせっせと補充していたのです。",
-      "type": "diagram",
-      "motif": "j2_kitchen_refill",
-      "audio": "audio/scene-081.wav",
-      "durationSec": 6.272
-    },
-    {
-      "index": 82,
-      "text": "つまりオートマットは、無人に見える、超・有人レストランでした。",
-      "type": "diagram",
-      "motif": "j2_super_manned",
-      "audio": "audio/scene-082.wav",
-      "durationSec": 6.464
-    },
-    {
-      "index": 83,
-      "text": "入口には両替ブースがあり、お札を5セント硬貨の山に替えてくれます。",
-      "type": "diagram",
-      "motif": "j2_change_booth",
-      "audio": "audio/scene-083.wav",
-      "durationSec": 6.005333333333334
-    },
-    {
-      "index": 84,
-      "text": "両替係の女性たちは、早業すぎて「ニッケル投げ」と呼ばれていました。",
-      "type": "diagram",
-      "motif": "j2_nickel_throw",
-      "audio": "audio/scene-084.wav",
-      "durationSec": 5.728
-    },
-    {
-      "index": 85,
-      "text": "安くて、早くて、ひとりでも気楽。",
-      "type": "diagram",
-      "motif": "j2_pie_alone",
-      "audio": "audio/scene-085.wav",
-      "durationSec": 3.3813333333333335
-    },
-    {
-      "index": 86,
-      "text": "オートマットは大都市の働く人たちの台所になり、100店舗を超える巨大チェーンに育ちます。",
-      "type": "diagram",
-      "motif": "j2_chain_100",
-      "audio": "audio/scene-086.wav",
-      "durationSec": 7.530666666666667
-    },
-    {
-      "index": 87,
-      "text": "ただ、この物語には続きがあります。",
-      "type": "diagram",
-      "motif": "j2_sepia",
-      "audio": "audio/scene-087.wav",
-      "durationSec": 3.3706666666666667
-    },
-    {
-      "index": 88,
-      "text": "時代の波に押され、オートマットは少しずつ消えていきました。",
-      "type": "diagram",
-      "motif": "j2_lights_off",
-      "audio": "audio/scene-088.wav",
-      "durationSec": 4.746666666666667
-    },
-    {
-      "index": 89,
-      "text": "最後の1店が閉まったのは、1991年のニューヨーク。",
-      "type": "diagram",
-      "motif": "j2_closed_1991",
-      "audio": "audio/scene-089.wav",
-      "durationSec": 5.536
-    },
-    {
-      "index": 90,
-      "text": "自販機の先進国だったアメリカで、なぜか機械は街から減っていく。",
-      "type": "diagram",
-      "motif": "j2_machines_indoor",
-      "audio": "audio/scene-090.wav",
-      "durationSec": 5.589333333333333
-    },
-    {
-      "index": 91,
-      "text": "この「なぜか」は、あとで日本の夜道につながります。",
-      "type": "diagram",
-      "motif": "j2_why_bookmark",
-      "audio": "audio/scene-091.wav",
-      "durationSec": 3.989333333333333
-    },
-    {
-      "index": 92,
-      "text": "第5章、日本の1号機は、木でできていた。",
-      "type": "diagram",
-      "motif": "j2_ch5_door",
-      "audio": "audio/scene-092.wav",
-      "durationSec": 4.224
-    },
-    {
-      "index": 93,
-      "text": "ふたたび時をもどして、明治時代の日本。",
-      "type": "diagram",
-      "motif": "j2_meiji_port",
-      "audio": "audio/scene-093.wav",
-      "durationSec": 3.7546666666666666
-    },
-    {
-      "index": 94,
-      "text": "山口県の下関に、俵谷高七という職人がいました。",
-      "type": "diagram",
-      "motif": "j2_tawaraya",
-      "audio": "audio/scene-094.wav",
-      "durationSec": 5.354666666666667
-    },
-    {
-      "index": 95,
-      "text": "仕事は指物師。釘を使わず、木だけで家具を組み上げる職人です。",
-      "type": "diagram",
-      "motif": "j2_sashimono",
-      "audio": "audio/scene-095.wav",
-      "durationSec": 6.016
-    },
-    {
-      "index": 96,
-      "text": "郵便局から道具づくりを頼まれるうちに、あるうわさを耳にします。",
-      "type": "diagram",
-      "motif": "j2_post_rumor",
-      "audio": "audio/scene-096.wav",
-      "durationSec": 5.493333333333333
-    },
-    {
-      "index": 97,
-      "text": "外国には、お金を入れると品物が出てくる機械があるらしい。",
-      "type": "diagram",
-      "motif": "j2_foreign_shadow",
-      "audio": "audio/scene-097.wav",
-      "durationSec": 5.066666666666666
-    },
-    {
-      "index": 98,
-      "text": "実物を見たことは、ありません。",
-      "type": "diagram",
-      "motif": "j2_never_seen",
-      "audio": "audio/scene-098.wav",
-      "durationSec": 2.7733333333333334
-    },
-    {
-      "index": 99,
-      "text": "それでも俵谷は、木で作ってしまいました。",
-      "type": "diagram",
-      "motif": "j2_build_wood",
-      "audio": "audio/scene-099.wav",
-      "durationSec": 3.584
-    },
-    {
-      "index": 100,
-      "text": "1888年、たばこの自動販売機を発明し、特許を出願します。",
-      "type": "diagram",
-      "motif": "j2_tobacco_patent",
-      "audio": "audio/scene-100.wav",
-      "durationSec": 7.253333333333333
-    },
-    {
-      "index": 101,
-      "text": "日本の自販機の、1号機です。",
-      "type": "diagram",
-      "motif": "j2_japan_first",
-      "audio": "audio/scene-101.wav",
-      "durationSec": 3.1573333333333333
-    },
-    {
-      "index": 102,
-      "text": "しかも、ただの木箱ではありませんでした。",
-      "type": "diagram",
-      "motif": "j2_not_just_box",
-      "audio": "audio/scene-102.wav",
-      "durationSec": 3.296
-    },
-    {
-      "index": 103,
-      "text": "当時の欧米の機械にもなかった仕掛け、「ニセ金よけ」が入っていたのです。",
-      "type": "diagram",
-      "motif": "j2_nisegane_badge",
-      "audio": "audio/scene-103.wav",
-      "durationSec": 5.632
-    },
-    {
-      "index": 104,
-      "text": "入ってきた硬貨を、木の仕掛けが重さと大きさでふるいにかけます。",
-      "type": "diagram",
-      "motif": "j2_wood_rail",
-      "audio": "audio/scene-104.wav",
-      "durationSec": 5.066666666666666
-    },
-    {
-      "index": 105,
-      "text": "本物なら奥へ進み、違うものは、はじいて突き返す。",
-      "type": "diagram",
-      "motif": "j2_wood_reject",
-      "audio": "audio/scene-105.wav",
-      "durationSec": 4.938666666666666
-    },
-    {
-      "index": 106,
-      "text": "さらに、売り切れのときはお金をそのまま返す、親切設計まで付いていました。",
-      "type": "diagram",
-      "motif": "j2_soldout_return",
-      "audio": "audio/scene-106.wav",
-      "durationSec": 6.741333333333333
-    },
-    {
-      "index": 107,
-      "text": "世界の最先端を、下関の職人が独学で作っていたのです。",
-      "type": "diagram",
-      "motif": "j2_world_shimonoseki",
-      "audio": "audio/scene-107.wav",
-      "durationSec": 5.589333333333333
-    },
-    {
-      "index": 108,
-      "text": "俵谷が1904年に作った「切手とはがきの自販機」は、いまも残っています。",
-      "type": "diagram",
-      "motif": "j2_kitte_jihanki",
-      "audio": "audio/scene-108.wav",
-      "durationSec": 6.517333333333333
-    },
-    {
-      "index": 109,
-      "text": "現存する、日本最古の自動販売機です。",
-      "type": "diagram",
-      "motif": "j2_genson_saiko",
-      "audio": "audio/scene-109.wav",
-      "durationSec": 4.042666666666666
-    },
-    {
-      "index": 110,
-      "text": "売り切れ表示までついた木の箱を、博物館で見ることができます。",
-      "type": "diagram",
-      "motif": "j2_museum",
-      "audio": "audio/scene-110.wav",
-      "durationSec": 5.141333333333334
-    },
-    {
-      "index": 111,
-      "text": "ただ、俵谷の機械は、時代が早すぎました。",
-      "type": "diagram",
-      "motif": "j2_too_early",
-      "audio": "audio/scene-111.wav",
-      "durationSec": 4.298666666666667
-    },
-    {
-      "index": 112,
-      "text": "小銭で買い物をする習慣も、機械を置く街の体力も、まだ足りなかったのです。",
-      "type": "diagram",
-      "motif": "j2_no_coins_town",
-      "audio": "audio/scene-112.wav",
-      "durationSec": 6.688
-    },
-    {
-      "index": 113,
-      "text": "日本の自販機は、いったん長い眠りにつきます。",
-      "type": "diagram",
-      "motif": "j2_long_sleep",
-      "audio": "audio/scene-113.wav",
-      "durationSec": 4.096
-    },
-    {
-      "index": 114,
-      "text": "第6章、映画館をおまけにつけた自販機。",
-      "type": "diagram",
-      "motif": "j2_ch6_door",
-      "audio": "audio/scene-114.wav",
-      "durationSec": 3.968
-    },
-    {
-      "index": 115,
-      "text": "昭和の初めの日本で、とんでもない変化球が生まれます。",
-      "type": "diagram",
-      "motif": "j2_showa_street",
-      "audio": "audio/scene-115.wav",
-      "durationSec": 4.8213333333333335
-    },
-    {
-      "index": 116,
-      "text": "1931年、お菓子のグリコが作った、映画付き自動販売機です。",
-      "type": "diagram",
-      "motif": "j2_glico_machine",
-      "audio": "audio/scene-116.wav",
-      "durationSec": 6.8693333333333335
-    },
-    {
-      "index": 117,
-      "text": "10銭を入れると、小さな画面で、チャンバラ映画の一場面が流れます。",
-      "type": "diagram",
-      "motif": "j2_chanbara",
-      "audio": "audio/scene-117.wav",
-      "durationSec": 6.133333333333334
-    },
-    {
-      "index": 118,
-      "text": "上映が終わると、キャラメルと、おつりがポトン。",
-      "type": "diagram",
-      "motif": "j2_caramel_drop",
-      "audio": "audio/scene-118.wav",
-      "durationSec": 4.234666666666667
-    },
-    {
-      "index": 119,
-      "text": "お菓子のおまけが、映画だったのです。",
-      "type": "diagram",
-      "motif": "j2_omake_reverse",
-      "audio": "audio/scene-119.wav",
-      "durationSec": 2.997333333333333
-    },
-    {
-      "index": 120,
-      "text": "そして、しれっとすごいのが「おつり」のほうです。",
-      "type": "diagram",
-      "motif": "j2_otsuri_spot",
-      "audio": "audio/scene-120.wav",
-      "durationSec": 3.4026666666666667
-    },
-    {
-      "index": 121,
-      "text": "キャラメルの値段を引いた差額の小銭を、機械がきちんと返してくれる。",
-      "type": "diagram",
-      "motif": "j2_sashihiki",
-      "audio": "audio/scene-121.wav",
-      "durationSec": 5.504
-    },
-    {
-      "index": 122,
-      "text": "お金を受け取るだけだった箱が、お金を返せるようになったのです。",
-      "type": "diagram",
-      "motif": "j2_hand_return",
-      "audio": "audio/scene-122.wav",
-      "durationSec": 5.013333333333334
-    },
-    {
-      "index": 123,
-      "text": "デパートや公園や地下鉄の駅など、東京を中心におよそ100台。",
-      "type": "diagram",
-      "motif": "j2_tokyo_100",
-      "audio": "audio/scene-123.wav",
-      "durationSec": 5.642666666666667
-    },
-    {
-      "index": 124,
-      "text": "子どもたちは、行列を作りました。",
-      "type": "diagram",
-      "motif": "j2_kids_line",
-      "audio": "audio/scene-124.wav",
-      "durationSec": 3.0933333333333333
-    },
-    {
-      "index": 125,
-      "text": "売っていたのはお菓子ではなく、ワクワクする時間。",
-      "type": "diagram",
-      "motif": "j2_wakuwaku",
-      "audio": "audio/scene-125.wav",
-      "durationSec": 4
-    },
-    {
-      "index": 126,
-      "text": "「体験を売る自販機」は、90年以上前の日本で生まれていたのです。",
-      "type": "diagram",
-      "motif": "j2_taiken_stamp",
-      "audio": "audio/scene-126.wav",
-      "durationSec": 5.685333333333333
-    },
-    {
-      "index": 127,
-      "text": "第7章、10円玉と、噴水の魔法。",
-      "type": "diagram",
-      "motif": "j2_ch7_door",
-      "audio": "audio/scene-127.wav",
-      "durationSec": 4.096
-    },
-    {
-      "index": 128,
-      "text": "戦争をはさんで、日本の自販機が目を覚ましたのは、1957年。",
-      "type": "diagram",
-      "motif": "j2_wake_1957",
-      "audio": "audio/scene-128.wav",
-      "durationSec": 6.741333333333333
-    },
-    {
-      "index": 129,
-      "text": "名古屋のお祭りに、見たこともない機械が現れます。",
-      "type": "diagram",
-      "motif": "j2_nagoya_fair",
-      "audio": "audio/scene-129.wav",
-      "durationSec": 4.32
-    },
-    {
-      "index": 130,
-      "text": "10円玉を入れると、紙コップにジュースが注がれる機械です。",
-      "type": "diagram",
-      "motif": "j2_fountain_all",
-      "audio": "audio/scene-130.wav",
-      "durationSec": 5.1306666666666665
-    },
-    {
-      "index": 131,
-      "text": "まず、紙コップがストンと落ちてきます。",
-      "type": "diagram",
-      "motif": "j2_cup_drop",
-      "audio": "audio/scene-131.wav",
-      "durationSec": 3.4026666666666667
-    },
-    {
-      "index": 132,
-      "text": "そこへ1杯ぶんだけジュースが注がれて、ピタリと止まる。",
-      "type": "diagram",
-      "motif": "j2_pour_stop",
-      "audio": "audio/scene-132.wav",
-      "durationSec": 4.48
-    },
-    {
-      "index": 133,
-      "text": "2000年前にヘロンがシーソーでやった仕事を、今度は電気の弁がやっているのです。",
-      "type": "diagram",
-      "motif": "j2_heron_valve",
-      "audio": "audio/scene-133.wav",
-      "durationSec": 6.4
-    },
-    {
-      "index": 134,
-      "text": "てっぺんのガラス玉の中では、オレンジジュースが噴水のように吹き上がっていました。",
-      "type": "diagram",
-      "motif": "j2_glass_fountain",
-      "audio": "audio/scene-134.wav",
       "durationSec": 6.389333333333333
     },
     {
-      "index": 135,
-      "text": "冷たくておいしそうな中身が、まるごと見える。",
+      "index": 6,
+      "text": "……どうでしょう。ちょっと当たっていませんか?",
       "type": "diagram",
-      "motif": "j2_mieru_nakami",
-      "audio": "audio/scene-135.wav",
-      "durationSec": 3.7653333333333334
+      "motif": "w1_atari_check",
+      "audio": "audio/scene-006.wav",
+      "durationSec": 3.6906666666666665
     },
     {
-      "index": 136,
-      "text": "子どもも大人も、行列を作りました。",
+      "index": 7,
+      "text": "当たっていた方。その感覚、覚えておいてください。",
       "type": "diagram",
-      "motif": "j2_fountain_line",
-      "audio": "audio/scene-136.wav",
-      "durationSec": 3.3173333333333335
+      "motif": "w1_atari_check",
+      "audio": "audio/scene-007.wav",
+      "durationSec": 4.501333333333333
     },
     {
-      "index": 137,
-      "text": "この噴水式ジュース自販機は、デパートの屋上や商店街へ、またたく間に広がります。",
+      "index": 8,
+      "text": "この動画の最後で、タネを明かします。",
       "type": "diagram",
-      "motif": "j2_depart_spread",
-      "audio": "audio/scene-137.wav",
-      "durationSec": 7.274666666666667
-    },
-    {
-      "index": 138,
-      "text": "多いときには、全国でおよそ1万台。",
-      "type": "diagram",
-      "motif": "j2_10000_count",
-      "audio": "audio/scene-138.wav",
-      "durationSec": 3.616
-    },
-    {
-      "index": 139,
-      "text": "自販機ブームの、最初の花火でした。",
-      "type": "diagram",
-      "motif": "j2_first_fireworks",
-      "audio": "audio/scene-139.wav",
-      "durationSec": 3.3173333333333335
-    },
-    {
-      "index": 140,
-      "text": "ただしこの噴水、弱点がありました。",
-      "type": "diagram",
-      "motif": "j2_but_weak",
-      "audio": "audio/scene-140.wav",
-      "durationSec": 3.424
-    },
-    {
-      "index": 141,
-      "text": "あの吹き上がっていたジュース、機械の中をぐるぐる循環していたのです。",
-      "type": "diagram",
-      "motif": "j2_junkan_arrows",
-      "audio": "audio/scene-141.wav",
-      "durationSec": 5.514666666666667
-    },
-    {
-      "index": 142,
-      "text": "衛生面の問題が指摘され、ルールが厳しくなり、噴水はやがて街から消えました。",
-      "type": "diagram",
-      "motif": "j2_fountain_fade",
-      "audio": "audio/scene-142.wav",
-      "durationSec": 7.285333333333333
-    },
-    {
-      "index": 143,
-      "text": "それでも「機械から飲み物を買う」楽しさは、しっかり残ります。",
-      "type": "diagram",
-      "motif": "j2_fun_remains",
-      "audio": "audio/scene-143.wav",
-      "durationSec": 4.874666666666666
-    },
-    {
-      "index": 144,
-      "text": "第8章、ポケットの中の起爆剤。",
-      "type": "diagram",
-      "motif": "j2_ch8_door",
-      "audio": "audio/scene-144.wav",
-      "durationSec": 3.36
-    },
-    {
-      "index": 145,
-      "text": "1960年代、日本は高度経済成長のまっただ中。",
-      "type": "diagram",
-      "motif": "j2_kodo_seicho",
-      "audio": "audio/scene-145.wav",
-      "durationSec": 5.8453333333333335
-    },
-    {
-      "index": 146,
-      "text": "缶入りの飲み物が登場し、自販機で売るのにぴったりでした。",
-      "type": "diagram",
-      "motif": "j2_can_juice",
-      "audio": "audio/scene-146.wav",
-      "durationSec": 4.981333333333334
-    },
-    {
-      "index": 147,
-      "text": "そして1967年、決定的な出来事が起きます。",
-      "type": "diagram",
-      "motif": "j2_1967_spot",
-      "audio": "audio/scene-147.wav",
-      "durationSec": 5.386666666666667
-    },
-    {
-      "index": 148,
-      "text": "100円と50円の硬貨が新しくなり、世の中に大量に出回り始めたのです。",
-      "type": "diagram",
-      "motif": "j2_new_coins",
-      "audio": "audio/scene-148.wav",
-      "durationSec": 6.666666666666667
-    },
-    {
-      "index": 149,
-      "text": "お札とちがって、機械が扱いやすい、ちょうどいいコイン。",
-      "type": "diagram",
-      "motif": "j2_bill_vs_coin",
-      "audio": "audio/scene-149.wav",
-      "durationSec": 4.8533333333333335
-    },
-    {
-      "index": 150,
-      "text": "ポケットの小銭だけで、買い物が完結する時代が来ました。",
-      "type": "diagram",
-      "motif": "j2_pocket_kansei",
-      "audio": "audio/scene-150.wav",
-      "durationSec": 4.906666666666666
-    },
-    {
-      "index": 151,
-      "text": "自販機は、ここから一気に街を埋めていきます。",
-      "type": "diagram",
-      "motif": "j2_machi_umaru",
-      "audio": "audio/scene-151.wav",
-      "durationSec": 3.8186666666666667
-    },
-    {
-      "index": 152,
-      "text": "ただ、台数とお金が増えるほど、避けて通れない相手がいました。",
-      "type": "diagram",
-      "motif": "j2_sakerarenai",
-      "audio": "audio/scene-152.wav",
-      "durationSec": 5.504
-    },
-    {
-      "index": 153,
-      "text": "ニセ硬貨です。",
-      "type": "diagram",
-      "motif": "j2_nise_coin",
-      "audio": "audio/scene-153.wav",
-      "durationSec": 1.3013333333333332
-    },
-    {
-      "index": 154,
-      "text": "俵谷の木の仕掛けから80年、見抜く目は大進化していました。",
-      "type": "diagram",
-      "motif": "j2_80years_morph",
-      "audio": "audio/scene-154.wav",
-      "durationSec": 5.482666666666667
-    },
-    {
-      "index": 155,
-      "text": "現代の自販機の入り口には、「コインメック」という小さな検査装置が入っています。",
-      "type": "diagram",
-      "motif": "j2_coinmech_pos",
-      "audio": "audio/scene-155.wav",
-      "durationSec": 6.442666666666667
-    },
-    {
-      "index": 156,
-      "text": "投入された硬貨は、レールの上を転がりながら、センサーの前を通過します。",
-      "type": "diagram",
-      "motif": "j2_coin_rail",
-      "audio": "audio/scene-156.wav",
-      "durationSec": 6.357333333333333
-    },
-    {
-      "index": 157,
-      "text": "まず、直径と厚みが規格どおりかを測ります。",
-      "type": "diagram",
-      "motif": "j2_size_check",
-      "audio": "audio/scene-157.wav",
-      "durationSec": 4.1066666666666665
-    },
-    {
-      "index": 158,
-      "text": "でも、サイズをそっくりに作った偽物なら、これだけでは見抜けません。",
-      "type": "diagram",
-      "motif": "j2_sokkuri_pass",
-      "audio": "audio/scene-158.wav",
-      "durationSec": 5.6
-    },
-    {
-      "index": 159,
-      "text": "そこで本命の検査、材質チェックの出番です。",
-      "type": "diagram",
-      "motif": "j2_zairyo_badge",
-      "audio": "audio/scene-159.wav",
-      "durationSec": 4.192
-    },
-    {
-      "index": 160,
-      "text": "センサーの正体は、電気を流したコイル。",
-      "type": "diagram",
-      "motif": "j2_coil_sensor",
-      "audio": "audio/scene-160.wav",
-      "durationSec": 3.6266666666666665
-    },
-    {
-      "index": 161,
-      "text": "コイルのそばを硬貨が通ると、硬貨の中に「渦電流」という小さな電気の渦が生まれます。",
-      "type": "diagram",
-      "motif": "j2_uzu_denryu",
-      "audio": "audio/scene-161.wav",
-      "durationSec": 6.986666666666666
-    },
-    {
-      "index": 162,
-      "text": "この渦のでき方が、金属の種類によってまったく違うのです。",
-      "type": "diagram",
-      "motif": "j2_uzu_chigai",
-      "audio": "audio/scene-162.wav",
-      "durationSec": 4.949333333333334
-    },
-    {
-      "index": 163,
-      "text": "100円玉は白銅、5円玉は黄銅と、日本の硬貨は材質が少しずつ違います。",
-      "type": "diagram",
-      "motif": "j2_coin_lineup",
-      "audio": "audio/scene-163.wav",
-      "durationSec": 7.434666666666667
-    },
-    {
-      "index": 164,
-      "text": "つまり自販機は、硬貨を目で見るのではなく、電気の反応で見分けているのです。",
-      "type": "diagram",
-      "motif": "j2_denki_me",
-      "audio": "audio/scene-164.wav",
-      "durationSec": 7.082666666666666
-    },
-    {
-      "index": 165,
-      "text": "1990年代には、よく似た外国の硬貨を変造したニセ500円が大流行しました。",
-      "type": "diagram",
-      "motif": "j2_500_warning",
-      "audio": "audio/scene-165.wav",
-      "durationSec": 7.8613333333333335
-    },
-    {
-      "index": 166,
-      "text": "負けじと500円玉は、まず2000年に素材を変えて対抗し、2021年には2種類の金属を重ねた3層構造に進化しています。",
-      "type": "diagram",
-      "motif": "j2_500_3layers",
-      "audio": "audio/scene-166.wav",
-      "durationSec": 11.381333333333334
-    },
-    {
-      "index": 167,
-      "text": "下関の木の目は、80年かけて、電気の目に進化したのです。",
-      "type": "diagram",
-      "motif": "j2_wood_vs_mech",
-      "audio": "audio/scene-167.wav",
-      "durationSec": 5.792
-    },
-    {
-      "index": 168,
-      "text": "第9章、あったかいと、つめたいの同居。",
-      "type": "diagram",
-      "motif": "j2_ch9_door",
-      "audio": "audio/scene-168.wav",
-      "durationSec": 4.1066666666666665
-    },
-    {
-      "index": 169,
-      "text": "1970年代、日本は世界があっと驚く発明を重ねます。",
-      "type": "diagram",
-      "motif": "j2_japan_idea",
-      "audio": "audio/scene-169.wav",
-      "durationSec": 6.1546666666666665
-    },
-    {
-      "index": 170,
-      "text": "きっかけは、高速道路の休憩所で飲んだ、冷めたコーヒーでした。",
-      "type": "diagram",
-      "motif": "j2_sa_coffee",
-      "audio": "audio/scene-170.wav",
-      "durationSec": 5.536
-    },
-    {
-      "index": 171,
-      "text": "飲料メーカー、ポッカの創業者が悔しがります。",
-      "type": "diagram",
-      "motif": "j2_pokka_kuyashii",
-      "audio": "audio/scene-171.wav",
-      "durationSec": 4.2026666666666666
-    },
-    {
-      "index": 172,
-      "text": "いつでも熱いコーヒーが飲めないものか。",
-      "type": "diagram",
-      "motif": "j2_hot_dream",
-      "audio": "audio/scene-172.wav",
-      "durationSec": 3.488
-    },
-    {
-      "index": 173,
-      "text": "1973年、温かい飲み物を売る自販機が生まれます。",
-      "type": "diagram",
-      "motif": "j2_hot_jihanki",
-      "audio": "audio/scene-173.wav",
-      "durationSec": 5.557333333333333
-    },
-    {
-      "index": 174,
-      "text": "ちょうど日本では、世界初の缶コーヒーが生まれたばかり。",
-      "type": "diagram",
-      "motif": "j2_can_coffee_born",
-      "audio": "audio/scene-174.wav",
-      "durationSec": 4.661333333333333
-    },
-    {
-      "index": 175,
-      "text": "温かい缶コーヒーと自販機は、ここで運命の出会いを果たします。",
-      "type": "diagram",
-      "motif": "j2_unmei_deai",
-      "audio": "audio/scene-175.wav",
-      "durationSec": 5.226666666666667
-    },
-    {
-      "index": 176,
-      "text": "さらに1976年には、1台で「あったかい」と「つめたい」を同時に売る機械が登場しました。",
-      "type": "diagram",
-      "motif": "j2_hot_cold_both",
-      "audio": "audio/scene-176.wav",
-      "durationSec": 7.776
-    },
-    {
-      "index": 177,
-      "text": "当たり前に見えて、これは日本生まれの芸当です。",
-      "type": "diagram",
-      "motif": "j2_japan_umare",
-      "audio": "audio/scene-177.wav",
-      "durationSec": 4.1706666666666665
-    },
-    {
-      "index": 178,
-      "text": "箱の中を壁で仕切り、片側を小さな冷蔵庫に、片側を保温庫にする。",
-      "type": "diagram",
-      "motif": "j2_naka_shikiri",
-      "audio": "audio/scene-178.wav",
-      "durationSec": 6.656
-    },
-    {
-      "index": 179,
-      "text": "最近の機種はもっと賢くて、冷やすときに出た熱を捨てずに、温めるほうへ回しています。",
-      "type": "diagram",
-      "motif": "j2_netsu_recycle",
-      "audio": "audio/scene-179.wav",
-      "durationSec": 7.402666666666667
-    },
-    {
-      "index": 180,
-      "text": "冬の夜のホットのお茶は、半世紀前の悔しさから生まれたのです。",
-      "type": "diagram",
-      "motif": "j2_fuyu_no_ocha",
-      "audio": "audio/scene-180.wav",
-      "durationSec": 5.397333333333333
-    },
-    {
-      "index": 181,
-      "text": "第10章、増えていく親戚たち。",
-      "type": "diagram",
-      "motif": "j2_ch10_door",
-      "audio": "audio/scene-181.wav",
+      "motif": "w1_tane_yokoku",
+      "audio": "audio/scene-008.wav",
       "durationSec": 3.1573333333333333
     },
     {
-      "index": 182,
-      "text": "高度成長の日本では、自販機の親戚が次々に生まれます。",
+      "index": 9,
+      "text": "星座占いに、血液型、93問に答えて出てくるアルファベット4文字。",
       "type": "diagram",
-      "motif": "j2_shinseki_tree",
-      "audio": "audio/scene-182.wav",
-      "durationSec": 5.365333333333333
+      "motif": "w1_uranai_zukushi",
+      "audio": "audio/scene-009.wav",
+      "durationSec": 6.858666666666666
     },
     {
-      "index": 183,
-      "text": "駅には切符の券売機、街角には両替機とコインロッカー。",
+      "index": 10,
+      "text": "「私は何者?」という問いは、実は記録に残るだけで、およそ4000年続いています。",
       "type": "diagram",
-      "motif": "j2_eki_machines",
-      "audio": "audio/scene-183.wav",
-      "durationSec": 5.290666666666667
+      "motif": "w1_toi_timeline",
+      "audio": "audio/scene-010.wav",
+      "durationSec": 7.904
     },
     {
-      "index": 184,
-      "text": "1965年には、アメリカから小さな親戚もやって来ました。",
+      "index": 11,
+      "text": "最初の診断ツールは、スマホではなく、骨でした。",
       "type": "diagram",
-      "motif": "j2_gacha_arrival",
-      "audio": "audio/scene-184.wav",
-      "durationSec": 5.898666666666666
-    },
-    {
-      "index": 185,
-      "text": "ハンドルを回すと、カプセルに入ったおもちゃが出てくる、ガチャガチャです。",
-      "type": "diagram",
-      "motif": "j2_gacha_front",
-      "audio": "audio/scene-185.wav",
-      "durationSec": 5.621333333333333
-    },
-    {
-      "index": 186,
-      "text": "駄菓子屋の店先で、1回10円から20円。",
-      "type": "diagram",
-      "motif": "j2_dagashiya",
-      "audio": "audio/scene-186.wav",
-      "durationSec": 4.288
-    },
-    {
-      "index": 187,
-      "text": "このガチャガチャ、実はいまも、ほとんどの機種が電気を使いません。",
-      "type": "diagram",
-      "motif": "j2_no_denki",
-      "audio": "audio/scene-187.wav",
-      "durationSec": 5.824
-    },
-    {
-      "index": 188,
-      "text": "ハンドルを回す力と、歯車だけで、お金を数えています。",
-      "type": "diagram",
-      "motif": "j2_gacha_gears",
-      "audio": "audio/scene-188.wav",
-      "durationSec": 5.290666666666667
-    },
-    {
-      "index": 189,
-      "text": "2000年前の神殿と同じ「電気いらずの知恵」が、子どもの手の中で現役なのです。",
-      "type": "diagram",
-      "motif": "j2_shinden_gacha",
-      "audio": "audio/scene-189.wav",
-      "durationSec": 6.474666666666667
-    },
-    {
-      "index": 190,
-      "text": "そして1970年代、国道沿いには伝説の店が現れます。",
-      "type": "diagram",
-      "motif": "j2_auto_resto_neon",
-      "audio": "audio/scene-190.wav",
-      "durationSec": 5.962666666666666
-    },
-    {
-      "index": 191,
-      "text": "その名も、オートレストラン。",
-      "type": "diagram",
-      "motif": "j2_resto_inside",
-      "audio": "audio/scene-191.wav",
-      "durationSec": 2.304
-    },
-    {
-      "index": 192,
-      "text": "うどんも、そばも、トーストも、ハンバーガーも、ぜんぶ自販機。",
-      "type": "diagram",
-      "motif": "j2_menrui_lineup",
-      "audio": "audio/scene-192.wav",
-      "durationSec": 5.525333333333333
-    },
-    {
-      "index": 193,
-      "text": "うどんの機械の中では、どんぶりがくるくる回りながらお湯を注がれ、湯切りまでこなします。",
-      "type": "diagram",
-      "motif": "j2_udon_kaiten",
-      "audio": "audio/scene-193.wav",
-      "durationSec": 7.1146666666666665
-    },
-    {
-      "index": 194,
-      "text": "お金を入れて30秒足らずで、熱々の1杯が出てくる。",
-      "type": "diagram",
-      "motif": "j2_udon_30s",
-      "audio": "audio/scene-194.wav",
-      "durationSec": 4.768
-    },
-    {
-      "index": 195,
-      "text": "24時間、無人営業。深夜のトラック運転手たちのオアシスでした。",
-      "type": "diagram",
-      "motif": "j2_trucker_udon",
-      "audio": "audio/scene-195.wav",
-      "durationSec": 6.133333333333334
-    },
-    {
-      "index": 196,
-      "text": "めん類の自販機は、全国で1万2千台以上も作られました。",
-      "type": "diagram",
-      "motif": "j2_12000_count",
-      "audio": "audio/scene-196.wav",
-      "durationSec": 5.429333333333333
-    },
-    {
-      "index": 197,
-      "text": "現役で動いているのは、いまや全国にわずか60台ほど。",
-      "type": "diagram",
-      "motif": "j2_nokori_60",
-      "audio": "audio/scene-197.wav",
-      "durationSec": 5.1626666666666665
-    },
-    {
-      "index": 198,
-      "text": "その味を求めて週末に行列ができる、レトロの聖地になっています。",
-      "type": "diagram",
-      "motif": "j2_retro_seichi",
-      "audio": "audio/scene-198.wav",
-      "durationSec": 5.685333333333333
-    },
-    {
-      "index": 199,
-      "text": "第11章、気づけば自販機大国。",
-      "type": "diagram",
-      "motif": "j2_ch11_door",
-      "audio": "audio/scene-199.wav",
-      "durationSec": 3.477333333333333
-    },
-    {
-      "index": 200,
-      "text": "現在、日本の自販機は、およそ391万台。",
-      "type": "diagram",
-      "motif": "j2_391_count",
-      "audio": "audio/scene-200.wav",
-      "durationSec": 5.568
-    },
-    {
-      "index": 201,
-      "text": "飲み物の自販機だけで、約220万台です。",
-      "type": "diagram",
-      "motif": "j2_drink_share",
-      "audio": "audio/scene-201.wav",
-      "durationSec": 4.330666666666667
-    },
-    {
-      "index": 202,
-      "text": "ざっくり、国民30人に1台。",
-      "type": "diagram",
-      "motif": "j2_30nin_1dai",
-      "audio": "audio/scene-202.wav",
-      "durationSec": 3.3066666666666666
-    },
-    {
-      "index": 203,
-      "text": "人口あたりの密度では、世界トップクラスです。",
-      "type": "diagram",
-      "motif": "j2_sekai_top",
-      "audio": "audio/scene-203.wav",
-      "durationSec": 3.957333333333333
-    },
-    {
-      "index": 204,
-      "text": "でも、本当にすごいのは、数ではありません。",
-      "type": "diagram",
-      "motif": "j2_kazu_janai",
-      "audio": "audio/scene-204.wav",
-      "durationSec": 4.032
-    },
-    {
-      "index": 205,
-      "text": "思い出してください。冒頭の、夜道です。",
-      "type": "diagram",
-      "motif": "j2_yomichi_futatabi",
-      "audio": "audio/scene-205.wav",
-      "durationSec": 3.744
-    },
-    {
-      "index": 206,
-      "text": "現金と商品を積んだ無人の箱が、屋外に置きっぱなしになっている。",
-      "type": "diagram",
-      "motif": "j2_mujin_toushi",
-      "audio": "audio/scene-206.wav",
-      "durationSec": 5.728
-    },
-    {
-      "index": 207,
-      "text": "こんな置き方ができる国は、世界でもほとんどありません。",
-      "type": "diagram",
-      "motif": "j2_sekai_batsu",
-      "audio": "audio/scene-207.wav",
-      "durationSec": 4.554666666666667
-    },
-    {
-      "index": 208,
-      "text": "多くの国では、壊されるか、持ち去られてしまうからです。",
-      "type": "diagram",
-      "motif": "j2_kowareru_kage",
-      "audio": "audio/scene-208.wav",
-      "durationSec": 4.8213333333333335
-    },
-    {
-      "index": 209,
-      "text": "海外の自販機の多くが、建物の中や壁の中に埋め込まれているのは、そのためです。",
-      "type": "diagram",
-      "motif": "j2_kabe_grille",
-      "audio": "audio/scene-209.wav",
-      "durationSec": 7.1146666666666665
-    },
-    {
-      "index": 210,
-      "text": "自販機の先進国アメリカで、機械が街から屋内へ引っ込んでいった理由も、裏返せば同じでした。",
-      "type": "diagram",
-      "motif": "j2_okunai_sepia",
-      "audio": "audio/scene-210.wav",
-      "durationSec": 8.309333333333333
-    },
-    {
-      "index": 211,
-      "text": "自販機大国を支えていたのは、機械の性能と、もうひとつ、この国の治安だったのです。",
-      "type": "diagram",
-      "motif": "j2_sasae_hashira",
-      "audio": "audio/scene-211.wav",
-      "durationSec": 7.498666666666667
-    },
-    {
-      "index": 212,
-      "text": "駅もオフィス街も人の流れが密で、置けば売れる土地柄だったことも追い風でした。",
-      "type": "diagram",
-      "motif": "j2_ekimae_nami",
-      "audio": "audio/scene-212.wav",
-      "durationSec": 6.282666666666667
-    },
-    {
-      "index": 213,
-      "text": "そして、オートマットの壁の裏の厨房を、思い出してください。",
-      "type": "diagram",
-      "motif": "j2_chubo_sepia",
-      "audio": "audio/scene-213.wav",
-      "durationSec": 5.173333333333333
-    },
-    {
-      "index": 214,
-      "text": "日本でも毎日、補充のドライバーたちが何台もの箱を回り、商品を絶やさず、売上金を回収しています。",
-      "type": "diagram",
-      "motif": "j2_hoju_driver",
-      "audio": "audio/scene-214.wav",
-      "durationSec": 9.557333333333334
-    },
-    {
-      "index": 215,
-      "text": "無人の箱は、いまも裏側の人が支えているのです。",
-      "type": "diagram",
-      "motif": "j2_ura_no_hito",
-      "audio": "audio/scene-215.wav",
-      "durationSec": 4.362666666666667
-    },
-    {
-      "index": 216,
-      "text": "2000年前の神殿は、「人を信じず、仕組みで解決」しました。",
-      "type": "diagram",
-      "motif": "j2_shinden_card2",
-      "audio": "audio/scene-216.wav",
-      "durationSec": 5.525333333333333
-    },
-    {
-      "index": 217,
-      "text": "日本の夜道は、仕組みと、人への信頼の、合わせ技でできているのです。",
-      "type": "diagram",
-      "motif": "j2_gear_heart",
-      "audio": "audio/scene-217.wav",
-      "durationSec": 6.474666666666667
-    },
-    {
-      "index": 218,
-      "text": "17世紀の酒場が、お客の良心にゆだねたもの。",
-      "type": "diagram",
-      "motif": "j2_honour_sepia",
-      "audio": "audio/scene-218.wav",
-      "durationSec": 4.522666666666667
-    },
-    {
-      "index": 219,
-      "text": "この国はそれを、街ぐるみで引き受けているのかもしれません。",
-      "type": "diagram",
-      "motif": "j2_machi_hikari",
-      "audio": "audio/scene-219.wav",
-      "durationSec": 4.629333333333333
-    },
-    {
-      "index": 220,
-      "text": "第12章、いちばん新しい進化。",
-      "type": "diagram",
-      "motif": "j2_ch12_door",
-      "audio": "audio/scene-220.wav",
-      "durationSec": 3.4133333333333336
-    },
-    {
-      "index": 221,
-      "text": "自販機の進化は、売ることだけではありませんでした。",
-      "type": "diagram",
-      "motif": "j2_uru_kieru",
-      "audio": "audio/scene-221.wav",
-      "durationSec": 4.128
-    },
-    {
-      "index": 222,
-      "text": "2011年の、東日本大震災。",
-      "type": "diagram",
-      "motif": "j2_2011_yami",
-      "audio": "audio/scene-222.wav",
-      "durationSec": 3.7866666666666666
-    },
-    {
-      "index": 223,
-      "text": "停電した街で、飲み物を配った自販機がありました。",
-      "type": "diagram",
-      "motif": "j2_teiden_hikari",
-      "audio": "audio/scene-223.wav",
+      "motif": "w1_hone_smartphone",
+      "audio": "audio/scene-011.wav",
       "durationSec": 4.512
     },
     {
-      "index": 224,
-      "text": "災害救援ベンダー。災害のときに、無料開放できる自販機です。",
+      "index": 12,
+      "text": "骨のヒビから、頭のデコボコ、インクのしみ、そして4文字タイプまで。",
       "type": "diagram",
-      "motif": "j2_kyuen_vendor",
-      "audio": "audio/scene-224.wav",
-      "durationSec": 6.037333333333334
+      "motif": "w1_yottsu_tools",
+      "audio": "audio/scene-012.wav",
+      "durationSec": 6.133333333333334
     },
     {
-      "index": 225,
-      "text": "管理者が専用の鍵を使うと、お金を入れずに商品を取り出せるようになります。",
+      "index": 13,
+      "text": "人類4000年ぶんの「自分探し」、さかのぼってみましょう。",
       "type": "diagram",
-      "motif": "j2_kagi_kaiho",
-      "audio": "audio/scene-225.wav",
-      "durationSec": 6.421333333333333
+      "motif": "w1_toi_timeline",
+      "audio": "audio/scene-013.wav",
+      "durationSec": 4.661333333333333
     },
     {
-      "index": 226,
-      "text": "電気が止まっていても、内蔵バッテリーや、手でワイヤを引く仕掛けで動かせます。",
+      "index": 14,
+      "text": "第1章、国の運命は、骨に聞く。",
       "type": "diagram",
-      "motif": "j2_wire_battery",
-      "audio": "audio/scene-226.wav",
-      "durationSec": 6.378666666666667
+      "motif": "w1_ch1_door",
+      "audio": "audio/scene-014.wav",
+      "durationSec": 3.8186666666666667
     },
     {
-      "index": 227,
-      "text": "街角の箱が、そのまま小さな備蓄倉庫になるのです。",
+      "index": 15,
+      "text": "舞台は、およそ3300年前の古代中国、殷という王朝です。",
       "type": "diagram",
-      "motif": "j2_bichiku_soko",
-      "audio": "audio/scene-227.wav",
-      "durationSec": 4.544
+      "motif": "w1_in_dynasty",
+      "audio": "audio/scene-015.wav",
+      "durationSec": 6.304
     },
     {
-      "index": 228,
-      "text": "この震災をきっかけに、災害対応の自販機は全国へ広がりました。",
+      "index": 16,
+      "text": "王さまには、知りたいことが山ほどありました。",
       "type": "diagram",
-      "motif": "j2_kyuen_hirogaru",
-      "audio": "audio/scene-228.wav",
+      "motif": "w1_king_many_q",
+      "audio": "audio/scene-016.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 17,
+      "text": "雨は降るのか。作物は実るのか。戦に勝てるのか。",
+      "type": "diagram",
+      "motif": "w1_king_questions",
+      "audio": "audio/scene-017.wav",
+      "durationSec": 5.632
+    },
+    {
+      "index": 18,
+      "text": "答えてくれる気象予報士も、新聞も、ありません。",
+      "type": "diagram",
+      "motif": "w1_no_yohoshi",
+      "audio": "audio/scene-018.wav",
+      "durationSec": 4.490666666666667
+    },
+    {
+      "index": 19,
+      "text": "そこで登場するのが、亀の甲羅と、牛の骨です。",
+      "type": "diagram",
+      "motif": "w1_kame_ushi",
+      "audio": "audio/scene-019.wav",
+      "durationSec": 4.661333333333333
+    },
+    {
+      "index": 20,
+      "text": "専門の占い官が、骨に熱した棒を押し当てます。",
+      "type": "diagram",
+      "motif": "w1_bone_burn",
+      "audio": "audio/scene-020.wav",
+      "durationSec": 4.298666666666667
+    },
+    {
+      "index": 21,
+      "text": "ピシッ。",
+      "type": "diagram",
+      "motif": "w1_pishi",
+      "audio": "audio/scene-021.wav",
+      "durationSec": 0.6613333333333333
+    },
+    {
+      "index": 22,
+      "text": "入ったヒビの形を見て、最終判断を下すのは、王さま本人でした。",
+      "type": "diagram",
+      "motif": "w1_king_judge",
+      "audio": "audio/scene-022.wav",
+      "durationSec": 6.250666666666667
+    },
+    {
+      "index": 23,
+      "text": "国の一大事が、骨のヒビで決まっていたのです。",
+      "type": "diagram",
+      "motif": "w1_king_judge",
+      "audio": "audio/scene-023.wav",
+      "durationSec": 3.936
+    },
+    {
+      "index": 24,
+      "text": "そして占いの結果は、その骨に文字で刻まれました。",
+      "type": "diagram",
+      "motif": "w1_bone_carve",
+      "audio": "audio/scene-024.wav",
+      "durationSec": 4.426666666666667
+    },
+    {
+      "index": 25,
+      "text": "これが甲骨文字。現存する、最古の漢字です。",
+      "type": "diagram",
+      "motif": "w1_koukotsu_moji",
+      "audio": "audio/scene-025.wav",
+      "durationSec": 4.693333333333333
+    },
+    {
+      "index": 26,
+      "text": "漢字のいちばん古い記録は、占いのメモだったのです。",
+      "type": "diagram",
+      "motif": "w1_koukotsu_moji",
+      "audio": "audio/scene-026.wav",
+      "durationSec": 4.501333333333333
+    },
+    {
+      "index": 27,
+      "text": "同じころ、西のメソポタミアでは、空を見上げる人たちがいました。",
+      "type": "diagram",
+      "motif": "w1_mesopotamia",
+      "audio": "audio/scene-027.wav",
+      "durationSec": 5.514666666666667
+    },
+    {
+      "index": 28,
+      "text": "星や月の動きから、国の吉凶を読み取る、天体の占いです。",
+      "type": "diagram",
+      "motif": "w1_tentai_uranai",
+      "audio": "audio/scene-028.wav",
+      "durationSec": 5.717333333333333
+    },
+    {
+      "index": 29,
+      "text": "ただし、占ってもらえるのは王さまと国家だけ。",
+      "type": "diagram",
+      "motif": "w1_king_only",
+      "audio": "audio/scene-029.wav",
+      "durationSec": 4.256
+    },
+    {
+      "index": 30,
+      "text": "個人を占った世界最古のホロスコープは、ぐっと時代が下って、紀元前410年のものです。",
+      "type": "diagram",
+      "motif": "w1_bc410",
+      "audio": "audio/scene-030.wav",
+      "durationSec": 8.074666666666667
+    },
+    {
+      "index": 31,
+      "text": "「私は何者?」と聞けるのは、長いあいだ、王さまの特権でした。",
+      "type": "diagram",
+      "motif": "w1_king_tokken",
+      "audio": "audio/scene-031.wav",
       "durationSec": 5.952
     },
     {
-      "index": 229,
-      "text": "最近では、救命装置のAEDを載せた機種や、防犯カメラで街を見守る機種まで現れています。",
+      "index": 32,
+      "text": "第2章、占いが、お役所だったころ。",
       "type": "diagram",
-      "motif": "j2_aed_camera",
-      "audio": "audio/scene-229.wav",
-      "durationSec": 8.618666666666666
+      "motif": "w1_ch2_door",
+      "audio": "audio/scene-032.wav",
+      "durationSec": 3.808
     },
     {
-      "index": 230,
-      "text": "売る箱から、街を支える箱へ。",
+      "index": 33,
+      "text": "時は流れて、古代ローマ。",
       "type": "diagram",
-      "motif": "j2_machi_sasaeru",
-      "audio": "audio/scene-230.wav",
-      "durationSec": 2.997333333333333
+      "motif": "w1_rome",
+      "audio": "audio/scene-033.wav",
+      "durationSec": 2.570666666666667
     },
     {
-      "index": 231,
-      "text": "2000年かけて進化した箱の、いちばん新しい仕事は、「売らないこと」でした。",
+      "index": 34,
+      "text": "占いは、国家の正式な手続きになっていました。",
       "type": "diagram",
-      "motif": "j2_uranai_card",
-      "audio": "audio/scene-231.wav",
-      "durationSec": 6.208
+      "motif": "w1_tetsuzuki",
+      "audio": "audio/scene-034.wav",
+      "durationSec": 4.245333333333333
     },
     {
-      "index": 232,
-      "text": "2000年前、神様の水を売っていた箱は。",
+      "index": 35,
+      "text": "アウグルという神官が、鳥の飛び方や鳴き声を観察します。",
       "type": "diagram",
-      "motif": "j2_pot_sepia",
-      "audio": "audio/scene-232.wav",
-      "durationSec": 3.8933333333333335
+      "motif": "w1_augur",
+      "audio": "audio/scene-035.wav",
+      "durationSec": 5.066666666666666
     },
     {
-      "index": 233,
-      "text": "2000年後、災害の日に、ただで水を配る箱になりました。",
+      "index": 36,
+      "text": "開戦や大事な集会の前に、神々がそれを認めるかどうかを、確かめるのです。",
       "type": "diagram",
-      "motif": "j2_pot_to_mizu",
-      "audio": "audio/scene-233.wav",
-      "durationSec": 5.290666666666667
+      "motif": "w1_kessai",
+      "audio": "audio/scene-036.wav",
+      "durationSec": 6.986666666666666
     },
     {
-      "index": 234,
-      "text": "神殿のシーソーから、酒場の良心の箱、ロンドンの引き出し、壁の裏の厨房、下関の木の目、映画とおつり、噴水、電気の目、そして夜道へ。",
+      "index": 37,
+      "text": "未来を当てる占いというより、神様の決裁をもらう儀式でした。",
       "type": "diagram",
-      "motif": "j2_somato_tabi",
-      "audio": "audio/scene-234.wav",
-      "durationSec": 14.090666666666667
+      "motif": "w1_kessai_girei",
+      "audio": "audio/scene-037.wav",
+      "durationSec": 5.418666666666667
     },
     {
-      "index": 235,
-      "text": "コイン1枚で動く箱は、2000年ぶんの発明を抱えて、今夜も光っています。",
+      "index": 38,
+      "text": "凶兆が出れば、戦争すら延期です。",
       "type": "diagram",
-      "motif": "j2_hatsumei_toushi",
-      "audio": "audio/scene-235.wav",
-      "durationSec": 6.677333333333333
+      "motif": "w1_enki",
+      "audio": "audio/scene-038.wav",
+      "durationSec": 3.3706666666666667
     },
     {
-      "index": 236,
-      "text": "明日、自販機の前を通ったら、少しだけ立ち止まってみてください。",
+      "index": 39,
+      "text": "ところが紀元前249年、この手続きを省略した男がいました。",
       "type": "diagram",
-      "motif": "j2_tachidomaru",
-      "audio": "audio/scene-236.wav",
+      "motif": "w1_general_chicken",
+      "audio": "audio/scene-039.wav",
+      "durationSec": 6.666666666666667
+    },
+    {
+      "index": 40,
+      "text": "海戦を前に、将軍が鶏の様子をうかがいます。",
+      "type": "diagram",
+      "motif": "w1_general_chicken",
+      "audio": "audio/scene-040.wav",
+      "durationSec": 4.522666666666667
+    },
+    {
+      "index": 41,
+      "text": "鶏が餌を食べれば、吉兆。食べなければ、凶兆です。",
+      "type": "diagram",
+      "motif": "w1_kitcho_kyocho",
+      "audio": "audio/scene-041.wav",
       "durationSec": 5.472
     },
     {
-      "index": 237,
-      "text": "それは、いまも現役で働いている、最古の発明の子孫です。",
+      "index": 42,
+      "text": "鶏は、食べませんでした。",
       "type": "diagram",
-      "motif": "j2_2000mono_stamp",
-      "audio": "audio/scene-237.wav",
+      "motif": "w1_tabemasen",
+      "audio": "audio/scene-042.wav",
+      "durationSec": 2.5813333333333333
+    },
+    {
+      "index": 43,
+      "text": "将軍は言い放ちます。「食べないなら、海の水でも飲ませてやれ」。",
+      "type": "diagram",
+      "motif": "w1_nomeba_ii",
+      "audio": "audio/scene-043.wav",
+      "durationSec": 5.493333333333333
+    },
+    {
+      "index": 44,
+      "text": "鶏を、海に投げ込んだと伝えられています。",
+      "type": "diagram",
+      "motif": "w1_pochan",
+      "audio": "audio/scene-044.wav",
+      "durationSec": 3.8613333333333335
+    },
+    {
+      "index": 45,
+      "text": "結果は、123隻の艦隊のうち93隻を失う、歴史的大敗でした。",
+      "type": "diagram",
+      "motif": "w1_taihai",
+      "audio": "audio/scene-045.wav",
+      "durationSec": 7.296
+    },
+    {
+      "index": 46,
+      "text": "神様の決裁は、省略しないほうがよさそうです。",
+      "type": "diagram",
+      "motif": "w1_kessai_shoryaku",
+      "audio": "audio/scene-046.wav",
+      "durationSec": 4.224
+    },
+    {
+      "index": 47,
+      "text": "さて、日本でも占いは、お役所の仕事でした。",
+      "type": "diagram",
+      "motif": "w1_onmyoryo_tatemono",
+      "audio": "audio/scene-047.wav",
+      "durationSec": 4.586666666666667
+    },
+    {
+      "index": 48,
+      "text": "平安時代の陰陽師は、陰陽寮という役所に勤める、今でいう国家公務員です。",
+      "type": "diagram",
+      "motif": "w1_onmyoryo",
+      "audio": "audio/scene-048.wav",
+      "durationSec": 7.52
+    },
+    {
+      "index": 49,
+      "text": "あの安倍晴明も、実在の人物でした。",
+      "type": "diagram",
+      "motif": "w1_seimei",
+      "audio": "audio/scene-049.wav",
+      "durationSec": 3.7546666666666666
+    },
+    {
+      "index": 50,
+      "text": "貴族の日記にも登場し、天文博士などを歴任したエリート官僚です。",
+      "type": "diagram",
+      "motif": "w1_seimei_career",
+      "audio": "audio/scene-050.wav",
+      "durationSec": 6.1226666666666665
+    },
+    {
+      "index": 51,
+      "text": "ただし史料に残る晴明は、40歳ごろにようやく学生身分で現れる、遅咲きの苦労人。",
+      "type": "diagram",
+      "motif": "w1_osozaki",
+      "audio": "audio/scene-051.wav",
+      "durationSec": 7.936
+    },
+    {
+      "index": 52,
+      "text": "式神を操って都の闇と戦った、という話は、後の時代の説話が生んだ伝説です。",
+      "type": "diagram",
+      "motif": "w1_shikigami_densetsu",
+      "audio": "audio/scene-052.wav",
+      "durationSec": 7.381333333333333
+    },
+    {
+      "index": 53,
+      "text": "ここまでを、ざっくりまとめましょう。",
+      "type": "diagram",
+      "motif": "w1_matome_sengen",
+      "audio": "audio/scene-053.wav",
+      "durationSec": 2.88
+    },
+    {
+      "index": 54,
+      "text": "骨も、星も、鳥も、聞き方はバラバラ。でも聞く相手は、ずっとひとつでした。",
+      "type": "diagram",
+      "motif": "w1_matome_three",
+      "audio": "audio/scene-054.wav",
+      "durationSec": 7.018666666666666
+    },
+    {
+      "index": 55,
+      "text": "神様です。",
+      "type": "diagram",
+      "motif": "w1_route_kami",
+      "audio": "audio/scene-055.wav",
+      "durationSec": 1.2053333333333334
+    },
+    {
+      "index": 56,
+      "text": "「私は何者?」の答えは、人間の外側の、はるか上にありました。",
+      "type": "diagram",
+      "motif": "w1_haruka_ue",
+      "audio": "audio/scene-056.wav",
+      "durationSec": 6.304
+    },
+    {
+      "index": 57,
+      "text": "第3章、天文学の、愚かな娘。",
+      "type": "diagram",
+      "motif": "w1_ch3_door",
+      "audio": "audio/scene-057.wav",
+      "durationSec": 3.8933333333333335
+    },
+    {
+      "index": 58,
+      "text": "17世紀のヨーロッパに、ケプラーという天文学者がいました。",
+      "type": "diagram",
+      "motif": "w1_kepler_telescope",
+      "audio": "audio/scene-058.wav",
+      "durationSec": 5.205333333333333
+    },
+    {
+      "index": 59,
+      "text": "惑星の動きの法則を解き明かした、科学史の大スターです。",
+      "type": "diagram",
+      "motif": "w1_wakusei_housoku",
+      "audio": "audio/scene-059.wav",
+      "durationSec": 5.034666666666666
+    },
+    {
+      "index": 60,
+      "text": "そんな彼の大事な収入源が、実は、占いでした。",
+      "type": "diagram",
+      "motif": "w1_uranai_shunyu",
+      "audio": "audio/scene-060.wav",
+      "durationSec": 4.832
+    },
+    {
+      "index": 61,
+      "text": "宮廷のお仕事は、お給料の遅配が日常茶飯事。",
+      "type": "diagram",
+      "motif": "w1_kyuryo_chihai",
+      "audio": "audio/scene-061.wav",
+      "durationSec": 4.672
+    },
+    {
+      "index": 62,
+      "text": "ケプラーは暦やホロスコープを作って、家計の穴を埋めていたのです。",
+      "type": "diagram",
+      "motif": "w1_koyomi_shigoto",
+      "audio": "audio/scene-062.wav",
       "durationSec": 5.578666666666667
     },
     {
-      "index": 238,
-      "text": "最後までご覧いただき、ありがとうございました。",
+      "index": 63,
+      "text": "「占星術は、天文学の愚かな娘。でもこの娘が稼がなければ、母さんは飢えてしまう」。",
       "type": "diagram",
-      "motif": "j2_arigato_yomichi",
+      "motif": "w1_oroka_musume",
+      "audio": "audio/scene-063.wav",
+      "durationSec": 8.117333333333333
+    },
+    {
+      "index": 64,
+      "text": "1610年の著書に残る、正直すぎる本音です。",
+      "type": "diagram",
+      "motif": "w1_honne_book",
+      "audio": "audio/scene-064.wav",
+      "durationSec": 4.714666666666667
+    },
+    {
+      "index": 65,
+      "text": "母というのは天文学、娘というのが占星術のことです。",
+      "type": "diagram",
+      "motif": "w1_haha_musume_toha",
+      "audio": "audio/scene-065.wav",
+      "durationSec": 5.1306666666666665
+    },
+    {
+      "index": 66,
+      "text": "星の動きを計算するのが母。その動きに意味をつけて売るのが娘。当時この2つは、同じ人がやる、ひとつの仕事でした。",
+      "type": "diagram",
+      "motif": "w1_hitotsu_no_shigoto",
+      "audio": "audio/scene-066.wav",
+      "durationSec": 10.613333333333333
+    },
+    {
+      "index": 67,
+      "text": "やがて天文学は占星術から独立し、長く一体だった親子は、ここで別々の道へ。",
+      "type": "diagram",
+      "motif": "w1_wakare_michi",
+      "audio": "audio/scene-067.wav",
+      "durationSec": 7.786666666666667
+    },
+    {
+      "index": 68,
+      "text": "そして人類は、4000年の歴史で初めての「乗り換え」を始めます。",
+      "type": "diagram",
+      "motif": "w1_norikae_hajimari",
+      "audio": "audio/scene-068.wav",
+      "durationSec": 5.301333333333333
+    },
+    {
+      "index": 69,
+      "text": "聞く相手を、神様から、人間の体へ。",
+      "type": "diagram",
+      "motif": "w1_route_karada",
+      "audio": "audio/scene-069.wav",
+      "durationSec": 4.021333333333334
+    },
+    {
+      "index": 70,
+      "text": "第4章、頭のデコボコ、測ります。",
+      "type": "diagram",
+      "motif": "w2_ch4_door",
+      "audio": "audio/scene-070.wav",
+      "durationSec": 3.7333333333333334
+    },
+    {
+      "index": 71,
+      "text": "19世紀の欧米で、とんでもない性格診断が大流行します。",
+      "type": "diagram",
+      "motif": "w2_boom_street",
+      "audio": "audio/scene-071.wav",
+      "durationSec": 5.653333333333333
+    },
+    {
+      "index": 72,
+      "text": "その名も、骨相学。",
+      "type": "diagram",
+      "motif": "w2_head_map",
+      "audio": "audio/scene-072.wav",
+      "durationSec": 2.08
+    },
+    {
+      "index": 73,
+      "text": "頭の形のデコボコで、性格や才能がわかる、という説です。",
+      "type": "diagram",
+      "motif": "w2_head_bumps",
+      "audio": "audio/scene-073.wav",
+      "durationSec": 5.632
+    },
+    {
+      "index": 74,
+      "text": "1790年代に医師のガルが唱え、またたく間に広まりました。",
+      "type": "diagram",
+      "motif": "w2_gall",
+      "audio": "audio/scene-074.wav",
+      "durationSec": 5.770666666666667
+    },
+    {
+      "index": 75,
+      "text": "ニューヨークには、有料の診断所まで登場します。",
+      "type": "diagram",
+      "motif": "w2_ny_shindanjo",
+      "audio": "audio/scene-075.wav",
+      "durationSec": 4.277333333333333
+    },
+    {
+      "index": 76,
+      "text": "お客は椅子に座り、診断士に頭を触ってもらいます。",
+      "type": "diagram",
+      "motif": "w2_parlor_touch",
+      "audio": "audio/scene-076.wav",
+      "durationSec": 4.672
+    },
+    {
+      "index": 77,
+      "text": "「慎重さのふくらみ、大きいですね」。",
+      "type": "diagram",
+      "motif": "w2_parlor_bubble",
+      "audio": "audio/scene-077.wav",
+      "durationSec": 3.104
+    },
+    {
+      "index": 78,
+      "text": "頭を撫でられて、お金を払うのです。",
+      "type": "diagram",
+      "motif": "w2_parlor_pay",
+      "audio": "audio/scene-078.wav",
+      "durationSec": 3.2106666666666666
+    },
+    {
+      "index": 79,
+      "text": "就職の身元保証に、骨相学の診断書を。",
+      "type": "diagram",
+      "motif": "w2_shushoku",
+      "audio": "audio/scene-079.wav",
+      "durationSec": 4.181333333333333
+    },
+    {
+      "index": 80,
+      "text": "結婚相手選びにも、頭の形の相性を。",
+      "type": "diagram",
+      "motif": "w2_kekkon",
+      "audio": "audio/scene-080.wav",
+      "durationSec": 4.064
+    },
+    {
+      "index": 81,
+      "text": "ところで、肝心の科学的な根拠はどうだったのでしょうか。",
+      "type": "diagram",
+      "motif": "w2_konkyo_q",
+      "audio": "audio/scene-081.wav",
+      "durationSec": 5.354666666666667
+    },
+    {
+      "index": 82,
+      "text": "19世紀の半ばまでに、脳の実験によって、きっぱり否定されています。",
+      "type": "diagram",
+      "motif": "w2_hitei",
+      "audio": "audio/scene-082.wav",
+      "durationSec": 6.304
+    },
+    {
+      "index": 83,
+      "text": "では、流行は終わったのか。終わりませんでした。",
+      "type": "diagram",
+      "motif": "w2_ninki_tsuzuku",
+      "audio": "audio/scene-083.wav",
+      "durationSec": 4.288
+    },
+    {
+      "index": 84,
+      "text": "科学に否定されたあとも、人気は何十年も続いたのです。",
+      "type": "diagram",
+      "motif": "w2_ninki_tsuzuku",
+      "audio": "audio/scene-084.wav",
+      "durationSec": 4.938666666666666
+    },
+    {
+      "index": 85,
+      "text": "「当たっている気がする」は、根拠より強い。",
+      "type": "diagram",
+      "motif": "w2_tenbin",
+      "audio": "audio/scene-085.wav",
+      "durationSec": 3.36
+    },
+    {
+      "index": 86,
+      "text": "この妙な現象、覚えておいてください。あとで名前が付きます。",
+      "type": "diagram",
+      "motif": "w2_namae_ato",
+      "audio": "audio/scene-086.wav",
+      "durationSec": 5.365333333333333
+    },
+    {
+      "index": 87,
+      "text": "第5章、困っている子を、見つけたい。",
+      "type": "diagram",
+      "motif": "w2_ch5_door",
+      "audio": "audio/scene-087.wav",
+      "durationSec": 3.562666666666667
+    },
+    {
+      "index": 88,
+      "text": "20世紀に入ると、診断の対象は「頭の形」から「頭の中身」へ移ります。",
+      "type": "diagram",
+      "motif": "w2_katachi_nakami",
+      "audio": "audio/scene-088.wav",
+      "durationSec": 6.613333333333333
+    },
+    {
+      "index": 89,
+      "text": "1905年、フランスの心理学者ビネーが、世界初の知能検査を作りました。",
+      "type": "diagram",
+      "motif": "w2_binet_1905",
+      "audio": "audio/scene-089.wav",
+      "durationSec": 7.2
+    },
+    {
+      "index": 90,
+      "text": "きっかけは、学校でした。",
+      "type": "diagram",
+      "motif": "w2_kyoushitsu",
+      "audio": "audio/scene-090.wav",
+      "durationSec": 2.3786666666666667
+    },
+    {
+      "index": 91,
+      "text": "義務教育が広がり、勉強についていけない子どもたちのことが、課題になっていたのです。",
+      "type": "diagram",
+      "motif": "w2_kyoushitsu_hanareru",
+      "audio": "audio/scene-091.wav",
+      "durationSec": 7.125333333333334
+    },
+    {
+      "index": 92,
+      "text": "フランスの文部省の委員会は、「支援が必要な子を早く見つけよう」と決めました。",
+      "type": "diagram",
+      "motif": "w2_committee_decide",
+      "audio": "audio/scene-092.wav",
+      "durationSec": 6.453333333333333
+    },
+    {
+      "index": 93,
+      "text": "ところが、見つける方法がありません。",
+      "type": "diagram",
+      "motif": "w2_committee_stuck",
+      "audio": "audio/scene-093.wav",
+      "durationSec": 3.1466666666666665
+    },
+    {
+      "index": 94,
+      "text": "そこで委員だったビネーが、医師のシモンとともに、検査を自作したのです。",
+      "type": "diagram",
+      "motif": "w2_jisaku",
+      "audio": "audio/scene-094.wav",
+      "durationSec": 5.962666666666666
+    },
+    {
+      "index": 95,
+      "text": "年齢ごとの問題を順番に解いてもらい、どのあたりでつまずくかを見る。",
+      "type": "diagram",
+      "motif": "w2_kaidan",
+      "audio": "audio/scene-095.wav",
+      "durationSec": 5.568
+    },
+    {
+      "index": 96,
+      "text": "目的は、序列をつけることではなく、特別な教育支援につなげることでした。",
+      "type": "diagram",
+      "motif": "w2_shien",
+      "audio": "audio/scene-096.wav",
+      "durationSec": 6.602666666666667
+    },
+    {
+      "index": 97,
+      "text": "ビネー本人は、こうも書き残しています。",
+      "type": "diagram",
+      "motif": "w2_binet_kaku",
+      "audio": "audio/scene-097.wav",
+      "durationSec": 3.445333333333333
+    },
+    {
+      "index": 98,
+      "text": "「知能は変わらない固定量だ、という考えは、残忍な悲観論だ」。",
+      "type": "diagram",
+      "motif": "w2_zannin",
+      "audio": "audio/scene-098.wav",
+      "durationSec": 5.632
+    },
+    {
+      "index": 99,
+      "text": "子どもの可能性を、ひとつの数字で決めつけるな、というわけです。",
+      "type": "diagram",
+      "motif": "w2_kimetsukeru_na",
+      "audio": "audio/scene-099.wav",
+      "durationSec": 5.386666666666667
+    },
+    {
+      "index": 100,
+      "text": "ちなみに、有名な「IQ」はビネーの発明ではありません。",
+      "type": "diagram",
+      "motif": "w2_iq_betsujin",
+      "audio": "audio/scene-100.wav",
+      "durationSec": 4.778666666666667
+    },
+    {
+      "index": 101,
+      "text": "彼の死後、別の学者たちが計算式と名前を整えました。",
+      "type": "diagram",
+      "motif": "w2_iq_betsujin",
+      "audio": "audio/scene-101.wav",
+      "durationSec": 5.184
+    },
+    {
+      "index": 102,
+      "text": "困っている子を助ける、やさしい道具。それが知能検査の出発点でした。",
+      "type": "diagram",
+      "motif": "w2_yasashii_dougu",
+      "audio": "audio/scene-102.wav",
+      "durationSec": 6.378666666666667
+    },
+    {
+      "index": 103,
+      "text": "しかしこの道具は、海を渡って、別の顔を持ち始めます。",
+      "type": "diagram",
+      "motif": "w2_umi_wataru",
+      "audio": "audio/scene-103.wav",
+      "durationSec": 5.1946666666666665
+    },
+    {
+      "index": 104,
+      "text": "第6章、175万人の、一斉テスト。",
+      "type": "diagram",
+      "motif": "w2_ch6_door",
+      "audio": "audio/scene-104.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 105,
+      "text": "第一次世界大戦。アメリカは、巨大な悩みを抱えていました。",
+      "type": "diagram",
+      "motif": "w2_ww1_nayami",
+      "audio": "audio/scene-105.wav",
+      "durationSec": 5.738666666666667
+    },
+    {
+      "index": 106,
+      "text": "集まってくる大量の新兵を、どの部署に配属するか。",
+      "type": "diagram",
+      "motif": "w2_haizoku_q",
+      "audio": "audio/scene-106.wav",
+      "durationSec": 5.312
+    },
+    {
+      "index": 107,
+      "text": "一人ずつ面接している時間は、ありません。",
+      "type": "diagram",
+      "motif": "w2_mensetsu_muri",
+      "audio": "audio/scene-107.wav",
+      "durationSec": 3.6373333333333333
+    },
+    {
+      "index": 108,
+      "text": "そこで心理学者たちが提案します。知能検査を、全員にやろう。",
+      "type": "diagram",
+      "motif": "w2_teian",
+      "audio": "audio/scene-108.wav",
+      "durationSec": 5.792
+    },
+    {
+      "index": 109,
+      "text": "読み書きできる人には、筆記式のアルファ。",
+      "type": "diagram",
+      "motif": "w2_alpha",
+      "audio": "audio/scene-109.wav",
+      "durationSec": 3.509333333333333
+    },
+    {
+      "index": 110,
+      "text": "英語が苦手な移民や、読み書きの苦手な人には、絵と記号のベータ。",
+      "type": "diagram",
+      "motif": "w2_beta",
+      "audio": "audio/scene-110.wav",
+      "durationSec": 5.92
+    },
+    {
+      "index": 111,
+      "text": "2種類のテストで、流れ作業のように兵士を仕分けていきます。",
+      "type": "diagram",
+      "motif": "w2_nagare_sagyo",
+      "audio": "audio/scene-111.wav",
+      "durationSec": 4.970666666666666
+    },
+    {
+      "index": 112,
+      "text": "その数、およそ175万人。",
+      "type": "diagram",
+      "motif": "w2_175man",
+      "audio": "audio/scene-112.wav",
+      "durationSec": 3.3493333333333335
+    },
+    {
+      "index": 113,
+      "text": "人類史上はじめて、「頭の中身」が大量生産のように測られたのです。",
+      "type": "diagram",
+      "motif": "w2_tairyo_sokutei",
+      "audio": "audio/scene-113.wav",
+      "durationSec": 5.866666666666666
+    },
+    {
+      "index": 114,
+      "text": "教室で生まれたやさしい道具は、10年あまりで、巨大な選別マシンに姿を変えていたのです。",
+      "type": "diagram",
+      "motif": "w2_senbetsu_machine",
+      "audio": "audio/scene-114.wav",
+      "durationSec": 7.690666666666667
+    },
+    {
+      "index": 115,
+      "text": "振り返ってみましょう。神様に聞いた時代、体に聞いた時代。",
+      "type": "diagram",
+      "motif": "w2_route3",
+      "audio": "audio/scene-115.wav",
+      "durationSec": 5.472
+    },
+    {
+      "index": 116,
+      "text": "そして今、答えは「数字」になりました。",
+      "type": "diagram",
+      "motif": "w2_suji_answer",
+      "audio": "audio/scene-116.wav",
+      "durationSec": 3.6053333333333333
+    },
+    {
+      "index": 117,
+      "text": "数字は便利です。でも数字には、人を並べ替える力もありました。",
+      "type": "diagram",
+      "motif": "w2_narabekae",
+      "audio": "audio/scene-117.wav",
+      "durationSec": 5.952
+    },
+    {
+      "index": 118,
+      "text": "そして戦争が終わると、このテストの「成績表」が、社会へ流れ出していきます。",
+      "type": "diagram",
+      "motif": "w2_seiseki_nagare",
+      "audio": "audio/scene-118.wav",
+      "durationSec": 6.453333333333333
+    },
+    {
+      "index": 119,
+      "text": "ここから物語は、少しだけ暗くなります。",
+      "type": "diagram",
+      "motif": "w2_kuraku_naru",
+      "audio": "audio/scene-119.wav",
+      "durationSec": 3.7333333333333334
+    },
+    {
+      "index": 120,
+      "text": "第7章、道具は、使う人を選べない。",
+      "type": "diagram",
+      "motif": "w3_ch7_door",
+      "audio": "audio/scene-120.wav",
+      "durationSec": 3.8506666666666667
+    },
+    {
+      "index": 121,
+      "text": "戦後のアメリカで、陸軍テストのデータは、思わぬ使われ方をしました。",
+      "type": "diagram",
+      "motif": "w3_data_misuse",
+      "audio": "audio/scene-121.wav",
+      "durationSec": 6.165333333333334
+    },
+    {
+      "index": 122,
+      "text": "「あの国から来る移民は、知能が低い」。",
+      "type": "diagram",
+      "motif": "w3_claim_dark",
+      "audio": "audio/scene-122.wav",
+      "durationSec": 3.4026666666666667
+    },
+    {
+      "index": 123,
+      "text": "そんな主張の、根拠として引用されたのです。",
+      "type": "diagram",
+      "motif": "w3_claim_dark",
+      "audio": "audio/scene-123.wav",
+      "durationSec": 3.7546666666666666
+    },
+    {
+      "index": 124,
+      "text": "でも検査の成績は、英語の力と、アメリカの文化の知識に大きく左右されるものでした。",
+      "type": "diagram",
+      "motif": "w3_language_bias",
+      "audio": "audio/scene-124.wav",
+      "durationSec": 7.712
+    },
+    {
+      "index": 125,
+      "text": "到着したばかりの移民に不利なのは、当然です。",
+      "type": "diagram",
+      "motif": "w3_language_bias",
+      "audio": "audio/scene-125.wav",
+      "durationSec": 4.053333333333334
+    },
+    {
+      "index": 126,
+      "text": "それでも数字は、移民を締め出したい人たちの追い風に使われました。",
+      "type": "diagram",
+      "motif": "w3_tailwind",
+      "audio": "audio/scene-126.wav",
+      "durationSec": 5.44
+    },
+    {
+      "index": 127,
+      "text": "法律の成立にどこまで影響したかは、今も歴史家の間で議論が続いています。",
+      "type": "diagram",
+      "motif": "w3_debate",
+      "audio": "audio/scene-127.wav",
+      "durationSec": 6.666666666666667
+    },
+    {
+      "index": 128,
+      "text": "ただ、時代の空気を後押ししたことは、確かでした。",
+      "type": "diagram",
+      "motif": "w3_kuuki_atooshi",
+      "audio": "audio/scene-128.wav",
+      "durationSec": 4.48
+    },
+    {
+      "index": 129,
+      "text": "さらに当時のアメリカには、優生学という考えが広がっていました。",
+      "type": "diagram",
+      "motif": "w3_yuseigaku",
+      "audio": "audio/scene-129.wav",
+      "durationSec": 5.621333333333333
+    },
+    {
+      "index": 130,
+      "text": "優れた人間を増やし、劣った人間を減らせば社会は良くなる、という思想です。",
+      "type": "diagram",
+      "motif": "w3_sorting",
+      "audio": "audio/scene-130.wav",
+      "durationSec": 6.730666666666667
+    },
+    {
+      "index": 131,
+      "text": "初期の知能検査を広めた学者たちの多くも、この考えの支持者でした。",
+      "type": "diagram",
+      "motif": "w3_gakusha_shiji",
+      "audio": "audio/scene-131.wav",
+      "durationSec": 5.834666666666666
+    },
+    {
+      "index": 132,
+      "text": "1927年、アメリカの最高裁は「知能が低い」と判定された女性への強制手術を、合憲と判断します。",
+      "type": "diagram",
+      "motif": "w3_court1927",
+      "audio": "audio/scene-132.wav",
+      "durationSec": 10.144
+    },
+    {
+      "index": 133,
+      "text": "全米で、およそ7万人が同じ手術を受けさせられました。",
+      "type": "diagram",
+      "motif": "w3_70000",
+      "audio": "audio/scene-133.wav",
+      "durationSec": 5.056
+    },
+    {
+      "index": 134,
+      "text": "日本にも1948年から1996年まで優生保護法があり、2024年に最高裁が違憲と判断しています。",
+      "type": "diagram",
+      "motif": "w3_japan_law",
+      "audio": "audio/scene-134.wav",
+      "durationSec": 11.306666666666667
+    },
+    {
+      "index": 135,
+      "text": "ひとつだけ、救いのある後日談を。",
+      "type": "diagram",
+      "motif": "w3_hikari",
+      "audio": "audio/scene-135.wav",
+      "durationSec": 3.0933333333333333
+    },
+    {
+      "index": 136,
+      "text": "「移民は知能が低い」と主張した学者ブリガムは、7年後、自ら全面撤回しました。",
+      "type": "diagram",
+      "motif": "w3_brigham",
+      "audio": "audio/scene-136.wav",
+      "durationSec": 7.328
+    },
+    {
+      "index": 137,
+      "text": "「私の分析には、根拠がなかった」と。",
+      "type": "diagram",
+      "motif": "w3_brigham",
+      "audio": "audio/scene-137.wav",
+      "durationSec": 3.3706666666666667
+    },
+    {
+      "index": 138,
+      "text": "困っている子を助けるための道具は、使う人によって、人を切り捨てる道具にもなる。",
+      "type": "diagram",
+      "motif": "w3_tool_two_sides",
+      "audio": "audio/scene-138.wav",
+      "durationSec": 6.794666666666667
+    },
+    {
+      "index": 139,
+      "text": "第8章、完成したら、戦争が終わっていた。",
+      "type": "diagram",
+      "motif": "w3_ch8_door",
+      "audio": "audio/scene-139.wav",
+      "durationSec": 4.298666666666667
+    },
+    {
+      "index": 140,
+      "text": "さて、ここで「性格」の話に戻りましょう。",
+      "type": "diagram",
+      "motif": "w3_back_to_seikaku",
+      "audio": "audio/scene-140.wav",
+      "durationSec": 3.466666666666667
+    },
+    {
+      "index": 141,
+      "text": "実は性格検査も、同じ第一次世界大戦から生まれています。",
+      "type": "diagram",
+      "motif": "w3_same_root",
+      "audio": "audio/scene-141.wav",
+      "durationSec": 5.8453333333333335
+    },
+    {
+      "index": 142,
+      "text": "アメリカ軍には、もうひとつの悩みがありました。",
+      "type": "diagram",
+      "motif": "w3_army_nayami",
+      "audio": "audio/scene-142.wav",
+      "durationSec": 3.8506666666666667
+    },
+    {
+      "index": 143,
+      "text": "戦場の砲撃で、心を病んでしまう兵士が続出していたのです。",
+      "type": "diagram",
+      "motif": "w3_shell_shock",
+      "audio": "audio/scene-143.wav",
+      "durationSec": 5.344
+    },
+    {
+      "index": 144,
+      "text": "そこで心理学者ウッドワースに、ある道具の開発を頼みます。",
+      "type": "diagram",
+      "motif": "w3_woodworth_irai",
+      "audio": "audio/scene-144.wav",
+      "durationSec": 5.152
+    },
+    {
+      "index": 145,
+      "text": "心を病みやすい人を、入隊前に見つけ出す質問紙です。",
+      "type": "diagram",
+      "motif": "w3_screening",
+      "audio": "audio/scene-145.wav",
+      "durationSec": 4.8853333333333335
+    },
+    {
+      "index": 146,
+      "text": "「はい」か「いいえ」で答える質問が、100問以上。",
+      "type": "diagram",
+      "motif": "w3_qsheet_check",
+      "audio": "audio/scene-146.wav",
+      "durationSec": 3.8933333333333335
+    },
+    {
+      "index": 147,
+      "text": "世界初の性格検査にして、今のあらゆる性格診断のご先祖さまです。",
+      "type": "diagram",
+      "motif": "w3_gosenzo",
+      "audio": "audio/scene-147.wav",
+      "durationSec": 6.165333333333334
+    },
+    {
+      "index": 148,
+      "text": "ところで、お気づきでしょうか。",
+      "type": "diagram",
+      "motif": "w3_okizuki",
+      "audio": "audio/scene-148.wav",
+      "durationSec": 2.9546666666666668
+    },
+    {
+      "index": 149,
+      "text": "質問紙の答えを書いているのは、本人です。",
+      "type": "diagram",
+      "motif": "w3_honnin_kaku",
+      "audio": "audio/scene-149.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 150,
+      "text": "神様でもなく、頭の形でもなく、「自分のことは、自分に聞く」。",
+      "type": "diagram",
+      "motif": "w3_jibun_ni_kiku",
+      "audio": "audio/scene-150.wav",
+      "durationSec": 6.048
+    },
+    {
+      "index": 151,
+      "text": "骨のヒビから4000年目にして、いちばん大きな乗り換えでした。",
+      "type": "diagram",
+      "motif": "w3_routemap4",
+      "audio": "audio/scene-151.wav",
+      "durationSec": 5.024
+    },
+    {
+      "index": 152,
+      "text": "開発は、順調に進みました。",
+      "type": "diagram",
+      "motif": "w3_kaihatsu_junchou",
+      "audio": "audio/scene-152.wav",
+      "durationSec": 2.997333333333333
+    },
+    {
+      "index": 153,
+      "text": "そして、完成したときには、戦争が終わっていました。",
+      "type": "diagram",
+      "motif": "w3_kansei_shusen",
+      "audio": "audio/scene-153.wav",
+      "durationSec": 4.64
+    },
+    {
+      "index": 154,
+      "text": "せっかく作った質問紙は、戦後、民間へ広まっていきます。",
+      "type": "diagram",
+      "motif": "w3_minkan_e",
+      "audio": "audio/scene-154.wav",
+      "durationSec": 5.376
+    },
+    {
+      "index": 155,
+      "text": "同じころスイスでは、精神科医ロールシャッハが、変わった検査を発表しました。",
+      "type": "diagram",
+      "motif": "w3_rorschach",
+      "audio": "audio/scene-155.wav",
+      "durationSec": 6.4
+    },
+    {
+      "index": 156,
+      "text": "紙にインクを落として二つ折りにした、左右対称のしみ。",
+      "type": "diagram",
+      "motif": "w3_ink_fold",
+      "audio": "audio/scene-156.wav",
+      "durationSec": 4.650666666666667
+    },
+    {
+      "index": 157,
+      "text": "「これが何に見えますか?」と尋ね、答えから心の状態を探ります。",
+      "type": "diagram",
+      "motif": "w3_nani_ni_mieru",
+      "audio": "audio/scene-157.wav",
+      "durationSec": 5.930666666666666
+    },
+    {
+      "index": 158,
+      "text": "1921年の発表の翌年、彼は37歳の若さで、この世を去りました。",
+      "type": "diagram",
+      "motif": "w3_wakaki_shi",
+      "audio": "audio/scene-158.wav",
+      "durationSec": 7.712
+    },
+    {
+      "index": 159,
+      "text": "残された10枚のしみは、その後100年、世界中で使われ続けることになります。",
+      "type": "diagram",
+      "motif": "w3_shimi_sekai",
+      "audio": "audio/scene-159.wav",
+      "durationSec": 6.794666666666667
+    },
+    {
+      "index": 160,
+      "text": "能力の次は、性格。測りたいものは、どんどん内側へ進んでいきます。",
+      "type": "diagram",
+      "motif": "w3_uchigawa_e",
+      "audio": "audio/scene-160.wav",
+      "durationSec": 6.634666666666667
+    },
+    {
+      "index": 161,
+      "text": "第9章、推理小説家、性格を16分割する。",
+      "type": "diagram",
+      "motif": "w3_ch9_door",
+      "audio": "audio/scene-161.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 162,
+      "text": "第二次世界大戦のころのアメリカで、のちに世界中へ広まる性格診断が生まれます。",
+      "type": "diagram",
+      "motif": "w3_mbti_birth",
+      "audio": "audio/scene-162.wav",
+      "durationSec": 6.965333333333334
+    },
+    {
+      "index": 163,
+      "text": "作ったのは、大学の研究室ではありません。",
+      "type": "diagram",
+      "motif": "w3_not_lab",
+      "audio": "audio/scene-163.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 164,
+      "text": "キャサリンとイザベル。母と娘です。",
+      "type": "diagram",
+      "motif": "w3_haha_musume",
+      "audio": "audio/scene-164.wav",
+      "durationSec": 3.2106666666666666
+    },
+    {
+      "index": 165,
+      "text": "ふたりとも、心理学の専門教育は受けていません。",
+      "type": "diagram",
+      "motif": "w3_no_senmon",
+      "audio": "audio/scene-165.wav",
+      "durationSec": 4.298666666666667
+    },
+    {
+      "index": 166,
+      "text": "しかも娘のイザベルの本業は、推理小説家。",
+      "type": "diagram",
+      "motif": "w3_suiri_sakka",
+      "audio": "audio/scene-166.wav",
+      "durationSec": 4.2026666666666666
+    },
+    {
+      "index": 167,
+      "text": "懸賞コンテストで優勝した経歴を持つ、売れっ子でした。",
+      "type": "diagram",
+      "motif": "w3_kensho_yusho",
+      "audio": "audio/scene-167.wav",
+      "durationSec": 4.8213333333333335
+    },
+    {
+      "index": 168,
+      "text": "母は心理学者ユングの本に出会い、人間のタイプ分けに夢中になります。",
+      "type": "diagram",
+      "motif": "w3_jung_book",
+      "audio": "audio/scene-168.wav",
+      "durationSec": 5.994666666666666
+    },
+    {
+      "index": 169,
+      "text": "娘はそれを、誰でも答えられる質問紙に仕立てました。",
+      "type": "diagram",
+      "motif": "w3_book_to_sheet",
+      "audio": "audio/scene-169.wav",
+      "durationSec": 4.565333333333333
+    },
+    {
+      "index": 170,
+      "text": "戦争で働きに出る女性たちが、自分に合った仕事を見つける手助けに。",
+      "type": "diagram",
+      "motif": "w3_josei_shigoto",
+      "audio": "audio/scene-170.wav",
+      "durationSec": 5.941333333333334
+    },
+    {
+      "index": 171,
+      "text": "それが、MBTIの始まりです。",
+      "type": "diagram",
+      "motif": "w3_mbti_start",
+      "audio": "audio/scene-171.wav",
+      "durationSec": 3.2746666666666666
+    },
+    {
+      "index": 172,
+      "text": "4つの軸の組み合わせで、人の性格を16タイプに分ける。",
+      "type": "diagram",
+      "motif": "w3_four_axes",
+      "audio": "audio/scene-172.wav",
+      "durationSec": 5.1306666666666665
+    },
+    {
+      "index": 173,
+      "text": "ただし、心理学の研究では、こんな報告もあります。",
+      "type": "diagram",
+      "motif": "w3_kenkyu_hokoku",
+      "audio": "audio/scene-173.wav",
+      "durationSec": 4.874666666666666
+    },
+    {
+      "index": 174,
+      "text": "数週間あけてもう一度受けると、約半数の人が、別のタイプになる。",
+      "type": "diagram",
+      "motif": "w3_hanbun_kawaru",
+      "audio": "audio/scene-174.wav",
+      "durationSec": 6.133333333333334
+    },
+    {
+      "index": 175,
+      "text": "ちなみに、ネットで大人気の無料の16タイプ診断は、公式のMBTIとは別物です。",
+      "type": "diagram",
+      "motif": "w3_betsumono",
+      "audio": "audio/scene-175.wav",
+      "durationSec": 8.021333333333333
+    },
+    {
+      "index": 176,
+      "text": "一方で、心理学の本流から生まれた性格検査も、ちゃんとあります。",
+      "type": "diagram",
+      "motif": "w3_honryu",
+      "audio": "audio/scene-176.wav",
+      "durationSec": 5.888
+    },
+    {
+      "index": 177,
+      "text": "たとえば、エゴグラム。",
+      "type": "diagram",
+      "motif": "w3_egogram_intro",
+      "audio": "audio/scene-177.wav",
+      "durationSec": 2.08
+    },
+    {
+      "index": 178,
+      "text": "精神科医バーンの「交流分析」という理論をもとに、弟子のデュセイが1972年に考案しました。",
+      "type": "diagram",
+      "motif": "w3_berne_dusay",
+      "audio": "audio/scene-178.wav",
+      "durationSec": 8.448
+    },
+    {
+      "index": 179,
+      "text": "心の中に、5人の自分が住んでいる、と考えるのがミソです。",
+      "type": "diagram",
+      "motif": "w3_five_in_kokoro",
+      "audio": "audio/scene-179.wav",
+      "durationSec": 5.536
+    },
+    {
+      "index": 180,
+      "text": "厳しい親、優しい親、冷静な大人、自由な子ども、気をつかう子ども。",
+      "type": "diagram",
+      "motif": "w3_five_jibun",
+      "audio": "audio/scene-180.wav",
+      "durationSec": 7.136
+    },
+    {
+      "index": 181,
+      "text": "この5人の元気さを、棒グラフにして見せてくれます。",
+      "type": "diagram",
+      "motif": "w3_egogram_graph",
+      "audio": "audio/scene-181.wav",
+      "durationSec": 4.128
+    },
+    {
+      "index": 182,
+      "text": "日本では「東大式エゴグラム」も作られ、いまも心療内科などの検査として現役です。",
+      "type": "diagram",
+      "motif": "w3_todai_genneki",
+      "audio": "audio/scene-182.wav",
+      "durationSec": 7.018666666666666
+    },
+    {
+      "index": 183,
+      "text": "性格を測る道具にも、娯楽寄りから医療寄りまで、幅があるのです。",
+      "type": "diagram",
+      "motif": "w3_haba_spectrum",
+      "audio": "audio/scene-183.wav",
+      "durationSec": 5.8773333333333335
+    },
+    {
+      "index": 184,
+      "text": "それでも、世界の自己紹介欄を埋めたのは、4文字のほうでした。",
+      "type": "diagram",
+      "motif": "w3_yon_moji",
+      "audio": "audio/scene-184.wav",
+      "durationSec": 5.44
+    },
+    {
+      "index": 185,
+      "text": "「私は何者?」の答えが、初めてポケットサイズになったのです。",
+      "type": "diagram",
+      "motif": "w3_pocket_size",
+      "audio": "audio/scene-185.wav",
+      "durationSec": 5.525333333333333
+    },
+    {
+      "index": 186,
+      "text": "第10章、王女さま誕生、星占いはじまる。",
+      "type": "diagram",
+      "motif": "w4_ch10_door",
+      "audio": "audio/scene-186.wav",
+      "durationSec": 4.448
+    },
+    {
+      "index": 187,
+      "text": "ところで、朝の星座占いは、いつ生まれたのでしょうか。",
+      "type": "diagram",
+      "motif": "w4_asa_uranai",
+      "audio": "audio/scene-187.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 188,
+      "text": "星占い自体は古代からありますが、「新聞やテレビの占いコーナー」の歴史は、意外と浅いのです。",
+      "type": "diagram",
+      "motif": "w4_furui_atarashii",
+      "audio": "audio/scene-188.wav",
+      "durationSec": 7.925333333333334
+    },
+    {
+      "index": 189,
+      "text": "1930年、イギリス。",
+      "type": "diagram",
+      "motif": "w4_uk_1930",
+      "audio": "audio/scene-189.wav",
+      "durationSec": 3.2106666666666666
+    },
+    {
+      "index": 190,
+      "text": "マーガレット王女の誕生を記念して、ある新聞が企画を立てます。",
+      "type": "diagram",
+      "motif": "w4_shinbun_kikaku",
+      "audio": "audio/scene-190.wav",
+      "durationSec": 5.226666666666667
+    },
+    {
+      "index": 191,
+      "text": "占星術師に、生まれたばかりの王女の未来を占わせたのです。",
+      "type": "diagram",
+      "motif": "w4_crib_horoscope",
+      "audio": "audio/scene-191.wav",
+      "durationSec": 5.258666666666667
+    },
+    {
+      "index": 192,
+      "text": "担当したのは、ネイラーという占星術師。",
+      "type": "diagram",
+      "motif": "w4_naylor",
+      "audio": "audio/scene-192.wav",
+      "durationSec": 3.7333333333333334
+    },
+    {
+      "index": 193,
+      "text": "この記事が大当たりし、占いの連載が始まります。",
+      "type": "diagram",
+      "motif": "w4_rensai_hit",
+      "audio": "audio/scene-193.wav",
+      "durationSec": 4.597333333333333
+    },
+    {
+      "index": 194,
+      "text": "さらにネイラーが「イギリスの航空機が危ない」と書いた直後、飛行船の墜落事故が起きました。",
+      "type": "diagram",
+      "motif": "w4_hikousen",
+      "audio": "audio/scene-194.wav",
+      "durationSec": 7.1466666666666665
+    },
+    {
+      "index": 195,
+      "text": "「当たった」と大評判になり、人気は不動のものに。",
+      "type": "diagram",
+      "motif": "w4_machi_hyouban",
+      "audio": "audio/scene-195.wav",
+      "durationSec": 4.224
+    },
+    {
+      "index": 196,
+      "text": "やがて連載は、誰でも誕生日だけで読める形式に進化します。",
+      "type": "diagram",
+      "motif": "w4_12seiza",
+      "audio": "audio/scene-196.wav",
+      "durationSec": 5.333333333333333
+    },
+    {
+      "index": 197,
+      "text": "生まれた月で12グループに分ける、おなじみの12星座占いです。",
+      "type": "diagram",
+      "motif": "w4_12seiza_all",
+      "audio": "audio/scene-197.wav",
+      "durationSec": 5.472
+    },
+    {
+      "index": 198,
+      "text": "「私は何者?」が、ついに日刊になったのです。",
+      "type": "diagram",
+      "motif": "w4_nikkan",
+      "audio": "audio/scene-198.wav",
+      "durationSec": 4.618666666666667
+    },
+    {
+      "index": 199,
+      "text": "第11章、血液型は、日本生まれ。",
+      "type": "diagram",
+      "motif": "w4_ch11_door",
+      "audio": "audio/scene-199.wav",
+      "durationSec": 4.1066666666666665
+    },
+    {
+      "index": 200,
+      "text": "そして日本には、日本にしかない発明があります。",
+      "type": "diagram",
+      "motif": "w4_nihon_hatsumei",
+      "audio": "audio/scene-200.wav",
+      "durationSec": 4.32
+    },
+    {
+      "index": 201,
+      "text": "血液型性格診断です。",
+      "type": "diagram",
+      "motif": "w4_nihon_hatsumei",
+      "audio": "audio/scene-201.wav",
+      "durationSec": 2.506666666666667
+    },
+    {
+      "index": 202,
+      "text": "始まりは1927年、教育学者の古川竹二が発表した論文でした。",
+      "type": "diagram",
+      "motif": "w4_furukawa_1927",
+      "audio": "audio/scene-202.wav",
+      "durationSec": 7.136
+    },
+    {
+      "index": 203,
+      "text": "A型は慎重、O型はおおらか、というあの分類の原型です。",
+      "type": "diagram",
+      "motif": "w4_bunrui_paper",
+      "audio": "audio/scene-203.wav",
+      "durationSec": 5.610666666666667
+    },
+    {
+      "index": 204,
+      "text": "当時は大真面目に研究され、軍隊で兵士の適性判定に使う試みまでありました。",
+      "type": "diagram",
+      "motif": "w4_guntai",
+      "audio": "audio/scene-204.wav",
+      "durationSec": 7.264
+    },
+    {
+      "index": 205,
+      "text": "ところが、追試を重ねても、結果が合いません。",
+      "type": "diagram",
+      "motif": "w4_tsuishi_batsu",
+      "audio": "audio/scene-205.wav",
+      "durationSec": 4.16
+    },
+    {
+      "index": 206,
+      "text": "1933年、学会で公式に否定され、ブームはいったん幕を閉じます。",
+      "type": "diagram",
+      "motif": "w4_gakkai_maku",
+      "audio": "audio/scene-206.wav",
+      "durationSec": 7.104
+    },
+    {
+      "index": 207,
+      "text": "それを復活させたのが、1971年のベストセラーでした。",
+      "type": "diagram",
+      "motif": "w4_1971_book",
+      "audio": "audio/scene-207.wav",
+      "durationSec": 5.653333333333333
+    },
+    {
+      "index": 208,
+      "text": "作家の能見正比古が書いた、血液型の相性本です。",
+      "type": "diagram",
+      "motif": "w4_1971_book",
+      "audio": "audio/scene-208.wav",
+      "durationSec": 4.714666666666667
+    },
+    {
+      "index": 209,
+      "text": "テレビと雑誌が飛びつき、血液型は国民的な話題になりました。",
+      "type": "diagram",
+      "motif": "w4_tv_zasshi",
+      "audio": "audio/scene-209.wav",
+      "durationSec": 5.610666666666667
+    },
+    {
+      "index": 210,
+      "text": "ただし、この文化が根付いたのは、日本と、韓国や台湾などほぼ東アジアだけ。",
+      "type": "diagram",
+      "motif": "w4_asia_map",
+      "audio": "audio/scene-210.wav",
+      "durationSec": 7.349333333333333
+    },
+    {
+      "index": 211,
+      "text": "海外で血液型を聞くと、輸血の話だと思われます。",
+      "type": "diagram",
+      "motif": "w4_yuketsu",
+      "audio": "audio/scene-211.wav",
+      "durationSec": 4.906666666666666
+    },
+    {
+      "index": 212,
+      "text": "科学のほうはどうかというと、日米1万人超の調査で、血液型と性格の関連は見つかっていません。",
+      "type": "diagram",
+      "motif": "w4_kanren_nashi",
+      "audio": "audio/scene-212.wav",
+      "durationSec": 9.024
+    },
+    {
+      "index": 213,
+      "text": "それでも、やめられない。",
+      "type": "diagram",
+      "motif": "w4_kigasuru",
+      "audio": "audio/scene-213.wav",
+      "durationSec": 2.1866666666666665
+    },
+    {
+      "index": 214,
+      "text": "「当たっている気がする」は、今日も根拠より強いのです。",
+      "type": "diagram",
+      "motif": "w4_kigasuru",
+      "audio": "audio/scene-214.wav",
+      "durationSec": 4.448
+    },
+    {
+      "index": 215,
+      "text": "第12章、全員に、同じ診断書。",
+      "type": "diagram",
+      "motif": "w4_ch12_door",
+      "audio": "audio/scene-215.wav",
+      "durationSec": 4.074666666666666
+    },
+    {
+      "index": 216,
+      "text": "なぜ、根拠がなくても「当たっている」と感じるのか。",
+      "type": "diagram",
+      "motif": "w4_naze_q",
+      "audio": "audio/scene-216.wav",
+      "durationSec": 4.565333333333333
+    },
+    {
+      "index": 217,
+      "text": "1948年、この謎に真正面から挑んだ心理学者がいます。",
+      "type": "diagram",
+      "motif": "w4_forer",
+      "audio": "audio/scene-217.wav",
+      "durationSec": 6.1226666666666665
+    },
+    {
+      "index": 218,
+      "text": "バートラム・フォア。",
+      "type": "diagram",
+      "motif": "w4_forer",
+      "audio": "audio/scene-218.wav",
+      "durationSec": 1.3013333333333332
+    },
+    {
+      "index": 219,
+      "text": "彼は、学生39人に性格テストを受けさせました。",
+      "type": "diagram",
+      "motif": "w4_test39",
+      "audio": "audio/scene-219.wav",
+      "durationSec": 4.949333333333334
+    },
+    {
+      "index": 220,
+      "text": "1週間後、「あなた専用の診断結果です」と、一人ひとりに結果を手渡します。",
+      "type": "diagram",
+      "motif": "w4_tewatashi",
+      "audio": "audio/scene-220.wav",
+      "durationSec": 6.666666666666667
+    },
+    {
+      "index": 221,
+      "text": "そして学生たちに、どれだけ当たっているかを採点してもらいました。",
+      "type": "diagram",
+      "motif": "w4_saiten",
+      "audio": "audio/scene-221.wav",
+      "durationSec": 5.216
+    },
+    {
+      "index": 222,
+      "text": "5点満点で、平均4.26点。",
+      "type": "diagram",
+      "motif": "w4_426_graph",
+      "audio": "audio/scene-222.wav",
+      "durationSec": 3.7546666666666666
+    },
+    {
+      "index": 223,
+      "text": "「すごく当たってる」の大合唱です。",
+      "type": "diagram",
+      "motif": "w4_daigassho",
+      "audio": "audio/scene-223.wav",
+      "durationSec": 2.538666666666667
+    },
+    {
+      "index": 224,
+      "text": "ですが、タネがありました。",
+      "type": "diagram",
+      "motif": "w4_tane",
+      "audio": "audio/scene-224.wav",
+      "durationSec": 2.2293333333333334
+    },
+    {
+      "index": 225,
+      "text": "配られた診断結果は、全員、同じ文章だったのです。",
+      "type": "diagram",
+      "motif": "w4_zenin_onaji",
+      "audio": "audio/scene-225.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 226,
+      "text": "しかも中身は、売店の星占いの本などから、フォアが切り貼りしたもの。",
+      "type": "diagram",
+      "motif": "w4_kirihari",
+      "audio": "audio/scene-226.wav",
+      "durationSec": 6.005333333333334
+    },
+    {
+      "index": 227,
+      "text": "それでも39人のほぼ全員が、「これは私だ」と感じました。",
+      "type": "diagram",
+      "motif": "w4_kore_watashi",
+      "audio": "audio/scene-227.wav",
+      "durationSec": 5.344
+    },
+    {
+      "index": 228,
+      "text": "誰にでも当てはまる曖昧な文章を、自分だけへの診断だと感じてしまう。",
+      "type": "diagram",
+      "motif": "w4_kore_watashi",
+      "audio": "audio/scene-228.wav",
+      "durationSec": 5.984
+    },
+    {
+      "index": 229,
+      "text": "この心の働きは、のちに「バーナム効果」と名付けられました。",
+      "type": "diagram",
+      "motif": "w4_barnum_name",
+      "audio": "audio/scene-229.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 230,
+      "text": "効き目のコツは、3つ。",
+      "type": "diagram",
+      "motif": "w4_kotsu3",
+      "audio": "audio/scene-230.wav",
+      "durationSec": 2.2293333333333334
+    },
+    {
+      "index": 231,
+      "text": "誰にでも当てはまること。内容が好意的なこと。そして、両面あること。",
+      "type": "diagram",
+      "motif": "w4_kotsu3_reveal",
+      "audio": "audio/scene-231.wav",
+      "durationSec": 6.368
+    },
+    {
+      "index": 232,
+      "text": "「しっかりして見えるけど、本当は心配性」。",
+      "type": "diagram",
+      "motif": "w4_ryoumen",
+      "audio": "audio/scene-232.wav",
+      "durationSec": 3.712
+    },
+    {
+      "index": 233,
+      "text": "……どこかで聞きましたね。",
+      "type": "diagram",
+      "motif": "w4_dokoka_q",
+      "audio": "audio/scene-233.wav",
+      "durationSec": 1.7813333333333334
+    },
+    {
+      "index": 234,
+      "text": "そう、この動画の冒頭で、あなたに渡した診断文です。",
+      "type": "diagram",
+      "motif": "w4_recall_machine",
+      "audio": "audio/scene-234.wav",
+      "durationSec": 5.024
+    },
+    {
+      "index": 235,
+      "text": "あれは、バーナム効果のお手本として作った、誰にでも当てはまる文章でした。",
+      "type": "diagram",
+      "motif": "w4_tanemeakashi",
+      "audio": "audio/scene-235.wav",
+      "durationSec": 6.453333333333333
+    },
+    {
+      "index": 236,
+      "text": "当たっていたとしても、それはあなたが単純だからではありません。",
+      "type": "diagram",
+      "motif": "w4_kawaii_chakuchi",
+      "audio": "audio/scene-236.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 237,
+      "text": "人間の心に、4000年変わらない、人なつっこい仕組みがあるからです。",
+      "type": "diagram",
+      "motif": "w4_kokoro_4000",
+      "audio": "audio/scene-237.wav",
+      "durationSec": 6.069333333333334
+    },
+    {
+      "index": 238,
+      "text": "骨のヒビ、星の動き、頭のデコボコ、インクのしみ、4つのアルファベット。",
+      "type": "diagram",
+      "motif": "w4_recap_icons",
       "audio": "audio/scene-238.wav",
-      "durationSec": 4
+      "durationSec": 6.997333333333334
     },
     {
       "index": 239,
+      "text": "人類は4000年かけて、聞く相手を乗り換えてきました。",
+      "type": "diagram",
+      "motif": "w4_routemap4",
+      "audio": "audio/scene-239.wav",
+      "durationSec": 4.554666666666667
+    },
+    {
+      "index": 240,
+      "text": "神様に聞き、体に聞き、数字に聞き、最後は、自分に聞いた。",
+      "type": "diagram",
+      "motif": "w4_routemap4",
+      "audio": "audio/scene-240.wav",
+      "durationSec": 6.570666666666667
+    },
+    {
+      "index": 241,
+      "text": "答えのありかは、遠い空から、少しずつ自分の中へ降りてきたのです。",
+      "type": "diagram",
+      "motif": "w4_sora_oriru",
+      "audio": "audio/scene-241.wav",
+      "durationSec": 5.76
+    },
+    {
+      "index": 242,
+      "text": "でも、聞いていることは、ずっと同じです。",
+      "type": "diagram",
+      "motif": "w4_onaji_toi",
+      "audio": "audio/scene-242.wav",
+      "durationSec": 3.584
+    },
+    {
+      "index": 243,
+      "text": "私は、何者なのか。",
+      "type": "diagram",
+      "motif": "w4_onaji_toi_reveal",
+      "audio": "audio/scene-243.wav",
+      "durationSec": 2.848
+    },
+    {
+      "index": 244,
+      "text": "古代ギリシャの神殿には、「汝自身を知れ」という言葉が刻まれていました。",
+      "type": "diagram",
+      "motif": "w4_sekihi",
+      "audio": "audio/scene-244.wav",
+      "durationSec": 5.824
+    },
+    {
+      "index": 245,
+      "text": "もともとは「人間の分際をわきまえよ」という、厳しい戒めの言葉です。",
+      "type": "diagram",
+      "motif": "w4_sekihi_zoom",
+      "audio": "audio/scene-245.wav",
+      "durationSec": 5.802666666666667
+    },
+    {
+      "index": 246,
+      "text": "それを哲学者ソクラテスが、「自分の無知を知れ」と読み替えました。",
+      "type": "diagram",
+      "motif": "w4_socrates",
+      "audio": "audio/scene-246.wav",
+      "durationSec": 5.034666666666666
+    },
+    {
+      "index": 247,
+      "text": "以来、人類はこの言葉を、読み替え続けています。",
+      "type": "diagram",
+      "motif": "w4_yomikae",
+      "audio": "audio/scene-247.wav",
+      "durationSec": 4.64
+    },
+    {
+      "index": 248,
+      "text": "占いで、検査で、診断で。答えを探し続けています。",
+      "type": "diagram",
+      "motif": "w4_recap_icons",
+      "audio": "audio/scene-248.wav",
+      "durationSec": 5.376
+    },
+    {
+      "index": 249,
+      "text": "今夜もどこかで、誰かが93問に答えています。",
+      "type": "diagram",
+      "motif": "w4_yoru_madobe",
+      "audio": "audio/scene-249.wav",
+      "durationSec": 4.544
+    },
+    {
+      "index": 250,
+      "text": "4000年たっても、満足のいく答えは出ていません。",
+      "type": "diagram",
+      "motif": "w4_yoru_machi",
+      "audio": "audio/scene-250.wav",
+      "durationSec": 4.757333333333333
+    },
+    {
+      "index": 251,
+      "text": "だからこそ、明日も誰かが聞くのでしょう。",
+      "type": "diagram",
+      "motif": "w4_ashita",
+      "audio": "audio/scene-251.wav",
+      "durationSec": 3.3706666666666667
+    },
+    {
+      "index": 252,
+      "text": "——私は、何者?",
+      "type": "diagram",
+      "motif": "w4_final_q",
+      "audio": "audio/scene-252.wav",
+      "durationSec": 2.1013333333333333
+    },
+    {
+      "index": 253,
       "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
       "type": "card",
       "motif": "ending",
@@ -1923,6 +2035,6 @@
     }
   ],
   "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
-  "generatedAt": "2026-10-25T23:21:23.747Z",
+  "generatedAt": "2026-10-29T18:40:01.341Z",
   "preset": "karakuri"
 }

@@ -7,6 +7,10 @@ public/images/
 .claude/settings.local.json
 .claude/worktrees/
 
+# 調査エージェントの作業メモ (まとめは docs/ に置くので、生メモは追跡しない)
+reports/
+research_notes/
+
 # 検品用の一時ファイル (道具のスクリプトだけ残す)
 tmp/*
 !tmp/fake-sushi.ts

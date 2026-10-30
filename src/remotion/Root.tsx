@@ -4,6 +4,12 @@ import { StyleTest } from "./styletest/StyleTest";
 import { PersonVariants } from "./styletest/PersonVariants";
 import { CameraDemo, DEMO_TOTAL_FRAMES } from "./karakuri/CameraDemo";
 import { Jihanki2000Preview, J2_PREVIEW_TOTAL_FRAMES } from "./karakuri/Jihanki2000Preview";
+import { WatashiCharacters, WATASHI_CHARS_FRAMES } from "./karakuri/WatashiCharacters";
+import { Uranaishi, URANAISHI_FRAMES } from "./karakuri/WatashiUranaishi";
+import { WatashiB1Preview, W_B1_PREVIEW_FRAMES } from "./karakuri/WatashiB1";
+import { WatashiB2Preview, W_B2_PREVIEW_FRAMES } from "./karakuri/WatashiB2";
+import { WatashiB3Preview, W_B3_PREVIEW_FRAMES } from "./karakuri/WatashiB3";
+import { WatashiB4Preview, W_B4_PREVIEW_FRAMES } from "./karakuri/WatashiB4";
 import { VIDEO, sceneHoldSec } from "../style";
 import scenesData from "./scenes-data.json";
 import type { ScenesData } from "../types";
@@ -44,6 +50,33 @@ export const RemotionRoot: React.FC = () => {
         id="J2Preview"
         component={Jihanki2000Preview}
         durationInFrames={J2_PREVIEW_TOTAL_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      {/* 「私は何者?」本編イラストの検品用プレビュー (1フレーム=1シーン) */}
+      <Composition id="WatashiB1" component={WatashiB1Preview} durationInFrames={W_B1_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="WatashiB2" component={WatashiB2Preview} durationInFrames={W_B2_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="WatashiB3" component={WatashiB3Preview} durationInFrames={W_B3_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="WatashiB4" component={WatashiB4Preview} durationInFrames={W_B4_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 「私は何者?」の回の占い師キャラ試作 A〜D。本編とは無関係 */}
+      <Composition
+        id="WatashiChars"
+        component={WatashiCharacters}
+        durationInFrames={WATASHI_CHARS_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      {/* 「私は何者?」の回の占い師キャラ試作 (人間版) 5案。本編とは無関係 */}
+      <Composition
+        id="Uranaishi"
+        component={Uranaishi}
+        durationInFrames={URANAISHI_FRAMES}
         fps={VIDEO.fps}
         width={VIDEO.width}
         height={VIDEO.height}

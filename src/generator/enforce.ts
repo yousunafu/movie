@@ -148,6 +148,9 @@ export function enforceRatios(
         // suuri の寿司題材は「同じ絵が段階的に育つ」設計なので、連続をそのまま許す
         // (SushiScenes.tsx の variant で 2回目以降は別の絵に変わる)
         if (preset === "suuri" && SUURI_GROW_MOTIFS.includes(out[i].motif)) continue;
+        // 専用台本の1文1絵 (自販機2000年史 j2_ / 私は何者 w1_〜w4_) は、
+        // 設計書で意図して同じ絵を続けている箇所があるので散らさない
+        if (/^(j2_|w[1-4]_)/.test(out[i].motif)) continue;
         const h = themeAssign(sentences[i]);
         if (h.type !== "card" && h.motif !== out[i].motif) {
           out[i].type = h.type;
@@ -165,9 +168,9 @@ export function enforceRatios(
         }
       }
     }
-    // 自販機2000年史 (j2_ の専用絵) は最終シーンが「夜道の絵+ご挨拶」の設計なので、
-    // 結論カードへの強制変換はしない (1文1絵の設計書どおりに出す)
-    if (n >= 3 && out[n - 1].type !== "card" && !out[n - 1].motif.startsWith("j2_")) {
+    // 自販機2000年史 (j2_) は最終シーンが「夜道の絵+ご挨拶」、「私は何者?」(w1_〜w4_) は
+    // 「星空の?+ご挨拶」の設計なので、結論カードへの強制変換はしない (1文1絵の設計書どおりに出す)
+    if (n >= 3 && out[n - 1].type !== "card" && !/^(j2_|w[1-4]_)/.test(out[n - 1].motif)) {
       out[n - 1].type = "card";
       out[n - 1].motif = "concept";
       log.push(`シーン${n - 1}を結論カードに変更`);

@@ -16,6 +16,7 @@ import {
 import type { Preset } from "../channel";
 import { J2_ALL_MOTIFS } from "../remotion/karakuri/Jihanki2000Index";
 import { W_ALL_MOTIFS } from "../remotion/karakuri/WatashiIndex";
+import { T_ALL_MOTIFS } from "../remotion/karakuri/TabiIndex";
 
 export type Assignment = {
   type: SceneType;
@@ -422,6 +423,11 @@ export async function assignScenes(
     if (wt) {
       console.log(`絵づけ: 「私は何者?」4000年史の順番割り当て (1文1絵・${wt.length}枚)`);
       return wt;
+    }
+    const tb = tabiOrderedAssign(sentences);
+    if (tb) {
+      console.log(`絵づけ: 旅とお土産の歴史の順番割り当て (1文1絵・${tb.length}枚)`);
+      return tb;
     }
     console.log("絵づけ: karakuri は専用キーワード割り当てを使用");
     return sentences.map(karakuriHeuristicAssign);
@@ -1987,6 +1993,25 @@ function watashiOrderedAssign(sentences: string[]): Assignment[] | null {
     throw new Error(
       `「私は何者?」4000年史: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
         `台本 (docs/watashi-script-v1.txt) か W_ALL_MOTIFS (WatashiB1〜B4のMOTIFS) の数を確認してください`,
+    );
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: 「旅とお土産の歴史」(docs/tabi-miyage-script-v1.txt・204文) 用の順番割り当て =====
+// 専用シーン (TabiIndex の T_ALL_MOTIFS = TabiB1〜B5) は台本の文の順番どおりに並んでいるので、
+// 「文i → 絵i」で1対1に割り当てる (設計書: docs/tabi-miyage-motifs-b1〜b5.md)。
+// 自動追加の締めのご挨拶 (205文目) は、結びの「良い旅を」(tb5_yoi_tabi) を再利用して余韻のまま終える。
+function tabiOrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[0]?.includes("売り場で、箱を手に固まっている")) return null;
+  const order = [...T_ALL_MOTIFS];
+  if (sentences.length === order.length + 1) {
+    order.push(T_ALL_MOTIFS[T_ALL_MOTIFS.length - 1]); // 締めのご挨拶 = 最後の絵を再利用
+  }
+  if (sentences.length !== order.length) {
+    throw new Error(
+      `旅とお土産の歴史: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
+        `台本 (docs/tabi-miyage-script-v1.txt) か T_ALL_MOTIFS (TabiB1〜B5のMOTIFS) の数を確認してください`,
     );
   }
   return order.map((motif) => ({ type: "diagram" as SceneType, motif }));

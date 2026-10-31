@@ -10,6 +10,14 @@ import { WatashiB1Preview, W_B1_PREVIEW_FRAMES } from "./karakuri/WatashiB1";
 import { WatashiB2Preview, W_B2_PREVIEW_FRAMES } from "./karakuri/WatashiB2";
 import { WatashiB3Preview, W_B3_PREVIEW_FRAMES } from "./karakuri/WatashiB3";
 import { WatashiB4Preview, W_B4_PREVIEW_FRAMES } from "./karakuri/WatashiB4";
+import { TabiKitsPreview, TABIKITS_PREVIEW_FRAMES } from "./karakuri/TabiKits";
+import { TabiTravelPreview, TABITRAVEL_PREVIEW_FRAMES } from "./karakuri/TabiTravel";
+import { TabiB1Preview, T_B1_PREVIEW_FRAMES } from "./karakuri/TabiB1";
+import { TabiB2Preview, T_B2_PREVIEW_FRAMES } from "./karakuri/TabiB2";
+import { TabiB3Preview, T_B3_PREVIEW_FRAMES } from "./karakuri/TabiB3";
+import { TabiB4Preview, T_B4_PREVIEW_FRAMES } from "./karakuri/TabiB4";
+import { TabiB5Preview, T_B5_PREVIEW_FRAMES } from "./karakuri/TabiB5";
+import { TabiB6Preview, T_B6_PREVIEW_FRAMES } from "./karakuri/TabiB6";
 import { VIDEO, sceneHoldSec } from "../style";
 import scenesData from "./scenes-data.json";
 import type { ScenesData } from "../types";
@@ -62,6 +70,25 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="WatashiB3" component={WatashiB3Preview} durationInFrames={W_B3_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="WatashiB4" component={WatashiB4Preview} durationInFrames={W_B4_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 「旅とお土産の歴史」時代考証キット8種のプレビュー (150フレームずつ巡回) */}
+      <Composition id="TabiKits" component={TabiKitsPreview} durationInFrames={TABIKITS_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 「旅とお土産の歴史」移動・舞台転換の演出キット7種のプレビュー (150フレームずつ巡回) */}
+      <Composition id="TabiTravel" component={TabiTravelPreview} durationInFrames={TABITRAVEL_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 「旅とお土産の歴史」本編イラストの検品用プレビュー (1フレーム=1シーン) */}
+      <Composition id="TabiB1P" component={TabiB1Preview} durationInFrames={T_B1_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="TabiB2P" component={TabiB2Preview} durationInFrames={T_B2_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="TabiB3P" component={TabiB3Preview} durationInFrames={T_B3_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="TabiB4P" component={TabiB4Preview} durationInFrames={T_B4_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="TabiB5P" component={TabiB5Preview} durationInFrames={T_B5_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="TabiB6P" component={TabiB6Preview} durationInFrames={T_B6_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       {/* 「私は何者?」の回の占い師キャラ試作 A〜D。本編とは無関係 */}
       <Composition

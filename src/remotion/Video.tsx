@@ -35,6 +35,7 @@ import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, suuriSceneHides
 import { KarakuriSceneView, KRP, karakuriCardShowsFullText } from "./karakuri/KarakuriScenes";
 import { J2AllSceneView } from "./karakuri/Jihanki2000Index";
 import { WAllSceneView } from "./karakuri/WatashiIndex";
+import { TAllSceneView } from "./karakuri/TabiIndex";
 
 // 自販機2000年史 (モチーフ名が j2_ で始まる専用絵) を本編プレイヤーで描くためのつなぎ。
 // J2AllSceneView は (motif, f) を受けるので、Sequence内の経過フレームを渡す。
@@ -48,6 +49,13 @@ export const isWatashiMotif = (motif: string) => /^w[1-4]_/.test(motif);
 const WSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
   const f = useCurrentFrame();
   return <WAllSceneView motif={motif} f={f} />;
+};
+
+// 「旅とお土産の歴史」(モチーフ名が tb1_〜tb5_ で始まる専用絵) 用の同じつなぎ。
+export const isTabiMotif = (motif: string) => /^tb[1-5]_/.test(motif);
+const TSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return <TAllSceneView motif={motif} f={f} />;
 };
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
@@ -448,6 +456,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   <J2SceneInVideo motif={scene.motif} />
                 ) : isWatashiMotif(scene.motif) ? (
                   <WSceneInVideo motif={scene.motif} />
+                ) : isTabiMotif(scene.motif) ? (
+                  <TSceneInVideo motif={scene.motif} />
                 ) : (
                   <KarakuriSceneView scene={scene} />
                 )

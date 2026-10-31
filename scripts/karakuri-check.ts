@@ -60,11 +60,12 @@ if (data.preset !== "karakuri") {
 }
 const scenes = data.scenes;
 
-// 作品を motif の接頭辞で判別する (w1_=私は何者 / j2_=自販機2000年史)
-const prefix = (scenes.find((s) => /^[a-z]\d_/.test(s.motif ?? ""))?.motif ?? "").slice(0, 3);
-const WORK =
-  prefix === "w1_" || prefix === "w2_" || prefix === "w3_" || prefix === "w4_"
-    ? { name: "「私は何者?」の4000年史", indexFile: "WatashiIndex.tsx", arrayName: "W_ALL_MOTIFS" }
+// 作品を motif の接頭辞で判別する (w1_=私は何者 / tb1_=旅とお土産 / j2_=自販機2000年史)
+const firstMotif = scenes.find((s) => /^[a-z]+\d_/.test(s.motif ?? ""))?.motif ?? "";
+const WORK = /^w[1-4]_/.test(firstMotif)
+  ? { name: "「私は何者?」の4000年史", indexFile: "WatashiIndex.tsx", arrayName: "W_ALL_MOTIFS" }
+  : /^tb[1-5]_/.test(firstMotif)
+    ? { name: "旅とお土産の歴史", indexFile: "TabiIndex.tsx", arrayName: "T_ALL_MOTIFS" }
     : { name: "自販機2000年史", indexFile: "Jihanki2000Index.tsx", arrayName: "J2_ALL_MOTIFS" };
 
 console.log(`からくり検査: ${WORK.name}  (全 ${scenes.length} シーン)\n`);
@@ -124,7 +125,14 @@ if (!allMotifs) {
   warn("検査1", `${WORK.indexFile} の ${WORK.arrayName} が読めませんでした (検査をとばしました)`);
 } else {
   // scenes-data.json の最後はエンディング。配列はそこを持たないので除いて比べる
-  const body = scenes.filter((s) => s.motif !== "ending");
+  let body = scenes.filter((s) => s.motif !== "ending");
+  // 締めのご挨拶 (台本+1文目) が最後の絵を再利用しているときは、設計図どおりなので除いて比べる
+  if (
+    body.length === allMotifs.length + 1 &&
+    body[body.length - 1].motif === allMotifs[allMotifs.length - 1]
+  ) {
+    body = body.slice(0, -1);
+  }
   if (allMotifs.length !== body.length) {
     ng("検査1", `配列は ${allMotifs.length} 枚ぶん、台帳は ${body.length} 文ぶん。数が合っていません`);
   }
@@ -144,13 +152,15 @@ if (!allMotifs) {
 //   switch 式     case "w2_kyoushitsu": return <SceneKyoushitsu f={f} />;
 //   オブジェクト表  w1_unun: (f) => <SceneUnun f={f} />,
 // 両方ひろう。
+// オブジェクト表は「=> <JSX」のほか「=> {」「=> (」(途中で計算してから return するもの・
+// 括弧で囲んだ JSX) も許す。その場合は部品名が取れないので m[5] (motif のみ) になる
 const DISPATCH_RE =
-  /case\s+"([a-z0-9_]+)"\s*:\s*return\s*<([A-Za-z0-9_]+)|^\s*([a-z0-9_]+)\s*:\s*\([^)]*\)\s*=>\s*<([A-Za-z0-9_]+)/gm;
+  /case\s+"([a-z0-9_]+)"\s*:\s*return\s*<([A-Za-z0-9_]+)|^\s*([a-z0-9_]+)\s*:\s*\([^)]*\)\s*=>\s*<([A-Za-z0-9_]+)|^\s*([a-z0-9_]+)\s*:\s*\([^)]*\)\s*=>\s*[{(]/gm;
 
 const known = new Set<string>();
 for (const f of fs.readdirSync(KDIR).filter((n) => n.endsWith(".tsx"))) {
   const src = stripComments(fs.readFileSync(path.join(KDIR, f), "utf8"));
-  for (const m of src.matchAll(DISPATCH_RE)) known.add(m[1] ?? m[3]);
+  for (const m of src.matchAll(DISPATCH_RE)) known.add(m[1] ?? m[3] ?? m[5]);
 }
 scenes.forEach((s, i) => {
   if (s.motif && s.motif !== "ending" && !known.has(s.motif)) {
@@ -264,6 +274,7 @@ for (const file of fs.readdirSync(KDIR).filter((n) => n.endsWith(".tsx"))) {
   for (const m of stripComments(src).matchAll(DISPATCH_RE)) {
     const motif = m[1] ?? m[3];
     const comp = m[2] ?? m[4];
+    if (!motif || !comp) continue; // 「=> {」書きは部品名が取れないのでひもづけ対象外
     if (!compToMotifs.has(comp)) compToMotifs.set(comp, new Set());
     compToMotifs.get(comp)!.add(motif);
   }

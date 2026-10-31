@@ -2,2039 +2,1807 @@
   "scenes": [
     {
       "index": 0,
-      "text": "いきなりですが、この動画を開いたあなたを、診断してみます。",
+      "text": "旅行先の売り場で、箱を手に固まっている人がいます。",
       "type": "diagram",
-      "motif": "w1_shindan_start",
+      "motif": "tb1_uriba_katamaru",
       "audio": "audio/scene-000.wav",
-      "durationSec": 4.917333333333334
+      "durationSec": 4.405333333333333
     },
     {
       "index": 1,
-      "text": "うーん……。",
+      "text": "私です。",
       "type": "diagram",
-      "motif": "w1_unun",
+      "motif": "tb1_watashi_desu",
       "audio": "audio/scene-001.wav",
-      "durationSec": 0.8426666666666667
+      "durationSec": 1.0133333333333334
     },
     {
       "index": 2,
-      "text": "……はあっ!",
+      "text": "数えているのは、お菓子の数ではありません。",
       "type": "diagram",
-      "motif": "w1_mieta",
+      "motif": "tb1_okashi_janai",
       "audio": "audio/scene-002.wav",
-      "durationSec": 0.8106666666666666
-    },
-    {
-      "index": 3,
-      "text": "見えました。",
-      "type": "diagram",
-      "motif": "w1_mieta",
-      "audio": "audio/scene-003.wav",
-      "durationSec": 1.0666666666666667
-    },
-    {
-      "index": 4,
-      "text": "あなたは、まわりから「しっかりしている」と思われがちですが、本当は心配性な一面があります。",
-      "type": "diagram",
-      "motif": "w1_shindan_paper",
-      "audio": "audio/scene-004.wav",
-      "durationSec": 7.466666666666667
-    },
-    {
-      "index": 5,
-      "text": "人に合わせるのは得意ですが、本当は、自分のペースを乱されたくないタイプ。",
-      "type": "diagram",
-      "motif": "w1_jibun_pace",
-      "audio": "audio/scene-005.wav",
-      "durationSec": 6.389333333333333
-    },
-    {
-      "index": 6,
-      "text": "……どうでしょう。ちょっと当たっていませんか?",
-      "type": "diagram",
-      "motif": "w1_atari_check",
-      "audio": "audio/scene-006.wav",
       "durationSec": 3.6906666666666665
     },
     {
-      "index": 7,
-      "text": "当たっていた方。その感覚、覚えておいてください。",
+      "index": 3,
+      "text": "職場の人数です。",
       "type": "diagram",
-      "motif": "w1_atari_check",
+      "motif": "tb1_shokuba_ninzu",
+      "audio": "audio/scene-003.wav",
+      "durationSec": 1.7386666666666666
+    },
+    {
+      "index": 4,
+      "text": "12人だと足りなくて、18個入りだと多すぎる。",
+      "type": "diagram",
+      "motif": "tb1_12vs18",
+      "audio": "audio/scene-004.wav",
+      "durationSec": 4.192
+    },
+    {
+      "index": 5,
+      "text": "誰に頼まれたわけでもないのに、です。",
+      "type": "diagram",
+      "motif": "tb1_tanomarete_nai",
+      "audio": "audio/scene-005.wav",
+      "durationSec": 3.296
+    },
+    {
+      "index": 6,
+      "text": "そして、もうひとつ。",
+      "type": "diagram",
+      "motif": "tb1_mou_hitotsu",
+      "audio": "audio/scene-006.wav",
+      "durationSec": 1.8453333333333333
+    },
+    {
+      "index": 7,
+      "text": "そもそもこの旅行、「疲れたから」と自分に言い訳をして来ました。",
+      "type": "diagram",
+      "motif": "tb1_tsukareta_kara",
       "audio": "audio/scene-007.wav",
-      "durationSec": 4.501333333333333
+      "durationSec": 5.024
     },
     {
       "index": 8,
-      "text": "この動画の最後で、タネを明かします。",
+      "text": "出かけるための口実と、帰ってからの言い訳。",
       "type": "diagram",
-      "motif": "w1_tane_yokoku",
+      "motif": "tb1_koujitsu_iiwake",
       "audio": "audio/scene-008.wav",
-      "durationSec": 3.1573333333333333
-    },
-    {
-      "index": 9,
-      "text": "星座占いに、血液型、93問に答えて出てくるアルファベット4文字。",
-      "type": "diagram",
-      "motif": "w1_uranai_zukushi",
-      "audio": "audio/scene-009.wav",
-      "durationSec": 6.858666666666666
-    },
-    {
-      "index": 10,
-      "text": "「私は何者?」という問いは、実は記録に残るだけで、およそ4000年続いています。",
-      "type": "diagram",
-      "motif": "w1_toi_timeline",
-      "audio": "audio/scene-010.wav",
-      "durationSec": 7.904
-    },
-    {
-      "index": 11,
-      "text": "最初の診断ツールは、スマホではなく、骨でした。",
-      "type": "diagram",
-      "motif": "w1_hone_smartphone",
-      "audio": "audio/scene-011.wav",
-      "durationSec": 4.512
-    },
-    {
-      "index": 12,
-      "text": "骨のヒビから、頭のデコボコ、インクのしみ、そして4文字タイプまで。",
-      "type": "diagram",
-      "motif": "w1_yottsu_tools",
-      "audio": "audio/scene-012.wav",
-      "durationSec": 6.133333333333334
-    },
-    {
-      "index": 13,
-      "text": "人類4000年ぶんの「自分探し」、さかのぼってみましょう。",
-      "type": "diagram",
-      "motif": "w1_toi_timeline",
-      "audio": "audio/scene-013.wav",
-      "durationSec": 4.661333333333333
-    },
-    {
-      "index": 14,
-      "text": "第1章、国の運命は、骨に聞く。",
-      "type": "diagram",
-      "motif": "w1_ch1_door",
-      "audio": "audio/scene-014.wav",
-      "durationSec": 3.8186666666666667
-    },
-    {
-      "index": 15,
-      "text": "舞台は、およそ3300年前の古代中国、殷という王朝です。",
-      "type": "diagram",
-      "motif": "w1_in_dynasty",
-      "audio": "audio/scene-015.wav",
-      "durationSec": 6.304
-    },
-    {
-      "index": 16,
-      "text": "王さまには、知りたいことが山ほどありました。",
-      "type": "diagram",
-      "motif": "w1_king_many_q",
-      "audio": "audio/scene-016.wav",
-      "durationSec": 3.7226666666666666
-    },
-    {
-      "index": 17,
-      "text": "雨は降るのか。作物は実るのか。戦に勝てるのか。",
-      "type": "diagram",
-      "motif": "w1_king_questions",
-      "audio": "audio/scene-017.wav",
-      "durationSec": 5.632
-    },
-    {
-      "index": 18,
-      "text": "答えてくれる気象予報士も、新聞も、ありません。",
-      "type": "diagram",
-      "motif": "w1_no_yohoshi",
-      "audio": "audio/scene-018.wav",
-      "durationSec": 4.490666666666667
-    },
-    {
-      "index": 19,
-      "text": "そこで登場するのが、亀の甲羅と、牛の骨です。",
-      "type": "diagram",
-      "motif": "w1_kame_ushi",
-      "audio": "audio/scene-019.wav",
-      "durationSec": 4.661333333333333
-    },
-    {
-      "index": 20,
-      "text": "専門の占い官が、骨に熱した棒を押し当てます。",
-      "type": "diagram",
-      "motif": "w1_bone_burn",
-      "audio": "audio/scene-020.wav",
-      "durationSec": 4.298666666666667
-    },
-    {
-      "index": 21,
-      "text": "ピシッ。",
-      "type": "diagram",
-      "motif": "w1_pishi",
-      "audio": "audio/scene-021.wav",
-      "durationSec": 0.6613333333333333
-    },
-    {
-      "index": 22,
-      "text": "入ったヒビの形を見て、最終判断を下すのは、王さま本人でした。",
-      "type": "diagram",
-      "motif": "w1_king_judge",
-      "audio": "audio/scene-022.wav",
-      "durationSec": 6.250666666666667
-    },
-    {
-      "index": 23,
-      "text": "国の一大事が、骨のヒビで決まっていたのです。",
-      "type": "diagram",
-      "motif": "w1_king_judge",
-      "audio": "audio/scene-023.wav",
-      "durationSec": 3.936
-    },
-    {
-      "index": 24,
-      "text": "そして占いの結果は、その骨に文字で刻まれました。",
-      "type": "diagram",
-      "motif": "w1_bone_carve",
-      "audio": "audio/scene-024.wav",
-      "durationSec": 4.426666666666667
-    },
-    {
-      "index": 25,
-      "text": "これが甲骨文字。現存する、最古の漢字です。",
-      "type": "diagram",
-      "motif": "w1_koukotsu_moji",
-      "audio": "audio/scene-025.wav",
-      "durationSec": 4.693333333333333
-    },
-    {
-      "index": 26,
-      "text": "漢字のいちばん古い記録は、占いのメモだったのです。",
-      "type": "diagram",
-      "motif": "w1_koukotsu_moji",
-      "audio": "audio/scene-026.wav",
-      "durationSec": 4.501333333333333
-    },
-    {
-      "index": 27,
-      "text": "同じころ、西のメソポタミアでは、空を見上げる人たちがいました。",
-      "type": "diagram",
-      "motif": "w1_mesopotamia",
-      "audio": "audio/scene-027.wav",
-      "durationSec": 5.514666666666667
-    },
-    {
-      "index": 28,
-      "text": "星や月の動きから、国の吉凶を読み取る、天体の占いです。",
-      "type": "diagram",
-      "motif": "w1_tentai_uranai",
-      "audio": "audio/scene-028.wav",
-      "durationSec": 5.717333333333333
-    },
-    {
-      "index": 29,
-      "text": "ただし、占ってもらえるのは王さまと国家だけ。",
-      "type": "diagram",
-      "motif": "w1_king_only",
-      "audio": "audio/scene-029.wav",
-      "durationSec": 4.256
-    },
-    {
-      "index": 30,
-      "text": "個人を占った世界最古のホロスコープは、ぐっと時代が下って、紀元前410年のものです。",
-      "type": "diagram",
-      "motif": "w1_bc410",
-      "audio": "audio/scene-030.wav",
-      "durationSec": 8.074666666666667
-    },
-    {
-      "index": 31,
-      "text": "「私は何者?」と聞けるのは、長いあいだ、王さまの特権でした。",
-      "type": "diagram",
-      "motif": "w1_king_tokken",
-      "audio": "audio/scene-031.wav",
-      "durationSec": 5.952
-    },
-    {
-      "index": 32,
-      "text": "第2章、占いが、お役所だったころ。",
-      "type": "diagram",
-      "motif": "w1_ch2_door",
-      "audio": "audio/scene-032.wav",
-      "durationSec": 3.808
-    },
-    {
-      "index": 33,
-      "text": "時は流れて、古代ローマ。",
-      "type": "diagram",
-      "motif": "w1_rome",
-      "audio": "audio/scene-033.wav",
-      "durationSec": 2.570666666666667
-    },
-    {
-      "index": 34,
-      "text": "占いは、国家の正式な手続きになっていました。",
-      "type": "diagram",
-      "motif": "w1_tetsuzuki",
-      "audio": "audio/scene-034.wav",
-      "durationSec": 4.245333333333333
-    },
-    {
-      "index": 35,
-      "text": "アウグルという神官が、鳥の飛び方や鳴き声を観察します。",
-      "type": "diagram",
-      "motif": "w1_augur",
-      "audio": "audio/scene-035.wav",
-      "durationSec": 5.066666666666666
-    },
-    {
-      "index": 36,
-      "text": "開戦や大事な集会の前に、神々がそれを認めるかどうかを、確かめるのです。",
-      "type": "diagram",
-      "motif": "w1_kessai",
-      "audio": "audio/scene-036.wav",
-      "durationSec": 6.986666666666666
-    },
-    {
-      "index": 37,
-      "text": "未来を当てる占いというより、神様の決裁をもらう儀式でした。",
-      "type": "diagram",
-      "motif": "w1_kessai_girei",
-      "audio": "audio/scene-037.wav",
-      "durationSec": 5.418666666666667
-    },
-    {
-      "index": 38,
-      "text": "凶兆が出れば、戦争すら延期です。",
-      "type": "diagram",
-      "motif": "w1_enki",
-      "audio": "audio/scene-038.wav",
-      "durationSec": 3.3706666666666667
-    },
-    {
-      "index": 39,
-      "text": "ところが紀元前249年、この手続きを省略した男がいました。",
-      "type": "diagram",
-      "motif": "w1_general_chicken",
-      "audio": "audio/scene-039.wav",
-      "durationSec": 6.666666666666667
-    },
-    {
-      "index": 40,
-      "text": "海戦を前に、将軍が鶏の様子をうかがいます。",
-      "type": "diagram",
-      "motif": "w1_general_chicken",
-      "audio": "audio/scene-040.wav",
-      "durationSec": 4.522666666666667
-    },
-    {
-      "index": 41,
-      "text": "鶏が餌を食べれば、吉兆。食べなければ、凶兆です。",
-      "type": "diagram",
-      "motif": "w1_kitcho_kyocho",
-      "audio": "audio/scene-041.wav",
-      "durationSec": 5.472
-    },
-    {
-      "index": 42,
-      "text": "鶏は、食べませんでした。",
-      "type": "diagram",
-      "motif": "w1_tabemasen",
-      "audio": "audio/scene-042.wav",
-      "durationSec": 2.5813333333333333
-    },
-    {
-      "index": 43,
-      "text": "将軍は言い放ちます。「食べないなら、海の水でも飲ませてやれ」。",
-      "type": "diagram",
-      "motif": "w1_nomeba_ii",
-      "audio": "audio/scene-043.wav",
-      "durationSec": 5.493333333333333
-    },
-    {
-      "index": 44,
-      "text": "鶏を、海に投げ込んだと伝えられています。",
-      "type": "diagram",
-      "motif": "w1_pochan",
-      "audio": "audio/scene-044.wav",
-      "durationSec": 3.8613333333333335
-    },
-    {
-      "index": 45,
-      "text": "結果は、123隻の艦隊のうち93隻を失う、歴史的大敗でした。",
-      "type": "diagram",
-      "motif": "w1_taihai",
-      "audio": "audio/scene-045.wav",
-      "durationSec": 7.296
-    },
-    {
-      "index": 46,
-      "text": "神様の決裁は、省略しないほうがよさそうです。",
-      "type": "diagram",
-      "motif": "w1_kessai_shoryaku",
-      "audio": "audio/scene-046.wav",
-      "durationSec": 4.224
-    },
-    {
-      "index": 47,
-      "text": "さて、日本でも占いは、お役所の仕事でした。",
-      "type": "diagram",
-      "motif": "w1_onmyoryo_tatemono",
-      "audio": "audio/scene-047.wav",
-      "durationSec": 4.586666666666667
-    },
-    {
-      "index": 48,
-      "text": "平安時代の陰陽師は、陰陽寮という役所に勤める、今でいう国家公務員です。",
-      "type": "diagram",
-      "motif": "w1_onmyoryo",
-      "audio": "audio/scene-048.wav",
-      "durationSec": 7.52
-    },
-    {
-      "index": 49,
-      "text": "あの安倍晴明も、実在の人物でした。",
-      "type": "diagram",
-      "motif": "w1_seimei",
-      "audio": "audio/scene-049.wav",
-      "durationSec": 3.7546666666666666
-    },
-    {
-      "index": 50,
-      "text": "貴族の日記にも登場し、天文博士などを歴任したエリート官僚です。",
-      "type": "diagram",
-      "motif": "w1_seimei_career",
-      "audio": "audio/scene-050.wav",
-      "durationSec": 6.1226666666666665
-    },
-    {
-      "index": 51,
-      "text": "ただし史料に残る晴明は、40歳ごろにようやく学生身分で現れる、遅咲きの苦労人。",
-      "type": "diagram",
-      "motif": "w1_osozaki",
-      "audio": "audio/scene-051.wav",
-      "durationSec": 7.936
-    },
-    {
-      "index": 52,
-      "text": "式神を操って都の闇と戦った、という話は、後の時代の説話が生んだ伝説です。",
-      "type": "diagram",
-      "motif": "w1_shikigami_densetsu",
-      "audio": "audio/scene-052.wav",
-      "durationSec": 7.381333333333333
-    },
-    {
-      "index": 53,
-      "text": "ここまでを、ざっくりまとめましょう。",
-      "type": "diagram",
-      "motif": "w1_matome_sengen",
-      "audio": "audio/scene-053.wav",
-      "durationSec": 2.88
-    },
-    {
-      "index": 54,
-      "text": "骨も、星も、鳥も、聞き方はバラバラ。でも聞く相手は、ずっとひとつでした。",
-      "type": "diagram",
-      "motif": "w1_matome_three",
-      "audio": "audio/scene-054.wav",
-      "durationSec": 7.018666666666666
-    },
-    {
-      "index": 55,
-      "text": "神様です。",
-      "type": "diagram",
-      "motif": "w1_route_kami",
-      "audio": "audio/scene-055.wav",
-      "durationSec": 1.2053333333333334
-    },
-    {
-      "index": 56,
-      "text": "「私は何者?」の答えは、人間の外側の、はるか上にありました。",
-      "type": "diagram",
-      "motif": "w1_haruka_ue",
-      "audio": "audio/scene-056.wav",
-      "durationSec": 6.304
-    },
-    {
-      "index": 57,
-      "text": "第3章、天文学の、愚かな娘。",
-      "type": "diagram",
-      "motif": "w1_ch3_door",
-      "audio": "audio/scene-057.wav",
-      "durationSec": 3.8933333333333335
-    },
-    {
-      "index": 58,
-      "text": "17世紀のヨーロッパに、ケプラーという天文学者がいました。",
-      "type": "diagram",
-      "motif": "w1_kepler_telescope",
-      "audio": "audio/scene-058.wav",
-      "durationSec": 5.205333333333333
-    },
-    {
-      "index": 59,
-      "text": "惑星の動きの法則を解き明かした、科学史の大スターです。",
-      "type": "diagram",
-      "motif": "w1_wakusei_housoku",
-      "audio": "audio/scene-059.wav",
-      "durationSec": 5.034666666666666
-    },
-    {
-      "index": 60,
-      "text": "そんな彼の大事な収入源が、実は、占いでした。",
-      "type": "diagram",
-      "motif": "w1_uranai_shunyu",
-      "audio": "audio/scene-060.wav",
-      "durationSec": 4.832
-    },
-    {
-      "index": 61,
-      "text": "宮廷のお仕事は、お給料の遅配が日常茶飯事。",
-      "type": "diagram",
-      "motif": "w1_kyuryo_chihai",
-      "audio": "audio/scene-061.wav",
-      "durationSec": 4.672
-    },
-    {
-      "index": 62,
-      "text": "ケプラーは暦やホロスコープを作って、家計の穴を埋めていたのです。",
-      "type": "diagram",
-      "motif": "w1_koyomi_shigoto",
-      "audio": "audio/scene-062.wav",
-      "durationSec": 5.578666666666667
-    },
-    {
-      "index": 63,
-      "text": "「占星術は、天文学の愚かな娘。でもこの娘が稼がなければ、母さんは飢えてしまう」。",
-      "type": "diagram",
-      "motif": "w1_oroka_musume",
-      "audio": "audio/scene-063.wav",
-      "durationSec": 8.117333333333333
-    },
-    {
-      "index": 64,
-      "text": "1610年の著書に残る、正直すぎる本音です。",
-      "type": "diagram",
-      "motif": "w1_honne_book",
-      "audio": "audio/scene-064.wav",
-      "durationSec": 4.714666666666667
-    },
-    {
-      "index": 65,
-      "text": "母というのは天文学、娘というのが占星術のことです。",
-      "type": "diagram",
-      "motif": "w1_haha_musume_toha",
-      "audio": "audio/scene-065.wav",
-      "durationSec": 5.1306666666666665
-    },
-    {
-      "index": 66,
-      "text": "星の動きを計算するのが母。その動きに意味をつけて売るのが娘。当時この2つは、同じ人がやる、ひとつの仕事でした。",
-      "type": "diagram",
-      "motif": "w1_hitotsu_no_shigoto",
-      "audio": "audio/scene-066.wav",
-      "durationSec": 10.613333333333333
-    },
-    {
-      "index": 67,
-      "text": "やがて天文学は占星術から独立し、長く一体だった親子は、ここで別々の道へ。",
-      "type": "diagram",
-      "motif": "w1_wakare_michi",
-      "audio": "audio/scene-067.wav",
-      "durationSec": 7.786666666666667
-    },
-    {
-      "index": 68,
-      "text": "そして人類は、4000年の歴史で初めての「乗り換え」を始めます。",
-      "type": "diagram",
-      "motif": "w1_norikae_hajimari",
-      "audio": "audio/scene-068.wav",
-      "durationSec": 5.301333333333333
-    },
-    {
-      "index": 69,
-      "text": "聞く相手を、神様から、人間の体へ。",
-      "type": "diagram",
-      "motif": "w1_route_karada",
-      "audio": "audio/scene-069.wav",
       "durationSec": 4.021333333333334
     },
     {
-      "index": 70,
-      "text": "第4章、頭のデコボコ、測ります。",
+      "index": 9,
+      "text": "実はこのふたつ、人類が千年かけて作り上げた「仕組み」なんです。",
       "type": "diagram",
-      "motif": "w2_ch4_door",
-      "audio": "audio/scene-070.wav",
-      "durationSec": 3.7333333333333334
+      "motif": "tb1_sennen_shikumi",
+      "audio": "audio/scene-009.wav",
+      "durationSec": 5.546666666666667
     },
     {
-      "index": 71,
-      "text": "19世紀の欧米で、とんでもない性格診断が大流行します。",
+      "index": 10,
+      "text": "なぜ、休むのに理由が要るのか。",
       "type": "diagram",
-      "motif": "w2_boom_street",
-      "audio": "audio/scene-071.wav",
-      "durationSec": 5.653333333333333
-    },
-    {
-      "index": 72,
-      "text": "その名も、骨相学。",
-      "type": "diagram",
-      "motif": "w2_head_map",
-      "audio": "audio/scene-072.wav",
-      "durationSec": 2.08
-    },
-    {
-      "index": 73,
-      "text": "頭の形のデコボコで、性格や才能がわかる、という説です。",
-      "type": "diagram",
-      "motif": "w2_head_bumps",
-      "audio": "audio/scene-073.wav",
-      "durationSec": 5.632
-    },
-    {
-      "index": 74,
-      "text": "1790年代に医師のガルが唱え、またたく間に広まりました。",
-      "type": "diagram",
-      "motif": "w2_gall",
-      "audio": "audio/scene-074.wav",
-      "durationSec": 5.770666666666667
-    },
-    {
-      "index": 75,
-      "text": "ニューヨークには、有料の診断所まで登場します。",
-      "type": "diagram",
-      "motif": "w2_ny_shindanjo",
-      "audio": "audio/scene-075.wav",
-      "durationSec": 4.277333333333333
-    },
-    {
-      "index": 76,
-      "text": "お客は椅子に座り、診断士に頭を触ってもらいます。",
-      "type": "diagram",
-      "motif": "w2_parlor_touch",
-      "audio": "audio/scene-076.wav",
-      "durationSec": 4.672
-    },
-    {
-      "index": 77,
-      "text": "「慎重さのふくらみ、大きいですね」。",
-      "type": "diagram",
-      "motif": "w2_parlor_bubble",
-      "audio": "audio/scene-077.wav",
-      "durationSec": 3.104
-    },
-    {
-      "index": 78,
-      "text": "頭を撫でられて、お金を払うのです。",
-      "type": "diagram",
-      "motif": "w2_parlor_pay",
-      "audio": "audio/scene-078.wav",
-      "durationSec": 3.2106666666666666
-    },
-    {
-      "index": 79,
-      "text": "就職の身元保証に、骨相学の診断書を。",
-      "type": "diagram",
-      "motif": "w2_shushoku",
-      "audio": "audio/scene-079.wav",
-      "durationSec": 4.181333333333333
-    },
-    {
-      "index": 80,
-      "text": "結婚相手選びにも、頭の形の相性を。",
-      "type": "diagram",
-      "motif": "w2_kekkon",
-      "audio": "audio/scene-080.wav",
-      "durationSec": 4.064
-    },
-    {
-      "index": 81,
-      "text": "ところで、肝心の科学的な根拠はどうだったのでしょうか。",
-      "type": "diagram",
-      "motif": "w2_konkyo_q",
-      "audio": "audio/scene-081.wav",
-      "durationSec": 5.354666666666667
-    },
-    {
-      "index": 82,
-      "text": "19世紀の半ばまでに、脳の実験によって、きっぱり否定されています。",
-      "type": "diagram",
-      "motif": "w2_hitei",
-      "audio": "audio/scene-082.wav",
-      "durationSec": 6.304
-    },
-    {
-      "index": 83,
-      "text": "では、流行は終わったのか。終わりませんでした。",
-      "type": "diagram",
-      "motif": "w2_ninki_tsuzuku",
-      "audio": "audio/scene-083.wav",
-      "durationSec": 4.288
-    },
-    {
-      "index": 84,
-      "text": "科学に否定されたあとも、人気は何十年も続いたのです。",
-      "type": "diagram",
-      "motif": "w2_ninki_tsuzuku",
-      "audio": "audio/scene-084.wav",
-      "durationSec": 4.938666666666666
-    },
-    {
-      "index": 85,
-      "text": "「当たっている気がする」は、根拠より強い。",
-      "type": "diagram",
-      "motif": "w2_tenbin",
-      "audio": "audio/scene-085.wav",
-      "durationSec": 3.36
-    },
-    {
-      "index": 86,
-      "text": "この妙な現象、覚えておいてください。あとで名前が付きます。",
-      "type": "diagram",
-      "motif": "w2_namae_ato",
-      "audio": "audio/scene-086.wav",
-      "durationSec": 5.365333333333333
-    },
-    {
-      "index": 87,
-      "text": "第5章、困っている子を、見つけたい。",
-      "type": "diagram",
-      "motif": "w2_ch5_door",
-      "audio": "audio/scene-087.wav",
-      "durationSec": 3.562666666666667
-    },
-    {
-      "index": 88,
-      "text": "20世紀に入ると、診断の対象は「頭の形」から「頭の中身」へ移ります。",
-      "type": "diagram",
-      "motif": "w2_katachi_nakami",
-      "audio": "audio/scene-088.wav",
-      "durationSec": 6.613333333333333
-    },
-    {
-      "index": 89,
-      "text": "1905年、フランスの心理学者ビネーが、世界初の知能検査を作りました。",
-      "type": "diagram",
-      "motif": "w2_binet_1905",
-      "audio": "audio/scene-089.wav",
-      "durationSec": 7.2
-    },
-    {
-      "index": 90,
-      "text": "きっかけは、学校でした。",
-      "type": "diagram",
-      "motif": "w2_kyoushitsu",
-      "audio": "audio/scene-090.wav",
-      "durationSec": 2.3786666666666667
-    },
-    {
-      "index": 91,
-      "text": "義務教育が広がり、勉強についていけない子どもたちのことが、課題になっていたのです。",
-      "type": "diagram",
-      "motif": "w2_kyoushitsu_hanareru",
-      "audio": "audio/scene-091.wav",
-      "durationSec": 7.125333333333334
-    },
-    {
-      "index": 92,
-      "text": "フランスの文部省の委員会は、「支援が必要な子を早く見つけよう」と決めました。",
-      "type": "diagram",
-      "motif": "w2_committee_decide",
-      "audio": "audio/scene-092.wav",
-      "durationSec": 6.453333333333333
-    },
-    {
-      "index": 93,
-      "text": "ところが、見つける方法がありません。",
-      "type": "diagram",
-      "motif": "w2_committee_stuck",
-      "audio": "audio/scene-093.wav",
-      "durationSec": 3.1466666666666665
-    },
-    {
-      "index": 94,
-      "text": "そこで委員だったビネーが、医師のシモンとともに、検査を自作したのです。",
-      "type": "diagram",
-      "motif": "w2_jisaku",
-      "audio": "audio/scene-094.wav",
-      "durationSec": 5.962666666666666
-    },
-    {
-      "index": 95,
-      "text": "年齢ごとの問題を順番に解いてもらい、どのあたりでつまずくかを見る。",
-      "type": "diagram",
-      "motif": "w2_kaidan",
-      "audio": "audio/scene-095.wav",
-      "durationSec": 5.568
-    },
-    {
-      "index": 96,
-      "text": "目的は、序列をつけることではなく、特別な教育支援につなげることでした。",
-      "type": "diagram",
-      "motif": "w2_shien",
-      "audio": "audio/scene-096.wav",
-      "durationSec": 6.602666666666667
-    },
-    {
-      "index": 97,
-      "text": "ビネー本人は、こうも書き残しています。",
-      "type": "diagram",
-      "motif": "w2_binet_kaku",
-      "audio": "audio/scene-097.wav",
-      "durationSec": 3.445333333333333
-    },
-    {
-      "index": 98,
-      "text": "「知能は変わらない固定量だ、という考えは、残忍な悲観論だ」。",
-      "type": "diagram",
-      "motif": "w2_zannin",
-      "audio": "audio/scene-098.wav",
-      "durationSec": 5.632
-    },
-    {
-      "index": 99,
-      "text": "子どもの可能性を、ひとつの数字で決めつけるな、というわけです。",
-      "type": "diagram",
-      "motif": "w2_kimetsukeru_na",
-      "audio": "audio/scene-099.wav",
-      "durationSec": 5.386666666666667
-    },
-    {
-      "index": 100,
-      "text": "ちなみに、有名な「IQ」はビネーの発明ではありません。",
-      "type": "diagram",
-      "motif": "w2_iq_betsujin",
-      "audio": "audio/scene-100.wav",
-      "durationSec": 4.778666666666667
-    },
-    {
-      "index": 101,
-      "text": "彼の死後、別の学者たちが計算式と名前を整えました。",
-      "type": "diagram",
-      "motif": "w2_iq_betsujin",
-      "audio": "audio/scene-101.wav",
-      "durationSec": 5.184
-    },
-    {
-      "index": 102,
-      "text": "困っている子を助ける、やさしい道具。それが知能検査の出発点でした。",
-      "type": "diagram",
-      "motif": "w2_yasashii_dougu",
-      "audio": "audio/scene-102.wav",
-      "durationSec": 6.378666666666667
-    },
-    {
-      "index": 103,
-      "text": "しかしこの道具は、海を渡って、別の顔を持ち始めます。",
-      "type": "diagram",
-      "motif": "w2_umi_wataru",
-      "audio": "audio/scene-103.wav",
-      "durationSec": 5.1946666666666665
-    },
-    {
-      "index": 104,
-      "text": "第6章、175万人の、一斉テスト。",
-      "type": "diagram",
-      "motif": "w2_ch6_door",
-      "audio": "audio/scene-104.wav",
-      "durationSec": 4.842666666666666
-    },
-    {
-      "index": 105,
-      "text": "第一次世界大戦。アメリカは、巨大な悩みを抱えていました。",
-      "type": "diagram",
-      "motif": "w2_ww1_nayami",
-      "audio": "audio/scene-105.wav",
-      "durationSec": 5.738666666666667
-    },
-    {
-      "index": 106,
-      "text": "集まってくる大量の新兵を、どの部署に配属するか。",
-      "type": "diagram",
-      "motif": "w2_haizoku_q",
-      "audio": "audio/scene-106.wav",
-      "durationSec": 5.312
-    },
-    {
-      "index": 107,
-      "text": "一人ずつ面接している時間は、ありません。",
-      "type": "diagram",
-      "motif": "w2_mensetsu_muri",
-      "audio": "audio/scene-107.wav",
+      "motif": "tb1_naze_yasumu",
+      "audio": "audio/scene-010.wav",
       "durationSec": 3.6373333333333333
     },
     {
-      "index": 108,
-      "text": "そこで心理学者たちが提案します。知能検査を、全員にやろう。",
+      "index": 11,
+      "text": "なぜ、お土産を配らないと、なんとなく気まずいのか。",
       "type": "diagram",
-      "motif": "w2_teian",
-      "audio": "audio/scene-108.wav",
-      "durationSec": 5.792
-    },
-    {
-      "index": 109,
-      "text": "読み書きできる人には、筆記式のアルファ。",
-      "type": "diagram",
-      "motif": "w2_alpha",
-      "audio": "audio/scene-109.wav",
-      "durationSec": 3.509333333333333
-    },
-    {
-      "index": 110,
-      "text": "英語が苦手な移民や、読み書きの苦手な人には、絵と記号のベータ。",
-      "type": "diagram",
-      "motif": "w2_beta",
-      "audio": "audio/scene-110.wav",
-      "durationSec": 5.92
-    },
-    {
-      "index": 111,
-      "text": "2種類のテストで、流れ作業のように兵士を仕分けていきます。",
-      "type": "diagram",
-      "motif": "w2_nagare_sagyo",
-      "audio": "audio/scene-111.wav",
-      "durationSec": 4.970666666666666
-    },
-    {
-      "index": 112,
-      "text": "その数、およそ175万人。",
-      "type": "diagram",
-      "motif": "w2_175man",
-      "audio": "audio/scene-112.wav",
-      "durationSec": 3.3493333333333335
-    },
-    {
-      "index": 113,
-      "text": "人類史上はじめて、「頭の中身」が大量生産のように測られたのです。",
-      "type": "diagram",
-      "motif": "w2_tairyo_sokutei",
-      "audio": "audio/scene-113.wav",
-      "durationSec": 5.866666666666666
-    },
-    {
-      "index": 114,
-      "text": "教室で生まれたやさしい道具は、10年あまりで、巨大な選別マシンに姿を変えていたのです。",
-      "type": "diagram",
-      "motif": "w2_senbetsu_machine",
-      "audio": "audio/scene-114.wav",
-      "durationSec": 7.690666666666667
-    },
-    {
-      "index": 115,
-      "text": "振り返ってみましょう。神様に聞いた時代、体に聞いた時代。",
-      "type": "diagram",
-      "motif": "w2_route3",
-      "audio": "audio/scene-115.wav",
-      "durationSec": 5.472
-    },
-    {
-      "index": 116,
-      "text": "そして今、答えは「数字」になりました。",
-      "type": "diagram",
-      "motif": "w2_suji_answer",
-      "audio": "audio/scene-116.wav",
-      "durationSec": 3.6053333333333333
-    },
-    {
-      "index": 117,
-      "text": "数字は便利です。でも数字には、人を並べ替える力もありました。",
-      "type": "diagram",
-      "motif": "w2_narabekae",
-      "audio": "audio/scene-117.wav",
+      "motif": "tb1_naze_kimazui",
+      "audio": "audio/scene-011.wav",
       "durationSec": 5.952
     },
     {
-      "index": 118,
-      "text": "そして戦争が終わると、このテストの「成績表」が、社会へ流れ出していきます。",
+      "index": 12,
+      "text": "この20分で、そのからくりがぜんぶ一本につながります。",
       "type": "diagram",
-      "motif": "w2_seiseki_nagare",
-      "audio": "audio/scene-118.wav",
-      "durationSec": 6.453333333333333
+      "motif": "tb1_ippon_tsunagaru",
+      "audio": "audio/scene-012.wav",
+      "durationSec": 4.672
     },
     {
-      "index": 119,
-      "text": "ここから物語は、少しだけ暗くなります。",
+      "index": 13,
+      "text": "見終わるころには、数を数える自分が少し好きになっているはずです。",
       "type": "diagram",
-      "motif": "w2_kuraku_naru",
-      "audio": "audio/scene-119.wav",
-      "durationSec": 3.7333333333333334
+      "motif": "tb1_kazoeru_suki",
+      "audio": "audio/scene-013.wav",
+      "durationSec": 5.397333333333333
     },
     {
-      "index": 120,
-      "text": "第7章、道具は、使う人を選べない。",
+      "index": 14,
+      "text": "それでは、旅とお土産、千年の歴史のお話です。",
       "type": "diagram",
-      "motif": "w3_ch7_door",
-      "audio": "audio/scene-120.wav",
-      "durationSec": 3.8506666666666667
+      "motif": "tb1_sennen_michi",
+      "audio": "audio/scene-014.wav",
+      "durationSec": 4.714666666666667
     },
     {
-      "index": 121,
-      "text": "戦後のアメリカで、陸軍テストのデータは、思わぬ使われ方をしました。",
+      "index": 15,
+      "text": "時は2000年前、古代ローマ。",
       "type": "diagram",
-      "motif": "w3_data_misuse",
-      "audio": "audio/scene-121.wav",
-      "durationSec": 6.165333333333334
+      "motif": "tb1_ch1_door",
+      "audio": "audio/scene-015.wav",
+      "durationSec": 2.9226666666666667
     },
     {
-      "index": 122,
-      "text": "「あの国から来る移民は、知能が低い」。",
+      "index": 16,
+      "text": "貴族たちは夏になると、保養地バイアエへ出かけました。",
       "type": "diagram",
-      "motif": "w3_claim_dark",
-      "audio": "audio/scene-122.wav",
-      "durationSec": 3.4026666666666667
-    },
-    {
-      "index": 123,
-      "text": "そんな主張の、根拠として引用されたのです。",
-      "type": "diagram",
-      "motif": "w3_claim_dark",
-      "audio": "audio/scene-123.wav",
-      "durationSec": 3.7546666666666666
-    },
-    {
-      "index": 124,
-      "text": "でも検査の成績は、英語の力と、アメリカの文化の知識に大きく左右されるものでした。",
-      "type": "diagram",
-      "motif": "w3_language_bias",
-      "audio": "audio/scene-124.wav",
-      "durationSec": 7.712
-    },
-    {
-      "index": 125,
-      "text": "到着したばかりの移民に不利なのは、当然です。",
-      "type": "diagram",
-      "motif": "w3_language_bias",
-      "audio": "audio/scene-125.wav",
-      "durationSec": 4.053333333333334
-    },
-    {
-      "index": 126,
-      "text": "それでも数字は、移民を締め出したい人たちの追い風に使われました。",
-      "type": "diagram",
-      "motif": "w3_tailwind",
-      "audio": "audio/scene-126.wav",
-      "durationSec": 5.44
-    },
-    {
-      "index": 127,
-      "text": "法律の成立にどこまで影響したかは、今も歴史家の間で議論が続いています。",
-      "type": "diagram",
-      "motif": "w3_debate",
-      "audio": "audio/scene-127.wav",
-      "durationSec": 6.666666666666667
-    },
-    {
-      "index": 128,
-      "text": "ただ、時代の空気を後押ししたことは、確かでした。",
-      "type": "diagram",
-      "motif": "w3_kuuki_atooshi",
-      "audio": "audio/scene-128.wav",
+      "motif": "tb1_baiae",
+      "audio": "audio/scene-016.wav",
       "durationSec": 4.48
     },
     {
-      "index": 129,
-      "text": "さらに当時のアメリカには、優生学という考えが広がっていました。",
+      "index": 17,
+      "text": "温泉、宴会、海辺の別荘。",
       "type": "diagram",
-      "motif": "w3_yuseigaku",
-      "audio": "audio/scene-129.wav",
-      "durationSec": 5.621333333333333
+      "motif": "tb1_onsen_utage",
+      "audio": "audio/scene-017.wav",
+      "durationSec": 3.509333333333333
     },
     {
-      "index": 130,
-      "text": "優れた人間を増やし、劣った人間を減らせば社会は良くなる、という思想です。",
+      "index": 18,
+      "text": "「ローマ帝国のラスベガス」と呼ばれるほどの歓楽の町です。",
       "type": "diagram",
-      "motif": "w3_sorting",
-      "audio": "audio/scene-130.wav",
-      "durationSec": 6.730666666666667
+      "motif": "tb1_kanraku_machi",
+      "audio": "audio/scene-018.wav",
+      "durationSec": 4.384
     },
     {
-      "index": 131,
-      "text": "初期の知能検査を広めた学者たちの多くも、この考えの支持者でした。",
+      "index": 19,
+      "text": "つまり、楽しむための旅は大昔からありました。",
       "type": "diagram",
-      "motif": "w3_gakusha_shiji",
-      "audio": "audio/scene-131.wav",
-      "durationSec": 5.834666666666666
+      "motif": "tb1_mukashi_kara",
+      "audio": "audio/scene-019.wav",
+      "durationSec": 4.266666666666667
     },
     {
-      "index": 132,
-      "text": "1927年、アメリカの最高裁は「知能が低い」と判定された女性への強制手術を、合憲と判断します。",
+      "index": 20,
+      "text": "ただし、楽しめたのは身分のある人だけ。",
       "type": "diagram",
-      "motif": "w3_court1927",
-      "audio": "audio/scene-132.wav",
-      "durationSec": 10.144
+      "motif": "tb1_mibun_dake",
+      "audio": "audio/scene-020.wav",
+      "durationSec": 3.6586666666666665
     },
     {
-      "index": 133,
-      "text": "全米で、およそ7万人が同じ手術を受けさせられました。",
+      "index": 21,
+      "text": "庶民にとって移動とは、仕事か、逃亡か、戦争でした。",
       "type": "diagram",
-      "motif": "w3_70000",
-      "audio": "audio/scene-133.wav",
-      "durationSec": 5.056
+      "motif": "tb1_shomin_idou",
+      "audio": "audio/scene-021.wav",
+      "durationSec": 5.354666666666667
     },
     {
-      "index": 134,
-      "text": "日本にも1948年から1996年まで優生保護法があり、2024年に最高裁が違憲と判断しています。",
+      "index": 22,
+      "text": "英語のtravelは、苦役を意味するtravailと同じ言葉だったとされます。",
       "type": "diagram",
-      "motif": "w3_japan_law",
-      "audio": "audio/scene-134.wav",
-      "durationSec": 11.306666666666667
+      "motif": "tb1_travel_travail",
+      "audio": "audio/scene-022.wav",
+      "durationSec": 5.696
     },
     {
-      "index": 135,
-      "text": "ひとつだけ、救いのある後日談を。",
+      "index": 23,
+      "text": "さらにさかのぼると、拷問の道具に行き着くという説まであります。",
       "type": "diagram",
-      "motif": "w3_hikari",
-      "audio": "audio/scene-135.wav",
-      "durationSec": 3.0933333333333333
+      "motif": "tb1_goumon_setsu",
+      "audio": "audio/scene-023.wav",
+      "durationSec": 5.184
     },
     {
-      "index": 136,
-      "text": "「移民は知能が低い」と主張した学者ブリガムは、7年後、自ら全面撤回しました。",
+      "index": 24,
+      "text": "道は危険、宿は少なく、山賊も出ます。",
       "type": "diagram",
-      "motif": "w3_brigham",
-      "audio": "audio/scene-136.wav",
-      "durationSec": 7.328
+      "motif": "tb1_michi_kiken",
+      "audio": "audio/scene-024.wav",
+      "durationSec": 4.330666666666667
     },
     {
-      "index": 137,
-      "text": "「私の分析には、根拠がなかった」と。",
+      "index": 25,
+      "text": "歩くしかない時代、旅は命がけの苦労そのものでした。",
       "type": "diagram",
-      "motif": "w3_brigham",
-      "audio": "audio/scene-137.wav",
-      "durationSec": 3.3706666666666667
+      "motif": "tb1_inochigake",
+      "audio": "audio/scene-025.wav",
+      "durationSec": 4.810666666666667
     },
     {
-      "index": 138,
-      "text": "困っている子を助けるための道具は、使う人によって、人を切り捨てる道具にもなる。",
+      "index": 26,
+      "text": "では、身分のない人が遠くへ行きたくなったら、どうするか。",
       "type": "diagram",
-      "motif": "w3_tool_two_sides",
-      "audio": "audio/scene-138.wav",
-      "durationSec": 6.794666666666667
+      "motif": "tb1_dou_suru",
+      "audio": "audio/scene-026.wav",
+      "durationSec": 5.546666666666667
     },
     {
-      "index": 139,
-      "text": "第8章、完成したら、戦争が終わっていた。",
+      "index": 27,
+      "text": "堂々と使える口実が、たったひとつだけありました。",
       "type": "diagram",
-      "motif": "w3_ch8_door",
-      "audio": "audio/scene-139.wav",
-      "durationSec": 4.298666666666667
+      "motif": "tb1_tatta_hitotsu",
+      "audio": "audio/scene-027.wav",
+      "durationSec": 4.352
     },
     {
-      "index": 140,
-      "text": "さて、ここで「性格」の話に戻りましょう。",
+      "index": 28,
+      "text": "「神様に、会いに行ってきます」。",
       "type": "diagram",
-      "motif": "w3_back_to_seikaku",
-      "audio": "audio/scene-140.wav",
-      "durationSec": 3.466666666666667
+      "motif": "tb1_kamisama_aini",
+      "audio": "audio/scene-028.wav",
+      "durationSec": 2.6346666666666665
     },
     {
-      "index": 141,
-      "text": "実は性格検査も、同じ第一次世界大戦から生まれています。",
+      "index": 29,
+      "text": "信仰の旅――巡礼です。",
       "type": "diagram",
-      "motif": "w3_same_root",
-      "audio": "audio/scene-141.wav",
-      "durationSec": 5.8453333333333335
+      "motif": "tb1_junrei_tabi",
+      "audio": "audio/scene-029.wav",
+      "durationSec": 2.6453333333333333
     },
     {
-      "index": 142,
-      "text": "アメリカ軍には、もうひとつの悩みがありました。",
+      "index": 30,
+      "text": "誰にも止められません。",
       "type": "diagram",
-      "motif": "w3_army_nayami",
-      "audio": "audio/scene-142.wav",
-      "durationSec": 3.8506666666666667
+      "motif": "tb1_tomerarenai",
+      "audio": "audio/scene-030.wav",
+      "durationSec": 1.824
     },
     {
-      "index": 143,
-      "text": "戦場の砲撃で、心を病んでしまう兵士が続出していたのです。",
+      "index": 31,
+      "text": "なにしろ、会いに行く相手は神様です。",
       "type": "diagram",
-      "motif": "w3_shell_shock",
-      "audio": "audio/scene-143.wav",
-      "durationSec": 5.344
+      "motif": "tb1_aite_kamisama",
+      "audio": "audio/scene-031.wav",
+      "durationSec": 3.296
     },
     {
-      "index": 144,
-      "text": "そこで心理学者ウッドワースに、ある道具の開発を頼みます。",
+      "index": 32,
+      "text": "こうして人類は、旅の口実の第一号を手に入れました。",
       "type": "diagram",
-      "motif": "w3_woodworth_irai",
-      "audio": "audio/scene-144.wav",
-      "durationSec": 5.152
+      "motif": "tb1_koujitsu_route1",
+      "audio": "audio/scene-032.wav",
+      "durationSec": 4.8213333333333335
     },
     {
-      "index": 145,
-      "text": "心を病みやすい人を、入隊前に見つけ出す質問紙です。",
+      "index": 33,
+      "text": "日本にも、神様に会いに行った人たちがいます。",
       "type": "diagram",
-      "motif": "w3_screening",
-      "audio": "audio/scene-145.wav",
+      "motif": "tb1_ch2_door",
+      "audio": "audio/scene-033.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 34,
+      "text": "平安時代の末、都で大ブームになったのが熊野詣でした。",
+      "type": "diagram",
+      "motif": "tb1_kumano_boom",
+      "audio": "audio/scene-034.wav",
+      "durationSec": 4.8533333333333335
+    },
+    {
+      "index": 35,
+      "text": "後白河法皇は、生涯に34回も熊野へ通ったとされます。",
+      "type": "diagram",
+      "motif": "tb1_goshirakawa_34",
+      "audio": "audio/scene-035.wav",
+      "durationSec": 5.546666666666667
+    },
+    {
+      "index": 36,
+      "text": "京都から険しい山道を、往復およそ1か月の旅です。",
+      "type": "diagram",
+      "motif": "tb1_oufuku_1kagetsu",
+      "audio": "audio/scene-036.wav",
       "durationSec": 4.8853333333333335
     },
     {
-      "index": 146,
-      "text": "「はい」か「いいえ」で答える質問が、100問以上。",
+      "index": 37,
+      "text": "建前は、厳しい修行。",
       "type": "diagram",
-      "motif": "w3_qsheet_check",
-      "audio": "audio/scene-146.wav",
+      "motif": "tb1_tatemae_shugyou",
+      "audio": "audio/scene-037.wav",
+      "durationSec": 2.485333333333333
+    },
+    {
+      "index": 38,
+      "text": "ところが道中の宿では、歌会が開かれていました。",
+      "type": "diagram",
+      "motif": "tb1_yado_utakai",
+      "audio": "audio/scene-038.wav",
+      "durationSec": 4.778666666666667
+    },
+    {
+      "index": 39,
+      "text": "同行した歌人・藤原定家の日記が残っています。",
+      "type": "diagram",
+      "motif": "tb1_teika_nikki",
+      "audio": "audio/scene-039.wav",
+      "durationSec": 4.778666666666667
+    },
+    {
+      "index": 40,
+      "text": "中身は「道が険しい」「体がつらい」と、愚痴がたっぷり。",
+      "type": "diagram",
+      "motif": "tb1_guchi_nijimu",
+      "audio": "audio/scene-040.wav",
+      "durationSec": 4.512
+    },
+    {
+      "index": 41,
+      "text": "苦行のはずが、ずいぶん人間らしい旅です。",
+      "type": "diagram",
+      "motif": "tb1_ningen_rashii",
+      "audio": "audio/scene-041.wav",
+      "durationSec": 3.7333333333333334
+    },
+    {
+      "index": 42,
+      "text": "同じころ、地球の反対側でも同じことが起きていました。",
+      "type": "diagram",
+      "motif": "tb1_globe_hantai",
+      "audio": "audio/scene-042.wav",
+      "durationSec": 4.768
+    },
+    {
+      "index": 43,
+      "text": "スペインの聖地、サンティアゴ・デ・コンポステーラ。",
+      "type": "diagram",
+      "motif": "tb1_santiago",
+      "audio": "audio/scene-043.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 44,
+      "text": "ヨーロッパ中から、巡礼者が歩いて集まりました。",
+      "type": "diagram",
+      "motif": "tb1_junreisha_atsumaru",
+      "audio": "audio/scene-044.wav",
+      "durationSec": 4.192
+    },
+    {
+      "index": 45,
+      "text": "そして聖地のそばでは、あるものが売られていました。",
+      "type": "diagram",
+      "motif": "tb1_aru_mono",
+      "audio": "audio/scene-045.wav",
+      "durationSec": 4.053333333333334
+    },
+    {
+      "index": 46,
+      "text": "ホタテ貝の形をした、金属のバッジです。",
+      "type": "diagram",
+      "motif": "tb1_hotate_reveal",
+      "audio": "audio/scene-046.wav",
+      "durationSec": 3.6586666666666665
+    },
+    {
+      "index": 47,
+      "text": "鋳型でジャンジャン量産され、巡礼者はこぞって買いました。",
+      "type": "diagram",
+      "motif": "tb1_igata_ryousan",
+      "audio": "audio/scene-047.wav",
+      "durationSec": 4.608
+    },
+    {
+      "index": 48,
+      "text": "「聖地に行ってきた証拠」を、胸につけて帰るのです。",
+      "type": "diagram",
+      "motif": "tb1_mune_no_shouko",
+      "audio": "audio/scene-048.wav",
+      "durationSec": 4.192
+    },
+    {
+      "index": 49,
+      "text": "歴史上はじめて量産された、観光土産といえます。",
+      "type": "diagram",
+      "motif": "tb1_ryousan_miyage",
+      "audio": "audio/scene-049.wav",
+      "durationSec": 4.576
+    },
+    {
+      "index": 50,
+      "text": "行くための口実と、行ってきた証拠。",
+      "type": "diagram",
+      "motif": "tb1_koujitsu_shouko",
+      "audio": "audio/scene-050.wav",
+      "durationSec": 3.3493333333333335
+    },
+    {
+      "index": 51,
+      "text": "旅とお土産は、もうこのころからセットでした。",
+      "type": "diagram",
+      "motif": "tb1_tabi_miyage_set",
+      "audio": "audio/scene-051.wav",
+      "durationSec": 3.808
+    },
+    {
+      "index": 52,
+      "text": "では、このセットを極限まで磨き上げた国の話をしましょう。",
+      "type": "diagram",
+      "motif": "tb1_tsugi_no_kuni",
+      "audio": "audio/scene-052.wav",
+      "durationSec": 5.045333333333334
+    },
+    {
+      "index": 53,
+      "text": "時は江戸時代。",
+      "type": "diagram",
+      "motif": "tb2_ch3_door",
+      "audio": "audio/scene-053.wav",
+      "durationSec": 1.5253333333333334
+    },
+    {
+      "index": 54,
+      "text": "世の中は平和になり、街道が整備されました。",
+      "type": "diagram",
+      "motif": "tb2_kaido_seibi",
+      "audio": "audio/scene-054.wav",
+      "durationSec": 4.1706666666666665
+    },
+    {
+      "index": 55,
+      "text": "ところが庶民の旅は、原則として自由ではありません。",
+      "type": "diagram",
+      "motif": "tb2_sekisho_batsu",
+      "audio": "audio/scene-055.wav",
+      "durationSec": 4.970666666666666
+    },
+    {
+      "index": 56,
+      "text": "勝手に領地を離れてはいけないのが建前でした。",
+      "type": "diagram",
+      "motif": "tb2_kousatsu_tatemae",
+      "audio": "audio/scene-056.wav",
+      "durationSec": 3.84
+    },
+    {
+      "index": 57,
+      "text": "ただし、例外がふたつだけありました。",
+      "type": "diagram",
+      "motif": "tb2_reigai_futatsu",
+      "audio": "audio/scene-057.wav",
+      "durationSec": 3.424
+    },
+    {
+      "index": 58,
+      "text": "神様仏様へのお参りと、病気を治す湯治です。",
+      "type": "diagram",
+      "motif": "tb2_omairi_touji",
+      "audio": "audio/scene-058.wav",
+      "durationSec": 4.629333333333333
+    },
+    {
+      "index": 59,
+      "text": "つまり「遊びに行きます」は通らない。",
+      "type": "diagram",
+      "motif": "tb2_asobi_batsu",
+      "audio": "audio/scene-059.wav",
+      "durationSec": 3.1466666666666665
+    },
+    {
+      "index": 60,
+      "text": "でも「お伊勢参りに行きます」なら、通るのです。",
+      "type": "diagram",
+      "motif": "tb2_ise_maru",
+      "audio": "audio/scene-060.wav",
+      "durationSec": 3.445333333333333
+    },
+    {
+      "index": 61,
+      "text": "人々の答えは、もうお分かりですね。",
+      "type": "diagram",
+      "motif": "tb2_kotae",
+      "audio": "audio/scene-061.wav",
+      "durationSec": 3.264
+    },
+    {
+      "index": 62,
+      "text": "みんな、お伊勢参りに行きました。",
+      "type": "diagram",
+      "motif": "tb2_minna_ise",
+      "audio": "audio/scene-062.wav",
+      "durationSec": 2.8266666666666667
+    },
+    {
+      "index": 63,
+      "text": "当時の川柳が残っています。",
+      "type": "diagram",
+      "motif": "tb2_senryu_intro",
+      "audio": "audio/scene-063.wav",
+      "durationSec": 2.485333333333333
+    },
+    {
+      "index": 64,
+      "text": "「伊勢参り 大神宮にも ちょっと寄り」。",
+      "type": "diagram",
+      "motif": "tb2_senryu",
+      "audio": "audio/scene-064.wav",
+      "durationSec": 3.7013333333333334
+    },
+    {
+      "index": 65,
+      "text": "本命の神様が、「ついで」になっています。",
+      "type": "diagram",
+      "motif": "tb2_tsuide",
+      "audio": "audio/scene-065.wav",
+      "durationSec": 3.3813333333333335
+    },
+    {
+      "index": 66,
+      "text": "江戸の人たち、自分で白状していました。",
+      "type": "diagram",
+      "motif": "tb2_hakujou",
+      "audio": "audio/scene-066.wav",
+      "durationSec": 3.5946666666666665
+    },
+    {
+      "index": 67,
+      "text": "勢いあまって、無断で旅立つ人まで現れます。",
+      "type": "diagram",
+      "motif": "tb2_mudan",
+      "audio": "audio/scene-067.wav",
+      "durationSec": 4.266666666666667
+    },
+    {
+      "index": 68,
+      "text": "奉公人や子どもが、置き手紙ひとつで伊勢へ向かう「抜け参り」。",
+      "type": "diagram",
+      "motif": "tb2_nukemairi",
+      "audio": "audio/scene-068.wav",
+      "durationSec": 4.8533333333333335
+    },
+    {
+      "index": 69,
+      "text": "不思議なことに、これはおとがめなしでした。",
+      "type": "diagram",
+      "motif": "tb2_otogame_nashi",
+      "audio": "audio/scene-069.wav",
+      "durationSec": 3.3066666666666666
+    },
+    {
+      "index": 70,
+      "text": "沿道の人々は、タダ飯やタダ宿で応援までしています。",
+      "type": "diagram",
+      "motif": "tb2_segyou",
+      "audio": "audio/scene-070.wav",
+      "durationSec": 4.725333333333333
+    },
+    {
+      "index": 71,
+      "text": "なにしろ相手は神様、止めたらバチが当たります。",
+      "type": "diagram",
+      "motif": "tb2_kami_bachi",
+      "audio": "audio/scene-071.wav",
       "durationSec": 3.8933333333333335
     },
     {
-      "index": 147,
-      "text": "世界初の性格検査にして、今のあらゆる性格診断のご先祖さまです。",
+      "index": 72,
+      "text": "文政13年には、わずか3か月で427万人が伊勢を目指しました。",
       "type": "diagram",
-      "motif": "w3_gosenzo",
+      "motif": "tb2_427man",
+      "audio": "audio/scene-072.wav",
+      "durationSec": 6.72
+    },
+    {
+      "index": 73,
+      "text": "渡し場で実際に人数を数えた、当時の記録が残っています。",
+      "type": "diagram",
+      "motif": "tb2_kiroku",
+      "audio": "audio/scene-073.wav",
+      "durationSec": 5.205333333333333
+    },
+    {
+      "index": 74,
+      "text": "当時の人口はおよそ3000万人、ざっと7人に1人です。",
+      "type": "diagram",
+      "motif": "tb2_nana_hitori",
+      "audio": "audio/scene-074.wav",
+      "durationSec": 5.322666666666667
+    },
+    {
+      "index": 75,
+      "text": "とはいえ、伊勢への旅は大出費です。",
+      "type": "diagram",
+      "motif": "tb2_ch4_door",
+      "audio": "audio/scene-075.wav",
+      "durationSec": 3.392
+    },
+    {
+      "index": 76,
+      "text": "庶民の年収の、数か月分ともいわれます。",
+      "type": "diagram",
+      "motif": "tb2_nenshu",
+      "audio": "audio/scene-076.wav",
+      "durationSec": 3.968
+    },
+    {
+      "index": 77,
+      "text": "そこで村人たちは、すごい仕組みを考えました。",
+      "type": "diagram",
+      "motif": "tb2_sugoi_shikumi",
+      "audio": "audio/scene-077.wav",
+      "durationSec": 4.032
+    },
+    {
+      "index": 78,
+      "text": "「伊勢講」です。",
+      "type": "diagram",
+      "motif": "tb2_isekou_fuda",
+      "audio": "audio/scene-078.wav",
+      "durationSec": 1.1306666666666667
+    },
+    {
+      "index": 79,
+      "text": "村のみんなで、少しずつお金を積み立てる。",
+      "type": "diagram",
+      "motif": "tb2_tsumitate",
+      "audio": "audio/scene-079.wav",
+      "durationSec": 3.7013333333333334
+    },
+    {
+      "index": 80,
+      "text": "そして、くじで選ばれた代表だけが伊勢へ行くのです。",
+      "type": "diagram",
+      "motif": "tb2_kuji",
+      "audio": "audio/scene-080.wav",
+      "durationSec": 4.16
+    },
+    {
+      "index": 81,
+      "text": "選ばれた代表には、村中から「餞別」が渡されます。",
+      "type": "diagram",
+      "motif": "tb2_senbetsu",
+      "audio": "audio/scene-081.wav",
+      "durationSec": 4.490666666666667
+    },
+    {
+      "index": 82,
+      "text": "餞別の正体は、みんなで出し合った旅費、つまり割り勘です。",
+      "type": "diagram",
+      "motif": "tb2_warikan",
+      "audio": "audio/scene-082.wav",
+      "durationSec": 5.941333333333334
+    },
+    {
+      "index": 83,
+      "text": "割り勘の旅なら、手ぶらでは帰れません。",
+      "type": "diagram",
+      "motif": "tb2_tebura",
+      "audio": "audio/scene-083.wav",
+      "durationSec": 3.466666666666667
+    },
+    {
+      "index": 84,
+      "text": "代表は、神宮のお札を留守番の全員ぶん持ち帰りました。",
+      "type": "diagram",
+      "motif": "tb2_ofuda_mochikaeri",
+      "audio": "audio/scene-084.wav",
+      "durationSec": 5.0986666666666665
+    },
+    {
+      "index": 85,
+      "text": "そう、お土産はプレゼントではなく「配当」だったのです。",
+      "type": "diagram",
+      "motif": "tb2_haitou",
+      "audio": "audio/scene-085.wav",
+      "durationSec": 4.394666666666667
+    },
+    {
+      "index": 86,
+      "text": "配らないと済まされない、暗黙の決まりでした。",
+      "type": "diagram",
+      "motif": "tb2_anmoku",
+      "audio": "audio/scene-086.wav",
+      "durationSec": 3.872
+    },
+    {
+      "index": 87,
+      "text": "ちなみに「みやげ」の語源は、神様の器「宮笥」説が有力とされます。",
+      "type": "diagram",
+      "motif": "tb2_miyake",
+      "audio": "audio/scene-087.wav",
+      "durationSec": 5.706666666666667
+    },
+    {
+      "index": 88,
+      "text": "諸説ありますが、「土産」の字が後からの当て字なのは確かです。",
+      "type": "diagram",
+      "motif": "tb2_ateji",
+      "audio": "audio/scene-088.wav",
+      "durationSec": 4.874666666666666
+    },
+    {
+      "index": 89,
+      "text": "もともとお土産は、土地の名物ではなく、神様の証拠品でした。",
+      "type": "diagram",
+      "motif": "tb2_shoukohin",
+      "audio": "audio/scene-089.wav",
+      "durationSec": 5.8133333333333335
+    },
+    {
+      "index": 90,
+      "text": "さて、この旅には影の主役がいます。",
+      "type": "diagram",
+      "motif": "tb2_kage_shuyaku",
+      "audio": "audio/scene-090.wav",
+      "durationSec": 3.2746666666666666
+    },
+    {
+      "index": 91,
+      "text": "伊勢の「御師」と呼ばれる人たちです。",
+      "type": "diagram",
+      "motif": "tb2_onshi",
+      "audio": "audio/scene-091.wav",
+      "durationSec": 2.432
+    },
+    {
+      "index": 92,
+      "text": "宿の手配、道案内、祈祷、お土産の準備までぜんぶやる。",
+      "type": "diagram",
+      "motif": "tb2_onshi_four",
+      "audio": "audio/scene-092.wav",
+      "durationSec": 5.749333333333333
+    },
+    {
+      "index": 93,
+      "text": "旅行代理店とホテルと営業マンを、ひとりで兼ねた存在です。",
+      "type": "diagram",
+      "motif": "tb2_hitori_sanyaku",
+      "audio": "audio/scene-093.wav",
+      "durationSec": 5.088
+    },
+    {
+      "index": 94,
+      "text": "出かける口実と、帰ってからの言い訳。",
+      "type": "diagram",
+      "motif": "tb2_koujitsu_iiwake",
+      "audio": "audio/scene-094.wav",
+      "durationSec": 3.6053333333333333
+    },
+    {
+      "index": 95,
+      "text": "このふたつは、講と御師の仕組みの中で、セットで完成したのです。",
+      "type": "diagram",
+      "motif": "tb2_set_kansei",
+      "audio": "audio/scene-095.wav",
+      "durationSec": 5.418666666666667
+    },
+    {
+      "index": 96,
+      "text": "一方そのころ、ヨーロッパ。",
+      "type": "diagram",
+      "motif": "tb3_ch5_door",
+      "audio": "audio/scene-096.wav",
+      "durationSec": 2.485333333333333
+    },
+    {
+      "index": 97,
+      "text": "こちらの口実は、信仰ではありませんでした。",
+      "type": "diagram",
+      "motif": "tb3_not_faith",
+      "audio": "audio/scene-097.wav",
+      "durationSec": 3.8613333333333335
+    },
+    {
+      "index": 98,
+      "text": "17世紀、イギリスの貴族の間で流行したのが「グランドツアー」。",
+      "type": "diagram",
+      "motif": "tb3_grandtour_intro",
+      "audio": "audio/scene-098.wav",
+      "durationSec": 5.653333333333333
+    },
+    {
+      "index": 99,
+      "text": "息子をフランスやイタリアへ、数か月から数年も旅させるのです。",
+      "type": "diagram",
+      "motif": "tb3_gt_map",
+      "audio": "audio/scene-099.wav",
+      "durationSec": 5.354666666666667
+    },
+    {
+      "index": 100,
+      "text": "名目は「教育の総仕上げ」。",
+      "type": "diagram",
+      "motif": "tb3_gt_map_meimoku",
+      "audio": "audio/scene-100.wav",
+      "durationSec": 2.528
+    },
+    {
+      "index": 101,
+      "text": "実態の多くは、観光と買い物だったといわれます。",
+      "type": "diagram",
+      "motif": "tb3_gt_jittai",
+      "audio": "audio/scene-101.wav",
+      "durationSec": 4.277333333333333
+    },
+    {
+      "index": 102,
+      "text": "お目付け役として、家庭教師が同行しました。",
+      "type": "diagram",
+      "motif": "tb3_gt_tutor",
+      "audio": "audio/scene-102.wav",
+      "durationSec": 3.978666666666667
+    },
+    {
+      "index": 103,
+      "text": "実はこの時代、「観光」という言葉そのものが生まれています。",
+      "type": "diagram",
+      "motif": "tb3_kanko_word",
+      "audio": "audio/scene-103.wav",
+      "durationSec": 5.344
+    },
+    {
+      "index": 104,
+      "text": "tourist (ツーリスト) の英語初出は、1772年。",
+      "type": "diagram",
+      "motif": "tb3_tourist_1772",
+      "audio": "audio/scene-104.wav",
+      "durationSec": 5.92
+    },
+    {
+      "index": 105,
+      "text": "souvenir (スーベニア) は、フランス語の「思い出す」から来た言葉です。",
+      "type": "diagram",
+      "motif": "tb3_souvenir",
+      "audio": "audio/scene-105.wav",
+      "durationSec": 6.112
+    },
+    {
+      "index": 106,
+      "text": "お土産市場も、しっかりありました。",
+      "type": "diagram",
+      "motif": "tb3_gt_market",
+      "audio": "audio/scene-106.wav",
+      "durationSec": 3.04
+    },
+    {
+      "index": 107,
+      "text": "お金持ちはカナレットの風景画を、お手頃派はピラネージの版画を。",
+      "type": "diagram",
+      "motif": "tb3_canaletto_piranesi",
+      "audio": "audio/scene-107.wav",
+      "durationSec": 5.450666666666667
+    },
+    {
+      "index": 108,
+      "text": "高級土産と絵はがきの関係は、このころからあったわけです。",
+      "type": "diagram",
+      "motif": "tb3_miyage_pair",
+      "audio": "audio/scene-108.wav",
+      "durationSec": 4.992
+    },
+    {
+      "index": 109,
+      "text": "教育という口実と、思い出という言い訳のセットでした。",
+      "type": "diagram",
+      "motif": "tb3_koujitsu2",
+      "audio": "audio/scene-109.wav",
+      "durationSec": 4.725333333333333
+    },
+    {
+      "index": 110,
+      "text": "口実は、まだあります。",
+      "type": "diagram",
+      "motif": "tb3_ch6_door",
+      "audio": "audio/scene-110.wav",
+      "durationSec": 2.2293333333333334
+    },
+    {
+      "index": 111,
+      "text": "3つめの口実、「療養」です。",
+      "type": "diagram",
+      "motif": "tb3_ryoyo_plate",
+      "audio": "audio/scene-111.wav",
+      "durationSec": 2.7946666666666666
+    },
+    {
+      "index": 112,
+      "text": "江戸の庶民に公認された、もうひとつの旅が湯治でした。",
+      "type": "diagram",
+      "motif": "tb3_touji_intro",
+      "audio": "audio/scene-112.wav",
+      "durationSec": 4.608
+    },
+    {
+      "index": 113,
+      "text": "温泉に入って、病気や疲れを治す旅です。",
+      "type": "diagram",
+      "motif": "tb3_rotenburo_heal",
+      "audio": "audio/scene-113.wav",
+      "durationSec": 3.957333333333333
+    },
+    {
+      "index": 114,
+      "text": "滞在の単位は「一廻り」、つまり7日間。",
+      "type": "diagram",
+      "motif": "tb3_hitomeguri",
+      "audio": "audio/scene-114.wav",
+      "durationSec": 4.330666666666667
+    },
+    {
+      "index": 115,
+      "text": "しっかり治すなら三廻り、21日の長期休暇です。",
+      "type": "diagram",
+      "motif": "tb3_mimeguri",
+      "audio": "audio/scene-115.wav",
+      "durationSec": 4.906666666666666
+    },
+    {
+      "index": 116,
+      "text": "江戸時代には、温泉の番付表まで作られていました。",
+      "type": "diagram",
+      "motif": "tb3_banzuke",
+      "audio": "audio/scene-116.wav",
+      "durationSec": 4.736
+    },
+    {
+      "index": 117,
+      "text": "相撲の番付そっくりに、東西の名湯がランキングされています。",
+      "type": "diagram",
+      "motif": "tb3_banzuke_zoom",
+      "audio": "audio/scene-117.wav",
+      "durationSec": 5.312
+    },
+    {
+      "index": 118,
+      "text": "そして旅人のカバンには、頼れる一冊がありました。",
+      "type": "diagram",
+      "motif": "tb3_kaban_book",
+      "audio": "audio/scene-118.wav",
+      "durationSec": 4.362666666666667
+    },
+    {
+      "index": 119,
+      "text": "『旅行用心集』、1810年に出た本物のガイドブックです。",
+      "type": "diagram",
+      "motif": "tb3_youjinshu_1810",
+      "audio": "audio/scene-119.wav",
+      "durationSec": 5.429333333333333
+    },
+    {
+      "index": 120,
+      "text": "道のり、料金、温泉の効能、旅の心得61か条。",
+      "type": "diagram",
+      "motif": "tb3_youjinshu_nakami",
+      "audio": "audio/scene-120.wav",
+      "durationSec": 6.08
+    },
+    {
+      "index": 121,
+      "text": "「信仰」「教育」「療養」――口実は、こうして出そろいました。",
+      "type": "diagram",
+      "motif": "tb3_koujitsu3",
+      "audio": "audio/scene-121.wav",
+      "durationSec": 4.8533333333333335
+    },
+    {
+      "index": 122,
+      "text": "19世紀、旅を一変させる発明が登場します。",
+      "type": "diagram",
+      "motif": "tb3_ch7_door",
+      "audio": "audio/scene-122.wav",
+      "durationSec": 4.896
+    },
+    {
+      "index": 123,
+      "text": "蒸気機関車、鉄道です。",
+      "type": "diagram",
+      "motif": "tb3_loco_debut",
+      "audio": "audio/scene-123.wav",
+      "durationSec": 2.5813333333333333
+    },
+    {
+      "index": 124,
+      "text": "1841年7月5日、イギリスで事件が起きました。",
+      "type": "diagram",
+      "motif": "tb3_1841_jiken",
+      "audio": "audio/scene-124.wav",
+      "durationSec": 5.6
+    },
+    {
+      "index": 125,
+      "text": "トマス・クックという男が、約500人を列車に乗せたのです。",
+      "type": "diagram",
+      "motif": "tb3_cook_500",
+      "audio": "audio/scene-125.wav",
+      "durationSec": 5.429333333333333
+    },
+    {
+      "index": 126,
+      "text": "目的は、禁酒運動の集会への送り込み。",
+      "type": "diagram",
+      "motif": "tb3_kinshu_taikai",
+      "audio": "audio/scene-126.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 127,
+      "text": "料金はひとり1シリング、団体割引つきでした。",
+      "type": "diagram",
+      "motif": "tb3_one_shilling",
+      "audio": "audio/scene-127.wav",
+      "durationSec": 4.405333333333333
+    },
+    {
+      "index": 128,
+      "text": "お酒をやめさせる活動が、旅行業の原点になったわけです。",
+      "type": "diagram",
+      "motif": "tb3_ryokogyo_genten",
+      "audio": "audio/scene-128.wav",
+      "durationSec": 5.013333333333334
+    },
+    {
+      "index": 129,
+      "text": "クックは、これを商売に育てていきます。",
+      "type": "diagram",
+      "motif": "tb3_cook_sodateru",
+      "audio": "audio/scene-129.wav",
+      "durationSec": 3.4026666666666667
+    },
+    {
+      "index": 130,
+      "text": "1851年のロンドン万博には、約15万人を送り込んだといわれます。",
+      "type": "diagram",
+      "motif": "tb3_banpaku_1851",
+      "audio": "audio/scene-130.wav",
+      "durationSec": 6.826666666666667
+    },
+    {
+      "index": 131,
+      "text": "1855年には海を越えて、ヨーロッパ周遊ツアーを開始。",
+      "type": "diagram",
+      "motif": "tb3_euro_shuyu_1855",
+      "audio": "audio/scene-131.wav",
+      "durationSec": 5.632
+    },
+    {
+      "index": 132,
+      "text": "1872年には、添乗員つきの世界一周ツアーまで実現しました。",
+      "type": "diagram",
+      "motif": "tb3_world_tour",
+      "audio": "audio/scene-132.wav",
+      "durationSec": 6.56
+    },
+    {
+      "index": 133,
+      "text": "所要222日、小説『八十日間世界一周』と同じ年のことです。",
+      "type": "diagram",
+      "motif": "tb3_world_tour_222",
+      "audio": "audio/scene-133.wav",
+      "durationSec": 7.392
+    },
+    {
+      "index": 134,
+      "text": "旅はもう、口実がなくても買えるようになりました。",
+      "type": "diagram",
+      "motif": "tb3_ticket_kaeru",
+      "audio": "audio/scene-134.wav",
+      "durationSec": 4.128
+    },
+    {
+      "index": 135,
+      "text": "身分も、信仰も、いりません。",
+      "type": "diagram",
+      "motif": "tb3_mibun_funyou",
+      "audio": "audio/scene-135.wav",
+      "durationSec": 3.050666666666667
+    },
+    {
+      "index": 136,
+      "text": "お金さえ払えば、誰でも堂々と楽しみの旅に出られる。",
+      "type": "diagram",
+      "motif": "tb3_daredemo_tabi",
+      "audio": "audio/scene-136.wav",
+      "durationSec": 4.757333333333333
+    },
+    {
+      "index": 137,
+      "text": "「観光」という商品の誕生です。",
+      "type": "diagram",
+      "motif": "tb3_kanko_tanjo",
+      "audio": "audio/scene-137.wav",
+      "durationSec": 2.72
+    },
+    {
+      "index": 138,
+      "text": "鉄道は、旅だけでなく「時間」まで変えました。",
+      "type": "diagram",
+      "motif": "tb4_ch8_door",
+      "audio": "audio/scene-138.wav",
+      "durationSec": 3.712
+    },
+    {
+      "index": 139,
+      "text": "1839年、世界初の鉄道時刻表がイギリスで生まれます。",
+      "type": "diagram",
+      "motif": "tb4_timetable_1839",
+      "audio": "audio/scene-139.wav",
+      "durationSec": 6.229333333333333
+    },
+    {
+      "index": 140,
+      "text": "ところが当時、時刻は町ごとにバラバラでした。",
+      "type": "diagram",
+      "motif": "tb4_machi_barabara",
+      "audio": "audio/scene-140.wav",
+      "durationSec": 4.373333333333333
+    },
+    {
+      "index": 141,
+      "text": "太陽の位置で決めるので、隣町とは数分ずれるのです。",
+      "type": "diagram",
+      "motif": "tb4_taiyo_jikoku",
+      "audio": "audio/scene-141.wav",
+      "durationSec": 4.704
+    },
+    {
+      "index": 142,
+      "text": "それでは、時刻表が成り立ちません。",
+      "type": "diagram",
+      "motif": "tb4_jikokuhyo_dame",
+      "audio": "audio/scene-142.wav",
+      "durationSec": 3.1573333333333333
+    },
+    {
+      "index": 143,
+      "text": "そこで鉄道会社は、国の時間をひとつにそろえ始めました。",
+      "type": "diagram",
+      "motif": "tb4_soroeru",
+      "audio": "audio/scene-143.wav",
+      "durationSec": 4.938666666666666
+    },
+    {
+      "index": 144,
+      "text": "アメリカでは1883年、鉄道会社の合意で時間が統一されます。",
+      "type": "diagram",
+      "motif": "tb4_usa_1883",
+      "audio": "audio/scene-144.wav",
+      "durationSec": 6.709333333333333
+    },
+    {
+      "index": 145,
+      "text": "正午が2回来た町もあり、「2つの正午の日」と呼ばれました。",
+      "type": "diagram",
+      "motif": "tb4_futatsu_shogo",
+      "audio": "audio/scene-145.wav",
+      "durationSec": 4.970666666666666
+    },
+    {
+      "index": 146,
+      "text": "日本は1886年、勅令によって一気に標準時を導入しています。",
+      "type": "diagram",
+      "motif": "tb4_japan_chokurei",
+      "audio": "audio/scene-146.wav",
+      "durationSec": 7.253333333333333
+    },
+    {
+      "index": 147,
+      "text": "そして日本の鉄道は、もうひとつの発明をします。",
+      "type": "diagram",
+      "motif": "tb4_mou_hitotsu",
       "audio": "audio/scene-147.wav",
-      "durationSec": 6.165333333333334
+      "durationSec": 4.298666666666667
     },
     {
       "index": 148,
-      "text": "ところで、お気づきでしょうか。",
+      "text": "駅で売るお弁当、駅弁です。",
       "type": "diagram",
-      "motif": "w3_okizuki",
+      "motif": "tb4_ekiben_tanjo",
       "audio": "audio/scene-148.wav",
-      "durationSec": 2.9546666666666668
+      "durationSec": 2.8053333333333335
     },
     {
       "index": 149,
-      "text": "質問紙の答えを書いているのは、本人です。",
+      "text": "いちばん有名なのは、1885年の宇都宮駅という説。",
       "type": "diagram",
-      "motif": "w3_honnin_kaku",
+      "motif": "tb4_utsunomiya_setsu",
       "audio": "audio/scene-149.wav",
-      "durationSec": 3.7226666666666666
+      "durationSec": 5.706666666666667
     },
     {
       "index": 150,
-      "text": "神様でもなく、頭の形でもなく、「自分のことは、自分に聞く」。",
+      "text": "握り飯2個とたくあんを竹の皮に包んで、5銭でした。",
       "type": "diagram",
-      "motif": "w3_jibun_ni_kiku",
+      "motif": "tb4_nigirimeshi",
       "audio": "audio/scene-150.wav",
-      "durationSec": 6.048
+      "durationSec": 4.736
     },
     {
       "index": 151,
-      "text": "骨のヒビから4000年目にして、いちばん大きな乗り換えでした。",
+      "text": "駅には弁当だけでなく、その土地の名物が並び始めます。",
       "type": "diagram",
-      "motif": "w3_routemap4",
+      "motif": "tb4_meibutsu_narabu",
       "audio": "audio/scene-151.wav",
       "durationSec": 5.024
     },
     {
       "index": 152,
-      "text": "開発は、順調に進みました。",
+      "text": "鉄道が、「名物」を作り始めたのです。",
       "type": "diagram",
-      "motif": "w3_kaihatsu_junchou",
+      "motif": "tb4_meibutsu_maker",
       "audio": "audio/scene-152.wav",
-      "durationSec": 2.997333333333333
+      "durationSec": 3.498666666666667
     },
     {
       "index": 153,
-      "text": "そして、完成したときには、戦争が終わっていました。",
+      "text": "お土産にも、大きな変化が起きました。",
       "type": "diagram",
-      "motif": "w3_kansei_shusen",
+      "motif": "tb4_henka_yokoku",
       "audio": "audio/scene-153.wav",
-      "durationSec": 4.64
+      "durationSec": 3.328
     },
     {
       "index": 154,
-      "text": "せっかく作った質問紙は、戦後、民間へ広まっていきます。",
+      "text": "神様のお札から、食べられるお菓子へ。",
       "type": "diagram",
-      "motif": "w3_minkan_e",
+      "motif": "tb4_ofuda_to_kashi",
       "audio": "audio/scene-154.wav",
-      "durationSec": 5.376
+      "durationSec": 3.4026666666666667
     },
     {
       "index": 155,
-      "text": "同じころスイスでは、精神科医ロールシャッハが、変わった検査を発表しました。",
+      "text": "伊勢の赤福は、社伝では1707年創業という老舗です。",
       "type": "diagram",
-      "motif": "w3_rorschach",
+      "motif": "tb4_akafuku",
       "audio": "audio/scene-155.wav",
-      "durationSec": 6.4
+      "durationSec": 5.546666666666667
     },
     {
       "index": 156,
-      "text": "紙にインクを落として二つ折りにした、左右対称のしみ。",
+      "text": "温泉まんじゅうの元祖は、1910年の伊香保とされます。",
       "type": "diagram",
-      "motif": "w3_ink_fold",
+      "motif": "tb4_onsen_manju",
       "audio": "audio/scene-156.wav",
-      "durationSec": 4.650666666666667
+      "durationSec": 5.013333333333334
     },
     {
       "index": 157,
-      "text": "「これが何に見えますか?」と尋ね、答えから心の状態を探ります。",
+      "text": "証拠品だったお土産が、「おいしい報告書」に変わっていきました。",
       "type": "diagram",
-      "motif": "w3_nani_ni_mieru",
+      "motif": "tb4_oishii_houkoku",
       "audio": "audio/scene-157.wav",
-      "durationSec": 5.930666666666666
+      "durationSec": 5.109333333333334
     },
     {
       "index": 158,
-      "text": "1921年の発表の翌年、彼は37歳の若さで、この世を去りました。",
+      "text": "時は飛んで、戦後の日本。",
       "type": "diagram",
-      "motif": "w3_wakaki_shi",
+      "motif": "tb4_ch9_door",
       "audio": "audio/scene-158.wav",
-      "durationSec": 7.712
-    },
-    {
-      "index": 159,
-      "text": "残された10枚のしみは、その後100年、世界中で使われ続けることになります。",
-      "type": "diagram",
-      "motif": "w3_shimi_sekai",
-      "audio": "audio/scene-159.wav",
-      "durationSec": 6.794666666666667
-    },
-    {
-      "index": 160,
-      "text": "能力の次は、性格。測りたいものは、どんどん内側へ進んでいきます。",
-      "type": "diagram",
-      "motif": "w3_uchigawa_e",
-      "audio": "audio/scene-160.wav",
-      "durationSec": 6.634666666666667
-    },
-    {
-      "index": 161,
-      "text": "第9章、推理小説家、性格を16分割する。",
-      "type": "diagram",
-      "motif": "w3_ch9_door",
-      "audio": "audio/scene-161.wav",
-      "durationSec": 5.290666666666667
-    },
-    {
-      "index": 162,
-      "text": "第二次世界大戦のころのアメリカで、のちに世界中へ広まる性格診断が生まれます。",
-      "type": "diagram",
-      "motif": "w3_mbti_birth",
-      "audio": "audio/scene-162.wav",
-      "durationSec": 6.965333333333334
-    },
-    {
-      "index": 163,
-      "text": "作ったのは、大学の研究室ではありません。",
-      "type": "diagram",
-      "motif": "w3_not_lab",
-      "audio": "audio/scene-163.wav",
-      "durationSec": 3.925333333333333
-    },
-    {
-      "index": 164,
-      "text": "キャサリンとイザベル。母と娘です。",
-      "type": "diagram",
-      "motif": "w3_haha_musume",
-      "audio": "audio/scene-164.wav",
-      "durationSec": 3.2106666666666666
-    },
-    {
-      "index": 165,
-      "text": "ふたりとも、心理学の専門教育は受けていません。",
-      "type": "diagram",
-      "motif": "w3_no_senmon",
-      "audio": "audio/scene-165.wav",
-      "durationSec": 4.298666666666667
-    },
-    {
-      "index": 166,
-      "text": "しかも娘のイザベルの本業は、推理小説家。",
-      "type": "diagram",
-      "motif": "w3_suiri_sakka",
-      "audio": "audio/scene-166.wav",
-      "durationSec": 4.2026666666666666
-    },
-    {
-      "index": 167,
-      "text": "懸賞コンテストで優勝した経歴を持つ、売れっ子でした。",
-      "type": "diagram",
-      "motif": "w3_kensho_yusho",
-      "audio": "audio/scene-167.wav",
-      "durationSec": 4.8213333333333335
-    },
-    {
-      "index": 168,
-      "text": "母は心理学者ユングの本に出会い、人間のタイプ分けに夢中になります。",
-      "type": "diagram",
-      "motif": "w3_jung_book",
-      "audio": "audio/scene-168.wav",
-      "durationSec": 5.994666666666666
-    },
-    {
-      "index": 169,
-      "text": "娘はそれを、誰でも答えられる質問紙に仕立てました。",
-      "type": "diagram",
-      "motif": "w3_book_to_sheet",
-      "audio": "audio/scene-169.wav",
-      "durationSec": 4.565333333333333
-    },
-    {
-      "index": 170,
-      "text": "戦争で働きに出る女性たちが、自分に合った仕事を見つける手助けに。",
-      "type": "diagram",
-      "motif": "w3_josei_shigoto",
-      "audio": "audio/scene-170.wav",
-      "durationSec": 5.941333333333334
-    },
-    {
-      "index": 171,
-      "text": "それが、MBTIの始まりです。",
-      "type": "diagram",
-      "motif": "w3_mbti_start",
-      "audio": "audio/scene-171.wav",
-      "durationSec": 3.2746666666666666
-    },
-    {
-      "index": 172,
-      "text": "4つの軸の組み合わせで、人の性格を16タイプに分ける。",
-      "type": "diagram",
-      "motif": "w3_four_axes",
-      "audio": "audio/scene-172.wav",
-      "durationSec": 5.1306666666666665
-    },
-    {
-      "index": 173,
-      "text": "ただし、心理学の研究では、こんな報告もあります。",
-      "type": "diagram",
-      "motif": "w3_kenkyu_hokoku",
-      "audio": "audio/scene-173.wav",
-      "durationSec": 4.874666666666666
-    },
-    {
-      "index": 174,
-      "text": "数週間あけてもう一度受けると、約半数の人が、別のタイプになる。",
-      "type": "diagram",
-      "motif": "w3_hanbun_kawaru",
-      "audio": "audio/scene-174.wav",
-      "durationSec": 6.133333333333334
-    },
-    {
-      "index": 175,
-      "text": "ちなみに、ネットで大人気の無料の16タイプ診断は、公式のMBTIとは別物です。",
-      "type": "diagram",
-      "motif": "w3_betsumono",
-      "audio": "audio/scene-175.wav",
-      "durationSec": 8.021333333333333
-    },
-    {
-      "index": 176,
-      "text": "一方で、心理学の本流から生まれた性格検査も、ちゃんとあります。",
-      "type": "diagram",
-      "motif": "w3_honryu",
-      "audio": "audio/scene-176.wav",
-      "durationSec": 5.888
-    },
-    {
-      "index": 177,
-      "text": "たとえば、エゴグラム。",
-      "type": "diagram",
-      "motif": "w3_egogram_intro",
-      "audio": "audio/scene-177.wav",
-      "durationSec": 2.08
-    },
-    {
-      "index": 178,
-      "text": "精神科医バーンの「交流分析」という理論をもとに、弟子のデュセイが1972年に考案しました。",
-      "type": "diagram",
-      "motif": "w3_berne_dusay",
-      "audio": "audio/scene-178.wav",
-      "durationSec": 8.448
-    },
-    {
-      "index": 179,
-      "text": "心の中に、5人の自分が住んでいる、と考えるのがミソです。",
-      "type": "diagram",
-      "motif": "w3_five_in_kokoro",
-      "audio": "audio/scene-179.wav",
-      "durationSec": 5.536
-    },
-    {
-      "index": 180,
-      "text": "厳しい親、優しい親、冷静な大人、自由な子ども、気をつかう子ども。",
-      "type": "diagram",
-      "motif": "w3_five_jibun",
-      "audio": "audio/scene-180.wav",
-      "durationSec": 7.136
-    },
-    {
-      "index": 181,
-      "text": "この5人の元気さを、棒グラフにして見せてくれます。",
-      "type": "diagram",
-      "motif": "w3_egogram_graph",
-      "audio": "audio/scene-181.wav",
-      "durationSec": 4.128
-    },
-    {
-      "index": 182,
-      "text": "日本では「東大式エゴグラム」も作られ、いまも心療内科などの検査として現役です。",
-      "type": "diagram",
-      "motif": "w3_todai_genneki",
-      "audio": "audio/scene-182.wav",
-      "durationSec": 7.018666666666666
-    },
-    {
-      "index": 183,
-      "text": "性格を測る道具にも、娯楽寄りから医療寄りまで、幅があるのです。",
-      "type": "diagram",
-      "motif": "w3_haba_spectrum",
-      "audio": "audio/scene-183.wav",
-      "durationSec": 5.8773333333333335
-    },
-    {
-      "index": 184,
-      "text": "それでも、世界の自己紹介欄を埋めたのは、4文字のほうでした。",
-      "type": "diagram",
-      "motif": "w3_yon_moji",
-      "audio": "audio/scene-184.wav",
-      "durationSec": 5.44
-    },
-    {
-      "index": 185,
-      "text": "「私は何者?」の答えが、初めてポケットサイズになったのです。",
-      "type": "diagram",
-      "motif": "w3_pocket_size",
-      "audio": "audio/scene-185.wav",
-      "durationSec": 5.525333333333333
-    },
-    {
-      "index": 186,
-      "text": "第10章、王女さま誕生、星占いはじまる。",
-      "type": "diagram",
-      "motif": "w4_ch10_door",
-      "audio": "audio/scene-186.wav",
-      "durationSec": 4.448
-    },
-    {
-      "index": 187,
-      "text": "ところで、朝の星座占いは、いつ生まれたのでしょうか。",
-      "type": "diagram",
-      "motif": "w4_asa_uranai",
-      "audio": "audio/scene-187.wav",
-      "durationSec": 5.397333333333333
-    },
-    {
-      "index": 188,
-      "text": "星占い自体は古代からありますが、「新聞やテレビの占いコーナー」の歴史は、意外と浅いのです。",
-      "type": "diagram",
-      "motif": "w4_furui_atarashii",
-      "audio": "audio/scene-188.wav",
-      "durationSec": 7.925333333333334
-    },
-    {
-      "index": 189,
-      "text": "1930年、イギリス。",
-      "type": "diagram",
-      "motif": "w4_uk_1930",
-      "audio": "audio/scene-189.wav",
-      "durationSec": 3.2106666666666666
-    },
-    {
-      "index": 190,
-      "text": "マーガレット王女の誕生を記念して、ある新聞が企画を立てます。",
-      "type": "diagram",
-      "motif": "w4_shinbun_kikaku",
-      "audio": "audio/scene-190.wav",
-      "durationSec": 5.226666666666667
-    },
-    {
-      "index": 191,
-      "text": "占星術師に、生まれたばかりの王女の未来を占わせたのです。",
-      "type": "diagram",
-      "motif": "w4_crib_horoscope",
-      "audio": "audio/scene-191.wav",
-      "durationSec": 5.258666666666667
-    },
-    {
-      "index": 192,
-      "text": "担当したのは、ネイラーという占星術師。",
-      "type": "diagram",
-      "motif": "w4_naylor",
-      "audio": "audio/scene-192.wav",
-      "durationSec": 3.7333333333333334
-    },
-    {
-      "index": 193,
-      "text": "この記事が大当たりし、占いの連載が始まります。",
-      "type": "diagram",
-      "motif": "w4_rensai_hit",
-      "audio": "audio/scene-193.wav",
-      "durationSec": 4.597333333333333
-    },
-    {
-      "index": 194,
-      "text": "さらにネイラーが「イギリスの航空機が危ない」と書いた直後、飛行船の墜落事故が起きました。",
-      "type": "diagram",
-      "motif": "w4_hikousen",
-      "audio": "audio/scene-194.wav",
-      "durationSec": 7.1466666666666665
-    },
-    {
-      "index": 195,
-      "text": "「当たった」と大評判になり、人気は不動のものに。",
-      "type": "diagram",
-      "motif": "w4_machi_hyouban",
-      "audio": "audio/scene-195.wav",
-      "durationSec": 4.224
-    },
-    {
-      "index": 196,
-      "text": "やがて連載は、誰でも誕生日だけで読める形式に進化します。",
-      "type": "diagram",
-      "motif": "w4_12seiza",
-      "audio": "audio/scene-196.wav",
-      "durationSec": 5.333333333333333
-    },
-    {
-      "index": 197,
-      "text": "生まれた月で12グループに分ける、おなじみの12星座占いです。",
-      "type": "diagram",
-      "motif": "w4_12seiza_all",
-      "audio": "audio/scene-197.wav",
-      "durationSec": 5.472
-    },
-    {
-      "index": 198,
-      "text": "「私は何者?」が、ついに日刊になったのです。",
-      "type": "diagram",
-      "motif": "w4_nikkan",
-      "audio": "audio/scene-198.wav",
-      "durationSec": 4.618666666666667
-    },
-    {
-      "index": 199,
-      "text": "第11章、血液型は、日本生まれ。",
-      "type": "diagram",
-      "motif": "w4_ch11_door",
-      "audio": "audio/scene-199.wav",
-      "durationSec": 4.1066666666666665
-    },
-    {
-      "index": 200,
-      "text": "そして日本には、日本にしかない発明があります。",
-      "type": "diagram",
-      "motif": "w4_nihon_hatsumei",
-      "audio": "audio/scene-200.wav",
-      "durationSec": 4.32
-    },
-    {
-      "index": 201,
-      "text": "血液型性格診断です。",
-      "type": "diagram",
-      "motif": "w4_nihon_hatsumei",
-      "audio": "audio/scene-201.wav",
-      "durationSec": 2.506666666666667
-    },
-    {
-      "index": 202,
-      "text": "始まりは1927年、教育学者の古川竹二が発表した論文でした。",
-      "type": "diagram",
-      "motif": "w4_furukawa_1927",
-      "audio": "audio/scene-202.wav",
-      "durationSec": 7.136
-    },
-    {
-      "index": 203,
-      "text": "A型は慎重、O型はおおらか、というあの分類の原型です。",
-      "type": "diagram",
-      "motif": "w4_bunrui_paper",
-      "audio": "audio/scene-203.wav",
-      "durationSec": 5.610666666666667
-    },
-    {
-      "index": 204,
-      "text": "当時は大真面目に研究され、軍隊で兵士の適性判定に使う試みまでありました。",
-      "type": "diagram",
-      "motif": "w4_guntai",
-      "audio": "audio/scene-204.wav",
-      "durationSec": 7.264
-    },
-    {
-      "index": 205,
-      "text": "ところが、追試を重ねても、結果が合いません。",
-      "type": "diagram",
-      "motif": "w4_tsuishi_batsu",
-      "audio": "audio/scene-205.wav",
-      "durationSec": 4.16
-    },
-    {
-      "index": 206,
-      "text": "1933年、学会で公式に否定され、ブームはいったん幕を閉じます。",
-      "type": "diagram",
-      "motif": "w4_gakkai_maku",
-      "audio": "audio/scene-206.wav",
-      "durationSec": 7.104
-    },
-    {
-      "index": 207,
-      "text": "それを復活させたのが、1971年のベストセラーでした。",
-      "type": "diagram",
-      "motif": "w4_1971_book",
-      "audio": "audio/scene-207.wav",
-      "durationSec": 5.653333333333333
-    },
-    {
-      "index": 208,
-      "text": "作家の能見正比古が書いた、血液型の相性本です。",
-      "type": "diagram",
-      "motif": "w4_1971_book",
-      "audio": "audio/scene-208.wav",
-      "durationSec": 4.714666666666667
-    },
-    {
-      "index": 209,
-      "text": "テレビと雑誌が飛びつき、血液型は国民的な話題になりました。",
-      "type": "diagram",
-      "motif": "w4_tv_zasshi",
-      "audio": "audio/scene-209.wav",
-      "durationSec": 5.610666666666667
-    },
-    {
-      "index": 210,
-      "text": "ただし、この文化が根付いたのは、日本と、韓国や台湾などほぼ東アジアだけ。",
-      "type": "diagram",
-      "motif": "w4_asia_map",
-      "audio": "audio/scene-210.wav",
-      "durationSec": 7.349333333333333
-    },
-    {
-      "index": 211,
-      "text": "海外で血液型を聞くと、輸血の話だと思われます。",
-      "type": "diagram",
-      "motif": "w4_yuketsu",
-      "audio": "audio/scene-211.wav",
-      "durationSec": 4.906666666666666
-    },
-    {
-      "index": 212,
-      "text": "科学のほうはどうかというと、日米1万人超の調査で、血液型と性格の関連は見つかっていません。",
-      "type": "diagram",
-      "motif": "w4_kanren_nashi",
-      "audio": "audio/scene-212.wav",
-      "durationSec": 9.024
-    },
-    {
-      "index": 213,
-      "text": "それでも、やめられない。",
-      "type": "diagram",
-      "motif": "w4_kigasuru",
-      "audio": "audio/scene-213.wav",
-      "durationSec": 2.1866666666666665
-    },
-    {
-      "index": 214,
-      "text": "「当たっている気がする」は、今日も根拠より強いのです。",
-      "type": "diagram",
-      "motif": "w4_kigasuru",
-      "audio": "audio/scene-214.wav",
-      "durationSec": 4.448
-    },
-    {
-      "index": 215,
-      "text": "第12章、全員に、同じ診断書。",
-      "type": "diagram",
-      "motif": "w4_ch12_door",
-      "audio": "audio/scene-215.wav",
-      "durationSec": 4.074666666666666
-    },
-    {
-      "index": 216,
-      "text": "なぜ、根拠がなくても「当たっている」と感じるのか。",
-      "type": "diagram",
-      "motif": "w4_naze_q",
-      "audio": "audio/scene-216.wav",
-      "durationSec": 4.565333333333333
-    },
-    {
-      "index": 217,
-      "text": "1948年、この謎に真正面から挑んだ心理学者がいます。",
-      "type": "diagram",
-      "motif": "w4_forer",
-      "audio": "audio/scene-217.wav",
-      "durationSec": 6.1226666666666665
-    },
-    {
-      "index": 218,
-      "text": "バートラム・フォア。",
-      "type": "diagram",
-      "motif": "w4_forer",
-      "audio": "audio/scene-218.wav",
-      "durationSec": 1.3013333333333332
-    },
-    {
-      "index": 219,
-      "text": "彼は、学生39人に性格テストを受けさせました。",
-      "type": "diagram",
-      "motif": "w4_test39",
-      "audio": "audio/scene-219.wav",
-      "durationSec": 4.949333333333334
-    },
-    {
-      "index": 220,
-      "text": "1週間後、「あなた専用の診断結果です」と、一人ひとりに結果を手渡します。",
-      "type": "diagram",
-      "motif": "w4_tewatashi",
-      "audio": "audio/scene-220.wav",
-      "durationSec": 6.666666666666667
-    },
-    {
-      "index": 221,
-      "text": "そして学生たちに、どれだけ当たっているかを採点してもらいました。",
-      "type": "diagram",
-      "motif": "w4_saiten",
-      "audio": "audio/scene-221.wav",
-      "durationSec": 5.216
-    },
-    {
-      "index": 222,
-      "text": "5点満点で、平均4.26点。",
-      "type": "diagram",
-      "motif": "w4_426_graph",
-      "audio": "audio/scene-222.wav",
-      "durationSec": 3.7546666666666666
-    },
-    {
-      "index": 223,
-      "text": "「すごく当たってる」の大合唱です。",
-      "type": "diagram",
-      "motif": "w4_daigassho",
-      "audio": "audio/scene-223.wav",
-      "durationSec": 2.538666666666667
-    },
-    {
-      "index": 224,
-      "text": "ですが、タネがありました。",
-      "type": "diagram",
-      "motif": "w4_tane",
-      "audio": "audio/scene-224.wav",
-      "durationSec": 2.2293333333333334
-    },
-    {
-      "index": 225,
-      "text": "配られた診断結果は、全員、同じ文章だったのです。",
-      "type": "diagram",
-      "motif": "w4_zenin_onaji",
-      "audio": "audio/scene-225.wav",
-      "durationSec": 5.290666666666667
-    },
-    {
-      "index": 226,
-      "text": "しかも中身は、売店の星占いの本などから、フォアが切り貼りしたもの。",
-      "type": "diagram",
-      "motif": "w4_kirihari",
-      "audio": "audio/scene-226.wav",
-      "durationSec": 6.005333333333334
-    },
-    {
-      "index": 227,
-      "text": "それでも39人のほぼ全員が、「これは私だ」と感じました。",
-      "type": "diagram",
-      "motif": "w4_kore_watashi",
-      "audio": "audio/scene-227.wav",
-      "durationSec": 5.344
-    },
-    {
-      "index": 228,
-      "text": "誰にでも当てはまる曖昧な文章を、自分だけへの診断だと感じてしまう。",
-      "type": "diagram",
-      "motif": "w4_kore_watashi",
-      "audio": "audio/scene-228.wav",
-      "durationSec": 5.984
-    },
-    {
-      "index": 229,
-      "text": "この心の働きは、のちに「バーナム効果」と名付けられました。",
-      "type": "diagram",
-      "motif": "w4_barnum_name",
-      "audio": "audio/scene-229.wav",
-      "durationSec": 4.842666666666666
-    },
-    {
-      "index": 230,
-      "text": "効き目のコツは、3つ。",
-      "type": "diagram",
-      "motif": "w4_kotsu3",
-      "audio": "audio/scene-230.wav",
-      "durationSec": 2.2293333333333334
-    },
-    {
-      "index": 231,
-      "text": "誰にでも当てはまること。内容が好意的なこと。そして、両面あること。",
-      "type": "diagram",
-      "motif": "w4_kotsu3_reveal",
-      "audio": "audio/scene-231.wav",
-      "durationSec": 6.368
-    },
-    {
-      "index": 232,
-      "text": "「しっかりして見えるけど、本当は心配性」。",
-      "type": "diagram",
-      "motif": "w4_ryoumen",
-      "audio": "audio/scene-232.wav",
-      "durationSec": 3.712
-    },
-    {
-      "index": 233,
-      "text": "……どこかで聞きましたね。",
-      "type": "diagram",
-      "motif": "w4_dokoka_q",
-      "audio": "audio/scene-233.wav",
-      "durationSec": 1.7813333333333334
-    },
-    {
-      "index": 234,
-      "text": "そう、この動画の冒頭で、あなたに渡した診断文です。",
-      "type": "diagram",
-      "motif": "w4_recall_machine",
-      "audio": "audio/scene-234.wav",
-      "durationSec": 5.024
-    },
-    {
-      "index": 235,
-      "text": "あれは、バーナム効果のお手本として作った、誰にでも当てはまる文章でした。",
-      "type": "diagram",
-      "motif": "w4_tanemeakashi",
-      "audio": "audio/scene-235.wav",
-      "durationSec": 6.453333333333333
-    },
-    {
-      "index": 236,
-      "text": "当たっていたとしても、それはあなたが単純だからではありません。",
-      "type": "diagram",
-      "motif": "w4_kawaii_chakuchi",
-      "audio": "audio/scene-236.wav",
-      "durationSec": 4.842666666666666
-    },
-    {
-      "index": 237,
-      "text": "人間の心に、4000年変わらない、人なつっこい仕組みがあるからです。",
-      "type": "diagram",
-      "motif": "w4_kokoro_4000",
-      "audio": "audio/scene-237.wav",
-      "durationSec": 6.069333333333334
-    },
-    {
-      "index": 238,
-      "text": "骨のヒビ、星の動き、頭のデコボコ、インクのしみ、4つのアルファベット。",
-      "type": "diagram",
-      "motif": "w4_recap_icons",
-      "audio": "audio/scene-238.wav",
-      "durationSec": 6.997333333333334
-    },
-    {
-      "index": 239,
-      "text": "人類は4000年かけて、聞く相手を乗り換えてきました。",
-      "type": "diagram",
-      "motif": "w4_routemap4",
-      "audio": "audio/scene-239.wav",
-      "durationSec": 4.554666666666667
-    },
-    {
-      "index": 240,
-      "text": "神様に聞き、体に聞き、数字に聞き、最後は、自分に聞いた。",
-      "type": "diagram",
-      "motif": "w4_routemap4",
-      "audio": "audio/scene-240.wav",
-      "durationSec": 6.570666666666667
-    },
-    {
-      "index": 241,
-      "text": "答えのありかは、遠い空から、少しずつ自分の中へ降りてきたのです。",
-      "type": "diagram",
-      "motif": "w4_sora_oriru",
-      "audio": "audio/scene-241.wav",
-      "durationSec": 5.76
-    },
-    {
-      "index": 242,
-      "text": "でも、聞いていることは、ずっと同じです。",
-      "type": "diagram",
-      "motif": "w4_onaji_toi",
-      "audio": "audio/scene-242.wav",
-      "durationSec": 3.584
-    },
-    {
-      "index": 243,
-      "text": "私は、何者なのか。",
-      "type": "diagram",
-      "motif": "w4_onaji_toi_reveal",
-      "audio": "audio/scene-243.wav",
       "durationSec": 2.848
     },
     {
-      "index": 244,
-      "text": "古代ギリシャの神殿には、「汝自身を知れ」という言葉が刻まれていました。",
+      "index": 159,
+      "text": "旅の口実に、新しい仲間が加わります。",
       "type": "diagram",
-      "motif": "w4_sekihi",
-      "audio": "audio/scene-244.wav",
-      "durationSec": 5.824
+      "motif": "tb4_kuchijitsu_nakama",
+      "audio": "audio/scene-159.wav",
+      "durationSec": 3.936
     },
     {
-      "index": 245,
-      "text": "もともとは「人間の分際をわきまえよ」という、厳しい戒めの言葉です。",
+      "index": 160,
+      "text": "「新婚旅行」です。",
       "type": "diagram",
-      "motif": "w4_sekihi_zoom",
-      "audio": "audio/scene-245.wav",
-      "durationSec": 5.802666666666667
+      "motif": "tb4_shinkon",
+      "audio": "audio/scene-160.wav",
+      "durationSec": 1.6
     },
     {
-      "index": 246,
-      "text": "それを哲学者ソクラテスが、「自分の無知を知れ」と読み替えました。",
+      "index": 161,
+      "text": "1960年、皇室のご夫妻が宮崎を訪れました。",
       "type": "diagram",
-      "motif": "w4_socrates",
-      "audio": "audio/scene-246.wav",
-      "durationSec": 5.034666666666666
+      "motif": "tb4_1960_miyazaki",
+      "audio": "audio/scene-161.wav",
+      "durationSec": 5.493333333333333
     },
     {
-      "index": 247,
-      "text": "以来、人類はこの言葉を、読み替え続けています。",
+      "index": 162,
+      "text": "これを、地元の観光業界が逃しませんでした。",
       "type": "diagram",
-      "motif": "w4_yomikae",
-      "audio": "audio/scene-247.wav",
-      "durationSec": 4.64
+      "motif": "tb4_gyokai_chance",
+      "audio": "audio/scene-162.wav",
+      "durationSec": 4.213333333333333
     },
     {
-      "index": 248,
-      "text": "占いで、検査で、診断で。答えを探し続けています。",
+      "index": 163,
+      "text": "バス会社や旅館が一体となって、宮崎を新婚旅行の聖地に仕立てます。",
       "type": "diagram",
-      "motif": "w4_recap_icons",
-      "audio": "audio/scene-248.wav",
-      "durationSec": 5.376
+      "motif": "tb4_seichi_shitate",
+      "audio": "audio/scene-163.wav",
+      "durationSec": 6.208
     },
     {
-      "index": 249,
-      "text": "今夜もどこかで、誰かが93問に答えています。",
+      "index": 164,
+      "text": "ピークの1974年には、年間37万組が宮崎へ。",
       "type": "diagram",
-      "motif": "w4_yoru_madobe",
-      "audio": "audio/scene-249.wav",
-      "durationSec": 4.544
+      "motif": "tb4_37man_kumi",
+      "audio": "audio/scene-164.wav",
+      "durationSec": 6.112
     },
     {
-      "index": 250,
-      "text": "4000年たっても、満足のいく答えは出ていません。",
+      "index": 165,
+      "text": "新婚カップルの、およそ3組に1組だったといわれます。",
       "type": "diagram",
-      "motif": "w4_yoru_machi",
-      "audio": "audio/scene-250.wav",
-      "durationSec": 4.757333333333333
+      "motif": "tb4_3kumi_1kumi",
+      "audio": "audio/scene-165.wav",
+      "durationSec": 4.8213333333333335
     },
     {
-      "index": 251,
-      "text": "だからこそ、明日も誰かが聞くのでしょう。",
+      "index": 166,
+      "text": "1964年には、海外観光旅行が自由化されました。",
       "type": "diagram",
-      "motif": "w4_ashita",
-      "audio": "audio/scene-251.wav",
-      "durationSec": 3.3706666666666667
+      "motif": "tb4_1964_jiyuka",
+      "audio": "audio/scene-166.wav",
+      "durationSec": 5.685333333333333
     },
     {
-      "index": 252,
-      "text": "——私は、何者?",
+      "index": 167,
+      "text": "ただし年1回、持ち出せるお金は500ドルまで。",
       "type": "diagram",
-      "motif": "w4_final_q",
-      "audio": "audio/scene-252.wav",
-      "durationSec": 2.1013333333333333
+      "motif": "tb4_500_doru",
+      "audio": "audio/scene-167.wav",
+      "durationSec": 4.266666666666667
     },
     {
-      "index": 253,
+      "index": 168,
+      "text": "翌1965年には、海外パッケージツアー「ジャルパック」が発売されます。",
+      "type": "diagram",
+      "motif": "tb4_jalpak_hatsubai",
+      "audio": "audio/scene-168.wav",
+      "durationSec": 6.549333333333333
+    },
+    {
+      "index": 169,
+      "text": "ヨーロッパ16日間、お値段67万5000円。",
+      "type": "diagram",
+      "motif": "tb4_nedan_don",
+      "audio": "audio/scene-169.wav",
+      "durationSec": 4.725333333333333
+    },
+    {
+      "index": 170,
+      "text": "庶民には夢のまた夢、あこがれの商品でした。",
+      "type": "diagram",
+      "motif": "tb4_yume_no_yume",
+      "audio": "audio/scene-170.wav",
+      "durationSec": 4.042666666666666
+    },
+    {
+      "index": 171,
+      "text": "そして海外帰りの手には、必ずお土産がありました。",
+      "type": "diagram",
+      "motif": "tb4_kikoku_miyage",
+      "audio": "audio/scene-171.wav",
+      "durationSec": 4.576
+    },
+    {
+      "index": 172,
+      "text": "洋酒、チョコレート、ブランドのスカーフ。",
+      "type": "diagram",
+      "motif": "tb4_bag_pops",
+      "audio": "audio/scene-172.wav",
+      "durationSec": 3.744
+    },
+    {
+      "index": 173,
+      "text": "500ドルの枠の中でも、留守番への「報告書」は欠かせなかったのです。",
+      "type": "diagram",
+      "motif": "tb4_houkokusho",
+      "audio": "audio/scene-173.wav",
+      "durationSec": 5.589333333333333
+    },
+    {
+      "index": 174,
+      "text": "ここで、旅の歴史に大きな追い風が吹きます。",
+      "type": "diagram",
+      "motif": "tb6_ch10_door",
+      "audio": "audio/scene-174.wav",
+      "durationSec": 3.872
+    },
+    {
+      "index": 175,
+      "text": "交通の革命です。",
+      "type": "diagram",
+      "motif": "tb6_kotsu_kakumei",
+      "audio": "audio/scene-175.wav",
+      "durationSec": 1.8346666666666667
+    },
+    {
+      "index": 176,
+      "text": "1964年開業の新幹線は、東京・大阪間を6時間半から、やがて3時間10分に縮めました。",
+      "type": "diagram",
+      "motif": "tb6_shinkansen_run",
+      "audio": "audio/scene-176.wav",
+      "durationSec": 10.282666666666668
+    },
+    {
+      "index": 177,
+      "text": "利用者は、10年でおよそ5倍に膨らみます。",
+      "type": "diagram",
+      "motif": "tb6_riyosha_5bai",
+      "audio": "audio/scene-177.wav",
+      "durationSec": 3.8506666666666667
+    },
+    {
+      "index": 178,
+      "text": "マイカーは1965年の約218万台から、10年で1700万台超へ。",
+      "type": "diagram",
+      "motif": "tb6_mycar_bakuhatsu",
+      "audio": "audio/scene-178.wav",
+      "durationSec": 7.925333333333334
+    },
+    {
+      "index": 179,
+      "text": "名神高速が開通したばかりのころは、高速道路そのものが観光名所でした。",
+      "type": "diagram",
+      "motif": "tb6_meishin_meisho",
+      "audio": "audio/scene-179.wav",
+      "durationSec": 6.752
+    },
+    {
+      "index": 180,
+      "text": "路肩に車を止めて、お弁当を広げる家族までいたそうです。",
+      "type": "diagram",
+      "motif": "tb6_rokata_bento",
+      "audio": "audio/scene-180.wav",
+      "durationSec": 5.077333333333334
+    },
+    {
+      "index": 181,
+      "text": "誰もが、どこへでも行ける時代が来たのです。",
+      "type": "diagram",
+      "motif": "tb6_dokodemo_jidai",
+      "audio": "audio/scene-181.wav",
+      "durationSec": 3.477333333333333
+    },
+    {
+      "index": 182,
+      "text": "すると、新しい「口実」が生まれます。",
+      "type": "diagram",
+      "motif": "tb6_atarashii_kojitsu",
+      "audio": "audio/scene-182.wav",
+      "durationSec": 3.296
+    },
+    {
+      "index": 183,
+      "text": "「実家に帰る」です。",
+      "type": "diagram",
+      "motif": "tb6_jikka_ni_kaeru",
+      "audio": "audio/scene-183.wav",
+      "durationSec": 1.5893333333333333
+    },
+    {
+      "index": 184,
+      "text": "盆と正月の帰省ラッシュは、昔からの風景に見えますが、実は違います。",
+      "type": "diagram",
+      "motif": "tb6_kisei_rush",
+      "audio": "audio/scene-184.wav",
+      "durationSec": 6.912
+    },
+    {
+      "index": 185,
+      "text": "集団就職で「帰る田舎を持つ都会人」が大量に生まれた、1960年代以降の新しい風習なのです。",
+      "type": "diagram",
+      "motif": "tb6_shudan_shushoku",
+      "audio": "audio/scene-185.wav",
+      "durationSec": 9.333333333333334
+    },
+    {
+      "index": 186,
+      "text": "ただし、そっくりな先行例が江戸にありました。",
+      "type": "diagram",
+      "motif": "tb6_edo_senkourei",
+      "audio": "audio/scene-186.wav",
+      "durationSec": 3.8826666666666667
+    },
+    {
+      "index": 187,
+      "text": "「藪入り」です。",
+      "type": "diagram",
+      "motif": "tb6_yabuiri_fuda",
+      "audio": "audio/scene-187.wav",
+      "durationSec": 1.1733333333333333
+    },
+    {
+      "index": 188,
+      "text": "商家の奉公人は、正月と盆の年2回だけ、実家に帰ることを許されました。",
+      "type": "diagram",
+      "motif": "tb6_yabuiri_nen2kai",
+      "audio": "audio/scene-188.wav",
+      "durationSec": 7.168
+    },
+    {
+      "index": 189,
+      "text": "そのとき主人は、小遣いと手土産を持たせて送り出したのです。",
+      "type": "diagram",
+      "motif": "tb6_shujin_miyage",
+      "audio": "audio/scene-189.wav",
+      "durationSec": 5.045333333333334
+    },
+    {
+      "index": 190,
+      "text": "出かける口実と、帰るときの言い訳の、完全なセット。",
+      "type": "diagram",
+      "motif": "tb6_kanzen_set",
+      "audio": "audio/scene-190.wav",
+      "durationSec": 5.109333333333334
+    },
+    {
+      "index": 191,
+      "text": "ご先祖様は、やっぱり同じことをしていました。",
+      "type": "diagram",
+      "motif": "tb6_gosenzo_onaji",
+      "audio": "audio/scene-191.wav",
+      "durationSec": 3.936
+    },
+    {
+      "index": 192,
+      "text": "ゴールデンウィークという名前も、1951年ごろの映画会社の宣伝文句から広まったとされます。",
+      "type": "diagram",
+      "motif": "tb6_gw_eiga_setsu",
+      "audio": "audio/scene-192.wav",
+      "durationSec": 8.384
+    },
+    {
+      "index": 193,
+      "text": "連休も帰省も、「伝統」は意外と最近、発明されていたのです。",
+      "type": "diagram",
+      "motif": "tb6_dento_hatsumei",
+      "audio": "audio/scene-193.wav",
+      "durationSec": 5.792
+    },
+    {
+      "index": 194,
+      "text": "さて、お土産には最後の課題が残っていました。",
+      "type": "diagram",
+      "motif": "tb5_ch10_door",
+      "audio": "audio/scene-194.wav",
+      "durationSec": 4.096
+    },
+    {
+      "index": 195,
+      "text": "「日持ち」です。",
+      "type": "diagram",
+      "motif": "tb5_himochi_kadai",
+      "audio": "audio/scene-195.wav",
+      "durationSec": 1.056
+    },
+    {
+      "index": 196,
+      "text": "おいしい生菓子ほど、すぐ傷んでしまう。",
+      "type": "diagram",
+      "motif": "tb5_namagashi_itamu",
+      "audio": "audio/scene-196.wav",
+      "durationSec": 3.2426666666666666
+    },
+    {
+      "index": 197,
+      "text": "遠くの職場まで、配って回れないのです。",
+      "type": "diagram",
+      "motif": "tb5_tooi_shokuba",
+      "audio": "audio/scene-197.wav",
+      "durationSec": 3.5733333333333333
+    },
+    {
+      "index": 198,
+      "text": "これを解決したのは、旅行業界ではありませんでした。",
+      "type": "diagram",
+      "motif": "tb5_kaiketsu_dare",
+      "audio": "audio/scene-198.wav",
+      "durationSec": 4.458666666666667
+    },
+    {
+      "index": 199,
+      "text": "1977年、化学メーカーが小さな袋を発売します。",
+      "type": "diagram",
+      "motif": "tb5_1977_hatsubai",
+      "audio": "audio/scene-199.wav",
+      "durationSec": 5.8773333333333335
+    },
+    {
+      "index": 200,
+      "text": "脱酸素剤「エージレス」です。",
+      "type": "diagram",
+      "motif": "tb5_ageless_toujou",
+      "audio": "audio/scene-200.wav",
+      "durationSec": 2.2293333333333334
+    },
+    {
+      "index": 201,
+      "text": "仕組みは、使い捨てカイロとほぼ同じ。",
+      "type": "diagram",
+      "motif": "tb5_kairo_onaji",
+      "audio": "audio/scene-201.wav",
+      "durationSec": 3.2106666666666666
+    },
+    {
+      "index": 202,
+      "text": "袋の中の鉄の粉が、酸素とくっついてサビになります。",
+      "type": "diagram",
+      "motif": "tb5_tetsu_sabi",
+      "audio": "audio/scene-202.wav",
+      "durationSec": 4.661333333333333
+    },
+    {
+      "index": 203,
+      "text": "密封された箱の中の酸素を、食べ尽くしてしまうのです。",
+      "type": "diagram",
+      "motif": "tb5_hako_danmen",
+      "audio": "audio/scene-203.wav",
+      "durationSec": 4.608
+    },
+    {
+      "index": 204,
+      "text": "酸素がなければ、カビも菌も育てません。",
+      "type": "diagram",
+      "motif": "tb5_kabi_sodatanai",
+      "audio": "audio/scene-204.wav",
+      "durationSec": 3.616
+    },
+    {
+      "index": 205,
+      "text": "1979年発売の仙台銘菓「萩の月」が、いち早くこれを採用しました。",
+      "type": "diagram",
+      "motif": "tb5_haginotsuki",
+      "audio": "audio/scene-205.wav",
+      "durationSec": 7.381333333333333
+    },
+    {
+      "index": 206,
+      "text": "賞味期限は約1日から、約2週間に延びたといわれます。",
+      "type": "diagram",
+      "motif": "tb5_calendar_nobiru",
+      "audio": "audio/scene-206.wav",
+      "durationSec": 5.141333333333334
+    },
+    {
+      "index": 207,
+      "text": "ふわふわの生菓子が、遠くまで運べるようになったのです。",
+      "type": "diagram",
+      "motif": "tb5_fuwafuwa_hakobu",
+      "audio": "audio/scene-207.wav",
+      "durationSec": 4.490666666666667
+    },
+    {
+      "index": 208,
+      "text": "同じ1970年代、お土産は食べ物中心へと一気に変わりました。",
+      "type": "diagram",
+      "motif": "tb5_tabemono_chushin",
+      "audio": "audio/scene-208.wav",
+      "durationSec": 6.464
+    },
+    {
+      "index": 209,
+      "text": "職場にお菓子を配る習慣も、実はこのころ定着したとされます。",
+      "type": "diagram",
+      "motif": "tb5_shokuba_kubari",
+      "audio": "audio/scene-209.wav",
+      "durationSec": 5.8773333333333335
+    },
+    {
+      "index": 210,
+      "text": "古来の伝統ではなく、意外と最近の発明なのです。",
+      "type": "diagram",
+      "motif": "tb5_igai_to_saikin",
+      "audio": "audio/scene-210.wav",
+      "durationSec": 4.682666666666667
+    },
+    {
+      "index": 211,
+      "text": "個包装と脱酸素剤――「配れるお土産」が、ここに完成しました。",
+      "type": "diagram",
+      "motif": "tb5_kansei",
+      "audio": "audio/scene-211.wav",
+      "durationSec": 5.642666666666667
+    },
+    {
+      "index": 212,
+      "text": "振り返れば、千年はこの繰り返しでした。",
+      "type": "diagram",
+      "motif": "tb5_kessho_door",
+      "audio": "audio/scene-212.wav",
+      "durationSec": 3.7653333333333334
+    },
+    {
+      "index": 213,
+      "text": "遊びたい、でも堂々とは言えない。",
+      "type": "diagram",
+      "motif": "tb5_asobitai",
+      "audio": "audio/scene-213.wav",
+      "durationSec": 3.072
+    },
+    {
+      "index": 214,
+      "text": "だから口実を発明し、お土産という言い訳で締めくくる。",
+      "type": "diagram",
+      "motif": "tb5_koujitsu_loop",
+      "audio": "audio/scene-214.wav",
+      "durationSec": 4.949333333333334
+    },
+    {
+      "index": 215,
+      "text": "そして実は、口実の発明は今も続いています。",
+      "type": "diagram",
+      "motif": "tb5_ima_mo_tsuzuku",
+      "audio": "audio/scene-215.wav",
+      "durationSec": 4.32
+    },
+    {
+      "index": 216,
+      "text": "「自分へのご褒美」「リフレッシュ」「推し活」。",
+      "type": "diagram",
+      "motif": "tb5_gendai_fuda3",
+      "audio": "audio/scene-216.wav",
+      "durationSec": 2.7946666666666666
+    },
+    {
+      "index": 217,
+      "text": "私たちは今日も、出かける理由を上手に作っています。",
+      "type": "diagram",
+      "motif": "tb5_dekakeru_riyu",
+      "audio": "audio/scene-217.wav",
+      "durationSec": 4.746666666666667
+    },
+    {
+      "index": 218,
+      "text": "ご先祖様と、まったく同じやり方で。",
+      "type": "diagram",
+      "motif": "tb5_gosenzo_onaji",
+      "audio": "audio/scene-218.wav",
+      "durationSec": 3.52
+    },
+    {
+      "index": 219,
+      "text": "そしてお土産は、今も昔も「報告書」です。",
+      "type": "diagram",
+      "motif": "tb5_houkokusho",
+      "audio": "audio/scene-219.wav",
+      "durationSec": 3.8613333333333335
+    },
+    {
+      "index": 220,
+      "text": "あなたの留守を守ってくれた人への、おいしい報告書。",
+      "type": "diagram",
+      "motif": "tb5_oishii_houkoku",
+      "audio": "audio/scene-220.wav",
+      "durationSec": 4.384
+    },
+    {
+      "index": 221,
+      "text": "だから売り場で職場の人数を数えるのは、立派な伝統行事なのです。",
+      "type": "diagram",
+      "motif": "tb5_uriba_kazoeru",
+      "audio": "audio/scene-221.wav",
+      "durationSec": 5.717333333333333
+    },
+    {
+      "index": 222,
+      "text": "次の売り場では、胸を張って数えてください。",
+      "type": "diagram",
+      "motif": "tb5_mune_hatte",
+      "audio": "audio/scene-222.wav",
+      "durationSec": 3.776
+    },
+    {
+      "index": 223,
+      "text": "それでは、よい旅と、よい言い訳を。",
+      "type": "card",
+      "motif": "tb5_yoi_tabi",
+      "audio": "audio/scene-223.wav",
+      "durationSec": 3.9466666666666668
+    },
+    {
+      "index": 224,
       "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
       "type": "card",
-      "motif": "ending",
+      "motif": "tb5_yoi_tabi",
       "isEnding": true,
       "audio": "audio/scene-end.wav",
       "durationSec": 6.176
     }
   ],
   "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
-  "generatedAt": "2026-10-29T18:40:01.341Z",
+  "generatedAt": "2026-10-30T18:59:21.699Z",
   "preset": "karakuri"
 }

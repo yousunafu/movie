@@ -230,6 +230,31 @@ const Bus: React.FC<{ x: number; y: number; s?: number; f?: number }> = ({ x, y,
   </g>
 );
 
+// ===== 開いた菓子箱 (TabiKits の KashiBox open 版をこの回用に作り直したもの) =====
+// 共通キットの open 版は個包装 (幅44 + 両耳7) が箱の右壁 (x=130) をはみ出していたので、
+// 箱の幅を 260→340 に広げ、個包装8個がすべて内側に収まるよう置き直した。
+// 個包装 (幅44 + 両耳7) を 4個 x 2段。箱の内寸 x=-164〜164 の中央に揃えてある。
+const KASHI_PACKS: [number, number][] = [
+  [-115, -32], [-53, -32], [9, -32], [71, -32],
+  [-115, 8], [-53, 8], [9, 8], [71, 8],
+];
+const KashiBoxOpenFit: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`} filter="url(#wobble)">
+    {/* 箱: 内寸 x=-164〜164。個包装は最大でも x=140 までなので余白が残る */}
+    <rect x={-170} y={-54} width={340} height={118} rx={8}
+      fill={KRP.cream} stroke={KRP.ink} strokeWidth={6} />
+    {/* 赤い掛け紙 (ふた) */}
+    <path d="M -170 -54 L -192 -118 L 192 -118 L 170 -54" fill={KRP.red} opacity={0.88}
+      stroke={KRP.ink} strokeWidth={5.5} />
+    {KASHI_PACKS.map(([px, py], i) => (
+      <g key={i} transform={`translate(${px} ${py})`}>
+        <rect x={0} y={0} width={44} height={30} rx={6} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
+        <path d="M 0 6 L -7 0 L 0 -4 M 44 6 L 51 0 L 44 -4" fill="none" stroke={KRP.ink} strokeWidth={3} opacity={0.6} />
+      </g>
+    ))}
+  </g>
+);
+
 // ===== エッフェル塔 (格子のシルエット) =====
 const Eiffel: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`} fill="none" stroke={KRP.ink} strokeWidth={7} strokeLinecap="round">
@@ -243,6 +268,174 @@ const Eiffel: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 })
       <line x1={96} y1={-60} x2={-60} y2={-120} />
       <line x1={-34} y1={-320} x2={30} y2={-420} />
       <line x1={34} y1={-320} x2={-30} y2={-420} />
+    </g>
+  </g>
+);
+
+// =====================================================================
+// ヨーロッパの名所 (#170 の値札シーン用・色つき)。
+// どれも「足元 = (0,0)」で、上へ伸びる向き (y がマイナス) に描いてある。
+// 色は TKP に足さず、この回だけのローカル const にしてある。
+// =====================================================================
+const EU_IRON = "#9A7B52";     // エッフェル塔の鉄骨 (茶色の塗装)
+const EU_IRON_DK = "#7B5F3C";
+const EU_DARK = "#4A443C";     // アーチや窓の奥の暗がり
+const EU_GLASS = "#BFD6E6";    // 窓ガラス
+
+// エッフェル塔 (パリ) — 4本脚 + 脚のアーチ + 3段の展望台 + アンテナ
+const LmEiffel: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    {/* 左右の脚 (下が広がる) */}
+    <path d="M -86 0 Q -62 -66 -30 -126 L -14 -126 Q -40 -66 -50 0 Z"
+      fill={EU_IRON} stroke={KRP.ink} strokeWidth={4.5} />
+    <path d="M 86 0 Q 62 -66 30 -126 L 14 -126 Q 40 -66 50 0 Z"
+      fill={EU_IRON} stroke={KRP.ink} strokeWidth={4.5} />
+    {/* 脚をつなぐ有名なアーチ */}
+    <path d="M -48 -6 Q 0 -104 48 -6" fill="none" stroke={EU_IRON_DK} strokeWidth={10} />
+    <path d="M -48 -6 Q 0 -104 48 -6" fill="none" stroke={KRP.ink} strokeWidth={3.5} opacity={0.5} />
+    {/* 第1展望台 */}
+    <rect x={-84} y={-144} width={168} height={18} rx={3} fill={EU_IRON_DK} stroke={KRP.ink} strokeWidth={4.5} />
+    {/* 中段の塔身 */}
+    <path d="M -30 -144 Q -23 -200 -17 -262 L 17 -262 Q 23 -200 30 -144 Z"
+      fill={EU_IRON} stroke={KRP.ink} strokeWidth={4.5} />
+    {/* 第2展望台 */}
+    <rect x={-44} y={-278} width={88} height={16} rx={3} fill={EU_IRON_DK} stroke={KRP.ink} strokeWidth={4.5} />
+    {/* 上段の塔身 */}
+    <path d="M -17 -278 L -8 -358 L 8 -358 L 17 -278 Z" fill={EU_IRON} stroke={KRP.ink} strokeWidth={4} />
+    {/* 第3展望台 + 頂部 */}
+    <rect x={-21} y={-372} width={42} height={14} rx={3} fill={EU_IRON_DK} stroke={KRP.ink} strokeWidth={4} />
+    <path d="M -8 -372 L -4 -398 L 4 -398 L 8 -372 Z" fill={EU_IRON} stroke={KRP.ink} strokeWidth={3.5} />
+    <line x1={0} y1={-398} x2={0} y2={-426} stroke={KRP.ink} strokeWidth={5} strokeLinecap="round" />
+    {/* 鉄骨のすじ */}
+    <g stroke={KRP.ink} strokeWidth={3} opacity={0.35}>
+      <line x1={-74} y1={-30} x2={-34} y2={-110} />
+      <line x1={74} y1={-30} x2={34} y2={-110} />
+      <line x1={-26} y1={-160} x2={24} y2={-250} />
+      <line x1={26} y1={-160} x2={-24} y2={-250} />
+    </g>
+  </g>
+);
+
+// 凱旋門 (パリ) — 石造りの門 + 大アーチ + 浮き彫りのパネル
+const LmArc: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    <rect x={-82} y={-212} width={164} height={212} fill={TKP.marble} stroke={KRP.ink} strokeWidth={5.5} />
+    {/* 屋上の段 */}
+    <rect x={-90} y={-236} width={180} height={26} rx={4} fill={TKP.stone} stroke={KRP.ink} strokeWidth={5.5} />
+    {/* 大アーチ */}
+    <path d="M -38 0 L -38 -108 Q 0 -158 38 -108 L 38 0 Z" fill={EU_DARK} stroke={KRP.ink} strokeWidth={4.5} />
+    {/* 両脇の小アーチ */}
+    <path d="M -72 0 L -72 -44 Q -60 -64 -48 -44 L -48 0 Z" fill={EU_DARK} stroke={KRP.ink} strokeWidth={4} />
+    <path d="M 48 0 L 48 -44 Q 60 -64 72 -44 L 72 0 Z" fill={EU_DARK} stroke={KRP.ink} strokeWidth={4} />
+    {/* 浮き彫り */}
+    <rect x={-70} y={-198} width={40} height={54} rx={4} fill={TKP.stone} stroke={KRP.ink} strokeWidth={3.5} />
+    <rect x={30} y={-198} width={40} height={54} rx={4} fill={TKP.stone} stroke={KRP.ink} strokeWidth={3.5} />
+    <line x1={-82} y1={-130} x2={82} y2={-130} stroke={KRP.ink} strokeWidth={3} opacity={0.35} />
+  </g>
+);
+
+// オランダの風車 — 煉瓦色の塔 + まわる4枚羽根
+const LmWindmill: React.FC<{ x: number; y: number; s?: number; f?: number }> = ({ x, y, s = 1, f = 0 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    <path d="M -58 0 L -38 -176 L 38 -176 L 58 0 Z" fill={TKP.brick} stroke={KRP.ink} strokeWidth={5.5} />
+    <line x1={-52} y1={-50} x2={52} y2={-50} stroke={TKP.brickDark} strokeWidth={4} opacity={0.75} />
+    <line x1={-45} y1={-108} x2={45} y2={-108} stroke={TKP.brickDark} strokeWidth={4} opacity={0.75} />
+    {/* 帽子 */}
+    <path d="M -46 -176 Q 0 -224 46 -176 Z" fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
+    {/* 扉と窓 */}
+    <rect x={-16} y={-58} width={32} height={58} rx={4} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={4} />
+    <rect x={-13} y={-134} width={26} height={26} rx={3} fill={EU_GLASS} stroke={KRP.ink} strokeWidth={3.5} />
+    {/* 羽根 */}
+    <g transform={`translate(0 -196) rotate(${f * 1.6})`}>
+      {[0, 90, 180, 270].map((a) => (
+        <g key={a} transform={`rotate(${a})`}>
+          <rect x={-7} y={-96} width={14} height={90} rx={3} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
+          <line x1={0} y1={-92} x2={0} y2={-12} stroke={KRP.ink} strokeWidth={3} opacity={0.4} />
+        </g>
+      ))}
+    </g>
+    <circle cx={0} cy={-196} r={10} fill={KRP.brass} stroke={KRP.ink} strokeWidth={4} />
+  </g>
+);
+
+// ビッグベン (ロンドン・国会議事堂の時計塔) — 文字盤 + 鐘楼 + 尖塔
+const LmBigBen: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    {/* 塔身 */}
+    <path d="M -44 0 L -38 -296 L 38 -296 L 44 0 Z" fill={TKP.caminoGold} stroke={KRP.ink} strokeWidth={5.5} />
+    <line x1={-18} y1={-12} x2={-16} y2={-290} stroke={KRP.ink} strokeWidth={3} opacity={0.28} />
+    <line x1={18} y1={-12} x2={16} y2={-290} stroke={KRP.ink} strokeWidth={3} opacity={0.28} />
+    {/* 縦に並ぶ窓 */}
+    {[-72, -148, -224].map((wy) => (
+      <path key={wy} d={`M -11 ${wy} L -11 ${wy - 26} Q 0 ${wy - 40} 11 ${wy - 26} L 11 ${wy} Z`}
+        fill={EU_GLASS} stroke={KRP.ink} strokeWidth={3.5} />
+    ))}
+    {/* 時計の段 */}
+    <rect x={-52} y={-372} width={104} height={78} rx={5} fill={TKP.stone} stroke={KRP.ink} strokeWidth={5.5} />
+    <circle cx={0} cy={-333} r={30} fill={KRP.white} stroke={KRP.ink} strokeWidth={5} />
+    <circle cx={0} cy={-333} r={23} fill="none" stroke={KRP.brass} strokeWidth={4} />
+    <line x1={0} y1={-333} x2={0} y2={-354} stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round" />
+    <line x1={0} y1={-333} x2={16} y2={-325} stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round" />
+    {/* 鐘楼 (すかし) */}
+    <rect x={-42} y={-430} width={84} height={58} rx={4} fill={TKP.caminoGold} stroke={KRP.ink} strokeWidth={5} />
+    {[-24, 0, 24].map((lx) => (
+      <path key={lx} d={`M ${lx - 8} -382 L ${lx - 8} -410 Q ${lx} -424 ${lx + 8} -410 L ${lx + 8} -382 Z`}
+        fill={EU_DARK} stroke={KRP.ink} strokeWidth={3.5} />
+    ))}
+    {/* 尖塔 */}
+    <path d="M -46 -430 L 0 -518 L 46 -430 Z" fill={TKP.brick} stroke={KRP.ink} strokeWidth={5.5} />
+    <line x1={0} y1={-518} x2={0} y2={-540} stroke={KRP.ink} strokeWidth={5} strokeLinecap="round" />
+    <circle cx={0} cy={-546} r={7} fill={KRP.brass} stroke={KRP.ink} strokeWidth={3.5} />
+  </g>
+);
+
+// コロッセオ (ローマ) — 3段のアーチ + 右半分が崩れた外壁
+const COLO_X = [-85, -51, -17, 17, 51, 85];
+const LmColosseum: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    {/* 外壁。左2/3が高く、右1/3は崩れて低い */}
+    <path d="M -108 0 L -108 -196 Q -108 -224 -66 -231 Q -16 -237 24 -228 L 24 -148 Q 66 -156 108 -146 L 108 0 Z"
+      fill={TKP.marble} stroke={KRP.ink} strokeWidth={5.5} />
+    {/* 1段目 */}
+    {COLO_X.map((ax) => (
+      <path key={`a${ax}`} d={`M ${ax - 12} 0 L ${ax - 12} -44 Q ${ax} -70 ${ax + 12} -44 L ${ax + 12} 0 Z`}
+        fill={EU_DARK} stroke={KRP.ink} strokeWidth={3.5} />
+    ))}
+    {/* 2段目 */}
+    {COLO_X.map((ax) => (
+      <path key={`b${ax}`} d={`M ${ax - 12} -88 L ${ax - 12} -118 Q ${ax} -142 ${ax + 12} -118 L ${ax + 12} -88 Z`}
+        fill={EU_DARK} stroke={KRP.ink} strokeWidth={3.5} />
+    ))}
+    {/* 3段目 (高い部分だけ) */}
+    {[-85, -51, -17].map((ax) => (
+      <path key={`c${ax}`} d={`M ${ax - 12} -158 L ${ax - 12} -188 Q ${ax} -212 ${ax + 12} -188 L ${ax + 12} -158 Z`}
+        fill={EU_DARK} stroke={KRP.ink} strokeWidth={3.5} />
+    ))}
+    {/* 段の境目 */}
+    <line x1={-106} y1={-78} x2={106} y2={-78} stroke={TKP.stone} strokeWidth={5} />
+    <line x1={-106} y1={-150} x2={22} y2={-150} stroke={TKP.stone} strokeWidth={5} />
+  </g>
+);
+
+// ピサの斜塔 (イタリア) — 大理石の円筒 + 回廊 + 傾き
+const LmPisa: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    <g transform="rotate(-6)">
+      <rect x={-40} y={-282} width={80} height={282} fill={TKP.marble} stroke={KRP.ink} strokeWidth={5.5} />
+      {[-46, -92, -138, -184, -230].map((ry) => (
+        <g key={ry}>
+          <rect x={-40} y={ry} width={80} height={10} fill={TKP.stone} stroke={KRP.ink} strokeWidth={3} />
+          {[-30, -15, 0, 15, 30].map((cx2) => (
+            <line key={cx2} x1={cx2} y1={ry + 10} x2={cx2} y2={ry + 38}
+              stroke={KRP.ink} strokeWidth={3} opacity={0.45} />
+          ))}
+        </g>
+      ))}
+      {/* 最上部の鐘楼 */}
+      <rect x={-30} y={-324} width={60} height={44} rx={4} fill={TKP.stone} stroke={KRP.ink} strokeWidth={5} />
+      <path d="M -13 -284 L -13 -304 Q 0 -316 13 -304 L 13 -284 Z" fill={EU_DARK} stroke={KRP.ink} strokeWidth={3.5} />
+      {/* 入口 */}
+      <path d="M -13 0 L -13 -26 Q 0 -40 13 -26 L 13 0 Z" fill={EU_DARK} stroke={KRP.ink} strokeWidth={4} />
     </g>
   </g>
 );
@@ -276,6 +469,12 @@ const Scarf: React.FC<{ x: number; y: number; s?: number; f?: number }> = ({ x, 
   </g>
 );
 
+// ===== 赤福の色 (こしあんの赤黒い茶色)。TKP には足さずここだけで使う =====
+const AKAFUKU_ANKO = "#52362A";    // あん本体
+const AKAFUKU_ANKO_DK = "#3E2820"; // 指で押した筋の影
+const AKAFUKU_ANKO_LT = "#6B4635"; // 筋の山のハイライト
+const AKAFUKU_MOCHI = "#F6F1E6";   // 下からのぞく白い餅
+
 // ===== 温泉まんじゅう (茶色い皮 + 白い腰) =====
 const Manju: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`}>
@@ -299,6 +498,140 @@ const JMapCard: React.FC<{ clipId: string; children?: React.ReactNode }> = ({ cl
 const MapName: React.FC<{ x: number; y: number; text: string; size?: number }> = ({ x, y, text, size = 36 }) => (
   <text x={x} y={y} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={size}
     fill={KRP.ink} stroke={KRP.white} strokeWidth={8} paintOrder="stroke">{text}</text>
+);
+
+// =====================================================================
+// 新婚カップルの部品 (#166「3組に1組」用)
+// Person は編集できないので、上から重ね描きして「服を着せる」。
+//  - 男性: 短髪 (hair="cap") + 上着の打ち合わせ + 色つきネクタイ + ズボン
+//  - 女性: 長い髪 (ボブ/まとめ髪) + 丸襟 + ベルト + ひろがるスカート + 明るい色
+// 座標はすべて Person のローカル系 (足元が原点。頭 cy=-228 / 胴 -160〜-52 / 脚 -58〜-6)。
+// =====================================================================
+
+// 男性の胸もと: 白シャツのV + ネクタイ + ポケットチーフ
+const SuitFront: React.FC<{ tie: string; shirt?: string }> = ({ tie, shirt = KRP.white }) => (
+  <g>
+    <path d="M -30 -161 L 0 -110 L 30 -161 Z" fill={shirt} stroke={KRP.ink} strokeWidth={4} strokeLinejoin="round" />
+    {/* 上着のラペル (襟) */}
+    <path d="M -30 -161 L -10 -124 L -26 -118 Z" fill={KRP.ink} opacity={0.45} />
+    <path d="M 30 -161 L 10 -124 L 26 -118 Z" fill={KRP.ink} opacity={0.45} />
+    {/* ネクタイ: 結び目 + 剣先 */}
+    <path d="M -11 -134 L 11 -134 L 14 -122 L 0 -110 L -14 -122 Z" fill={tie} stroke={KRP.ink} strokeWidth={3} strokeLinejoin="round" />
+    <path d="M 0 -110 L 11 -102 L 5 -64 L -5 -64 L -11 -102 Z" fill={tie} stroke={KRP.ink} strokeWidth={3} strokeLinejoin="round" />
+    {/* ポケットチーフ */}
+    <rect x={21} y={-141} width={20} height={10} fill={shirt} stroke={KRP.ink} strokeWidth={2.5} />
+  </g>
+);
+
+// 女性のスカート (ひろがる裾。靴が見えるよう裾は y=-22 どまり)
+const FlareSkirt: React.FC<{ color: string; belt?: string; wide?: number }> = ({ color, belt, wide = 80 }) => (
+  <g>
+    <path d={`M -52 -78 L 52 -78 L ${wide} -24 Q 0 -10 ${-wide} -24 Z`}
+      fill={color} stroke={KRP.ink} strokeWidth={4.5} strokeLinejoin="round" />
+    {belt && <rect x={-55} y={-88} width={110} height={16} rx={8} fill={belt} stroke={KRP.ink} strokeWidth={3.5} />}
+  </g>
+);
+
+// Person の胸ポケット (x18..44 / y-138..-118) を塗りつぶして消すあて布。
+// ふだんの人物では「シャツの胸ポケット」として正しいが、ウエディングドレスには付かないので隠す。
+const PocketPatch: React.FC<{ color: string }> = ({ color }) => (
+  <rect x={14} y={-142} width={34} height={28} fill={color} />
+);
+
+// ウエディングドレスのハートカットの胸元。白い胴体がのっぺりしないよう線だけ入れる
+const SweetheartNeck: React.FC = () => (
+  <g fill="none" stroke={KRP.ink} strokeLinecap="round">
+    <path d="M -36 -160 Q -34 -130 -17 -134 Q 0 -138 17 -134 Q 34 -130 36 -160"
+      strokeWidth={4} opacity={0.55} />
+    {/* 身ごろの縦の切り替え */}
+    <path d="M -20 -130 L -22 -92" strokeWidth={3} opacity={0.3} />
+    <path d="M 20 -130 L 22 -92" strokeWidth={3} opacity={0.3} />
+  </g>
+);
+
+// 女性の丸襟 (ピーターパンカラー)
+const RoundCollar: React.FC<{ color?: string }> = ({ color = KRP.white }) => (
+  <path d="M -31 -159 Q -17 -124 0 -124 Q 17 -124 31 -159" fill={color}
+    stroke={KRP.ink} strokeWidth={4} strokeLinejoin="round" />
+);
+
+// 女性のボブヘア (前髪 + 耳の横に下りる毛)
+const BobHair: React.FC<{ color?: string }> = ({ color = KRP.ink }) => (
+  <path d="M -67 -230 Q -71 -299 0 -301 Q 71 -299 67 -230 L 67 -186 Q 57 -202 52 -232 Q 27 -259 0 -259 Q -27 -259 -52 -232 Q -57 -202 -67 -186 Z"
+    fill={color} />
+);
+
+// 女性のまとめ髪 (和装用。横におくれ毛 + 後ろでまとめた髷 + かんざし)
+const UpdoHair: React.FC<{ color?: string; kanzashi?: string }> = ({ color = KRP.ink, kanzashi = KRP.red }) => (
+  <g>
+    {/* 耳の横に下りるおくれ毛 (長い髪に見せる) */}
+    <path d="M -64 -246 Q -76 -214 -67 -184 L -49 -191 Q -57 -216 -52 -244 Z" fill={color} />
+    <path d="M 64 -246 Q 76 -214 67 -184 L 49 -191 Q 57 -216 52 -244 Z" fill={color} />
+    {/* 前髪と頭頂 */}
+    <path d="M -64 -236 Q -66 -296 0 -298 Q 66 -296 64 -236 Q 30 -262 0 -262 Q -30 -262 -64 -236 Z" fill={color} />
+    {/* 髷 (頭にのるくらいの小ぶり) */}
+    <ellipse cx={0} cy={-294} rx={30} ry={18} fill={color} stroke={KRP.ink} strokeWidth={3} />
+    {/* かんざし (髷に挿した簪。横向きに短く) */}
+    <line x1={8} y1={-294} x2={40} y2={-297} stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round" />
+    <circle cx={43} cy={-298} r={7.5} fill={kanzashi} stroke={KRP.ink} strokeWidth={3} />
+  </g>
+);
+
+// 和装の前身頃 (白いV襟 + 帯 + 足元まである裾)
+const KimonoFront: React.FC<{ color: string; obi: string; hakama?: boolean }> = ({ color, obi, hakama = false }) => (
+  <g>
+    {/* 裾 (脚を隠して着物に見せる。靴が見えるよう -16 どまり) */}
+    <path d={`M -54 -60 L 54 -60 L ${hakama ? 62 : 58} -16 L ${hakama ? -62 : -58} -16 Z`}
+      fill={color} stroke={KRP.ink} strokeWidth={4.5} strokeLinejoin="round" />
+    {/* 白いV襟 */}
+    <path d="M -31 -157 L 0 -106 L 31 -157" fill="none" stroke={KRP.white} strokeWidth={10} strokeLinecap="round" />
+    <path d="M -31 -157 L 0 -106" fill="none" stroke={KRP.ink} strokeWidth={3.5} opacity={0.5} />
+    {/* 帯 */}
+    <rect x={-50} y={-88} width={100} height={26} rx={8} fill={obi} stroke={KRP.ink} strokeWidth={4} />
+    {hakama && (
+      <g>
+        {/* 羽織紐 (細い白の紐と結び目) */}
+        <line x1={-26} y1={-118} x2={26} y2={-118} stroke={KRP.white} strokeWidth={4.5} strokeLinecap="round" />
+        <path d="M 0 -127 L 9 -118 L 0 -109 L -9 -118 Z" fill={KRP.white} stroke={KRP.ink} strokeWidth={2.5} />
+      </g>
+    )}
+  </g>
+);
+
+// 花嫁のベール + ティアラ + ブーケ (#161 tb4_shinkon と同じ形・同じ色)
+const BridalVeil: React.FC = () => (
+  <g>
+    <path d="M -70 -268 Q -96 -180 -84 -96 L -58 -108 Q -72 -190 -54 -258 Z"
+      fill={KRP.white} opacity={0.85} stroke={KRP.ink} strokeWidth={4} />
+    <path d="M 70 -268 Q 96 -180 84 -96 L 58 -108 Q 72 -190 54 -258 Z"
+      fill={KRP.white} opacity={0.85} stroke={KRP.ink} strokeWidth={4} />
+    <path d="M -62 -272 Q 0 -306 62 -272" fill="none" stroke={KRP.ink} strokeWidth={5} />
+    {[-34, 0, 34].map((tx, i) => (
+      <circle key={i} cx={tx} cy={-286 - (i === 1 ? 10 : 0)} r={7} fill={KRP.brass} stroke={KRP.ink} strokeWidth={3} />
+    ))}
+  </g>
+);
+
+const Bouquet: React.FC<{ x?: number; y?: number }> = ({ x = -92, y = -116 }) => (
+  <g transform={`translate(${x} ${y})`}>
+    {[[-14, -8], [12, -12], [0, 8], [-4, -22], [16, 4]].map(([bx2, by2], i) => (
+      <circle key={i} cx={bx2} cy={by2} r={11}
+        fill={[KRP.red, KRP.yellow, KRP.orange, KRP.red, KRP.yellow][i]} stroke={KRP.ink} strokeWidth={3.5} />
+    ))}
+  </g>
+);
+
+// 新婚旅行のトランク (色つき。ベルト2本 + 取っ手)
+const TravelCase: React.FC<{ x: number; y: number; s?: number; color: string; belt?: string }> = ({
+  x, y, s = 1, color, belt = KRP.ink,
+}) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    <path d="M -16 -62 Q 0 -88 16 -62" fill="none" stroke={KRP.ink} strokeWidth={6} strokeLinecap="round" />
+    <rect x={-54} y={-62} width={108} height={62} rx={8} fill={color} stroke={KRP.ink} strokeWidth={5} />
+    <line x1={-54} y1={-36} x2={54} y2={-36} stroke={KRP.ink} strokeWidth={3.5} opacity={0.5} />
+    <rect x={-30} y={-62} width={13} height={62} fill={belt} opacity={0.8} stroke={KRP.ink} strokeWidth={2.5} />
+    <rect x={17} y={-62} width={13} height={62} fill={belt} opacity={0.8} stroke={KRP.ink} strokeWidth={2.5} />
+  </g>
 );
 
 // =====================================================================
@@ -496,33 +829,78 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
     );
   },
 
-  // #146 正午が2回来た日: 針が戻って、鐘がもう一度鳴る
+  // #146 正午が2回来た日 (Day of Two Noons)。
+  // 1883年11月18日、町の時計が新しい標準時より進んでいた町では、いちど正午を迎えてから
+  // 針を数分〜十数分「戻した」ので、その日はもう一度正午が来た。
+  // → 1つの時計の時間変化として ①正午 → ②針を戻す → ③もう一度正午 と見せる。
   tb4_futatsu_shogo: (f) => {
+    // 分針の角度。0度 = 12:00ちょうど。-72度 = 11:48 (12分もどした状態)。
+    const BACK = -72;
     let md: number;
-    if (f < 18) md = lerp(-50, 0, easeOut(seg(f, 0, 18)));
-    else if (f < 26) md = 0;
-    else if (f < 42) md = lerp(0, -110, easeOut(seg(f, 26, 42)));
-    else md = lerp(-110, 0, easeOut(seg(f, 42, 58)));
-    const ring1 = f >= 14 && f < 28;
-    const ring2 = f >= 56 && f < 78;
-    const bell = (on: boolean) => on ? (
-      <g stroke={KRP.orange} strokeWidth={9} fill="none" strokeLinecap="round"
-        opacity={0.5 + Math.sin(f / 2) * 0.4}>
-        <path d="M 700 330 Q 660 460 700 590" />
-        <path d="M 640 290 Q 580 460 640 630" />
-        <path d="M 1220 330 Q 1260 460 1220 590" />
-        <path d="M 1280 290 Q 1340 460 1280 630" />
+    if (f < 22) md = lerp(-66, 0, easeOut(seg(f, 0, 22)));          // ①正午へ近づく
+    else if (f < 48) md = 0;                                         // ①正午でいったん止まる
+    else if (f < 78) md = lerp(0, BACK, easeOut(seg(f, 48, 78)));    // ②針を戻す
+    else md = lerp(BACK, 0, easeOut(seg(f, 84, 116)));               // ③もう一度正午へ
+    // 時計の読み (12:00 / 11:5x) を数字でも出すと一目で分かる
+    const mm = Math.round(md / 6);                 // 0 または負の分
+    const timeText = mm === 0 ? "12:00" : `11:${String(60 + mm).padStart(2, "0")}`;
+    const atNoon = mm === 0;
+    const phase = f < 48 ? 0 : f < 84 ? 1 : 2;
+    const stepText = ["① 1回目の正午", "② 針をもどす", "③ 2回目の正午"][phase];
+    const stepColor = [KRP.ink, KRP.orange, KRP.red][phase];
+    const ring1 = f >= 22 && f < 46;
+    const ring2 = f >= 114 && f < 146;
+    const ringing = ring1 || ring2;
+    // 正午を知らせる鐘の音 (時計の左右へ広がる弧)
+    const bell = ringing ? (
+      <g stroke={ring2 ? KRP.red : KRP.orange} strokeWidth={9} fill="none" strokeLinecap="round"
+        opacity={0.45 + Math.sin(f / 2) * 0.4}>
+        <path d="M 752 380 Q 712 500 752 620" />
+        <path d="M 696 342 Q 636 500 696 658" />
+        <path d="M 1168 380 Q 1208 500 1168 620" />
+        <path d="M 1224 342 Q 1284 500 1224 658" />
+      </g>
+    ) : null;
+    // 「針を戻す」ことを示す、時計の上を左まわり (反時計まわり) に走る太矢印
+    const rewind = phase === 1 ? (
+      <g opacity={seg(f, 48, 60)}>
+        <path d="M 1195 500 A 235 235 0 0 0 725 500" fill="none"
+          stroke={KRP.orange} strokeWidth={15} strokeLinecap="round" />
+        <path d="M 725 548 l -30 -52 l 60 0 Z" fill={KRP.orange} stroke={KRP.ink} strokeWidth={4} />
       </g>
     ) : null;
     return (
       <Frame f={f} seed={707}>
-        <g transform={`translate(960 ${470 + bobOf(f, 0)})`}>
-          <ClockFace x={0} y={0} s={2.5} hourDeg={md / 12} minDeg={md} />
+        {/* いまどの段階かの見出し札 (画面上部) */}
+        <TagPlate x={960} y={190} text={stepText} t={1} size={44} color={stepColor} />
+        {bell}
+        {rewind}
+        <g transform={`translate(960 ${500 + bobOf(f, 0)})`}>
+          <ClockFace x={0} y={0} s={2} hourDeg={md / 12} minDeg={md} />
         </g>
-        {bell(ring1 || ring2)}
-        <TagPlate x={420} y={300} text="1回目の正午" t={seg(f, 14, 28)} size={40} />
-        <TagPlate x={1500} y={300} text="2回目の正午" t={seg(f, 54, 68)} size={40} color={KRP.red} />
-        <Burst x={960} y={470} t={seg(f, 56, 82)} r={320} color={KRP.orange} />
+        {/* 時計の読み (数字)。11:48 ←→ 12:00 の往復が数字でも分かる */}
+        <g transform="translate(960 730)">
+          <rect x={-132} y={-44} width={264} height={88} rx={14}
+            fill={KRP.white} stroke={KRP.ink} strokeWidth={5.5} />
+          <text x={0} y={20} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={56}
+            fill={atNoon ? KRP.red : KRP.ink}>{timeText}</text>
+        </g>
+        {/* 正午を迎えた記録 (左=1回目・右=2回目)。「2回来た」ことが絵に残る */}
+        {[{ x: 420, t: seg(f, 30, 44), label: "1回目", col: KRP.ink },
+        { x: 1500, t: seg(f, 118, 132), label: "2回目", col: KRP.red }].map((r, i) => (
+          <g key={i} transform={`translate(${r.x} 540) scale(${pop(clamp01(r.t))})`}>
+            <rect x={-132} y={-150} width={264} height={300} rx={18}
+              fill={KRP.cream} stroke={KRP.ink} strokeWidth={6} />
+            <g transform="translate(0 -44)">
+              <ClockFace x={0} y={0} s={0.9} hourDeg={0} minDeg={0} />
+            </g>
+            <text x={0} y={70} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={42}
+              fill={r.col}>{r.label}の</text>
+            <text x={0} y={120} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={42}
+              fill={r.col}>正午</text>
+          </g>
+        ))}
+        <Burst x={960} y={500} t={seg(f, 114, 142)} r={320} color={KRP.red} />
       </Frame>
     );
   },
@@ -543,7 +921,9 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
           <rect x={-150} y={0} width={300} height={sh} fill={KRP.white} stroke={KRP.ink} strokeWidth={6} />
           <rect x={-170} y={-18} width={340} height={30} rx={15} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
           <rect x={-170} y={sh - 10} width={340} height={30} rx={15} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
-          <text x={0} y={90} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={64}
+          {/* 縦書き「標準時」: 3文字 × 64px = 192px。textAnchor=middle なので y を中心に上下96px 使う。
+              巻物の紙面は y=0〜430 なので、y=170 (=74〜266) にすれば上の軸にかからない。 */}
+          <text x={0} y={170} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={64}
             fill={KRP.ink} opacity={seg(f, 40, 52)} style={{ writingMode: "vertical-rl" }}>標準時</text>
           <circle cx={0} cy={sh - 70} r={26} fill="none" stroke={KRP.red} strokeWidth={6}
             opacity={seg(f, 48, 58)} />
@@ -646,11 +1026,13 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
           fill={TKP.noren} opacity={0.9} stroke={KRP.ink} strokeWidth={5.5} />
         <path d="M -34 -28 Q 0 -14 34 -28" fill="none" stroke={KRP.white} strokeWidth={4} opacity={0.7} />
       </g>
-      {/* のぼり */}
+      {/* のぼり。縦書き「めいぶつ」は 4文字 × 54px = 216px ぶんの高さが要る。
+          textAnchor=middle は y を中心に上下108px 使うので、幟は y=370〜750 (380px) に広げ、
+          文字の中心を幟の中心 y=560 に合わせて収める。 */}
       <g transform={`translate(560 0) rotate(${Math.sin(f / 17) * 2.5} 0 870)`}>
-        <line x1={0} y1={870} x2={0} y2={380} stroke={TKP.woodDark} strokeWidth={10} strokeLinecap="round" />
-        <rect x={4} y={390} width={86} height={330} fill={KRP.red} opacity={0.88} stroke={KRP.ink} strokeWidth={5} />
-        <text x={47} y={420} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={54}
+        <line x1={0} y1={870} x2={0} y2={356} stroke={TKP.woodDark} strokeWidth={10} strokeLinecap="round" />
+        <rect x={4} y={370} width={92} height={380} fill={KRP.red} opacity={0.88} stroke={KRP.ink} strokeWidth={5} />
+        <text x={50} y={560} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={54}
           fill={KRP.white} style={{ writingMode: "vertical-rl" }}>めいぶつ</text>
       </g>
     </Frame>
@@ -733,10 +1115,10 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
             <path d={`M ${ax} 460 L ${ax + 90} 520 L ${ax} 580 Z`} fill={KRP.orange} stroke={KRP.ink} strokeWidth={6} />
           </g>
         )}
-        <g transform={`translate(1430 ${560 + bobOf(f, 1)}) scale(${pop(seg(f, 40, 58)) * 1.25})`}>
-          <KashiBox x={0} y={0} s={1} open />
+        <g transform={`translate(1410 ${560 + bobOf(f, 1)}) scale(${pop(seg(f, 40, 58)) * 1.2})`}>
+          <KashiBoxOpenFit x={0} y={0} s={1} />
         </g>
-        <Burst x={1430} y={540} t={seg(f, 55, 80)} r={280} color={KRP.yellow} />
+        <Burst x={1410} y={540} t={seg(f, 55, 80)} r={280} color={KRP.yellow} />
         <HeartS x={1320} y={330} s={0.8} opacity={pop(seg(f, 60, 74))} />
         <HeartS x={1560} y={300} s={0.6} opacity={pop(seg(f, 68, 80))} />
       </Frame>
@@ -751,13 +1133,23 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
       {/* 皿 */}
       <ellipse cx={1050} cy={720} rx={320} ry={66} fill={KRP.white} stroke={KRP.ink} strokeWidth={6} />
       {[820, 1050, 1280].map((x, i) => (
-        <g key={i} transform={`translate(${x} ${660 + bobOf(f, i)}) scale(${pop(seg(f, 18 + i * 12, 34 + i * 12)) * 1.15})`}>
-          {/* あんの波形をのせた餅 */}
-          <path d="M -72 24 Q -72 -34 0 -34 Q 72 -34 72 24 Q 0 40 -72 24 Z"
-            fill={KRP.red} stroke={KRP.ink} strokeWidth={5.5} />
-          <path d="M -52 -8 Q -26 -20 0 -8 Q 26 4 52 -8" fill="none" stroke={KRP.ink} strokeWidth={3.5} opacity={0.6} />
-          <path d="M -46 8 Q -20 -4 6 8 Q 30 18 50 8" fill="none" stroke={KRP.ink} strokeWidth={3.5} opacity={0.6} />
-          <path d="M -30 30 Q 0 20 30 30" fill="none" stroke={KRP.white} strokeWidth={5} opacity={0.9} />
+        <g key={i} transform={`translate(${x} ${660 + bobOf(f, i)}) scale(${pop(seg(f, 18 + i * 12, 34 + i * 12)) * 1.2})`}>
+          {/* 赤福 = 白い餅をこしあんでくるんだもの。
+              あんは濃い茶 (赤黒い茶)、表面には指でつけた三筋の波 (五十鈴川の流れ)。 */}
+          {/* 下からのぞく白い餅 */}
+          <ellipse cx={0} cy={26} rx={86} ry={19} fill={AKAFUKU_MOCHI} stroke={KRP.ink} strokeWidth={5} />
+          {/* こしあんの山 */}
+          <path d="M -76 24 Q -76 -36 0 -36 Q 76 -36 76 24 Q 0 42 -76 24 Z"
+            fill={AKAFUKU_ANKO} stroke={KRP.ink} strokeWidth={5.5} />
+          {/* 三筋の波: 2本の溝で3つの筋に分ける */}
+          <g fill="none" strokeLinecap="round">
+            <path d="M -58 -18 Q -24 -36 6 -18 Q 32 -4 58 -14" stroke={AKAFUKU_ANKO_LT} strokeWidth={6} opacity={0.85} />
+            <path d="M -62 0 Q -26 -20 4 0 Q 30 16 60 4" stroke={AKAFUKU_ANKO_DK} strokeWidth={7} />
+            <path d="M -58 18 Q -22 -2 8 18 Q 32 32 58 22" stroke={AKAFUKU_ANKO_DK} strokeWidth={7} />
+          </g>
+          {/* あんのつや */}
+          <ellipse cx={-34} cy={-22} rx={18} ry={7} fill={KRP.white} opacity={0.18}
+            transform="rotate(-16 -34 -22)" />
         </g>
       ))}
       <TagPlate x={1050} y={420} text="あかふく" t={seg(f, 50, 64)} size={44} color={KRP.red} />
@@ -769,6 +1161,14 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
     <Frame f={f} seed={718}
       over={f >= 30 ? <Stamp x={1160} y={230} text="1910 伊香保とされる" size={42} /> : undefined}>
       <OnsenBg f={f} />
+      {/* 茶屋の縁台 (皿が宙に浮かないように足元の床まで脚を下ろす) */}
+      <g>
+        <line x1={561} y1={878} x2={1079} y2={878} stroke={TKP.woodDark} strokeWidth={10} />
+        <rect x={548} y={822} width={26} height={112} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
+        <rect x={1066} y={822} width={26} height={112} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
+        <rect x={470} y={798} width={700} height={28} rx={9} fill={TKP.woodLight} stroke={KRP.ink} strokeWidth={6} />
+        <line x1={500} y1={812} x2={1140} y2={812} stroke={KRP.ink} strokeWidth={3} opacity={0.3} />
+      </g>
       <ellipse cx={820} cy={760} rx={330} ry={66} fill={KRP.white} stroke={KRP.ink} strokeWidth={6} />
       {[600, 820, 1040].map((x, i) => (
         <g key={i}>
@@ -872,13 +1272,41 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
   },
 
   // #161 新婚旅行ブーム: 花婿と花嫁 + 舞うハートと紙吹雪
+  // 旧版は礼服の黒とドレスの白だけで、全体が白黒に見えた (2026-11-01 作者指摘)。
+  // #166 と同じ部品で、花婿に白シャツ+赤ネクタイ、花嫁に金の帯のドレスを着せて色を足す。
   tb4_shinkon: (f) => (
     <Frame f={f} seed={722}>
       <line x1={-20} y1={862} x2={W + 20} y2={862} stroke={KRP.ink} strokeWidth={6} opacity={0.4} />
+      {/* 舞うハート・紙吹雪は人物より「先」に描く。あとに描くと、どちらも半透明なので
+          新郎新婦の顔に透けて見えた (2026-11-01 作者指摘) */}
+      {Array.from({ length: 8 }, (_, i) => {
+        const cy = 180 + ((f * 2.2 + i * 97) % 520);
+        const cx = 360 + i * 170 + Math.sin((f + i * 30) / 12) * 24;
+        return (
+          <rect key={i} x={cx} y={cy} width={20} height={12} rx={3}
+            fill={[KRP.red, KRP.yellow, KRP.green, KRP.blueDeep][i % 4]} opacity={0.8}
+            transform={`rotate(${(f * 4 + i * 45) % 360} ${cx} ${cy})`} />
+        );
+      })}
+      {[0, 1, 2].map((i) => {
+        const u = ((f * 1.3 + i * 55) % 160) / 160;
+        return (
+          <HeartS key={i} x={960 + Math.sin((u * 5 + i) * 1.8) * 190} y={620 - u * 360}
+            s={0.55 + i * 0.12} opacity={Math.sin(u * Math.PI)} />
+        );
+      })}
       <Person x={800} y={840} s={1.15} f={f} phase={0} face="smile" gaze={[4, -3]}
         cloth={KRP.ink} clothDark="#2A241F" />
+      <g transform={`translate(800 ${840 + bobOf(f, 0)}) scale(1.15)`}>
+        <SuitFront tie={KRP.red} />
+      </g>
       <Person x={1120} y={840} s={1.15} f={f} phase={1} face="smile" gaze={[-4, -3]}
         cloth={KRP.white} clothDark="#E8E2D4" hair="none" />
+      <g transform={`translate(1120 ${840 + bobOf(f, 1)}) scale(1.15)`}>
+        <PocketPatch color={KRP.white} />
+        <FlareSkirt color={KRP.white} belt={KRP.brass} wide={86} />
+        <SweetheartNeck />
+      </g>
       {/* 花嫁のベールとティアラ (bob同期) */}
       <g transform={`translate(1120 ${840 + bobOf(f, 1)}) scale(1.15)`}>
         <path d="M -70 -268 Q -96 -180 -84 -96 L -58 -108 Q -72 -190 -54 -258 Z"
@@ -897,24 +1325,6 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
           ))}
         </g>
       </g>
-      {/* 舞うハート */}
-      {[0, 1, 2].map((i) => {
-        const u = ((f * 1.3 + i * 55) % 160) / 160;
-        return (
-          <HeartS key={i} x={960 + Math.sin((u * 5 + i) * 1.8) * 190} y={620 - u * 360}
-            s={0.55 + i * 0.12} opacity={Math.sin(u * Math.PI)} />
-        );
-      })}
-      {/* 紙吹雪 */}
-      {Array.from({ length: 8 }, (_, i) => {
-        const cy = 180 + ((f * 2.2 + i * 97) % 520);
-        const cx = 360 + i * 170 + Math.sin((f + i * 30) / 12) * 24;
-        return (
-          <rect key={i} x={cx} y={cy} width={20} height={12} rx={3}
-            fill={[KRP.red, KRP.yellow, KRP.green, KRP.blueDeep][i % 4]} opacity={0.8}
-            transform={`rotate(${(f * 4 + i * 45) % 360} ${cx} ${cy})`} />
-        );
-      })}
     </Frame>
   ),
 
@@ -1018,16 +1428,74 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
   },
 
   // #166 3組に1組 (といわれる): 3組のカップル・1組にスポットライト
+  // 6人とも色つきの服。男女を描き分ける (男=短髪+スーツ/袴、女=長い髪+スカート/着物)。
+  // 左端 (スポットライト) の組は #161 tb4_shinkon の花婿・花嫁と同じ配色・同じ小物にして、
+  // 同一人物に見えるようにしている (黒の礼服 / 白のドレス + ベール + ティアラ + ブーケ)。
   tb4_3kumi_1kumi: (f) => {
     const spot = easeOut(seg(f, 28, 48));
-    const couple = (x: number, ph: number) => (
+    const S = 0.82;
+    const DX = 78;      // カップル中心からの左右振り分け
+    const GY = 840;     // 足元
+    // Person の上に重ねる飾り (Person と同じ bob で揺らす)
+    const over = (x: number, ph: number, children: React.ReactNode) => (
+      <g transform={`translate(${x} ${GY + bobOf(f, ph)}) scale(${S})`}>{children}</g>
+    );
+
+    // 1組目: #161 と同じ花婿 (黒の礼服) と花嫁 (白のドレス)。赤のネクタイ・金の帯で色を足す
+    const coupleBride = (cx: number, ph: number) => (
       <g>
-        <Person x={x - 75} y={840} s={0.82} f={f} phase={ph} face="smile" gaze={[3, -2]}
+        <Person x={cx - DX} y={GY} s={S} f={f} phase={ph} face="smile" gaze={[3, -2]}
           cloth={KRP.ink} clothDark="#2A241F" />
-        <Person x={x + 75} y={840} s={0.82} f={f} phase={ph + 1} face="smile" gaze={[-3, -2]}
+        {over(cx - DX, ph, <SuitFront tie={KRP.red} />)}
+        <Person x={cx + DX} y={GY} s={S} f={f} phase={ph + 1} face="smile" gaze={[-3, -2]}
           cloth={KRP.white} clothDark="#E8E2D4" hair="none" />
+        {over(cx + DX, ph + 1, (
+          <g>
+            <PocketPatch color={KRP.white} />
+            <FlareSkirt color={KRP.white} belt={KRP.brass} wide={86} />
+            <SweetheartNeck />
+            <BridalVeil />
+            <Bouquet x={-72} y={-108} />
+          </g>
+        ))}
       </g>
     );
+
+    // 2組目: 洋装の旅行スタイル。夫=紺のスーツ+橙のネクタイ、妻=赤のワンピース+ボブ
+    const coupleWestern = (cx: number, ph: number) => (
+      <g>
+        <Person x={cx - DX} y={GY} s={S} f={f} phase={ph} face="smile" gaze={[3, -2]}
+          cloth={TKP.noren} clothDark="#3A5680" />
+        {over(cx - DX, ph, <SuitFront tie={KRP.orange} />)}
+        <Person x={cx + DX} y={GY} s={S} f={f} phase={ph + 1} face="smile" gaze={[-3, -2]}
+          cloth={KRP.red} clothDark={KRP.cream} hair="none" />
+        {over(cx + DX, ph + 1, (
+          <g>
+            <FlareSkirt color={KRP.red} belt="#A32E20" wide={80} />
+            <RoundCollar />
+            <BobHair />
+          </g>
+        ))}
+      </g>
+    );
+
+    // 3組目: 和装。夫=紺の羽織袴、妻=紫の着物+金の帯+まとめ髪
+    const coupleKimono = (cx: number, ph: number) => (
+      <g>
+        <Person x={cx - DX} y={GY} s={S} f={f} phase={ph} face="smile" gaze={[3, -2]}
+          cloth={TKP.night} clothDark="#26323F" />
+        {over(cx - DX, ph, <KimonoFront color="#26323F" obi={TKP.woodDark} hakama />)}
+        <Person x={cx + DX} y={GY} s={S} f={f} phase={ph + 1} face="smile" gaze={[-3, -2]}
+          cloth={TKP.purple} clothDark={KRP.cream} hair="none" />
+        {over(cx + DX, ph + 1, (
+          <g>
+            <KimonoFront color={TKP.purple} obi={KRP.brass} />
+            <UpdoHair kanzashi={KRP.red} />
+          </g>
+        ))}
+      </g>
+    );
+
     return (
       <Frame f={f} seed={727}>
         <line x1={-20} y1={862} x2={W + 20} y2={862} stroke={KRP.ink} strokeWidth={6} opacity={0.4} />
@@ -1035,12 +1503,16 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
         <polygon points={`480,120 ${480 - 260 * spot},870 ${480 + 260 * spot},870`}
           fill={KRP.yellow} opacity={0.3 * spot} />
         <ellipse cx={480} cy={862} rx={270 * spot} ry={34 * spot} fill={KRP.yellow} opacity={0.4} />
-        {couple(480, 0)}
-        {couple(960, 2)}
-        {couple(1440, 4)}
+        {/* 新婚旅行のトランク (3組ぶん色違い) */}
+        <TravelCase x={286} y={844} s={S} color={KRP.red} belt={TKP.woodDark} />
+        <TravelCase x={960} y={844} s={S * 0.92} color={KRP.brass} belt={TKP.woodDark} />
+        <TravelCase x={1658} y={844} s={S * 0.92} color={TKP.woodLight} belt={TKP.woodDark} />
+        {coupleBride(480, 0)}
+        {coupleWestern(960, 2)}
+        {coupleKimono(1440, 4)}
         <HeartS x={480} y={430} s={1.1 * pop(seg(f, 40, 56))} opacity={seg(f, 40, 50)} />
         {/* みやざき行きの小旗 */}
-        <g transform={`translate(620 700) scale(${pop(seg(f, 50, 64))})`}>
+        <g transform={`translate(652 700) scale(${pop(seg(f, 50, 64))})`}>
           <line x1={0} y1={0} x2={0} y2={-140} stroke={TKP.woodDark} strokeWidth={8} strokeLinecap="round" />
           <polygon points="0,-140 140,-112 0,-84" fill={KRP.red} opacity={0.9} stroke={KRP.ink} strokeWidth={4.5} />
           <text x={8} y={-104} fontFamily={FONT} fontWeight={900} fontSize={20} fill={KRP.white}>みやざき</text>
@@ -1144,13 +1616,27 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
 
   // #170 ヨーロッパ16日間67万5000円: 巨大値札がドンと落ちる
   tb4_nedan_don: (f) => {
-    const sc = lerp(2.6, 1, easeOut(seg(f, 6, 24)));
+    // 値札は中央 (960,410)。左右にヨーロッパの名所を3つずつ並べ、
+    // 名所の頂点 (最高でも y≈407) と値札の帯 (x 608〜1254 / y 284〜536) が
+    // 重ならないよう、名所は x≤620 と x≥1309 に置いてある。
+    const sc = lerp(2.4, 0.82, easeOut(seg(f, 6, 24)));
     const shake = Math.sin(f * 1.5) * 5 * (1 - seg(f, 24, 46));
     return (
       <Frame f={f} seed={731}>
-        <Eiffel x={360} y={880} s={1.05} />
-        <Burst x={1140} y={520} t={seg(f, 22, 50)} r={360} color={KRP.orange} />
-        <g transform={`translate(1140 520) scale(${sc}) rotate(${-4 + shake})`}>
+        {/* 地面 */}
+        <rect x={-20} y={840} width={W + 40} height={120} fill={TKP.caminoGold} opacity={0.22} />
+        <line x1={-20} y1={840} x2={W + 20} y2={840} stroke={KRP.ink} strokeWidth={6} opacity={0.4} />
+        {/* 左: オランダの風車 / エッフェル塔 / 凱旋門 */}
+        <LmWindmill x={130} y={840} s={0.92} f={f} />
+        <LmEiffel x={358} y={840} s={0.95} />
+        <LmArc x={546} y={840} s={0.82} />
+        {/* 右: コロッセオ / ビッグベン / ピサの斜塔 */}
+        <LmColosseum x={1400} y={840} s={0.84} />
+        <LmBigBen x={1618} y={840} s={0.78} />
+        <LmPisa x={1824} y={840} s={0.8} />
+        {/* 中央: 値札 */}
+        <Burst x={960} y={410} t={seg(f, 22, 50)} r={330} color={KRP.orange} />
+        <g transform={`translate(960 410) scale(${sc}) rotate(${-4 + shake})`}>
           {/* 値札 (穴 + ひも) */}
           <path d="M -350 -130 L 290 -130 Q 350 -130 350 -70 L 350 70 Q 350 130 290 130 L -350 130 L -430 0 Z"
             fill={KRP.yellow} opacity={0.95} stroke={KRP.ink} strokeWidth={8} />
@@ -1159,7 +1645,7 @@ const SCENES: Record<string, (f: number) => React.ReactElement> = {
           <text x={-20} y={34} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={92}
             fill={KRP.red}>67万5000円</text>
         </g>
-        <TagPlate x={1140} y={250} text="ヨーロッパ16日間" t={seg(f, 30, 44)} size={40} />
+        <TagPlate x={960} y={190} text="ヨーロッパ16日間" t={seg(f, 30, 44)} size={40} />
       </Frame>
     );
   },

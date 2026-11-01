@@ -51,8 +51,9 @@ const WSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
   return <WAllSceneView motif={motif} f={f} />;
 };
 
-// 「旅とお土産の歴史」(モチーフ名が tb1_〜tb5_ で始まる専用絵) 用の同じつなぎ。
-export const isTabiMotif = (motif: string) => /^tb[1-5]_/.test(motif);
+// 「旅とお土産の歴史」(モチーフ名が tb1_〜tb6_ で始まる専用絵) 用の同じつなぎ。
+// ※ tb6_ は後から挿入した第10章。ここの範囲を広げ忘れると汎用絵+他番組バッジに落ちる (v1事故)
+export const isTabiMotif = (motif: string) => /^tb[1-6]_/.test(motif);
 const TSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
   const f = useCurrentFrame();
   return <TAllSceneView motif={motif} f={f} />;

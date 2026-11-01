@@ -14,6 +14,7 @@ import {
   TKP, KashiBox, DatsusansoPack, MiyageShelf, GendaiBg, ModernTraveler, PaperBag, EdoTraveler,
 } from "./TabiKits";
 import { KoujitsuRoute } from "./TabiTravel";
+import { HagiNoTsuki, HagiNoTsukiCut } from "./TabiHaginotsuki";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 // Person と同じゆれ式 (かぶせ物・持ち物を同期させる)
@@ -674,36 +675,51 @@ const SceneKabiSodatanai: React.FC<{ f: number }> = ({ f }) => {
   );
 };
 
-// #186 1979年の萩の月がいち早く採用: 小袋が箱に飛び込む
+// #186 1979年の萩の月がいち早く採用:
+// 萩の月そのもの (丸ごと + 断面) を主役にして、そこへ脱酸素剤の小袋が飛び込む。
+// 2026-11-01 作者指摘「右にある萩の月(ただの黄色い丸)をしっかり実物みて精巧に」→ TabiHaginotsuki.tsx を新設。
 const SceneHaginotsuki: React.FC<{ f: number }> = ({ f }) => {
-  const fly = easeOut(seg(f, 18, 48));
-  const px = lerp(1450, 880, fly);
-  const py = lerp(330, 560, fly) - Math.sin(fly * Math.PI) * 130;
-  const glow = seg(f, 48, 62);
+  const fly = easeOut(seg(f, 20, 52));
+  const px = lerp(1700, 950, fly);
+  const py = lerp(330, 600, fly) - Math.sin(fly * Math.PI) * 110;
+  const glow = seg(f, 52, 68);
   return (
     <Frame f={f} seed={811}
       over={<Stamp x={300} y={140} text="1979年" size={56} />}>
-      <TagPlate x={840} y={300} text="仙台銘菓 萩の月" size={46} t={seg(f, 4, 18)} color={KRP.red} />
-      {/* 月をしのばせる (仙台銘菓の空気) */}
-      <circle cx={1650} cy={690} r={62} fill={KRP.yellow} opacity={0.75} stroke={KRP.ink} strokeWidth={5} />
-      <KashiBox x={840} y={660 + bobOf(f)} s={1.6} label="銘菓" />
+      <TagPlate x={960} y={300} text="仙台銘菓 萩の月" size={46} t={seg(f, 4, 18)} color={KRP.red} />
+      {/* 丸ごと1個 (接地面 y=680・半径150×1.45=218、高さ160×1.45=232) */}
+      <g transform={`translate(600 ${680 + bobOf(f)}) scale(1.45)`}>
+        <HagiNoTsuki />
+      </g>
+      {/* 半分に切った断面 (中身のカスタードが見える) */}
+      <g transform={`translate(1320 ${680 + bobOf(f, 2)}) scale(1.45)`}>
+        <HagiNoTsukiCut />
+      </g>
       {glow > 0 && (
-        <circle cx={840} cy={640} r={240} fill="none" stroke={KRP.yellow} strokeWidth={10}
-          opacity={glow * (0.5 + 0.4 * Math.sin(f / 5))} />
+        <g fill="none" stroke={KRP.yellow} strokeWidth={9}
+          opacity={glow * (0.4 + 0.35 * Math.sin(f / 5))}>
+          <ellipse cx={600} cy={578} rx={272} ry={166} />
+          <ellipse cx={1320} cy={578} rx={272} ry={166} />
+        </g>
       )}
-      {/* いち早く飛び込む小袋 */}
+      <TagPlate x={600} y={780} text="ふんわりカステラ生地" size={26} t={seg(f, 22, 34)} />
+      <TagPlate x={1320} y={780} text="なかはカスタードクリーム" size={26} t={seg(f, 30, 42)} />
+      {/* いち早く採用された脱酸素剤の小袋が、2つのあいだに降りてくる */}
       {fly < 1 ? (
-        <g transform={`translate(${px} ${py}) rotate(${lerp(14, -6, fly)})`}>
-          <DatsusansoPack x={0} y={0} s={0.85} />
-          <g stroke={KRP.ink} strokeWidth={5} strokeLinecap="round" opacity={0.5}>
-            <line x1={70} y1={-40} x2={120} y2={-58} />
-            <line x1={84} y1={-6} x2={136} y2={-16} />
+        <g transform={`translate(${px} ${py}) rotate(${lerp(14, -4, fly)})`}>
+          <DatsusansoPack x={0} y={0} s={1.3} />
+          <g stroke={KRP.ink} strokeWidth={5} strokeLinecap="round" opacity={0.45}>
+            <line x1={96} y1={-52} x2={154} y2={-74} />
+            <line x1={110} y1={-8} x2={172} y2={-20} />
           </g>
         </g>
       ) : (
-        <Burst x={880} y={560} r={90} t={seg(f, 48, 60)} />
+        <g>
+          <Burst x={950} y={600} r={120} t={seg(f, 52, 66)} />
+          <DatsusansoPack x={950} y={600 + bobOf(f, 4)} s={1.3} rot={-4} />
+        </g>
       )}
-      <CheckCircle x={1040} y={480} t={seg(f, 52, 62)} />
+      <CheckCircle x={950} y={430} t={seg(f, 58, 70)} />
     </Frame>
   );
 };
@@ -752,14 +768,21 @@ const SceneCalendarNobiru: React.FC<{ f: number }> = ({ f }) => {
   );
 };
 
-// #188 ふわふわの生菓子が遠くへ: トラックが町まで走る
+// #188 ふわふわの生菓子が遠くへ: 画面を横2分割 (上=トラックが町まで走る / 下=帰った人がみんなに手渡し)
+// 2026-11-01 作者指示で上下2分割に組み替え。上半分は y 140〜520、下半分は y 560〜846。
+const ROAD_Y = 470;        // 上半分の道路
+const SPLIT_Y = 548;       // 上下の区切り線
+const GROUND_Y = 836;      // 下半分の地面 (人物の足元)
+const GIVE_TARGETS = [1000, 1290, 1580];
+
 const SceneFuwafuwaHakobu: React.FC<{ f: number }> = ({ f }) => {
   const tx = lerp(430, 1210, seg(f, 0, 150));
   const wheel = tx * 1.6;
   return (
     <Frame f={f} seed={813}>
+      {/* ===== 上半分: ふわふわの生菓子を積んだトラックが遠くの町へ ===== */}
       {/* 雲 */}
-      {[[380, 220], [900, 160]].map(([cx, cy], i) => (
+      {[[200, 196], [1010, 150]].map(([cx, cy], i) => (
         <g key={i} transform={`translate(${cx + Math.sin(f / 60 + i) * 14} ${cy})`} opacity={0.8}>
           <ellipse rx={90} ry={34} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
           <ellipse cx={-50} cy={10} rx={46} ry={24} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
@@ -768,23 +791,23 @@ const SceneFuwafuwaHakobu: React.FC<{ f: number }> = ({ f }) => {
       {/* 遠くの町 */}
       {[[1580, 180, 90], [1680, 260, 110], [1790, 150, 80]].map(([bx, bh, bw], i) => (
         <g key={i}>
-          <rect x={bx} y={820 - bh} width={bw} height={bh} rx={6} fill={TKP.stone} stroke={KRP.ink}
+          <rect x={bx} y={ROAD_Y - bh} width={bw} height={bh} rx={6} fill={TKP.stone} stroke={KRP.ink}
             strokeWidth={5} />
           {[0, 1, 2].map((wi) => (
-            <rect key={wi} x={bx + 14} y={836 - bh + wi * 44} width={bw - 28} height={22} rx={4}
+            <rect key={wi} x={bx + 14} y={ROAD_Y + 16 - bh + wi * 44} width={bw - 28} height={22} rx={4}
               fill={KRP.blueSoft} stroke={KRP.ink} strokeWidth={2.5} />
           ))}
         </g>
       ))}
       {/* 道路 */}
-      <line x1={0} y1={820} x2={1920} y2={820} stroke={KRP.ink} strokeWidth={7} />
+      <line x1={0} y1={ROAD_Y} x2={1920} y2={ROAD_Y} stroke={KRP.ink} strokeWidth={7} />
       {Array.from({ length: 9 }, (_, i) => (
-        <line key={i} x1={((i * 240 - f * 4) % 2160 + 2160) % 2160 - 120} y1={846}
-          x2={((i * 240 - f * 4) % 2160 + 2160) % 2160 - 30} y2={846} stroke={KRP.ink} strokeWidth={5}
+        <line key={i} x1={((i * 240 - f * 4) % 2160 + 2160) % 2160 - 120} y1={ROAD_Y + 22}
+          x2={((i * 240 - f * 4) % 2160 + 2160) % 2160 - 30} y2={ROAD_Y + 22} stroke={KRP.ink} strokeWidth={5}
           opacity={0.4} />
       ))}
       {/* トラック (荷台に銘菓箱) */}
-      <g transform={`translate(${tx} ${784 + Math.sin(f / 5) * 2})`}>
+      <g transform={`translate(${tx} ${ROAD_Y - 36 + Math.sin(f / 5) * 2})`}>
         <rect x={-190} y={-150} width={260} height={120} rx={10} fill={KRP.white} stroke={KRP.ink}
           strokeWidth={6.5} />
         <KashiBox x={-60} y={-86} s={0.62} />
@@ -807,13 +830,46 @@ const SceneFuwafuwaHakobu: React.FC<{ f: number }> = ({ f }) => {
         <text x={-60} y={-196} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34}
           fill={KRP.orange}>ふわふわ</text>
       </g>
+
+      {/* ===== 区切り線 ===== */}
+      <line x1={40} y1={SPLIT_Y} x2={1880} y2={SPLIT_Y} stroke={KRP.ink} strokeWidth={5}
+        strokeLinecap="round" opacity={0.45} />
+
+      {/* ===== 下半分: 旅から帰った人が、みんなに個包装を手渡し ===== */}
+      <rect x={0} y={GROUND_Y - 44} width={W} height={H - GROUND_Y + 44} fill={KRP.floor} opacity={0.5} />
+      <line x1={0} y1={GROUND_Y - 44} x2={W} y2={GROUND_Y - 44} stroke={KRP.ink} strokeWidth={4}
+        opacity={0.3} />
+      {/* 受けとる3人 */}
+      {GIVE_TARGETS.map((rx, i) => (
+        <Person key={rx} x={rx} y={GROUND_Y} s={0.78} f={f} phase={i + 1} face="smile" gaze={[-6, 0]}
+          cloth={["#7FA3C4", "#C4927F", "#8FAE8A"][i]} />
+      ))}
+      {/* 旅から帰ってきた人 + 開けた箱 */}
+      <ModernTraveler x={400} y={GROUND_Y} s={0.78} f={f} phase={0} face="smile" gaze={[6, 0]} />
+      <KashiBox x={660} y={762} s={0.52} open />
+      {/* 個包装が順番に手わたされる */}
+      {GIVE_TARGETS.map((rx, i) => {
+        const t = seg(f, 18 + i * 34, 52 + i * 34);
+        if (t <= 0) return null;
+        if (t >= 1) return <MiniPacket key={rx} x={rx - 70} y={770} s={0.85} rot={-8} />;
+        const mx = lerp(740, rx - 70, t);
+        const my = lerp(742, 770, t) - Math.sin(t * Math.PI) * 90;
+        return <MiniPacket key={rx} x={mx} y={my} s={0.85} rot={t * 220} />;
+      })}
+      {/* 受けとって喜ぶ */}
+      {GIVE_TARGETS.map((rx, i) => (
+        <Heart key={rx} x={rx + 78} y={620 + bobOf(f, i + 1)} s={1.2}
+          t={seg(f, 50 + i * 34, 62 + i * 34)} />
+      ))}
     </Frame>
   );
 };
 
 // #189 お土産の中心が食べ物へ: 天秤が「たべもの」側へ傾く
 const SceneTabemonoChushin: React.FC<{ f: number }> = ({ f }) => {
-  const tilt = easeOut(seg(f, 30, 72)) * -9;
+  // SVGの rotate() は時計回りが正。「たべもの」の右皿(x=1400)を下げたいので符号は＋。
+  // 2026-11-01 作者指摘「天秤の傾き逆なんじゃない？」→ -9 から +9 に修正。
+  const tilt = easeOut(seg(f, 30, 72)) * 9;
   const t1 = pop(seg(f, 4, 18));
   return (
     <Frame f={f} seed={814} over={<Stamp x={1560} y={150} text="1970年代" size={40} />}>
@@ -851,11 +907,14 @@ const SceneTabemonoChushin: React.FC<{ f: number }> = ({ f }) => {
           <line x1={80} y1={0} x2={30} y2={120} stroke={KRP.ink} strokeWidth={5} />
           <path d="M -110 120 Q 0 176 110 120 Z" fill="#D8CBB6" stroke={KRP.ink} strokeWidth={6} />
           {t1 > 0 && (
+            // 箱は皿の幅(±110)に収めて重ならないよう小さく。まんじゅうは箱の上にのせる
             <g transform={`scale(${t1})`}>
-              <KashiBox x={-50} y={118} s={0.52} />
-              <KashiBox x={56} y={118} s={0.52} />
-              {/* まんじゅう */}
-              <ellipse cx={4} cy={6} rx={34} ry={24} fill="#C89B6A" stroke={KRP.ink} strokeWidth={5} />
+              <KashiBox x={-56} y={92} s={0.42} />
+              <KashiBox x={56} y={92} s={0.42} />
+              {/* まんじゅう (2つの箱の上) */}
+              <ellipse cx={0} cy={42} rx={34} ry={24} fill="#C89B6A" stroke={KRP.ink} strokeWidth={5} />
+              <path d="M -20 32 Q 0 22 20 32" fill="none" stroke={KRP.ink} strokeWidth={3.5}
+                opacity={0.45} />
             </g>
           )}
         </g>
@@ -955,13 +1014,36 @@ const SceneIgaiToSaikin: React.FC<{ f: number }> = ({ f }) => {
 };
 
 // #192 箱＋脱酸素剤＝「配れるお土産」の完成 (紙吹雪)
+// 2026-11-01 作者指示: 脱酸素剤の袋は文字を消して無地に、完成した「配れるお土産」にスポットライトを当てる。
 const SceneKansei: React.FC<{ f: number }> = ({ f }) => {
   const a = pop(seg(f, 4, 18));
   const b = pop(seg(f, 18, 32));
   const c = pop(seg(f, 36, 52));
   const conf = seg(f, 50, 150);
+  const lit = seg(f, 36, 56);   // スポットライトの点灯
   return (
     <Frame f={f} seed={817} over={<Stamp x={1620} y={160} text="完成" size={52} />}>
+      {/* スポットライト: 円錐の外を沈ませて、光の中だけ明るく残す */}
+      {lit > 0 && (
+        <g>
+          <defs>
+            <mask id="tb5-kansei-spot">
+              <rect x={0} y={0} width={W} height={H} fill="#FFFFFF" />
+              <polygon points="1402,0 1558,0 1830,880 1130,880" fill="#000000" />
+              <ellipse cx={1480} cy={792} rx={340} ry={86} fill="#000000" />
+            </mask>
+          </defs>
+          <rect x={0} y={0} width={W} height={H} fill={KRP.ink} opacity={0.3 * lit}
+            mask="url(#tb5-kansei-spot)" />
+          {/* 上から落ちる光の筋 */}
+          <polygon points="1402,0 1558,0 1830,880 1130,880" fill={KRP.yellow} opacity={0.15 * lit} />
+          <polygon points="1424,0 1536,0 1742,880 1218,880" fill={KRP.yellow} opacity={0.14 * lit} />
+          <polygon points="1446,0 1514,0 1654,880 1306,880" fill={KRP.white} opacity={0.2 * lit} />
+          {/* 足元の光だまり */}
+          <ellipse cx={1480} cy={792} rx={300} ry={66} fill={KRP.yellow} opacity={0.3 * lit} />
+          <ellipse cx={1480} cy={792} rx={186} ry={40} fill={KRP.white} opacity={0.28 * lit} />
+        </g>
+      )}
       {a > 0 && (
         <g transform={`translate(400 ${640 + bobOf(f)}) scale(${a})`}>
           <KashiBox x={0} y={0} s={1.0} open />
@@ -973,7 +1055,9 @@ const SceneKansei: React.FC<{ f: number }> = ({ f }) => {
         fill={KRP.ink} opacity={seg(f, 14, 24)}>＋</text>
       {b > 0 && (
         <g transform={`translate(880 ${590 + bobOf(f, 2)}) scale(${b})`}>
-          <DatsusansoPack x={0} y={0} s={1.5} />
+          {/* 完成の図は「個包装＋脱酸素剤＝」の記号として見せる場なので、
+              細かい文字は読ませずに無地の袋にする (2026-11-01 作者指示) */}
+          <DatsusansoPack x={0} y={0} s={1.5} plain />
         </g>
       )}
       <text x={1120} y={640} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={110}
@@ -1058,14 +1142,19 @@ const LoopDiagram: React.FC<{ x: number; y: number; s?: number; f: number }> = (
         const [x2, y2] = pt(a2);
         const t = seg(f, 30 + i * 8, 46 + i * 8);
         if (t <= 0) return null;
-        const [hx, hy] = pt(a2 + 4);
+        // 矢じりは「円弧の終点での接線」から組み立てる (決め打ちの rotate は使わない)。
+        // 半径Rの円周を角度が増える向き(=画面では時計回り)に進むときの接線は (-sin a, cos a)。
+        const rad2 = (a2 * Math.PI) / 180;
+        const dx = -Math.sin(rad2), dy = Math.cos(rad2);   // 進行方向
+        const nx = -dy, ny = dx;                            // 接線に直交する向き
+        const HL = 40, HW = 21;                             // 矢じりの長さ・根元の半幅
         return (
           <g key={i} opacity={t}>
             <path d={`M ${x1} ${y1} A ${R} ${R} 0 0 1 ${x2} ${y2}`} fill="none" stroke={KRP.orange}
               strokeWidth={10} strokeLinecap="round" strokeDasharray="26 20"
               strokeDashoffset={-f * 2.4} />
-            <path d={`M ${x2} ${y2} L ${hx - 30} ${hy - 18} L ${hx - 8} ${hy + 26} Z`}
-              fill={KRP.orange} transform={`rotate(${a2 + 100} ${x2} ${y2})`} />
+            <path d={`M ${x2 + dx * HL} ${y2 + dy * HL} L ${x2 + nx * HW} ${y2 + ny * HW} L ${x2 - nx * HW} ${y2 - ny * HW} Z`}
+              fill={KRP.orange} strokeLinejoin="round" />
           </g>
         );
       })}
@@ -1102,13 +1191,26 @@ const SceneImaMoTsuzuku: React.FC<{ f: number }> = ({ f }) => {
     <Frame f={f} seed={821}>
       <rect x={0} y={880} width={W} height={200} fill={KRP.floor} />
       <LoopDiagram x={480} y={560} s={0.62} f={Math.min(f, 200)} />
-      {ar > 0 && (
-        <g opacity={ar}>
-          <line x1={810} y1={620} x2={810 + 290 * ar} y2={660} stroke={KRP.ink} strokeWidth={9}
-            strokeDasharray="22 16" strokeLinecap="round" />
-          {ar > 0.95 && <path d="M 1120 668 L 1072 640 L 1082 688 Z" fill={KRP.ink} />}
-        </g>
-      )}
+      {ar > 0 && (() => {
+        // 矢じりは線の向きから組み立てる (決め打ちの座標は使わない)。
+        const ax0 = 810, ay0 = 620, ax1 = 1100, ay1 = 660;
+        const len = Math.hypot(ax1 - ax0, ay1 - ay0);
+        const ux = (ax1 - ax0) / len, uy = (ay1 - ay0) / len;  // 進行方向
+        const HL = 44, HW = 23;                                 // 矢じりの長さ・根元の半幅
+        const tipL = len * ar;                                  // いま伸びている長さ
+        const tipX = ax0 + ux * tipL, tipY = ay0 + uy * tipL;   // 先端
+        const bX = tipX - ux * HL, bY = tipY - uy * HL;         // 矢じりの根元
+        return (
+          <g opacity={ar}>
+            <line x1={ax0} y1={ay0} x2={tipL > HL ? bX : ax0} y2={tipL > HL ? bY : ay0}
+              stroke={KRP.ink} strokeWidth={9} strokeDasharray="22 16" strokeLinecap="round" />
+            {tipL > HL && (
+              <path d={`M ${tipX} ${tipY} L ${bX - uy * HW} ${bY + ux * HW} L ${bX + uy * HW} ${bY - ux * HW} Z`}
+                fill={KRP.ink} strokeLinejoin="round" />
+            )}
+          </g>
+        );
+      })()}
       <ModernTraveler x={1330} y={870} s={1.0} f={f} phase={1} face="smile" gaze={[-6, 0]} />
       <TagPlate x={1330} y={280} text="現代" size={36} t={seg(f, 50, 62)} />
     </Frame>
@@ -1277,13 +1379,59 @@ const SceneUriba: React.FC<{ f: number; proud?: boolean }> = ({ f, proud }) => {
   const step = proud ? 7 : 10;
   const n = Math.min(Math.max(Math.floor((f - 12) / step), 0), 6);
   const cloudT = pop(seg(f, 6, 20));
+  // proud: 黒背景にスポットライト、人物はセンターで仁王立ち (2026-11-01 作者指示)
+  const PX = proud ? 960 : 1180;
+  const PS = 1.05;
+  const PY = 880 + bobOf(f, 1);
+  const gx = (lx: number) => PX + lx * PS;
+  const gy = (ly: number) => PY + ly * PS;
+  const lit = proud ? seg(f, 0, 20) : 0;
   return (
     <Frame f={f} seed={proud ? 828 : 827}>
       <rect x={0} y={880} width={W} height={200} fill={KRP.floor} />
-      <MiyageShelf x={520} y={790} s={1.15} />
-      <Person x={1180} y={880} s={1.05} f={f} phase={1} face={proud ? "smile" : "normal"}
-        gaze={[-6, 0]} lean={proud ? -6 : 0} />
-      <KashiBox x={1180} y={700} s={0.7} />
+      <MiyageShelf x={proud ? 300 : 520} y={790} s={1.15} />
+      {/* 黒背景 + スポットライト (proudのみ)。棚は暗がりのシルエットとして残す */}
+      {proud && (
+        <g>
+          <rect x={0} y={0} width={W} height={H} fill={KRP.ink} opacity={0.88 * lit} />
+          <polygon points="878,0 1042,0 1330,884 590,884" fill={KRP.yellow} opacity={0.16 * lit} />
+          <polygon points="902,0 1018,0 1238,884 682,884" fill={KRP.yellow} opacity={0.14 * lit} />
+          <polygon points="926,0 994,0 1146,884 774,884" fill={KRP.white} opacity={0.18 * lit} />
+          <ellipse cx={960} cy={876} rx={306} ry={66} fill={KRP.yellow} opacity={0.30 * lit} />
+          <ellipse cx={960} cy={876} rx={184} ry={40} fill={KRP.white} opacity={0.26 * lit} />
+        </g>
+      )}
+      {/* 仁王立ちの腕 (腰に手を当てる)。Personの腕より先に描いて胴の後ろに回す */}
+      {proud && (
+        <g strokeLinecap="round" strokeLinejoin="round" fill="none">
+          {[-1, 1].map((sgn) => (
+            <g key={sgn}>
+              <path d={`M ${gx(sgn * 50)} ${gy(-150)} L ${gx(sgn * 104)} ${gy(-96)} L ${gx(sgn * 54)} ${gy(-62)}`}
+                stroke={KRP.ink} strokeWidth={31 * PS} />
+              <path d={`M ${gx(sgn * 50)} ${gy(-150)} L ${gx(sgn * 104)} ${gy(-96)} L ${gx(sgn * 54)} ${gy(-62)}`}
+                stroke="#3E4B66" strokeWidth={22 * PS} />
+            </g>
+          ))}
+        </g>
+      )}
+      {/* proudのときは Person の下ろした腕をマスクで消し、上の仁王立ちの腕に差し替える */}
+      {proud && (
+        <defs>
+          <mask id="tb5-uriba-proud">
+            <rect x={0} y={0} width={W} height={H} fill="#FFFFFF" />
+            {[-1, 1].map((sgn) => (
+              <rect key={sgn} x={gx(sgn > 0 ? 52 : -82)} y={gy(-152)}
+                width={30 * PS} height={90 * PS} fill="#000000" />
+            ))}
+          </mask>
+        </defs>
+      )}
+      <g mask={proud ? "url(#tb5-uriba-proud)" : undefined}>
+        <Person x={PX} y={880} s={PS} f={f} phase={1} face={proud ? "smile" : "normal"}
+          gaze={proud ? [0, 0] : [-6, 0]} lean={0} />
+      </g>
+      {/* 菓子箱: ふだんは手に持つ。proudは両手が腰なので足元の光だまりに置く */}
+      <KashiBox x={proud ? 1250 : 1180} y={proud ? 846 : 700} s={0.7} />
       {/* 考えごとの雲 + 頭数 */}
       {cloudT > 0 && (
         <g transform={`translate(1460 330) scale(${cloudT})`}>
@@ -1312,8 +1460,11 @@ const SceneUriba: React.FC<{ f: number; proud?: boolean }> = ({ f, proud }) => {
       )}
       {proud && n >= 6 && (
         <>
+          {/* 光条はチェック印の後ろに重ねる。
+              旧位置(1180,560)は顔にかかり、(1330,560)は雲と箱のあいだの何もない所で浮いていた
+              (2026-11-01 作者指摘)。何かの後ろに敷けば「浮き」は起きない */}
+          <Burst x={1720} y={580} r={150} t={seg(f, 50, 64)} />
           <CheckCircle x={1720} y={580} s={1.3} t={seg(f, 48, 58)} />
-          <Burst x={1180} y={560} r={180} t={seg(f, 50, 64)} />
         </>
       )}
       {!proud && <TagPlate x={430} y={300} text="伝統行事" size={36} t={seg(f, 40, 52)} stroke={KRP.red} color={KRP.red} />}

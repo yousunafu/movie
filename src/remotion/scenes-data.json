@@ -74,11 +74,11 @@
     },
     {
       "index": 9,
-      "text": "実はこのふたつ、人類が千年かけて作り上げた「仕組み」なんです。",
+      "text": "実はこのふたつ、人類が二千年かけて作り上げた「仕組み」なんです。",
       "type": "diagram",
       "motif": "tb1_sennen_shikumi",
       "audio": "audio/scene-009.wav",
-      "durationSec": 5.546666666666667
+      "durationSec": 5.706666666666667
     },
     {
       "index": 10,
@@ -114,11 +114,11 @@
     },
     {
       "index": 14,
-      "text": "それでは、旅とお土産、千年の歴史のお話です。",
+      "text": "それでは、旅とお土産、二千年の歴史のお話です。",
       "type": "diagram",
       "motif": "tb1_sennen_michi",
       "audio": "audio/scene-014.wav",
-      "durationSec": 4.714666666666667
+      "durationSec": 4.8213333333333335
     },
     {
       "index": 15,
@@ -278,7 +278,7 @@
       "type": "diagram",
       "motif": "tb1_kumano_boom",
       "audio": "audio/scene-034.wav",
-      "durationSec": 4.8533333333333335
+      "durationSec": 5.344
     },
     {
       "index": 35,
@@ -286,7 +286,7 @@
       "type": "diagram",
       "motif": "tb1_goshirakawa_34",
       "audio": "audio/scene-035.wav",
-      "durationSec": 5.546666666666667
+      "durationSec": 5.610666666666667
     },
     {
       "index": 36,
@@ -654,7 +654,7 @@
       "type": "diagram",
       "motif": "tb2_senbetsu",
       "audio": "audio/scene-081.wav",
-      "durationSec": 4.490666666666667
+      "durationSec": 4.512
     },
     {
       "index": 82,
@@ -734,7 +734,7 @@
       "type": "diagram",
       "motif": "tb2_onshi",
       "audio": "audio/scene-091.wav",
-      "durationSec": 2.432
+      "durationSec": 2.517333333333333
     },
     {
       "index": 92,
@@ -766,7 +766,7 @@
       "type": "diagram",
       "motif": "tb2_set_kansei",
       "audio": "audio/scene-095.wav",
-      "durationSec": 5.418666666666667
+      "durationSec": 5.504
     },
     {
       "index": 96,
@@ -838,7 +838,7 @@
       "type": "diagram",
       "motif": "tb3_tourist_1772",
       "audio": "audio/scene-104.wav",
-      "durationSec": 5.92
+      "durationSec": 4.32
     },
     {
       "index": 105,
@@ -846,7 +846,7 @@
       "type": "diagram",
       "motif": "tb3_souvenir",
       "audio": "audio/scene-105.wav",
-      "durationSec": 6.112
+      "durationSec": 4.256
     },
     {
       "index": 106,
@@ -1070,7 +1070,7 @@
       "type": "diagram",
       "motif": "tb3_world_tour_222",
       "audio": "audio/scene-133.wav",
-      "durationSec": 7.392
+      "durationSec": 7.381333333333333
     },
     {
       "index": 134,
@@ -1174,7 +1174,7 @@
       "type": "diagram",
       "motif": "tb4_japan_chokurei",
       "audio": "audio/scene-146.wav",
-      "durationSec": 7.253333333333333
+      "durationSec": 6.8053333333333335
     },
     {
       "index": 147,
@@ -1326,7 +1326,7 @@
       "type": "diagram",
       "motif": "tb4_3kumi_1kumi",
       "audio": "audio/scene-165.wav",
-      "durationSec": 4.8213333333333335
+      "durationSec": 4.874666666666666
     },
     {
       "index": 166,
@@ -1342,7 +1342,7 @@
       "type": "diagram",
       "motif": "tb4_500_doru",
       "audio": "audio/scene-167.wav",
-      "durationSec": 4.266666666666667
+      "durationSec": 4.704
     },
     {
       "index": 168,
@@ -1796,7 +1796,7 @@
       "index": 224,
       "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
       "type": "card",
-      "motif": "tb5_yoi_tabi",
+      "motif": "ending",
       "isEnding": true,
       "audio": "audio/scene-end.wav",
       "durationSec": 6.176

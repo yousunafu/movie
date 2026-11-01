@@ -40,6 +40,11 @@ export const TKP = {
   yukata: "#7A9CC0",       // 浴衣の藍
   airport: "#DCE8F0",      // 現代の明るい空間
   night: "#324258",        // 夕暮れの山の藍
+  purple: "#6B4E8E",       // 高位の紫 (法皇の袈裟)
+  purpleDark: "#523A70",
+  rock: "#9C968A",         // 那智の岩場
+  rockDark: "#7A746A",
+  water: "#BFD9E8",        // 滝つぼ・飛沫
 } as const;
 
 // =====================================================================
@@ -231,15 +236,15 @@ export const HeianPilgrim: React.FC<{
 };
 
 // 背景B: サンティアゴへの道 — 乾いた金の平原 + 大聖堂の遠景
-export const CaminoBg: React.FC<{ f: number }> = ({ f }) => (
+export const CaminoBg: React.FC<{ f: number; cathedralX?: number }> = ({ f, cathedralX = 1520 }) => (
   <g>
     <rect x={-20} y={-20} width={W + 40} height={H + 40} fill={TKP.caminoGold} opacity={0.22} />
     {/* なだらかな丘 */}
     <path d="M -20 620 Q 460 540 980 610 Q 1460 540 1940 600 L 1940 1100 L -20 1100 Z"
       fill={TKP.caminoGold} opacity={0.65} />
     <path d="M -20 780 Q 600 700 1940 760 L 1940 1100 L -20 1100 Z" fill={TKP.caminoGold} opacity={0.9} />
-    {/* 大聖堂の遠景 (双塔) */}
-    <g transform="translate(1520 598)" opacity={0.88}>
+    {/* 大聖堂の遠景 (双塔)。手前にカードが乗るシーンは cathedralX で空きに逃がす */}
+    <g transform={`translate(${cathedralX} 598)`} opacity={0.88}>
       <rect x={-120} y={-120} width={240} height={120} fill={TKP.stone} stroke={KRP.ink} strokeWidth={4.5} />
       {[-86, 86].map((tx) => (
         <g key={tx}>
@@ -282,13 +287,17 @@ export const EuroPilgrim: React.FC<{
         <ellipse cx={0} cy={-268} rx={92} ry={20} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
         <path d="M -44 -268 Q -40 -316 0 -318 Q 40 -316 44 -268 Z" fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
         <g transform="translate(0 -292) scale(0.5)"><ScallopShell x={0} y={0} /></g>
-        {/* 杖 + ひょうたん */}
+        {/* 杖 + ひょうたん水筒。
+            旧版はつるしひもが杖と逆向き (左上へ) に伸びていて、ひょうたんが
+            宙に浮いた2つの丸に見えていた (2026-11-01 修正)。
+            いまは 杖の握り (-98,-190) → ひょうたんの口 (-132,-151) をひもで結んでいる。 */}
         <line x1={-96} y1={-200} x2={-110} y2={0} stroke={TKP.woodDark} strokeWidth={11} strokeLinecap="round" />
         <circle cx={-98} cy={-196} r={10} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={3.5} />
-        <g transform="translate(-122 -140)">
+        <line x1={-98} y1={-190} x2={-132} y2={-149} stroke={KRP.ink} strokeWidth={3.5} opacity={0.6}
+          strokeLinecap="round" />
+        <g transform="translate(-132 -128)">
           <circle cx={0} cy={10} r={16} fill={KRP.copper} stroke={KRP.ink} strokeWidth={4} />
           <circle cx={0} cy={-12} r={11} fill={KRP.copper} stroke={KRP.ink} strokeWidth={4} />
-          <line x1={0} y1={-26} x2={-88 + -8} y2={-178 + 120} stroke={KRP.ink} strokeWidth={3} opacity={0.5} />
         </g>
       </g>
     </g>
@@ -450,8 +459,7 @@ export const EdoTraveler: React.FC<{
         {/* 菅笠 (大きな円錐) */}
         <path d="M -94 -258 L 0 -322 L 94 -258 Z" fill={KRP.cream} stroke={KRP.ink} strokeWidth={5} />
         <path d="M -94 -258 Q 0 -244 94 -258" fill={KRP.cream} stroke={KRP.ink} strokeWidth={5} />
-        <line x1={-30} y1={-252} x2={-14} y2={-196} stroke={KRP.ink} strokeWidth={3.5} opacity={0.6} />
-        <line x1={30} y1={-252} x2={14} y2={-196} stroke={KRP.ink} strokeWidth={3.5} opacity={0.6} />
+        {/* 笠の紐は描かない: 目の高さ (y=-222) を横切って顔に線が乗るため (2026-11-01 作者指摘) */}
         {/* 振り分け荷物 (肩の棒 + 前後の包み) */}
         <line x1={-66} y1={-168} x2={70} y2={-152} stroke={TKP.woodDark} strokeWidth={9} strokeLinecap="round" />
         <g transform="translate(-84 -142)">
@@ -831,6 +839,9 @@ export const YukataPerson: React.FC<{
       <Person x={x} y={y} s={s} f={f} phase={phase} face={face} gaze={gaze} hair="none" cloth={TKP.yukata} clothDark="#5E80A6" />
       <g transform={`translate(${x} ${y}) scale(${s})`} filter="url(#wobble)">
         <g transform={`translate(0 ${bob})`}>
+          {/* Person に標準で付く胸ポケット (x18..44 / y-138..-118) を塗りつぶして消す。
+              浴衣に胸ポケットは付かないので、着せ替えのときは隠す (2026-11-01) */}
+          <rect x={14} y={-142} width={34} height={28} fill={TKP.yukata} />
           {/* V襟 (左前) */}
           <path d="M -30 -156 L 0 -108 L 30 -156" fill="none" stroke={KRP.white} strokeWidth={9} strokeLinecap="round" />
           <path d="M -30 -156 L 0 -108" fill="none" stroke={KRP.ink} strokeWidth={3.5} opacity={0.5} />
@@ -1173,12 +1184,44 @@ export const Ekiben: React.FC<{ x: number; y: number; s?: number; open?: boolean
 // キット⑧ 戦後〜現代日本 (序・9〜10章・結: 空港・売り場・個包装)
 // =====================================================================
 
-// 背景: 空港ロビー (大きな窓 + 外にジェット機)
-export const GendaiBg: React.FC<{ f: number; plane?: boolean }> = ({ f, plane = true }) => (
+// 背景: 空港ロビー (大きな窓 + 外にジェット機)。scenic=true で窓の外が観光地 (山・城・富士) になる
+export const GendaiBg: React.FC<{ f: number; plane?: boolean; scenic?: boolean }> = ({ f, plane = true, scenic = false }) => (
   <g>
     <rect x={-20} y={-20} width={W + 40} height={H + 40} fill={TKP.airport} opacity={0.5} />
     {/* 大きなガラス窓 */}
     <rect x={120} y={110} width={W - 240} height={540} rx={14} fill={KRP.blueSoft} opacity={0.6} stroke={KRP.ink} strokeWidth={6} filter="url(#wobbleSoft)" />
+    {scenic && (
+      <g filter="url(#wobbleSoft)">
+        {/* 窓の外: 観光地の風景 (旅行先の売り場だと一目でわかるように) */}
+        <rect x={128} y={560} width={W - 256} height={86} fill={KRP.green} opacity={0.28} />
+        {/* 太陽と雲 */}
+        <circle cx={1660} cy={200} r={52} fill={KRP.yellow} stroke={KRP.ink} strokeWidth={4.5} opacity={0.9} />
+        {[[360, 215], [1010, 170]].map(([cx, cy], i) => (
+          <g key={i} fill={KRP.white} stroke={KRP.ink} strokeWidth={3.5} opacity={0.92}>
+            <ellipse cx={cx - 44} cy={cy + 8} rx={38} ry={24} />
+            <ellipse cx={cx + 46} cy={cy + 10} rx={42} ry={22} />
+            <ellipse cx={cx} cy={cy - 8} rx={52} ry={30} />
+          </g>
+        ))}
+        {/* 山なみ */}
+        <path d="M 640 560 L 940 400 L 1240 560 Z" fill={TKP.forest} opacity={0.5} stroke={KRP.ink} strokeWidth={4} />
+        <path d="M 860 560 L 1120 440 L 1380 560 Z" fill={TKP.forest} opacity={0.65} stroke={KRP.ink} strokeWidth={4} />
+        {/* 雪をかぶった富士山 */}
+        <path d="M 1180 560 L 1480 280 L 1780 560 Z" fill={TKP.night} opacity={0.55} stroke={KRP.ink} strokeWidth={4.5} />
+        <path d="M 1408 348 L 1480 280 L 1552 348 Q 1516 366 1480 352 Q 1444 366 1408 348 Z" fill={KRP.white} stroke={KRP.ink} strokeWidth={3.5} />
+        {/* お城 (天守) */}
+        <g transform="translate(430 560)">
+          <path d="M -110 0 L -82 -64 L 82 -64 L 110 0 Z" fill={TKP.stone} stroke={KRP.ink} strokeWidth={4.5} />
+          <rect x={-64} y={-128} width={128} height={64} fill={KRP.white} opacity={0.96} stroke={KRP.ink} strokeWidth={4.5} />
+          <path d="M -84 -128 L -64 -158 L 64 -158 L 84 -128 Z" fill={TKP.iron} stroke={KRP.ink} strokeWidth={4.5} />
+          <rect x={-44} y={-206} width={88} height={48} fill={KRP.white} opacity={0.96} stroke={KRP.ink} strokeWidth={4.5} />
+          <path d="M -62 -206 L 0 -248 L 62 -206 Z" fill={TKP.iron} stroke={KRP.ink} strokeWidth={4.5} />
+          <path d="M -12 -254 Q 0 -270 12 -254" fill="none" stroke={KRP.brass} strokeWidth={5} strokeLinecap="round" />
+          <rect x={-40} y={-122} width={26} height={20} fill={KRP.ink} opacity={0.35} />
+          <rect x={14} y={-122} width={26} height={20} fill={KRP.ink} opacity={0.35} />
+        </g>
+      </g>
+    )}
     {[0, 1, 2, 3].map((i) => (
       <line key={i} x1={120 + (i + 1) * ((W - 240) / 5)} y1={110} x2={120 + (i + 1) * ((W - 240) / 5)} y2={650} stroke={KRP.ink} strokeWidth={4.5} opacity={0.55} />
     ))}
@@ -1239,8 +1282,12 @@ export const KashiBox: React.FC<{ x: number; y: number; s?: number; open?: boole
       <g>
         {/* 開いた箱: 個包装が2列 */}
         <rect x={-130} y={-50} width={260} height={110} rx={8} fill={KRP.cream} stroke={KRP.ink} strokeWidth={6} />
-        <path d="M -130 -50 L -150 -110 L 150 -110 L 130 -50" fill={KRP.yellow} opacity={0.9} stroke={KRP.ink} strokeWidth={5.5} />
-        {[[-104, -28], [-48, -28], [8, -28], [64, -28], [-76, 8], [-20, 8], [36, 8], [92, 8]].map(([px, py], i) => (
+        <path d="M -130 -50 L -150 -110 L 150 -110 L 130 -50" fill={KRP.red} opacity={0.88} stroke={KRP.ink} strokeWidth={5.5} />
+        {/* 個包装は 4列×2段。箱の内側は x -130..130 / y -50..60。
+            旧配置は下段を +28 ずらした千鳥だったため、右端が 92+44(+飾り7) = 143 で箱から13pxはみ出していた
+            (2026-11-01 作者指摘)。4×2の整列にして左右対称に収める:
+            x = -106..-106+3*56+44 = -106..106、y = -32..-2 / 6..36 */}
+        {[[-106, -32], [-50, -32], [6, -32], [62, -32], [-106, 6], [-50, 6], [6, 6], [62, 6]].map(([px, py], i) => (
           <g key={i} transform={`translate(${px} ${py})`}>
             <rect x={0} y={0} width={44} height={30} rx={6} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
             <path d="M 0 6 L -7 0 L 0 -4 M 44 6 L 51 0 L 44 -4" fill="none" stroke={KRP.ink} strokeWidth={3} opacity={0.6} />
@@ -1249,19 +1296,23 @@ export const KashiBox: React.FC<{ x: number; y: number; s?: number; open?: boole
       </g>
     ) : (
       <g>
-        {/* 閉じた箱 + 包装紙 + 掛け紙 */}
-        <rect x={-130} y={-62} width={260} height={124} rx={8} fill={KRP.yellow} opacity={0.92} stroke={KRP.ink} strokeWidth={6} />
+        {/* 閉じた箱 + 赤い包装紙 (白ドット柄) + 白い掛け紙 */}
+        <rect x={-130} y={-62} width={260} height={124} rx={8} fill={KRP.red} opacity={0.88} stroke={KRP.ink} strokeWidth={6} />
+        {([[-104, -36], [-62, -10], [-104, 18], [-62, 44], [62, -36], [104, -10], [62, 18], [104, 44]] as [number, number][]).map(([dx, dy], i) => (
+          <circle key={i} cx={dx} cy={dy} r={8} fill={KRP.white} opacity={0.55} />
+        ))}
         <rect x={-36} y={-62} width={72} height={124} fill={KRP.white} stroke={KRP.ink} strokeWidth={4.5} />
         <text x={0} y={14} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={36} fill={KRP.ink}>{label}</text>
-        <line x1={-130} y1={-30} x2={-36} y2={-30} stroke={KRP.ink} strokeWidth={3} opacity={0.35} />
-        <line x1={36} y1={-30} x2={130} y2={-30} stroke={KRP.ink} strokeWidth={3} opacity={0.35} />
+        <line x1={-130} y1={-30} x2={-36} y2={-30} stroke={KRP.ink} strokeWidth={3} opacity={0.3} />
+        <line x1={36} y1={-30} x2={130} y2={-30} stroke={KRP.ink} strokeWidth={3} opacity={0.3} />
       </g>
     )}
   </g>
 );
 
 // 脱酸素剤の小袋 (エージレス役・10章のからくり図解の主役)
-export const DatsusansoPack: React.FC<{ x: number; y: number; s?: number; rot?: number }> = ({ x, y, s = 1, rot = 0 }) => (
+// plain: 文字を描かない無地の袋 (小さく写すときや、文字が読めない大きさのときに使う。2026-11-01 作者指示)
+export const DatsusansoPack: React.FC<{ x: number; y: number; s?: number; rot?: number; plain?: boolean }> = ({ x, y, s = 1, rot = 0, plain = false }) => (
   <g transform={`translate(${x} ${y}) scale(${s}) rotate(${rot})`} filter="url(#wobble)">
     <rect x={-70} y={-46} width={140} height={92} rx={10} fill={KRP.white} stroke={KRP.ink} strokeWidth={5.5} />
     {/* 圧着のギザギザ縁 */}
@@ -1269,8 +1320,16 @@ export const DatsusansoPack: React.FC<{ x: number; y: number; s?: number; rot?: 
       <path key={i} d={`M -70 ${ey} l 10 4 l 10 -4 l 10 4 l 10 -4 l 10 4 l 10 -4 l 10 4 l 10 -4 l 10 4 l 10 -4 l 10 4 l 10 -4 l 10 4 l 10 -4`}
         fill="none" stroke={KRP.ink} strokeWidth={2.5} opacity={0.5} />
     ))}
-    <text x={0} y={-6} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={22} fill={KRP.ink}>だっさんそざい</text>
-    <text x={0} y={24} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={15} fill={KRP.red}>たべられません</text>
+    {plain ? (
+      // 無地のときは、のっぺりしないように淡い帯だけ入れる
+      <rect x={-46} y={-14} width={92} height={10} rx={5} fill={KRP.ink} opacity={0.14} />
+    ) : (
+      <>
+        {/* 7文字×22px=154px は袋の幅140pxからはみ出す。17px (119px) なら収まる */}
+        <text x={0} y={-6} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={17} fill={KRP.ink}>だっさんそざい</text>
+        <text x={0} y={24} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={15} fill={KRP.red}>たべられません</text>
+      </>
+    )}
   </g>
 );
 

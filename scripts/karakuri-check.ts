@@ -64,7 +64,7 @@ const scenes = data.scenes;
 const firstMotif = scenes.find((s) => /^[a-z]+\d_/.test(s.motif ?? ""))?.motif ?? "";
 const WORK = /^w[1-4]_/.test(firstMotif)
   ? { name: "「私は何者?」の4000年史", indexFile: "WatashiIndex.tsx", arrayName: "W_ALL_MOTIFS" }
-  : /^tb[1-5]_/.test(firstMotif)
+  : /^tb[1-6]_/.test(firstMotif)
     ? { name: "旅とお土産の歴史", indexFile: "TabiIndex.tsx", arrayName: "T_ALL_MOTIFS" }
     : { name: "自販機2000年史", indexFile: "Jihanki2000Index.tsx", arrayName: "J2_ALL_MOTIFS" };
 

@@ -13,8 +13,13 @@ import { W, H, FONT, abs, TBadge, ChapterDoor } from "./TabiShared";
 import {
   TKP, KaidoBg, MatsuTree, Shukuba, ShinmeiTorii,
   EdoTraveler, OnshiPerson, OfudaTag, TegataCard, KouChoubou, SenbetsuPack,
+  YuYado, YukataPerson,
 } from "./TabiKits";
 import { KaidoScroll } from "./TabiTravel";
+import {
+  GOKAIDO, WAKIKAIDO, JapanCoast, KaidoLabel, KaidoLegend, TjPin,
+  tjHead, tjPartial, tjmapXY,
+} from "./TabiJapanMap";
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 // Person / EdoTraveler と同じゆれ式 (かぶせ物を同期させる)
@@ -153,29 +158,77 @@ const Zeni: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) =
   </g>
 );
 
-// 関所の門 (柱 + 冠木 + 柵)
-const SekishoGate: React.FC<{ x: number; y: number; s?: number }> = ({ x, y, s = 1 }) => (
-  <g transform={`translate(${x} ${y}) scale(${s})`}>
-    {/* 左右の柵 */}
-    {[-1, 1].map((d) => (
-      <g key={d}>
-        {[0, 1, 2, 3].map((i) => (
-          <line key={i} x1={d * (210 + i * 70)} y1={0} x2={d * (210 + i * 70) + d * 16} y2={-128}
-            stroke={TKP.woodDark} strokeWidth={13} strokeLinecap="round" />
-        ))}
-        <line x1={d * 196} y1={-96} x2={d * 480} y2={-82} stroke={TKP.woodDark} strokeWidth={9} />
-        <line x1={d * 196} y1={-46} x2={d * 480} y2={-36} stroke={TKP.woodDark} strokeWidth={9} />
+// 関所の門 (柱 + 冠木 + 柵)。門は画面中央に置き、柵は span まで = 画面の外まで伸ばす。
+const SekishoGate: React.FC<{ x: number; y: number; s?: number; span?: number }> = ({
+  x, y, s = 1, span = 1120,
+}) => {
+  const n = Math.max(2, Math.floor((span - 210) / 88)); // 柵の支柱の本数 (片側)
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`}>
+      {/* 左右の柵 (画面外まで続く) */}
+      {[-1, 1].map((d) => (
+        <g key={d}>
+          {Array.from({ length: n }, (_, i) => {
+            const px = 210 + i * 88;
+            return (
+              <line key={i} x1={d * px} y1={2} x2={d * px + d * 14} y2={-126}
+                stroke={TKP.woodDark} strokeWidth={13} strokeLinecap="round" />
+            );
+          })}
+          <line x1={d * 196} y1={-96} x2={d * span} y2={-76}
+            stroke={TKP.woodDark} strokeWidth={9} strokeLinecap="round" />
+          <line x1={d * 196} y1={-46} x2={d * span} y2={-26}
+            stroke={TKP.woodDark} strokeWidth={9} strokeLinecap="round" />
+        </g>
+      ))}
+      {/* 門柱 + 冠木 + 小屋根 */}
+      <rect x={-186} y={-280} width={32} height={280} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
+      <rect x={154} y={-280} width={32} height={280} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
+      <rect x={-216} y={-312} width={432} height={34} rx={6} fill={TKP.woodLight} stroke={KRP.ink} strokeWidth={5} />
+      <path d="M -240 -312 L 0 -352 L 240 -312 Z" fill={TKP.iron} stroke={KRP.ink} strokeWidth={5} />
+      <text x={0} y={-326} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34}
+        fill={KRP.white}>関所</text>
+    </g>
+  );
+};
+
+// 空っぽの布団 (抜け参り用)。敷布団 + 掛け布団 + 枕、掛け布団の上端がめくれて裏地が見える。
+const NORI = "#2E3A33"; // 握り飯の海苔
+const FUTON_COVER = "#48597A"; // 掛け布団の表 (紺の木綿)
+const FUTON_LINING = "#E4EBF4"; // めくれた裏地 (白藍)
+const FUTON_EDGE = "#B9452F"; // 敷布団の縁どり (茜)
+const EmptyFuton: React.FC<{ x: number; y: number; s?: number; f?: number }> = ({ x, y, s = 1, f = 0 }) => {
+  const puff = Math.sin(f / 17) * 2; // ほんのり呼吸するような膨らみ
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`}>
+      {/* 敷布団 (奥が狭いパース) */}
+      <path d="M -246 -152 L 246 -152 L 310 66 L -310 66 Z"
+        fill={KRP.white} stroke={KRP.ink} strokeWidth={6} strokeLinejoin="round" />
+      <path d="M -224 -136 L 224 -136 L 282 50 L -282 50 Z"
+        fill="none" stroke={FUTON_EDGE} strokeWidth={5} opacity={0.55} strokeLinejoin="round" />
+      {/* 枕 (頭の側) */}
+      <g>
+        <rect x={-82} y={-142} width={164} height={58} rx={27}
+          fill={KRP.cream} stroke={KRP.ink} strokeWidth={5.5} />
+        <path d="M -82 -113 L 82 -113" stroke={KRP.ink} strokeWidth={3.5} opacity={0.3} />
       </g>
-    ))}
-    {/* 門柱 + 冠木 + 小屋根 */}
-    <rect x={-186} y={-280} width={32} height={280} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
-    <rect x={154} y={-280} width={32} height={280} fill={TKP.woodDark} stroke={KRP.ink} strokeWidth={5} />
-    <rect x={-216} y={-312} width={432} height={34} rx={6} fill={TKP.woodLight} stroke={KRP.ink} strokeWidth={5} />
-    <path d="M -240 -312 L 0 -352 L 240 -312 Z" fill={TKP.iron} stroke={KRP.ink} strokeWidth={5} />
-    <text x={0} y={-326} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34}
-      fill={KRP.white}>関所</text>
-  </g>
-);
+      {/* 掛け布団 (手前半分。近い辺はふっくら波打つ) */}
+      <path d={`M -268 ${-48 + puff} L 268 ${-48 + puff} L 300 40 Q 150 ${72 + puff} 0 62 Q -150 ${72 - puff} -300 40 Z`}
+        fill={FUTON_COVER} stroke={KRP.ink} strokeWidth={6} strokeLinejoin="round" />
+      {/* 刺し子 (縫い目) */}
+      {[-150, -50, 50, 150].map((qx) => (
+        <line key={qx} x1={qx} y1={-40 + puff} x2={qx * 1.12} y2={52}
+          stroke={FUTON_LINING} strokeWidth={3.5} opacity={0.4} />
+      ))}
+      {/* めくれた上端 = 裏地が見える */}
+      <path d={`M -268 ${-48 + puff} L 268 ${-48 + puff} L 244 ${-100 + puff} L -244 ${-100 + puff} Z`}
+        fill={FUTON_LINING} stroke={KRP.ink} strokeWidth={5.5} strokeLinejoin="round" />
+      {/* 右手前の角だけ大きく折り返し = ここから抜け出した感じ */}
+      <path d={`M 300 40 Q 306 -6 262 ${-30 + puff} Q 212 -2 186 64 Z`}
+        fill={FUTON_LINING} stroke={KRP.ink} strokeWidth={5.5} strokeLinejoin="round" />
+    </g>
+  );
+};
 
 // 高札場 (屋根つきの立て札)
 const Kousatsu: React.FC<{ x: number; y: number; s?: number; lines?: string[] }> = ({
@@ -238,13 +291,168 @@ const SceneCh3Door: React.FC<{ f: number }> = ({ f }) => (
   </AbsoluteFill>
 );
 
-// #55 街道が整備された: 絵巻スクロール (扉なし・見出しだけ)
-const SceneKaidoSeibi: React.FC<{ f: number }> = ({ f }) => (
-  <AbsoluteFill>
-    <KaidoScroll f={f} speed={8} caption="街道の整備" />
-    <TBadge />
-  </AbsoluteFill>
-);
+// #55 街道が整備された: 精巧な日本地図に、江戸 (日本橋) から街道が伸びる。
+//
+// 2026-11-01 作者指摘「東北・中国地方・九州・四国にも街道はなかったのか」への対応で、
+// 二段構えにした。
+//   前半 f4〜45   関東〜近畿に寄って五街道を1本ずつ引く (濃く太く・五色) …… 主役
+//   後半 f46〜102 日本全体まで引いて脇街道を9本足す (細く淡く・墨1色) …… 全国に広がる
+// このシーンの持ち時間は136フレーム。全部引き終わるのが遅いと「見る間もなく次へ」に
+// なってしまうので、最後の薩摩街道が f94 に、札が f102 に出そろうよう詰めてある
+// (旧版は最後の街道が f122 = 残り14フレームで、中国・四国・九州がほぼ映らなかった)。
+// 日本列島は画面に収まる大きさ (z=1 で x648〜1278 / y180〜836) なので、寄りを解けば
+// 北は青森から南は鹿児島まで1画面に入る。
+//
+// 札はズーム群の外 (画面座標) に置いて文字の大きさを一定に保つ。
+// 札の座標は「海の上」「他の札・線と重ならない」を1枚ずつ検算してある。
+const ZX = 1190, ZY = 560;   // 寄りの中心 (五街道が画面中央に来る点)
+const ZMAX = 1.95;           // 寄りの倍率。これ以上寄ると東北と九州が画面から出る
+
+// 五街道: [伸び始め, 伸び終わり]
+const KAIDO_TIMING: Array<[number, number]> = [
+  [10, 26], // 東海道
+  [16, 32], // 中山道
+  [22, 37], // 甲州道中
+  [26, 41], // 日光道中
+  [30, 45], // 奥州道中
+];
+// 五街道の札 (寄っているあいだだけ出す。引きに戻るとき消える)
+const KAIDO_LABEL_POS: Array<{ x: number; y: number; tail: [number, number] }> = [
+  { x: 909, y: 724, tail: [940, 660] }, // 東海道 (遠州灘の上)
+  { x: 715, y: 513, tail: [806, 564] }, // 中山道 (若狭沖 → 関ケ原)
+  { x: 1040, y: 419, tail: [991, 506] }, // 甲州道中 (信濃の北 → 諏訪)
+  { x: 1354, y: 404, tail: [1145, 401] }, // 日光道中 (常陸沖 → 日光)
+  { x: 1441, y: 277, tail: [1192, 352] }, // 奥州道中 (陸奥沖 → 白河)
+];
+
+// 脇街道: [伸び始め, 伸び終わり] と 札の位置・引き出し線の先 (すべて引き= z1 の画面座標)
+const WAKI_TIMING: Array<[number, number]> = [
+  [56, 74], // 奥州街道 (白河から先)
+  [59, 77], // 羽州街道
+  [62, 79], // 北国街道
+  [64, 81], // 北陸道
+  [66, 84], // 山陽道
+  [68, 86], // 山陰道
+  [71, 89], // 金毘羅・土佐街道
+  [73, 91], // 長崎街道
+  [76, 94], // 薩摩街道
+];
+const WAKI_LABEL_POS: Array<{ x: number; y: number; size: number; tail: [number, number] }> = [
+  { x: 1560, y: 300, size: 26, tail: [1232, 296] }, // 奥州街道 → 盛岡 (三陸沖)
+  { x: 1040, y: 250, size: 26, tail: [1179, 295] }, // 羽州街道 → 久保田 (男鹿の沖)
+  { x: 1085, y: 340, size: 26, tail: [1085, 453] }, // 北国街道 → 直江津 (越後沖を真下へ)
+  // 以下5枚は旧版で引き出し線が画面を横切るほど長く、どこを指しているか分からなかったので、
+  // 指す先の近くへ寄せた (2026-11-01)。いずれも海の上・札どうしは縦に60px以上あける。
+  { x: 806, y: 392, size: 26, tail: [1006, 491] },  // 北陸道 → 金沢 (能登の北西沖)
+  { x: 430, y: 630, size: 26, tail: [719, 652] },   // 山陽道 → 下関 (響灘のさらに西)
+  { x: 566, y: 520, size: 26, tail: [775, 600] },   // 山陰道 → 浜田 (日本海)
+  { x: 900, y: 758, size: 22, tail: [848, 677] },   // 金毘羅・土佐街道 → 高知 (土佐湾)
+  { x: 468, y: 706, size: 26, tail: [686, 697] },   // 長崎街道 → 佐賀 (玄界灘)
+  { x: 455, y: 782, size: 26, tail: [706, 742] },   // 薩摩街道 → 八代 (東シナ海)
+];
+
+const SceneKaidoSeibi: React.FC<{ f: number }> = ({ f }) => {
+  // 寄って (f4〜28)、五街道を引いて、また引く (f58〜80)
+  const zin = easeOut(seg(f, 4, 24));
+  const zout = easeOut(seg(f, 46, 66));
+  const z = 1 + (ZMAX - 1) * (zin - zout);
+  const zoomT = `translate(${ZX} ${ZY}) scale(${z}) translate(${-ZX} ${-ZY})`;
+  const draw = clamp01(seg(f, 0, 12)); // 地図そのものが現れる
+  const goFade = 1 - clamp01(seg(f, 44, 54)); // 五街道の札が消える
+  return (
+    <Frame f={f} seed={501} caption="街道の整備" capY={92}>
+      {/* 海 (ズームの外。画面いっぱい) */}
+      <rect x={-20} y={-20} width={W + 40} height={H + 40} fill={KRP.blueSoft} opacity={0.5} />
+      <g transform={zoomT}>
+        <JapanCoast sw={4.5 / z} opacity={draw} />
+        {/* 脇街道 (五街道の下に敷いて、五街道が必ず上に乗るようにする) */}
+        {WAKIKAIDO.map((k, i) => {
+          const [a, b] = WAKI_TIMING[i];
+          const t = easeOut(seg(f, a, b));
+          if (t <= 0) return null;
+          const head = tjHead(k.pts, t);
+          return (
+            <g key={k.key}>
+              {/* 海岸線の上を通る区間が多いので、白の下敷きを広めに取って線を浮かせる */}
+              <path d={tjPartial(k.pts, t)} fill="none" stroke={KRP.white}
+                strokeWidth={10 / z} strokeLinecap="round" strokeLinejoin="round" opacity={0.9} />
+              <path d={tjPartial(k.pts, t)} fill="none" stroke={k.color}
+                strokeWidth={4.4 / z} strokeLinecap="round" strokeLinejoin="round" />
+              {/* 下津井→丸亀は金毘羅船の海路なので点線 */}
+              {k.seaSeg && t >= 1 && (
+                <path d={tjPartial(k.pts.slice(k.seaSeg[0], k.seaSeg[1] + 1), 1)} fill="none"
+                  stroke={k.color} strokeWidth={4.4 / z} strokeDasharray={`${7 / z} ${6 / z}`} />
+              )}
+              {t < 1 && <circle cx={head[0]} cy={head[1]} r={7 / z} fill={k.color}
+                stroke={KRP.white} strokeWidth={2.5 / z} />}
+            </g>
+          );
+        })}
+        {/* 五街道 (江戸から1本ずつ伸びる) */}
+        {GOKAIDO.map((k, i) => {
+          const [a, b] = KAIDO_TIMING[i];
+          const t = easeOut(seg(f, a, b));
+          if (t <= 0) return null;
+          const head = tjHead(k.pts, t);
+          return (
+            <g key={k.key}>
+              {/* 下敷きの白線で、重なった街道どうしを見分けやすくする */}
+              <path d={tjPartial(k.pts, t)} fill="none" stroke={KRP.white}
+                strokeWidth={10 / z} strokeLinecap="round" strokeLinejoin="round" opacity={0.85} />
+              <path d={tjPartial(k.pts, t)} fill="none" stroke={k.color}
+                strokeWidth={5.5 / z} strokeLinecap="round" strokeLinejoin="round" />
+              {/* 宮→桑名は海路 (七里の渡し) なので、その区間だけ点線で上書き */}
+              {k.seaSeg && t >= 1 && (
+                <path d={tjPartial(k.pts.slice(k.seaSeg[0], k.seaSeg[1] + 1), 1)} fill="none"
+                  stroke={k.color} strokeWidth={5.5 / z} strokeDasharray={`${9 / z} ${8 / z}`} />
+              )}
+              {/* 先端の点 */}
+              {t < 1 && <circle cx={head[0]} cy={head[1]} r={9 / z} fill={k.color}
+                stroke={KRP.white} strokeWidth={3.5 / z} />}
+            </g>
+          );
+        })}
+        {/* 起点の江戸 (日本橋) と終点の京都 */}
+        {draw > 0.9 && (
+          <g>
+            <TjPin lon={135.772} lat={35.009} r={8 / z} sw={4 / z} />
+            <circle cx={tjmapXY(139.774, 35.684)[0]} cy={tjmapXY(139.774, 35.684)[1]}
+              r={13 / z} fill={KRP.white} stroke={KRP.red} strokeWidth={5.5 / z} />
+          </g>
+        )}
+      </g>
+
+      {/* --- 前半: 五街道の札 (寄っているあいだだけ) --- */}
+      {GOKAIDO.map((k, i) => {
+        const [, b] = KAIDO_TIMING[i];
+        const p = KAIDO_LABEL_POS[i];
+        return (
+          <KaidoLabel key={k.key} x={p.x} y={p.y} text={k.name} color={k.color}
+            size={32} t={seg(f, b - 4, b + 5) * goFade} tailTo={p.tail} />
+        );
+      })}
+      <KaidoLabel x={1254} y={591} text="江戸（日本橋）" color={KRP.ink} size={27}
+        t={seg(f, 12, 22) * goFade} tailTo={[1141, 534]} />
+      <KaidoLabel x={652} y={559} text="京都" color={KRP.ink} size={27}
+        t={seg(f, 26, 36) * goFade} tailTo={[735, 606]} />
+
+      {/* --- 後半: 脇街道の札 + 凡例 (引きに戻ってから) --- */}
+      {WAKIKAIDO.map((k, i) => {
+        const [, b] = WAKI_TIMING[i];
+        const p = WAKI_LABEL_POS[i];
+        return (
+          <KaidoLabel key={k.key} x={p.x} y={p.y} text={k.name} color={k.color}
+            size={p.size} t={seg(f, b - 2, b + 8)} tailTo={p.tail} sub />
+        );
+      })}
+      <KaidoLabel x={1400} y={468} text="五街道" color={KRP.red} size={28}
+        t={seg(f, 70, 82)} tailTo={[1175, 505]} />
+      <KaidoLabel x={1330} y={560} text="江戸" color={KRP.ink} size={26}
+        t={seg(f, 70, 82)} tailTo={[1168, 548]} sub />
+      <KaidoLegend x={1500} y={640} t={seg(f, 74, 86)} />
+    </Frame>
+  );
+};
 
 // #56 旅は原則自由ではない: 関所の門前で旅人が止められ、大きな✕
 const SceneSekishoBatsu: React.FC<{ f: number }> = ({ f }) => {
@@ -252,10 +460,11 @@ const SceneSekishoBatsu: React.FC<{ f: number }> = ({ f }) => {
   return (
     <Frame f={f} seed={502} caption="旅は原則、不自由" capX={430} capY={120}>
       <KaidoBg f={f} fuji={false} />
-      <SekishoGate x={1150} y={880} s={1.06} />
-      <Murabito x={1340} y={874} s={0.92} f={f} phase={2} face="normal" cloth={TKP.night} gaze={[-5, 0]} />
-      <EdoTraveler x={lerp(360, 700, walk)} y={886} s={1.0} f={f} face="worried" />
-      <Batsu x={940} y={420} s={2.4} t={seg(f, 42, 62)} />
+      {/* 関所は画面中央。柵は左右の画面外まで伸ばして「どこも通れない」を見せる */}
+      <SekishoGate x={960} y={884} s={1.06} span={1120} />
+      <Murabito x={1250} y={878} s={0.92} f={f} phase={2} face="normal" cloth={TKP.night} gaze={[-5, 0]} />
+      <EdoTraveler x={lerp(300, 672, walk)} y={890} s={1.0} f={f} face="worried" />
+      <Batsu x={960} y={286} s={2.6} t={seg(f, 42, 62)} />
     </Frame>
   );
 };
@@ -334,15 +543,16 @@ const SceneOmairiTouji: React.FC<{ f: number }> = ({ f }) => (
 
 // #60 「遊びに行きます」は通らない: 門番にそう言ったら✕
 const SceneAsobiBatsu: React.FC<{ f: number }> = ({ f }) => (
-  <Frame f={f} seed={506}>
+  // #56 より少し寄って、門番と旅人のやりとりを見せる (同じ絵の繰り返しに見せない)
+  <Frame f={f} seed={506} zoom={1.1 + easeOut(seg(f, 0, 70)) * 0.06} zx={960} zy={700}>
     <KaidoBg f={f} fuji={false} />
-    <SekishoGate x={1240} y={880} s={0.98} />
-    <Murabito x={1420} y={874} s={0.9} f={f} phase={2} cloth={TKP.night} gaze={[-5, 0]}
+    <SekishoGate x={960} y={884} s={1.0} span={1120} />
+    <Murabito x={1252} y={878} s={0.9} f={f} phase={2} cloth={TKP.night} gaze={[-5, 0]}
       face={f > 50 ? "worried" : "normal"} />
-    <EdoTraveler x={620} y={890} s={1.0} f={f} face="smile" />
-    <Bubble x={560} y={350} w={520} h={120} tailTo={[620, 560]} text="遊びに行きます！"
+    <EdoTraveler x={666} y={892} s={1.0} f={f} face="smile" />
+    <Bubble x={470} y={372} w={520} h={120} tailTo={[640, 580]} text="遊びに行きます！"
       size={46} t={seg(f, 8, 28)} />
-    <Batsu x={1050} y={400} s={2.0} t={seg(f, 48, 66)} />
+    <Batsu x={1420} y={356} s={2.0} t={seg(f, 48, 66)} />
   </Frame>
 );
 
@@ -350,18 +560,19 @@ const SceneAsobiBatsu: React.FC<{ f: number }> = ({ f }) => (
 const SceneIseMaru: React.FC<{ f: number }> = ({ f }) => {
   const show = seg(f, 30, 48);
   return (
-    <Frame f={f} seed={507}>
+    // #60 と対になる構図。こちらは門をくぐれるので、カメラは門の正面に据える
+    <Frame f={f} seed={507} zoom={1.08} zx={960} zy={720}>
       <KaidoBg f={f} fuji={false} />
-      <SekishoGate x={1240} y={880} s={0.98} />
-      <Murabito x={1420} y={874} s={0.9} f={f} phase={2} cloth={TKP.night} gaze={[-5, 0]}
+      <SekishoGate x={960} y={884} s={1.0} span={1120} />
+      <Murabito x={1252} y={878} s={0.9} f={f} phase={2} cloth={TKP.night} gaze={[-5, 0]}
         face={f > 60 ? "smile" : "normal"} />
-      <EdoTraveler x={620} y={890} s={1.0} f={f} face="smile" />
-      <Bubble x={540} y={330} w={600} h={120} tailTo={[620, 560]} text="お伊勢参りに行きます"
+      <EdoTraveler x={666} y={892} s={1.0} f={f} face="smile" />
+      <Bubble x={482} y={352} w={600} h={120} tailTo={[640, 580]} text="お伊勢参りに行きます"
         size={44} t={seg(f, 6, 26)} />
       {show > 0 && <g opacity={clamp01(show)}>
-        <TegataCard x={830} y={lerp(700, 620, easeOut(show))} s={0.9} rot={-6} />
+        <TegataCard x={836} y={lerp(720, 648, easeOut(show))} s={0.9} rot={-6} />
       </g>}
-      <Maru x={1050} y={400} s={2.0} t={seg(f, 56, 74)} />
+      <Maru x={1420} y={356} s={2.0} t={seg(f, 56, 74)} />
     </Frame>
   );
 };
@@ -452,26 +663,56 @@ const SceneSenryu: React.FC<{ f: number }> = ({ f }) => (
 );
 
 // #66 本命の神様が「ついで」: 大きな遊び vs 小さな鳥居
+// 大小の対比をはっきりさせるための点線の囲み
+const DashBox: React.FC<{ x1: number; y1: number; x2: number; y2: number; t?: number; color?: string }> =
+  ({ x1, y1, x2, y2, t = 1, color = KRP.ink }) => {
+    const o = clamp01(t);
+    return o <= 0 ? null : (
+      <rect x={x1} y={y1} width={x2 - x1} height={y2 - y1} rx={24} fill="none"
+        stroke={color} strokeWidth={5} strokeDasharray="16 13" opacity={o * 0.65} />
+    );
+  };
+
 const SceneTsuide: React.FC<{ f: number }> = ({ f }) => (
-  <Frame f={f} seed={512}>
+  // 「大きい＝本命／小さい＝ついで」の逆転が一目で分かるよう、
+  // 遊びの塊を大きく・神様を小さく囲って並べる。
+  <Frame f={f} seed={512} caption="本命と ついで が 逆さま" capY={116}>
     <KaidoBg f={f} fuji={false} />
-    {/* 左: 芝居と茶屋 (大きい) */}
+    {/* 左: 遊び (大きい = 実際の本命)
+        2026-11-01 作者指摘で作り直し。
+        ・芝居の幟をやめた (縦書きの字が回って読めず、旗1本では「遊び」が伝わらなかった)
+        ・茶屋だけでは寂しいので、江戸の参詣でいちばん多かった「湯治 (温泉)」の湯宿と、
+          実際に遊んでいる人を足して、通りがにぎわって見えるようにした */}
+    <DashBox x1={170} y1={548} x2={1070} y2={874} t={seg(f, 10, 26)} color={KRP.orange} />
     <g transform={`translate(0 ${bobOf(f, 1) * 0.4})`}>
-      <Shukuba x={520} y={840} s={1.3} sign="茶屋" />
-      <g transform="translate(830 840)">
-        <line x1={0} y1={0} x2={0} y2={-420} stroke={TKP.woodDark} strokeWidth={12} strokeLinecap="round" />
-        <path d={`M 0 -416 Q 70 ${-400 + Math.sin(f / 9) * 8} 120 -380 L 118 -180 Q 64 ${-200 - Math.sin(f / 9) * 8} 4 -214 Z`}
-          fill={KRP.red} opacity={0.9} stroke={KRP.ink} strokeWidth={5} />
-        <text x={64} y={-280} textAnchor="middle" fontFamily={FONT} fontWeight={900}
-          fontSize={44} fill={KRP.white} transform="rotate(90 64 -280)">芝居</text>
+      <Shukuba x={430} y={848} s={0.82} sign="茶屋" />
+      <YuYado x={856} y={848} s={0.78} />
+      {/* 湯宿の湯けむり (屋根のむこうから立ちのぼる) */}
+      {/* 空が淡いクリームなので、TKP.steam (ほぼ白) では消えてしまう。灰みのある白で描く */}
+      <g opacity={0.8} stroke="#D3D8D2" fill="none" strokeLinecap="round">
+        {/* 点線の囲み (上端 y=548) からはみ出さない高さで止める */}
+        <path d={`M 800 640 C ${786 + Math.sin(f / 17) * 10} 614 ${824 + Math.sin(f / 13) * 10} 592 ${806 + Math.sin(f / 19) * 12} 566`}
+          strokeWidth={24} />
+        <path d={`M 916 646 C ${902 + Math.sin((f + 30) / 15) * 10} 620 ${940 + Math.sin(f / 12) * 9} 600 ${922 + Math.sin((f + 50) / 21) * 12} 578`}
+          strokeWidth={19} />
       </g>
-      <TagPlate x={520} y={430} text="本命？" size={40} t={seg(f, 20, 40)} fill={KRP.yellow} />
     </g>
-    {/* 右: 小さな鳥居 (ついで扱い) */}
-    <ShinmeiTorii x={1540} y={850} s={0.62} />
-    <TagPlate x={1540} y={430} text="ついで" size={38} t={seg(f, 48, 68)} color={KRP.red} />
-    <path d={`M 1180 700 Q 1320 660 1424 700`} fill="none" stroke={KRP.ink} strokeWidth={6}
-      strokeDasharray="14 12" opacity={clamp01(seg(f, 40, 60)) * 0.7} />
+    {/* 遊んでいる人 (茶屋の前で一服・湯宿へ向かう湯治客) */}
+    <EdoTraveler x={262} y={856} s={0.74} f={f} phase={4} face="smile" />
+    <YukataPerson x={668} y={858} s={0.74} f={f} phase={9} face="smile" gaze={[5, 0]} />
+    <TagPlate x={560} y={326} text="遊び＝本命" size={46} t={seg(f, 18, 38)} fill={KRP.yellow} />
+    {/* 右: 神様 (小さい = ついで扱い) */}
+    <DashBox x1={1332} y1={652} x2={1672} y2={836} t={seg(f, 36, 52)} color={KRP.red} />
+    <ShinmeiTorii x={1502} y={822} s={0.44} />
+    <TagPlate x={1502} y={590} text="神様＝ついで" size={34} t={seg(f, 44, 64)} color={KRP.red} />
+    {/* 本来の大きさは逆、を示す上下の矢印 */}
+    <g opacity={clamp01(seg(f, 56, 72)) * 0.8}>
+      <path d="M 1166 492 Q 1260 420 1352 540" fill="none" stroke={KRP.ink} strokeWidth={6}
+        strokeDasharray="15 12" strokeLinecap="round" />
+      {/* 矢じりは曲線の終点での接線 (1352-1260, 540-420) に合わせて置く。
+          旧版は決め打ちの三角で、線の向きとずれて折れ曲がって見えた (2026-11-01修正) */}
+      <path d="M 1352 540 L 1321 524 L 1344 505 Z" fill={KRP.ink} />
+    </g>
   </Frame>
 );
 
@@ -522,13 +763,14 @@ const SceneMudan: React.FC<{ f: number }> = ({ f }) => {
 const SceneNukemairi: React.FC<{ f: number }> = ({ f }) => (
   <Frame f={f} seed={515}>
     <YoriaiStage f={f} />
-    {/* 空っぽの布団 */}
-    <g transform="translate(560 830)">
-      <ellipse cx={0} cy={0} rx={300} ry={74} fill={KRP.blueSoft} stroke={KRP.ink} strokeWidth={6} />
-      <ellipse cx={-210} cy={-40} rx={92} ry={36} fill={KRP.white} stroke={KRP.ink} strokeWidth={5} />
-      <text x={40} y={14} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={34}
-        fill={KRP.ink} opacity={0.55}>もぬけのから</text>
+    {/* 畳の縁 (布団まわりだけ入れて和室らしさを足す) */}
+    <g opacity={0.5}>
+      <path d="M 628 690 L 652 690 L 538 1100 L 508 1100 Z" fill={TKP.night} />
+      <path d="M 1268 690 L 1292 690 L 1414 1100 L 1386 1100 Z" fill={TKP.night} />
     </g>
+    {/* 空っぽの布団 (敷布団 + 掛け布団 + 枕。掛け布団の上端がめくれている) */}
+    <EmptyFuton x={606} y={872} s={0.96} f={f} />
+    <TagPlate x={606} y={624} text="もぬけのから" size={34} t={seg(f, 28, 48)} />
     {/* 置き手紙 (ぽんと目立つ) */}
     <g transform={`translate(1270 ${lerp(560, 640, easeOut(seg(f, 8, 30)))}) rotate(-4) scale(${pop(seg(f, 8, 30))})`}>
       <rect x={-230} y={-140} width={460} height={280} rx={10} fill={KRP.white} stroke={KRP.ink} strokeWidth={6.5} />
@@ -545,12 +787,13 @@ const SceneOtogameNashi: React.FC<{ f: number }> = ({ f }) => (
   <Frame f={f} seed={516}>
     <YoriaiStage f={f} />
     <Murabito x={700} y={940} s={1.15} f={f} phase={1} face="surprised" cloth={TKP.night} gaze={[4, -3]} />
-    <g transform={`translate(880 ${640 + bobOf(f, 1)}) rotate(-6)`}>
+    <g transform={`translate(990 ${700 + bobOf(f, 1)}) rotate(-6)`}>
       <rect x={-130} y={-86} width={260} height={172} rx={8} fill={KRP.white} stroke={KRP.ink} strokeWidth={5.5} />
       <text x={0} y={-24} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={KRP.ink}>伊勢へ</text>
       <text x={0} y={26} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={KRP.ink}>行ってきます</text>
     </g>
-    <Bubble x={1340} y={380} w={480} h={130} tailTo={[820, 660]} text="なら仕方ない"
+    {/* ふきだしは主人の頭の上。しっぽは置き手紙の上を通して文字にかぶせない */}
+    <Bubble x={1270} y={330} w={460} h={128} tailTo={[900, 608]} text="なら仕方ない"
       size={44} t={seg(f, 30, 50)} />
     <Maru x={1340} y={620} s={1.8} t={seg(f, 56, 74)} />
     <TagPlate x={430} y={300} text="おとがめなし" size={40} t={seg(f, 66, 86)} fill={KRP.yellow} />
@@ -563,13 +806,23 @@ const SceneSegyou: React.FC<{ f: number }> = ({ f }) => (
     <KaidoBg f={f} />
     <Shukuba x={1460} y={840} s={1.1} sign="宿" />
     <EdoTraveler x={520} y={900} s={1.02} f={f} face="smile" />
-    <Murabito x={1000} y={906} s={0.98} f={f} phase={3} face="smile" cloth={TKP.terracotta} gaze={[-5, 0]} />
+    {/* 宿の主人。次の #72 にも同じ人が出るので、服は紺 (TKP.night) で固定する。
+        旧版はここだけ朱 (terracotta) で、2枚つづけて見ると別人に見えた (2026-11-01 作者指摘)。
+        旅人の藍 (TKP.noren) より濃いので、並んでも見分けはつく */}
+    <Murabito x={1000} y={906} s={0.98} f={f} phase={3} face="smile" cloth={TKP.night} gaze={[-5, 0]} />
     {/* 差し出すおにぎりのお盆 */}
     <g transform={`translate(830 ${706 + bobOf(f, 3)})`}>
       <ellipse cx={0} cy={16} rx={100} ry={24} fill={TKP.woodLight} stroke={KRP.ink} strokeWidth={5} />
       {[-46, 0, 46].map((ox) => (
-        <path key={ox} d={`M ${ox - 28} 10 L ${ox} -28 L ${ox + 28} 10 Z`}
-          fill={KRP.white} stroke={KRP.ink} strokeWidth={4.5} />
+        <g key={ox}>
+          {/* 握り飯 (角を丸めた三角) */}
+          <path d={`M ${ox - 30} 12 Q ${ox - 32} 2 ${ox - 26} -10 L ${ox - 6} -30 Q ${ox} -34 ${ox + 6} -30 L ${ox + 26} -10 Q ${ox + 32} 2 ${ox + 30} 12 Z`}
+            fill={KRP.white} stroke={KRP.ink} strokeWidth={4.5} strokeLinejoin="round" />
+          {/* 海苔 (下側にきちんと巻く) */}
+          <path d={`M ${ox - 29} 12 Q ${ox - 31} 2 ${ox - 26.5} -8 L ${ox + 26.5} -8 Q ${ox + 31} 2 ${ox + 29} 12 Z`}
+            fill={NORI} stroke={KRP.ink} strokeWidth={3.5} strokeLinejoin="round" />
+          <line x1={ox - 26.5} y1={-8} x2={ox + 26.5} y2={-8} stroke={KRP.ink} strokeWidth={3.5} />
+        </g>
       ))}
     </g>
     <TagPlate x={700} y={430} text="タダ飯" size={40} t={seg(f, 24, 44)} fill={KRP.yellow} />
@@ -578,31 +831,80 @@ const SceneSegyou: React.FC<{ f: number }> = ({ f }) => (
 );
 
 // #72 相手は神様、止めたらバチが当たる: 神様のあかりに恐縮する人
+// 雷 (バチ) 1本。start フレームから数フレームだけ強く光る
+const Bolt: React.FC<{ d: string; f: number; start: number; width?: number }> = ({ d, f, start, width = 12 }) => {
+  const k = f - start;
+  if (k < 0 || k > 14) return null;
+  const a = k < 3 ? 1 : k < 6 ? 0.45 : k < 9 ? 0.95 : 0.3 + Math.max(0, (14 - k) / 10) * 0.5;
+  return (
+    <g opacity={a}>
+      {/* 光のにじみ */}
+      <path d={d} fill="none" stroke={KRP.white} strokeWidth={width + 12} strokeLinejoin="round"
+        strokeLinecap="round" opacity={0.5} />
+      <path d={d} fill="none" stroke={KRP.yellow} strokeWidth={width + 5} strokeLinejoin="round" strokeLinecap="round" />
+      <path d={d} fill="none" stroke={KRP.orange} strokeWidth={width} strokeLinejoin="round" strokeLinecap="round" />
+    </g>
+  );
+};
+
 const SceneKamiBachi: React.FC<{ f: number }> = ({ f }) => {
   const pulse = 1 + Math.sin(f / 11) * 0.05;
+  // v2修正: 「バチが当たる」を雷雨で見せる (暗い雲・雨・まわりに落ちる雷)
+  const storm = seg(f, 4, 24);
+  // 雷が光った瞬間だけ画面全体が白くまたたく
+  const flash = [30, 52, 70, 92, 110].reduce((m, s) => {
+    const k = f - s;
+    return k >= 0 && k < 5 ? Math.max(m, (5 - k) / 5) : m;
+  }, 0);
   return (
-    <Frame f={f} seed={518} caption="相手は神様" capX={430} capY={110}>
+    <Frame f={f} seed={518} caption="相手は神様" capX={474} capY={128}>
       <KaidoBg f={f} fuji={false} />
+      {/* --- 雷雨 --- */}
+      {/* 空を暗くする */}
+      <rect x={-20} y={-20} width={W + 40} height={H + 40} fill="#3A4455" opacity={0.42 * storm} />
+      {/* 雨雲 (3かたまり) */}
+      {[{ x: 330, y: 150, s: 1.0 }, { x: 960, y: 108, s: 1.25 }, { x: 1600, y: 160, s: 0.95 }].map((c, i) => (
+        <g key={i} transform={`translate(${c.x} ${c.y - (1 - storm) * 140}) scale(${c.s})`} opacity={storm}>
+          <path d="M -200 40 Q -210 -30 -140 -40 Q -120 -96 -40 -88 Q 10 -130 80 -92 Q 160 -96 170 -34 Q 220 -20 206 40 Z"
+            fill="#6B7585" stroke={KRP.ink} strokeWidth={6} strokeLinejoin="round" />
+          <path d="M -150 20 Q -90 -14 -20 10 Q 50 -16 120 14" fill="none" stroke="#505A6B" strokeWidth={7}
+            strokeLinecap="round" opacity={0.8} />
+        </g>
+      ))}
+      {/* 雨 (斜めの線がざあざあ降る) */}
+      {Array.from({ length: 46 }, (_, i) => {
+        const x0 = ((i * 211) % 1960) - 20;
+        const y0 = ((i * 137 + f * 26) % 760) + 180;
+        return (
+          <line key={i} x1={x0} y1={y0} x2={x0 - 22} y2={y0 + 62} stroke={KRP.blueSoft}
+            strokeWidth={4} strokeLinecap="round" opacity={0.55 * storm} />
+        );
+      })}
+      {/* 雷 (まわりにごろごろ落ちる。主人の体には当てない) */}
+      <Bolt f={f} start={30} d="M 300 210 L 232 400 L 318 388 L 236 620" />
+      <Bolt f={f} start={52} d="M 1640 220 L 1572 404 L 1664 392 L 1596 640" width={11} />
+      <Bolt f={f} start={70} d="M 1114 300 L 1046 486 L 1138 474 L 1072 700" width={10} />
+      <Bolt f={f} start={92} d="M 560 230 L 498 408 L 586 396 L 524 596" width={10} />
+      <Bolt f={f} start={110} d="M 1420 240 L 1356 424 L 1446 412 L 1388 652" width={11} />
+      {/* 落雷の瞬間のまたたき */}
+      {flash > 0 && <rect x={-20} y={-20} width={W + 40} height={H + 40} fill={KRP.white} opacity={flash * 0.38} />}
       {/* 神様のあかり (抽象的な光。特定の宗教の絵にしない) */}
-      <g transform={`translate(1380 300) scale(${pulse * pop(seg(f, 6, 26))})`}>
-        <circle cx={0} cy={0} r={64} fill={KRP.yellow} stroke={KRP.ink} strokeWidth={6} />
-        <circle cx={0} cy={0} r={36} fill={KRP.white} opacity={0.55} />
+      {/* 神様のあかりと宿の主人を画面の真ん中に据える (旅人は出さない) */}
+      <g transform={`translate(960 296) scale(${pulse * pop(seg(f, 6, 26))})`}>
+        <circle cx={0} cy={0} r={70} fill={KRP.yellow} stroke={KRP.ink} strokeWidth={6} />
+        <circle cx={0} cy={0} r={40} fill={KRP.white} opacity={0.55} />
         {Array.from({ length: 10 }, (_, i) => {
           const a = (i / 10) * Math.PI * 2 + f / 90;
           return (
-            <line key={i} x1={Math.cos(a) * 84} y1={Math.sin(a) * 84}
-              x2={Math.cos(a) * 122} y2={Math.sin(a) * 122}
+            <line key={i} x1={Math.cos(a) * 90} y1={Math.sin(a) * 90}
+              x2={Math.cos(a) * 130} y2={Math.sin(a) * 130}
               stroke={KRP.ink} strokeWidth={5.5} strokeLinecap="round" />
           );
         })}
       </g>
-      {/* 稲妻 (バチ) */}
-      <path d="M 1310 420 L 1220 560 L 1282 556 L 1180 720" fill="none" stroke={KRP.orange}
-        strokeWidth={13} strokeLinejoin="round" strokeLinecap="round"
-        opacity={seg(f, 44, 50) > 0 ? 0.5 + Math.sin(f / 3) * 0.4 : 0} />
-      <Murabito x={1010} y={920} s={1.05} f={f} phase={2} face="worried" cloth={TKP.night} gaze={[6, -6]} />
-      <EdoTraveler x={440} y={906} s={0.98} f={f} face="smile" />
-      <TagPlate x={1430} y={620} text="止めたらバチ" size={38} t={seg(f, 56, 76)} color={KRP.red} />
+      {/* 服の紺は #71 の宿の主人とそろえてある (同じ人物として見せる) */}
+      <Murabito x={960} y={930} s={1.05} f={f} phase={2} face="worried" cloth={TKP.night} gaze={[4, -6]} />
+      <TagPlate x={1452} y={596} text="止めたらバチ" size={38} t={seg(f, 56, 76)} color={KRP.red} />
     </Frame>
   );
 };
@@ -613,7 +915,11 @@ const SceneYonhyaku: React.FC<{ f: number }> = ({ f }) => {
   const man = Math.floor(n / 10000);
   return (
     <Frame f={f} seed={519}
-      over={<Stamp x={130} y={226} text="文政13年" size={50} />}>
+      over={<>
+        <Stamp x={130} y={226} text="文政13年" size={50} />
+        {/* 西暦も添える (文政13年 = 1830年) */}
+        <Stamp x={146} y={340} text="＝1830年" size={34} opacity={0.82} />
+      </>}>
       <KaidoBg f={f} fuji={false} />
       {/* 宮川の渡し: 川の帯 + 舟 */}
       <rect x={-20} y={700} width={W + 40} height={180} fill={KRP.blueSoft} opacity={0.9} />
@@ -855,9 +1161,10 @@ const SceneSenbetsu: React.FC<{ f: number }> = ({ f }) => (
     {[0, 1, 2, 3].map((i) => {
       const t = easeOut(seg(f, 14 + i * 12, 54 + i * 12));
       const sx = [360, 620, 1310, 1570][i];
-      const px = lerp(sx, 960 + (i < 2 ? -70 : 70), t);
-      const py = lerp(620, 700, t) - Math.sin(t * Math.PI) * 140;
-      return <SenbetsuPack key={i} x={px} y={py} s={0.8} />;
+      // 顔にも体にもかぶらないよう、代表の左右の畳の上に振り分けて置く
+      const px = lerp(sx, [658, 836, 1084, 1262][i], t);
+      const py = lerp(620, [884, 838, 838, 884][i], t) - Math.sin(t * Math.PI) * 150;
+      return <SenbetsuPack key={i} x={px} y={py} s={0.72} />;
     })}
     <TagPlate x={960} y={300} text="餞別" size={48} t={seg(f, 50, 70)} fill={KRP.yellow} />
   </Frame>
@@ -879,11 +1186,15 @@ const SceneWarikan: React.FC<{ f: number }> = ({ f }) => (
         return (
           <g key={i} transform={`translate(${-120 + i * 260} 0) scale(${t})`}>
             <Zeni x={0} y={-30} s={1.5} />
-            {/* 出した人の小さな顔 */}
-            <circle cx={0} cy={66} r={34} fill={KRP.white} stroke={KRP.ink} strokeWidth={5} />
-            <circle cx={-11} cy={62} r={4.5} fill={KRP.ink} />
-            <circle cx={11} cy={62} r={4.5} fill={KRP.ink} />
-            <path d="M -10 78 Q 0 86 10 78" fill="none" stroke={KRP.ink} strokeWidth={4} />
+            {/* 出した人の小さな顔 (手ぬぐいの色を一人ずつ変えて村人らしく) */}
+            <circle cx={0} cy={66} r={34} fill={KRP.cream} stroke={KRP.ink} strokeWidth={5} />
+            <path d="M -32 58 Q 0 22 32 58 Z" fill={[TKP.yukata, TKP.terracotta, TKP.forest][i]}
+              stroke={KRP.ink} strokeWidth={4.5} strokeLinejoin="round" />
+            <circle cx={-19} cy={74} r={6.5} fill={KRP.red} opacity={0.3} />
+            <circle cx={19} cy={74} r={6.5} fill={KRP.red} opacity={0.3} />
+            <circle cx={-11} cy={66} r={4.5} fill={KRP.ink} />
+            <circle cx={11} cy={66} r={4.5} fill={KRP.ink} />
+            <path d="M -10 82 Q 0 90 10 82" fill="none" stroke={KRP.ink} strokeWidth={4} />
             {i < 2 && (
               <text x={140} y={16} textAnchor="middle" fontFamily={FONT} fontWeight={900}
                 fontSize={64} fill={KRP.ink}>+</text>
@@ -903,15 +1214,17 @@ const SceneTebura: React.FC<{ f: number }> = ({ f }) => (
     <KaidoBg f={f} />
     <ShinmeiTorii x={1660} y={840} s={0.7} />
     <EdoTraveler x={860} y={920} s={1.2} f={f} face="worried" />
-    {/* 空っぽの両手 (ひらいた手のひら) */}
-    {[-1, 1].map((d) => (
-      <g key={d} transform={`translate(${860 + d * 160} ${640 + bobOf(f, 0)})`}>
-        <circle cx={0} cy={0} r={34} fill={KRP.white} stroke={KRP.ink} strokeWidth={5.5} />
-        {[-14, 0, 14].map((ox) => (
-          <line key={ox} x1={ox} y1={-28} x2={ox * 1.3} y2={-52} stroke={KRP.ink} strokeWidth={5} strokeLinecap="round" />
-        ))}
-      </g>
-    ))}
+    {/* 持って帰るはずの土産包みが「ない」ことを、点線の空っぽ包みで見せる */}
+    <g opacity={clamp01(seg(f, 20, 40)) * 0.75}>
+      <path d="M -88 44 Q -98 -22 -56 -48 L 56 -48 Q 98 -22 88 44 Z"
+        transform="translate(534 788)" fill="none" stroke={KRP.grayDark}
+        strokeWidth={6} strokeDasharray="15 12" strokeLinejoin="round" />
+      <path d="M -56 -48 Q -22 -88 0 -52 Q 22 -88 56 -48"
+        transform="translate(534 788)" fill="none" stroke={KRP.grayDark}
+        strokeWidth={6} strokeDasharray="15 12" strokeLinejoin="round" />
+      <text x={534} y={808} textAnchor="middle" fontFamily={FONT} fontWeight={900}
+        fontSize={62} fill={KRP.grayDark} opacity={0.6}>?</text>
+    </g>
     <Batsu x={860} y={430} s={1.9} t={seg(f, 40, 58)} />
     {/* 頭に浮かぶ村のみんな */}
     <g opacity={clamp01(seg(f, 56, 76))}>
@@ -1008,9 +1321,10 @@ const SceneMiyake: React.FC<{ f: number }> = ({ f }) => {
       <g opacity={clamp01(seg(f, 30, 48))}>
         <OfudaTag x={960} y={640} s={0.72} />
       </g>
-      <TagPlate x={430} y={420} text="宮笥（みやけ）" size={42} t={seg(f, 44, 64)} fill={KRP.yellow} />
-      <TagPlate x={385} y={530} text="＝ 神様の器" size={34} t={seg(f, 56, 76)} />
-      <TagPlate x={1490} y={420} text="有力とされる説" size={32} t={seg(f, 70, 88)} />
+      {/* 説明は1枚にまとめて大きく、鳥居の真上 (画面中央) に置く */}
+      <TagPlate x={960} y={184} text="宮笥（みやけ）＝ 神様の器" size={50}
+        t={seg(f, 44, 64)} fill={KRP.yellow} />
+      <TagPlate x={1498} y={430} text="有力とされる説" size={36} t={seg(f, 70, 88)} />
     </Frame>
   );
 };
@@ -1120,7 +1434,7 @@ const SceneOnshiFour: React.FC<{ f: number }> = ({ f }) => {
     {
       x: 1490, y: 380, label: "道案内",
       icon: <g><line x1={0} y1={40} x2={0} y2={-56} stroke={TKP.woodDark} strokeWidth={10} strokeLinecap="round" />
-        <path d="M -8 -56 L -8 -20 L 66 -38 Z" fill={KRP.white} stroke={KRP.ink} strokeWidth={5} /></g>,
+        <path d="M -8 -56 L -8 -20 L 66 -38 Z" fill={KRP.red} stroke={KRP.ink} strokeWidth={5} /></g>,
     },
     {
       x: 430, y: 700, label: "祈祷",
@@ -1164,12 +1478,15 @@ const SceneHitoriSanyaku: React.FC<{ f: number }> = ({ f }) => (
     {["旅行代理店", "ホテル", "営業マン"].map((label, i) => {
       const t = easeOut(seg(f, 8 + i * 16, 42 + i * 16));
       if (t <= 0) return null;
-      const sx = [300, 960, 1620][i];
-      const px = lerp(sx, 960, t * 0.55);
-      const py = lerp(260 + (i === 1 ? -60 : 0), 480 + i * 56, t);
+      // 札は左・上・右に配置し、引き出し線は御師の輪郭の手前で止める (体を貫かない)
+      const from = [[196, 332], [960, 176], [1726, 332]][i];
+      const dest = [[430, 468], [960, 312], [1482, 468]][i];
+      const aim = [[876, 592], [960, 528], [1044, 592]][i];
+      const px = lerp(from[0], dest[0], t);
+      const py = lerp(from[1], dest[1], t);
       return (
         <g key={i}>
-          <line x1={px} y1={py + 36} x2={960} y2={660} stroke={KRP.ink} strokeWidth={4.5}
+          <line x1={px} y1={py + 36} x2={aim[0]} y2={aim[1]} stroke={KRP.ink} strokeWidth={4.5}
             strokeDasharray="10 9" opacity={0.4 * t} />
           <TagPlate x={px} y={py} text={label} size={40} fill={[KRP.blueSoft, KRP.yellow, KRP.white][i]} />
         </g>

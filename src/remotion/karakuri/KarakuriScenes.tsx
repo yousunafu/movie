@@ -1527,8 +1527,11 @@ const SceneConcept: React.FC<{ f: number; text: string }> = ({ f, text }) => {
 
 // カードが文全体を表示するか (字幕の二重表示を防ぐ)
 // クイズカードも文をカード内に出すので、字幕は重ねない (二重表示を防ぐ)
+// ただし j2_/w*_/tb*_ は専用の絵 (ConclusionCard ではない) を描くので、
+// type:"card" でも文は絵の中に出ない → 字幕を消してはいけない (字幕ゼロ事故を防ぐ)
+const HAS_OWN_ART = /^(j2_|w[1-4]_|tb[1-6]_)/;
 export const karakuriCardShowsFullText = (scene: Scene): boolean =>
-  scene.type === "card" && !scene.isEnding;
+  scene.type === "card" && !scene.isEnding && !HAS_OWN_ART.test(scene.motif);
 
 export const KarakuriSceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
   const f = useCurrentFrame();

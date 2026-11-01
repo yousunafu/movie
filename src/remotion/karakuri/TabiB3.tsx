@@ -335,9 +335,24 @@ const SceneGtTutor: React.FC<{ f: number }> = ({ f }) => (
     <EuroBg18c f={f} />
     <PrintSheet x={400} y={620} s={0.75} rot={-6} />
     <NobleSon x={800} y={860} s={1.0} f={f} face="smile" gaze={[-5, 0]} />
-    {/* 家庭教師: めがね + 渋い色 + 本を小わきに */}
+    {/* 家庭教師: めがね + 学者ガウン + 角帽 + 白襟 + 本 (v2修正: 先生らしい格好に) */}
     <Person x={1280} y={860} s={1.05} f={f} phase={2} glasses hair="none"
-      cloth={KRP.grayDark} clothDark="#5E5650" face="worried" gaze={[-5, 0]} />
+      cloth="#3F3B46" clothDark="#2C2933" face="worried" gaze={[-5, 0]} />
+    <g transform={`translate(1280 ${860 + bobOf(f, 2)}) scale(1.05)`}>
+      {/* 白い襟 (ジャボ) */}
+      <path d="M -30 -164 L 0 -150 L 30 -164 L 24 -120 Q 0 -108 -24 -120 Z"
+        fill={KRP.white} stroke={KRP.ink} strokeWidth={4} strokeLinejoin="round" />
+      {/* ガウンの前あわせ */}
+      <line x1={0} y1={-150} x2={0} y2={-56} stroke={KRP.ink} strokeWidth={3.5} opacity={0.5} />
+      {/* 角帽 (学者帽) */}
+      <path d="M -48 -286 Q -48 -316 0 -316 Q 48 -316 48 -286 Z" fill="#2C2933" stroke={KRP.ink} strokeWidth={5} />
+      <polygon points="-96,-290 0,-320 96,-290 0,-260" fill="#2C2933" stroke={KRP.ink} strokeWidth={5}
+        strokeLinejoin="round" />
+      {/* 房 (タッセル) */}
+      <path d="M 0 -320 Q 60 -316 74 -268" fill="none" stroke={KRP.yellow} strokeWidth={5} strokeLinecap="round" />
+      <circle cx={74} cy={-258} r={11} fill={KRP.yellow} stroke={KRP.ink} strokeWidth={4} />
+    </g>
+    {/* 小わきの本 */}
     <g transform={`translate(1190 ${720 + bobOf(f, 2)})`}>
       <rect x={-34} y={-24} width={68} height={48} rx={6} fill={TKP.terracotta} stroke={KRP.ink} strokeWidth={4.5} />
       <line x1={-34} y1={-10} x2={34} y2={-10} stroke={KRP.ink} strokeWidth={3} opacity={0.5} />
@@ -410,22 +425,24 @@ const SceneTourist1772: React.FC<{ f: number }> = ({ f }) => {
             <path d="M 60 60 Q 210 20 360 60" fill="none" />
             <path d="M 60 120 Q 210 80 360 120" fill="none" />
           </g>
-          {/* 右ページに tourist が書かれていく */}
+          {/* 右ページに tourist が書かれていく。
+              ページの右端は局所座標 x=420 (線幅7)。fontSize 68 の "tourist" は実測で約290px なので
+              x=66 から書き始めれば右端は 356 に収まる (ページ内に 60px 以上の余白が残る)。 */}
           <g opacity={writeT > 0 ? 1 : 0}>
             <clipPath id="tb3write">
-              <rect x={56} y={-160} width={360 * writeT} height={160} />
+              <rect x={52} y={-170} width={312 * writeT} height={170} />
             </clipPath>
             <g clipPath="url(#tb3write)">
-              <text x={70} y={-50} fontFamily={FONT} fontWeight={900} fontSize={82} fill={KRP.ink}
+              <text x={66} y={-58} fontFamily={FONT} fontWeight={900} fontSize={68} fill={KRP.ink}
                 letterSpacing={2}>tourist</text>
             </g>
-            <line x1={66} y1={-24} x2={66 + 330 * writeT} y2={-24} stroke={KRP.red} strokeWidth={7} strokeLinecap="round" />
+            <line x1={62} y1={-32} x2={62 + 296 * writeT} y2={-32} stroke={KRP.red} strokeWidth={7} strokeLinecap="round" />
           </g>
         </g>
       </PopAt>
       {/* 羽根ペン (書く位置を追いかける) */}
       {f >= 20 && (
-        <g transform={`translate(${966 + 330 * writeT} ${500 + Math.sin(f / 3) * (writeT < 1 ? 6 : 0)}) rotate(-28)`}>
+        <g transform={`translate(${962 + 296 * writeT} ${492 + Math.sin(f / 3) * (writeT < 1 ? 6 : 0)}) rotate(-28)`}>
           <path d="M 0 0 Q 26 -70 12 -150 Q 46 -92 34 -16 Z" fill={KRP.white} stroke={KRP.ink} strokeWidth={5} />
           <line x1={0} y1={0} x2={-10} y2={26} stroke={KRP.ink} strokeWidth={6} strokeLinecap="round" />
         </g>
@@ -438,15 +455,21 @@ const SceneTourist1772: React.FC<{ f: number }> = ({ f }) => {
 const SceneSouvenir: React.FC<{ f: number }> = ({ f }) => (
   <Frame f={f} seed={609}>
     <g opacity={0.4}><EuroBg18c f={f} /></g>
-    {/* souvenir カード (トリコロールの耳付き) */}
-    <PopAt x={760} y={700} t={seg(f, 0, 20)}>
-      <g transform="translate(760 700)">
-        <rect x={-270} y={-75} width={540} height={150} rx={16} fill={KRP.white} stroke={KRP.ink} strokeWidth={7} />
-        <rect x={-270} y={-75} width={26} height={150} fill={KRP.blueDeep} stroke={KRP.ink} strokeWidth={4} />
-        <rect x={-244} y={-75} width={26} height={150} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
-        <rect x={-218} y={-75} width={26} height={150} fill={KRP.red} stroke={KRP.ink} strokeWidth={4} />
-        <text x={30} y={24} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={74}
+    {/* souvenir カード (トリコロールの耳付き)。綴りの下に日本語訳「思い出す」を入れる。
+        カードは2段ぶんに背を伸ばした (高さ150→224)。下端が 660+112=772 で字幕帯に触れない。 */}
+    <PopAt x={760} y={660} t={seg(f, 0, 20)}>
+      <g transform="translate(760 660)">
+        <rect x={-270} y={-112} width={540} height={224} rx={16} fill={KRP.white} stroke={KRP.ink} strokeWidth={7} />
+        <rect x={-270} y={-112} width={26} height={224} fill={KRP.blueDeep} stroke={KRP.ink} strokeWidth={4} />
+        <rect x={-244} y={-112} width={26} height={224} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
+        <rect x={-218} y={-112} width={26} height={224} fill={KRP.red} stroke={KRP.ink} strokeWidth={4} />
+        <text x={30} y={-18} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={74}
           fill={KRP.ink} letterSpacing={2}>souvenir</text>
+        {/* 訳の区切り線 */}
+        <line x1={-182} y1={14} x2={242} y2={14} stroke={KRP.ink} strokeWidth={3.5} opacity={0.35} />
+        {/* 日本語訳 (4文字 × 46px = 184px。カード内幅 424px に余裕で収まる) */}
+        <text x={30} y={82} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46}
+          fill={KRP.red}>思い出す</text>
       </g>
     </PopAt>
     {/* 思い出の吹き出し (まる → まる → 大きな雲) */}
@@ -1028,25 +1051,38 @@ const SceneKinshu: React.FC<{ f: number }> = ({ f }) => (
   </Frame>
 );
 
-// #128 料金はひとり1シリング = 硬貨と切符の等式
+// #128 料金はひとり1シリング = 硬貨と切符の等式 (+ いまのお金でいくらかの注記)
+// 1841年の £1 は今の £110〜135 ほど (英CPIベースの換算)。1シリング = 1/20ポンドなので £5.5〜6.8、
+// £1≒210円 (2026年秋) で日本円にすると およそ1,200〜1,400円。幅をもたせて「1000〜1500円」と書く。
 const SceneShilling: React.FC<{ f: number }> = ({ f }) => (
   <Frame f={f} seed={631}>
-    <PopAt x={760} y={520} t={seg(f, 6, 28)}>
-      <g transform={`translate(0 ${bobOf(f)})`}><ShillingCoin x={760} y={520} s={2.3} /></g>
+    <PopAt x={760} y={440} t={seg(f, 6, 28)}>
+      <g transform={`translate(0 ${bobOf(f)})`}><ShillingCoin x={760} y={440} s={2.1} /></g>
     </PopAt>
     {f >= 34 && (
-      <text x={1070} y={560} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={120}
+      <text x={1070} y={480} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={120}
         fill={KRP.ink} opacity={seg(f, 34, 48)}>=</text>
     )}
-    <PopAt x={1400} y={520} t={seg(f, 46, 66)}>
-      <g transform={`translate(0 ${bobOf(f, 1)})`}><Ticket x={1400} y={520} s={1.5} /></g>
+    <PopAt x={1400} y={440} t={seg(f, 46, 66)}>
+      <g transform={`translate(0 ${bobOf(f, 1)})`}><Ticket x={1400} y={440} s={1.5} /></g>
     </PopAt>
-    <Spark x={1560} y={380} t={seg(f, 66, 80)} />
+    <Spark x={1560} y={310} t={seg(f, 66, 80)} />
+    {/* いまのお金でいくら? の札 (硬貨の真下)。2行なので入れ物を縦に大きく取る */}
+    <PopAt x={760} y={650} t={seg(f, 30, 46)}>
+      <g transform="translate(760 650)">
+        <rect x={-250} y={-58} width={500} height={120} rx={14}
+          fill={KRP.white} stroke={KRP.ink} strokeWidth={5.5} />
+        <text x={0} y={-12} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={32}
+          fill={KRP.ink}>いまのお金でおよそ</text>
+        <text x={0} y={42} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={44}
+          fill={KRP.red}>1000〜1500円</text>
+      </g>
+    </PopAt>
     {/* 団体のなかまたち (下にちいさく並ぶ) */}
     {[0, 1, 2, 3, 4].map((i) => (
       <g key={i} opacity={seg(f, 60 + i * 5, 72 + i * 5)}>
-        <circle cx={700 + i * 130} cy={790} r={34} fill={KRP.cream} stroke={KRP.ink} strokeWidth={5} />
-        <path d={`M ${660 + i * 130} 862 Q ${700 + i * 130} 816 ${740 + i * 130} 862`}
+        <circle cx={700 + i * 130} cy={800} r={34} fill={KRP.cream} stroke={KRP.ink} strokeWidth={5} />
+        <path d={`M ${660 + i * 130} 872 Q ${700 + i * 130} 826 ${740 + i * 130} 872`}
           fill={KRP.blueDeep} stroke={KRP.ink} strokeWidth={5} />
       </g>
     ))}
@@ -1085,15 +1121,20 @@ const SceneSodateru: React.FC<{ f: number }> = ({ f }) => {
       {/* 地面 */}
       <rect x={-20} y={960} width={W + 40} height={140} fill={KRP.floor} opacity={0.9} />
       <line x1={-20} y1={960} x2={W + 20} y2={960} stroke={KRP.ink} strokeWidth={5} opacity={0.4} />
-      <VictorianGent x={540} y={960} s={1.05} f={f} face="smile" gaze={[5, -3]} />
-      {/* じょうろ */}
-      <g transform={`translate(760 ${640 + bobOf(f)}) rotate(${22 + Math.sin(f / 9) * 5})`}>
+      <VictorianGent x={800} y={960} s={1.05} f={f} face="smile" gaze={[5, -3]} />
+      {/* クックの腕 (じょうろを差し出して持つ) */}
+      <line x1={872} y1={850} x2={905} y2={768 + bobOf(f)} stroke={KRP.ink} strokeWidth={22} strokeLinecap="round" />
+      {/* じょうろ (後ろ手・上手・先広がりの注ぎ口) */}
+      <g transform={`translate(990 ${795 + bobOf(f)}) rotate(${26 + Math.sin(f / 9) * 4})`}>
+        <path d="M -60 -30 Q -104 0 -60 30" fill="none" stroke={KRP.ink} strokeWidth={8} strokeLinecap="round" />
+        <path d="M -44 -46 Q 0 -90 44 -46" fill="none" stroke={KRP.ink} strokeWidth={8} strokeLinecap="round" />
         <rect x={-66} y={-44} width={132} height={88} rx={16} fill={TKP.iron} stroke={KRP.ink} strokeWidth={6} />
-        <line x1={66} y1={-20} x2={126} y2={-56} stroke={KRP.ink} strokeWidth={13} strokeLinecap="round" />
-        <circle cx={132} cy={-60} r={15} fill={TKP.iron} stroke={KRP.ink} strokeWidth={5} />
+        <path d="M 56 -14 L 136 -54 L 148 -34 L 66 10 Z" fill={TKP.iron} stroke={KRP.ink} strokeWidth={5} strokeLinejoin="round" />
+        <circle cx={144} cy={-44} r={13} fill={TKP.iron} stroke={KRP.ink} strokeWidth={4.5} />
       </g>
-      {[0, 1, 2].map((i) => (
-        <circle key={i} cx={930 + i * 14} cy={700 + ((f * 7 + i * 44) % 160)} r={7}
+      {/* 注ぎ口から苗の根元へ落ちる水 */}
+      {[0, 1, 2, 3].map((i) => (
+        <circle key={i} cx={1128 + i * 16 + Math.sin((f + i * 9) / 6) * 3} cy={830 + ((f * 7 + i * 44) % 130)} r={7}
           fill={KRP.blueSoft} stroke={KRP.ink} strokeWidth={3} opacity={0.8} />
       ))}
       {/* 切符の木 (茎が伸びて切符の葉がぽんぽん) */}
@@ -1111,33 +1152,179 @@ const SceneSodateru: React.FC<{ f: number }> = ({ f }) => {
   );
 };
 
-// #131 1851年ロンドン万博に約15万人といわれる = 水晶宮 + 人波
+// ===== 第7章の追加キット: ロンドン万博 (1851) =====
+// ガラスの色 (TKP に無いのでこのファイル内のローカル定数で持つ)
+const CP_GLASS = "#CFE3F0";      // ガラス面 (明るい空色)
+const CP_GLASS_DK = "#AFCBE0";   // 陰になるガラス面
+const CP_SASH = "#E9E3D4";       // 白く塗られた鉄の方立て
+
+// -hw〜hw を step 刻みに刻んだ目盛り (両端は含めない)
+const cpTicks = (hw: number, step: number) => {
+  const a: number[] = [];
+  for (let v = -hw + step; v < hw - 1; v += step) a.push(v);
+  return a;
+};
+
+// ユニオンジャック (簡略版: 青地 + 白の斜め十字 + 赤の斜め十字 + 白縁の赤い直交十字)。
+// 本物は斜め帯が対角線の上下で幅ちがいだが、ここは「イギリス国旗と分かる」ことを優先して左右対称に描く。
+const UnionJack: React.FC<{ x: number; y: number; w?: number; cid: string; wave?: number }> = ({
+  x, y, w = 200, cid, wave = 0,
+}) => {
+  const h = w * 0.5;
+  return (
+    <g transform={`translate(${x} ${y})`}>
+      <clipPath id={`uj${cid}`}>
+        <rect x={0} y={-h / 2} width={w} height={h} />
+      </clipPath>
+      <g clipPath={`url(#uj${cid})`} transform={`skewY(${wave})`}>
+        <rect x={0} y={-h / 2} width={w} height={h} fill={KRP.blueDeep} />
+        {/* 白の斜め十字 (セントアンドリュー/セントパトリック) */}
+        <g stroke={KRP.white} strokeWidth={h * 0.30}>
+          <line x1={0} y1={-h / 2} x2={w} y2={h / 2} />
+          <line x1={0} y1={h / 2} x2={w} y2={-h / 2} />
+        </g>
+        {/* 赤の斜め十字 */}
+        <g stroke={KRP.red} strokeWidth={h * 0.13}>
+          <line x1={0} y1={-h / 2} x2={w} y2={h / 2} />
+          <line x1={0} y1={h / 2} x2={w} y2={-h / 2} />
+        </g>
+        {/* 白縁 + 赤のまっすぐな十字 (セントジョージ) */}
+        <g stroke={KRP.white} strokeWidth={h * 0.34}>
+          <line x1={0} y1={0} x2={w} y2={0} />
+          <line x1={w / 2} y1={-h / 2} x2={w / 2} y2={h / 2} />
+        </g>
+        <g stroke={KRP.red} strokeWidth={h * 0.20}>
+          <line x1={0} y1={0} x2={w} y2={0} />
+          <line x1={w / 2} y1={-h / 2} x2={w / 2} y2={h / 2} />
+        </g>
+      </g>
+      <rect x={0} y={-h / 2} width={w} height={h} fill="none" stroke={KRP.ink} strokeWidth={5}
+        transform={`skewY(${wave})`} />
+    </g>
+  );
+};
+
+// 水晶宮 (ハイドパーク/1851)。鉄とガラスの段状の本体 + 中央のかまぼこ屋根 (大トランセプト)
+// + 連続するアーチ窓。原点は建物の足元中央。
+const CrystalPalace: React.FC<{ x: number; y: number; s?: number; f?: number }> = ({
+  x, y, s = 1, f = 0,
+}) => {
+  // 段状の本体 (下から3段。上にいくほど細くなる)
+  const tiers = [
+    { hw: 820, top: -186, bottom: 0 },
+    { hw: 592, top: -316, bottom: -186 },
+    { hw: 368, top: -424, bottom: -316 },
+  ];
+  const vHW = 196;              // トランセプトの半幅
+  const vBase = -424;           // かまぼこ屋根の起点
+  const vTop = vBase - vHW;     // かまぼこの頂点 (-620)
+  return (
+    <g transform={`translate(${x} ${y}) scale(${s})`}>
+      {/* --- 段状の本体 --- */}
+      {tiers.map((t, i) => (
+        <g key={i}>
+          <rect x={-t.hw} y={t.top} width={t.hw * 2} height={t.bottom - t.top}
+            fill={i === 0 ? CP_GLASS : CP_GLASS_DK} stroke={KRP.ink} strokeWidth={6} />
+          {/* ガラスの格子 (方立て + 横桟) */}
+          <g stroke={KRP.ink} opacity={0.32} strokeWidth={2.5}>
+            {cpTicks(t.hw, 56).map((gx) => (
+              <line key={gx} x1={gx} y1={t.top} x2={gx} y2={t.bottom} />
+            ))}
+            {cpTicks((t.bottom - t.top) / 2, 44).map((gy) => (
+              <line key={gy} x1={-t.hw} y1={(t.top + t.bottom) / 2 + gy}
+                x2={t.hw} y2={(t.top + t.bottom) / 2 + gy} />
+            ))}
+          </g>
+          {/* 段の上端の鉄の帯 (雨樋) */}
+          <rect x={-t.hw - 14} y={t.top - 20} width={t.hw * 2 + 28} height={22} rx={6}
+            fill={TKP.iron} stroke={KRP.ink} strokeWidth={5} />
+        </g>
+      ))}
+      {/* --- 1段目に連続するアーチ窓 --- */}
+      {cpTicks(820, 106).map((wx) => (
+        <g key={wx}>
+          <path d={`M ${wx - 32} -24 L ${wx - 32} -110 A 32 32 0 0 1 ${wx + 32} -110 L ${wx + 32} -24 Z`}
+            fill={KRP.white} opacity={0.75} stroke={KRP.ink} strokeWidth={4} />
+          <line x1={wx} y1={-24} x2={wx} y2={-138} stroke={KRP.ink} strokeWidth={2.5} opacity={0.35} />
+        </g>
+      ))}
+      {/* --- 建物を縦に割る鉄柱 --- */}
+      <g stroke={CP_SASH} strokeWidth={11}>
+        {[-820, -592, -368, 368, 592, 820].map((cx) => (
+          <line key={cx} x1={cx} y1={0} x2={cx} y2={cx === -820 || cx === 820 ? -186 : (Math.abs(cx) === 592 ? -316 : -424)} />
+        ))}
+      </g>
+      {/* --- 中央の大トランセプト (本体) --- */}
+      <rect x={-vHW} y={vBase} width={vHW * 2} height={-vBase}
+        fill={CP_GLASS} stroke={KRP.ink} strokeWidth={7} />
+      <g stroke={KRP.ink} opacity={0.32} strokeWidth={2.5}>
+        {cpTicks(vHW, 56).map((gx) => <line key={gx} x1={gx} y1={vBase} x2={gx} y2={0} />)}
+        {[-100, -200, -300].map((gy) => <line key={gy} x1={-vHW} y1={gy} x2={vHW} y2={gy} />)}
+      </g>
+      {/* --- かまぼこ型の屋根 (バレルヴォールト) --- */}
+      <path d={`M ${-vHW} ${vBase} A ${vHW} ${vHW} 0 0 1 ${vHW} ${vBase} Z`}
+        fill={CP_GLASS} stroke={KRP.ink} strokeWidth={7} />
+      {/* ヴォールトのリブ (放射) */}
+      <g stroke={KRP.ink} opacity={0.34} strokeWidth={3}>
+        {[20, 40, 60, 80, 100, 120, 140, 160].map((deg) => {
+          const a = (deg * Math.PI) / 180;
+          return <line key={deg} x1={0} y1={vBase}
+            x2={-Math.cos(a) * vHW} y2={vBase - Math.sin(a) * vHW} />;
+        })}
+        <path d={`M ${-vHW * 0.62} ${vBase} A ${vHW * 0.62} ${vHW * 0.62} 0 0 1 ${vHW * 0.62} ${vBase}`} fill="none" />
+        <path d={`M ${-vHW * 0.3} ${vBase} A ${vHW * 0.3} ${vHW * 0.3} 0 0 1 ${vHW * 0.3} ${vBase}`} fill="none" />
+      </g>
+      {/* ヴォールトの白いハイライト */}
+      <path d={`M ${-vHW * 0.78} ${vBase - vHW * 0.3} A ${vHW} ${vHW} 0 0 1 ${-vHW * 0.1} ${vBase - vHW * 0.96}`}
+        fill="none" stroke={KRP.white} strokeWidth={14} opacity={0.5} strokeLinecap="round" />
+      {/* 妻面の半円窓 (薔薇窓風) */}
+      <circle cx={0} cy={vBase - 92} r={52} fill={KRP.white} opacity={0.7} stroke={KRP.ink} strokeWidth={5} />
+      <g stroke={KRP.ink} strokeWidth={3} opacity={0.45}>
+        {[0, 45, 90, 135].map((d) => (
+          <line key={d} x1={-52} y1={vBase - 92} x2={52} y2={vBase - 92}
+            transform={`rotate(${d} 0 ${vBase - 92})`} />
+        ))}
+      </g>
+      {/* --- 正面の大アーチ入口 --- */}
+      <path d="M -96 0 L -96 -120 A 96 96 0 0 1 96 -120 L 96 0 Z"
+        fill={TKP.iron} opacity={0.5} stroke={KRP.ink} strokeWidth={6} />
+      <line x1={0} y1={0} x2={0} y2={-212} stroke={KRP.ink} strokeWidth={5} opacity={0.5} />
+      {/* --- 屋根の小旗 (そよぐ) --- */}
+      {[-700, -480, -270, 270, 480, 700].map((fx, i) => {
+        const base = Math.abs(fx) > 600 ? -206 : (Math.abs(fx) > 420 ? -336 : -444);
+        const wv = Math.sin((f + i * 13) / 9) * 7;
+        return (
+          <g key={fx}>
+            <line x1={fx} y1={base} x2={fx} y2={base - 60} stroke={KRP.ink} strokeWidth={4} />
+            <path d={`M ${fx} ${base - 60} q 26 ${5 + wv} 52 0 l 0 26 q -26 ${-5 - wv} -52 0 Z`}
+              fill={i % 2 === 0 ? KRP.red : KRP.blueDeep} stroke={KRP.ink} strokeWidth={3.5} />
+          </g>
+        );
+      })}
+      {/* --- 頂点の旗竿 --- */}
+      <line x1={0} y1={vTop} x2={0} y2={vTop - 70} stroke={KRP.ink} strokeWidth={6} />
+      <circle cx={0} cy={vTop - 74} r={9} fill={KRP.brass} stroke={KRP.ink} strokeWidth={4} />
+    </g>
+  );
+};
+
+// #131 1851年ロンドン万博に約15万人といわれる = 水晶宮 + ユニオンジャック + 人波
 const SceneBanpaku: React.FC<{ f: number }> = ({ f }) => (
   <Frame f={f} seed={634}
     over={<>
       {f >= 8 && <Stamp x={140} y={140} text="1851年" size={52} />}
-      {f >= 66 && <LabelPill x={1500} y={300} centerX text="約15万人といわれる" size={32} />}
+      {f >= 66 && <LabelPill x={1545} y={300} centerX text="約15万人といわれる" size={32} />}
     </>}>
-    {/* 水晶宮 (ガラスと鉄の大温室) */}
-    <g transform="translate(960 0)">
-      {/* 中央のかまぼこ屋根 */}
-      <path d="M -260 900 L -260 560 Q 0 380 260 560 L 260 900 Z" fill={KRP.blueSoft} stroke={KRP.ink} strokeWidth={7} opacity={0.95} />
-      {/* 左右の翼 */}
-      <rect x={-760} y={660} width={500} height={240} fill={KRP.blueSoft} stroke={KRP.ink} strokeWidth={6} opacity={0.9} />
-      <rect x={260} y={660} width={500} height={240} fill={KRP.blueSoft} stroke={KRP.ink} strokeWidth={6} opacity={0.9} />
-      {/* ガラスの格子 */}
-      <g stroke={KRP.ink} strokeWidth={3} opacity={0.4}>
-        {[-640, -520, -400, 400, 520, 640].map((x) => <line key={x} x1={x} y1={660} x2={x} y2={900} />)}
-        {[-160, -80, 0, 80, 160].map((x) => <line key={`c${x}`} x1={x} y1={470} x2={x} y2={900} />)}
-        <line x1={-760} y1={740} x2={760} y2={740} />
-        <line x1={-760} y1={820} x2={760} y2={820} />
-      </g>
-      {/* 旗 */}
-      <line x1={0} y1={444} x2={0} y2={350} stroke={KRP.ink} strokeWidth={6} />
-      <path d={`M 0 350 q 40 ${6 + Math.sin(f / 9) * 8} 80 0 l 0 36 q -40 ${-6 - Math.sin(f / 9) * 8} -80 0 Z`}
-        fill={KRP.red} stroke={KRP.ink} strokeWidth={4} />
-      {/* 入口 */}
-      <rect x={-70} y={760} width={140} height={140} fill={KRP.ink} opacity={0.45} />
+    {/* 芝生のハイドパーク */}
+    <rect x={-20} y={884} width={W + 40} height={H - 864} fill={KRP.green} opacity={0.38} />
+    <line x1={-20} y1={884} x2={W + 20} y2={884} stroke={KRP.ink} strokeWidth={5} opacity={0.4} />
+    <CrystalPalace x={960} y={884} s={0.96} f={f} />
+    {/* ユニオンジャック (手前の旗竿。上下左右の簡略形でも英国旗と分かる形) */}
+    <g>
+      {/* 竿は x=196。x=288 には屋根の小旗 (fx=-700) が立っているので避けてある */}
+      <line x1={196} y1={900} x2={196} y2={318} stroke={TKP.woodDark} strokeWidth={13} strokeLinecap="round" />
+      <circle cx={196} cy={312} r={12} fill={KRP.brass} stroke={KRP.ink} strokeWidth={4} />
+      <UnionJack x={200} y={398} w={214} cid="banpaku" wave={Math.sin(f / 13) * 2.2} />
     </g>
     {/* 押し寄せる人波 (左右から入口へ) */}
     {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => {

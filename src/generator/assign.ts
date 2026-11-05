@@ -17,6 +17,7 @@ import type { Preset } from "../channel";
 import { J2_ALL_MOTIFS } from "../remotion/karakuri/Jihanki2000Index";
 import { W_ALL_MOTIFS } from "../remotion/karakuri/WatashiIndex";
 import { T_ALL_MOTIFS } from "../remotion/karakuri/TabiIndex";
+import { K_ALL_MOTIFS } from "../remotion/karakuri/KosoIndex";
 
 export type Assignment = {
   type: SceneType;
@@ -428,6 +429,11 @@ export async function assignScenes(
     if (tb) {
       console.log(`絵づけ: 旅とお土産の歴史の順番割り当て (1文1絵・${tb.length}枚)`);
       return tb;
+    }
+    const ko = kosoOrderedAssign(sentences);
+    if (ko) {
+      console.log(`絵づけ: なぜ高層ビルは生まれたのかの順番割り当て (1文1絵・${ko.length}枚)`);
+      return ko;
     }
     console.log("絵づけ: karakuri は専用キーワード割り当てを使用");
     return sentences.map(karakuriHeuristicAssign);
@@ -2012,6 +2018,24 @@ function tabiOrderedAssign(sentences: string[]): Assignment[] | null {
     throw new Error(
       `旅とお土産の歴史: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
         `台本 (docs/tabi-miyage-script-v1.txt) か T_ALL_MOTIFS (TabiB1〜B5のMOTIFS) の数を確認してください`,
+    );
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: 「なぜ高層ビルは生まれたのか」(docs/koso-script-v7.txt・282文) 用の順番割り当て =====
+// 専用シーン (KosoIndex の K_ALL_MOTIFS = KosoB0〜B6) は台本の文の順番どおりに並んでいるので、
+// 「文i → 絵i」で1対1に割り当てる (絵の正本 = からくり憲法 第11条)。
+function kosoOrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[0]?.includes("タワーマンションの30階に住んでいます")) return null;
+  const order = [...K_ALL_MOTIFS];
+  if (sentences.length === order.length + 1) {
+    order.push(K_ALL_MOTIFS[K_ALL_MOTIFS.length - 1]); // 締めのご挨拶 = 最後の絵を再利用
+  }
+  if (sentences.length !== order.length) {
+    throw new Error(
+      `なぜ高層ビルは生まれたのか: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
+        `台本 (docs/koso-script-v7.txt) か K_ALL_MOTIFS (KosoB0〜B6のMOTIFS) の数を確認してください`,
     );
   }
   return order.map((motif) => ({ type: "diagram" as SceneType, motif }));

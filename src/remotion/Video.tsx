@@ -36,6 +36,7 @@ import { KarakuriSceneView, KRP, karakuriCardShowsFullText } from "./karakuri/Ka
 import { J2AllSceneView } from "./karakuri/Jihanki2000Index";
 import { WAllSceneView } from "./karakuri/WatashiIndex";
 import { TAllSceneView } from "./karakuri/TabiIndex";
+import { kosoScene } from "./karakuri/KosoIndex";
 
 // 自販機2000年史 (モチーフ名が j2_ で始まる専用絵) を本編プレイヤーで描くためのつなぎ。
 // J2AllSceneView は (motif, f) を受けるので、Sequence内の経過フレームを渡す。
@@ -57,6 +58,19 @@ export const isTabiMotif = (motif: string) => /^tb[1-6]_/.test(motif);
 const TSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
   const f = useCurrentFrame();
   return <TAllSceneView motif={motif} f={f} />;
+};
+
+// 「なぜ高層ビルは生まれたのか」(モチーフ名が kb0_〜kb6_ で始まる専用絵) 用の同じつなぎ。
+// ※ 章を足したら必ずこの範囲を広げる。広げ忘れると汎用絵に落ちる (tabi v1事故)
+export const isKosoMotif = (motif: string) => /^kb[0-6]_/.test(motif);
+const KosoSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return (
+    kosoScene(motif, f) ?? (
+      // ここに来たら motif 名の打ち間違い。真っ白事故を避けるためクリーム地だけ出す
+      <AbsoluteFill style={{ background: KRP.cream }} />
+    )
+  );
 };
 
 // ashi: どのシーンにv2演出 (ズーム・光の粒・文字ドン・行列アニメ・黄色字幕) を使うか。
@@ -459,6 +473,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   <WSceneInVideo motif={scene.motif} />
                 ) : isTabiMotif(scene.motif) ? (
                   <TSceneInVideo motif={scene.motif} />
+                ) : isKosoMotif(scene.motif) ? (
+                  <KosoSceneInVideo motif={scene.motif} />
                 ) : (
                   <KarakuriSceneView scene={scene} />
                 )

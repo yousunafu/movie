@@ -60,15 +60,8 @@ if (data.preset !== "karakuri") {
 }
 const scenes = data.scenes;
 
-// 作品を motif の接頭辞で判別する (w1_=私は何者 / tb1_=旅とお土産 / j2_=自販機2000年史)
+// 台帳の最初の motif。これを含む *_ALL_MOTIFS 配列を探して作品を決める (下の「作品の判別」)
 const firstMotif = scenes.find((s) => /^[a-z]+\d_/.test(s.motif ?? ""))?.motif ?? "";
-const WORK = /^w[1-4]_/.test(firstMotif)
-  ? { name: "「私は何者?」の4000年史", indexFile: "WatashiIndex.tsx", arrayName: "W_ALL_MOTIFS" }
-  : /^tb[1-6]_/.test(firstMotif)
-    ? { name: "旅とお土産の歴史", indexFile: "TabiIndex.tsx", arrayName: "T_ALL_MOTIFS" }
-    : { name: "自販機2000年史", indexFile: "Jihanki2000Index.tsx", arrayName: "J2_ALL_MOTIFS" };
-
-console.log(`からくり検査: ${WORK.name}  (全 ${scenes.length} シーン)\n`);
 
 // ============================================================
 // 検査1  絵の割り当て — MOTIFS配列 と scenes-data.json のつき合わせ
@@ -118,11 +111,61 @@ function readMotifArray(name: string, depth = 0): string[] | null {
   return out;
 }
 
-const readAllMotifs = () => readMotifArray(WORK.arrayName);
+// ------------------------------------------------------------
+// 作品の判別 — 台帳の最初の motif を含む *_ALL_MOTIFS 配列を自力で探す
+// ------------------------------------------------------------
+// 新しい karakuri 作品を作っても、このファイルに追記する必要はない。
+// ただし「見つからない」「2つ以上に当たる」ときは NG で止める。
+// 黙って別作品の絵一覧と比べ始めるのが一番たちが悪い (高層ビル回で実際に起きた)。
+function detectWork() {
+  const found: { name: string; indexFile: string; arrayName: string; motifs: string[] }[] = [];
+  for (const file of fs.readdirSync(KDIR).filter((n) => n.endsWith(".tsx"))) {
+    const src = fs.readFileSync(path.join(KDIR, file), "utf8");
+    for (const m of src.matchAll(/const\s+([A-Za-z_][A-Za-z0-9_]*_ALL_MOTIFS)\s*(?::[^=]*)?=\s*\[/g)) {
+      const arrayName = m[1];
+      const motifs = readMotifArray(arrayName);
+      if (!motifs || !motifs.includes(firstMotif)) continue;
+      // 「// 作品名: ○○」と書いてあればそれを使う。なければファイル名
+      const title = src.match(/\/\/\s*作品名:\s*(.+)/);
+      found.push({
+        name: title ? title[1].trim() : file.replace(/Index\.tsx$/, ""),
+        indexFile: file,
+        arrayName,
+        motifs,
+      });
+    }
+  }
+  return found;
+}
 
-const allMotifs = readAllMotifs();
+const candidates = firstMotif ? detectWork() : [];
+const WORK = candidates[0] ?? null;
+
+if (!firstMotif) {
+  ng("作品の判別", "台帳に motif がありません (scenes-data.json を確認してください)");
+} else if (candidates.length === 0) {
+  ng(
+    "作品の判別",
+    `台帳の最初の motif「${firstMotif}」を含む *_ALL_MOTIFS 配列が ` +
+      `src/remotion/karakuri/ に見つかりません。` +
+      `新しい作品なら Index.tsx に *_ALL_MOTIFS 配列を作り、台帳の motif を並べてください`,
+  );
+} else if (candidates.length > 1) {
+  ng(
+    "作品の判別",
+    `motif「${firstMotif}」が ${candidates.length} 本の配列に入っています ` +
+      `(${candidates.map((c) => `${c.indexFile}:${c.arrayName}`).join(" / ")})。` +
+      `motif の接頭辞を作品ごとに分けてください`,
+  );
+}
+
+console.log(
+  `からくり検査: ${WORK ? WORK.name : "作品不明"}  (全 ${scenes.length} シーン)\n`,
+);
+
+const allMotifs = WORK ? WORK.motifs : null;
 if (!allMotifs) {
-  warn("検査1", `${WORK.indexFile} の ${WORK.arrayName} が読めませんでした (検査をとばしました)`);
+  warn("検査1", "作品が判別できなかったので、絵の割り当て検査をとばしました");
 } else {
   // scenes-data.json の最後はエンディング。配列はそこを持たないので除いて比べる
   let body = scenes.filter((s) => s.motif !== "ending");
@@ -429,6 +472,113 @@ for (let i = 1; i < scenes.length; i++) {
 }
 
 // ============================================================
+// 検査6  絵の「格」の配分 (制作ガイド §7 第3層-7)
+// ============================================================
+// 全部を全力で描くと、山が山に見えない。逆に図ばかりだと単調になる。
+// 章の設計書 (docs/*-design.md) の1文ごとの格を数えて、配分を見る。
+//
+// どの設計書がこの回のものかは、名前ではなく中身で決める:
+//   設計書の行「| 179 | 第5章、島には、土地がない。 | 山 | … |」の本文が
+//   台帳の文#179 と一致するかを見る。半分以上一致したら、この回の設計書。
+//   こうすると作品が増えてもコードに追記しなくてよく、文番号ずれも同時に見つかる。
+const DOCS = path.join(ROOT, "docs");
+const RANKS = ["山", "並", "図"] as const;
+type Rank = (typeof RANKS)[number];
+
+// 配分の目安。高層ビル回3〜6章 (170枚) の実測 山22% 並23% 図55% と、
+// 制作ガイドの目安 山2割/並3〜4割/図4〜5割 の両方が入る幅にしてある。
+const RANGE: Record<Rank, [number, number]> = {
+  山: [0.15, 0.3],
+  並: [0.15, 0.4],
+  図: [0.4, 0.65],
+};
+
+/** 設計書は句点を省いたり、目印の★を付けたりするので、そこは差と見ない */
+const normText = (s: string) => s.replace(/[。、！？\s★☆◎●◆]/g, "");
+const sameText = (a: string | undefined, b: string) =>
+  a !== undefined && normText(a) === normText(b);
+
+const total: Record<Rank, number> = { 山: 0, 並: 0, 図: 0 };
+const designDocsRead: string[] = [];
+
+for (const file of fs.existsSync(DOCS) ? fs.readdirSync(DOCS).filter((n) => n.endsWith("-design.md")) : []) {
+  const src = fs.readFileSync(path.join(DOCS, file), "utf8");
+
+  // 1文ごとの行を拾う
+  const rows: { num: number; text: string; rank: Rank | null }[] = [];
+  for (const line of src.split("\n")) {
+    const m = line.match(/^\|\s*#?(\d+)\s*\|(.*)$/);
+    if (!m) continue;
+    const cells = m[2].split("|").map((c) => c.replace(/\*\*/g, "").trim());
+    rows.push({
+      num: Number(m[1]),
+      text: cells[0] ?? "",
+      rank: (cells.find((c) => (RANKS as readonly string[]).includes(c)) as Rank) ?? null,
+    });
+  }
+  if (!rows.length) continue;
+
+  // この回の設計書かどうか = 本文が台帳と一致する行の割合
+  const hit = rows.filter((r) => sameText(scenes[r.num - 1]?.text, r.text)).length;
+  if (hit * 2 < rows.length) continue; // 別作品の設計書
+  designDocsRead.push(`${file} (${rows.length}文)`);
+
+  const count: Record<Rank, number> = { 山: 0, 並: 0, 図: 0 };
+  for (const r of rows) {
+    if (r.rank) {
+      count[r.rank]++;
+      total[r.rank]++;
+    } else {
+      warn(`文#${r.num} (${file})`, "格 (山/並/図) がついていません。描き始める前に決めてください");
+    }
+    if (!sameText(scenes[r.num - 1]?.text, r.text)) {
+      warn(
+        `文#${r.num} (${file})`,
+        `設計書の本文が台帳とちがいます。文番号がずれている可能性があります\n` +
+          `        設計書「${r.text}」\n        台帳  「${scenes[r.num - 1]?.text ?? "(その文がない)"}」`,
+      );
+    }
+  }
+
+  // 設計書の冒頭にある集計表 (例: | **山** | 8枚 |) と、数えた結果のつき合わせ
+  for (const rank of RANKS) {
+    const m = src.match(new RegExp(`\\|\\s*\\*?\\*?${rank}\\*?\\*?\\s*\\|\\s*(\\d+)\\s*枚`));
+    if (m && Number(m[1]) !== count[rank]) {
+      warn(
+        file,
+        `冒頭の表は「${rank} ${m[1]}枚」ですが、1文ごとに数えると ${count[rank]}枚です。` +
+          `どちらかが古いので合わせてください`,
+      );
+    }
+  }
+
+  // 章ごとの配分。設計書に「格の逸脱: 理由」と書いてあれば、それを意図とみなして黙る
+  const excuse = src.match(/格の逸脱:\s*(.+)/);
+  const n = count.山 + count.並 + count.図;
+  if (n && !excuse) {
+    for (const rank of RANKS) {
+      const ratio = count[rank] / n;
+      const [lo, hi] = RANGE[rank];
+      if (ratio < lo || ratio > hi) {
+        warn(
+          file,
+          `格の配分: ${rank} が ${count[rank]}枚 / ${n}枚 = ${Math.round(ratio * 100)}% です ` +
+            `(目安 ${Math.round(lo * 100)}〜${Math.round(hi * 100)}%)。` +
+            (rank === "図" && ratio > hi
+              ? "図が多いと章全体が単調に見えます"
+              : rank === "山" && ratio > hi
+                ? "全部が全力だと、山が山に見えません"
+                : rank === "山" && ratio < lo
+                  ? "章扉・初登場・事件・結びには山を置いてください"
+                  : "制作ガイド §7 第3層-7 を確認してください") +
+            `\n        意図してこうしているなら、設計書に「格の逸脱: 理由」と1行書けばこの注意は出ません`,
+        );
+      }
+    }
+  }
+}
+
+// ============================================================
 // まとめて表示
 // ============================================================
 const ngs = issues.filter((i) => i.level === "NG");
@@ -461,6 +611,20 @@ if (platesChecked) {
   );
 } else {
   console.log("  検査3 テロップ: 測れた札が0枚でした。検査が壊れている可能性があります");
+}
+const rankTotal = total.山 + total.並 + total.図;
+if (rankTotal) {
+  const pct = (n: number) => `${Math.round((n / rankTotal) * 100)}%`;
+  console.log(
+    `  検査6 格の配分: ${designDocsRead.join(" / ")}\n` +
+      `        合計 ${rankTotal}枚 → 山 ${total.山}枚 (${pct(total.山)}) ` +
+      `並 ${total.並}枚 (${pct(total.並)}) 図 ${total.図}枚 (${pct(total.図)})`,
+  );
+} else {
+  console.log(
+    "  検査6 格の配分: この回の章設計書 (docs/*-design.md) が見つかりませんでした。\n" +
+      "        設計書に「| 文番号 | 本文 | 格 | 絵の説明 |」の表があれば読みます",
+  );
 }
 
 console.log("\n" + "═".repeat(72));

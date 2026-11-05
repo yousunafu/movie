@@ -18,6 +18,19 @@ import { TabiB3Preview, T_B3_PREVIEW_FRAMES } from "./karakuri/TabiB3";
 import { TabiB4Preview, T_B4_PREVIEW_FRAMES } from "./karakuri/TabiB4";
 import { TabiB5Preview, T_B5_PREVIEW_FRAMES } from "./karakuri/TabiB5";
 import { TabiB6Preview, T_B6_PREVIEW_FRAMES } from "./karakuri/TabiB6";
+import { ElevB0Preview, EL_B0_PREVIEW_FRAMES, ElevB0Motion, EL_B0_MOTION_FRAMES } from "./karakuri/ElevB0";
+import { ElevB2Preview, EL_B2_PREVIEW_FRAMES, ElevB2Sample, EL_B2_SAMPLE_FRAMES } from "./karakuri/ElevB2";
+// 4章は PART2 (32シーン) 未着手。書き終えたら戻す
+// import { ElevB4Preview, EL_B4_PREVIEW_FRAMES } from "./karakuri/ElevB4";
+import { KosoPillarsPreview, KOSO_PILLARS_PREVIEW_FRAMES } from "./karakuri/KosoPillars";
+import { KosoB0Preview, KOSO_B0_PREVIEW_FRAMES } from "./karakuri/KosoB0";
+import { KosoB1Preview, KOSO_B1_PREVIEW_FRAMES } from "./karakuri/KosoB1";
+import { KosoB2Preview, KOSO_B2_PREVIEW_FRAMES } from "./karakuri/KosoB2Index";
+import { KosoB3Preview, KOSO_B3_PREVIEW_FRAMES } from "./karakuri/KosoB3Index";
+import { KosoB4Preview, KOSO_B4_PREVIEW_FRAMES } from "./karakuri/KosoB4Index";
+import { KosoB5Preview, KOSO_B5_PREVIEW_FRAMES } from "./karakuri/KosoB5Index";
+import { KosoB6Preview, KOSO_B6_PREVIEW_FRAMES } from "./karakuri/KosoB6Index";
+import { KosoAllPreview, KOSO_ALL_PREVIEW_FRAMES } from "./karakuri/KosoIndex";
 import { VIDEO, sceneHoldSec } from "../style";
 import scenesData from "./scenes-data.json";
 import type { ScenesData } from "../types";
@@ -89,6 +102,42 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="TabiB5P" component={TabiB5Preview} durationInFrames={T_B5_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="TabiB6P" component={TabiB6Preview} durationInFrames={T_B6_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 「エレベーターの歴史」お試しスライド (方向性確認用。1フレーム=1シーン) */}
+      <Composition id="ElevB0P" component={ElevB0Preview} durationInFrames={EL_B0_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="ElevB2P" component={ElevB2Preview} durationInFrames={EL_B2_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="ElevB2Sample" component={ElevB2Sample} durationInFrames={EL_B2_SAMPLE_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 4章は PART2 (32シーン) 未着手。書き終えたらこの登録を戻す */}
+      {/* <Composition id="ElevB4P" component={ElevB4Preview} durationInFrames={EL_B4_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} /> */}
+      {/* 「なぜ高層ビルは生まれたのか」5本柱の装置 (この回の主役の共通部品。150フレームずつ巡回) */}
+      <Composition id="KosoPillars" component={KosoPillarsPreview} durationInFrames={KOSO_PILLARS_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 高層ビル回: 序 (文#1〜#27) / 第1章 (文#28〜#65) / 第2章 (文#66〜#112)。1フレーム = 1シーン */}
+      <Composition id="KosoB0" component={KosoB0Preview} durationInFrames={KOSO_B0_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="KosoB1" component={KosoB1Preview} durationInFrames={KOSO_B1_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="KosoB2" component={KosoB2Preview} durationInFrames={KOSO_B2_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 第3章 (文#113〜#146) / 第4章 (文#147〜#178)。コマ番号 = 文番号 − 113 / − 147 */}
+      <Composition id="KosoB3" component={KosoB3Preview} durationInFrames={KOSO_B3_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="KosoB4" component={KosoB4Preview} durationInFrames={KOSO_B4_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 第5章 (文#179〜#216) / 第6章 (文#217〜#282)。コマ番号 = 文番号 − 179 / − 217 */}
+      <Composition id="KosoB5" component={KosoB5Preview} durationInFrames={KOSO_B5_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="KosoB6" component={KosoB6Preview} durationInFrames={KOSO_B6_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* ★全282枚を1列に (序→6章)。コマ番号 + 1 = 文番号。一覧シートはこれを使う */}
+      <Composition id="KosoAll" component={KosoAllPreview} durationInFrames={KOSO_ALL_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 序章の「動き」確認用 (1シーン5秒ずつ通し再生。スライドでは写らない演出を見るため) */}
+      <Composition id="ElevB0Motion" component={ElevB0Motion} durationInFrames={EL_B0_MOTION_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       {/* 「私は何者?」の回の占い師キャラ試作 A〜D。本編とは無関係 */}
       <Composition

@@ -107,10 +107,13 @@ export const VOICE = {
   // --- VOICEVOXの設定 ---
   // キャラ名はサンプル https://voicevox.hiroshiba.jp/ で聞き比べて選ぶ。
   // 使ったら動画の説明欄に「VOICEVOX:キャラ名」と書くこと (利用条件)。
-  // karakuri (まちのからくり図鑑) だけずんだもん・標準速度。他チャンネルは従来どおり青山龍星・少しゆっくり。
+  // karakuri (まちのからくり図鑑) だけずんだもん。他チャンネルは従来どおり青山龍星・少しゆっくり。
   voicevoxSpeaker: getPreset() === "karakuri" ? "ずんだもん" : "青山龍星",
   voicevoxStyle: "ノーマル",
-  voicevoxSpeed: getPreset() === "karakuri" ? 1.0 : 0.95, // 1.0が標準。genki系は高齢の視聴者向けに少しゆっくり
+  // 1.0が標準。genki系は高齢の視聴者向けに少しゆっくり。
+  // karakuri は 2026-11-03「なぜ高層ビルは生まれたのか」から 1.1 (作者指示・少し速め)。
+  // ※ 下の applyPresetVoice() にも同じ値がある。変えるときは両方直すこと
+  voicevoxSpeed: getPreset() === "karakuri" ? 1.1 : 0.95,
 
   // --- ElevenLabsの設定 ---
   modelId: "eleven_multilingual_v2",
@@ -123,5 +126,5 @@ export const VOICE = {
 // (2026-10 自販機2000年史で、ローカル実行時にPRESET未設定→青山龍星のまま合成された事故の再発防止)
 export function applyPresetVoice(preset: Preset) {
   VOICE.voicevoxSpeaker = preset === "karakuri" ? "ずんだもん" : "青山龍星";
-  VOICE.voicevoxSpeed = preset === "karakuri" ? 1.0 : 0.95;
+  VOICE.voicevoxSpeed = preset === "karakuri" ? 1.1 : 0.95; // ※上の VOICE 初期化と同じ値にすること
 }

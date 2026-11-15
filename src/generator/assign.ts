@@ -18,6 +18,8 @@ import { J2_ALL_MOTIFS } from "../remotion/karakuri/Jihanki2000Index";
 import { W_ALL_MOTIFS } from "../remotion/karakuri/WatashiIndex";
 import { T_ALL_MOTIFS } from "../remotion/karakuri/TabiIndex";
 import { K_ALL_MOTIFS } from "../remotion/karakuri/KosoIndex";
+import { I_ALL_MOTIFS } from "../remotion/karakuri/IchiIndex";
+import { S_ALL_MOTIFS } from "../remotion/karakuri/SaigoIndex";
 
 export type Assignment = {
   type: SceneType;
@@ -435,8 +437,24 @@ export async function assignScenes(
       console.log(`絵づけ: なぜ高層ビルは生まれたのかの順番割り当て (1文1絵・${ko.length}枚)`);
       return ko;
     }
+    const ic = ichibanOrderedAssign(sentences);
+    if (ic) {
+      console.log(`絵づけ: 「2位」は120年前に発明されたの順番割り当て (1文1絵・${ic.length}枚)`);
+      return ic;
+    }
+    const sg = saigoOrderedAssign(sentences);
+    if (sg) {
+      console.log(`絵づけ: 人類は昔から飛ばして観ていたの順番割り当て (1文1絵・${sg.length}枚)`);
+      return sg;
+    }
     console.log("絵づけ: karakuri は専用キーワード割り当てを使用");
     return sentences.map(karakuriHeuristicAssign);
+  }
+  // sekai も1文1絵。AI には投げず、台本の並び順で絵を引く
+  // (AIが genki のモチーフを混ぜる事故を防ぐ)。
+  if (preset === "sekai") {
+    console.log("絵づけ: sekai は専用割り当てを使用");
+    return sentences.map((s, i) => sekaiAssign(s, i));
   }
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (apiKey) {
@@ -2039,6 +2057,66 @@ function kosoOrderedAssign(sentences: string[]): Assignment[] | null {
     );
   }
   return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: 「『2位』は、120年前に発明された」(docs/ichiban-script-v1.txt・219文) 用の順番割り当て =====
+// 専用シーン (IchiIndex の I_ALL_MOTIFS = IchiB0〜B11) は台本の文の順番どおりに並んでいるので、
+// 「文i → 絵i」で1対1に割り当てる (絵の正本 = からくり憲法 第11条)。
+// ※見分けは2文目の「古代オリンピックで2位になった人」で行う。1文目の「いきなりですが、クイズです。」は
+//   他作品と被りうるので使わない。
+function ichibanOrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[1]?.includes("古代オリンピックで2位になった人")) return null;
+  const order = [...I_ALL_MOTIFS];
+  if (sentences.length === order.length + 1) {
+    order.push(I_ALL_MOTIFS[I_ALL_MOTIFS.length - 1]); // 締めのご挨拶 = 最後の絵を再利用
+  }
+  if (sentences.length !== order.length) {
+    throw new Error(
+      `「2位」は120年前に発明された: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
+        `台本 (docs/ichiban-script-v1.txt) か I_ALL_MOTIFS (IchiB0〜B11のMOTIFS) の数を確認してください`,
+    );
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: 「人類は、昔から飛ばして観ていた」(docs/saigomade-script-v1.txt・237文) 用の順番割り当て =====
+// 専用シーン (SaigoIndex の S_ALL_MOTIFS = sg_001〜sg_237) は台本の文の順番どおりに並んでいるので、
+// 「文i → 絵i」で1対1に割り当てる (絵の正本 = からくり憲法 第11条)。
+function saigoOrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[0]?.includes("人類は、昔から飛ばして観ていました")) return null;
+  const order = [...S_ALL_MOTIFS];
+  if (sentences.length === order.length + 1) {
+    order.push(S_ALL_MOTIFS[S_ALL_MOTIFS.length - 1]); // 締めのご挨拶 = 最後の絵を再利用
+  }
+  if (sentences.length !== order.length) {
+    throw new Error(
+      `人類は昔から飛ばして観ていた: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
+        `台本 (docs/saigomade-script-v1.txt) か S_ALL_MOTIFS (SaigoIndexのS_ALL_MOTIFS) の数を確認してください`,
+    );
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== sekai (つながる世界史) 用の割り当て =====
+// 絵は1文ずつ専用に作る方針なので、ここでは機械が確実に分かる2種類だけ決める。
+// 専用の絵ができたら motif を sekai_* の実名に差し替える。
+// 冒頭3分は1文1絵で、台本の並び順と絵の番号が1対1に対応している (sekai_01 … sekai_39)。
+// キーワードで当てにいかず、何文目かで引く。台本の行を入れ替えたら絵も入れ替わる。
+export const SEKAI_BOUTOU_COUNT = 39;
+
+export function sekaiAssign(sentence: string, index = -1): Assignment {
+  const s = sentence.trim();
+  if (/第[0-9０-９一二三四五六七八九十]+章[、。]/.test(s)) {
+    return { type: "card", motif: "chapter" };
+  }
+  // 行まるごとが「」でくるまれていれば反応役のセリフ。通知カードで出す
+  // (地の文にも引用の「」が出るので、行頭だけでは判定しない)
+  const reaction = /^[「『]/.test(s) && /[」』]$/.test(s);
+  const type: SceneType = reaction ? "character" : "diagram";
+  if (index >= 0 && index < SEKAI_BOUTOU_COUNT) {
+    return { type, motif: `sekai_${String(index + 1).padStart(2, "0")}` };
+  }
+  return { type, motif: reaction ? "sekai_reaction" : "sekai_pending" };
 }
 
 // ===== karakuri (身の回りの機械のからくり図解) 用のキーワード機械割り当て =====

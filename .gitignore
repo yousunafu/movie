@@ -16,3 +16,10 @@ tmp/*
 !tmp/fake-sushi.ts
 !tmp/stills.ts
 !tmp/jihanki-v2-fixlist.md
+
+# 効果音の倉庫 (268MB) は git に入れない。目録だけ残す。
+# 中身は `python3 scripts/fetch-se.py` でいつでも取り直せる。使う音は public/se/ に入る (§10-3)
+assets/se/**
+!assets/se/
+!assets/se/INDEX.md
+!assets/se/se-index.json

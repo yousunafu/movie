@@ -10,9 +10,15 @@ import type { VoiceStyle } from "./pacing";
 
 const BASE = () => process.env.VOICEVOX_URL || "http://127.0.0.1:50021";
 
-let cachedStyleId: number | null = null;
+// 声ごとのID置き場。1本の動画で複数の声を使う (sekai の天の声 + 新人記者) ので、
+// 1つだけ覚える作りから「名前 → ID」の表に変えた (2026-11-09)。
+const styleIdCache = new Map<string, number>();
 
-async function resolveStyleId(): Promise<number> {
+async function resolveStyleId(speakerName: string, styleName: string): Promise<number> {
+  const key = `${speakerName}|${styleName}`;
+  const hit = styleIdCache.get(key);
+  if (hit !== undefined) return hit;
+
   let res: Response;
   try {
     res = await fetch(`${BASE()}/speakers`);
@@ -26,14 +32,20 @@ async function resolveStyleId(): Promise<number> {
     name: string;
     styles: { name: string; id: number }[];
   }[];
-  const sp = speakers.find((s) => s.name === VOICE.voicevoxSpeaker);
+  const sp = speakers.find((s) => s.name === speakerName);
   if (!sp) {
     throw new Error(
-      `VOICEVOXに「${VOICE.voicevoxSpeaker}」という声がありません。使える声: ${speakers.map((s) => s.name).join("、")}`,
+      `VOICEVOXに「${speakerName}」という声がありません。使える声: ${speakers.map((s) => s.name).join("、")}`,
     );
   }
-  const style = sp.styles.find((s) => s.name === VOICE.voicevoxStyle) ?? sp.styles[0];
-  console.log(`VOICEVOXの声: ${sp.name} (${style.name}) 話速${VOICE.voicevoxSpeed}`);
+  const style = sp.styles.find((s) => s.name === styleName);
+  if (!style) {
+    throw new Error(
+      `「${speakerName}」に「${styleName}」というスタイルがありません。使えるスタイル: ${sp.styles.map((s) => s.name).join("、")}`,
+    );
+  }
+  console.log(`VOICEVOXの声: ${sp.name} (${style.name}) id=${style.id}`);
+  styleIdCache.set(key, style.id);
   return style.id;
 }
 
@@ -122,8 +134,11 @@ export async function synthesizeVoicevox(
     if (dur > 0) return dur;
   }
 
-  if (cachedStyleId === null) cachedStyleId = await resolveStyleId();
-  const speaker = cachedStyleId;
+  // この文だけ別の声を指定されていればそれを使う (sekai の新人記者)
+  const speaker = await resolveStyleId(
+    style?.speaker ?? VOICE.voicevoxSpeaker,
+    style?.speakerStyle ?? VOICE.voicevoxStyle,
+  );
 
   const maxRetries = 3;
   for (let attempt = 1; attempt <= maxRetries; attempt++) {

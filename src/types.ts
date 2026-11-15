@@ -32,5 +32,6 @@ export type ScenesData = {
     | "kouzou"
     | "keizai"
     | "suuri"
-    | "karakuri"; // 作風。省略時は genki (従来通り)
+    | "karakuri"
+    | "sekai"; // 作風。省略時は genki (従来通り)
 };

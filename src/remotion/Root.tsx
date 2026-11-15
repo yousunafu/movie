@@ -31,6 +31,39 @@ import { KosoB4Preview, KOSO_B4_PREVIEW_FRAMES } from "./karakuri/KosoB4Index";
 import { KosoB5Preview, KOSO_B5_PREVIEW_FRAMES } from "./karakuri/KosoB5Index";
 import { KosoB6Preview, KOSO_B6_PREVIEW_FRAMES } from "./karakuri/KosoB6Index";
 import { KosoAllPreview, KOSO_ALL_PREVIEW_FRAMES } from "./karakuri/KosoIndex";
+import { IchiAllPreview, ICHI_ALL_PREVIEW_FRAMES } from "./karakuri/IchiIndex";
+import { SaigoAllPreview, SAIGO_ALL_PREVIEW_FRAMES, SaigoAllMotion, SAIGO_MOTION_FRAMES } from "./karakuri/SaigoIndex";
+import { SaigoPartsPreview, SAIGO_PARTS_PREVIEW_FRAMES } from "./karakuri/SaigoParts";
+import { IchiB0Preview, ICHI_B0_PREVIEW_FRAMES, IchiB0Motion, ICHI_B0_MOTION_FRAMES } from "./karakuri/IchiB0";
+import { IchiB1Preview, ICHI_B1_PREVIEW_FRAMES } from "./karakuri/IchiB1";
+import { IchiB2Preview, ICHI_B2_PREVIEW_FRAMES } from "./karakuri/IchiB2";
+import { IchiB3Preview, ICHI_B3_PREVIEW_FRAMES } from "./karakuri/IchiB3";
+import { IchiB4Preview, ICHI_B4_PREVIEW_FRAMES } from "./karakuri/IchiB4";
+import { IchiB5Preview, ICHI_B5_PREVIEW_FRAMES } from "./karakuri/IchiB5";
+import { IchiB6Preview, ICHI_B6_PREVIEW_FRAMES } from "./karakuri/IchiB6";
+import { IchiB7Preview, ICHI_B7_PREVIEW_FRAMES } from "./karakuri/IchiB7";
+import { IchiB8Preview, ICHI_B8_PREVIEW_FRAMES } from "./karakuri/IchiB8";
+import { IchiB9Preview, ICHI_B9_PREVIEW_FRAMES } from "./karakuri/IchiB9";
+import { IchiB10Preview, ICHI_B10_PREVIEW_FRAMES } from "./karakuri/IchiB10";
+import { IchiB11Preview, ICHI_B11_PREVIEW_FRAMES } from "./karakuri/IchiB11";
+import { KsePreview, KSE_PREVIEW_FRAMES, KseMotion, KSE_MOTION_FRAMES } from "./karakuri/KseIndex";
+import { PersonCatalog } from "./karakuri/PersonCatalog";
+import { SekaiBoutouPreview, SEKAI_BOUTOU_FRAMES } from "./sekai/SekaiBoutou";
+import {
+  SekaiSheetA,
+  SekaiSheetB,
+  SekaiSheetC,
+  SekaiSheetD,
+  SekaiSheetAll,
+  SekaiWorldCatalog,
+  WORLD_CATALOG_FRAMES,
+  SHEET_A_FRAMES,
+  SHEET_B_FRAMES,
+  SHEET_C_FRAMES,
+  SHEET_D_FRAMES,
+  SHEET_ALL_FRAMES,
+} from "./sekai/SekaiSheet";
+import { MainCheap } from "./sekai/cheap";
 import { VIDEO, sceneHoldSec } from "../style";
 import scenesData from "./scenes-data.json";
 import type { ScenesData } from "../types";
@@ -51,6 +84,16 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Main"
         component={Main}
+        durationInFrames={totalFrames}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+        defaultProps={{ data }}
+      />
+      {/* sekai 廉価版。台本・音声・字幕は Main とまったく同じで、絵だけ密度を落とした比較用 */}
+      <Composition
+        id="MainCheap"
+        component={MainCheap}
         durationInFrames={totalFrames}
         fps={VIDEO.fps}
         width={VIDEO.width}
@@ -133,8 +176,59 @@ export const RemotionRoot: React.FC = () => {
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="KosoB6" component={KosoB6Preview} durationInFrames={KOSO_B6_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 順位回 (『2位』は、120年前に発明された): 序 (文#1〜#20) / 第1章 (文#21〜#35)。
+          コマ番号 = 文番号 − 1 / − 21 */}
+      <Composition id="IchiB0" component={IchiB0Preview} durationInFrames={ICHI_B0_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="IchiB1" component={IchiB1Preview} durationInFrames={ICHI_B1_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 序章の「動き」確認用 (1シーン200フレームずつ)。コマ番号 = (文番号−1)×200 + 見たい f */}
+      <Composition id="IchiB0Motion" component={IchiB0Motion} durationInFrames={ICHI_B0_MOTION_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 第2章 (文#36〜#47)。コマ番号 = 文番号 − 36 */}
+      <Composition id="IchiB2" component={IchiB2Preview} durationInFrames={ICHI_B2_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 第3章〜結び。コマ番号 = 文番号 − その章の最初の文番号
+          B3 #48〜#62 / B4 #63〜#77 / B5 #78〜#102 / B6 #103〜#122 / B7 #123〜#142
+          B8 #143〜#162 / B9 #163〜#187 / B10 #188〜#199 / B11 (結び) #200〜#219 */}
+      <Composition id="IchiB3" component={IchiB3Preview} durationInFrames={ICHI_B3_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="IchiB4" component={IchiB4Preview} durationInFrames={ICHI_B4_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="IchiB5" component={IchiB5Preview} durationInFrames={ICHI_B5_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="IchiB6" component={IchiB6Preview} durationInFrames={ICHI_B6_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="IchiB7" component={IchiB7Preview} durationInFrames={ICHI_B7_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="IchiB8" component={IchiB8Preview} durationInFrames={ICHI_B8_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="IchiB9" component={IchiB9Preview} durationInFrames={ICHI_B9_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="IchiB10" component={IchiB10Preview} durationInFrames={ICHI_B10_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="IchiB11" component={IchiB11Preview} durationInFrames={ICHI_B11_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* つながる世界史 からくり試作 (冒頭2分・文#1〜#19)。コマ番号 = 文番号 − 1 */}
+      <Composition id="KseP" component={KsePreview} durationInFrames={KSE_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 同・動き確認用 (1シーン200フレーム)。コマ番号 = (文番号−1)×200 + 見たい f */}
+      <Composition id="KseMotion" component={KseMotion} durationInFrames={KSE_MOTION_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       {/* ★全282枚を1列に (序→6章)。コマ番号 + 1 = 文番号。一覧シートはこれを使う */}
       <Composition id="KosoAll" component={KosoAllPreview} durationInFrames={KOSO_ALL_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 「2位」は120年前に発明された 全219枚の通し確認 (1フレーム = 1文) */}
+      <Composition id="IchiAll" component={IchiAllPreview} durationInFrames={ICHI_ALL_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 人類は、昔から飛ばして観ていた 全237枚の検品 (1フレーム = 1文。コマ番号 = 文番号 − 1) */}
+      <Composition id="SaigoAll" component={SaigoAllPreview} durationInFrames={SAIGO_ALL_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 同・動き確認用 (1シーン200フレーム)。コマ番号 = (文番号−1)×200 + 見たい f */}
+      <Composition id="SaigoMotion" component={SaigoAllMotion} durationInFrames={SAIGO_MOTION_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* 同・共有装置の検品 (断面図A〜E/手配書/再生バー/絵巻年表/三枚札) */}
+      <Composition id="SaigoParts" component={SaigoPartsPreview} durationInFrames={SAIGO_PARTS_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       {/* 序章の「動き」確認用 (1シーン5秒ずつ通し再生。スライドでは写らない演出を見るため) */}
       <Composition id="ElevB0Motion" component={ElevB0Motion} durationInFrames={EL_B0_MOTION_FRAMES}
@@ -153,6 +247,85 @@ export const RemotionRoot: React.FC = () => {
         id="Uranaishi"
         component={Uranaishi}
         durationInFrames={URANAISHI_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      {/* sekai (つながる世界史) の作風見本。前半=地の文の字幕帯 / 後半=反応の通知カード
+          色だけを変えた2本。レイアウト・カメラ・動きは同一にしてA/B比較を成立させる */}
+      <Composition
+        id="SekaiBoutou"
+        component={SekaiBoutouPreview}
+        durationInFrames={SEKAI_BOUTOU_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+        defaultProps={{ color: false }}
+      />
+      <Composition
+        id="SekaiBoutouColor"
+        component={SekaiBoutouPreview}
+        durationInFrames={SEKAI_BOUTOU_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+        defaultProps={{ color: true }}
+      />
+      {/* world.tsx の共通部品の見本。部品を直したらここで目で確かめる */}
+      <Composition
+        id="SekaiWorldCatalog"
+        component={SekaiWorldCatalog}
+        durationInFrames={WORLD_CATALOG_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      {/* 冒頭3分39枚の確認用。1枚60フレームずつ。担当ごとに分けてある */}
+      <Composition
+        id="SekaiSheetA"
+        component={SekaiSheetA}
+        durationInFrames={SHEET_A_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      <Composition
+        id="SekaiSheetB"
+        component={SekaiSheetB}
+        durationInFrames={SHEET_B_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      <Composition
+        id="SekaiSheetC"
+        component={SekaiSheetC}
+        durationInFrames={SHEET_C_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      <Composition
+        id="SekaiSheetD"
+        component={SekaiSheetD}
+        durationInFrames={SHEET_D_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      <Composition
+        id="SekaiSheetAll"
+        component={SekaiSheetAll}
+        durationInFrames={SHEET_ALL_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      {/* karakuri共通人物部品のカタログ (Person 7ポーズ / 表情7種 / PersonMini)。本編とは無関係 */}
+      <Composition
+        id="PersonCatalog"
+        component={PersonCatalog}
+        durationInFrames={60}
         fps={VIDEO.fps}
         width={VIDEO.width}
         height={VIDEO.height}

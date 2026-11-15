@@ -60,6 +60,14 @@ export const KARAKURI_CHANNEL = {
     "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
 } as const;
 
+// 時代と国をまたいで同じ「型」を比べる世界史系 (上司依頼の新チャンネル。名前は自作)
+// 語りは姿のない天の声。顔が出るのは掛け合いのときの反応役ひとりだけ。
+export const SEKAI_CHANNEL = {
+  name: "つながる世界史",
+  iconLetter: "世",
+  closingLine: "最後までご覧いただきありがとうございました。遠い国の話は、たいてい地続きです。",
+} as const;
+
 // 動画の作風 (プリセット)。環境変数 PRESET で切り替える。
 // genki = 高齢者向け健康解説 (明るい昼のトーン) / ashi = 夜の教養エッセイ (暗いトーン)
 // manabi = 身近な科学の図解解説 (暗い背景+白い線画+オレンジ強調)
@@ -68,6 +76,7 @@ export const KARAKURI_CHANNEL = {
 // keizai = 経済ニュース解説 (濃紺スタジオ+白フリップ+赤見出し+黄強調)
 // suuri = 数理・統計の図解 (真っ黒背景+白ピクトグラム+赤強調)
 // karakuri = 身の回りの機械のからくり図解 (クラフト紙背景+手描き風の線+丸頭キャラ+常時アニメ)
+// sekai = つながる世界史 (墨の背景+生成りの線画+錆朱の強調+縦書きの年号札+天の声)
 export type Preset =
   | "genki"
   | "ashi"
@@ -76,7 +85,8 @@ export type Preset =
   | "kouzou"
   | "keizai"
   | "suuri"
-  | "karakuri";
+  | "karakuri"
+  | "sekai";
 
 export function getPreset(): Preset {
   if (process.env.PRESET === "ashi") return "ashi";
@@ -86,6 +96,7 @@ export function getPreset(): Preset {
   if (process.env.PRESET === "keizai") return "keizai";
   if (process.env.PRESET === "suuri") return "suuri";
   if (process.env.PRESET === "karakuri") return "karakuri";
+  if (process.env.PRESET === "sekai") return "sekai";
   return "genki";
 }
 
@@ -97,6 +108,7 @@ export function getChannel(preset: Preset) {
   if (preset === "keizai") return KEIZAI_CHANNEL;
   if (preset === "suuri") return SUURI_CHANNEL;
   if (preset === "karakuri") return KARAKURI_CHANNEL;
+  if (preset === "sekai") return SEKAI_CHANNEL;
   return CHANNEL;
 }
 
@@ -108,12 +120,32 @@ export const VOICE = {
   // キャラ名はサンプル https://voicevox.hiroshiba.jp/ で聞き比べて選ぶ。
   // 使ったら動画の説明欄に「VOICEVOX:キャラ名」と書くこと (利用条件)。
   // karakuri (まちのからくり図鑑) だけずんだもん。他チャンネルは従来どおり青山龍星・少しゆっくり。
+  // sekai は天の声ナレーション。青山龍星の「ノーマル」。
+  // ★2026-11-09 失敗: 重い題材だからと「しっとり」+ 話速0.92 にしたら、
+  //   作者「ナレーションの声元気なさすぎでしょ」。しっとりは息を落とすスタイルで、
+  //   遅い話速と重なって二重にトーンダウンしていた。
+  //   重い題材 = 弱く喋る、ではない。語り手は張りを保ったまま、間で重さを出す。
   voicevoxSpeaker: getPreset() === "karakuri" ? "ずんだもん" : "青山龍星",
   voicevoxStyle: "ノーマル",
   // 1.0が標準。genki系は高齢の視聴者向けに少しゆっくり。
   // karakuri は 2026-11-03「なぜ高層ビルは生まれたのか」から 1.1 (作者指示・少し速め)。
+  // sekai は 1.05 (2026-11-09 作者指示「話す速さは1.05とかでいいよ」)。
   // ※ 下の applyPresetVoice() にも同じ値がある。変えるときは両方直すこと
-  voicevoxSpeed: getPreset() === "karakuri" ? 1.1 : 0.95,
+  voicevoxSpeed:
+    getPreset() === "karakuri" ? 1.1 : getPreset() === "sekai" ? 1.05 : 0.95,
+
+  // --- 反応役の声 (sekai だけ) ★2026-11-09 追加 ---
+  // 作者指示「女性記者が喋るシーンはそこをボイスの種類を変えること」。
+  // sekai の反応役は新人記者 (女性)。天の声と同じ声だと誰が喋っているか分からないので、
+  // 行まるごとが「」でくるまれた文 (= assign.ts が type:"character" を付けた文) だけ
+  // この声に差し替える。字幕・絵は変わらない。
+  // 落ち着いた自然な女性の声。可愛すぎる声だと重い題材とぶつかる。
+  reactionSpeaker: "冥鳴ひまり",
+  reactionStyle: "ノーマル",
+  // 天の声より少し速く・抑揚を強く。とっさの相づちに聞こえるように
+  // (天の声を1.05に上げたので、こちらも1.1へ。遅いと相づちに聞こえない)
+  reactionSpeed: 1.1,
+  reactionIntonation: 1.15,
 
   // --- ElevenLabsの設定 ---
   modelId: "eleven_multilingual_v2",
@@ -126,5 +158,12 @@ export const VOICE = {
 // (2026-10 自販機2000年史で、ローカル実行時にPRESET未設定→青山龍星のまま合成された事故の再発防止)
 export function applyPresetVoice(preset: Preset) {
   VOICE.voicevoxSpeaker = preset === "karakuri" ? "ずんだもん" : "青山龍星";
-  VOICE.voicevoxSpeed = preset === "karakuri" ? 1.1 : 0.95; // ※上の VOICE 初期化と同じ値にすること
+  // ※上の VOICE 初期化と同じ値にすること
+  VOICE.voicevoxStyle = "ノーマル";
+  VOICE.voicevoxSpeed = preset === "karakuri" ? 1.1 : preset === "sekai" ? 1.05 : 0.95;
+}
+
+/** 反応役を別の声で喋らせる作風か (いまは sekai の新人記者だけ) */
+export function hasReactionVoice(preset: Preset): boolean {
+  return preset === "sekai";
 }

@@ -1,6 +1,7 @@
 import {
   AbsoluteFill,
   Audio,
+  Sequence,
   Series,
   staticFile,
   useCurrentFrame,
@@ -33,10 +34,19 @@ import {
 import { KeizaiSceneView, EP, KEIZAI_FONT, keizaiCardShowsFullText } from "./keizai/KeizaiScenes";
 import { SuuriSceneView, SP, SUURI_FONT, suuriCardShowsFullText, suuriSceneHidesSubtitle, computeSuuriVariants, computeSuuriWashi, WashiCtx, computeSuuriStadium, StadiumCtx, computeSuuriRenai, RenaiCtx, splitPunchline } from "./suuri/SuuriScenes";
 import { KarakuriSceneView, KRP, karakuriCardShowsFullText } from "./karakuri/KarakuriScenes";
+import {
+  SekaiSceneView,
+  sekaiCardShowsFullText,
+  sekaiReactionHidesSubtitle,
+} from "./sekai/SekaiScenes";
+import { SKP } from "./sekai/parts";
 import { J2AllSceneView } from "./karakuri/Jihanki2000Index";
 import { WAllSceneView } from "./karakuri/WatashiIndex";
 import { TAllSceneView } from "./karakuri/TabiIndex";
 import { kosoScene } from "./karakuri/KosoIndex";
+import { ichiScene } from "./karakuri/IchiIndex";
+import { saigoScene } from "./karakuri/SaigoIndex";
+import { SAIGO_SE } from "./karakuri/saigoSe";
 
 // 自販機2000年史 (モチーフ名が j2_ で始まる専用絵) を本編プレイヤーで描くためのつなぎ。
 // J2AllSceneView は (motif, f) を受けるので、Sequence内の経過フレームを渡す。
@@ -67,6 +77,33 @@ const KosoSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
   const f = useCurrentFrame();
   return (
     kosoScene(motif, f) ?? (
+      // ここに来たら motif 名の打ち間違い。真っ白事故を避けるためクリーム地だけ出す
+      <AbsoluteFill style={{ background: KRP.cream }} />
+    )
+  );
+};
+
+// 「『2位』は、120年前に発明された」(モチーフ名が ib0_〜ib11_ で始まる専用絵) 用の同じつなぎ。
+// ※ 章を足したら必ずこの範囲を広げる。広げ忘れると汎用絵に落ちる (tabi v1事故)
+//    正規表現は長い方 (1[01]) を先に置くこと。[0-9] を先にすると ib10_ が ib1_ と誤判定される
+export const isIchiMotif = (motif: string) => /^ib(1[01]|[0-9])_/.test(motif);
+const IchiSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return (
+    ichiScene(motif, f) ?? (
+      // ここに来たら motif 名の打ち間違い。真っ白事故を避けるためクリーム地だけ出す
+      <AbsoluteFill style={{ background: KRP.cream }} />
+    )
+  );
+};
+
+// 「人類は、昔から飛ばして観ていた」(モチーフ名が sg_001〜sg_237 の専用絵) 用の同じつなぎ。
+// この回は1文1絵で全文ぶん専用絵があるので、汎用絵には一度も落ちない想定。
+export const isSaigoMotif = (motif: string) => /^sg_\d{3}$/.test(motif);
+const SaigoSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return (
+    saigoScene(motif, f) ?? (
       // ここに来たら motif 名の打ち間違い。真っ白事故を避けるためクリーム地だけ出す
       <AbsoluteFill style={{ background: KRP.cream }} />
     )
@@ -150,10 +187,11 @@ const Subtitle: React.FC<{
   washi?: boolean; // suuri の和紙背景モード (字幕を墨色にする)
   renai?: boolean; // suuri の恋愛モード (白地なので字幕をチャコールにする)
   karakuri?: boolean; // karakuri: 下部の黒い角丸帯に白字 (お手本の字幕スタイル)
+  sekai?: boolean; // sekai: 画面下端の墨帯に生成りの字
   highlight?: string;
   // オチ字幕: atFrame までは先頭 headChars 文字だけ表示する (ネタバレ防止)
   tailReveal?: { headChars: number; atFrame: number };
-}> = ({ text: fullText, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, washi, renai, karakuri, highlight, tailReveal }) => {
+}> = ({ text: fullText, onImage, ashi, manabi, rekishi, kouzou, keizai, suuri, washi, renai, karakuri, sekai, highlight, tailReveal }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 8], [0, 1], {
     extrapolateRight: "clamp",
@@ -226,6 +264,40 @@ const Subtitle: React.FC<{
             fontWeight: 700,
             color: "#FFFFFF",
             lineHeight: 1.5,
+          }}
+        >
+          {nodes}
+        </div>
+      </div>
+    );
+  }
+  // sekai: 画面下端いっぱいの墨の帯に生成りの字。帯の上辺に錆朱の細い罫を1本。
+  // 帯の上端は y≈944 (1行) / y≈874 (2行) → 絵の中のテロップは y≤840 に置くこと
+  if (sekai) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          backgroundColor: "rgba(21, 17, 14, 0.93)",
+          borderTop: `3px solid ${SKP.sabi}`,
+          padding: "22px 0 26px",
+          textAlign: "center",
+          opacity,
+        }}
+      >
+        <div
+          style={{
+            margin: "0 auto",
+            width: "88%",
+            fontFamily: FONT,
+            fontSize: 46,
+            fontWeight: 600,
+            color: SKP.kinari,
+            lineHeight: 1.5,
+            letterSpacing: 1,
           }}
         >
           {nodes}
@@ -360,6 +432,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
   const isKeizai = data.preset === "keizai";
   const isSuuri = data.preset === "suuri";
   const isKarakuri = data.preset === "karakuri";
+  const isSekai = data.preset === "sekai";
   // suuri: 同じ絵の2回目以降は姿を変える (絵が育つ仕組み)
   const suuriVariants = isSuuri ? computeSuuriVariants(data.scenes) : [];
   // suuri: 寿司の場面だけ和紙背景にする (題材から場面ごとに判定)
@@ -418,7 +491,9 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                     ? SP.background
                     : isKarakuri
                       ? KRP.paper
-                      : PALETTE.background,
+                      : isSekai
+                        ? SKP.sumi
+                        : PALETTE.background,
       }}
     >
       {data.bgmFile && (
@@ -440,6 +515,14 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
               name={`${scene.index}-${scene.type}`}
             >
               <Audio src={staticFile(scene.audio)} />
+              {/* 効果音 (いまは「人類は、昔から飛ばして観ていた」だけ)。
+                  表 (saigoSe.ts) に載っていない motif は空配列なので他作風には影響しない */}
+              {isKarakuri &&
+                (SAIGO_SE[scene.motif] ?? []).map((cue, i) => (
+                  <Sequence key={`se${i}`} from={cue.at} name={`se-${scene.index}-${i}`}>
+                    <Audio src={staticFile(cue.file)} volume={cue.volume ?? 0.55} />
+                  </Sequence>
+                ))}
               {isAshi ? (
                 <AshiV2Context.Provider value={v2}>
                   {v2 ? (
@@ -475,9 +558,15 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   <TSceneInVideo motif={scene.motif} />
                 ) : isKosoMotif(scene.motif) ? (
                   <KosoSceneInVideo motif={scene.motif} />
+                ) : isIchiMotif(scene.motif) ? (
+                  <IchiSceneInVideo motif={scene.motif} />
+                ) : isSaigoMotif(scene.motif) ? (
+                  <SaigoSceneInVideo motif={scene.motif} />
                 ) : (
                   <KarakuriSceneView scene={scene} />
                 )
+              ) : isSekai ? (
+                <SekaiSceneView scene={scene} />
               ) : (
                 <SceneView scene={scene} />
               )}
@@ -488,10 +577,12 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                 !(isKeizai && keizaiCardShowsFullText(scene)) &&
                 !(isSuuri && suuriCardShowsFullText(scene)) &&
                 !(isSuuri && suuriSceneHidesSubtitle(scene)) &&
-                !(isKarakuri && karakuriCardShowsFullText(scene)) && (
+                !(isKarakuri && karakuriCardShowsFullText(scene)) &&
+                !(isSekai && sekaiCardShowsFullText(scene)) &&
+                !(isSekai && sekaiReactionHidesSubtitle(scene)) && (
                 <Subtitle
                   text={scene.text}
-                  onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi && !isKouzou && !isKeizai && !isKarakuri}
+                  onImage={Boolean(scene.image) && scene.type !== "card" && !isRekishi && !isKouzou && !isKeizai && !isKarakuri && !isSekai}
                   ashi={isAshi}
                   manabi={isManabi}
                   rekishi={isRekishi}
@@ -501,7 +592,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   washi={isSuuri && (suuriWashi[sceneI] ?? false)}
                   renai={isSuuri && (suuriRenai[sceneI] ?? false) && scene.motif !== "love_to_black"}
                   karakuri={isKarakuri}
-                  highlight={v2 || isKarakuri ? scene.emphasis : undefined}
+                  sekai={isSekai}
+                  highlight={v2 || isKarakuri || isSekai ? scene.emphasis : undefined}
                   tailReveal={
                     punch
                       ? {

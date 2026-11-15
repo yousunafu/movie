@@ -152,7 +152,9 @@ export const Stamp: React.FC<{ x: number; y: number; text: string; size?: number
 );
 
 // ===== 人物キット (丸頭2頭身。f でまばたき+体の上下ゆれ) =====
-type Face = "normal" | "worried" | "surprised" | "smile";
+// pose で腕 (run は脚も) が変わる。stand は従来と完全に同じ描画。
+type Face = "normal" | "worried" | "surprised" | "smile" | "joy" | "angry" | "sad";
+type Pose = "stand" | "banzai" | "raise" | "point" | "armsFolded" | "run" | "hold";
 export const Person: React.FC<{
   x: number; // 足元中央のx
   y: number; // 足元のy
@@ -169,25 +171,85 @@ export const Person: React.FC<{
   f?: number; // 現在フレーム (まばたき・ゆれ用)
   phase?: number; // 人物ごとにずらす位相
   still?: boolean; // 体ゆれを止める
+  pose?: Pose; // 腕のポーズ (default: stand = 従来どおり)
+  pointDir?: 1 | -1; // pose="point" の向き (1=右へ指す)
 }> = ({
   x, y, s = 1, cloth = "#3E4B66", clothDark = "#2E3850",
   helmet = false, glasses = false, hair = "cap", face = "normal",
   gaze = [0, 0], tasuki, lean = 0, f = 0, phase = 0, still = false,
+  pose = "stand", pointDir = 1,
 }) => {
   const [gx, gy] = gaze;
   const bob = still ? 0 : Math.sin((f + phase * 17) / 13) * 3;
-  const blink = ((f + phase * 41) % 97) < 5 && f > 2;
+  const blink = ((f + phase * 41) % 97) < 5 && f > 2 && face !== "joy";
+  // ポーズ用のゆれ (f があるときだけ)
+  const armSway = f ? Math.sin((f + phase * 17) / 9) * 3 : 0; // banzai の腕ゆれ ±3°
+  const runSwing = f ? Math.sin((f + phase * 13) / 5) * 8 : 0; // run の腕ふり
+  const tearY = f ? Math.sin((f + phase * 11) / 6) * 2 : 0; // sad の涙ゆれ
+  // 腕1本。rot は肩 (±67,-148) まわりの回転。rot=0 のときは従来と同じ markup
+  const armRect = (side: -1 | 1, rot: number, len = 82) => (
+    <rect
+      x={side === -1 ? -78 : 56} y={-148} width={22} height={len} rx={11}
+      fill={cloth} stroke={KRP.ink} strokeWidth={4.5}
+      transform={rot === 0 ? undefined : `rotate(${rot} ${side * 67} -148)`}
+    />
+  );
   return (
     <g transform={`translate(${x} ${y + bob}) scale(${s}) rotate(${lean})`}>
-      {/* 脚 */}
-      <rect x={-30} y={-58} width={24} height={52} fill={clothDark} stroke={KRP.ink} strokeWidth={4.5} />
-      <rect x={6} y={-58} width={24} height={52} fill={clothDark} stroke={KRP.ink} strokeWidth={4.5} />
-      {/* 靴 */}
-      <ellipse cx={-18} cy={-4} rx={20} ry={9} fill={KRP.ink} />
-      <ellipse cx={18} cy={-4} rx={20} ry={9} fill={KRP.ink} />
-      {/* 腕 */}
-      <rect x={-78} y={-148} width={22} height={82} rx={11} fill={cloth} stroke={KRP.ink} strokeWidth={4.5} />
-      <rect x={56} y={-148} width={22} height={82} rx={11} fill={cloth} stroke={KRP.ink} strokeWidth={4.5} />
+      {/* 脚 (run のときだけ前後に開く) */}
+      {pose === "run" ? (
+        <g>
+          <g transform="rotate(-30 -18 -58)">
+            <rect x={-30} y={-58} width={24} height={52} fill={clothDark} stroke={KRP.ink} strokeWidth={4.5} />
+            <ellipse cx={-18} cy={-4} rx={20} ry={9} fill={KRP.ink} />
+          </g>
+          <g transform="rotate(32 18 -58)">
+            <rect x={6} y={-58} width={24} height={52} fill={clothDark} stroke={KRP.ink} strokeWidth={4.5} />
+            <ellipse cx={18} cy={-4} rx={20} ry={9} fill={KRP.ink} />
+          </g>
+        </g>
+      ) : (
+        <>
+          <rect x={-30} y={-58} width={24} height={52} fill={clothDark} stroke={KRP.ink} strokeWidth={4.5} />
+          <rect x={6} y={-58} width={24} height={52} fill={clothDark} stroke={KRP.ink} strokeWidth={4.5} />
+          {/* 靴 */}
+          <ellipse cx={-18} cy={-4} rx={20} ry={9} fill={KRP.ink} />
+          <ellipse cx={18} cy={-4} rx={20} ry={9} fill={KRP.ink} />
+        </>
+      )}
+      {/* 腕 (胴体の後ろに描く層。hold は前腕を胴体の前に描くのでここは無し) */}
+      {pose === "banzai" ? (
+        <g>
+          {armRect(-1, 135 + armSway)}
+          {armRect(1, -135 - armSway)}
+        </g>
+      ) : pose === "raise" ? (
+        <g>
+          {armRect(-1, 0)}
+          {armRect(1, 180)}
+        </g>
+      ) : pose === "point" ? (
+        <g>
+          {armRect(pointDir === 1 ? -1 : 1, 0)}
+          {armRect(pointDir === 1 ? 1 : -1, pointDir === 1 ? -90 : 90, 86)}
+          <circle cx={pointDir * 153} cy={-148} r={10} fill={KRP.white} stroke={KRP.ink} strokeWidth={4.5} />
+        </g>
+      ) : pose === "armsFolded" ? (
+        <g>
+          {armRect(-1, -32, 56)}
+          {armRect(1, 32, 56)}
+        </g>
+      ) : pose === "run" ? (
+        <g>
+          {armRect(-1, 38 - runSwing)}
+          {armRect(1, -118 + runSwing)}
+        </g>
+      ) : pose === "hold" ? null : (
+        <>
+          {armRect(-1, 0)}
+          {armRect(1, 0)}
+        </>
+      )}
       {/* 胴体 */}
       <rect x={-58} y={-160} width={116} height={108} rx={16} fill={cloth} stroke={KRP.ink} strokeWidth={5} />
       <rect x={18} y={-138} width={26} height={20} rx={4} fill="none" stroke={KRP.ink} strokeWidth={3} opacity={0.55} />
@@ -199,6 +261,24 @@ export const Person: React.FC<{
             transform="rotate(-45 -2 -96)" textAnchor="middle">
             {tasuki}
           </text>
+        </g>
+      )}
+      {/* 胸の前で組む前腕 (胴体の前の層) */}
+      {pose === "armsFolded" && (
+        <g>
+          <rect x={-50} y={-138} width={94} height={21} rx={10.5} fill={cloth} stroke={KRP.ink} strokeWidth={4.5} />
+          <rect x={-44} y={-120} width={94} height={21} rx={10.5} fill={cloth} stroke={KRP.ink} strokeWidth={4.5} />
+        </g>
+      )}
+      {/* 体の前に出す両腕 (手元 y≈-120 で揃う。物はシーン側で持たせる) */}
+      {pose === "hold" && (
+        <g>
+          <rect x={-78} y={-148} width={22} height={64} rx={11} fill={cloth} stroke={KRP.ink} strokeWidth={4.5}
+            transform="rotate(-58 -67 -148)" />
+          <rect x={56} y={-148} width={22} height={64} rx={11} fill={cloth} stroke={KRP.ink} strokeWidth={4.5}
+            transform="rotate(58 67 -148)" />
+          <circle cx={-14} cy={-118} r={9} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
+          <circle cx={14} cy={-118} r={9} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
         </g>
       )}
       {/* 頭 */}
@@ -214,8 +294,13 @@ export const Person: React.FC<{
           <rect x={32} y={-294} width={14} height={40} fill={KRP.yellow} stroke={KRP.ink} strokeWidth={3} />
         </g>
       )}
-      {/* 目 (まばたき中はとじ目の線) */}
-      {blink ? (
+      {/* 目 (まばたき中はとじ目の線。joy はとじ目「^ ^」固定) */}
+      {face === "joy" ? (
+        <g fill="none" stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round">
+          <path d="M -34 -216 Q -24 -231 -14 -216" />
+          <path d="M 14 -216 Q 24 -231 34 -216" />
+        </g>
+      ) : blink ? (
         <g stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round">
           <line x1={-34} y1={-220} x2={-14} y2={-220} />
           <line x1={14} y1={-220} x2={34} y2={-220} />
@@ -224,9 +309,16 @@ export const Person: React.FC<{
         <g>
           <ellipse cx={-24} cy={-222} rx={13} ry={18} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
           <ellipse cx={24} cy={-222} rx={13} ry={18} fill={KRP.white} stroke={KRP.ink} strokeWidth={4} />
-          <circle cx={-24 + gx} cy={-222 + gy} r={face === "surprised" ? 4.5 : 6} fill={KRP.ink} />
-          <circle cx={24 + gx} cy={-222 + gy} r={face === "surprised" ? 4.5 : 6} fill={KRP.ink} />
+          <circle cx={-24 + gx} cy={-222 + gy + (face === "sad" ? 5 : 0)} r={face === "surprised" ? 4.5 : 6} fill={KRP.ink} />
+          <circle cx={24 + gx} cy={-222 + gy + (face === "sad" ? 5 : 0)} r={face === "surprised" ? 4.5 : 6} fill={KRP.ink} />
         </g>
+      )}
+      {/* 涙ひと粒 (sad。f で少し揺れる) */}
+      {face === "sad" && (
+        <path
+          d={`M -30 ${-202 + tearY} Q -37 ${-190 + tearY} -30 ${-185 + tearY} Q -23 ${-190 + tearY} -30 ${-202 + tearY} Z`}
+          fill="#7FA8C9" opacity={0.9}
+        />
       )}
       {glasses && (
         <g fill="none" stroke={KRP.ink} strokeWidth={4.5}>
@@ -248,6 +340,16 @@ export const Person: React.FC<{
           <line x1={-34} y1={-254} x2={-14} y2={-254} />
           <line x1={14} y1={-254} x2={34} y2={-254} />
         </g>
+      ) : face === "angry" ? (
+        <g stroke={KRP.ink} strokeWidth={5} strokeLinecap="round">
+          <line x1={-35} y1={-258} x2={-13} y2={-244} />
+          <line x1={13} y1={-244} x2={35} y2={-258} />
+        </g>
+      ) : face === "sad" ? (
+        <g stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round">
+          <line x1={-34} y1={-243} x2={-14} y2={-252} />
+          <line x1={14} y1={-252} x2={34} y2={-243} />
+        </g>
       ) : (
         <g stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round">
           <line x1={-34} y1={-248} x2={-14} y2={-250} />
@@ -261,8 +363,62 @@ export const Person: React.FC<{
         <path d="M -14 -192 Q 0 -178 14 -192" fill="none" stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round" />
       ) : face === "worried" ? (
         <path d="M -12 -184 Q 0 -192 12 -184" fill="none" stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round" />
+      ) : face === "joy" ? (
+        <g>
+          <path d="M -20 -194 Q 0 -164 20 -194 Z" fill={KRP.ink} />
+          <ellipse cx={0} cy={-183} rx={8} ry={3.5} fill="#E06A5A" />
+        </g>
+      ) : face === "angry" ? (
+        <path d="M -16 -180 Q 0 -195 16 -180" fill="none" stroke={KRP.ink} strokeWidth={5} strokeLinecap="round" />
+      ) : face === "sad" ? (
+        <path d="M -10 -181 Q 0 -189 10 -181" fill="none" stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round" />
       ) : (
         <line x1={-10} y1={-186} x2={10} y2={-186} stroke={KRP.ink} strokeWidth={4.5} strokeLinecap="round" />
+      )}
+    </g>
+  );
+};
+
+// ===== 簡略キャラ (群衆・遠景用)。頭の丸+胴の丸角rectだけ。太線で縮めても潰れない =====
+// 原型: IchiB0.tsx の HumanIcon / CheerPerson の雰囲気に合わせた共通版。y は足元
+export const PersonMini: React.FC<{
+  x: number; y: number; s?: number; color?: string;
+  f?: number; phase?: number;
+  face?: "dot" | "smile" | "none"; // none = 無地シルエット
+  arms?: "down" | "up"; // up = 歓声の両腕上げ (f で振る)
+}> = ({ x, y, s = 1, color = KRP.gray, f = 0, phase = 0, face = "dot", arms = "down" }) => {
+  const bob = Math.sin((f + phase * 17) / 13) * 3;
+  const wave = f ? Math.sin((f + phase * 19) / 7) * 12 : 0;
+  const sil = face === "none";
+  return (
+    <g transform={`translate(${x} ${y + bob}) scale(${s})`}>
+      {/* 腕 (胴の後ろ) */}
+      {arms === "up" ? (
+        <g>
+          <rect x={-45} y={-176} width={18} height={60} rx={9} fill={color} stroke={KRP.ink} strokeWidth={5}
+            transform={`rotate(${-32 + wave} -36 -116)`} />
+          <rect x={27} y={-176} width={18} height={60} rx={9} fill={color} stroke={KRP.ink} strokeWidth={5}
+            transform={`rotate(${32 - wave} 36 -116)`} />
+        </g>
+      ) : (
+        <g>
+          <rect x={-54} y={-118} width={18} height={56} rx={9} fill={color} stroke={KRP.ink} strokeWidth={5} />
+          <rect x={36} y={-118} width={18} height={56} rx={9} fill={color} stroke={KRP.ink} strokeWidth={5} />
+        </g>
+      )}
+      {/* 胴 */}
+      <rect x={-40} y={-126} width={80} height={126} rx={18} fill={color} stroke={KRP.ink} strokeWidth={5} />
+      {/* 頭 */}
+      <circle cx={0} cy={-160} r={34} fill={sil ? color : KRP.white} stroke={KRP.ink} strokeWidth={5.5} />
+      {/* 顔 */}
+      {face !== "none" && (
+        <g>
+          <circle cx={-11} cy={-164} r={5} fill={KRP.ink} />
+          <circle cx={11} cy={-164} r={5} fill={KRP.ink} />
+          {face === "smile" && (
+            <path d="M -10 -150 Q 0 -140 10 -150" fill="none" stroke={KRP.ink} strokeWidth={5} strokeLinecap="round" />
+          )}
+        </g>
       )}
     </g>
   );

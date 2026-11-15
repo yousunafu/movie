@@ -45,7 +45,7 @@ const stripComments = (s: string) =>
 const filter = process.argv[2] ?? "";
 const files = fs
   .readdirSync(KDIR)
-  .filter((n) => /^Koso.*\.tsx$/.test(n))
+  .filter((n) => /^(Koso|Ichi|Kse|Saigo).*\.tsx$/.test(n))
   .filter((n) => (filter ? n.includes(filter) : true));
 
 if (!files.length) {

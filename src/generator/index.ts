@@ -11,7 +11,7 @@ import { enforceRatios } from "./enforce";
 import { generateImage, imagesAvailable, imagesDisabledReason } from "./images";
 import { checkCredits, synthesize } from "./tts";
 import { synthesizeVoicevox } from "./voicevox";
-import { VOICE, getPreset, getChannel, applyPresetVoice, type Preset } from "../channel";
+import { VOICE, getPreset, getChannel, applyPresetVoice, hasReactionVoice, type Preset } from "../channel";
 import { pickBgm } from "../bgm";
 import { voiceStyleFor, ttsTextFor, styleLabel } from "./pacing";
 import type { Scene, ScenesData } from "../types";
@@ -56,7 +56,7 @@ async function main() {
   // 台本1行目の「作風: suuri」宣言を読む。
   // (2026-10 PRESET付け忘れで恋愛回がgenkiで生成された事故の再発防止。
   //  台本自身が作風を知っていれば、コマンドの打ち方に依存しない)
-  const PRESET_NAMES = ["ashi", "manabi", "rekishi", "kouzou", "keizai", "suuri", "karakuri", "genki"];
+  const PRESET_NAMES = ["ashi", "manabi", "rekishi", "kouzou", "keizai", "suuri", "karakuri", "sekai", "genki"];
   let scriptPreset: Preset | undefined;
   const scriptLines = rawFetched.split("\n");
   const presetLine = scriptLines[0]?.match(/^(?:作風|preset)\s*[:：]\s*([a-zA-Z]+)/);
@@ -100,12 +100,16 @@ async function main() {
                   ? "suuri (数理・統計の図解)"
                   : preset === "karakuri"
                     ? "karakuri (身の回りの機械のからくり図解)"
-                    : "genki (健康解説)"
+                    : preset === "sekai"
+                      ? "sekai (つながる世界史)"
+                      : "genki (健康解説)"
     }`,
   );
 
-  // karakuri の専用台本は「1行=1文=1枚の絵」で設計しているので、行をそのまま文として使う
-  const sentences = splitScript(scriptBody, { lineMode: preset === "karakuri" });
+  // karakuri / sekai の専用台本は「1行=1文=1枚の絵」で設計しているので、行をそのまま文として使う
+  const sentences = splitScript(scriptBody, {
+    lineMode: preset === "karakuri" || preset === "sekai",
+  });
   const totalChars = sentences.reduce((a, s) => a + s.length, 0);
   console.log(`${sentences.length}シーン / ${totalChars}文字`);
   if (sentences.length === 0) throw new Error("台本が空です");
@@ -150,8 +154,11 @@ async function main() {
   const useVoicevox = VOICE.engine === "voicevox";
   const ext = useVoicevox ? "wav" : "mp3";
   if (useVoicevox) {
+    // クレジット表記は使った声を全部書く (利用条件)。sekai は反応役の声がもう1つ増える
+    const credits = [VOICE.voicevoxSpeaker];
+    if (hasReactionVoice(preset)) credits.push(VOICE.reactionSpeaker);
     console.log(
-      `エンジン: VOICEVOX (無料)。動画の説明欄に「VOICEVOX:${VOICE.voicevoxSpeaker}」と書いてください`,
+      `エンジン: VOICEVOX (無料)。動画の説明欄に「VOICEVOX:${credits.join("・")}」と書いてください`,
     );
   } else {
     console.log("エンジン: ElevenLabs");

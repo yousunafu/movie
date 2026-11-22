@@ -255,3 +255,26 @@ npx remotion render src/remotion/index.ts IchiB0Motion tmp/ichi-motion \
 ### 引っかかりメモ
 - #214 の `Gyoji` は軍配が部品の外へ**右に約200px はみ出す**。右に札や板を置くと隠れる
 - Ichi各章のファイルは **git 未追跡 (`??`)** なので `git diff` では変更が見えない。mtime か `grep -n "2026-11-08"` かレンダで確認する
+
+---
+
+## 全編レンダ (2026-11-16)
+
+### ★レンダ前に見つかった事故: 「2位」の音声が消えていた
+- 11/12 の「飛ばして観ていた」v2 生成で `src/remotion/scenes-data.json` と `public/audio/scene-000〜237.wav` が上書きされていた
+- 復旧: `tmp/ichi-restore-audio.ts` で 220文+締めを **`public/audio-ichi/`** に作り直し (ずんだもん・ノーマル・話速1.1)。
+  scenes-data の audio パスは `audio-ichi/...` を向く。「飛ばして観ていた」の音声には触っていない
+  (その scenes-data は git ca10d92 と `archive/scenes-data/saigomade-v2.json` にある)
+- 11/16 に全作品共通で足された「日本の→にほんの」(つながる世界史用) が #37 #130 #150 #213 に効いてしまうので、
+  `tmp/ichi-restore-fix4.ts` で 11/06 の辞書 (git b0b3839) の読みに戻した = 元の「ニッポンの」。秒数も元とぴったり一致
+- 11/07〜08 の #110 #180 #198 の再合成は **声が 青山龍星 0.95 になっていた** (applyPresetVoice の呼び忘れ)。今回ずんだもんで作り直したので解消
+- 新しい控え: `tmp/ichi-scenes-data.BACKUP-v2.json` (220文・35016フレーム・19分27.5秒)
+
+### レンダ
+- `bash tmp/ichi-render4.sh` (切れ目は文の境目・TMPDIR はプロジェクト内・失敗した part は1回だけ自動再試行)
+- 出来上がり `out/ichiban-v2.mp4` (前回の `out/ichiban.mp4` は残してある)
+- 開始 2026-11-16 13:17
+- **完成 2026-11-16 16:51 (所要213分)**: `out/ichiban-v2.mp4` 19分27秒・35016コマ・284MB。映像と音声の長さ一致
+- 検品: 第2回修正の28文を実映像から抜き出して目視 → すべて新しい絵 (`~/Desktop/ichiban-修正確認/v2_直した絵の抜き出し.png`)。
+  1.2秒以上の無音なし。つなぎ目3か所とも音あり
+- 残り: BGM の確認・サムネ → 納品 → `docs/作品カルテ.md` に追記

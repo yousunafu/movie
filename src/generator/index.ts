@@ -165,10 +165,12 @@ async function main() {
     await checkCredits(ttsChars);
   }
 
-  fs.mkdirSync(path.join(PUBLIC, "audio"), { recursive: true });
+  // 音声の置き場。AUDIO_DIR=audio-yawa のように作品ごとに分けると、別作品の生成で上書きされない (2026-11-16 事故の対策)
+  const AUDIO_DIR = process.env.AUDIO_DIR || "audio";
+  fs.mkdirSync(path.join(PUBLIC, AUDIO_DIR), { recursive: true });
   const scenes: Scene[] = [];
   for (let i = 0; i < sentences.length; i++) {
-    const audio = `audio/scene-${String(i).padStart(3, "0")}.${ext}`;
+    const audio = `${AUDIO_DIR}/scene-${String(i).padStart(3, "0")}.${ext}`;
     // 声の緩急: 文の種類 (問いかけ・章扉・結論カード) で話速と間を変える (VOICEVOXのみ)
     const style = voiceStyleFor(sentences[i], enforced[i].type, enforced[i].motif);
     const dur = useVoicevox
@@ -187,7 +189,7 @@ async function main() {
   }
 
   // 締めの決まり文句 (channel.ts で一元管理)
-  const endAudio = `audio/scene-end.${ext}`;
+  const endAudio = `${AUDIO_DIR}/scene-end.${ext}`;
   const endDur = useVoicevox
     ? await synthesizeVoicevox(
         ttsTextFor(closing),

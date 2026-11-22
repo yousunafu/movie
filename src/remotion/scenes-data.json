@@ -2,1911 +2,1887 @@
   "scenes": [
     {
       "index": 0,
-      "text": "人類は、昔から飛ばして観ていました。",
-      "type": "diagram",
-      "motif": "sg_001",
-      "audio": "audio/scene-000.wav",
-      "durationSec": 3.0933333333333333
-    },
-    {
-      "index": 1,
-      "text": "ですので、この動画も、飛ばしながら観ていただいて構いません。",
-      "type": "diagram",
-      "motif": "sg_002",
-      "audio": "audio/scene-001.wav",
-      "durationSec": 4.405333333333333
-    },
-    {
-      "index": 2,
-      "text": "冗談に聞こえるかもしれませんが、本気です。",
-      "type": "diagram",
-      "motif": "sg_003",
-      "audio": "audio/scene-002.wav",
-      "durationSec": 3.3386666666666667
-    },
-    {
-      "index": 3,
-      "text": "歴史をたどると、そちらのほうが、よほど由緒正しい観かたなのです。",
-      "type": "diagram",
-      "motif": "sg_004",
-      "audio": "audio/scene-003.wav",
-      "durationSec": 5.045333333333334
-    },
-    {
-      "index": 4,
-      "text": "ただし、ひとつだけ予告しておきます。どこへ飛ばしても、その先には、犯人がいます。",
-      "type": "diagram",
-      "motif": "sg_005",
-      "audio": "audio/scene-004.wav",
-      "durationSec": 6.602666666666667
-    },
-    {
-      "index": 5,
       "text": "いきなりですが、クイズです。",
       "type": "diagram",
-      "motif": "sg_006",
-      "audio": "audio/scene-005.wav",
+      "motif": "yw_001",
+      "audio": "audio-yawa/scene-000.wav",
       "durationSec": 2.112
     },
     {
-      "index": 6,
-      "text": "日本人が映画を「必ず最初から」観るようになったのは、いつからでしょうか。",
+      "index": 1,
+      "text": "いま、小学生のあいだで、ライブ配信が始まるたびに売り切れているものがあります。",
       "type": "diagram",
-      "motif": "sg_007",
-      "audio": "audio/scene-006.wav",
-      "durationSec": 5.824
+      "motif": "yw_002",
+      "audio": "audio-yawa/scene-001.wav",
+      "durationSec": 6.1866666666666665
+    },
+    {
+      "index": 2,
+      "text": "何でしょうか。",
+      "type": "diagram",
+      "motif": "yw_003",
+      "audio": "audio-yawa/scene-002.wav",
+      "durationSec": 1.5573333333333332
+    },
+    {
+      "index": 3,
+      "text": "答えは、スクイーズです。",
+      "type": "diagram",
+      "motif": "yw_004",
+      "audio": "audio-yawa/scene-003.wav",
+      "durationSec": 2.026666666666667
+    },
+    {
+      "index": 4,
+      "text": "握るとむにゅっとつぶれて、手を離すと、ゆっくり元に戻る。それだけのおもちゃです。",
+      "type": "diagram",
+      "motif": "yw_005",
+      "audio": "audio-yawa/scene-004.wav",
+      "durationSec": 6.1546666666666665
+    },
+    {
+      "index": 5,
+      "text": "大人も負けていません。",
+      "type": "diagram",
+      "motif": "yw_006",
+      "audio": "audio-yawa/scene-005.wav",
+      "durationSec": 1.6426666666666667
+    },
+    {
+      "index": 6,
+      "text": "座ると体が沈んで、起き上がれなくなるソファ。",
+      "type": "diagram",
+      "motif": "yw_007",
+      "audio": "audio-yawa/scene-006.wav",
+      "durationSec": 3.6373333333333333
     },
     {
       "index": 7,
-      "text": "答えは、およそ20年前、です。",
+      "text": "ついたあだ名は、「人をダメにするソファ」です。",
       "type": "diagram",
-      "motif": "sg_008",
-      "audio": "audio/scene-007.wav",
-      "durationSec": 3.2426666666666666
+      "motif": "yw_008",
+      "audio": "audio-yawa/scene-007.wav",
+      "durationSec": 3.029333333333333
     },
     {
       "index": 8,
-      "text": "2000年代に入るまで、日本の映画館の多くは、入れ替えなしでした。",
+      "text": "ソファやクッションが、体を楽にしてくれるのは、わかります。",
       "type": "diagram",
-      "motif": "sg_009",
-      "audio": "audio/scene-008.wav",
-      "durationSec": 5.322666666666667
+      "motif": "yw_009",
+      "audio": "audio-yawa/scene-008.wav",
+      "durationSec": 4.426666666666667
     },
     {
       "index": 9,
-      "text": "途中から入って、途中まで観て帰る。それがふつうのことでした。",
+      "text": "でも、スクイーズは、体のどこも支えていません。",
       "type": "diagram",
-      "motif": "sg_010",
-      "audio": "audio/scene-009.wav",
-      "durationSec": 4.928
+      "motif": "yw_010",
+      "audio": "audio-yawa/scene-009.wav",
+      "durationSec": 3.968
     },
     {
       "index": 10,
-      "text": "一枚の切符で朝から晩まで居座れて、弁当を持ち込む人もいました。",
+      "text": "食べられもしないし、何かの役に立つわけでもない。なのに、つい握ってしまう。",
       "type": "diagram",
-      "motif": "sg_011",
-      "audio": "audio/scene-010.wav",
-      "durationSec": 5.322666666666667
+      "motif": "yw_011",
+      "audio": "audio-yawa/scene-010.wav",
+      "durationSec": 6.069333333333334
     },
     {
       "index": 11,
-      "text": "「映画は最初から最後まで観るもの」。この常識、実はかなりの新顔です。",
+      "text": "では人は、なぜ柔らかいものを、握りたくなるのでしょうか。",
       "type": "diagram",
-      "motif": "sg_012",
-      "audio": "audio/scene-011.wav",
-      "durationSec": 6.112
-    },
-    {
-      "index": 12,
-      "text": "ところで、いまは動画の時代です。",
-      "type": "diagram",
-      "motif": "sg_013",
-      "audio": "audio/scene-012.wav",
-      "durationSec": 2.7413333333333334
-    },
-    {
-      "index": 13,
-      "text": "倍速で観たことのある人は、2024年の調査で47パーセント。",
-      "type": "diagram",
-      "motif": "sg_014",
-      "audio": "audio/scene-013.wav",
-      "durationSec": 5.589333333333333
-    },
-    {
-      "index": 14,
-      "text": "10秒飛ばし、スキップ、切り抜き。「最近の人は作品を最後まで観ない」と、よく嘆かれます。",
-      "type": "diagram",
-      "motif": "sg_015",
-      "audio": "audio/scene-014.wav",
-      "durationSec": 7.722666666666667
-    },
-    {
-      "index": 15,
-      "text": "ですが、歴史を見ると、話は逆かもしれません。",
-      "type": "diagram",
-      "motif": "sg_016",
-      "audio": "audio/scene-015.wav",
-      "durationSec": 4.032
-    },
-    {
-      "index": 16,
-      "text": "江戸の芝居見物のお客さんは、上演の真っ最中に弁当を広げ、酒を飲みました。",
-      "type": "diagram",
-      "motif": "sg_017",
-      "audio": "audio/scene-016.wav",
-      "durationSec": 6.517333333333333
-    },
-    {
-      "index": 17,
-      "text": "気に入らなければ、敷いていた座布団を、舞台に投げました。",
-      "type": "diagram",
-      "motif": "sg_018",
-      "audio": "audio/scene-017.wav",
-      "durationSec": 4.384
-    },
-    {
-      "index": 18,
-      "text": "ナポリのオペラハウスでは、お客はしゃべりっぱなし。",
-      "type": "diagram",
-      "motif": "sg_019",
-      "audio": "audio/scene-018.wav",
-      "durationSec": 3.7653333333333334
-    },
-    {
-      "index": 19,
-      "text": "作曲家は「どうせ聴かれない時間」のための曲まで、書いていました。",
-      "type": "diagram",
-      "motif": "sg_020",
-      "audio": "audio/scene-019.wav",
-      "durationSec": 4.693333333333333
-    },
-    {
-      "index": 20,
-      "text": "人類は、ほとんどの時代、最後まで観ていないのです。",
-      "type": "diagram",
-      "motif": "sg_021",
-      "audio": "audio/scene-020.wav",
-      "durationSec": 4.373333333333333
-    },
-    {
-      "index": 21,
-      "text": "では、「黙って、座って、最初から最後まで」は、いつ、誰が決めたのでしょうか。",
-      "type": "diagram",
-      "motif": "sg_022",
-      "audio": "audio/scene-021.wav",
-      "durationSec": 7.573333333333333
-    },
-    {
-      "index": 22,
-      "text": "調べていくと、犯人には、名前と顔がありました。",
-      "type": "diagram",
-      "motif": "sg_023",
-      "audio": "audio/scene-022.wav",
-      "durationSec": 4.1386666666666665
-    },
-    {
-      "index": 23,
-      "text": "しかも、複数犯です。",
-      "type": "diagram",
-      "motif": "sg_024",
-      "audio": "audio/scene-023.wav",
-      "durationSec": 1.9946666666666666
-    },
-    {
-      "index": 24,
-      "text": "今日は、この犯人たちを、年代順に逮捕していきます。",
-      "type": "diagram",
-      "motif": "sg_025",
-      "audio": "audio/scene-024.wav",
-      "durationSec": 4.458666666666667
-    },
-    {
-      "index": 25,
-      "text": "第1章、芝居は、朝六時から。",
-      "type": "diagram",
-      "motif": "sg_026",
-      "audio": "audio/scene-025.wav",
-      "durationSec": 3.168
-    },
-    {
-      "index": 26,
-      "text": "最初の現場は、江戸の芝居小屋です。",
-      "type": "diagram",
-      "motif": "sg_027",
-      "audio": "audio/scene-026.wav",
-      "durationSec": 2.944
-    },
-    {
-      "index": 27,
-      "text": "江戸の歌舞伎は、明け六つ、いまの朝6時ごろに幕を開けました。",
-      "type": "diagram",
-      "motif": "sg_028",
-      "audio": "audio/scene-027.wav",
-      "durationSec": 4.906666666666666
-    },
-    {
-      "index": 28,
-      "text": "終わるのは、暮れ七つ半、夕方5時ごろ。",
-      "type": "diagram",
-      "motif": "sg_029",
-      "audio": "audio/scene-028.wav",
-      "durationSec": 3.648
-    },
-    {
-      "index": 29,
-      "text": "照明は自然の光だけですから、日のあるうちが勝負なのです。",
-      "type": "diagram",
-      "motif": "sg_030",
-      "audio": "audio/scene-029.wav",
-      "durationSec": 4.565333333333333
-    },
-    {
-      "index": 30,
-      "text": "つまり観劇は、丸一日がかりの行事でした。",
-      "type": "diagram",
-      "motif": "sg_031",
-      "audio": "audio/scene-030.wav",
-      "durationSec": 4.149333333333334
-    },
-    {
-      "index": 31,
-      "text": "朝6時から夕方5時まで、ずっと舞台を見つめていられるでしょうか。",
-      "type": "diagram",
-      "motif": "sg_032",
-      "audio": "audio/scene-031.wav",
-      "durationSec": 5.632
-    },
-    {
-      "index": 32,
-      "text": "無理です。お客のほうも、最初からそのつもりがありません。",
-      "type": "diagram",
-      "motif": "sg_033",
-      "audio": "audio/scene-032.wav",
-      "durationSec": 4.437333333333333
-    },
-    {
-      "index": 33,
-      "text": "観劇のお供は「かべす」。菓子の、か。弁当の、べ。寿司の、す。",
-      "type": "diagram",
-      "motif": "sg_034",
-      "audio": "audio/scene-033.wav",
-      "durationSec": 6.773333333333333
-    },
-    {
-      "index": 34,
-      "text": "桟敷席には、寿司や菓子や果物が、次々と運ばれてきました。",
-      "type": "diagram",
-      "motif": "sg_035",
-      "audio": "audio/scene-034.wav",
-      "durationSec": 5.1626666666666665
-    },
-    {
-      "index": 35,
-      "text": "当時のお嬢さまの回想録には、その賑やかな食べっぷりが残っています。",
-      "type": "diagram",
-      "motif": "sg_036",
-      "audio": "audio/scene-035.wav",
-      "durationSec": 5.333333333333333
-    },
-    {
-      "index": 36,
-      "text": "身分の高いお客は、幕間のたびに、芝居茶屋という別の建物へ引き上げます。",
-      "type": "diagram",
-      "motif": "sg_037",
-      "audio": "audio/scene-036.wav",
-      "durationSec": 6.144
-    },
-    {
-      "index": 37,
-      "text": "そこで食事をして、着替えて、休んで、また戻ってくる。",
-      "type": "diagram",
-      "motif": "sg_038",
-      "audio": "audio/scene-037.wav",
-      "durationSec": 4.736
-    },
-    {
-      "index": 38,
-      "text": "つまり「席を立って出入りする」ことが、仕組みとして用意されていたのです。",
-      "type": "diagram",
-      "motif": "sg_039",
-      "audio": "audio/scene-038.wav",
-      "durationSec": 5.237333333333333
-    },
-    {
-      "index": 39,
-      "text": "土間のお客は、もっと直接的でした。",
-      "type": "diagram",
-      "motif": "sg_040",
-      "audio": "audio/scene-039.wav",
-      "durationSec": 2.997333333333333
-    },
-    {
-      "index": 40,
-      "text": "芝居が気に入らないと、敷いていた薄い畳、半畳を、舞台へ放り投げました。",
-      "type": "diagram",
-      "motif": "sg_041",
-      "audio": "audio/scene-040.wav",
-      "durationSec": 6.176
-    },
-    {
-      "index": 41,
-      "text": "不満をその場で投げ返す、いわばレビュー機能つきの客席です。",
-      "type": "diagram",
-      "motif": "sg_042",
-      "audio": "audio/scene-041.wav",
-      "durationSec": 4.714666666666667
-    },
-    {
-      "index": 42,
-      "text": "安い席で一幕だけ観て帰る、という楽しみ方もありました。",
-      "type": "diagram",
-      "motif": "sg_043",
-      "audio": "audio/scene-042.wav",
-      "durationSec": 4.618666666666667
-    },
-    {
-      "index": 43,
-      "text": "一日のうち、好きな場面だけをつまむ。江戸のお客は、自由でした。",
-      "type": "diagram",
-      "motif": "sg_044",
-      "audio": "audio/scene-043.wav",
-      "durationSec": 5.546666666666667
-    },
-    {
-      "index": 44,
-      "text": "第2章、シャーベットのための、アリア。",
-      "type": "diagram",
-      "motif": "sg_045",
-      "audio": "audio/scene-044.wav",
-      "durationSec": 3.2853333333333334
-    },
-    {
-      "index": 45,
-      "text": "では、海の向こうは、どうだったのでしょうか。",
-      "type": "diagram",
-      "motif": "sg_046",
-      "audio": "audio/scene-045.wav",
-      "durationSec": 4.010666666666666
-    },
-    {
-      "index": 46,
-      "text": "400年ほど前のロンドン。シェイクスピアの舞台、グローブ座。",
-      "type": "diagram",
-      "motif": "sg_047",
-      "audio": "audio/scene-046.wav",
-      "durationSec": 4.896
-    },
-    {
-      "index": 47,
-      "text": "1ペニー払った立ち見のお客は、上演中にリンゴやナッツをかじり、エールを飲みました。",
-      "type": "diagram",
-      "motif": "sg_048",
-      "audio": "audio/scene-047.wav",
-      "durationSec": 6.581333333333333
-    },
-    {
-      "index": 48,
-      "text": "売り子が、客席の中を売り歩いていたのです。",
-      "type": "diagram",
-      "motif": "sg_049",
-      "audio": "audio/scene-048.wav",
-      "durationSec": 3.466666666666667
-    },
-    {
-      "index": 49,
-      "text": "気に入らない役者には、容赦なく野次が飛びました。",
-      "type": "diagram",
-      "motif": "sg_050",
-      "audio": "audio/scene-049.wav",
-      "durationSec": 3.68
-    },
-    {
-      "index": 50,
-      "text": "時代が下って、18世紀のイタリアの、オペラハウス。",
-      "type": "diagram",
-      "motif": "sg_051",
-      "audio": "audio/scene-050.wav",
-      "durationSec": 4.448
-    },
-    {
-      "index": 51,
-      "text": "客席の明かりは、つけっぱなしでした。",
-      "type": "diagram",
-      "motif": "sg_052",
-      "audio": "audio/scene-051.wav",
-      "durationSec": 2.944
-    },
-    {
-      "index": 52,
-      "text": "ボックス席では、カード遊びに、商談に、おしゃべり。",
-      "type": "diagram",
-      "motif": "sg_053",
-      "audio": "audio/scene-052.wav",
-      "durationSec": 4.544
-    },
-    {
-      "index": 53,
-      "text": "1765年にナポリを訪れたイギリス人は、あきれて書き残しています。",
-      "type": "diagram",
-      "motif": "sg_054",
-      "audio": "audio/scene-053.wav",
-      "durationSec": 5.973333333333334
-    },
-    {
-      "index": 54,
-      "text": "「群衆は何の遠慮もなく、上演のあいだずっと、笑い、しゃべっていた」。",
-      "type": "diagram",
-      "motif": "sg_055",
-      "audio": "audio/scene-054.wav",
-      "durationSec": 5.973333333333334
-    },
-    {
-      "index": 55,
-      "text": "さて、ここで問題です。",
-      "type": "diagram",
-      "motif": "sg_056",
-      "audio": "audio/scene-055.wav",
-      "durationSec": 1.9946666666666666
-    },
-    {
-      "index": 56,
-      "text": "当時の作曲家が「聴かれないこと」を前提に書いた曲があります。何のための曲でしょうか。",
-      "type": "diagram",
-      "motif": "sg_057",
-      "audio": "audio/scene-056.wav",
-      "durationSec": 7.082666666666666
-    },
-    {
-      "index": 57,
-      "text": "答えは、お客がシャーベットを食べる時間のため、です。",
-      "type": "diagram",
-      "motif": "sg_058",
-      "audio": "audio/scene-057.wav",
-      "durationSec": 4.32
-    },
-    {
-      "index": 58,
-      "text": "その名も「アリア・ディ・ソルベット」、シャーベットのアリア。",
-      "type": "diagram",
-      "motif": "sg_059",
-      "audio": "audio/scene-058.wav",
-      "durationSec": 3.552
-    },
-    {
-      "index": 59,
-      "text": "物語に関係のない場面に、当たりさわりのない歌を一曲はさむ。",
-      "type": "diagram",
-      "motif": "sg_060",
-      "audio": "audio/scene-059.wav",
-      "durationSec": 5.141333333333334
-    },
-    {
-      "index": 60,
-      "text": "お客はそのあいだ、心おきなくシャーベットを楽しむのです。",
-      "type": "diagram",
-      "motif": "sg_061",
-      "audio": "audio/scene-060.wav",
-      "durationSec": 4.224
-    },
-    {
-      "index": 61,
-      "text": "劇場が、お客の食事時間を、曲目に組み込んでいたということです。",
-      "type": "diagram",
-      "motif": "sg_062",
-      "audio": "audio/scene-061.wav",
-      "durationSec": 5.450666666666667
-    },
-    {
-      "index": 62,
-      "text": "江戸もロンドンもナポリも、客席は明るく、出入り口は開けっぱなし。",
-      "type": "diagram",
-      "motif": "sg_063",
-      "audio": "audio/scene-062.wav",
-      "durationSec": 5.290666666666667
-    },
-    {
-      "index": 63,
-      "text": "劇場の主役は舞台ではなく、お客のほうでした。",
-      "type": "diagram",
-      "motif": "sg_064",
-      "audio": "audio/scene-063.wav",
-      "durationSec": 3.8826666666666667
-    },
-    {
-      "index": 64,
-      "text": "第3章、静けさの、発明。",
-      "type": "diagram",
-      "motif": "sg_065",
-      "audio": "audio/scene-064.wav",
-      "durationSec": 2.9546666666666668
-    },
-    {
-      "index": 65,
-      "text": "ところが19世紀、パリで異変が起きます。",
-      "type": "diagram",
-      "motif": "sg_066",
-      "audio": "audio/scene-065.wav",
-      "durationSec": 4.085333333333334
-    },
-    {
-      "index": 66,
-      "text": "あれほど騒がしかった聴衆が、だんだん、静かになっていくのです。",
-      "type": "diagram",
-      "motif": "sg_067",
-      "audio": "audio/scene-066.wav",
+      "motif": "yw_012",
+      "audio": "audio-yawa/scene-011.wav",
       "durationSec": 5.002666666666666
     },
     {
-      "index": 67,
-      "text": "音楽史の研究者ジョンソンは、その時期を、1830年ごろから1850年までと見ています。",
+      "index": 12,
+      "text": "調べてみると、話は20万年前の洞窟までさかのぼりました。",
       "type": "diagram",
-      "motif": "sg_068",
-      "audio": "audio/scene-067.wav",
-      "durationSec": 7.904
+      "motif": "yw_013",
+      "audio": "audio-yawa/scene-012.wav",
+      "durationSec": 5.12
     },
     {
-      "index": 68,
-      "text": "命令されたわけでも、法律ができたわけでもありません。",
+      "index": 13,
+      "text": "その途中で柔らかさは、高級品になり、聖人に捨てられ、竹で作られ、サルの実験に使われます。",
       "type": "diagram",
-      "motif": "sg_069",
-      "audio": "audio/scene-068.wav",
-      "durationSec": 4.021333333333334
+      "motif": "yw_014",
+      "audio": "audio-yawa/scene-013.wav",
+      "durationSec": 8.138666666666667
     },
     {
-      "index": 69,
-      "text": "では、何が人々を黙らせたのでしょうか。",
+      "index": 14,
+      "text": "その間に柔らかさは、背中の下から首、腕の中、全身へと、少しずつ体をのぼって、ついに手のひらにやってきます。",
       "type": "diagram",
-      "motif": "sg_070",
-      "audio": "audio/scene-069.wav",
-      "durationSec": 3.7653333333333334
+      "motif": "yw_234",
+      "audio": "audio-yawa/scene-014b.wav",
+      "durationSec": 9.898666666666667
     },
     {
-      "index": 70,
-      "text": "答えのひとつは、見栄です。",
+      "index": 15,
+      "text": "そして最後に、ひとつの答えにたどり着きます。",
       "type": "diagram",
-      "motif": "sg_071",
-      "audio": "audio/scene-070.wav",
-      "durationSec": 2.1866666666666665
+      "motif": "yw_015",
+      "audio": "audio-yawa/scene-014.wav",
+      "durationSec": 3.424
     },
     {
-      "index": 71,
-      "text": "当時のパリでは、いろいろな階級の市民が、演奏会に通い始めていました。",
+      "index": 16,
+      "text": "人類が本当に欲しかったのは、柔らかさではなかったのかもしれません。",
       "type": "diagram",
-      "motif": "sg_072",
-      "audio": "audio/scene-071.wav",
-      "durationSec": 6.016
+      "motif": "yw_016",
+      "audio": "audio-yawa/scene-015.wav",
+      "durationSec": 5.109333333333334
     },
     {
-      "index": 72,
-      "text": "そのなかで「静かに聴けること」が、教養ある上品な市民の証になったのです。",
+      "index": 17,
+      "text": "今日は、柔らかいものの歴史を、20万年ぶんさかのぼります。",
       "type": "diagram",
-      "motif": "sg_073",
-      "audio": "audio/scene-072.wav",
-      "durationSec": 5.450666666666667
-    },
-    {
-      "index": 73,
-      "text": "社会学者セネットは、こうまとめています。",
-      "type": "diagram",
-      "motif": "sg_074",
-      "audio": "audio/scene-073.wav",
-      "durationSec": 3.1466666666666665
-    },
-    {
-      "index": 74,
-      "text": "感情を抑えて、黙って聴ける者こそが、立派な観客である、と。",
-      "type": "diagram",
-      "motif": "sg_075",
-      "audio": "audio/scene-074.wav",
-      "durationSec": 5.685333333333333
-    },
-    {
-      "index": 75,
-      "text": "おしゃべりは、下品。弁当は、論外。",
-      "type": "diagram",
-      "motif": "sg_076",
-      "audio": "audio/scene-075.wav",
-      "durationSec": 3.7546666666666666
-    },
-    {
-      "index": 76,
-      "text": "音楽は社交の背景から、黙って拝聴する芸術へ、格上げされました。",
-      "type": "diagram",
-      "motif": "sg_077",
-      "audio": "audio/scene-076.wav",
-      "durationSec": 5.8453333333333335
-    },
-    {
-      "index": 77,
-      "text": "つまり静けさは、自然に生まれたのではなく、マナーとして発明されたものでした。",
-      "type": "diagram",
-      "motif": "sg_078",
-      "audio": "audio/scene-077.wav",
-      "durationSec": 6.346666666666667
-    },
-    {
-      "index": 78,
-      "text": "ただし、これはまだ、都会の、限られた世界の話です。",
-      "type": "diagram",
-      "motif": "sg_079",
-      "audio": "audio/scene-078.wav",
-      "durationSec": 4.714666666666667
-    },
-    {
-      "index": 79,
-      "text": "同じころの大衆劇場は、あいかわらず賑やかなまま。",
-      "type": "diagram",
-      "motif": "sg_080",
-      "audio": "audio/scene-079.wav",
-      "durationSec": 4.213333333333333
-    },
-    {
-      "index": 80,
-      "text": "この静けさを決定的にした犯人が、次に登場します。",
-      "type": "diagram",
-      "motif": "sg_081",
-      "audio": "audio/scene-080.wav",
-      "durationSec": 4.512
-    },
-    {
-      "index": 81,
-      "text": "第4章、ワーグナー、明かりを消す。",
-      "type": "diagram",
-      "motif": "sg_082",
-      "audio": "audio/scene-081.wav",
-      "durationSec": 3.232
-    },
-    {
-      "index": 82,
-      "text": "1876年8月13日。ドイツの小さな町、バイロイト。",
-      "type": "diagram",
-      "motif": "sg_083",
-      "audio": "audio/scene-082.wav",
-      "durationSec": 6.08
-    },
-    {
-      "index": 83,
-      "text": "作曲家ワーグナーが、自分の作品のためだけの劇場を開きます。",
-      "type": "diagram",
-      "motif": "sg_084",
-      "audio": "audio/scene-083.wav",
-      "durationSec": 4.96
-    },
-    {
-      "index": 84,
-      "text": "そしてこの日、彼は決定的なことをしました。",
-      "type": "diagram",
-      "motif": "sg_085",
-      "audio": "audio/scene-084.wav",
-      "durationSec": 3.5946666666666665
-    },
-    {
-      "index": 85,
-      "text": "客席の明かりを、消したのです。",
-      "type": "diagram",
-      "motif": "sg_086",
-      "audio": "audio/scene-085.wav",
-      "durationSec": 2.5493333333333332
-    },
-    {
-      "index": 86,
-      "text": "思い出してください。それまでの客席は、明るいのが当たり前でした。",
-      "type": "diagram",
-      "motif": "sg_087",
-      "audio": "audio/scene-086.wav",
-      "durationSec": 5.0986666666666665
-    },
-    {
-      "index": 87,
-      "text": "明るい客席では、お客はお互いの顔を見て、着飾って、社交をします。",
-      "type": "diagram",
-      "motif": "sg_088",
-      "audio": "audio/scene-087.wav",
-      "durationSec": 5.973333333333334
-    },
-    {
-      "index": 88,
-      "text": "暗い客席では、見えるものは、舞台だけ。",
-      "type": "diagram",
-      "motif": "sg_089",
-      "audio": "audio/scene-088.wav",
-      "durationSec": 3.648
-    },
-    {
-      "index": 89,
-      "text": "お客にできることは、黙って観ることだけになります。",
-      "type": "diagram",
-      "motif": "sg_090",
-      "audio": "audio/scene-089.wav",
-      "durationSec": 3.7013333333333334
-    },
-    {
-      "index": 90,
-      "text": "劇場の主役が、お客から作品へ。この日、交代したのです。",
-      "type": "diagram",
-      "motif": "sg_091",
-      "audio": "audio/scene-090.wav",
-      "durationSec": 5.450666666666667
-    },
-    {
-      "index": 91,
-      "text": "ちなみに、ワーグナーの計画では、明かりは「弱める」だけのはずでした。",
-      "type": "diagram",
-      "motif": "sg_092",
-      "audio": "audio/scene-091.wav",
-      "durationSec": 5.248
-    },
-    {
-      "index": 92,
-      "text": "ところが当日、ガス装置の調子が悪く、客席はほとんど真っ暗に。",
-      "type": "diagram",
-      "motif": "sg_093",
-      "audio": "audio/scene-092.wav",
-      "durationSec": 6.016
-    },
-    {
-      "index": 93,
-      "text": "歴史的な「暗闇の発明」は、半分、ガスの事故だったのです。",
-      "type": "diagram",
-      "motif": "sg_094",
-      "audio": "audio/scene-093.wav",
-      "durationSec": 4.981333333333334
-    },
-    {
-      "index": 94,
-      "text": "とはいえ効果は絶大で、客席の暗闇は、各国の劇場へ広がっていきます。",
-      "type": "diagram",
-      "motif": "sg_095",
-      "audio": "audio/scene-094.wav",
-      "durationSec": 6.304
-    },
-    {
-      "index": 95,
-      "text": "1890年代までには、ヨーロッパの主要な都市で、当たり前になりました。",
-      "type": "diagram",
-      "motif": "sg_096",
-      "audio": "audio/scene-095.wav",
-      "durationSec": 6.026666666666666
-    },
-    {
-      "index": 96,
-      "text": "ヨーロッパのホールで、最初の明かりが消えた。",
-      "type": "diagram",
-      "motif": "sg_097",
-      "audio": "audio/scene-096.wav",
-      "durationSec": 3.3386666666666667
-    },
-    {
-      "index": 97,
-      "text": "客席から、おしゃべりと弁当が消えるのは、時間の問題でした。",
-      "type": "diagram",
-      "motif": "sg_098",
-      "audio": "audio/scene-097.wav",
-      "durationSec": 4.981333333333334
-    },
-    {
-      "index": 98,
-      "text": "第5章、遅刻者、お断り。",
-      "type": "diagram",
-      "motif": "sg_099",
-      "audio": "audio/scene-098.wav",
-      "durationSec": 2.8586666666666667
-    },
-    {
-      "index": 99,
-      "text": "暗闇の次に狙われたのは、時間です。",
-      "type": "diagram",
-      "motif": "sg_100",
-      "audio": "audio/scene-099.wav",
-      "durationSec": 3.232
-    },
-    {
-      "index": 100,
-      "text": "1897年、ウィーン。宮廷歌劇場に、新しい監督が就任します。",
-      "type": "diagram",
-      "motif": "sg_101",
-      "audio": "audio/scene-100.wav",
-      "durationSec": 7.189333333333333
-    },
-    {
-      "index": 101,
-      "text": "作曲家、グスタフ・マーラー。音楽への要求が、とびきり厳しい人でした。",
-      "type": "diagram",
-      "motif": "sg_102",
-      "audio": "audio/scene-101.wav",
-      "durationSec": 6.165333333333334
-    },
-    {
-      "index": 102,
-      "text": "彼は次々と改革を打ち出します。そのひとつが、これです。",
-      "type": "diagram",
-      "motif": "sg_103",
-      "audio": "audio/scene-102.wav",
-      "durationSec": 4.544
-    },
-    {
-      "index": 103,
-      "text": "「遅れてきたお客は、切りのいいところまで、客席に入れない」。",
-      "type": "diagram",
-      "motif": "sg_104",
-      "audio": "audio/scene-103.wav",
-      "durationSec": 4.64
-    },
-    {
-      "index": 104,
-      "text": "お金を払った紳士淑女でも、扉の外で待たされます。",
-      "type": "diagram",
-      "motif": "sg_105",
-      "audio": "audio/scene-104.wav",
-      "durationSec": 4.149333333333334
-    },
-    {
-      "index": 105,
-      "text": "何千年も当たり前だった「途中から入る」が、ここで初めて、咎められました。",
-      "type": "diagram",
-      "motif": "sg_106",
-      "audio": "audio/scene-105.wav",
-      "durationSec": 5.738666666666667
-    },
-    {
-      "index": 106,
-      "text": "仕上げは、拍手です。",
-      "type": "diagram",
-      "motif": "sg_107",
-      "audio": "audio/scene-106.wav",
-      "durationSec": 1.8986666666666667
-    },
-    {
-      "index": 107,
-      "text": "交響曲の楽章と楽章のあいだでは、拍手をしない。",
-      "type": "diagram",
-      "motif": "sg_108",
-      "audio": "audio/scene-107.wav",
-      "durationSec": 4.256
-    },
-    {
-      "index": 108,
-      "text": "いまのクラシックの常識ですが、定着したのは、20世紀に入ってからです。",
-      "type": "diagram",
-      "motif": "sg_109",
-      "audio": "audio/scene-108.wav",
-      "durationSec": 5.664
-    },
-    {
-      "index": 109,
-      "text": "おしゃべりが消え、途中入場が消え、最後に拍手まで整理されました。",
-      "type": "diagram",
-      "motif": "sg_110",
-      "audio": "audio/scene-109.wav",
-      "durationSec": 5.472
-    },
-    {
-      "index": 110,
-      "text": "「黙って、座って、最初から最後まで」。",
-      "type": "diagram",
-      "motif": "sg_111",
-      "audio": "audio/scene-110.wav",
-      "durationSec": 3.530666666666667
-    },
-    {
-      "index": 111,
-      "text": "この型が、コンサートホールで、ほぼ完成します。",
-      "type": "diagram",
-      "motif": "sg_112",
-      "audio": "audio/scene-111.wav",
-      "durationSec": 3.808
-    },
-    {
-      "index": 112,
-      "text": "ラジオ放送が始まるより、前の話です。",
-      "type": "diagram",
-      "motif": "sg_113",
-      "audio": "audio/scene-112.wav",
-      "durationSec": 3.509333333333333
-    },
-    {
-      "index": 113,
-      "text": "第6章、犯人は、明治。",
-      "type": "diagram",
-      "motif": "sg_114",
-      "audio": "audio/scene-113.wav",
-      "durationSec": 2.965333333333333
-    },
-    {
-      "index": 114,
-      "text": "では、日本の劇場は、どうだったのでしょうか。",
-      "type": "diagram",
-      "motif": "sg_115",
-      "audio": "audio/scene-114.wav",
-      "durationSec": 4.2026666666666666
-    },
-    {
-      "index": 115,
-      "text": "こちらも犯人は、放送ではありません。明治の近代化です。",
-      "type": "diagram",
-      "motif": "sg_116",
-      "audio": "audio/scene-115.wav",
-      "durationSec": 5.034666666666666
-    },
-    {
-      "index": 116,
-      "text": "1886年、演劇改良会という団体が立ち上がります。",
-      "type": "diagram",
-      "motif": "sg_117",
-      "audio": "audio/scene-116.wav",
-      "durationSec": 5.568
-    },
-    {
-      "index": 117,
-      "text": "彼らの考えはこうです。西洋に見せて恥ずかしくない、上品な演劇にしたい。",
-      "type": "diagram",
-      "motif": "sg_118",
-      "audio": "audio/scene-117.wav",
-      "durationSec": 6.0906666666666665
-    },
-    {
-      "index": 118,
-      "text": "そこでやり玉に挙がったのが、芝居茶屋と、客席の飲み食いでした。",
-      "type": "diagram",
-      "motif": "sg_119",
-      "audio": "audio/scene-118.wav",
-      "durationSec": 5.066666666666666
-    },
-    {
-      "index": 119,
-      "text": "1889年には、歌舞伎座が開場します。",
-      "type": "diagram",
-      "motif": "sg_120",
-      "audio": "audio/scene-119.wav",
-      "durationSec": 4.213333333333333
-    },
-    {
-      "index": 120,
-      "text": "1911年には、帝国劇場ができます。",
-      "type": "diagram",
-      "motif": "sg_121",
-      "audio": "audio/scene-120.wav",
-      "durationSec": 4.064
-    },
-    {
-      "index": 121,
-      "text": "切符は窓口で直接売り、客席は椅子席。上演時間も短くなりました。",
-      "type": "diagram",
-      "motif": "sg_122",
-      "audio": "audio/scene-121.wav",
-      "durationSec": 6.357333333333333
-    },
-    {
-      "index": 122,
-      "text": "茶屋を通さず、座布団も投げられない劇場の誕生です。",
-      "type": "diagram",
-      "motif": "sg_123",
-      "audio": "audio/scene-122.wav",
-      "durationSec": 4.405333333333333
-    },
-    {
-      "index": 123,
-      "text": "とどめは、1923年の関東大震災でした。",
-      "type": "diagram",
-      "motif": "sg_124",
-      "audio": "audio/scene-123.wav",
-      "durationSec": 4.458666666666667
-    },
-    {
-      "index": 124,
-      "text": "東京の芝居茶屋は焼け、そのまま復活しませんでした。",
-      "type": "diagram",
-      "motif": "sg_125",
-      "audio": "audio/scene-124.wav",
-      "durationSec": 4.192
-    },
-    {
-      "index": 125,
-      "text": "弁当と、酒と、おしゃべりが、劇場から順番に退場していきます。",
-      "type": "diagram",
-      "motif": "sg_126",
-      "audio": "audio/scene-125.wav",
-      "durationSec": 5.706666666666667
-    },
-    {
-      "index": 126,
-      "text": "ちなみに、生き残りもあります。",
-      "type": "diagram",
-      "motif": "sg_127",
-      "audio": "audio/scene-126.wav",
-      "durationSec": 2.4426666666666668
-    },
-    {
-      "index": 127,
-      "text": "歌舞伎座にはいまも「一幕見席」という、好きな一幕だけを観られる席があります。",
-      "type": "diagram",
-      "motif": "sg_128",
-      "audio": "audio/scene-127.wav",
-      "durationSec": 5.568
-    },
-    {
-      "index": 128,
-      "text": "江戸の「つまみ食い観劇」は、ここに小さく残りました。",
-      "type": "diagram",
-      "motif": "sg_129",
-      "audio": "audio/scene-128.wav",
-      "durationSec": 3.9146666666666667
-    },
-    {
-      "index": 129,
-      "text": "こうして、日本の客席からも、明かりが消えました。",
-      "type": "diagram",
-      "motif": "sg_130",
-      "audio": "audio/scene-129.wav",
-      "durationSec": 3.9466666666666668
-    },
-    {
-      "index": 130,
-      "text": "第7章、映画館の、意外な抵抗。",
-      "type": "diagram",
-      "motif": "sg_131",
-      "audio": "audio/scene-130.wav",
-      "durationSec": 3.6586666666666665
-    },
-    {
-      "index": 131,
-      "text": "さて、ここで意外な登場人物が現れます。映画館です。",
-      "type": "diagram",
-      "motif": "sg_132",
-      "audio": "audio/scene-131.wav",
-      "durationSec": 4.874666666666666
-    },
-    {
-      "index": 132,
-      "text": "映画館こそ「最初から最後まで」の本家だと、思いますよね。",
-      "type": "diagram",
-      "motif": "sg_133",
-      "audio": "audio/scene-132.wav",
-      "durationSec": 4.565333333333333
-    },
-    {
-      "index": 133,
-      "text": "ところが、映画館の歴史の大半は、正反対でした。",
-      "type": "diagram",
-      "motif": "sg_134",
-      "audio": "audio/scene-133.wav",
-      "durationSec": 4.597333333333333
-    },
-    {
-      "index": 134,
-      "text": "20世紀前半のアメリカの映画館は、朝から夜中まで、上映しっぱなし。",
-      "type": "diagram",
-      "motif": "sg_135",
-      "audio": "audio/scene-134.wav",
-      "durationSec": 6.101333333333334
-    },
-    {
-      "index": 135,
-      "text": "ニュース映画、漫画、短編、予告、本編。これを、ぐるぐる繰り返します。",
-      "type": "diagram",
-      "motif": "sg_136",
-      "audio": "audio/scene-135.wav",
-      "durationSec": 6.8693333333333335
-    },
-    {
-      "index": 136,
-      "text": "お客は、好きな時間に、ふらっと入ります。",
-      "type": "diagram",
-      "motif": "sg_137",
-      "audio": "audio/scene-136.wav",
-      "durationSec": 3.648
-    },
-    {
-      "index": 137,
-      "text": "本編が途中でも、おかまいなしです。",
-      "type": "diagram",
-      "motif": "sg_138",
-      "audio": "audio/scene-137.wav",
-      "durationSec": 2.8906666666666667
-    },
-    {
-      "index": 138,
-      "text": "そのまま観続けて、自分が入ってきた場面がまた来たら、席を立ちます。",
-      "type": "diagram",
-      "motif": "sg_139",
-      "audio": "audio/scene-138.wav",
-      "durationSec": 5.397333333333333
-    },
-    {
-      "index": 139,
-      "text": "「ここから観たんだ」。英語で、ジス・イズ・ホエア・ウィ・ケイム・イン。",
-      "type": "diagram",
-      "motif": "sg_140",
-      "audio": "audio/scene-139.wav",
-      "durationSec": 4.298666666666667
-    },
-    {
-      "index": 140,
-      "text": "帰り際の決まり文句として、すっかり定着していました。",
-      "type": "diagram",
-      "motif": "sg_141",
-      "audio": "audio/scene-140.wav",
-      "durationSec": 4.266666666666667
-    },
-    {
-      "index": 141,
-      "text": "ちなみに、この動画をここまで飛ばして来た方は、いま、まさにこれをやっています。",
-      "type": "diagram",
-      "motif": "sg_142",
-      "audio": "audio/scene-141.wav",
-      "durationSec": 6.058666666666666
-    },
-    {
-      "index": 142,
-      "text": "ようこそ。当時の映画館と同じく、この動画も、途中からのお客さまを歓迎しています。",
-      "type": "diagram",
-      "motif": "sg_143",
-      "audio": "audio/scene-142.wav",
-      "durationSec": 6.88
-    },
-    {
-      "index": 143,
-      "text": "1941年には、業界紙のバラエティが、この習慣を見出しに取り上げています。",
-      "type": "diagram",
-      "motif": "sg_144",
-      "audio": "audio/scene-143.wav",
-      "durationSec": 6.688
-    },
-    {
-      "index": 144,
-      "text": "1935年の時点で、アメリカの映画館の85パーセントは、二本立てでした。",
-      "type": "diagram",
-      "motif": "sg_145",
-      "audio": "audio/scene-144.wav",
-      "durationSec": 7.082666666666666
-    },
-    {
-      "index": 145,
-      "text": "1枚の切符で、何時間いてもかまいません。",
-      "type": "diagram",
-      "motif": "sg_146",
-      "audio": "audio/scene-145.wav",
-      "durationSec": 3.498666666666667
-    },
-    {
-      "index": 146,
-      "text": "つまり映画館は「途中から観るお客」を前提に、商売を組み立てていたのです。",
-      "type": "diagram",
-      "motif": "sg_147",
-      "audio": "audio/scene-146.wav",
-      "durationSec": 6.176
-    },
-    {
-      "index": 147,
-      "text": "理由は単純で、そのほうが、席がいつでも埋まるからです。",
-      "type": "diagram",
-      "motif": "sg_148",
-      "audio": "audio/scene-147.wav",
-      "durationSec": 4.458666666666667
-    },
-    {
-      "index": 148,
-      "text": "「最初から観ないと分かりません」などと言っていたら、席が空いてしまいます。",
-      "type": "diagram",
-      "motif": "sg_149",
-      "audio": "audio/scene-148.wav",
-      "durationSec": 4.896
-    },
-    {
-      "index": 149,
-      "text": "芝居小屋の自由は、形を変えて、映画館に生きていました。",
-      "type": "diagram",
-      "motif": "sg_150",
-      "audio": "audio/scene-149.wav",
-      "durationSec": 4.896
-    },
-    {
-      "index": 150,
-      "text": "この牙城を崩した男が、あの監督です。",
-      "type": "diagram",
-      "motif": "sg_151",
-      "audio": "audio/scene-150.wav",
-      "durationSec": 3.392
-    },
-    {
-      "index": 151,
-      "text": "第8章、ヒッチコックの、立て札。",
-      "type": "diagram",
-      "motif": "sg_152",
-      "audio": "audio/scene-151.wav",
-      "durationSec": 3.136
-    },
-    {
-      "index": 152,
-      "text": "1960年6月16日、ニューヨーク。",
-      "type": "diagram",
-      "motif": "sg_153",
-      "audio": "audio/scene-152.wav",
-      "durationSec": 4.234666666666667
-    },
-    {
-      "index": 153,
-      "text": "アルフレッド・ヒッチコック監督の新作「サイコ」が、公開されます。",
-      "type": "diagram",
-      "motif": "sg_154",
-      "audio": "audio/scene-153.wav",
-      "durationSec": 4.618666666666667
-    },
-    {
-      "index": 154,
-      "text": "この映画には、公開前から、奇妙な条件がついていました。",
-      "type": "diagram",
-      "motif": "sg_155",
-      "audio": "audio/scene-154.wav",
-      "durationSec": 4.832
-    },
-    {
-      "index": 155,
-      "text": "「上映が始まったら、誰も、入場させないこと」。",
-      "type": "diagram",
-      "motif": "sg_156",
-      "audio": "audio/scene-155.wav",
-      "durationSec": 4.074666666666666
-    },
-    {
-      "index": 156,
-      "text": "劇場の入り口には、制服の警備員まで立ちました。",
-      "type": "diagram",
-      "motif": "sg_157",
-      "audio": "audio/scene-156.wav",
-      "durationSec": 4.192
-    },
-    {
-      "index": 157,
-      "text": "立て札には、こう書いてあります。",
-      "type": "diagram",
-      "motif": "sg_158",
-      "audio": "audio/scene-157.wav",
-      "durationSec": 2.56
-    },
-    {
-      "index": 158,
-      "text": "「支配人の弟も、お断り。合衆国大統領も、お断り」。",
-      "type": "diagram",
-      "motif": "sg_159",
-      "audio": "audio/scene-158.wav",
-      "durationSec": 5.450666666666667
-    },
-    {
-      "index": 159,
-      "text": "「英国女王陛下も、神のご加護がありますように、お断り」。",
-      "type": "diagram",
-      "motif": "sg_160",
-      "audio": "audio/scene-159.wav",
-      "durationSec": 4.746666666666667
-    },
-    {
-      "index": 160,
-      "text": "劇場主たちは、青ざめました。途中のお客を断れば、そのぶん売上が減るからです。",
-      "type": "diagram",
-      "motif": "sg_161",
-      "audio": "audio/scene-160.wav",
-      "durationSec": 6.816
-    },
-    {
-      "index": 161,
-      "text": "ところが、ふたを開けてみると。",
-      "type": "diagram",
-      "motif": "sg_162",
-      "audio": "audio/scene-161.wav",
-      "durationSec": 2.336
-    },
-    {
-      "index": 162,
-      "text": "「途中から観られない映画」を観ようと、開演前から行列ができました。",
-      "type": "diagram",
-      "motif": "sg_163",
-      "audio": "audio/scene-162.wav",
-      "durationSec": 5.077333333333334
-    },
-    {
-      "index": 163,
-      "text": "なぜヒッチコックは、そこまでしたのでしょうか。",
-      "type": "diagram",
-      "motif": "sg_164",
-      "audio": "audio/scene-163.wav",
-      "durationSec": 3.6693333333333333
-    },
-    {
-      "index": 164,
-      "text": "「サイコ」は、結末を知っていると台無しになる映画だったからです。",
-      "type": "diagram",
-      "motif": "sg_165",
-      "audio": "audio/scene-164.wav",
-      "durationSec": 4.512
-    },
-    {
-      "index": 165,
-      "text": "物語を守るために、お客の自由を断つ。",
-      "type": "diagram",
-      "motif": "sg_166",
-      "audio": "audio/scene-165.wav",
-      "durationSec": 3.498666666666667
-    },
-    {
-      "index": 166,
-      "text": "「最初から観ろ」と言い出したのは、劇場ではなく、作り手でした。",
-      "type": "diagram",
-      "motif": "sg_167",
-      "audio": "audio/scene-166.wav",
-      "durationSec": 4.8213333333333335
-    },
-    {
-      "index": 167,
-      "text": "ちなみに、この手を最初に使ったのは、ヒッチコックではありません。",
-      "type": "diagram",
-      "motif": "sg_168",
-      "audio": "audio/scene-167.wav",
-      "durationSec": 4.906666666666666
-    },
-    {
-      "index": 168,
-      "text": "5年前、フランスの「悪魔のような女」という映画に、先例があります。",
-      "type": "diagram",
-      "motif": "sg_169",
-      "audio": "audio/scene-168.wav",
-      "durationSec": 5.514666666666667
-    },
-    {
-      "index": 169,
-      "text": "それでも「サイコ」の行列が、このやり方をアメリカ中に知らしめました。",
-      "type": "diagram",
-      "motif": "sg_170",
-      "audio": "audio/scene-169.wav",
-      "durationSec": 4.842666666666666
-    },
-    {
-      "index": 170,
-      "text": "途中入場の時代の、終わりの始まりです。",
-      "type": "diagram",
-      "motif": "sg_171",
-      "audio": "audio/scene-170.wav",
-      "durationSec": 3.4133333333333336
-    },
-    {
-      "index": 171,
-      "text": "第9章、最後の犯人は、シネコン。",
-      "type": "diagram",
-      "motif": "sg_172",
-      "audio": "audio/scene-171.wav",
-      "durationSec": 3.466666666666667
-    },
-    {
-      "index": 172,
-      "text": "とはいえ、日本のお客は、まだまだ自由でした。",
-      "type": "diagram",
-      "motif": "sg_173",
-      "audio": "audio/scene-172.wav",
-      "durationSec": 3.8293333333333335
-    },
-    {
-      "index": 173,
-      "text": "昭和の映画館は、二本立て、自由席、入れ替えなし。",
-      "type": "diagram",
-      "motif": "sg_174",
-      "audio": "audio/scene-173.wav",
-      "durationSec": 4.970666666666666
-    },
-    {
-      "index": 174,
-      "text": "朝に入って、2本観て、気に入ったほうをもう1回観て、夕方に帰る。",
-      "type": "diagram",
-      "motif": "sg_175",
-      "audio": "audio/scene-174.wav",
-      "durationSec": 5.76
-    },
-    {
-      "index": 175,
-      "text": "そういう観方が、ごくふつうにできました。",
-      "type": "diagram",
-      "motif": "sg_176",
-      "audio": "audio/scene-175.wav",
-      "durationSec": 2.965333333333333
-    },
-    {
-      "index": 176,
-      "text": "変化は、静かにやってきます。",
-      "type": "diagram",
-      "motif": "sg_177",
-      "audio": "audio/scene-176.wav",
-      "durationSec": 2.3893333333333335
-    },
-    {
-      "index": 177,
-      "text": "1984年、東京の名画座が、入れ替え制をいち早く取り入れます。",
-      "type": "diagram",
-      "motif": "sg_178",
-      "audio": "audio/scene-177.wav",
-      "durationSec": 6.165333333333334
-    },
-    {
-      "index": 178,
-      "text": "さて、ここで問題です。",
-      "type": "diagram",
-      "motif": "sg_179",
-      "audio": "audio/scene-178.wav",
-      "durationSec": 1.9946666666666666
-    },
-    {
-      "index": 179,
-      "text": "1993年、日本初の本格的なシネマコンプレックスが開業します。どこの街でしょうか。",
-      "type": "diagram",
-      "motif": "sg_180",
-      "audio": "audio/scene-179.wav",
-      "durationSec": 8.64
-    },
-    {
-      "index": 180,
-      "text": "答えは、神奈川県の、海老名市です。",
-      "type": "diagram",
-      "motif": "sg_181",
-      "audio": "audio/scene-180.wav",
-      "durationSec": 3.3493333333333335
-    },
-    {
-      "index": 181,
-      "text": "郊外のショッピングセンターの中に、複数のスクリーン。",
-      "type": "diagram",
-      "motif": "sg_182",
-      "audio": "audio/scene-181.wav",
-      "durationSec": 4.149333333333334
-    },
-    {
-      "index": 182,
-      "text": "きれいな座席、見やすい傾斜、そして、入れ替え制。",
-      "type": "diagram",
-      "motif": "sg_183",
-      "audio": "audio/scene-182.wav",
-      "durationSec": 4.64
-    },
-    {
-      "index": 183,
-      "text": "1996年には、全席指定の映画館も現れます。",
-      "type": "diagram",
-      "motif": "sg_184",
-      "audio": "audio/scene-183.wav",
-      "durationSec": 5.216
-    },
-    {
-      "index": 184,
-      "text": "シネコンは郊外から全国へ広がり、2002年ごろ、スクリーンの数で半分を超えました。",
-      "type": "diagram",
-      "motif": "sg_185",
-      "audio": "audio/scene-184.wav",
-      "durationSec": 6.8693333333333335
-    },
-    {
-      "index": 185,
-      "text": "「上映時間を調べて、席を取って、最初から最後まで観る」。",
-      "type": "diagram",
-      "motif": "sg_186",
-      "audio": "audio/scene-185.wav",
-      "durationSec": 4.8533333333333335
-    },
-    {
-      "index": 186,
-      "text": "この習慣が日本で多数派になったのは、つまり、このときです。",
-      "type": "diagram",
-      "motif": "sg_187",
-      "audio": "audio/scene-186.wav",
-      "durationSec": 4.928
-    },
-    {
-      "index": 187,
-      "text": "たかだか、20年ちょっと前。",
-      "type": "diagram",
-      "motif": "sg_188",
-      "audio": "audio/scene-187.wav",
-      "durationSec": 2.528
-    },
-    {
-      "index": 188,
-      "text": "あなたが昔、途中から観た映画の記憶は、間違いではありません。",
-      "type": "diagram",
-      "motif": "sg_189",
-      "audio": "audio/scene-188.wav",
-      "durationSec": 5.216
-    },
-    {
-      "index": 189,
-      "text": "こうして、客席の最後の出入り口が、閉まりました。",
-      "type": "diagram",
-      "motif": "sg_190",
-      "audio": "audio/scene-189.wav",
-      "durationSec": 4.16
-    },
-    {
-      "index": 190,
-      "text": "第10章、茶の間は、縛れない。",
-      "type": "diagram",
-      "motif": "sg_191",
-      "audio": "audio/scene-190.wav",
-      "durationSec": 2.944
-    },
-    {
-      "index": 191,
-      "text": "ところで、この物語には、縛り損ねた場所があります。",
-      "type": "diagram",
-      "motif": "sg_192",
-      "audio": "audio/scene-191.wav",
-      "durationSec": 4.437333333333333
-    },
-    {
-      "index": 192,
-      "text": "テレビの前。茶の間です。",
-      "type": "diagram",
-      "motif": "sg_193",
-      "audio": "audio/scene-192.wav",
-      "durationSec": 2.1333333333333333
-    },
-    {
-      "index": 193,
-      "text": "放送は、たしかに時間を支配しました。",
-      "type": "diagram",
-      "motif": "sg_194",
-      "audio": "audio/scene-193.wav",
-      "durationSec": 3.0613333333333332
-    },
-    {
-      "index": 194,
-      "text": "決まった時刻に始まり、早送りも、巻き戻しもできません。",
-      "type": "diagram",
-      "motif": "sg_195",
-      "audio": "audio/scene-194.wav",
-      "durationSec": 4.768
-    },
-    {
-      "index": 195,
-      "text": "ですが「黙って最初から最後まで」だけは、ついに強制できませんでした。",
-      "type": "diagram",
-      "motif": "sg_196",
-      "audio": "audio/scene-195.wav",
-      "durationSec": 5.024
-    },
-    {
-      "index": 196,
-      "text": "NHKの調査では、平日のテレビ視聴の4割あまりが「ながら視聴」です。",
-      "type": "diagram",
-      "motif": "sg_197",
-      "audio": "audio/scene-196.wav",
-      "durationSec": 5.834666666666666
-    },
-    {
-      "index": 197,
-      "text": "ご飯を食べながら、洗い物をしながら、新聞を読みながら。",
-      "type": "diagram",
-      "motif": "sg_198",
-      "audio": "audio/scene-197.wav",
-      "durationSec": 4.490666666666667
-    },
-    {
-      "index": 198,
-      "text": "客席が明るいどころか、テレビの前は、生活のど真ん中でした。",
-      "type": "diagram",
-      "motif": "sg_199",
-      "audio": "audio/scene-198.wav",
-      "durationSec": 5.301333333333333
-    },
-    {
-      "index": 199,
-      "text": "1979年には、手元で局を変えられるリモコンが登場します。",
-      "type": "diagram",
-      "motif": "sg_200",
-      "audio": "audio/scene-199.wav",
-      "durationSec": 5.717333333333333
-    },
-    {
-      "index": 200,
-      "text": "80年代に普及すると、お客はコマーシャルのたびに、よその局へ旅立ちました。",
-      "type": "diagram",
-      "motif": "sg_201",
-      "audio": "audio/scene-200.wav",
-      "durationSec": 6.357333333333333
-    },
-    {
-      "index": 201,
-      "text": "番組のほうが「どこから観ても分かる構成」へ、作り替えられていきます。",
-      "type": "diagram",
-      "motif": "sg_202",
-      "audio": "audio/scene-201.wav",
-      "durationSec": 5.173333333333333
-    },
-    {
-      "index": 202,
-      "text": "録画機がやってくると、お客はコマーシャルを早送りしはじめます。",
-      "type": "diagram",
-      "motif": "sg_203",
-      "audio": "audio/scene-202.wav",
-      "durationSec": 4.789333333333333
-    },
-    {
-      "index": 203,
-      "text": "1990年には、コマーシャルを自動で飛ばして録画するビデオデッキまで、発売されました。",
-      "type": "diagram",
-      "motif": "sg_204",
-      "audio": "audio/scene-203.wav",
-      "durationSec": 7.189333333333333
-    },
-    {
-      "index": 204,
-      "text": "飛ばしたい。お客は昔から、ずっと飛ばしたかったのです。",
-      "type": "diagram",
-      "motif": "sg_205",
-      "audio": "audio/scene-204.wav",
-      "durationSec": 4.405333333333333
-    },
-    {
-      "index": 205,
-      "text": "そして2010年代。技術がついに、作品の内部へ手を伸ばします。",
-      "type": "diagram",
-      "motif": "sg_206",
-      "audio": "audio/scene-205.wav",
-      "durationSec": 5.504
-    },
-    {
-      "index": 206,
-      "text": "再生速度の、ボタンです。",
-      "type": "diagram",
-      "motif": "sg_207",
-      "audio": "audio/scene-206.wav",
-      "durationSec": 2.336
-    },
-    {
-      "index": 207,
-      "text": "倍速で観た経験のある人は、2021年の調査で、34パーセント。",
-      "type": "diagram",
-      "motif": "sg_208",
-      "audio": "audio/scene-207.wav",
-      "durationSec": 6.346666666666667
-    },
-    {
-      "index": 208,
-      "text": "3年後の2024年には、47パーセントまで増えました。",
-      "type": "diagram",
-      "motif": "sg_209",
-      "audio": "audio/scene-208.wav",
-      "durationSec": 4.981333333333334
-    },
-    {
-      "index": 209,
-      "text": "若い世代では、スキップ再生の経験が、半分を超えています。",
-      "type": "diagram",
-      "motif": "sg_210",
-      "audio": "audio/scene-209.wav",
-      "durationSec": 5.045333333333334
-    },
-    {
-      "index": 210,
-      "text": "150年かけて組み上げられた「最初から最後まで」が、ほどけていきます。",
-      "type": "diagram",
-      "motif": "sg_211",
-      "audio": "audio/scene-210.wav",
-      "durationSec": 5.077333333333334
-    },
-    {
-      "index": 211,
-      "text": "ここで、むかしの明るい客席を、思い出してください。",
-      "type": "diagram",
-      "motif": "sg_212",
-      "audio": "audio/scene-211.wav",
-      "durationSec": 4.245333333333333
-    },
-    {
-      "index": 212,
-      "text": "騒がしい18世紀のお客は、音楽を聴いていなかったのでしょうか。",
-      "type": "diagram",
-      "motif": "sg_213",
-      "audio": "audio/scene-212.wav",
-      "durationSec": 5.728
-    },
-    {
-      "index": 213,
-      "text": "研究者は、こう釘を刺しています。聴いていなかったのではない、聴き方が違っただけだ、と。",
-      "type": "diagram",
-      "motif": "sg_214",
-      "audio": "audio/scene-213.wav",
-      "durationSec": 7.221333333333333
-    },
-    {
-      "index": 214,
-      "text": "なら、こうも言えるはずです。",
-      "type": "diagram",
-      "motif": "sg_215",
-      "audio": "audio/scene-214.wav",
-      "durationSec": 2.144
-    },
-    {
-      "index": 215,
-      "text": "飛ばして観る人は、観ていないのではない。観方が、変わっただけかもしれません。",
-      "type": "diagram",
-      "motif": "sg_216",
-      "audio": "audio/scene-215.wav",
-      "durationSec": 5.749333333333333
-    },
-    {
-      "index": 216,
-      "text": "最後に、ひとつだけ、不思議な場所を紹介します。",
-      "type": "diagram",
-      "motif": "sg_217",
-      "audio": "audio/scene-216.wav",
-      "durationSec": 3.978666666666667
-    },
-    {
-      "index": 217,
-      "text": "東京、上野。寄席の、鈴本演芸場です。",
-      "type": "diagram",
-      "motif": "sg_218",
-      "audio": "audio/scene-217.wav",
-      "durationSec": 4.501333333333333
-    },
-    {
-      "index": 218,
-      "text": "公式の案内に、こう書いてあります。",
-      "type": "diagram",
-      "motif": "sg_219",
-      "audio": "audio/scene-218.wav",
-      "durationSec": 2.9226666666666667
-    },
-    {
-      "index": 219,
-      "text": "「途中からでもご入場できますし、途中でお帰りになられてもかまいません」。",
-      "type": "diagram",
-      "motif": "sg_220",
-      "audio": "audio/scene-219.wav",
-      "durationSec": 5.226666666666667
-    },
-    {
-      "index": 220,
-      "text": "お弁当を食べながら、ビールを飲みながらで、かまいません。",
-      "type": "diagram",
-      "motif": "sg_221",
-      "audio": "audio/scene-220.wav",
-      "durationSec": 4.288
-    },
-    {
-      "index": 221,
-      "text": "江戸から続く寄席のルールは、150年の規律化を、素通りしてきました。",
-      "type": "diagram",
-      "motif": "sg_222",
-      "audio": "audio/scene-221.wav",
-      "durationSec": 5.610666666666667
-    },
-    {
-      "index": 222,
-      "text": "どの犯人にも、ついに逮捕されなかった、生き証人です。",
-      "type": "diagram",
-      "motif": "sg_223",
-      "audio": "audio/scene-222.wav",
-      "durationSec": 4.469333333333333
-    },
-    {
-      "index": 223,
-      "text": "さて、客席の明かりの話を、覚えているでしょうか。",
-      "type": "diagram",
-      "motif": "sg_224",
-      "audio": "audio/scene-223.wav",
+      "motif": "yw_017",
+      "audio": "audio-yawa/scene-016.wav",
       "durationSec": 4.810666666666667
     },
     {
-      "index": 224,
-      "text": "1876年、ワーグナーが消した、あの明かりです。",
+      "index": 18,
+      "text": "最初の現場は、南アフリカの洞窟です。",
       "type": "diagram",
-      "motif": "sg_225",
-      "audio": "audio/scene-224.wav",
-      "durationSec": 4.938666666666666
+      "motif": "yw_018",
+      "audio": "audio-yawa/scene-017.wav",
+      "durationSec": 3.509333333333333
     },
     {
-      "index": 225,
-      "text": "いま、暗い映画館や、夜の部屋で、小さな光がともっています。",
+      "index": 19,
+      "text": "第1章、20万年前の、草のベッド。",
       "type": "diagram",
-      "motif": "sg_226",
-      "audio": "audio/scene-225.wav",
-      "durationSec": 5.546666666666667
+      "motif": "yw_019",
+      "audio": "audio-yawa/scene-018.wav",
+      "durationSec": 3.8186666666666667
     },
     {
-      "index": 226,
-      "text": "スマートフォンの、画面です。",
+      "index": 20,
+      "text": "やってきたのは、南アフリカの、ボーダー洞窟です。",
       "type": "diagram",
-      "motif": "sg_227",
-      "audio": "audio/scene-226.wav",
+      "motif": "yw_020",
+      "audio": "audio-yawa/scene-019.wav",
+      "durationSec": 4.128
+    },
+    {
+      "index": 21,
+      "text": "この洞窟の床から、少なくとも20万年前の、寝床の跡が見つかりました。",
+      "type": "diagram",
+      "motif": "yw_021",
+      "audio": "audio-yawa/scene-020.wav",
+      "durationSec": 6.112
+    },
+    {
+      "index": 22,
+      "text": "材料は、幅の広い、イネのなかまの草です。",
+      "type": "diagram",
+      "motif": "yw_022",
+      "audio": "audio-yawa/scene-021.wav",
+      "durationSec": 4.042666666666666
+    },
+    {
+      "index": 23,
+      "text": "草を床に敷きつめて、寝る場所を作っていたのです。",
+      "type": "diagram",
+      "motif": "yw_023",
+      "audio": "audio-yawa/scene-022.wav",
+      "durationSec": 3.8186666666666667
+    },
+    {
+      "index": 24,
+      "text": "しかも、草の下からは、灰の層が見つかっています。",
+      "type": "diagram",
+      "motif": "yw_024",
+      "audio": "audio-yawa/scene-023.wav",
+      "durationSec": 4.064
+    },
+    {
+      "index": 25,
+      "text": "研究者は、灰を敷くことで、虫を寄せつけないようにしたのではないかと考えています。",
+      "type": "diagram",
+      "motif": "yw_025",
+      "audio": "audio-yawa/scene-024.wav",
+      "durationSec": 6.389333333333333
+    },
+    {
+      "index": 26,
+      "text": "寝床のそばには、虫よけに使われる、香りの強い低木の跡も残っていました。",
+      "type": "diagram",
+      "motif": "yw_026",
+      "audio": "audio-yawa/scene-025.wav",
+      "durationSec": 6.304
+    },
+    {
+      "index": 27,
+      "text": "時代はくだって、約7万7千年前。同じ南アフリカの、シブドゥ洞窟です。",
+      "type": "diagram",
+      "motif": "yw_027",
+      "audio": "audio-yawa/scene-026.wav",
+      "durationSec": 6.741333333333333
+    },
+    {
+      "index": 28,
+      "text": "ここでは、草や葉を何層にも重ねた寝床が見つかりました。",
+      "type": "diagram",
+      "motif": "yw_028",
+      "audio": "audio-yawa/scene-027.wav",
+      "durationSec": 4.352
+    },
+    {
+      "index": 29,
+      "text": "その中には、虫よけの成分をふくむ木の葉が、混ぜこまれていました。",
+      "type": "diagram",
+      "motif": "yw_029",
+      "audio": "audio-yawa/scene-028.wav",
+      "durationSec": 5.205333333333333
+    },
+    {
+      "index": 30,
+      "text": "ネアンデルタール人も、洞窟の中で、草の寝床を作っていたことがわかっています。",
+      "type": "diagram",
+      "motif": "yw_030",
+      "audio": "audio-yawa/scene-029.wav",
+      "durationSec": 6.112
+    },
+    {
+      "index": 31,
+      "text": "では、なぜわざわざ、寝床を作ったのでしょうか。",
+      "type": "diagram",
+      "motif": "yw_031",
+      "audio": "audio-yawa/scene-030.wav",
+      "durationSec": 4.394666666666667
+    },
+    {
+      "index": 32,
+      "text": "洞窟の床は、硬くて、冷たくて、虫だらけです。",
+      "type": "diagram",
+      "motif": "yw_032",
+      "audio": "audio-yawa/scene-031.wav",
+      "durationSec": 4.416
+    },
+    {
+      "index": 33,
+      "text": "そこに草を敷けば、体が地面から離れます。",
+      "type": "diagram",
+      "motif": "yw_033",
+      "audio": "audio-yawa/scene-032.wav",
+      "durationSec": 3.584
+    },
+    {
+      "index": 34,
+      "text": "冷えにくく、痛くなく、虫にも食われにくい。",
+      "type": "diagram",
+      "motif": "yw_034",
+      "audio": "audio-yawa/scene-033.wav",
+      "durationSec": 3.776
+    },
+    {
+      "index": 35,
+      "text": "冒頭のソファやクッションと同じく、最初の柔らかさの役目は、体を守ることだったと考えられます。",
+      "type": "diagram",
+      "motif": "yw_035",
+      "audio": "audio-yawa/scene-034.wav",
+      "durationSec": 7.637333333333333
+    },
+    {
+      "index": 36,
+      "text": "柔らかさは、まず、背中の下にやってきました。",
+      "type": "diagram",
+      "motif": "yw_036",
+      "audio": "audio-yawa/scene-035.wav",
+      "durationSec": 3.8933333333333335
+    },
+    {
+      "index": 37,
+      "text": "次の現場で、柔らかいものは、寝床を飛び出して、形を持ちはじめます。",
+      "type": "diagram",
+      "motif": "yw_037",
+      "audio": "audio-yawa/scene-036.wav",
+      "durationSec": 5.92
+    },
+    {
+      "index": 38,
+      "text": "第2章、2000年前の、ぬいぐるみ。",
+      "type": "diagram",
+      "motif": "yw_038",
+      "audio": "audio-yawa/scene-037.wav",
+      "durationSec": 3.296
+    },
+    {
+      "index": 39,
+      "text": "まずは、シベリアの山の中にある、古いお墓です。",
+      "type": "diagram",
+      "motif": "yw_039",
+      "audio": "audio-yawa/scene-038.wav",
+      "durationSec": 4.192
+    },
+    {
+      "index": 40,
+      "text": "2000年以上前のお墓から、こんなものが出てきました。",
+      "type": "diagram",
+      "motif": "yw_040",
+      "audio": "audio-yawa/scene-039.wav",
+      "durationSec": 3.9146666666666667
+    },
+    {
+      "index": 41,
+      "text": "フェルトでできた、白鳥です。",
+      "type": "diagram",
+      "motif": "yw_041",
+      "audio": "audio-yawa/scene-040.wav",
       "durationSec": 2.2826666666666666
     },
     {
-      "index": 227,
-      "text": "150年ぶりに、明かりは客席の側へ、戻ってきました。",
+      "index": 42,
+      "text": "高さは、およそ30センチ。中には、シカの毛が詰められていたとされます。",
       "type": "diagram",
-      "motif": "sg_228",
-      "audio": "audio/scene-227.wav",
-      "durationSec": 4.917333333333334
+      "motif": "yw_042",
+      "audio": "audio-yawa/scene-041.wav",
+      "durationSec": 5.92
     },
     {
-      "index": 228,
-      "text": "手元の明るいお客は、また、食べながら観て、しゃべりながら観て、途中で出入りします。",
+      "index": 43,
+      "text": "見た目は、まるでぬいぐるみです。",
       "type": "diagram",
-      "motif": "sg_229",
-      "audio": "audio/scene-228.wav",
-      "durationSec": 6.688
+      "motif": "yw_043",
+      "audio": "audio-yawa/scene-042.wav",
+      "durationSec": 2.4106666666666667
     },
     {
-      "index": 229,
-      "text": "江戸の桟敷と、やっていることは、ほとんど同じです。",
+      "index": 44,
+      "text": "ところが、これはおもちゃではありません。",
       "type": "diagram",
-      "motif": "sg_230",
-      "audio": "audio/scene-229.wav",
-      "durationSec": 4.074666666666666
+      "motif": "yw_044",
+      "audio": "audio-yawa/scene-043.wav",
+      "durationSec": 2.752
     },
     {
-      "index": 230,
-      "text": "「黙って、座って、最初から最後まで」。",
+      "index": 45,
+      "text": "お墓に納められた、馬車の飾りだったのです。",
       "type": "diagram",
-      "motif": "sg_231",
-      "audio": "audio/scene-230.wav",
-      "durationSec": 3.530666666666667
+      "motif": "yw_045",
+      "audio": "audio-yawa/scene-044.wav",
+      "durationSec": 3.488
     },
     {
-      "index": 231,
-      "text": "それは人類の伝統ではなく、19世紀に発明され、20世紀に行き渡った、150年ものの道具でした。",
+      "index": 46,
+      "text": "では、本物のぬいぐるみの祖先は、どこにあるのでしょうか。",
       "type": "diagram",
-      "motif": "sg_232",
-      "audio": "audio/scene-231.wav",
-      "durationSec": 8.896
+      "motif": "yw_046",
+      "audio": "audio-yawa/scene-045.wav",
+      "durationSec": 5.12
     },
     {
-      "index": 232,
-      "text": "道具ですから、使い続けるのも、手放すのも、自由です。",
+      "index": 47,
+      "text": "場所は変わって、エジプトです。",
       "type": "diagram",
-      "motif": "sg_233",
-      "audio": "audio/scene-232.wav",
-      "durationSec": 4.682666666666667
+      "motif": "yw_047",
+      "audio": "audio-yawa/scene-046.wav",
+      "durationSec": 2.453333333333333
     },
     {
-      "index": 233,
-      "text": "冒頭で、この動画は飛ばして観ても構いません、と申し上げました。",
+      "index": 48,
+      "text": "ローマ時代のエジプトの町から、小さな人形が見つかっています。",
       "type": "diagram",
-      "motif": "sg_234",
-      "audio": "audio/scene-233.wav",
-      "durationSec": 5.066666666666666
+      "motif": "yw_048",
+      "audio": "audio-yawa/scene-047.wav",
+      "durationSec": 4.672
     },
     {
-      "index": 234,
-      "text": "それでもここまで飛ばさずに観てくださったあなたは、誰に強制されたわけでもなく、150年前の発明品を、自分で選んで使ったことになります。",
+      "index": 49,
+      "text": "高さは、およそ19センチ。麻の布でできています。",
       "type": "diagram",
-      "motif": "sg_235",
-      "audio": "audio/scene-234.wav",
-      "durationSec": 10.794666666666666
+      "motif": "yw_049",
+      "audio": "audio-yawa/scene-048.wav",
+      "durationSec": 4.544
     },
     {
-      "index": 235,
-      "text": "飛ばして観たあなたも、どうかご安心ください。そちらは、数千年の伝統です。",
+      "index": 50,
+      "text": "中に詰められていたのは、ぼろ布と、紙のもとになるパピルスです。",
       "type": "diagram",
-      "motif": "sg_236",
-      "audio": "audio/scene-235.wav",
+      "motif": "yw_050",
+      "audio": "audio-yawa/scene-049.wav",
+      "durationSec": 5.024
+    },
+    {
+      "index": 51,
+      "text": "顔には毛糸が縫いつけられ、頭には小さな青いガラス玉の飾りがついていました。",
+      "type": "diagram",
+      "motif": "yw_051",
+      "audio": "audio-yawa/scene-050.wav",
+      "durationSec": 5.994666666666666
+    },
+    {
+      "index": 52,
+      "text": "エジプトの乾いた空気のおかげで、1500年以上たった今も、形が残っています。",
+      "type": "diagram",
+      "motif": "yw_052",
+      "audio": "audio-yawa/scene-051.wav",
+      "durationSec": 6.496
+    },
+    {
+      "index": 53,
+      "text": "いまはロンドンの、大英博物館に収められています。",
+      "type": "diagram",
+      "motif": "yw_053",
+      "audio": "audio-yawa/scene-052.wav",
+      "durationSec": 4.1386666666666665
+    },
+    {
+      "index": 54,
+      "text": "中に何かを詰めて、ふくらませる。この発想は、ずいぶん昔からあったのです。",
+      "type": "diagram",
+      "motif": "yw_054",
+      "audio": "audio-yawa/scene-053.wav",
       "durationSec": 6.133333333333334
     },
     {
-      "index": 236,
-      "text": "最後まで観るかどうかは、ふたたび、あなたが決めることになりました。",
+      "index": 55,
+      "text": "次は、柔らかいものに、値段がつく話です。",
       "type": "diagram",
-      "motif": "sg_237",
-      "audio": "audio/scene-236.wav",
-      "durationSec": 4.896
+      "motif": "yw_055",
+      "audio": "audio-yawa/scene-054.wav",
+      "durationSec": 3.9466666666666668
     },
     {
-      "index": 237,
+      "index": 56,
+      "text": "第3章、羽毛のために、持ち場を離れた男。",
+      "type": "diagram",
+      "motif": "yw_056",
+      "audio": "audio-yawa/scene-055.wav",
+      "durationSec": 4.1066666666666665
+    },
+    {
+      "index": 57,
+      "text": "舞台は、およそ2000年前の、ローマ帝国です。",
+      "type": "diagram",
+      "motif": "yw_057",
+      "audio": "audio-yawa/scene-056.wav",
+      "durationSec": 4.085333333333334
+    },
+    {
+      "index": 58,
+      "text": "この時代、柔らかいものの代表といえば、ガチョウの羽毛でした。",
+      "type": "diagram",
+      "motif": "yw_058",
+      "audio": "audio-yawa/scene-057.wav",
+      "durationSec": 4.992
+    },
+    {
+      "index": 59,
+      "text": "博物学者のプリニウスは、『博物誌』という大きな本に、羽毛のことを書き残しています。",
+      "type": "diagram",
+      "motif": "yw_059",
+      "audio": "audio-yawa/scene-058.wav",
+      "durationSec": 7.1466666666666665
+    },
+    {
+      "index": 60,
+      "text": "いちばん評判がよかったのは、ゲルマニア、いまのドイツのあたりの、白い小さなガチョウの羽毛でした。",
+      "type": "diagram",
+      "motif": "yw_060",
+      "audio": "audio-yawa/scene-059.wav",
+      "durationSec": 7.328
+    },
+    {
+      "index": 61,
+      "text": "その値段は、1ポンドあたり、5デナリウス。北の土地の羽毛は、ありがたがられる高級品でした。",
+      "type": "diagram",
+      "motif": "yw_061",
+      "audio": "audio-yawa/scene-060.wav",
+      "durationSec": 7.669333333333333
+    },
+    {
+      "index": 62,
+      "text": "さて、ここで問題です。",
+      "type": "diagram",
+      "motif": "yw_062",
+      "audio": "audio-yawa/scene-061.wav",
+      "durationSec": 1.9946666666666666
+    },
+    {
+      "index": 63,
+      "text": "この羽毛をめぐって、ローマの軍隊で、ある事件が起きました。何でしょうか。",
+      "type": "diagram",
+      "motif": "yw_063",
+      "audio": "audio-yawa/scene-062.wav",
+      "durationSec": 6.517333333333333
+    },
+    {
+      "index": 64,
+      "text": "答えは、指揮官が、ガチョウを捕まえるために、部隊ごと持ち場を離れてしまった、です。",
+      "type": "diagram",
+      "motif": "yw_064",
+      "audio": "audio-yawa/scene-063.wav",
+      "durationSec": 6.965333333333334
+    },
+    {
+      "index": 65,
+      "text": "プリニウスによれば、そうして告発された指揮官たちが、いたそうです。",
+      "type": "diagram",
+      "motif": "yw_065",
+      "audio": "audio-yawa/scene-064.wav",
+      "durationSec": 5.066666666666666
+    },
+    {
+      "index": 66,
+      "text": "そしてプリニウスは、こう嘆いています。",
+      "type": "diagram",
+      "motif": "yw_066",
+      "audio": "audio-yawa/scene-065.wav",
+      "durationSec": 2.88
+    },
+    {
+      "index": 67,
+      "text": "「今では男でさえ、これがないと、首を休められない」。",
+      "type": "diagram",
+      "motif": "yw_067",
+      "audio": "audio-yawa/scene-066.wav",
+      "durationSec": 4.288
+    },
+    {
+      "index": 68,
+      "text": "ここでいう「これ」は、羽毛を詰めて首を支える寝具のことだと、読まれています。",
+      "type": "diagram",
+      "motif": "yw_068",
+      "audio": "audio-yawa/scene-067.wav",
+      "durationSec": 5.653333333333333
+    },
+    {
+      "index": 69,
+      "text": "柔らかさは、取り寄せるほどの、ぜいたく品になっていました。",
+      "type": "diagram",
+      "motif": "yw_069",
+      "audio": "audio-yawa/scene-068.wav",
+      "durationSec": 4.544
+    },
+    {
+      "index": 70,
+      "text": "柔らかさは、こんどは、首の下にやってきました。",
+      "type": "diagram",
+      "motif": "yw_070",
+      "audio": "audio-yawa/scene-069.wav",
+      "durationSec": 3.84
+    },
+    {
+      "index": 71,
+      "text": "ところが、この柔らかさを、心から嫌った人たちがいました。",
+      "type": "diagram",
+      "motif": "yw_071",
+      "audio": "audio-yawa/scene-070.wav",
+      "durationSec": 4.661333333333333
+    },
+    {
+      "index": 72,
+      "text": "第4章、柔らかいと、人はダメになる。",
+      "type": "diagram",
+      "motif": "yw_072",
+      "audio": "audio-yawa/scene-071.wav",
+      "durationSec": 3.5733333333333333
+    },
+    {
+      "index": 73,
+      "text": "ラテン語で「柔らかさ」は、モッリティアといいます。",
+      "type": "diagram",
+      "motif": "yw_073",
+      "audio": "audio-yawa/scene-072.wav",
+      "durationSec": 3.2426666666666666
+    },
+    {
+      "index": 74,
+      "text": "この言葉には、もうひとつの意味がありました。",
+      "type": "diagram",
+      "motif": "yw_074",
+      "audio": "audio-yawa/scene-073.wav",
+      "durationSec": 3.264
+    },
+    {
+      "index": 75,
+      "text": "「軟弱」、そして「だらしなさ」です。",
+      "type": "diagram",
+      "motif": "yw_075",
+      "audio": "audio-yawa/scene-074.wav",
+      "durationSec": 2.3786666666666667
+    },
+    {
+      "index": 76,
+      "text": "ローマの文人たちは、この言葉を、たるんだ人をけなすときに使いました。",
+      "type": "diagram",
+      "motif": "yw_076",
+      "audio": "audio-yawa/scene-075.wav",
+      "durationSec": 5.386666666666667
+    },
+    {
+      "index": 77,
+      "text": "聖書にも、こんな一節があります。",
+      "type": "diagram",
+      "motif": "yw_077",
+      "audio": "audio-yawa/scene-076.wav",
+      "durationSec": 2.7306666666666666
+    },
+    {
+      "index": 78,
+      "text": "「柔らかい衣を着た人なら、王の宮殿にいる」。",
+      "type": "diagram",
+      "motif": "yw_078",
+      "audio": "audio-yawa/scene-077.wav",
+      "durationSec": 3.6693333333333333
+    },
+    {
+      "index": 79,
+      "text": "柔らかさは、ぜいたくな暮らしの、しるしだったのです。",
+      "type": "diagram",
+      "motif": "yw_079",
+      "audio": "audio-yawa/scene-078.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 80,
+      "text": "13世紀の神学者、トマス・アクィナスは、さらに踏みこみました。",
+      "type": "diagram",
+      "motif": "yw_080",
+      "audio": "audio-yawa/scene-079.wav",
+      "durationSec": 5.141333333333334
+    },
+    {
+      "index": 81,
+      "text": "彼は「柔弱」を、悪い性質のひとつに数えています。",
+      "type": "diagram",
+      "motif": "yw_081",
+      "audio": "audio-yawa/scene-080.wav",
+      "durationSec": 4.16
+    },
+    {
+      "index": 82,
+      "text": "そのたとえが、なかなか見事です。",
+      "type": "diagram",
+      "motif": "yw_082",
+      "audio": "audio-yawa/scene-081.wav",
+      "durationSec": 2.6026666666666665
+    },
+    {
+      "index": 83,
+      "text": "柔弱とは、触れると、すぐに凹んでしまうもののことだ、と。",
+      "type": "diagram",
+      "motif": "yw_083",
+      "audio": "audio-yawa/scene-082.wav",
+      "durationSec": 5.002666666666666
+    },
+    {
+      "index": 84,
+      "text": "少し押されただけで、すぐに引き下がってしまう人のことです。",
+      "type": "diagram",
+      "motif": "yw_084",
+      "audio": "audio-yawa/scene-083.wav",
+      "durationSec": 4.245333333333333
+    },
+    {
+      "index": 85,
+      "text": "どこかで、聞いたことがある話です。",
+      "type": "diagram",
+      "motif": "yw_085",
+      "audio": "audio-yawa/scene-084.wav",
+      "durationSec": 2.7413333333333334
+    },
+    {
+      "index": 86,
+      "text": "そう。冒頭の「人をダメにするソファ」です。",
+      "type": "diagram",
+      "motif": "yw_086",
+      "audio": "audio-yawa/scene-085.wav",
+      "durationSec": 3.0613333333333332
+    },
+    {
+      "index": 87,
+      "text": "柔らかいものは、人をダメにする。この発想は、700年以上前から、あったのです。",
+      "type": "diagram",
+      "motif": "yw_087",
+      "audio": "audio-yawa/scene-086.wav",
+      "durationSec": 6.858666666666666
+    },
+    {
+      "index": 88,
+      "text": "日本語の「軟弱」も、柔らかくて弱い、と書きます。",
+      "type": "diagram",
+      "motif": "yw_088",
+      "audio": "audio-yawa/scene-087.wav",
+      "durationSec": 4.181333333333333
+    },
+    {
+      "index": 89,
+      "text": "では、柔らかさを本気で拒んだ人は、何をしたのでしょうか。",
+      "type": "diagram",
+      "motif": "yw_089",
+      "audio": "audio-yawa/scene-088.wav",
+      "durationSec": 5.322666666666667
+    },
+    {
+      "index": 90,
+      "text": "第5章、羽毛枕には、悪魔が住んでいる。",
+      "type": "diagram",
+      "motif": "yw_090",
+      "audio": "audio-yawa/scene-089.wav",
+      "durationSec": 3.8186666666666667
+    },
+    {
+      "index": 91,
+      "text": "13世紀のイタリア。アッシジの町に、フランチェスコという修道士がいました。",
+      "type": "diagram",
+      "motif": "yw_091",
+      "audio": "audio-yawa/scene-090.wav",
+      "durationSec": 6.08
+    },
+    {
+      "index": 92,
+      "text": "持ち物をすべて手放し、貧しく生きることを、つらぬいた人です。",
+      "type": "diagram",
+      "motif": "yw_092",
+      "audio": "audio-yawa/scene-091.wav",
+      "durationSec": 4.906666666666666
+    },
+    {
+      "index": 93,
+      "text": "あるとき、病気になったフランチェスコに、仲間が羽毛の枕を用意しました。",
+      "type": "diagram",
+      "motif": "yw_093",
+      "audio": "audio-yawa/scene-092.wav",
+      "durationSec": 5.621333333333333
+    },
+    {
+      "index": 94,
+      "text": "ところがその夜、彼は眠れませんでした。",
+      "type": "diagram",
+      "motif": "yw_094",
+      "audio": "audio-yawa/scene-093.wav",
+      "durationSec": 3.6053333333333333
+    },
+    {
+      "index": 95,
+      "text": "翌朝、フランチェスコは言います。「あの枕には、悪魔がいた」。",
+      "type": "diagram",
+      "motif": "yw_095",
+      "audio": "audio-yawa/scene-094.wav",
+      "durationSec": 5.066666666666666
+    },
+    {
+      "index": 96,
+      "text": "そして、枕を遠くへ、放り出させたそうです。",
+      "type": "diagram",
+      "motif": "yw_096",
+      "audio": "audio-yawa/scene-095.wav",
+      "durationSec": 3.68
+    },
+    {
+      "index": 97,
+      "text": "柔らかい枕は、清い暮らしの、敵だったのです。",
+      "type": "diagram",
+      "motif": "yw_097",
+      "audio": "audio-yawa/scene-096.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 98,
+      "text": "ただし、これは、聖人の話です。",
+      "type": "diagram",
+      "motif": "yw_098",
+      "audio": "audio-yawa/scene-097.wav",
+      "durationSec": 3.168
+    },
+    {
+      "index": 99,
+      "text": "同じ時代のふつうの人々は、羽毛の寝具が、大好きでした。",
+      "type": "diagram",
+      "motif": "yw_099",
+      "audio": "audio-yawa/scene-098.wav",
+      "durationSec": 4.810666666666667
+    },
+    {
+      "index": 100,
+      "text": "舞台は、イギリスへ移ります。",
+      "type": "diagram",
+      "motif": "yw_100",
+      "audio": "audio-yawa/scene-099.wav",
+      "durationSec": 2.421333333333333
+    },
+    {
+      "index": 101,
+      "text": "1395年、ある貴族の女性が、遺言書を残しました。",
+      "type": "diagram",
+      "motif": "yw_101",
+      "audio": "audio-yawa/scene-100.wav",
+      "durationSec": 5.536
+    },
+    {
+      "index": 102,
+      "text": "いちばん良い羽毛のベッドは、この子に。二番目は、あの子に。三番目は、その子に。",
+      "type": "diagram",
+      "motif": "yw_102",
+      "audio": "audio-yawa/scene-101.wav",
+      "durationSec": 6.944
+    },
+    {
+      "index": 103,
+      "text": "ここでいう羽毛のベッドとは、羽毛を詰めた、大きな敷きぶとんのことです。",
+      "type": "diagram",
+      "motif": "yw_103",
+      "audio": "audio-yawa/scene-102.wav",
+      "durationSec": 5.184
+    },
+    {
+      "index": 104,
+      "text": "遺言で分けるほどの、財産だったのです。",
+      "type": "diagram",
+      "motif": "yw_104",
+      "audio": "audio-yawa/scene-103.wav",
+      "durationSec": 3.264
+    },
+    {
+      "index": 105,
+      "text": "人気が出れば、偽物も出ます。",
+      "type": "diagram",
+      "motif": "yw_105",
+      "audio": "audio-yawa/scene-104.wav",
+      "durationSec": 2.570666666666667
+    },
+    {
+      "index": 106,
+      "text": "1474年のロンドンでは、偽物の羽毛ベッドが、訴えられています。",
+      "type": "diagram",
+      "motif": "yw_106",
+      "audio": "audio-yawa/scene-105.wav",
+      "durationSec": 6.101333333333334
+    },
+    {
+      "index": 107,
+      "text": "そして1552年には、詰め物を取り締まる法律まで、作られました。",
+      "type": "diagram",
+      "motif": "yw_107",
+      "audio": "audio-yawa/scene-106.wav",
+      "durationSec": 5.92
+    },
+    {
+      "index": 108,
+      "text": "みんなが欲しがったからこそ、聖人は、それを拒んでみせたのです。",
+      "type": "diagram",
+      "motif": "yw_108",
+      "audio": "audio-yawa/scene-107.wav",
+      "durationSec": 4.96
+    },
+    {
+      "index": 109,
+      "text": "聖人の首の下からは、柔らかさが、取り上げられました。",
+      "type": "diagram",
+      "motif": "yw_109",
+      "audio": "audio-yawa/scene-108.wav",
+      "durationSec": 4.384
+    },
+    {
+      "index": 110,
+      "text": "それでも、人々の背中の下には、羽毛がありました。",
+      "type": "diagram",
+      "motif": "yw_110",
+      "audio": "audio-yawa/scene-109.wav",
+      "durationSec": 4.298666666666667
+    },
+    {
+      "index": 111,
+      "text": "第6章、竹でできた、夫人。",
+      "type": "diagram",
+      "motif": "yw_111",
+      "audio": "audio-yawa/scene-110.wav",
+      "durationSec": 2.997333333333333
+    },
+    {
+      "index": 112,
+      "text": "舞台は、中国です。",
+      "type": "diagram",
+      "motif": "yw_112",
+      "audio": "audio-yawa/scene-111.wav",
+      "durationSec": 2.005333333333333
+    },
+    {
+      "index": 113,
+      "text": "さて、ここで問題です。",
+      "type": "diagram",
+      "motif": "yw_113",
+      "audio": "audio-yawa/scene-112.wav",
+      "durationSec": 1.9946666666666666
+    },
+    {
+      "index": 114,
+      "text": "この、竹で編んだ筒のようなもの。何に使う道具でしょうか。",
+      "type": "diagram",
+      "motif": "yw_114",
+      "audio": "audio-yawa/scene-113.wav",
+      "durationSec": 5.312
+    },
+    {
+      "index": 115,
+      "text": "答えは、抱き枕、です。",
+      "type": "diagram",
+      "motif": "yw_115",
+      "audio": "audio-yawa/scene-114.wav",
+      "durationSec": 2.506666666666667
+    },
+    {
+      "index": 116,
+      "text": "夏の暑い夜に、抱えて寝ると、すき間を風が通って、涼しいのです。",
+      "type": "diagram",
+      "motif": "yw_116",
+      "audio": "audio-yawa/scene-115.wav",
+      "durationSec": 5.941333333333334
+    },
+    {
+      "index": 117,
+      "text": "唐の時代には「竹夾膝」、ひざにはさむ竹、と呼ばれていました。",
+      "type": "diagram",
+      "motif": "yw_117",
+      "audio": "audio-yawa/scene-116.wav",
+      "durationSec": 5.301333333333333
+    },
+    {
+      "index": 118,
+      "text": "それが宋の時代になると、名前が変わります。",
+      "type": "diagram",
+      "motif": "yw_118",
+      "audio": "audio-yawa/scene-117.wav",
+      "durationSec": 3.52
+    },
+    {
+      "index": 119,
+      "text": "「竹夫人」。竹の、奥さんです。",
+      "type": "diagram",
+      "motif": "yw_119",
+      "audio": "audio-yawa/scene-118.wav",
+      "durationSec": 2.944
+    },
+    {
+      "index": 120,
+      "text": "蘇軾や陸游といった詩人たちは、この竹夫人を、詩によみました。",
+      "type": "diagram",
+      "motif": "yw_120",
+      "audio": "audio-yawa/scene-119.wav",
+      "durationSec": 5.258666666666667
+    },
+    {
+      "index": 121,
+      "text": "ほかにも、竹奴、青奴といった、人のような呼び名がついています。",
+      "type": "diagram",
+      "motif": "yw_121",
+      "audio": "audio-yawa/scene-120.wav",
+      "durationSec": 5.173333333333333
+    },
+    {
+      "index": 122,
+      "text": "竹夫人は日本にも伝わり、夏の季語になりました。与謝蕪村も、俳句によんでいます。",
+      "type": "diagram",
+      "motif": "yw_122",
+      "audio": "audio-yawa/scene-121.wav",
+      "durationSec": 6.741333333333333
+    },
+    {
+      "index": 123,
+      "text": "韓国には、ちょっと変わった言い伝えがあります。",
+      "type": "diagram",
+      "motif": "yw_123",
+      "audio": "audio-yawa/scene-122.wav",
+      "durationSec": 3.530666666666667
+    },
+    {
+      "index": 124,
+      "text": "父親が使っていた竹夫人は、息子にゆずらず、燃やしてしまう、というのです。",
+      "type": "diagram",
+      "motif": "yw_124",
+      "audio": "audio-yawa/scene-123.wav",
+      "durationSec": 6.229333333333333
+    },
+    {
+      "index": 125,
+      "text": "もちろん、竹夫人のいちばんの役目は、涼むことです。",
+      "type": "diagram",
+      "motif": "yw_125",
+      "audio": "audio-yawa/scene-124.wav",
+      "durationSec": 4.405333333333333
+    },
+    {
+      "index": 126,
+      "text": "でも、ただの道具に、わざわざ「夫人」という名前をつけるでしょうか。",
+      "type": "diagram",
+      "motif": "yw_126",
+      "audio": "audio-yawa/scene-125.wav",
+      "durationSec": 5.696
+    },
+    {
+      "index": 127,
+      "text": "柔らかくなくても、人は、腕の中に何かを入れたかったのです。",
+      "type": "diagram",
+      "motif": "yw_127",
+      "audio": "audio-yawa/scene-126.wav",
+      "durationSec": 4.8213333333333335
+    },
+    {
+      "index": 128,
+      "text": "では人は、柔らかさではなく、何を抱いていたのでしょうか。",
+      "type": "diagram",
+      "motif": "yw_128",
+      "audio": "audio-yawa/scene-127.wav",
+      "durationSec": 5.077333333333334
+    },
+    {
+      "index": 129,
+      "text": "第7章、子ザルは、布にしがみついた。",
+      "type": "diagram",
+      "motif": "yw_129",
+      "audio": "audio-yawa/scene-128.wav",
+      "durationSec": 3.4346666666666668
+    },
+    {
+      "index": 130,
+      "text": "1958年、アメリカの心理学者、ハリー・ハーロウが、ある実験を発表しました。",
+      "type": "diagram",
+      "motif": "yw_130",
+      "audio": "audio-yawa/scene-129.wav",
+      "durationSec": 7.381333333333333
+    },
+    {
+      "index": 131,
+      "text": "用意したのは、2つの「お母さん」の人形です。",
+      "type": "diagram",
+      "motif": "yw_131",
+      "audio": "audio-yawa/scene-130.wav",
+      "durationSec": 3.445333333333333
+    },
+    {
+      "index": 132,
+      "text": "ひとつは、針金でできたお母さん。",
+      "type": "diagram",
+      "motif": "yw_132",
+      "audio": "audio-yawa/scene-131.wav",
+      "durationSec": 2.8053333333333335
+    },
+    {
+      "index": 133,
+      "text": "もうひとつは、針金を、柔らかい布でくるんだお母さん。",
+      "type": "diagram",
+      "motif": "yw_133",
+      "audio": "audio-yawa/scene-132.wav",
+      "durationSec": 4.544
+    },
+    {
+      "index": 134,
+      "text": "そして、片方にだけ、ミルクの出る哺乳びんを取りつけました。",
+      "type": "diagram",
+      "motif": "yw_134",
+      "audio": "audio-yawa/scene-133.wav",
+      "durationSec": 4.64
+    },
+    {
+      "index": 135,
+      "text": "生まれたばかりのアカゲザルの子どもは、どちらのお母さんを選んだでしょうか。",
+      "type": "diagram",
+      "motif": "yw_135",
+      "audio": "audio-yawa/scene-134.wav",
+      "durationSec": 5.6
+    },
+    {
+      "index": 136,
+      "text": "ミルクをくれるのが、針金のお母さんのときでも。",
+      "type": "diagram",
+      "motif": "yw_136",
+      "audio": "audio-yawa/scene-135.wav",
+      "durationSec": 3.7013333333333334
+    },
+    {
+      "index": 137,
+      "text": "子ザルは、ほとんどの時間を、布のお母さんにしがみついて過ごしました。",
+      "type": "diagram",
+      "motif": "yw_137",
+      "audio": "audio-yawa/scene-136.wav",
+      "durationSec": 5.312
+    },
+    {
+      "index": 138,
+      "text": "針金のお母さんのところへは、ミルクを飲むときだけ、行ったのです。",
+      "type": "diagram",
+      "motif": "yw_138",
+      "audio": "audio-yawa/scene-137.wav",
+      "durationSec": 5.109333333333334
+    },
+    {
+      "index": 139,
+      "text": "ハーロウは、こう結論づけました。",
+      "type": "diagram",
+      "motif": "yw_139",
+      "audio": "audio-yawa/scene-138.wav",
+      "durationSec": 2.624
+    },
+    {
+      "index": 140,
+      "text": "触れて心地よいことは、圧倒的に大切だ。授乳は、ほとんど関係ない。",
+      "type": "diagram",
+      "motif": "yw_140",
+      "audio": "audio-yawa/scene-139.wav",
+      "durationSec": 6.165333333333334
+    },
+    {
+      "index": 141,
+      "text": "ちなみに、どちらのお母さんも、中から温められていました。",
+      "type": "diagram",
+      "motif": "yw_141",
+      "audio": "audio-yawa/scene-140.wav",
+      "durationSec": 4.608
+    },
+    {
+      "index": 142,
+      "text": "子ザルが求めていたのは、触り心地と、温かさ。",
+      "type": "diagram",
+      "motif": "yw_142",
+      "audio": "audio-yawa/scene-141.wav",
+      "durationSec": 4.085333333333334
+    },
+    {
+      "index": 143,
+      "text": "つまり、抱っこされている感じ、だったのです。",
+      "type": "diagram",
+      "motif": "yw_143",
+      "audio": "audio-yawa/scene-142.wav",
+      "durationSec": 3.8933333333333335
+    },
+    {
+      "index": 144,
+      "text": "冒頭の問いに、戻りましょう。人類が本当に欲しかったのは、柔らかさではなく、抱っこだったのかもしれません。",
+      "type": "diagram",
+      "motif": "yw_144",
+      "audio": "audio-yawa/scene-143.wav",
+      "durationSec": 8.384
+    },
+    {
+      "index": 145,
+      "text": "ただ、この研究には、影の部分もあります。",
+      "type": "diagram",
+      "motif": "yw_145",
+      "audio": "audio-yawa/scene-144.wav",
+      "durationSec": 3.6586666666666665
+    },
+    {
+      "index": 146,
+      "text": "ハーロウはその後、子ザルを親から引き離して孤立させる実験へと進み、強い批判を受けました。",
+      "type": "diagram",
+      "motif": "yw_146",
+      "audio": "audio-yawa/scene-145.wav",
+      "durationSec": 6.997333333333334
+    },
+    {
+      "index": 147,
+      "text": "では、人間の赤ちゃんにとって、柔らかいものとは、何なのでしょうか。",
+      "type": "diagram",
+      "motif": "yw_147",
+      "audio": "audio-yawa/scene-146.wav",
+      "durationSec": 6.1226666666666665
+    },
+    {
+      "index": 148,
+      "text": "第8章、自分ではない、はじめての持ち物。",
+      "type": "diagram",
+      "motif": "yw_148",
+      "audio": "audio-yawa/scene-147.wav",
+      "durationSec": 3.8826666666666667
+    },
+    {
+      "index": 149,
+      "text": "人間の赤ちゃんは、ほかのサルのなかまと比べても、とても未熟な状態で生まれてきます。",
+      "type": "diagram",
+      "motif": "yw_149",
+      "audio": "audio-yawa/scene-148.wav",
+      "durationSec": 6.442666666666667
+    },
+    {
+      "index": 150,
+      "text": "サルの赤ちゃんのように、母親にしがみついて運ばれることも、できません。",
+      "type": "diagram",
+      "motif": "yw_150",
+      "audio": "audio-yawa/scene-149.wav",
+      "durationSec": 5.386666666666667
+    },
+    {
+      "index": 151,
+      "text": "なぜそこまで未熟なのかは、研究者のあいだでも、意見が分かれています。",
+      "type": "diagram",
+      "motif": "yw_151",
+      "audio": "audio-yawa/scene-150.wav",
+      "durationSec": 5.450666666666667
+    },
+    {
+      "index": 152,
+      "text": "ただ、ひとつ確かなのは、人間は長いあいだ、抱かれて育つということです。",
+      "type": "diagram",
+      "motif": "yw_152",
+      "audio": "audio-yawa/scene-151.wav",
+      "durationSec": 5.888
+    },
+    {
+      "index": 153,
+      "text": "そして、いつかは、腕の中から下ろされる日が来ます。",
+      "type": "diagram",
+      "motif": "yw_153",
+      "audio": "audio-yawa/scene-152.wav",
+      "durationSec": 4.010666666666666
+    },
+    {
+      "index": 154,
+      "text": "イギリスの小児科医で精神分析家の、ドナルド・ウィニコットは、ここに注目しました。",
+      "type": "diagram",
+      "motif": "yw_154",
+      "audio": "audio-yawa/scene-153.wav",
+      "durationSec": 6.08
+    },
+    {
+      "index": 155,
+      "text": "赤ちゃんが手放さない、毛布の切れはしや、ぬいぐるみ。",
+      "type": "diagram",
+      "motif": "yw_155",
+      "audio": "audio-yawa/scene-154.wav",
+      "durationSec": 4.256
+    },
+    {
+      "index": 156,
+      "text": "ウィニコットは、これを「移行対象」と呼びました。",
+      "type": "diagram",
+      "motif": "yw_156",
+      "audio": "audio-yawa/scene-155.wav",
+      "durationSec": 3.3493333333333335
+    },
+    {
+      "index": 157,
+      "text": "自分ではない、はじめての持ち物、という意味です。",
+      "type": "diagram",
+      "motif": "yw_157",
+      "audio": "audio-yawa/scene-156.wav",
+      "durationSec": 3.936
+    },
+    {
+      "index": 158,
+      "text": "お母さんの腕と、ひとりの世界のあいだを、つないでくれるもの、です。",
+      "type": "diagram",
+      "motif": "yw_158",
+      "audio": "audio-yawa/scene-157.wav",
+      "durationSec": 5.354666666666667
+    },
+    {
+      "index": 159,
+      "text": "ちなみに、私たちの肌には、ゆっくり撫でられたときに、よく反応する神経があります。",
+      "type": "diagram",
+      "motif": "yw_159",
+      "audio": "audio-yawa/scene-158.wav",
+      "durationSec": 6.826666666666667
+    },
+    {
+      "index": 160,
+      "text": "いちばんよく反応するのは、秒速数センチ。ちょうど、人の手で撫でる速さです。",
+      "type": "diagram",
+      "motif": "yw_160",
+      "audio": "audio-yawa/scene-159.wav",
+      "durationSec": 6.282666666666667
+    },
+    {
+      "index": 161,
+      "text": "この神経は、毛の生えている肌に多く、手のひらには、ほとんどありません。",
+      "type": "diagram",
+      "motif": "yw_161",
+      "audio": "audio-yawa/scene-160.wav",
+      "durationSec": 5.952
+    },
+    {
+      "index": 162,
+      "text": "毛布にくるまったり、ぬいぐるみに頬ずりしたり。",
+      "type": "diagram",
+      "motif": "yw_162",
+      "audio": "audio-yawa/scene-161.wav",
+      "durationSec": 3.5733333333333333
+    },
+    {
+      "index": 163,
+      "text": "柔らかいものに包まれると落ち着くのは、体のしくみから見ても、筋が通っているのです。",
+      "type": "diagram",
+      "motif": "yw_163",
+      "audio": "audio-yawa/scene-162.wav",
+      "durationSec": 6.368
+    },
+    {
+      "index": 164,
+      "text": "では、この「抱っこの代わり」が、大量に作られるようになったのは、いつからでしょうか。",
+      "type": "diagram",
+      "motif": "yw_164",
+      "audio": "audio-yawa/scene-163.wav",
+      "durationSec": 6.741333333333333
+    },
+    {
+      "index": 165,
+      "text": "第9章、柔らかさは、大量生産される。",
+      "type": "diagram",
+      "motif": "yw_165",
+      "audio": "audio-yawa/scene-164.wav",
+      "durationSec": 3.9146666666666667
+    },
+    {
+      "index": 166,
+      "text": "20世紀に入ると、柔らかさは、工場で作られるようになります。",
+      "type": "diagram",
+      "motif": "yw_166",
+      "audio": "audio-yawa/scene-165.wav",
+      "durationSec": 5.322666666666667
+    },
+    {
+      "index": 167,
+      "text": "まずは、体を守る柔らかさから、見ていきましょう。",
+      "type": "diagram",
+      "motif": "yw_167",
+      "audio": "audio-yawa/scene-166.wav",
+      "durationSec": 4.032
+    },
+    {
+      "index": 168,
+      "text": "1966年、アメリカ。NASAのエイムズ研究センターが、ある素材の研究を依頼しました。",
+      "type": "diagram",
+      "motif": "yw_168",
+      "audio": "audio-yawa/scene-167.wav",
+      "durationSec": 7.957333333333334
+    },
+    {
+      "index": 169,
+      "text": "目的は、飛行機の座席の、衝撃をやわらげることです。",
+      "type": "diagram",
+      "motif": "yw_169",
+      "audio": "audio-yawa/scene-168.wav",
+      "durationSec": 4.554666666666667
+    },
+    {
+      "index": 170,
+      "text": "生まれたのは、押すとゆっくり沈み、ゆっくり戻る、ふしぎな泡でした。",
+      "type": "diagram",
+      "motif": "yw_170",
+      "audio": "audio-yawa/scene-169.wav",
+      "durationSec": 5.557333333333333
+    },
+    {
+      "index": 171,
+      "text": "いまでいう、低反発素材です。",
+      "type": "diagram",
+      "motif": "yw_171",
+      "audio": "audio-yawa/scene-170.wav",
+      "durationSec": 2.752
+    },
+    {
+      "index": 172,
+      "text": "もうひとつ、手を守る柔らかさがあります。",
+      "type": "diagram",
+      "motif": "yw_172",
+      "audio": "audio-yawa/scene-171.wav",
+      "durationSec": 3.1893333333333334
+    },
+    {
+      "index": 173,
+      "text": "1991年、日本のパイロットが、太くて柔らかいグリップのボールペンを発売しました。",
+      "type": "diagram",
+      "motif": "yw_173",
+      "audio": "audio-yawa/scene-172.wav",
+      "durationSec": 7.424
+    },
+    {
+      "index": 174,
+      "text": "ドクターグリップです。翌年には、シャープペンも出ました。",
+      "type": "diagram",
+      "motif": "yw_174",
+      "audio": "audio-yawa/scene-173.wav",
+      "durationSec": 4.330666666666667
+    },
+    {
+      "index": 175,
+      "text": "伝票を長い時間書きつづける人たちの、手や腕の痛みが、開発のきっかけだったとされます。",
+      "type": "diagram",
+      "motif": "yw_175",
+      "audio": "audio-yawa/scene-174.wav",
+      "durationSec": 6.858666666666666
+    },
+    {
+      "index": 176,
+      "text": "そして、心を落ち着かせる柔らかさも、どんどん大きくなっていきます。",
+      "type": "diagram",
+      "motif": "yw_176",
+      "audio": "audio-yawa/scene-175.wav",
+      "durationSec": 5.045333333333334
+    },
+    {
+      "index": 177,
+      "text": "1968年、イタリアで、ビーンバッグチェアの「サッコ」が生まれました。",
+      "type": "diagram",
+      "motif": "yw_177",
+      "audio": "audio-yawa/scene-176.wav",
+      "durationSec": 5.962666666666666
+    },
+    {
+      "index": 178,
+      "text": "中に細かい粒を詰めた、形の決まらない、大きな袋の椅子です。",
+      "type": "diagram",
+      "motif": "yw_178",
+      "audio": "audio-yawa/scene-177.wav",
+      "durationSec": 5.333333333333333
+    },
+    {
+      "index": 179,
+      "text": "2013年。日本では、無印良品の「体にフィットするソファ」が、あるブログで紹介されました。",
+      "type": "diagram",
+      "motif": "yw_179",
+      "audio": "audio-yawa/scene-178.wav",
+      "durationSec": 7.616
+    },
+    {
+      "index": 180,
+      "text": "ついたあだ名が、そう、「人をダメにするソファ」です。",
+      "type": "diagram",
+      "motif": "yw_180",
+      "audio": "audio-yawa/scene-179.wav",
+      "durationSec": 3.68
+    },
+    {
+      "index": 181,
+      "text": "翌年の2014年には、アメリカ生まれのヨギボーが、日本に上陸します。",
+      "type": "diagram",
+      "motif": "yw_181",
+      "audio": "audio-yawa/scene-180.wav",
+      "durationSec": 5.92
+    },
+    {
+      "index": 182,
+      "text": "海の向こうでは、ぬいぐるみのスクイッシュマロウが、2022年だけで、およそ1億個も売れました。",
+      "type": "diagram",
+      "motif": "yw_182",
+      "audio": "audio-yawa/scene-181.wav",
+      "durationSec": 7.253333333333333
+    },
+    {
+      "index": 183,
+      "text": "柔らかさは、背中、首、腕を越えて、ついに全身を包むようになったのです。",
+      "type": "diagram",
+      "motif": "yw_183",
+      "audio": "audio-yawa/scene-182.wav",
+      "durationSec": 6.688
+    },
+    {
+      "index": 184,
+      "text": "では、こうした柔らかいものは、本当に私たちの役に立っているのでしょうか。",
+      "type": "diagram",
+      "motif": "yw_184",
+      "audio": "audio-yawa/scene-183.wav",
+      "durationSec": 6.464
+    },
+    {
+      "index": 185,
+      "text": "第10章、柔らかさは、何に効くのか。",
+      "type": "diagram",
+      "motif": "yw_185",
+      "audio": "audio-yawa/scene-184.wav",
+      "durationSec": 4.096
+    },
+    {
+      "index": 186,
+      "text": "まずは、体のほうから見ていきましょう。",
+      "type": "diagram",
+      "motif": "yw_186",
+      "audio": "audio-yawa/scene-185.wav",
+      "durationSec": 2.965333333333333
+    },
+    {
+      "index": 187,
+      "text": "病院で長く寝ている人にとって、こわいのが、床ずれです。",
+      "type": "diagram",
+      "motif": "yw_187",
+      "audio": "audio-yawa/scene-186.wav",
+      "durationSec": 4.522666666666667
+    },
+    {
+      "index": 188,
+      "text": "体の同じところに、ずっと圧がかかりつづけると、皮膚が傷ついてしまいます。",
+      "type": "diagram",
+      "motif": "yw_188",
+      "audio": "audio-yawa/scene-187.wav",
+      "durationSec": 5.930666666666666
+    },
+    {
+      "index": 189,
+      "text": "そこで使われるのが、体の形にそって沈む、高機能のマットレスです。",
+      "type": "diagram",
+      "motif": "yw_189",
+      "audio": "audio-yawa/scene-188.wav",
+      "durationSec": 5.621333333333333
+    },
+    {
+      "index": 190,
+      "text": "体と触れる面積が広がると、圧が一か所に集まりません。",
+      "type": "diagram",
+      "motif": "yw_190",
+      "audio": "audio-yawa/scene-189.wav",
+      "durationSec": 4.650666666666667
+    },
+    {
+      "index": 191,
+      "text": "世界中の研究をまとめた報告では、ふつうのマットレスより、床ずれがおよそ6割少なくなりました。",
+      "type": "diagram",
+      "motif": "yw_191",
+      "audio": "audio-yawa/scene-190.wav",
+      "durationSec": 7.637333333333333
+    },
+    {
+      "index": 192,
+      "text": "ただし、柔らかければ柔らかいほど、良いわけではありません。",
+      "type": "diagram",
+      "motif": "yw_192",
+      "audio": "audio-yawa/scene-191.wav",
+      "durationSec": 4.714666666666667
+    },
+    {
+      "index": 193,
+      "text": "腰痛の人を調べた研究では、硬めのマットレスより、中くらいの硬さのほうが、痛みがよくなりました。",
+      "type": "diagram",
+      "motif": "yw_193",
+      "audio": "audio-yawa/scene-192.wav",
+      "durationSec": 7.8613333333333335
+    },
+    {
+      "index": 194,
+      "text": "効いているのは、柔らかさそのものより、体にそう形なのです。",
+      "type": "diagram",
+      "motif": "yw_194",
+      "audio": "audio-yawa/scene-193.wav",
+      "durationSec": 4.938666666666666
+    },
+    {
+      "index": 195,
+      "text": "では、手のほうはどうでしょうか。",
+      "type": "diagram",
+      "motif": "yw_195",
+      "audio": "audio-yawa/scene-194.wav",
+      "durationSec": 2.8693333333333335
+    },
+    {
+      "index": 196,
+      "text": "12人に1時間、文字を書いてもらう実験があります。",
+      "type": "diagram",
+      "motif": "yw_196",
+      "audio": "audio-yawa/scene-195.wav",
+      "durationSec": 4.213333333333333
+    },
+    {
+      "index": 197,
+      "text": "太くて柔らかいペンのほうが、指から肩までの痛みが、小さくなりました。",
+      "type": "diagram",
+      "motif": "yw_197",
+      "audio": "audio-yawa/scene-196.wav",
+      "durationSec": 5.525333333333333
+    },
+    {
+      "index": 198,
+      "text": "ところが、道具の持ち手を調べた研究では、意外な結果が出ています。",
+      "type": "diagram",
+      "motif": "yw_198",
+      "audio": "audio-yawa/scene-197.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 199,
+      "text": "持ち手を柔らかくすると、握る力は、むしろ強くなったのです。",
+      "type": "diagram",
+      "motif": "yw_199",
+      "audio": "audio-yawa/scene-198.wav",
+      "durationSec": 5.056
+    },
+    {
+      "index": 200,
+      "text": "それでも人は、柔らかい持ち手のほうを、好みました。",
+      "type": "diagram",
+      "motif": "yw_200",
+      "audio": "audio-yawa/scene-199.wav",
+      "durationSec": 4.074666666666666
+    },
+    {
+      "index": 201,
+      "text": "柔らかさが減らしてくれるのは、力ではなく、痛みのほうなのかもしれません。",
+      "type": "diagram",
+      "motif": "yw_201",
+      "audio": "audio-yawa/scene-200.wav",
+      "durationSec": 5.589333333333333
+    },
+    {
+      "index": 202,
+      "text": "では、心のほうはどうでしょうか。",
+      "type": "diagram",
+      "motif": "yw_202",
+      "audio": "audio-yawa/scene-201.wav",
+      "durationSec": 3.104
+    },
+    {
+      "index": 203,
+      "text": "2024年、137の研究、およそ1万3千人分のデータをまとめた報告が出ました。",
+      "type": "diagram",
+      "motif": "yw_203",
+      "audio": "audio-yawa/scene-202.wav",
+      "durationSec": 7.786666666666667
+    },
+    {
+      "index": 204,
+      "text": "人に触れてもらうと、心の健康に、はっきりした良い効果がありました。",
+      "type": "diagram",
+      "motif": "yw_204",
+      "audio": "audio-yawa/scene-203.wav",
+      "durationSec": 5.429333333333333
+    },
+    {
+      "index": 205,
+      "text": "そして、ぬいぐるみや抱き枕のような、モノに触れても、効果があったのです。",
+      "type": "diagram",
+      "motif": "yw_205",
+      "audio": "audio-yawa/scene-204.wav",
+      "durationSec": 5.674666666666667
+    },
+    {
+      "index": 206,
+      "text": "ただし、その効果は、人に触れてもらうほどでは、ありませんでした。",
+      "type": "diagram",
+      "motif": "yw_206",
+      "audio": "audio-yawa/scene-205.wav",
+      "durationSec": 5.173333333333333
+    },
+    {
+      "index": 207,
+      "text": "モノは、人の代わりになる。でも、人ほどではない。",
+      "type": "diagram",
+      "motif": "yw_207",
+      "audio": "audio-yawa/scene-206.wav",
+      "durationSec": 4.32
+    },
+    {
+      "index": 208,
+      "text": "では、スクイーズを握ると、心は落ち着くのでしょうか。",
+      "type": "diagram",
+      "motif": "yw_208",
+      "audio": "audio-yawa/scene-207.wav",
+      "durationSec": 4.810666666666667
+    },
+    {
+      "index": 209,
+      "text": "じつは、ストレスボールの効果を調べた研究は少なく、結果もはっきりしていません。",
+      "type": "diagram",
+      "motif": "yw_209",
+      "audio": "audio-yawa/scene-208.wav",
+      "durationSec": 6.197333333333333
+    },
+    {
+      "index": 210,
+      "text": "握る気持ちよさのしくみも、まだよくわかっていないのです。",
+      "type": "diagram",
+      "motif": "yw_210",
+      "audio": "audio-yawa/scene-209.wav",
+      "durationSec": 4.053333333333334
+    },
+    {
+      "index": 211,
+      "text": "結び、手のひらサイズの、抱っこ。",
+      "type": "diagram",
+      "motif": "yw_211",
+      "audio": "audio-yawa/scene-210.wav",
+      "durationSec": 3.0933333333333333
+    },
+    {
+      "index": 212,
+      "text": "最後に、冒頭のスクイーズに、戻りましょう。",
+      "type": "diagram",
+      "motif": "yw_212",
+      "audio": "audio-yawa/scene-211.wav",
+      "durationSec": 3.7013333333333334
+    },
+    {
+      "index": 213,
+      "text": "2017年ごろ、日本で流行ったスクイーズは、日本のメーカーが作った、ウレタンのものでした。",
+      "type": "diagram",
+      "motif": "yw_213",
+      "audio": "audio-yawa/scene-212.wav",
+      "durationSec": 7.445333333333333
+    },
+    {
+      "index": 214,
+      "text": "そして2026年の今、流行っているのは、中国のSNSから広まった、シリコンのものです。",
+      "type": "diagram",
+      "motif": "yw_214",
+      "audio": "audio-yawa/scene-213.wav",
+      "durationSec": 7.68
+    },
+    {
+      "index": 215,
+      "text": "素材も、生まれた国も変わったのに、スクイーズは、また流行りました。",
+      "type": "diagram",
+      "motif": "yw_215",
+      "audio": "audio-yawa/scene-214.wav",
+      "durationSec": 5.354666666666667
+    },
+    {
+      "index": 216,
+      "text": "人が柔らかいものを握りたくなる理由。それは、2つあります。",
+      "type": "diagram",
+      "motif": "yw_216",
+      "audio": "audio-yawa/scene-215.wav",
+      "durationSec": 4.906666666666666
+    },
+    {
+      "index": 217,
+      "text": "ひとつは、手を守るためです。",
+      "type": "diagram",
+      "motif": "yw_217",
+      "audio": "audio-yawa/scene-216.wav",
+      "durationSec": 2.2933333333333334
+    },
+    {
+      "index": 218,
+      "text": "痛くない、負担が少ない。こちらは、かなり確かです。",
+      "type": "diagram",
+      "motif": "yw_218",
+      "audio": "audio-yawa/scene-217.wav",
+      "durationSec": 4.544
+    },
+    {
+      "index": 219,
+      "text": "もうひとつは、心を落ち着かせるためです。",
+      "type": "diagram",
+      "motif": "yw_219",
+      "audio": "audio-yawa/scene-218.wav",
+      "durationSec": 3.072
+    },
+    {
+      "index": 220,
+      "text": "こちらは、まだ科学では、説明しきれません。",
+      "type": "diagram",
+      "motif": "yw_220",
+      "audio": "audio-yawa/scene-219.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 221,
+      "text": "でも、20万年の歴史を並べてみると、ひとつの線が見えてきます。",
+      "type": "diagram",
+      "motif": "yw_221",
+      "audio": "audio-yawa/scene-220.wav",
+      "durationSec": 5.312
+    },
+    {
+      "index": 222,
+      "text": "草のベッドは、背中の下に。",
+      "type": "diagram",
+      "motif": "yw_222",
+      "audio": "audio-yawa/scene-221.wav",
+      "durationSec": 2.485333333333333
+    },
+    {
+      "index": 223,
+      "text": "羽毛は、首の下に。",
+      "type": "diagram",
+      "motif": "yw_223",
+      "audio": "audio-yawa/scene-222.wav",
+      "durationSec": 1.92
+    },
+    {
+      "index": 224,
+      "text": "竹の夫人は、腕の中に。",
+      "type": "diagram",
+      "motif": "yw_224",
+      "audio": "audio-yawa/scene-223.wav",
+      "durationSec": 2.506666666666667
+    },
+    {
+      "index": 225,
+      "text": "ヨギボーは、全身を包みこみました。",
+      "type": "diagram",
+      "motif": "yw_225",
+      "audio": "audio-yawa/scene-224.wav",
+      "durationSec": 2.9546666666666668
+    },
+    {
+      "index": 226,
+      "text": "そして、スクイーズは、手のひらの中に。",
+      "type": "diagram",
+      "motif": "yw_226",
+      "audio": "audio-yawa/scene-225.wav",
+      "durationSec": 3.2426666666666666
+    },
+    {
+      "index": 227,
+      "text": "人類はずっと、抱っこの代わりを、作り続けてきたのかもしれません。",
+      "type": "diagram",
+      "motif": "yw_227",
+      "audio": "audio-yawa/scene-226.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 228,
+      "text": "スクイーズは、その最新の、いちばん小さな形なのです。",
+      "type": "diagram",
+      "motif": "yw_228",
+      "audio": "audio-yawa/scene-227.wav",
+      "durationSec": 4.629333333333333
+    },
+    {
+      "index": 229,
+      "text": "握るとつぶれて、手を離すと、ゆっくり元に戻ってくる。",
+      "type": "diagram",
+      "motif": "yw_229",
+      "audio": "audio-yawa/scene-228.wav",
+      "durationSec": 4.490666666666667
+    },
+    {
+      "index": 230,
+      "text": "いつでも、何度でも、受け止めてくれる。",
+      "type": "diagram",
+      "motif": "yw_230",
+      "audio": "audio-yawa/scene-229.wav",
+      "durationSec": 3.1573333333333333
+    },
+    {
+      "index": 231,
+      "text": "それはたぶん、抱っこに、少しだけ似ています。",
+      "type": "diagram",
+      "motif": "yw_231",
+      "audio": "audio-yawa/scene-230.wav",
+      "durationSec": 3.68
+    },
+    {
+      "index": 232,
+      "text": "なお、いまこの動画を観ながら、何かを握っていたあなた。",
+      "type": "diagram",
+      "motif": "yw_232",
+      "audio": "audio-yawa/scene-231.wav",
+      "durationSec": 4.565333333333333
+    },
+    {
+      "index": 233,
+      "text": "それはたぶん、20万年ぶんの、癖です。",
+      "type": "diagram",
+      "motif": "yw_233",
+      "audio": "audio-yawa/scene-232.wav",
+      "durationSec": 3.616
+    },
+    {
+      "index": 234,
       "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
       "type": "card",
       "motif": "ending",
       "isEnding": true,
-      "audio": "audio/scene-end.wav",
+      "audio": "audio-yawa/scene-end.wav",
       "durationSec": 5.632
     }
   ],
   "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
-  "generatedAt": "2026-11-12T01:10:26.060Z",
+  "generatedAt": "2026-11-18T18:40:52.023Z",
   "preset": "karakuri"
 }

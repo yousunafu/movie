@@ -46,6 +46,7 @@ import { TAllSceneView } from "./karakuri/TabiIndex";
 import { kosoScene } from "./karakuri/KosoIndex";
 import { ichiScene } from "./karakuri/IchiIndex";
 import { saigoScene } from "./karakuri/SaigoIndex";
+import { yawaScene } from "./karakuri/YawaIndex";
 import { SAIGO_SE } from "./karakuri/saigoSe";
 
 // 自販機2000年史 (モチーフ名が j2_ で始まる専用絵) を本編プレイヤーで描くためのつなぎ。
@@ -105,6 +106,17 @@ const SaigoSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
   return (
     saigoScene(motif, f) ?? (
       // ここに来たら motif 名の打ち間違い。真っ白事故を避けるためクリーム地だけ出す
+      <AbsoluteFill style={{ background: KRP.cream }} />
+    )
+  );
+};
+
+// 「なぜ人は、柔らかいものを握りたくなるのか」(モチーフ名が yw_001〜yw_233 の専用絵) 用の同じつなぎ。
+export const isYawaMotif = (motif: string) => /^yw_\d{3}$/.test(motif);
+const YawaSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return (
+    yawaScene(motif, f) ?? (
       <AbsoluteFill style={{ background: KRP.cream }} />
     )
   );
@@ -562,6 +574,8 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   <IchiSceneInVideo motif={scene.motif} />
                 ) : isSaigoMotif(scene.motif) ? (
                   <SaigoSceneInVideo motif={scene.motif} />
+                ) : isYawaMotif(scene.motif) ? (
+                  <YawaSceneInVideo motif={scene.motif} />
                 ) : (
                   <KarakuriSceneView scene={scene} />
                 )

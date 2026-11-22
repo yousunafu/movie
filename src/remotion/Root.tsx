@@ -34,6 +34,8 @@ import { KosoAllPreview, KOSO_ALL_PREVIEW_FRAMES } from "./karakuri/KosoIndex";
 import { IchiAllPreview, ICHI_ALL_PREVIEW_FRAMES } from "./karakuri/IchiIndex";
 import { SaigoAllPreview, SAIGO_ALL_PREVIEW_FRAMES, SaigoAllMotion, SAIGO_MOTION_FRAMES } from "./karakuri/SaigoIndex";
 import { SaigoPartsPreview, SAIGO_PARTS_PREVIEW_FRAMES } from "./karakuri/SaigoParts";
+import { YawaAllPreview, YAWA_ALL_PREVIEW_FRAMES, YawaAllMotion, YAWA_MOTION_FRAMES } from "./karakuri/YawaIndex";
+import { YawaPartsPreview, YAWA_PARTS_PREVIEW_FRAMES } from "./karakuri/YawaParts";
 import { IchiB0Preview, ICHI_B0_PREVIEW_FRAMES, IchiB0Motion, ICHI_B0_MOTION_FRAMES } from "./karakuri/IchiB0";
 import { IchiB1Preview, ICHI_B1_PREVIEW_FRAMES } from "./karakuri/IchiB1";
 import { IchiB2Preview, ICHI_B2_PREVIEW_FRAMES } from "./karakuri/IchiB2";
@@ -48,6 +50,7 @@ import { IchiB10Preview, ICHI_B10_PREVIEW_FRAMES } from "./karakuri/IchiB10";
 import { IchiB11Preview, ICHI_B11_PREVIEW_FRAMES } from "./karakuri/IchiB11";
 import { KsePreview, KSE_PREVIEW_FRAMES, KseMotion, KSE_MOTION_FRAMES } from "./karakuri/KseIndex";
 import { PersonCatalog } from "./karakuri/PersonCatalog";
+import { YoruTest, YORU_TEST_FRAMES, YoruDusk, YORU_DUSK_FRAMES, YoruNoteSave, YoruNoteName, YORU_NOTE_FRAMES, YoruFlatSave, YoruDaySave, YoruPrintSave, YORU_SAVE_SET_FRAMES } from "./yoru/YoruTest";
 import { SekaiBoutouPreview, SEKAI_BOUTOU_FRAMES } from "./sekai/SekaiBoutou";
 import {
   SekaiSheetA,
@@ -181,6 +184,13 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="IchiB0" component={IchiB0Preview} durationInFrames={ICHI_B0_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="IchiB1" component={IchiB1Preview} durationInFrames={ICHI_B1_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* なぜ人は、柔らかいものを握りたくなるのか 検品 (1フレーム = 1文。コマ番号 = 文番号 − 1) */}
+      <Composition id="YawaAll" component={YawaAllPreview} durationInFrames={YAWA_ALL_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="YawaMotion" component={YawaAllMotion} durationInFrames={YAWA_MOTION_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="YawaParts" component={YawaPartsPreview} durationInFrames={YAWA_PARTS_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       {/* 序章の「動き」確認用 (1シーン200フレームずつ)。コマ番号 = (文番号−1)×200 + 見たい f */}
       <Composition id="IchiB0Motion" component={IchiB0Motion} durationInFrames={ICHI_B0_MOTION_FRAMES}
@@ -321,6 +331,31 @@ export const RemotionRoot: React.FC = () => {
         width={VIDEO.width}
         height={VIDEO.height}
       />
+      {/* 「夜の深掘りチャンネル」(仮) の試作。本編とは無関係 (2026-11-16) */}
+      <Composition
+        id="YoruTest"
+        component={YoruTest}
+        durationInFrames={YORU_TEST_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      <Composition
+        id="YoruDusk"
+        component={YoruDusk}
+        durationInFrames={YORU_DUSK_FRAMES}
+        fps={VIDEO.fps}
+        width={VIDEO.width}
+        height={VIDEO.height}
+      />
+      <Composition id="YoruNoteSave" component={YoruNoteSave} durationInFrames={YORU_NOTE_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* セーブ回の作画パターン (2026-11-18 試作) */}
+      <Composition id="YoruFlatSave" component={YoruFlatSave} durationInFrames={YORU_SAVE_SET_FRAMES} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="YoruDaySave" component={YoruDaySave} durationInFrames={YORU_SAVE_SET_FRAMES} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="YoruPrintSave" component={YoruPrintSave} durationInFrames={YORU_SAVE_SET_FRAMES} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="YoruNoteName" component={YoruNoteName} durationInFrames={YORU_NOTE_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       {/* karakuri共通人物部品のカタログ (Person 7ポーズ / 表情7種 / PersonMini)。本編とは無関係 */}
       <Composition
         id="PersonCatalog"

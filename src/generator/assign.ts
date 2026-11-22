@@ -20,6 +20,7 @@ import { T_ALL_MOTIFS } from "../remotion/karakuri/TabiIndex";
 import { K_ALL_MOTIFS } from "../remotion/karakuri/KosoIndex";
 import { I_ALL_MOTIFS } from "../remotion/karakuri/IchiIndex";
 import { S_ALL_MOTIFS } from "../remotion/karakuri/SaigoIndex";
+import { Y_ALL_MOTIFS } from "../remotion/karakuri/YawaIndex";
 
 export type Assignment = {
   type: SceneType;
@@ -446,6 +447,11 @@ export async function assignScenes(
     if (sg) {
       console.log(`絵づけ: 人類は昔から飛ばして観ていたの順番割り当て (1文1絵・${sg.length}枚)`);
       return sg;
+    }
+    const yw = yawaOrderedAssign(sentences);
+    if (yw) {
+      console.log(`絵づけ: なぜ人は柔らかいものを握りたくなるのかの順番割り当て (1文1絵・${yw.length}枚)`);
+      return yw;
     }
     console.log("絵づけ: karakuri は専用キーワード割り当てを使用");
     return sentences.map(karakuriHeuristicAssign);
@@ -2092,6 +2098,21 @@ function saigoOrderedAssign(sentences: string[]): Assignment[] | null {
     throw new Error(
       `人類は昔から飛ばして観ていた: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
         `台本 (docs/saigomade-script-v1.txt) か S_ALL_MOTIFS (SaigoIndexのS_ALL_MOTIFS) の数を確認してください`,
+    );
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: 「なぜ人は、柔らかいものを握りたくなるのか」(docs/yawarakai-script-v1.txt・233文) 用の順番割り当て =====
+// 専用シーン (YawaIndex の Y_ALL_MOTIFS = yw_001〜yw_233) は台本の文の順番どおり。「文i → 絵i」で1対1 (からくり憲法 第11条)。
+function yawaOrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[0]?.includes("いきなりですが、クイズです") || !sentences[3]?.includes("スクイーズ")) return null;
+  const order = [...Y_ALL_MOTIFS];
+  if (sentences.length === order.length + 1) order.push(Y_ALL_MOTIFS[Y_ALL_MOTIFS.length - 1]);
+  if (sentences.length !== order.length) {
+    throw new Error(
+      `柔らかいもの: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
+        `台本 (docs/yawarakai-script-v1.txt) か Y_ALL_MOTIFS (YawaIndex) の数を確認してください`,
     );
   }
   return order.map((motif) => ({ type: "diagram" as SceneType, motif }));

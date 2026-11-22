@@ -23,3 +23,6 @@ assets/se/**
 !assets/se/
 !assets/se/INDEX.md
 !assets/se/se-index.json
+
+# 作品ごとの音声 (public/audio-yawa など)。VOICEVOX でいつでも作り直せるので git に入れない
+public/audio-*/

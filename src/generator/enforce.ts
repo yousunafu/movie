@@ -179,7 +179,7 @@ export function enforceRatios(
       out[n - 1].type !== "card" &&
       // sekai_ も同じ。冒頭3分は動画の途中なので、最後の文を結論カードにすると絵が1枚死ぬ
       // sg_ (人類は昔から飛ばして観ていた) は最終シーンが「決めるのは あなた」の結びの札なので同じく除外
-      !/^(j2_|w[1-4]_|kb[0-6]_|ib(1[01]|[0-9])_|sg_|sekai_)/.test(out[n - 1].motif)
+      !/^(j2_|w[1-4]_|kb[0-6]_|ib(1[01]|[0-9])_|sg_|yw_|sekai_)/.test(out[n - 1].motif)
     ) {
       out[n - 1].type = "card";
       out[n - 1].motif = "concept";

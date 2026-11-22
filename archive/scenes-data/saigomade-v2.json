@@ -1,0 +1,1912 @@
+{
+  "scenes": [
+    {
+      "index": 0,
+      "text": "人類は、昔から飛ばして観ていました。",
+      "type": "diagram",
+      "motif": "sg_001",
+      "audio": "audio/scene-000.wav",
+      "durationSec": 3.0933333333333333
+    },
+    {
+      "index": 1,
+      "text": "ですので、この動画も、飛ばしながら観ていただいて構いません。",
+      "type": "diagram",
+      "motif": "sg_002",
+      "audio": "audio/scene-001.wav",
+      "durationSec": 4.405333333333333
+    },
+    {
+      "index": 2,
+      "text": "冗談に聞こえるかもしれませんが、本気です。",
+      "type": "diagram",
+      "motif": "sg_003",
+      "audio": "audio/scene-002.wav",
+      "durationSec": 3.3386666666666667
+    },
+    {
+      "index": 3,
+      "text": "歴史をたどると、そちらのほうが、よほど由緒正しい観かたなのです。",
+      "type": "diagram",
+      "motif": "sg_004",
+      "audio": "audio/scene-003.wav",
+      "durationSec": 5.045333333333334
+    },
+    {
+      "index": 4,
+      "text": "ただし、ひとつだけ予告しておきます。どこへ飛ばしても、その先には、犯人がいます。",
+      "type": "diagram",
+      "motif": "sg_005",
+      "audio": "audio/scene-004.wav",
+      "durationSec": 6.602666666666667
+    },
+    {
+      "index": 5,
+      "text": "いきなりですが、クイズです。",
+      "type": "diagram",
+      "motif": "sg_006",
+      "audio": "audio/scene-005.wav",
+      "durationSec": 2.112
+    },
+    {
+      "index": 6,
+      "text": "日本人が映画を「必ず最初から」観るようになったのは、いつからでしょうか。",
+      "type": "diagram",
+      "motif": "sg_007",
+      "audio": "audio/scene-006.wav",
+      "durationSec": 5.824
+    },
+    {
+      "index": 7,
+      "text": "答えは、およそ20年前、です。",
+      "type": "diagram",
+      "motif": "sg_008",
+      "audio": "audio/scene-007.wav",
+      "durationSec": 3.2426666666666666
+    },
+    {
+      "index": 8,
+      "text": "2000年代に入るまで、日本の映画館の多くは、入れ替えなしでした。",
+      "type": "diagram",
+      "motif": "sg_009",
+      "audio": "audio/scene-008.wav",
+      "durationSec": 5.322666666666667
+    },
+    {
+      "index": 9,
+      "text": "途中から入って、途中まで観て帰る。それがふつうのことでした。",
+      "type": "diagram",
+      "motif": "sg_010",
+      "audio": "audio/scene-009.wav",
+      "durationSec": 4.928
+    },
+    {
+      "index": 10,
+      "text": "一枚の切符で朝から晩まで居座れて、弁当を持ち込む人もいました。",
+      "type": "diagram",
+      "motif": "sg_011",
+      "audio": "audio/scene-010.wav",
+      "durationSec": 5.322666666666667
+    },
+    {
+      "index": 11,
+      "text": "「映画は最初から最後まで観るもの」。この常識、実はかなりの新顔です。",
+      "type": "diagram",
+      "motif": "sg_012",
+      "audio": "audio/scene-011.wav",
+      "durationSec": 6.112
+    },
+    {
+      "index": 12,
+      "text": "ところで、いまは動画の時代です。",
+      "type": "diagram",
+      "motif": "sg_013",
+      "audio": "audio/scene-012.wav",
+      "durationSec": 2.7413333333333334
+    },
+    {
+      "index": 13,
+      "text": "倍速で観たことのある人は、2024年の調査で47パーセント。",
+      "type": "diagram",
+      "motif": "sg_014",
+      "audio": "audio/scene-013.wav",
+      "durationSec": 5.589333333333333
+    },
+    {
+      "index": 14,
+      "text": "10秒飛ばし、スキップ、切り抜き。「最近の人は作品を最後まで観ない」と、よく嘆かれます。",
+      "type": "diagram",
+      "motif": "sg_015",
+      "audio": "audio/scene-014.wav",
+      "durationSec": 7.722666666666667
+    },
+    {
+      "index": 15,
+      "text": "ですが、歴史を見ると、話は逆かもしれません。",
+      "type": "diagram",
+      "motif": "sg_016",
+      "audio": "audio/scene-015.wav",
+      "durationSec": 4.032
+    },
+    {
+      "index": 16,
+      "text": "江戸の芝居見物のお客さんは、上演の真っ最中に弁当を広げ、酒を飲みました。",
+      "type": "diagram",
+      "motif": "sg_017",
+      "audio": "audio/scene-016.wav",
+      "durationSec": 6.517333333333333
+    },
+    {
+      "index": 17,
+      "text": "気に入らなければ、敷いていた座布団を、舞台に投げました。",
+      "type": "diagram",
+      "motif": "sg_018",
+      "audio": "audio/scene-017.wav",
+      "durationSec": 4.384
+    },
+    {
+      "index": 18,
+      "text": "ナポリのオペラハウスでは、お客はしゃべりっぱなし。",
+      "type": "diagram",
+      "motif": "sg_019",
+      "audio": "audio/scene-018.wav",
+      "durationSec": 3.7653333333333334
+    },
+    {
+      "index": 19,
+      "text": "作曲家は「どうせ聴かれない時間」のための曲まで、書いていました。",
+      "type": "diagram",
+      "motif": "sg_020",
+      "audio": "audio/scene-019.wav",
+      "durationSec": 4.693333333333333
+    },
+    {
+      "index": 20,
+      "text": "人類は、ほとんどの時代、最後まで観ていないのです。",
+      "type": "diagram",
+      "motif": "sg_021",
+      "audio": "audio/scene-020.wav",
+      "durationSec": 4.373333333333333
+    },
+    {
+      "index": 21,
+      "text": "では、「黙って、座って、最初から最後まで」は、いつ、誰が決めたのでしょうか。",
+      "type": "diagram",
+      "motif": "sg_022",
+      "audio": "audio/scene-021.wav",
+      "durationSec": 7.573333333333333
+    },
+    {
+      "index": 22,
+      "text": "調べていくと、犯人には、名前と顔がありました。",
+      "type": "diagram",
+      "motif": "sg_023",
+      "audio": "audio/scene-022.wav",
+      "durationSec": 4.1386666666666665
+    },
+    {
+      "index": 23,
+      "text": "しかも、複数犯です。",
+      "type": "diagram",
+      "motif": "sg_024",
+      "audio": "audio/scene-023.wav",
+      "durationSec": 1.9946666666666666
+    },
+    {
+      "index": 24,
+      "text": "今日は、この犯人たちを、年代順に逮捕していきます。",
+      "type": "diagram",
+      "motif": "sg_025",
+      "audio": "audio/scene-024.wav",
+      "durationSec": 4.458666666666667
+    },
+    {
+      "index": 25,
+      "text": "第1章、芝居は、朝六時から。",
+      "type": "diagram",
+      "motif": "sg_026",
+      "audio": "audio/scene-025.wav",
+      "durationSec": 3.168
+    },
+    {
+      "index": 26,
+      "text": "最初の現場は、江戸の芝居小屋です。",
+      "type": "diagram",
+      "motif": "sg_027",
+      "audio": "audio/scene-026.wav",
+      "durationSec": 2.944
+    },
+    {
+      "index": 27,
+      "text": "江戸の歌舞伎は、明け六つ、いまの朝6時ごろに幕を開けました。",
+      "type": "diagram",
+      "motif": "sg_028",
+      "audio": "audio/scene-027.wav",
+      "durationSec": 4.906666666666666
+    },
+    {
+      "index": 28,
+      "text": "終わるのは、暮れ七つ半、夕方5時ごろ。",
+      "type": "diagram",
+      "motif": "sg_029",
+      "audio": "audio/scene-028.wav",
+      "durationSec": 3.648
+    },
+    {
+      "index": 29,
+      "text": "照明は自然の光だけですから、日のあるうちが勝負なのです。",
+      "type": "diagram",
+      "motif": "sg_030",
+      "audio": "audio/scene-029.wav",
+      "durationSec": 4.565333333333333
+    },
+    {
+      "index": 30,
+      "text": "つまり観劇は、丸一日がかりの行事でした。",
+      "type": "diagram",
+      "motif": "sg_031",
+      "audio": "audio/scene-030.wav",
+      "durationSec": 4.149333333333334
+    },
+    {
+      "index": 31,
+      "text": "朝6時から夕方5時まで、ずっと舞台を見つめていられるでしょうか。",
+      "type": "diagram",
+      "motif": "sg_032",
+      "audio": "audio/scene-031.wav",
+      "durationSec": 5.632
+    },
+    {
+      "index": 32,
+      "text": "無理です。お客のほうも、最初からそのつもりがありません。",
+      "type": "diagram",
+      "motif": "sg_033",
+      "audio": "audio/scene-032.wav",
+      "durationSec": 4.437333333333333
+    },
+    {
+      "index": 33,
+      "text": "観劇のお供は「かべす」。菓子の、か。弁当の、べ。寿司の、す。",
+      "type": "diagram",
+      "motif": "sg_034",
+      "audio": "audio/scene-033.wav",
+      "durationSec": 6.773333333333333
+    },
+    {
+      "index": 34,
+      "text": "桟敷席には、寿司や菓子や果物が、次々と運ばれてきました。",
+      "type": "diagram",
+      "motif": "sg_035",
+      "audio": "audio/scene-034.wav",
+      "durationSec": 5.1626666666666665
+    },
+    {
+      "index": 35,
+      "text": "当時のお嬢さまの回想録には、その賑やかな食べっぷりが残っています。",
+      "type": "diagram",
+      "motif": "sg_036",
+      "audio": "audio/scene-035.wav",
+      "durationSec": 5.333333333333333
+    },
+    {
+      "index": 36,
+      "text": "身分の高いお客は、幕間のたびに、芝居茶屋という別の建物へ引き上げます。",
+      "type": "diagram",
+      "motif": "sg_037",
+      "audio": "audio/scene-036.wav",
+      "durationSec": 6.144
+    },
+    {
+      "index": 37,
+      "text": "そこで食事をして、着替えて、休んで、また戻ってくる。",
+      "type": "diagram",
+      "motif": "sg_038",
+      "audio": "audio/scene-037.wav",
+      "durationSec": 4.736
+    },
+    {
+      "index": 38,
+      "text": "つまり「席を立って出入りする」ことが、仕組みとして用意されていたのです。",
+      "type": "diagram",
+      "motif": "sg_039",
+      "audio": "audio/scene-038.wav",
+      "durationSec": 5.237333333333333
+    },
+    {
+      "index": 39,
+      "text": "土間のお客は、もっと直接的でした。",
+      "type": "diagram",
+      "motif": "sg_040",
+      "audio": "audio/scene-039.wav",
+      "durationSec": 2.997333333333333
+    },
+    {
+      "index": 40,
+      "text": "芝居が気に入らないと、敷いていた薄い畳、半畳を、舞台へ放り投げました。",
+      "type": "diagram",
+      "motif": "sg_041",
+      "audio": "audio/scene-040.wav",
+      "durationSec": 6.176
+    },
+    {
+      "index": 41,
+      "text": "不満をその場で投げ返す、いわばレビュー機能つきの客席です。",
+      "type": "diagram",
+      "motif": "sg_042",
+      "audio": "audio/scene-041.wav",
+      "durationSec": 4.714666666666667
+    },
+    {
+      "index": 42,
+      "text": "安い席で一幕だけ観て帰る、という楽しみ方もありました。",
+      "type": "diagram",
+      "motif": "sg_043",
+      "audio": "audio/scene-042.wav",
+      "durationSec": 4.618666666666667
+    },
+    {
+      "index": 43,
+      "text": "一日のうち、好きな場面だけをつまむ。江戸のお客は、自由でした。",
+      "type": "diagram",
+      "motif": "sg_044",
+      "audio": "audio/scene-043.wav",
+      "durationSec": 5.546666666666667
+    },
+    {
+      "index": 44,
+      "text": "第2章、シャーベットのための、アリア。",
+      "type": "diagram",
+      "motif": "sg_045",
+      "audio": "audio/scene-044.wav",
+      "durationSec": 3.2853333333333334
+    },
+    {
+      "index": 45,
+      "text": "では、海の向こうは、どうだったのでしょうか。",
+      "type": "diagram",
+      "motif": "sg_046",
+      "audio": "audio/scene-045.wav",
+      "durationSec": 4.010666666666666
+    },
+    {
+      "index": 46,
+      "text": "400年ほど前のロンドン。シェイクスピアの舞台、グローブ座。",
+      "type": "diagram",
+      "motif": "sg_047",
+      "audio": "audio/scene-046.wav",
+      "durationSec": 4.896
+    },
+    {
+      "index": 47,
+      "text": "1ペニー払った立ち見のお客は、上演中にリンゴやナッツをかじり、エールを飲みました。",
+      "type": "diagram",
+      "motif": "sg_048",
+      "audio": "audio/scene-047.wav",
+      "durationSec": 6.581333333333333
+    },
+    {
+      "index": 48,
+      "text": "売り子が、客席の中を売り歩いていたのです。",
+      "type": "diagram",
+      "motif": "sg_049",
+      "audio": "audio/scene-048.wav",
+      "durationSec": 3.466666666666667
+    },
+    {
+      "index": 49,
+      "text": "気に入らない役者には、容赦なく野次が飛びました。",
+      "type": "diagram",
+      "motif": "sg_050",
+      "audio": "audio/scene-049.wav",
+      "durationSec": 3.68
+    },
+    {
+      "index": 50,
+      "text": "時代が下って、18世紀のイタリアの、オペラハウス。",
+      "type": "diagram",
+      "motif": "sg_051",
+      "audio": "audio/scene-050.wav",
+      "durationSec": 4.448
+    },
+    {
+      "index": 51,
+      "text": "客席の明かりは、つけっぱなしでした。",
+      "type": "diagram",
+      "motif": "sg_052",
+      "audio": "audio/scene-051.wav",
+      "durationSec": 2.944
+    },
+    {
+      "index": 52,
+      "text": "ボックス席では、カード遊びに、商談に、おしゃべり。",
+      "type": "diagram",
+      "motif": "sg_053",
+      "audio": "audio/scene-052.wav",
+      "durationSec": 4.544
+    },
+    {
+      "index": 53,
+      "text": "1765年にナポリを訪れたイギリス人は、あきれて書き残しています。",
+      "type": "diagram",
+      "motif": "sg_054",
+      "audio": "audio/scene-053.wav",
+      "durationSec": 5.973333333333334
+    },
+    {
+      "index": 54,
+      "text": "「群衆は何の遠慮もなく、上演のあいだずっと、笑い、しゃべっていた」。",
+      "type": "diagram",
+      "motif": "sg_055",
+      "audio": "audio/scene-054.wav",
+      "durationSec": 5.973333333333334
+    },
+    {
+      "index": 55,
+      "text": "さて、ここで問題です。",
+      "type": "diagram",
+      "motif": "sg_056",
+      "audio": "audio/scene-055.wav",
+      "durationSec": 1.9946666666666666
+    },
+    {
+      "index": 56,
+      "text": "当時の作曲家が「聴かれないこと」を前提に書いた曲があります。何のための曲でしょうか。",
+      "type": "diagram",
+      "motif": "sg_057",
+      "audio": "audio/scene-056.wav",
+      "durationSec": 7.082666666666666
+    },
+    {
+      "index": 57,
+      "text": "答えは、お客がシャーベットを食べる時間のため、です。",
+      "type": "diagram",
+      "motif": "sg_058",
+      "audio": "audio/scene-057.wav",
+      "durationSec": 4.32
+    },
+    {
+      "index": 58,
+      "text": "その名も「アリア・ディ・ソルベット」、シャーベットのアリア。",
+      "type": "diagram",
+      "motif": "sg_059",
+      "audio": "audio/scene-058.wav",
+      "durationSec": 3.552
+    },
+    {
+      "index": 59,
+      "text": "物語に関係のない場面に、当たりさわりのない歌を一曲はさむ。",
+      "type": "diagram",
+      "motif": "sg_060",
+      "audio": "audio/scene-059.wav",
+      "durationSec": 5.141333333333334
+    },
+    {
+      "index": 60,
+      "text": "お客はそのあいだ、心おきなくシャーベットを楽しむのです。",
+      "type": "diagram",
+      "motif": "sg_061",
+      "audio": "audio/scene-060.wav",
+      "durationSec": 4.224
+    },
+    {
+      "index": 61,
+      "text": "劇場が、お客の食事時間を、曲目に組み込んでいたということです。",
+      "type": "diagram",
+      "motif": "sg_062",
+      "audio": "audio/scene-061.wav",
+      "durationSec": 5.450666666666667
+    },
+    {
+      "index": 62,
+      "text": "江戸もロンドンもナポリも、客席は明るく、出入り口は開けっぱなし。",
+      "type": "diagram",
+      "motif": "sg_063",
+      "audio": "audio/scene-062.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 63,
+      "text": "劇場の主役は舞台ではなく、お客のほうでした。",
+      "type": "diagram",
+      "motif": "sg_064",
+      "audio": "audio/scene-063.wav",
+      "durationSec": 3.8826666666666667
+    },
+    {
+      "index": 64,
+      "text": "第3章、静けさの、発明。",
+      "type": "diagram",
+      "motif": "sg_065",
+      "audio": "audio/scene-064.wav",
+      "durationSec": 2.9546666666666668
+    },
+    {
+      "index": 65,
+      "text": "ところが19世紀、パリで異変が起きます。",
+      "type": "diagram",
+      "motif": "sg_066",
+      "audio": "audio/scene-065.wav",
+      "durationSec": 4.085333333333334
+    },
+    {
+      "index": 66,
+      "text": "あれほど騒がしかった聴衆が、だんだん、静かになっていくのです。",
+      "type": "diagram",
+      "motif": "sg_067",
+      "audio": "audio/scene-066.wav",
+      "durationSec": 5.002666666666666
+    },
+    {
+      "index": 67,
+      "text": "音楽史の研究者ジョンソンは、その時期を、1830年ごろから1850年までと見ています。",
+      "type": "diagram",
+      "motif": "sg_068",
+      "audio": "audio/scene-067.wav",
+      "durationSec": 7.904
+    },
+    {
+      "index": 68,
+      "text": "命令されたわけでも、法律ができたわけでもありません。",
+      "type": "diagram",
+      "motif": "sg_069",
+      "audio": "audio/scene-068.wav",
+      "durationSec": 4.021333333333334
+    },
+    {
+      "index": 69,
+      "text": "では、何が人々を黙らせたのでしょうか。",
+      "type": "diagram",
+      "motif": "sg_070",
+      "audio": "audio/scene-069.wav",
+      "durationSec": 3.7653333333333334
+    },
+    {
+      "index": 70,
+      "text": "答えのひとつは、見栄です。",
+      "type": "diagram",
+      "motif": "sg_071",
+      "audio": "audio/scene-070.wav",
+      "durationSec": 2.1866666666666665
+    },
+    {
+      "index": 71,
+      "text": "当時のパリでは、いろいろな階級の市民が、演奏会に通い始めていました。",
+      "type": "diagram",
+      "motif": "sg_072",
+      "audio": "audio/scene-071.wav",
+      "durationSec": 6.016
+    },
+    {
+      "index": 72,
+      "text": "そのなかで「静かに聴けること」が、教養ある上品な市民の証になったのです。",
+      "type": "diagram",
+      "motif": "sg_073",
+      "audio": "audio/scene-072.wav",
+      "durationSec": 5.450666666666667
+    },
+    {
+      "index": 73,
+      "text": "社会学者セネットは、こうまとめています。",
+      "type": "diagram",
+      "motif": "sg_074",
+      "audio": "audio/scene-073.wav",
+      "durationSec": 3.1466666666666665
+    },
+    {
+      "index": 74,
+      "text": "感情を抑えて、黙って聴ける者こそが、立派な観客である、と。",
+      "type": "diagram",
+      "motif": "sg_075",
+      "audio": "audio/scene-074.wav",
+      "durationSec": 5.685333333333333
+    },
+    {
+      "index": 75,
+      "text": "おしゃべりは、下品。弁当は、論外。",
+      "type": "diagram",
+      "motif": "sg_076",
+      "audio": "audio/scene-075.wav",
+      "durationSec": 3.7546666666666666
+    },
+    {
+      "index": 76,
+      "text": "音楽は社交の背景から、黙って拝聴する芸術へ、格上げされました。",
+      "type": "diagram",
+      "motif": "sg_077",
+      "audio": "audio/scene-076.wav",
+      "durationSec": 5.8453333333333335
+    },
+    {
+      "index": 77,
+      "text": "つまり静けさは、自然に生まれたのではなく、マナーとして発明されたものでした。",
+      "type": "diagram",
+      "motif": "sg_078",
+      "audio": "audio/scene-077.wav",
+      "durationSec": 6.346666666666667
+    },
+    {
+      "index": 78,
+      "text": "ただし、これはまだ、都会の、限られた世界の話です。",
+      "type": "diagram",
+      "motif": "sg_079",
+      "audio": "audio/scene-078.wav",
+      "durationSec": 4.714666666666667
+    },
+    {
+      "index": 79,
+      "text": "同じころの大衆劇場は、あいかわらず賑やかなまま。",
+      "type": "diagram",
+      "motif": "sg_080",
+      "audio": "audio/scene-079.wav",
+      "durationSec": 4.213333333333333
+    },
+    {
+      "index": 80,
+      "text": "この静けさを決定的にした犯人が、次に登場します。",
+      "type": "diagram",
+      "motif": "sg_081",
+      "audio": "audio/scene-080.wav",
+      "durationSec": 4.512
+    },
+    {
+      "index": 81,
+      "text": "第4章、ワーグナー、明かりを消す。",
+      "type": "diagram",
+      "motif": "sg_082",
+      "audio": "audio/scene-081.wav",
+      "durationSec": 3.232
+    },
+    {
+      "index": 82,
+      "text": "1876年8月13日。ドイツの小さな町、バイロイト。",
+      "type": "diagram",
+      "motif": "sg_083",
+      "audio": "audio/scene-082.wav",
+      "durationSec": 6.08
+    },
+    {
+      "index": 83,
+      "text": "作曲家ワーグナーが、自分の作品のためだけの劇場を開きます。",
+      "type": "diagram",
+      "motif": "sg_084",
+      "audio": "audio/scene-083.wav",
+      "durationSec": 4.96
+    },
+    {
+      "index": 84,
+      "text": "そしてこの日、彼は決定的なことをしました。",
+      "type": "diagram",
+      "motif": "sg_085",
+      "audio": "audio/scene-084.wav",
+      "durationSec": 3.5946666666666665
+    },
+    {
+      "index": 85,
+      "text": "客席の明かりを、消したのです。",
+      "type": "diagram",
+      "motif": "sg_086",
+      "audio": "audio/scene-085.wav",
+      "durationSec": 2.5493333333333332
+    },
+    {
+      "index": 86,
+      "text": "思い出してください。それまでの客席は、明るいのが当たり前でした。",
+      "type": "diagram",
+      "motif": "sg_087",
+      "audio": "audio/scene-086.wav",
+      "durationSec": 5.0986666666666665
+    },
+    {
+      "index": 87,
+      "text": "明るい客席では、お客はお互いの顔を見て、着飾って、社交をします。",
+      "type": "diagram",
+      "motif": "sg_088",
+      "audio": "audio/scene-087.wav",
+      "durationSec": 5.973333333333334
+    },
+    {
+      "index": 88,
+      "text": "暗い客席では、見えるものは、舞台だけ。",
+      "type": "diagram",
+      "motif": "sg_089",
+      "audio": "audio/scene-088.wav",
+      "durationSec": 3.648
+    },
+    {
+      "index": 89,
+      "text": "お客にできることは、黙って観ることだけになります。",
+      "type": "diagram",
+      "motif": "sg_090",
+      "audio": "audio/scene-089.wav",
+      "durationSec": 3.7013333333333334
+    },
+    {
+      "index": 90,
+      "text": "劇場の主役が、お客から作品へ。この日、交代したのです。",
+      "type": "diagram",
+      "motif": "sg_091",
+      "audio": "audio/scene-090.wav",
+      "durationSec": 5.450666666666667
+    },
+    {
+      "index": 91,
+      "text": "ちなみに、ワーグナーの計画では、明かりは「弱める」だけのはずでした。",
+      "type": "diagram",
+      "motif": "sg_092",
+      "audio": "audio/scene-091.wav",
+      "durationSec": 5.248
+    },
+    {
+      "index": 92,
+      "text": "ところが当日、ガス装置の調子が悪く、客席はほとんど真っ暗に。",
+      "type": "diagram",
+      "motif": "sg_093",
+      "audio": "audio/scene-092.wav",
+      "durationSec": 6.016
+    },
+    {
+      "index": 93,
+      "text": "歴史的な「暗闇の発明」は、半分、ガスの事故だったのです。",
+      "type": "diagram",
+      "motif": "sg_094",
+      "audio": "audio/scene-093.wav",
+      "durationSec": 4.981333333333334
+    },
+    {
+      "index": 94,
+      "text": "とはいえ効果は絶大で、客席の暗闇は、各国の劇場へ広がっていきます。",
+      "type": "diagram",
+      "motif": "sg_095",
+      "audio": "audio/scene-094.wav",
+      "durationSec": 6.304
+    },
+    {
+      "index": 95,
+      "text": "1890年代までには、ヨーロッパの主要な都市で、当たり前になりました。",
+      "type": "diagram",
+      "motif": "sg_096",
+      "audio": "audio/scene-095.wav",
+      "durationSec": 6.026666666666666
+    },
+    {
+      "index": 96,
+      "text": "ヨーロッパのホールで、最初の明かりが消えた。",
+      "type": "diagram",
+      "motif": "sg_097",
+      "audio": "audio/scene-096.wav",
+      "durationSec": 3.3386666666666667
+    },
+    {
+      "index": 97,
+      "text": "客席から、おしゃべりと弁当が消えるのは、時間の問題でした。",
+      "type": "diagram",
+      "motif": "sg_098",
+      "audio": "audio/scene-097.wav",
+      "durationSec": 4.981333333333334
+    },
+    {
+      "index": 98,
+      "text": "第5章、遅刻者、お断り。",
+      "type": "diagram",
+      "motif": "sg_099",
+      "audio": "audio/scene-098.wav",
+      "durationSec": 2.8586666666666667
+    },
+    {
+      "index": 99,
+      "text": "暗闇の次に狙われたのは、時間です。",
+      "type": "diagram",
+      "motif": "sg_100",
+      "audio": "audio/scene-099.wav",
+      "durationSec": 3.232
+    },
+    {
+      "index": 100,
+      "text": "1897年、ウィーン。宮廷歌劇場に、新しい監督が就任します。",
+      "type": "diagram",
+      "motif": "sg_101",
+      "audio": "audio/scene-100.wav",
+      "durationSec": 7.189333333333333
+    },
+    {
+      "index": 101,
+      "text": "作曲家、グスタフ・マーラー。音楽への要求が、とびきり厳しい人でした。",
+      "type": "diagram",
+      "motif": "sg_102",
+      "audio": "audio/scene-101.wav",
+      "durationSec": 6.165333333333334
+    },
+    {
+      "index": 102,
+      "text": "彼は次々と改革を打ち出します。そのひとつが、これです。",
+      "type": "diagram",
+      "motif": "sg_103",
+      "audio": "audio/scene-102.wav",
+      "durationSec": 4.544
+    },
+    {
+      "index": 103,
+      "text": "「遅れてきたお客は、切りのいいところまで、客席に入れない」。",
+      "type": "diagram",
+      "motif": "sg_104",
+      "audio": "audio/scene-103.wav",
+      "durationSec": 4.64
+    },
+    {
+      "index": 104,
+      "text": "お金を払った紳士淑女でも、扉の外で待たされます。",
+      "type": "diagram",
+      "motif": "sg_105",
+      "audio": "audio/scene-104.wav",
+      "durationSec": 4.149333333333334
+    },
+    {
+      "index": 105,
+      "text": "何千年も当たり前だった「途中から入る」が、ここで初めて、咎められました。",
+      "type": "diagram",
+      "motif": "sg_106",
+      "audio": "audio/scene-105.wav",
+      "durationSec": 5.738666666666667
+    },
+    {
+      "index": 106,
+      "text": "仕上げは、拍手です。",
+      "type": "diagram",
+      "motif": "sg_107",
+      "audio": "audio/scene-106.wav",
+      "durationSec": 1.8986666666666667
+    },
+    {
+      "index": 107,
+      "text": "交響曲の楽章と楽章のあいだでは、拍手をしない。",
+      "type": "diagram",
+      "motif": "sg_108",
+      "audio": "audio/scene-107.wav",
+      "durationSec": 4.256
+    },
+    {
+      "index": 108,
+      "text": "いまのクラシックの常識ですが、定着したのは、20世紀に入ってからです。",
+      "type": "diagram",
+      "motif": "sg_109",
+      "audio": "audio/scene-108.wav",
+      "durationSec": 5.664
+    },
+    {
+      "index": 109,
+      "text": "おしゃべりが消え、途中入場が消え、最後に拍手まで整理されました。",
+      "type": "diagram",
+      "motif": "sg_110",
+      "audio": "audio/scene-109.wav",
+      "durationSec": 5.472
+    },
+    {
+      "index": 110,
+      "text": "「黙って、座って、最初から最後まで」。",
+      "type": "diagram",
+      "motif": "sg_111",
+      "audio": "audio/scene-110.wav",
+      "durationSec": 3.530666666666667
+    },
+    {
+      "index": 111,
+      "text": "この型が、コンサートホールで、ほぼ完成します。",
+      "type": "diagram",
+      "motif": "sg_112",
+      "audio": "audio/scene-111.wav",
+      "durationSec": 3.808
+    },
+    {
+      "index": 112,
+      "text": "ラジオ放送が始まるより、前の話です。",
+      "type": "diagram",
+      "motif": "sg_113",
+      "audio": "audio/scene-112.wav",
+      "durationSec": 3.509333333333333
+    },
+    {
+      "index": 113,
+      "text": "第6章、犯人は、明治。",
+      "type": "diagram",
+      "motif": "sg_114",
+      "audio": "audio/scene-113.wav",
+      "durationSec": 2.965333333333333
+    },
+    {
+      "index": 114,
+      "text": "では、日本の劇場は、どうだったのでしょうか。",
+      "type": "diagram",
+      "motif": "sg_115",
+      "audio": "audio/scene-114.wav",
+      "durationSec": 4.2026666666666666
+    },
+    {
+      "index": 115,
+      "text": "こちらも犯人は、放送ではありません。明治の近代化です。",
+      "type": "diagram",
+      "motif": "sg_116",
+      "audio": "audio/scene-115.wav",
+      "durationSec": 5.034666666666666
+    },
+    {
+      "index": 116,
+      "text": "1886年、演劇改良会という団体が立ち上がります。",
+      "type": "diagram",
+      "motif": "sg_117",
+      "audio": "audio/scene-116.wav",
+      "durationSec": 5.568
+    },
+    {
+      "index": 117,
+      "text": "彼らの考えはこうです。西洋に見せて恥ずかしくない、上品な演劇にしたい。",
+      "type": "diagram",
+      "motif": "sg_118",
+      "audio": "audio/scene-117.wav",
+      "durationSec": 6.0906666666666665
+    },
+    {
+      "index": 118,
+      "text": "そこでやり玉に挙がったのが、芝居茶屋と、客席の飲み食いでした。",
+      "type": "diagram",
+      "motif": "sg_119",
+      "audio": "audio/scene-118.wav",
+      "durationSec": 5.066666666666666
+    },
+    {
+      "index": 119,
+      "text": "1889年には、歌舞伎座が開場します。",
+      "type": "diagram",
+      "motif": "sg_120",
+      "audio": "audio/scene-119.wav",
+      "durationSec": 4.213333333333333
+    },
+    {
+      "index": 120,
+      "text": "1911年には、帝国劇場ができます。",
+      "type": "diagram",
+      "motif": "sg_121",
+      "audio": "audio/scene-120.wav",
+      "durationSec": 4.064
+    },
+    {
+      "index": 121,
+      "text": "切符は窓口で直接売り、客席は椅子席。上演時間も短くなりました。",
+      "type": "diagram",
+      "motif": "sg_122",
+      "audio": "audio/scene-121.wav",
+      "durationSec": 6.357333333333333
+    },
+    {
+      "index": 122,
+      "text": "茶屋を通さず、座布団も投げられない劇場の誕生です。",
+      "type": "diagram",
+      "motif": "sg_123",
+      "audio": "audio/scene-122.wav",
+      "durationSec": 4.405333333333333
+    },
+    {
+      "index": 123,
+      "text": "とどめは、1923年の関東大震災でした。",
+      "type": "diagram",
+      "motif": "sg_124",
+      "audio": "audio/scene-123.wav",
+      "durationSec": 4.458666666666667
+    },
+    {
+      "index": 124,
+      "text": "東京の芝居茶屋は焼け、そのまま復活しませんでした。",
+      "type": "diagram",
+      "motif": "sg_125",
+      "audio": "audio/scene-124.wav",
+      "durationSec": 4.192
+    },
+    {
+      "index": 125,
+      "text": "弁当と、酒と、おしゃべりが、劇場から順番に退場していきます。",
+      "type": "diagram",
+      "motif": "sg_126",
+      "audio": "audio/scene-125.wav",
+      "durationSec": 5.706666666666667
+    },
+    {
+      "index": 126,
+      "text": "ちなみに、生き残りもあります。",
+      "type": "diagram",
+      "motif": "sg_127",
+      "audio": "audio/scene-126.wav",
+      "durationSec": 2.4426666666666668
+    },
+    {
+      "index": 127,
+      "text": "歌舞伎座にはいまも「一幕見席」という、好きな一幕だけを観られる席があります。",
+      "type": "diagram",
+      "motif": "sg_128",
+      "audio": "audio/scene-127.wav",
+      "durationSec": 5.568
+    },
+    {
+      "index": 128,
+      "text": "江戸の「つまみ食い観劇」は、ここに小さく残りました。",
+      "type": "diagram",
+      "motif": "sg_129",
+      "audio": "audio/scene-128.wav",
+      "durationSec": 3.9146666666666667
+    },
+    {
+      "index": 129,
+      "text": "こうして、日本の客席からも、明かりが消えました。",
+      "type": "diagram",
+      "motif": "sg_130",
+      "audio": "audio/scene-129.wav",
+      "durationSec": 3.9466666666666668
+    },
+    {
+      "index": 130,
+      "text": "第7章、映画館の、意外な抵抗。",
+      "type": "diagram",
+      "motif": "sg_131",
+      "audio": "audio/scene-130.wav",
+      "durationSec": 3.6586666666666665
+    },
+    {
+      "index": 131,
+      "text": "さて、ここで意外な登場人物が現れます。映画館です。",
+      "type": "diagram",
+      "motif": "sg_132",
+      "audio": "audio/scene-131.wav",
+      "durationSec": 4.874666666666666
+    },
+    {
+      "index": 132,
+      "text": "映画館こそ「最初から最後まで」の本家だと、思いますよね。",
+      "type": "diagram",
+      "motif": "sg_133",
+      "audio": "audio/scene-132.wav",
+      "durationSec": 4.565333333333333
+    },
+    {
+      "index": 133,
+      "text": "ところが、映画館の歴史の大半は、正反対でした。",
+      "type": "diagram",
+      "motif": "sg_134",
+      "audio": "audio/scene-133.wav",
+      "durationSec": 4.597333333333333
+    },
+    {
+      "index": 134,
+      "text": "20世紀前半のアメリカの映画館は、朝から夜中まで、上映しっぱなし。",
+      "type": "diagram",
+      "motif": "sg_135",
+      "audio": "audio/scene-134.wav",
+      "durationSec": 6.101333333333334
+    },
+    {
+      "index": 135,
+      "text": "ニュース映画、漫画、短編、予告、本編。これを、ぐるぐる繰り返します。",
+      "type": "diagram",
+      "motif": "sg_136",
+      "audio": "audio/scene-135.wav",
+      "durationSec": 6.8693333333333335
+    },
+    {
+      "index": 136,
+      "text": "お客は、好きな時間に、ふらっと入ります。",
+      "type": "diagram",
+      "motif": "sg_137",
+      "audio": "audio/scene-136.wav",
+      "durationSec": 3.648
+    },
+    {
+      "index": 137,
+      "text": "本編が途中でも、おかまいなしです。",
+      "type": "diagram",
+      "motif": "sg_138",
+      "audio": "audio/scene-137.wav",
+      "durationSec": 2.8906666666666667
+    },
+    {
+      "index": 138,
+      "text": "そのまま観続けて、自分が入ってきた場面がまた来たら、席を立ちます。",
+      "type": "diagram",
+      "motif": "sg_139",
+      "audio": "audio/scene-138.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 139,
+      "text": "「ここから観たんだ」。英語で、ジス・イズ・ホエア・ウィ・ケイム・イン。",
+      "type": "diagram",
+      "motif": "sg_140",
+      "audio": "audio/scene-139.wav",
+      "durationSec": 4.298666666666667
+    },
+    {
+      "index": 140,
+      "text": "帰り際の決まり文句として、すっかり定着していました。",
+      "type": "diagram",
+      "motif": "sg_141",
+      "audio": "audio/scene-140.wav",
+      "durationSec": 4.266666666666667
+    },
+    {
+      "index": 141,
+      "text": "ちなみに、この動画をここまで飛ばして来た方は、いま、まさにこれをやっています。",
+      "type": "diagram",
+      "motif": "sg_142",
+      "audio": "audio/scene-141.wav",
+      "durationSec": 6.058666666666666
+    },
+    {
+      "index": 142,
+      "text": "ようこそ。当時の映画館と同じく、この動画も、途中からのお客さまを歓迎しています。",
+      "type": "diagram",
+      "motif": "sg_143",
+      "audio": "audio/scene-142.wav",
+      "durationSec": 6.88
+    },
+    {
+      "index": 143,
+      "text": "1941年には、業界紙のバラエティが、この習慣を見出しに取り上げています。",
+      "type": "diagram",
+      "motif": "sg_144",
+      "audio": "audio/scene-143.wav",
+      "durationSec": 6.688
+    },
+    {
+      "index": 144,
+      "text": "1935年の時点で、アメリカの映画館の85パーセントは、二本立てでした。",
+      "type": "diagram",
+      "motif": "sg_145",
+      "audio": "audio/scene-144.wav",
+      "durationSec": 7.082666666666666
+    },
+    {
+      "index": 145,
+      "text": "1枚の切符で、何時間いてもかまいません。",
+      "type": "diagram",
+      "motif": "sg_146",
+      "audio": "audio/scene-145.wav",
+      "durationSec": 3.498666666666667
+    },
+    {
+      "index": 146,
+      "text": "つまり映画館は「途中から観るお客」を前提に、商売を組み立てていたのです。",
+      "type": "diagram",
+      "motif": "sg_147",
+      "audio": "audio/scene-146.wav",
+      "durationSec": 6.176
+    },
+    {
+      "index": 147,
+      "text": "理由は単純で、そのほうが、席がいつでも埋まるからです。",
+      "type": "diagram",
+      "motif": "sg_148",
+      "audio": "audio/scene-147.wav",
+      "durationSec": 4.458666666666667
+    },
+    {
+      "index": 148,
+      "text": "「最初から観ないと分かりません」などと言っていたら、席が空いてしまいます。",
+      "type": "diagram",
+      "motif": "sg_149",
+      "audio": "audio/scene-148.wav",
+      "durationSec": 4.896
+    },
+    {
+      "index": 149,
+      "text": "芝居小屋の自由は、形を変えて、映画館に生きていました。",
+      "type": "diagram",
+      "motif": "sg_150",
+      "audio": "audio/scene-149.wav",
+      "durationSec": 4.896
+    },
+    {
+      "index": 150,
+      "text": "この牙城を崩した男が、あの監督です。",
+      "type": "diagram",
+      "motif": "sg_151",
+      "audio": "audio/scene-150.wav",
+      "durationSec": 3.392
+    },
+    {
+      "index": 151,
+      "text": "第8章、ヒッチコックの、立て札。",
+      "type": "diagram",
+      "motif": "sg_152",
+      "audio": "audio/scene-151.wav",
+      "durationSec": 3.136
+    },
+    {
+      "index": 152,
+      "text": "1960年6月16日、ニューヨーク。",
+      "type": "diagram",
+      "motif": "sg_153",
+      "audio": "audio/scene-152.wav",
+      "durationSec": 4.234666666666667
+    },
+    {
+      "index": 153,
+      "text": "アルフレッド・ヒッチコック監督の新作「サイコ」が、公開されます。",
+      "type": "diagram",
+      "motif": "sg_154",
+      "audio": "audio/scene-153.wav",
+      "durationSec": 4.618666666666667
+    },
+    {
+      "index": 154,
+      "text": "この映画には、公開前から、奇妙な条件がついていました。",
+      "type": "diagram",
+      "motif": "sg_155",
+      "audio": "audio/scene-154.wav",
+      "durationSec": 4.832
+    },
+    {
+      "index": 155,
+      "text": "「上映が始まったら、誰も、入場させないこと」。",
+      "type": "diagram",
+      "motif": "sg_156",
+      "audio": "audio/scene-155.wav",
+      "durationSec": 4.074666666666666
+    },
+    {
+      "index": 156,
+      "text": "劇場の入り口には、制服の警備員まで立ちました。",
+      "type": "diagram",
+      "motif": "sg_157",
+      "audio": "audio/scene-156.wav",
+      "durationSec": 4.192
+    },
+    {
+      "index": 157,
+      "text": "立て札には、こう書いてあります。",
+      "type": "diagram",
+      "motif": "sg_158",
+      "audio": "audio/scene-157.wav",
+      "durationSec": 2.56
+    },
+    {
+      "index": 158,
+      "text": "「支配人の弟も、お断り。合衆国大統領も、お断り」。",
+      "type": "diagram",
+      "motif": "sg_159",
+      "audio": "audio/scene-158.wav",
+      "durationSec": 5.450666666666667
+    },
+    {
+      "index": 159,
+      "text": "「英国女王陛下も、神のご加護がありますように、お断り」。",
+      "type": "diagram",
+      "motif": "sg_160",
+      "audio": "audio/scene-159.wav",
+      "durationSec": 4.746666666666667
+    },
+    {
+      "index": 160,
+      "text": "劇場主たちは、青ざめました。途中のお客を断れば、そのぶん売上が減るからです。",
+      "type": "diagram",
+      "motif": "sg_161",
+      "audio": "audio/scene-160.wav",
+      "durationSec": 6.816
+    },
+    {
+      "index": 161,
+      "text": "ところが、ふたを開けてみると。",
+      "type": "diagram",
+      "motif": "sg_162",
+      "audio": "audio/scene-161.wav",
+      "durationSec": 2.336
+    },
+    {
+      "index": 162,
+      "text": "「途中から観られない映画」を観ようと、開演前から行列ができました。",
+      "type": "diagram",
+      "motif": "sg_163",
+      "audio": "audio/scene-162.wav",
+      "durationSec": 5.077333333333334
+    },
+    {
+      "index": 163,
+      "text": "なぜヒッチコックは、そこまでしたのでしょうか。",
+      "type": "diagram",
+      "motif": "sg_164",
+      "audio": "audio/scene-163.wav",
+      "durationSec": 3.6693333333333333
+    },
+    {
+      "index": 164,
+      "text": "「サイコ」は、結末を知っていると台無しになる映画だったからです。",
+      "type": "diagram",
+      "motif": "sg_165",
+      "audio": "audio/scene-164.wav",
+      "durationSec": 4.512
+    },
+    {
+      "index": 165,
+      "text": "物語を守るために、お客の自由を断つ。",
+      "type": "diagram",
+      "motif": "sg_166",
+      "audio": "audio/scene-165.wav",
+      "durationSec": 3.498666666666667
+    },
+    {
+      "index": 166,
+      "text": "「最初から観ろ」と言い出したのは、劇場ではなく、作り手でした。",
+      "type": "diagram",
+      "motif": "sg_167",
+      "audio": "audio/scene-166.wav",
+      "durationSec": 4.8213333333333335
+    },
+    {
+      "index": 167,
+      "text": "ちなみに、この手を最初に使ったのは、ヒッチコックではありません。",
+      "type": "diagram",
+      "motif": "sg_168",
+      "audio": "audio/scene-167.wav",
+      "durationSec": 4.906666666666666
+    },
+    {
+      "index": 168,
+      "text": "5年前、フランスの「悪魔のような女」という映画に、先例があります。",
+      "type": "diagram",
+      "motif": "sg_169",
+      "audio": "audio/scene-168.wav",
+      "durationSec": 5.514666666666667
+    },
+    {
+      "index": 169,
+      "text": "それでも「サイコ」の行列が、このやり方をアメリカ中に知らしめました。",
+      "type": "diagram",
+      "motif": "sg_170",
+      "audio": "audio/scene-169.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 170,
+      "text": "途中入場の時代の、終わりの始まりです。",
+      "type": "diagram",
+      "motif": "sg_171",
+      "audio": "audio/scene-170.wav",
+      "durationSec": 3.4133333333333336
+    },
+    {
+      "index": 171,
+      "text": "第9章、最後の犯人は、シネコン。",
+      "type": "diagram",
+      "motif": "sg_172",
+      "audio": "audio/scene-171.wav",
+      "durationSec": 3.466666666666667
+    },
+    {
+      "index": 172,
+      "text": "とはいえ、日本のお客は、まだまだ自由でした。",
+      "type": "diagram",
+      "motif": "sg_173",
+      "audio": "audio/scene-172.wav",
+      "durationSec": 3.8293333333333335
+    },
+    {
+      "index": 173,
+      "text": "昭和の映画館は、二本立て、自由席、入れ替えなし。",
+      "type": "diagram",
+      "motif": "sg_174",
+      "audio": "audio/scene-173.wav",
+      "durationSec": 4.970666666666666
+    },
+    {
+      "index": 174,
+      "text": "朝に入って、2本観て、気に入ったほうをもう1回観て、夕方に帰る。",
+      "type": "diagram",
+      "motif": "sg_175",
+      "audio": "audio/scene-174.wav",
+      "durationSec": 5.76
+    },
+    {
+      "index": 175,
+      "text": "そういう観方が、ごくふつうにできました。",
+      "type": "diagram",
+      "motif": "sg_176",
+      "audio": "audio/scene-175.wav",
+      "durationSec": 2.965333333333333
+    },
+    {
+      "index": 176,
+      "text": "変化は、静かにやってきます。",
+      "type": "diagram",
+      "motif": "sg_177",
+      "audio": "audio/scene-176.wav",
+      "durationSec": 2.3893333333333335
+    },
+    {
+      "index": 177,
+      "text": "1984年、東京の名画座が、入れ替え制をいち早く取り入れます。",
+      "type": "diagram",
+      "motif": "sg_178",
+      "audio": "audio/scene-177.wav",
+      "durationSec": 6.165333333333334
+    },
+    {
+      "index": 178,
+      "text": "さて、ここで問題です。",
+      "type": "diagram",
+      "motif": "sg_179",
+      "audio": "audio/scene-178.wav",
+      "durationSec": 1.9946666666666666
+    },
+    {
+      "index": 179,
+      "text": "1993年、日本初の本格的なシネマコンプレックスが開業します。どこの街でしょうか。",
+      "type": "diagram",
+      "motif": "sg_180",
+      "audio": "audio/scene-179.wav",
+      "durationSec": 8.64
+    },
+    {
+      "index": 180,
+      "text": "答えは、神奈川県の、海老名市です。",
+      "type": "diagram",
+      "motif": "sg_181",
+      "audio": "audio/scene-180.wav",
+      "durationSec": 3.3493333333333335
+    },
+    {
+      "index": 181,
+      "text": "郊外のショッピングセンターの中に、複数のスクリーン。",
+      "type": "diagram",
+      "motif": "sg_182",
+      "audio": "audio/scene-181.wav",
+      "durationSec": 4.149333333333334
+    },
+    {
+      "index": 182,
+      "text": "きれいな座席、見やすい傾斜、そして、入れ替え制。",
+      "type": "diagram",
+      "motif": "sg_183",
+      "audio": "audio/scene-182.wav",
+      "durationSec": 4.64
+    },
+    {
+      "index": 183,
+      "text": "1996年には、全席指定の映画館も現れます。",
+      "type": "diagram",
+      "motif": "sg_184",
+      "audio": "audio/scene-183.wav",
+      "durationSec": 5.216
+    },
+    {
+      "index": 184,
+      "text": "シネコンは郊外から全国へ広がり、2002年ごろ、スクリーンの数で半分を超えました。",
+      "type": "diagram",
+      "motif": "sg_185",
+      "audio": "audio/scene-184.wav",
+      "durationSec": 6.8693333333333335
+    },
+    {
+      "index": 185,
+      "text": "「上映時間を調べて、席を取って、最初から最後まで観る」。",
+      "type": "diagram",
+      "motif": "sg_186",
+      "audio": "audio/scene-185.wav",
+      "durationSec": 4.8533333333333335
+    },
+    {
+      "index": 186,
+      "text": "この習慣が日本で多数派になったのは、つまり、このときです。",
+      "type": "diagram",
+      "motif": "sg_187",
+      "audio": "audio/scene-186.wav",
+      "durationSec": 4.928
+    },
+    {
+      "index": 187,
+      "text": "たかだか、20年ちょっと前。",
+      "type": "diagram",
+      "motif": "sg_188",
+      "audio": "audio/scene-187.wav",
+      "durationSec": 2.528
+    },
+    {
+      "index": 188,
+      "text": "あなたが昔、途中から観た映画の記憶は、間違いではありません。",
+      "type": "diagram",
+      "motif": "sg_189",
+      "audio": "audio/scene-188.wav",
+      "durationSec": 5.216
+    },
+    {
+      "index": 189,
+      "text": "こうして、客席の最後の出入り口が、閉まりました。",
+      "type": "diagram",
+      "motif": "sg_190",
+      "audio": "audio/scene-189.wav",
+      "durationSec": 4.16
+    },
+    {
+      "index": 190,
+      "text": "第10章、茶の間は、縛れない。",
+      "type": "diagram",
+      "motif": "sg_191",
+      "audio": "audio/scene-190.wav",
+      "durationSec": 2.944
+    },
+    {
+      "index": 191,
+      "text": "ところで、この物語には、縛り損ねた場所があります。",
+      "type": "diagram",
+      "motif": "sg_192",
+      "audio": "audio/scene-191.wav",
+      "durationSec": 4.437333333333333
+    },
+    {
+      "index": 192,
+      "text": "テレビの前。茶の間です。",
+      "type": "diagram",
+      "motif": "sg_193",
+      "audio": "audio/scene-192.wav",
+      "durationSec": 2.1333333333333333
+    },
+    {
+      "index": 193,
+      "text": "放送は、たしかに時間を支配しました。",
+      "type": "diagram",
+      "motif": "sg_194",
+      "audio": "audio/scene-193.wav",
+      "durationSec": 3.0613333333333332
+    },
+    {
+      "index": 194,
+      "text": "決まった時刻に始まり、早送りも、巻き戻しもできません。",
+      "type": "diagram",
+      "motif": "sg_195",
+      "audio": "audio/scene-194.wav",
+      "durationSec": 4.768
+    },
+    {
+      "index": 195,
+      "text": "ですが「黙って最初から最後まで」だけは、ついに強制できませんでした。",
+      "type": "diagram",
+      "motif": "sg_196",
+      "audio": "audio/scene-195.wav",
+      "durationSec": 5.024
+    },
+    {
+      "index": 196,
+      "text": "NHKの調査では、平日のテレビ視聴の4割あまりが「ながら視聴」です。",
+      "type": "diagram",
+      "motif": "sg_197",
+      "audio": "audio/scene-196.wav",
+      "durationSec": 5.834666666666666
+    },
+    {
+      "index": 197,
+      "text": "ご飯を食べながら、洗い物をしながら、新聞を読みながら。",
+      "type": "diagram",
+      "motif": "sg_198",
+      "audio": "audio/scene-197.wav",
+      "durationSec": 4.490666666666667
+    },
+    {
+      "index": 198,
+      "text": "客席が明るいどころか、テレビの前は、生活のど真ん中でした。",
+      "type": "diagram",
+      "motif": "sg_199",
+      "audio": "audio/scene-198.wav",
+      "durationSec": 5.301333333333333
+    },
+    {
+      "index": 199,
+      "text": "1979年には、手元で局を変えられるリモコンが登場します。",
+      "type": "diagram",
+      "motif": "sg_200",
+      "audio": "audio/scene-199.wav",
+      "durationSec": 5.717333333333333
+    },
+    {
+      "index": 200,
+      "text": "80年代に普及すると、お客はコマーシャルのたびに、よその局へ旅立ちました。",
+      "type": "diagram",
+      "motif": "sg_201",
+      "audio": "audio/scene-200.wav",
+      "durationSec": 6.357333333333333
+    },
+    {
+      "index": 201,
+      "text": "番組のほうが「どこから観ても分かる構成」へ、作り替えられていきます。",
+      "type": "diagram",
+      "motif": "sg_202",
+      "audio": "audio/scene-201.wav",
+      "durationSec": 5.173333333333333
+    },
+    {
+      "index": 202,
+      "text": "録画機がやってくると、お客はコマーシャルを早送りしはじめます。",
+      "type": "diagram",
+      "motif": "sg_203",
+      "audio": "audio/scene-202.wav",
+      "durationSec": 4.789333333333333
+    },
+    {
+      "index": 203,
+      "text": "1990年には、コマーシャルを自動で飛ばして録画するビデオデッキまで、発売されました。",
+      "type": "diagram",
+      "motif": "sg_204",
+      "audio": "audio/scene-203.wav",
+      "durationSec": 7.189333333333333
+    },
+    {
+      "index": 204,
+      "text": "飛ばしたい。お客は昔から、ずっと飛ばしたかったのです。",
+      "type": "diagram",
+      "motif": "sg_205",
+      "audio": "audio/scene-204.wav",
+      "durationSec": 4.405333333333333
+    },
+    {
+      "index": 205,
+      "text": "そして2010年代。技術がついに、作品の内部へ手を伸ばします。",
+      "type": "diagram",
+      "motif": "sg_206",
+      "audio": "audio/scene-205.wav",
+      "durationSec": 5.504
+    },
+    {
+      "index": 206,
+      "text": "再生速度の、ボタンです。",
+      "type": "diagram",
+      "motif": "sg_207",
+      "audio": "audio/scene-206.wav",
+      "durationSec": 2.336
+    },
+    {
+      "index": 207,
+      "text": "倍速で観た経験のある人は、2021年の調査で、34パーセント。",
+      "type": "diagram",
+      "motif": "sg_208",
+      "audio": "audio/scene-207.wav",
+      "durationSec": 6.346666666666667
+    },
+    {
+      "index": 208,
+      "text": "3年後の2024年には、47パーセントまで増えました。",
+      "type": "diagram",
+      "motif": "sg_209",
+      "audio": "audio/scene-208.wav",
+      "durationSec": 4.981333333333334
+    },
+    {
+      "index": 209,
+      "text": "若い世代では、スキップ再生の経験が、半分を超えています。",
+      "type": "diagram",
+      "motif": "sg_210",
+      "audio": "audio/scene-209.wav",
+      "durationSec": 5.045333333333334
+    },
+    {
+      "index": 210,
+      "text": "150年かけて組み上げられた「最初から最後まで」が、ほどけていきます。",
+      "type": "diagram",
+      "motif": "sg_211",
+      "audio": "audio/scene-210.wav",
+      "durationSec": 5.077333333333334
+    },
+    {
+      "index": 211,
+      "text": "ここで、むかしの明るい客席を、思い出してください。",
+      "type": "diagram",
+      "motif": "sg_212",
+      "audio": "audio/scene-211.wav",
+      "durationSec": 4.245333333333333
+    },
+    {
+      "index": 212,
+      "text": "騒がしい18世紀のお客は、音楽を聴いていなかったのでしょうか。",
+      "type": "diagram",
+      "motif": "sg_213",
+      "audio": "audio/scene-212.wav",
+      "durationSec": 5.728
+    },
+    {
+      "index": 213,
+      "text": "研究者は、こう釘を刺しています。聴いていなかったのではない、聴き方が違っただけだ、と。",
+      "type": "diagram",
+      "motif": "sg_214",
+      "audio": "audio/scene-213.wav",
+      "durationSec": 7.221333333333333
+    },
+    {
+      "index": 214,
+      "text": "なら、こうも言えるはずです。",
+      "type": "diagram",
+      "motif": "sg_215",
+      "audio": "audio/scene-214.wav",
+      "durationSec": 2.144
+    },
+    {
+      "index": 215,
+      "text": "飛ばして観る人は、観ていないのではない。観方が、変わっただけかもしれません。",
+      "type": "diagram",
+      "motif": "sg_216",
+      "audio": "audio/scene-215.wav",
+      "durationSec": 5.749333333333333
+    },
+    {
+      "index": 216,
+      "text": "最後に、ひとつだけ、不思議な場所を紹介します。",
+      "type": "diagram",
+      "motif": "sg_217",
+      "audio": "audio/scene-216.wav",
+      "durationSec": 3.978666666666667
+    },
+    {
+      "index": 217,
+      "text": "東京、上野。寄席の、鈴本演芸場です。",
+      "type": "diagram",
+      "motif": "sg_218",
+      "audio": "audio/scene-217.wav",
+      "durationSec": 4.501333333333333
+    },
+    {
+      "index": 218,
+      "text": "公式の案内に、こう書いてあります。",
+      "type": "diagram",
+      "motif": "sg_219",
+      "audio": "audio/scene-218.wav",
+      "durationSec": 2.9226666666666667
+    },
+    {
+      "index": 219,
+      "text": "「途中からでもご入場できますし、途中でお帰りになられてもかまいません」。",
+      "type": "diagram",
+      "motif": "sg_220",
+      "audio": "audio/scene-219.wav",
+      "durationSec": 5.226666666666667
+    },
+    {
+      "index": 220,
+      "text": "お弁当を食べながら、ビールを飲みながらで、かまいません。",
+      "type": "diagram",
+      "motif": "sg_221",
+      "audio": "audio/scene-220.wav",
+      "durationSec": 4.288
+    },
+    {
+      "index": 221,
+      "text": "江戸から続く寄席のルールは、150年の規律化を、素通りしてきました。",
+      "type": "diagram",
+      "motif": "sg_222",
+      "audio": "audio/scene-221.wav",
+      "durationSec": 5.610666666666667
+    },
+    {
+      "index": 222,
+      "text": "どの犯人にも、ついに逮捕されなかった、生き証人です。",
+      "type": "diagram",
+      "motif": "sg_223",
+      "audio": "audio/scene-222.wav",
+      "durationSec": 4.469333333333333
+    },
+    {
+      "index": 223,
+      "text": "さて、客席の明かりの話を、覚えているでしょうか。",
+      "type": "diagram",
+      "motif": "sg_224",
+      "audio": "audio/scene-223.wav",
+      "durationSec": 4.810666666666667
+    },
+    {
+      "index": 224,
+      "text": "1876年、ワーグナーが消した、あの明かりです。",
+      "type": "diagram",
+      "motif": "sg_225",
+      "audio": "audio/scene-224.wav",
+      "durationSec": 4.938666666666666
+    },
+    {
+      "index": 225,
+      "text": "いま、暗い映画館や、夜の部屋で、小さな光がともっています。",
+      "type": "diagram",
+      "motif": "sg_226",
+      "audio": "audio/scene-225.wav",
+      "durationSec": 5.546666666666667
+    },
+    {
+      "index": 226,
+      "text": "スマートフォンの、画面です。",
+      "type": "diagram",
+      "motif": "sg_227",
+      "audio": "audio/scene-226.wav",
+      "durationSec": 2.2826666666666666
+    },
+    {
+      "index": 227,
+      "text": "150年ぶりに、明かりは客席の側へ、戻ってきました。",
+      "type": "diagram",
+      "motif": "sg_228",
+      "audio": "audio/scene-227.wav",
+      "durationSec": 4.917333333333334
+    },
+    {
+      "index": 228,
+      "text": "手元の明るいお客は、また、食べながら観て、しゃべりながら観て、途中で出入りします。",
+      "type": "diagram",
+      "motif": "sg_229",
+      "audio": "audio/scene-228.wav",
+      "durationSec": 6.688
+    },
+    {
+      "index": 229,
+      "text": "江戸の桟敷と、やっていることは、ほとんど同じです。",
+      "type": "diagram",
+      "motif": "sg_230",
+      "audio": "audio/scene-229.wav",
+      "durationSec": 4.074666666666666
+    },
+    {
+      "index": 230,
+      "text": "「黙って、座って、最初から最後まで」。",
+      "type": "diagram",
+      "motif": "sg_231",
+      "audio": "audio/scene-230.wav",
+      "durationSec": 3.530666666666667
+    },
+    {
+      "index": 231,
+      "text": "それは人類の伝統ではなく、19世紀に発明され、20世紀に行き渡った、150年ものの道具でした。",
+      "type": "diagram",
+      "motif": "sg_232",
+      "audio": "audio/scene-231.wav",
+      "durationSec": 8.896
+    },
+    {
+      "index": 232,
+      "text": "道具ですから、使い続けるのも、手放すのも、自由です。",
+      "type": "diagram",
+      "motif": "sg_233",
+      "audio": "audio/scene-232.wav",
+      "durationSec": 4.682666666666667
+    },
+    {
+      "index": 233,
+      "text": "冒頭で、この動画は飛ばして観ても構いません、と申し上げました。",
+      "type": "diagram",
+      "motif": "sg_234",
+      "audio": "audio/scene-233.wav",
+      "durationSec": 5.066666666666666
+    },
+    {
+      "index": 234,
+      "text": "それでもここまで飛ばさずに観てくださったあなたは、誰に強制されたわけでもなく、150年前の発明品を、自分で選んで使ったことになります。",
+      "type": "diagram",
+      "motif": "sg_235",
+      "audio": "audio/scene-234.wav",
+      "durationSec": 10.794666666666666
+    },
+    {
+      "index": 235,
+      "text": "飛ばして観たあなたも、どうかご安心ください。そちらは、数千年の伝統です。",
+      "type": "diagram",
+      "motif": "sg_236",
+      "audio": "audio/scene-235.wav",
+      "durationSec": 6.133333333333334
+    },
+    {
+      "index": 236,
+      "text": "最後まで観るかどうかは、ふたたび、あなたが決めることになりました。",
+      "type": "diagram",
+      "motif": "sg_237",
+      "audio": "audio/scene-236.wav",
+      "durationSec": 4.896
+    },
+    {
+      "index": 237,
+      "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
+      "type": "card",
+      "motif": "ending",
+      "isEnding": true,
+      "audio": "audio/scene-end.wav",
+      "durationSec": 5.632
+    }
+  ],
+  "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
+  "generatedAt": "2026-11-12T01:10:26.060Z",
+  "preset": "karakuri"
+}

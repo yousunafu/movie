@@ -453,6 +453,11 @@ export async function assignScenes(
       console.log(`絵づけ: なぜ人は柔らかいものを握りたくなるのかの順番割り当て (1文1絵・${yw.length}枚)`);
       return yw;
     }
+    const nm = namaeOrderedAssign(sentences);
+    if (nm) {
+      console.log(`絵づけ: 「名前を奪われる」のはなぜ怖いのかの順番割り当て (1文1絵・${nm.length}枚)`);
+      return nm;
+    }
     console.log("絵づけ: karakuri は専用キーワード割り当てを使用");
     return sentences.map(karakuriHeuristicAssign);
   }
@@ -2114,6 +2119,20 @@ function yawaOrderedAssign(sentences: string[]): Assignment[] | null {
       `柔らかいもの: 台本が${sentences.length}文なのに絵が${order.length}枚です。` +
         `台本 (docs/yawarakai-script-v1.txt) か Y_ALL_MOTIFS (YawaIndex) の数を確認してください`,
     );
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: 「名前を奪われる」のは、なぜあんなに怖いのか (docs/namae-script-v1.txt・244文) 用の順番割り当て =====
+// 絵は nm_文番号3桁 で台本の順番どおり (NamaeIndex の N_ALL_MOTIFS と同じ並び)。
+// ★NamaeIndex を import しない: 絵師が並走で編集中のファイルを読みこんで生成が止まるのを防ぐため、番号から作る。
+function namaeOrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[0]?.includes("スタジオジブリ") || !sentences[0]?.includes("千と千尋")) return null;
+  const N = 244;
+  const order = Array.from({ length: N }, (_, i) => `nm_${String(i + 1).padStart(3, "0")}`);
+  if (sentences.length === N + 1) order.push(order[N - 1]);
+  if (sentences.length !== order.length) {
+    throw new Error(`名前: 台本が${sentences.length}文なのに絵が${order.length}枚です。docs/namae-script-v1.txt を確認してください`);
   }
   return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
 }

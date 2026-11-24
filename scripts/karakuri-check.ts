@@ -64,7 +64,7 @@ const scenes = data.scenes;
 // ※「sg_001」形式 (人類は昔から飛ばして観ていた)・「yw_001」形式 (柔らかいもの) は英字のあとに数字が来ないので、別に書き足す。
 //   汎用モチーフ (brain_wash など) を拾わないよう、/^[a-z]+_/ のような緩い形にはしないこと。
 const firstMotif =
-  scenes.find((s) => /^([a-z]+\d_|sg_\d{3}$|yw_\d{3}$)/.test(s.motif ?? ""))?.motif ?? "";
+  scenes.find((s) => /^([a-z]+\d_|sg_\d{3}$|yw_\d{3}$|nm_\d{3}$)/.test(s.motif ?? ""))?.motif ?? "";
 
 // ============================================================
 // 検査1  絵の割り当て — MOTIFS配列 と scenes-data.json のつき合わせ

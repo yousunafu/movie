@@ -2,1887 +2,1967 @@
   "scenes": [
     {
       "index": 0,
-      "text": "いきなりですが、クイズです。",
+      "text": "2001年に公開された、スタジオジブリの『千と千尋の神隠し』。",
       "type": "diagram",
-      "motif": "yw_001",
-      "audio": "audio-yawa/scene-000.wav",
-      "durationSec": 2.112
+      "motif": "nm_001",
+      "audio": "audio-namae/scene-000.wav",
+      "durationSec": 5.578666666666667
     },
     {
       "index": 1,
-      "text": "いま、小学生のあいだで、ライブ配信が始まるたびに売り切れているものがあります。",
+      "text": "長いあいだ、日本でいちばん観られた映画でした。",
       "type": "diagram",
-      "motif": "yw_002",
-      "audio": "audio-yawa/scene-001.wav",
-      "durationSec": 6.1866666666666665
+      "motif": "nm_002",
+      "audio": "audio-namae/scene-001.wav",
+      "durationSec": 3.68
     },
     {
       "index": 2,
-      "text": "何でしょうか。",
+      "text": "まずは、ざっくりあらすじを。",
       "type": "diagram",
-      "motif": "yw_003",
-      "audio": "audio-yawa/scene-002.wav",
-      "durationSec": 1.5573333333333332
+      "motif": "nm_003",
+      "audio": "audio-namae/scene-002.wav",
+      "durationSec": 2.304
     },
     {
       "index": 3,
-      "text": "答えは、スクイーズです。",
+      "text": "10歳の女の子、千尋は、引っ越しの途中で、両親と一緒に不思議な町に迷いこみます。",
       "type": "diagram",
-      "motif": "yw_004",
-      "audio": "audio-yawa/scene-003.wav",
-      "durationSec": 2.026666666666667
+      "motif": "nm_004",
+      "audio": "audio-namae/scene-003.wav",
+      "durationSec": 7.242666666666667
     },
     {
       "index": 4,
-      "text": "握るとむにゅっとつぶれて、手を離すと、ゆっくり元に戻る。それだけのおもちゃです。",
+      "text": "両親は、そこにあった食べ物を勝手に食べて、豚になってしまいます。",
       "type": "diagram",
-      "motif": "yw_005",
-      "audio": "audio-yawa/scene-004.wav",
-      "durationSec": 6.1546666666666665
-    },
-    {
-      "index": 5,
-      "text": "大人も負けていません。",
-      "type": "diagram",
-      "motif": "yw_006",
-      "audio": "audio-yawa/scene-005.wav",
-      "durationSec": 1.6426666666666667
-    },
-    {
-      "index": 6,
-      "text": "座ると体が沈んで、起き上がれなくなるソファ。",
-      "type": "diagram",
-      "motif": "yw_007",
-      "audio": "audio-yawa/scene-006.wav",
-      "durationSec": 3.6373333333333333
-    },
-    {
-      "index": 7,
-      "text": "ついたあだ名は、「人をダメにするソファ」です。",
-      "type": "diagram",
-      "motif": "yw_008",
-      "audio": "audio-yawa/scene-007.wav",
-      "durationSec": 3.029333333333333
-    },
-    {
-      "index": 8,
-      "text": "ソファやクッションが、体を楽にしてくれるのは、わかります。",
-      "type": "diagram",
-      "motif": "yw_009",
-      "audio": "audio-yawa/scene-008.wav",
-      "durationSec": 4.426666666666667
-    },
-    {
-      "index": 9,
-      "text": "でも、スクイーズは、体のどこも支えていません。",
-      "type": "diagram",
-      "motif": "yw_010",
-      "audio": "audio-yawa/scene-009.wav",
-      "durationSec": 3.968
-    },
-    {
-      "index": 10,
-      "text": "食べられもしないし、何かの役に立つわけでもない。なのに、つい握ってしまう。",
-      "type": "diagram",
-      "motif": "yw_011",
-      "audio": "audio-yawa/scene-010.wav",
-      "durationSec": 6.069333333333334
-    },
-    {
-      "index": 11,
-      "text": "では人は、なぜ柔らかいものを、握りたくなるのでしょうか。",
-      "type": "diagram",
-      "motif": "yw_012",
-      "audio": "audio-yawa/scene-011.wav",
-      "durationSec": 5.002666666666666
-    },
-    {
-      "index": 12,
-      "text": "調べてみると、話は20万年前の洞窟までさかのぼりました。",
-      "type": "diagram",
-      "motif": "yw_013",
-      "audio": "audio-yawa/scene-012.wav",
-      "durationSec": 5.12
-    },
-    {
-      "index": 13,
-      "text": "その途中で柔らかさは、高級品になり、聖人に捨てられ、竹で作られ、サルの実験に使われます。",
-      "type": "diagram",
-      "motif": "yw_014",
-      "audio": "audio-yawa/scene-013.wav",
-      "durationSec": 8.138666666666667
-    },
-    {
-      "index": 14,
-      "text": "その間に柔らかさは、背中の下から首、腕の中、全身へと、少しずつ体をのぼって、ついに手のひらにやってきます。",
-      "type": "diagram",
-      "motif": "yw_234",
-      "audio": "audio-yawa/scene-014b.wav",
-      "durationSec": 9.898666666666667
-    },
-    {
-      "index": 15,
-      "text": "そして最後に、ひとつの答えにたどり着きます。",
-      "type": "diagram",
-      "motif": "yw_015",
-      "audio": "audio-yawa/scene-014.wav",
-      "durationSec": 3.424
-    },
-    {
-      "index": 16,
-      "text": "人類が本当に欲しかったのは、柔らかさではなかったのかもしれません。",
-      "type": "diagram",
-      "motif": "yw_016",
-      "audio": "audio-yawa/scene-015.wav",
-      "durationSec": 5.109333333333334
-    },
-    {
-      "index": 17,
-      "text": "今日は、柔らかいものの歴史を、20万年ぶんさかのぼります。",
-      "type": "diagram",
-      "motif": "yw_017",
-      "audio": "audio-yawa/scene-016.wav",
-      "durationSec": 4.810666666666667
-    },
-    {
-      "index": 18,
-      "text": "最初の現場は、南アフリカの洞窟です。",
-      "type": "diagram",
-      "motif": "yw_018",
-      "audio": "audio-yawa/scene-017.wav",
-      "durationSec": 3.509333333333333
-    },
-    {
-      "index": 19,
-      "text": "第1章、20万年前の、草のベッド。",
-      "type": "diagram",
-      "motif": "yw_019",
-      "audio": "audio-yawa/scene-018.wav",
-      "durationSec": 3.8186666666666667
-    },
-    {
-      "index": 20,
-      "text": "やってきたのは、南アフリカの、ボーダー洞窟です。",
-      "type": "diagram",
-      "motif": "yw_020",
-      "audio": "audio-yawa/scene-019.wav",
-      "durationSec": 4.128
-    },
-    {
-      "index": 21,
-      "text": "この洞窟の床から、少なくとも20万年前の、寝床の跡が見つかりました。",
-      "type": "diagram",
-      "motif": "yw_021",
-      "audio": "audio-yawa/scene-020.wav",
-      "durationSec": 6.112
-    },
-    {
-      "index": 22,
-      "text": "材料は、幅の広い、イネのなかまの草です。",
-      "type": "diagram",
-      "motif": "yw_022",
-      "audio": "audio-yawa/scene-021.wav",
-      "durationSec": 4.042666666666666
-    },
-    {
-      "index": 23,
-      "text": "草を床に敷きつめて、寝る場所を作っていたのです。",
-      "type": "diagram",
-      "motif": "yw_023",
-      "audio": "audio-yawa/scene-022.wav",
-      "durationSec": 3.8186666666666667
-    },
-    {
-      "index": 24,
-      "text": "しかも、草の下からは、灰の層が見つかっています。",
-      "type": "diagram",
-      "motif": "yw_024",
-      "audio": "audio-yawa/scene-023.wav",
-      "durationSec": 4.064
-    },
-    {
-      "index": 25,
-      "text": "研究者は、灰を敷くことで、虫を寄せつけないようにしたのではないかと考えています。",
-      "type": "diagram",
-      "motif": "yw_025",
-      "audio": "audio-yawa/scene-024.wav",
-      "durationSec": 6.389333333333333
-    },
-    {
-      "index": 26,
-      "text": "寝床のそばには、虫よけに使われる、香りの強い低木の跡も残っていました。",
-      "type": "diagram",
-      "motif": "yw_026",
-      "audio": "audio-yawa/scene-025.wav",
-      "durationSec": 6.304
-    },
-    {
-      "index": 27,
-      "text": "時代はくだって、約7万7千年前。同じ南アフリカの、シブドゥ洞窟です。",
-      "type": "diagram",
-      "motif": "yw_027",
-      "audio": "audio-yawa/scene-026.wav",
-      "durationSec": 6.741333333333333
-    },
-    {
-      "index": 28,
-      "text": "ここでは、草や葉を何層にも重ねた寝床が見つかりました。",
-      "type": "diagram",
-      "motif": "yw_028",
-      "audio": "audio-yawa/scene-027.wav",
-      "durationSec": 4.352
-    },
-    {
-      "index": 29,
-      "text": "その中には、虫よけの成分をふくむ木の葉が、混ぜこまれていました。",
-      "type": "diagram",
-      "motif": "yw_029",
-      "audio": "audio-yawa/scene-028.wav",
+      "motif": "nm_005",
+      "audio": "audio-namae/scene-004.wav",
       "durationSec": 5.205333333333333
     },
     {
-      "index": 30,
-      "text": "ネアンデルタール人も、洞窟の中で、草の寝床を作っていたことがわかっています。",
+      "index": 5,
+      "text": "ひとり残された千尋は、神さまたちが通うお風呂屋さんで、働くことになります。",
       "type": "diagram",
-      "motif": "yw_030",
-      "audio": "audio-yawa/scene-029.wav",
+      "motif": "nm_006",
+      "audio": "audio-namae/scene-005.wav",
       "durationSec": 6.112
     },
     {
-      "index": 31,
-      "text": "では、なぜわざわざ、寝床を作ったのでしょうか。",
+      "index": 6,
+      "text": "お風呂屋さんの主人は、魔女の湯婆婆。",
       "type": "diagram",
-      "motif": "yw_031",
-      "audio": "audio-yawa/scene-030.wav",
-      "durationSec": 4.394666666666667
+      "motif": "nm_007",
+      "audio": "audio-namae/scene-006.wav",
+      "durationSec": 3.0613333333333332
     },
     {
-      "index": 32,
-      "text": "洞窟の床は、硬くて、冷たくて、虫だらけです。",
+      "index": 7,
+      "text": "働く契約を結ぶとき、湯婆婆は、千尋の名前を取り上げます。",
       "type": "diagram",
-      "motif": "yw_032",
-      "audio": "audio-yawa/scene-031.wav",
-      "durationSec": 4.416
+      "motif": "nm_008",
+      "audio": "audio-namae/scene-007.wav",
+      "durationSec": 5.365333333333333
     },
     {
-      "index": 33,
-      "text": "そこに草を敷けば、体が地面から離れます。",
+      "index": 8,
+      "text": "「千尋」から文字が減って、ただの「千」。",
       "type": "diagram",
-      "motif": "yw_033",
-      "audio": "audio-yawa/scene-032.wav",
-      "durationSec": 3.584
+      "motif": "nm_009",
+      "audio": "audio-namae/scene-008.wav",
+      "durationSec": 2.784
     },
     {
-      "index": 34,
-      "text": "冷えにくく、痛くなく、虫にも食われにくい。",
+      "index": 9,
+      "text": "怪物に襲われるわけでも、ケガをするわけでもありません。",
       "type": "diagram",
-      "motif": "yw_034",
-      "audio": "audio-yawa/scene-033.wav",
-      "durationSec": 3.776
+      "motif": "nm_010",
+      "audio": "audio-namae/scene-009.wav",
+      "durationSec": 4.149333333333334
     },
     {
-      "index": 35,
-      "text": "冒頭のソファやクッションと同じく、最初の柔らかさの役目は、体を守ることだったと考えられます。",
+      "index": 10,
+      "text": "それなのに、少年ハクは、千尋に教えます。",
       "type": "diagram",
-      "motif": "yw_035",
-      "audio": "audio-yawa/scene-034.wav",
-      "durationSec": 7.637333333333333
+      "motif": "nm_011",
+      "audio": "audio-namae/scene-010.wav",
+      "durationSec": 3.7333333333333334
     },
     {
-      "index": 36,
-      "text": "柔らかさは、まず、背中の下にやってきました。",
+      "index": 11,
+      "text": "名前を奪われると、帰り道がわからなくなる、と。",
       "type": "diagram",
-      "motif": "yw_036",
-      "audio": "audio-yawa/scene-035.wav",
-      "durationSec": 3.8933333333333335
+      "motif": "nm_012",
+      "audio": "audio-namae/scene-011.wav",
+      "durationSec": 4.32
     },
     {
-      "index": 37,
-      "text": "次の現場で、柔らかいものは、寝床を飛び出して、形を持ちはじめます。",
+      "index": 12,
+      "text": "しかもハク自身が、自分の本当の名前を思い出せずにいます。",
       "type": "diagram",
-      "motif": "yw_037",
-      "audio": "audio-yawa/scene-036.wav",
-      "durationSec": 5.92
+      "motif": "nm_013",
+      "audio": "audio-namae/scene-012.wav",
+      "durationSec": 4.586666666666667
     },
     {
-      "index": 38,
-      "text": "第2章、2000年前の、ぬいぐるみ。",
+      "index": 13,
+      "text": "名前をなくしたまま、別の名前で働くうちに、元の自分を忘れていく。",
       "type": "diagram",
-      "motif": "yw_038",
-      "audio": "audio-yawa/scene-037.wav",
+      "motif": "nm_014",
+      "audio": "audio-namae/scene-013.wav",
+      "durationSec": 5.546666666666667
+    },
+    {
+      "index": 14,
+      "text": "この映画には、2つの怖さが描かれています。",
+      "type": "diagram",
+      "motif": "nm_015",
+      "audio": "audio-namae/scene-014.wav",
+      "durationSec": 3.552
+    },
+    {
+      "index": 15,
+      "text": "ひとつは、帰り道がわからなくなる怖さ。",
+      "type": "diagram",
+      "motif": "nm_016",
+      "audio": "audio-namae/scene-015.wav",
+      "durationSec": 3.3066666666666666
+    },
+    {
+      "index": 16,
+      "text": "もうひとつは、元の自分を忘れてしまう怖さ。",
+      "type": "diagram",
+      "motif": "nm_017",
+      "audio": "audio-namae/scene-016.wav",
+      "durationSec": 3.5733333333333333
+    },
+    {
+      "index": 17,
+      "text": "でも、名前は、ただの呼び名のはずです。",
+      "type": "diagram",
+      "motif": "nm_018",
+      "audio": "audio-namae/scene-017.wav",
       "durationSec": 3.296
     },
     {
-      "index": 39,
-      "text": "まずは、シベリアの山の中にある、古いお墓です。",
+      "index": 18,
+      "text": "本当に、名前を奪われると、そうなるのでしょうか。",
       "type": "diagram",
-      "motif": "yw_039",
-      "audio": "audio-yawa/scene-038.wav",
-      "durationSec": 4.192
+      "motif": "nm_019",
+      "audio": "audio-namae/scene-018.wav",
+      "durationSec": 4.661333333333333
     },
     {
-      "index": 40,
-      "text": "2000年以上前のお墓から、こんなものが出てきました。",
+      "index": 19,
+      "text": "映画の外で調べてみると、名前の歴史は、なかなか物騒でした。",
       "type": "diagram",
-      "motif": "yw_040",
-      "audio": "audio-yawa/scene-039.wav",
-      "durationSec": 3.9146666666666667
+      "motif": "nm_020",
+      "audio": "audio-namae/scene-019.wav",
+      "durationSec": 5.1946666666666665
     },
     {
-      "index": 41,
-      "text": "フェルトでできた、白鳥です。",
+      "index": 20,
+      "text": "名前を当てられて、負けてしまう小人がいて。",
       "type": "diagram",
-      "motif": "yw_041",
-      "audio": "audio-yawa/scene-040.wav",
-      "durationSec": 2.2826666666666666
+      "motif": "nm_021",
+      "audio": "audio-namae/scene-020.wav",
+      "durationSec": 3.3173333333333335
     },
     {
-      "index": 42,
-      "text": "高さは、およそ30センチ。中には、シカの毛が詰められていたとされます。",
+      "index": 21,
+      "text": "罰として、汚い名前に書きかえられた貴族がいて。",
       "type": "diagram",
-      "motif": "yw_042",
-      "audio": "audio-yawa/scene-041.wav",
-      "durationSec": 5.92
+      "motif": "nm_022",
+      "audio": "audio-namae/scene-021.wav",
+      "durationSec": 3.872
     },
     {
-      "index": 43,
-      "text": "見た目は、まるでぬいぐるみです。",
+      "index": 22,
+      "text": "明治には、名前に鍵がかけられて。",
       "type": "diagram",
-      "motif": "yw_043",
-      "audio": "audio-yawa/scene-042.wav",
-      "durationSec": 2.4106666666666667
+      "motif": "nm_023",
+      "audio": "audio-namae/scene-022.wav",
+      "durationSec": 2.912
     },
     {
-      "index": 44,
-      "text": "ところが、これはおもちゃではありません。",
+      "index": 23,
+      "text": "2025年には、太郎を「ジョージ」と読ませるのが、難しくなりました。",
       "type": "diagram",
-      "motif": "yw_044",
-      "audio": "audio-yawa/scene-043.wav",
-      "durationSec": 2.752
+      "motif": "nm_024",
+      "audio": "audio-namae/scene-023.wav",
+      "durationSec": 5.354666666666667
     },
     {
-      "index": 45,
-      "text": "お墓に納められた、馬車の飾りだったのです。",
+      "index": 24,
+      "text": "今日は、名前のからくりを、のぞいてみます。",
       "type": "diagram",
-      "motif": "yw_045",
-      "audio": "audio-yawa/scene-044.wav",
-      "durationSec": 3.488
+      "motif": "nm_025",
+      "audio": "audio-namae/scene-024.wav",
+      "durationSec": 3.3386666666666667
     },
     {
-      "index": 46,
-      "text": "では、本物のぬいぐるみの祖先は、どこにあるのでしょうか。",
+      "index": 25,
+      "text": "最初の現場は、200年前のドイツ。グリム兄弟の昔話です。",
       "type": "diagram",
-      "motif": "yw_046",
-      "audio": "audio-yawa/scene-045.wav",
-      "durationSec": 5.12
+      "motif": "nm_026",
+      "audio": "audio-namae/scene-025.wav",
+      "durationSec": 5.504
     },
     {
-      "index": 47,
-      "text": "場所は変わって、エジプトです。",
+      "index": 26,
+      "text": "第1章、名前を当てたら、あなたの勝ち。",
       "type": "diagram",
-      "motif": "yw_047",
-      "audio": "audio-yawa/scene-046.wav",
-      "durationSec": 2.453333333333333
+      "motif": "nm_027",
+      "audio": "audio-namae/scene-026.wav",
+      "durationSec": 3.5733333333333333
     },
     {
-      "index": 48,
-      "text": "ローマ時代のエジプトの町から、小さな人形が見つかっています。",
+      "index": 27,
+      "text": "1812年、グリム兄弟は、ある不思議な話を本に収めました。",
       "type": "diagram",
-      "motif": "yw_048",
-      "audio": "audio-yawa/scene-047.wav",
-      "durationSec": 4.672
+      "motif": "nm_028",
+      "audio": "audio-namae/scene-027.wav",
+      "durationSec": 5.898666666666666
     },
     {
-      "index": 49,
-      "text": "高さは、およそ19センチ。麻の布でできています。",
+      "index": 28,
+      "text": "わらを金に紡がないと命がない、と王さまに命じられた娘がいました。",
       "type": "diagram",
-      "motif": "yw_049",
-      "audio": "audio-yawa/scene-048.wav",
-      "durationSec": 4.544
+      "motif": "nm_029",
+      "audio": "audio-namae/scene-028.wav",
+      "durationSec": 5.312
     },
     {
-      "index": 50,
-      "text": "中に詰められていたのは、ぼろ布と、紙のもとになるパピルスです。",
+      "index": 29,
+      "text": "そこへ小さな男があらわれて、代わりに紡いでくれます。",
       "type": "diagram",
-      "motif": "yw_050",
-      "audio": "audio-yawa/scene-049.wav",
-      "durationSec": 5.024
+      "motif": "nm_030",
+      "audio": "audio-namae/scene-029.wav",
+      "durationSec": 4.2026666666666666
     },
     {
-      "index": 51,
-      "text": "顔には毛糸が縫いつけられ、頭には小さな青いガラス玉の飾りがついていました。",
+      "index": 30,
+      "text": "ただし、お礼は、娘が将来生む、最初の子どもです。",
       "type": "diagram",
-      "motif": "yw_051",
-      "audio": "audio-yawa/scene-050.wav",
-      "durationSec": 5.994666666666666
+      "motif": "nm_031",
+      "audio": "audio-namae/scene-030.wav",
+      "durationSec": 4.938666666666666
     },
     {
-      "index": 52,
-      "text": "エジプトの乾いた空気のおかげで、1500年以上たった今も、形が残っています。",
+      "index": 31,
+      "text": "やがて赤ちゃんが生まれ、小男が取りに来ました。",
       "type": "diagram",
-      "motif": "yw_052",
-      "audio": "audio-yawa/scene-051.wav",
-      "durationSec": 6.496
+      "motif": "nm_032",
+      "audio": "audio-namae/scene-031.wav",
+      "durationSec": 3.52
     },
     {
-      "index": 53,
-      "text": "いまはロンドンの、大英博物館に収められています。",
+      "index": 32,
+      "text": "泣いて頼む母親に、小男は、ひとつだけ逃げ道を出します。",
       "type": "diagram",
-      "motif": "yw_053",
-      "audio": "audio-yawa/scene-052.wav",
+      "motif": "nm_033",
+      "audio": "audio-namae/scene-032.wav",
+      "durationSec": 4.746666666666667
+    },
+    {
+      "index": 33,
+      "text": "3日のうちに、わたしの名前を当ててみろ。",
+      "type": "diagram",
+      "motif": "nm_034",
+      "audio": "audio-namae/scene-033.wav",
+      "durationSec": 3.264
+    },
+    {
+      "index": 34,
+      "text": "最後の日、森の中で、小男が自分の名前を歌っているのが聞かれてしまいます。",
+      "type": "diagram",
+      "motif": "nm_035",
+      "audio": "audio-namae/scene-034.wav",
+      "durationSec": 6.016
+    },
+    {
+      "index": 35,
+      "text": "ルンペルシュティルツキン。",
+      "type": "diagram",
+      "motif": "nm_036",
+      "audio": "audio-namae/scene-035.wav",
+      "durationSec": 1.5466666666666666
+    },
+    {
+      "index": 36,
+      "text": "名前を言い当てられた小男は、怒り狂って、姿を消しました。",
+      "type": "diagram",
+      "motif": "nm_037",
+      "audio": "audio-namae/scene-036.wav",
+      "durationSec": 4.981333333333334
+    },
+    {
+      "index": 37,
+      "text": "勝負の決め手は、力でも、知恵比べでもありません。",
+      "type": "diagram",
+      "motif": "nm_038",
+      "audio": "audio-namae/scene-037.wav",
       "durationSec": 4.1386666666666665
     },
     {
-      "index": 54,
-      "text": "中に何かを詰めて、ふくらませる。この発想は、ずいぶん昔からあったのです。",
+      "index": 38,
+      "text": "相手の本当の名前を知ったほうが、勝つのです。",
       "type": "diagram",
-      "motif": "yw_054",
-      "audio": "audio-yawa/scene-053.wav",
-      "durationSec": 6.133333333333334
+      "motif": "nm_039",
+      "audio": "audio-namae/scene-038.wav",
+      "durationSec": 3.584
+    },
+    {
+      "index": 39,
+      "text": "昔話の研究では、これをひとつの「型」として分類しています。",
+      "type": "diagram",
+      "motif": "nm_040",
+      "audio": "audio-namae/scene-039.wav",
+      "durationSec": 4.778666666666667
+    },
+    {
+      "index": 40,
+      "text": "イギリスの「トム・ティット・トット」など、ヨーロッパを中心に、各地に似た話があります。",
+      "type": "diagram",
+      "motif": "nm_041",
+      "audio": "audio-namae/scene-040.wav",
+      "durationSec": 6.8373333333333335
+    },
+    {
+      "index": 41,
+      "text": "日本にも、「大工と鬼六」という、そっくりな話があります。",
+      "type": "diagram",
+      "motif": "nm_042",
+      "audio": "audio-namae/scene-041.wav",
+      "durationSec": 4.586666666666667
+    },
+    {
+      "index": 42,
+      "text": "ところがこの話、実は日本古来の昔話ではありません。",
+      "type": "diagram",
+      "motif": "nm_043",
+      "audio": "audio-namae/scene-042.wav",
+      "durationSec": 5.525333333333333
+    },
+    {
+      "index": 43,
+      "text": "大正時代に、北欧の伝説を、日本風に書きかえたものだと分かっています。",
+      "type": "diagram",
+      "motif": "nm_044",
+      "audio": "audio-namae/scene-043.wav",
+      "durationSec": 6.005333333333334
+    },
+    {
+      "index": 44,
+      "text": "巨人は鬼に、教会は橋に、置きかえられました。",
+      "type": "diagram",
+      "motif": "nm_045",
+      "audio": "audio-namae/scene-044.wav",
+      "durationSec": 4.074666666666666
+    },
+    {
+      "index": 45,
+      "text": "昔話も、旅をするのです。",
+      "type": "diagram",
+      "motif": "nm_046",
+      "audio": "audio-namae/scene-045.wav",
+      "durationSec": 2.592
+    },
+    {
+      "index": 46,
+      "text": "もっと古い時代にも、名前の力は信じられていました。",
+      "type": "diagram",
+      "motif": "nm_047",
+      "audio": "audio-namae/scene-046.wav",
+      "durationSec": 4.2026666666666666
+    },
+    {
+      "index": 47,
+      "text": "古代エジプトでは、敵の名前を書いた人形を、わざと割って埋める儀式がありました。",
+      "type": "diagram",
+      "motif": "nm_048",
+      "audio": "audio-namae/scene-047.wav",
+      "durationSec": 6.282666666666667
+    },
+    {
+      "index": 48,
+      "text": "名前を壊せば、相手も弱る。そう考えたのです。",
+      "type": "diagram",
+      "motif": "nm_049",
+      "audio": "audio-namae/scene-048.wav",
+      "durationSec": 4.149333333333334
+    },
+    {
+      "index": 49,
+      "text": "名前を知る者は、相手をつかまえることができる。",
+      "type": "diagram",
+      "motif": "nm_050",
+      "audio": "audio-namae/scene-049.wav",
+      "durationSec": 3.68
+    },
+    {
+      "index": 50,
+      "text": "だから人々は、こう考えるようになります。",
+      "type": "diagram",
+      "motif": "nm_051",
+      "audio": "audio-namae/scene-050.wav",
+      "durationSec": 3.296
+    },
+    {
+      "index": 51,
+      "text": "本当の名前は、隠しておこう。",
+      "type": "diagram",
+      "motif": "nm_052",
+      "audio": "audio-namae/scene-051.wav",
+      "durationSec": 2.6453333333333333
+    },
+    {
+      "index": 52,
+      "text": "第2章、本当の名前は、呼んではいけない。",
+      "type": "diagram",
+      "motif": "nm_053",
+      "audio": "audio-namae/scene-052.wav",
+      "durationSec": 3.6693333333333333
+    },
+    {
+      "index": 53,
+      "text": "古代の中国では、人は、名前を2つ持っていました。",
+      "type": "diagram",
+      "motif": "nm_054",
+      "audio": "audio-namae/scene-053.wav",
+      "durationSec": 4.341333333333333
+    },
+    {
+      "index": 54,
+      "text": "本当の名前の「諱」と、ふだん呼ばれるための名前の「字」です。",
+      "type": "diagram",
+      "motif": "nm_055",
+      "audio": "audio-namae/scene-054.wav",
+      "durationSec": 5.045333333333334
     },
     {
       "index": 55,
-      "text": "次は、柔らかいものに、値段がつく話です。",
+      "text": "諱は、親や主君でもなければ、口にしてはいけないものでした。",
       "type": "diagram",
-      "motif": "yw_055",
-      "audio": "audio-yawa/scene-054.wav",
-      "durationSec": 3.9466666666666668
+      "motif": "nm_056",
+      "audio": "audio-namae/scene-055.wav",
+      "durationSec": 4.928
     },
     {
       "index": 56,
-      "text": "第3章、羽毛のために、持ち場を離れた男。",
+      "text": "とくに、皇帝の諱は特別です。",
       "type": "diagram",
-      "motif": "yw_056",
-      "audio": "audio-yawa/scene-055.wav",
-      "durationSec": 4.1066666666666665
+      "motif": "nm_057",
+      "audio": "audio-namae/scene-056.wav",
+      "durationSec": 2.965333333333333
     },
     {
       "index": 57,
-      "text": "舞台は、およそ2000年前の、ローマ帝国です。",
+      "text": "唐の皇帝、李世民が亡くなったあと、「民」の字を使うことが避けられました。",
       "type": "diagram",
-      "motif": "yw_057",
-      "audio": "audio-yawa/scene-056.wav",
-      "durationSec": 4.085333333333334
+      "motif": "nm_058",
+      "audio": "audio-namae/scene-057.wav",
+      "durationSec": 5.898666666666666
     },
     {
       "index": 58,
-      "text": "この時代、柔らかいものの代表といえば、ガチョウの羽毛でした。",
+      "text": "その結果、国の役所「民部」の名前まで、「戸部」に変えられてしまいます。",
       "type": "diagram",
-      "motif": "yw_058",
-      "audio": "audio-yawa/scene-057.wav",
-      "durationSec": 4.992
+      "motif": "nm_059",
+      "audio": "audio-namae/scene-058.wav",
+      "durationSec": 5.1946666666666665
     },
     {
       "index": 59,
-      "text": "博物学者のプリニウスは、『博物誌』という大きな本に、羽毛のことを書き残しています。",
+      "text": "ひとりの名前のために、役所の看板が書きかえられたのです。",
       "type": "diagram",
-      "motif": "yw_059",
-      "audio": "audio-yawa/scene-058.wav",
-      "durationSec": 7.1466666666666665
+      "motif": "nm_060",
+      "audio": "audio-namae/scene-059.wav",
+      "durationSec": 4.469333333333333
     },
     {
       "index": 60,
-      "text": "いちばん評判がよかったのは、ゲルマニア、いまのドイツのあたりの、白い小さなガチョウの羽毛でした。",
+      "text": "日本の平安時代の女性も、本名で呼ばれることは、ほとんどありませんでした。",
       "type": "diagram",
-      "motif": "yw_060",
-      "audio": "audio-yawa/scene-059.wav",
-      "durationSec": 7.328
+      "motif": "nm_061",
+      "audio": "audio-namae/scene-060.wav",
+      "durationSec": 5.898666666666666
     },
     {
       "index": 61,
-      "text": "その値段は、1ポンドあたり、5デナリウス。北の土地の羽毛は、ありがたがられる高級品でした。",
+      "text": "父の役職などにちなんだ、呼び名で呼ばれていたのです。",
       "type": "diagram",
-      "motif": "yw_061",
-      "audio": "audio-yawa/scene-060.wav",
-      "durationSec": 7.669333333333333
+      "motif": "nm_062",
+      "audio": "audio-namae/scene-061.wav",
+      "durationSec": 4.1706666666666665
     },
     {
       "index": 62,
-      "text": "さて、ここで問題です。",
+      "text": "そのため、あの紫式部でさえ、本名は分かっていません。",
       "type": "diagram",
-      "motif": "yw_062",
-      "audio": "audio-yawa/scene-061.wav",
-      "durationSec": 1.9946666666666666
+      "motif": "nm_063",
+      "audio": "audio-namae/scene-062.wav",
+      "durationSec": 4.693333333333333
     },
     {
       "index": 63,
-      "text": "この羽毛をめぐって、ローマの軍隊で、ある事件が起きました。何でしょうか。",
+      "text": "名前を知られることには、特別な意味がありました。",
       "type": "diagram",
-      "motif": "yw_063",
-      "audio": "audio-yawa/scene-062.wav",
-      "durationSec": 6.517333333333333
+      "motif": "nm_064",
+      "audio": "audio-namae/scene-063.wav",
+      "durationSec": 3.7013333333333334
     },
     {
       "index": 64,
-      "text": "答えは、指揮官が、ガチョウを捕まえるために、部隊ごと持ち場を離れてしまった、です。",
+      "text": "万葉集のいちばん最初の歌は、雄略天皇の歌として伝わる、こんな歌です。",
       "type": "diagram",
-      "motif": "yw_064",
-      "audio": "audio-yawa/scene-063.wav",
-      "durationSec": 6.965333333333334
+      "motif": "nm_065",
+      "audio": "audio-namae/scene-064.wav",
+      "durationSec": 6.08
     },
     {
       "index": 65,
-      "text": "プリニウスによれば、そうして告発された指揮官たちが、いたそうです。",
+      "text": "家告らせ、名告らさね。",
       "type": "diagram",
-      "motif": "yw_065",
-      "audio": "audio-yawa/scene-064.wav",
-      "durationSec": 5.066666666666666
+      "motif": "nm_066",
+      "audio": "audio-namae/scene-065.wav",
+      "durationSec": 2.058666666666667
     },
     {
       "index": 66,
-      "text": "そしてプリニウスは、こう嘆いています。",
+      "text": "あなたの家はどこ。名前を教えて。",
       "type": "diagram",
-      "motif": "yw_066",
-      "audio": "audio-yawa/scene-065.wav",
+      "motif": "nm_067",
+      "audio": "audio-namae/scene-066.wav",
       "durationSec": 2.88
     },
     {
       "index": 67,
-      "text": "「今では男でさえ、これがないと、首を休められない」。",
+      "text": "名前をたずねることが、そのまま、求婚の言葉だったと考えられています。",
       "type": "diagram",
-      "motif": "yw_067",
-      "audio": "audio-yawa/scene-066.wav",
-      "durationSec": 4.288
+      "motif": "nm_068",
+      "audio": "audio-namae/scene-067.wav",
+      "durationSec": 5.482666666666667
     },
     {
       "index": 68,
-      "text": "ここでいう「これ」は、羽毛を詰めて首を支える寝具のことだと、読まれています。",
+      "text": "名前で身を守る、という工夫もありました。",
       "type": "diagram",
-      "motif": "yw_068",
-      "audio": "audio-yawa/scene-067.wav",
-      "durationSec": 5.653333333333333
+      "motif": "nm_069",
+      "audio": "audio-namae/scene-068.wav",
+      "durationSec": 3.1786666666666665
     },
     {
       "index": 69,
-      "text": "柔らかさは、取り寄せるほどの、ぜいたく品になっていました。",
+      "text": "豊臣秀吉は、待ちに待った男の子に、「棄」と名前をつけます。",
       "type": "diagram",
-      "motif": "yw_069",
-      "audio": "audio-yawa/scene-068.wav",
-      "durationSec": 4.544
-    },
-    {
-      "index": 70,
-      "text": "柔らかさは、こんどは、首の下にやってきました。",
-      "type": "diagram",
-      "motif": "yw_070",
-      "audio": "audio-yawa/scene-069.wav",
-      "durationSec": 3.84
-    },
-    {
-      "index": 71,
-      "text": "ところが、この柔らかさを、心から嫌った人たちがいました。",
-      "type": "diagram",
-      "motif": "yw_071",
-      "audio": "audio-yawa/scene-070.wav",
-      "durationSec": 4.661333333333333
-    },
-    {
-      "index": 72,
-      "text": "第4章、柔らかいと、人はダメになる。",
-      "type": "diagram",
-      "motif": "yw_072",
-      "audio": "audio-yawa/scene-071.wav",
-      "durationSec": 3.5733333333333333
-    },
-    {
-      "index": 73,
-      "text": "ラテン語で「柔らかさ」は、モッリティアといいます。",
-      "type": "diagram",
-      "motif": "yw_073",
-      "audio": "audio-yawa/scene-072.wav",
-      "durationSec": 3.2426666666666666
-    },
-    {
-      "index": 74,
-      "text": "この言葉には、もうひとつの意味がありました。",
-      "type": "diagram",
-      "motif": "yw_074",
-      "audio": "audio-yawa/scene-073.wav",
-      "durationSec": 3.264
-    },
-    {
-      "index": 75,
-      "text": "「軟弱」、そして「だらしなさ」です。",
-      "type": "diagram",
-      "motif": "yw_075",
-      "audio": "audio-yawa/scene-074.wav",
-      "durationSec": 2.3786666666666667
-    },
-    {
-      "index": 76,
-      "text": "ローマの文人たちは、この言葉を、たるんだ人をけなすときに使いました。",
-      "type": "diagram",
-      "motif": "yw_076",
-      "audio": "audio-yawa/scene-075.wav",
-      "durationSec": 5.386666666666667
-    },
-    {
-      "index": 77,
-      "text": "聖書にも、こんな一節があります。",
-      "type": "diagram",
-      "motif": "yw_077",
-      "audio": "audio-yawa/scene-076.wav",
-      "durationSec": 2.7306666666666666
-    },
-    {
-      "index": 78,
-      "text": "「柔らかい衣を着た人なら、王の宮殿にいる」。",
-      "type": "diagram",
-      "motif": "yw_078",
-      "audio": "audio-yawa/scene-077.wav",
-      "durationSec": 3.6693333333333333
-    },
-    {
-      "index": 79,
-      "text": "柔らかさは、ぜいたくな暮らしの、しるしだったのです。",
-      "type": "diagram",
-      "motif": "yw_079",
-      "audio": "audio-yawa/scene-078.wav",
-      "durationSec": 4
-    },
-    {
-      "index": 80,
-      "text": "13世紀の神学者、トマス・アクィナスは、さらに踏みこみました。",
-      "type": "diagram",
-      "motif": "yw_080",
-      "audio": "audio-yawa/scene-079.wav",
-      "durationSec": 5.141333333333334
-    },
-    {
-      "index": 81,
-      "text": "彼は「柔弱」を、悪い性質のひとつに数えています。",
-      "type": "diagram",
-      "motif": "yw_081",
-      "audio": "audio-yawa/scene-080.wav",
-      "durationSec": 4.16
-    },
-    {
-      "index": 82,
-      "text": "そのたとえが、なかなか見事です。",
-      "type": "diagram",
-      "motif": "yw_082",
-      "audio": "audio-yawa/scene-081.wav",
-      "durationSec": 2.6026666666666665
-    },
-    {
-      "index": 83,
-      "text": "柔弱とは、触れると、すぐに凹んでしまうもののことだ、と。",
-      "type": "diagram",
-      "motif": "yw_083",
-      "audio": "audio-yawa/scene-082.wav",
-      "durationSec": 5.002666666666666
-    },
-    {
-      "index": 84,
-      "text": "少し押されただけで、すぐに引き下がってしまう人のことです。",
-      "type": "diagram",
-      "motif": "yw_084",
-      "audio": "audio-yawa/scene-083.wav",
-      "durationSec": 4.245333333333333
-    },
-    {
-      "index": 85,
-      "text": "どこかで、聞いたことがある話です。",
-      "type": "diagram",
-      "motif": "yw_085",
-      "audio": "audio-yawa/scene-084.wav",
-      "durationSec": 2.7413333333333334
-    },
-    {
-      "index": 86,
-      "text": "そう。冒頭の「人をダメにするソファ」です。",
-      "type": "diagram",
-      "motif": "yw_086",
-      "audio": "audio-yawa/scene-085.wav",
-      "durationSec": 3.0613333333333332
-    },
-    {
-      "index": 87,
-      "text": "柔らかいものは、人をダメにする。この発想は、700年以上前から、あったのです。",
-      "type": "diagram",
-      "motif": "yw_087",
-      "audio": "audio-yawa/scene-086.wav",
-      "durationSec": 6.858666666666666
-    },
-    {
-      "index": 88,
-      "text": "日本語の「軟弱」も、柔らかくて弱い、と書きます。",
-      "type": "diagram",
-      "motif": "yw_088",
-      "audio": "audio-yawa/scene-087.wav",
-      "durationSec": 4.181333333333333
-    },
-    {
-      "index": 89,
-      "text": "では、柔らかさを本気で拒んだ人は、何をしたのでしょうか。",
-      "type": "diagram",
-      "motif": "yw_089",
-      "audio": "audio-yawa/scene-088.wav",
-      "durationSec": 5.322666666666667
-    },
-    {
-      "index": 90,
-      "text": "第5章、羽毛枕には、悪魔が住んでいる。",
-      "type": "diagram",
-      "motif": "yw_090",
-      "audio": "audio-yawa/scene-089.wav",
-      "durationSec": 3.8186666666666667
-    },
-    {
-      "index": 91,
-      "text": "13世紀のイタリア。アッシジの町に、フランチェスコという修道士がいました。",
-      "type": "diagram",
-      "motif": "yw_091",
-      "audio": "audio-yawa/scene-090.wav",
-      "durationSec": 6.08
-    },
-    {
-      "index": 92,
-      "text": "持ち物をすべて手放し、貧しく生きることを、つらぬいた人です。",
-      "type": "diagram",
-      "motif": "yw_092",
-      "audio": "audio-yawa/scene-091.wav",
-      "durationSec": 4.906666666666666
-    },
-    {
-      "index": 93,
-      "text": "あるとき、病気になったフランチェスコに、仲間が羽毛の枕を用意しました。",
-      "type": "diagram",
-      "motif": "yw_093",
-      "audio": "audio-yawa/scene-092.wav",
-      "durationSec": 5.621333333333333
-    },
-    {
-      "index": 94,
-      "text": "ところがその夜、彼は眠れませんでした。",
-      "type": "diagram",
-      "motif": "yw_094",
-      "audio": "audio-yawa/scene-093.wav",
-      "durationSec": 3.6053333333333333
-    },
-    {
-      "index": 95,
-      "text": "翌朝、フランチェスコは言います。「あの枕には、悪魔がいた」。",
-      "type": "diagram",
-      "motif": "yw_095",
-      "audio": "audio-yawa/scene-094.wav",
-      "durationSec": 5.066666666666666
-    },
-    {
-      "index": 96,
-      "text": "そして、枕を遠くへ、放り出させたそうです。",
-      "type": "diagram",
-      "motif": "yw_096",
-      "audio": "audio-yawa/scene-095.wav",
-      "durationSec": 3.68
-    },
-    {
-      "index": 97,
-      "text": "柔らかい枕は、清い暮らしの、敵だったのです。",
-      "type": "diagram",
-      "motif": "yw_097",
-      "audio": "audio-yawa/scene-096.wav",
-      "durationSec": 4
-    },
-    {
-      "index": 98,
-      "text": "ただし、これは、聖人の話です。",
-      "type": "diagram",
-      "motif": "yw_098",
-      "audio": "audio-yawa/scene-097.wav",
-      "durationSec": 3.168
-    },
-    {
-      "index": 99,
-      "text": "同じ時代のふつうの人々は、羽毛の寝具が、大好きでした。",
-      "type": "diagram",
-      "motif": "yw_099",
-      "audio": "audio-yawa/scene-098.wav",
-      "durationSec": 4.810666666666667
-    },
-    {
-      "index": 100,
-      "text": "舞台は、イギリスへ移ります。",
-      "type": "diagram",
-      "motif": "yw_100",
-      "audio": "audio-yawa/scene-099.wav",
-      "durationSec": 2.421333333333333
-    },
-    {
-      "index": 101,
-      "text": "1395年、ある貴族の女性が、遺言書を残しました。",
-      "type": "diagram",
-      "motif": "yw_101",
-      "audio": "audio-yawa/scene-100.wav",
-      "durationSec": 5.536
-    },
-    {
-      "index": 102,
-      "text": "いちばん良い羽毛のベッドは、この子に。二番目は、あの子に。三番目は、その子に。",
-      "type": "diagram",
-      "motif": "yw_102",
-      "audio": "audio-yawa/scene-101.wav",
-      "durationSec": 6.944
-    },
-    {
-      "index": 103,
-      "text": "ここでいう羽毛のベッドとは、羽毛を詰めた、大きな敷きぶとんのことです。",
-      "type": "diagram",
-      "motif": "yw_103",
-      "audio": "audio-yawa/scene-102.wav",
+      "motif": "nm_070",
+      "audio": "audio-namae/scene-069.wav",
       "durationSec": 5.184
     },
     {
-      "index": 104,
-      "text": "遺言で分けるほどの、財産だったのです。",
+      "index": 70,
+      "text": "捨てる、の棄です。",
       "type": "diagram",
-      "motif": "yw_104",
-      "audio": "audio-yawa/scene-103.wav",
-      "durationSec": 3.264
+      "motif": "nm_071",
+      "audio": "audio-namae/scene-070.wav",
+      "durationSec": 1.6746666666666667
     },
     {
-      "index": 105,
-      "text": "人気が出れば、偽物も出ます。",
+      "index": 71,
+      "text": "捨て子は丈夫に育つ、という言い伝えにあやかったとされます。",
       "type": "diagram",
-      "motif": "yw_105",
-      "audio": "audio-yawa/scene-104.wav",
-      "durationSec": 2.570666666666667
+      "motif": "nm_072",
+      "audio": "audio-namae/scene-071.wav",
+      "durationSec": 4.373333333333333
     },
     {
-      "index": 106,
-      "text": "1474年のロンドンでは、偽物の羽毛ベッドが、訴えられています。",
+      "index": 72,
+      "text": "名前を知られると、つかまる。",
       "type": "diagram",
-      "motif": "yw_106",
-      "audio": "audio-yawa/scene-105.wav",
-      "durationSec": 6.101333333333334
+      "motif": "nm_073",
+      "audio": "audio-namae/scene-072.wav",
+      "durationSec": 2.3893333333333335
     },
     {
-      "index": 107,
-      "text": "そして1552年には、詰め物を取り締まる法律まで、作られました。",
+      "index": 73,
+      "text": "だから隠す。呼ばない。わざと悪い名前をつける。",
       "type": "diagram",
-      "motif": "yw_107",
-      "audio": "audio-yawa/scene-106.wav",
-      "durationSec": 5.92
-    },
-    {
-      "index": 108,
-      "text": "みんなが欲しがったからこそ、聖人は、それを拒んでみせたのです。",
-      "type": "diagram",
-      "motif": "yw_108",
-      "audio": "audio-yawa/scene-107.wav",
-      "durationSec": 4.96
-    },
-    {
-      "index": 109,
-      "text": "聖人の首の下からは、柔らかさが、取り上げられました。",
-      "type": "diagram",
-      "motif": "yw_109",
-      "audio": "audio-yawa/scene-108.wav",
-      "durationSec": 4.384
-    },
-    {
-      "index": 110,
-      "text": "それでも、人々の背中の下には、羽毛がありました。",
-      "type": "diagram",
-      "motif": "yw_110",
-      "audio": "audio-yawa/scene-109.wav",
-      "durationSec": 4.298666666666667
-    },
-    {
-      "index": 111,
-      "text": "第6章、竹でできた、夫人。",
-      "type": "diagram",
-      "motif": "yw_111",
-      "audio": "audio-yawa/scene-110.wav",
-      "durationSec": 2.997333333333333
-    },
-    {
-      "index": 112,
-      "text": "舞台は、中国です。",
-      "type": "diagram",
-      "motif": "yw_112",
-      "audio": "audio-yawa/scene-111.wav",
-      "durationSec": 2.005333333333333
-    },
-    {
-      "index": 113,
-      "text": "さて、ここで問題です。",
-      "type": "diagram",
-      "motif": "yw_113",
-      "audio": "audio-yawa/scene-112.wav",
-      "durationSec": 1.9946666666666666
-    },
-    {
-      "index": 114,
-      "text": "この、竹で編んだ筒のようなもの。何に使う道具でしょうか。",
-      "type": "diagram",
-      "motif": "yw_114",
-      "audio": "audio-yawa/scene-113.wav",
-      "durationSec": 5.312
-    },
-    {
-      "index": 115,
-      "text": "答えは、抱き枕、です。",
-      "type": "diagram",
-      "motif": "yw_115",
-      "audio": "audio-yawa/scene-114.wav",
-      "durationSec": 2.506666666666667
-    },
-    {
-      "index": 116,
-      "text": "夏の暑い夜に、抱えて寝ると、すき間を風が通って、涼しいのです。",
-      "type": "diagram",
-      "motif": "yw_116",
-      "audio": "audio-yawa/scene-115.wav",
-      "durationSec": 5.941333333333334
-    },
-    {
-      "index": 117,
-      "text": "唐の時代には「竹夾膝」、ひざにはさむ竹、と呼ばれていました。",
-      "type": "diagram",
-      "motif": "yw_117",
-      "audio": "audio-yawa/scene-116.wav",
-      "durationSec": 5.301333333333333
-    },
-    {
-      "index": 118,
-      "text": "それが宋の時代になると、名前が変わります。",
-      "type": "diagram",
-      "motif": "yw_118",
-      "audio": "audio-yawa/scene-117.wav",
-      "durationSec": 3.52
-    },
-    {
-      "index": 119,
-      "text": "「竹夫人」。竹の、奥さんです。",
-      "type": "diagram",
-      "motif": "yw_119",
-      "audio": "audio-yawa/scene-118.wav",
-      "durationSec": 2.944
-    },
-    {
-      "index": 120,
-      "text": "蘇軾や陸游といった詩人たちは、この竹夫人を、詩によみました。",
-      "type": "diagram",
-      "motif": "yw_120",
-      "audio": "audio-yawa/scene-119.wav",
-      "durationSec": 5.258666666666667
-    },
-    {
-      "index": 121,
-      "text": "ほかにも、竹奴、青奴といった、人のような呼び名がついています。",
-      "type": "diagram",
-      "motif": "yw_121",
-      "audio": "audio-yawa/scene-120.wav",
-      "durationSec": 5.173333333333333
-    },
-    {
-      "index": 122,
-      "text": "竹夫人は日本にも伝わり、夏の季語になりました。与謝蕪村も、俳句によんでいます。",
-      "type": "diagram",
-      "motif": "yw_122",
-      "audio": "audio-yawa/scene-121.wav",
-      "durationSec": 6.741333333333333
-    },
-    {
-      "index": 123,
-      "text": "韓国には、ちょっと変わった言い伝えがあります。",
-      "type": "diagram",
-      "motif": "yw_123",
-      "audio": "audio-yawa/scene-122.wav",
-      "durationSec": 3.530666666666667
-    },
-    {
-      "index": 124,
-      "text": "父親が使っていた竹夫人は、息子にゆずらず、燃やしてしまう、というのです。",
-      "type": "diagram",
-      "motif": "yw_124",
-      "audio": "audio-yawa/scene-123.wav",
-      "durationSec": 6.229333333333333
-    },
-    {
-      "index": 125,
-      "text": "もちろん、竹夫人のいちばんの役目は、涼むことです。",
-      "type": "diagram",
-      "motif": "yw_125",
-      "audio": "audio-yawa/scene-124.wav",
-      "durationSec": 4.405333333333333
-    },
-    {
-      "index": 126,
-      "text": "でも、ただの道具に、わざわざ「夫人」という名前をつけるでしょうか。",
-      "type": "diagram",
-      "motif": "yw_126",
-      "audio": "audio-yawa/scene-125.wav",
-      "durationSec": 5.696
-    },
-    {
-      "index": 127,
-      "text": "柔らかくなくても、人は、腕の中に何かを入れたかったのです。",
-      "type": "diagram",
-      "motif": "yw_127",
-      "audio": "audio-yawa/scene-126.wav",
-      "durationSec": 4.8213333333333335
-    },
-    {
-      "index": 128,
-      "text": "では人は、柔らかさではなく、何を抱いていたのでしょうか。",
-      "type": "diagram",
-      "motif": "yw_128",
-      "audio": "audio-yawa/scene-127.wav",
-      "durationSec": 5.077333333333334
-    },
-    {
-      "index": 129,
-      "text": "第7章、子ザルは、布にしがみついた。",
-      "type": "diagram",
-      "motif": "yw_129",
-      "audio": "audio-yawa/scene-128.wav",
-      "durationSec": 3.4346666666666668
-    },
-    {
-      "index": 130,
-      "text": "1958年、アメリカの心理学者、ハリー・ハーロウが、ある実験を発表しました。",
-      "type": "diagram",
-      "motif": "yw_130",
-      "audio": "audio-yawa/scene-129.wav",
-      "durationSec": 7.381333333333333
-    },
-    {
-      "index": 131,
-      "text": "用意したのは、2つの「お母さん」の人形です。",
-      "type": "diagram",
-      "motif": "yw_131",
-      "audio": "audio-yawa/scene-130.wav",
-      "durationSec": 3.445333333333333
-    },
-    {
-      "index": 132,
-      "text": "ひとつは、針金でできたお母さん。",
-      "type": "diagram",
-      "motif": "yw_132",
-      "audio": "audio-yawa/scene-131.wav",
-      "durationSec": 2.8053333333333335
-    },
-    {
-      "index": 133,
-      "text": "もうひとつは、針金を、柔らかい布でくるんだお母さん。",
-      "type": "diagram",
-      "motif": "yw_133",
-      "audio": "audio-yawa/scene-132.wav",
-      "durationSec": 4.544
-    },
-    {
-      "index": 134,
-      "text": "そして、片方にだけ、ミルクの出る哺乳びんを取りつけました。",
-      "type": "diagram",
-      "motif": "yw_134",
-      "audio": "audio-yawa/scene-133.wav",
-      "durationSec": 4.64
-    },
-    {
-      "index": 135,
-      "text": "生まれたばかりのアカゲザルの子どもは、どちらのお母さんを選んだでしょうか。",
-      "type": "diagram",
-      "motif": "yw_135",
-      "audio": "audio-yawa/scene-134.wav",
-      "durationSec": 5.6
-    },
-    {
-      "index": 136,
-      "text": "ミルクをくれるのが、針金のお母さんのときでも。",
-      "type": "diagram",
-      "motif": "yw_136",
-      "audio": "audio-yawa/scene-135.wav",
-      "durationSec": 3.7013333333333334
-    },
-    {
-      "index": 137,
-      "text": "子ザルは、ほとんどの時間を、布のお母さんにしがみついて過ごしました。",
-      "type": "diagram",
-      "motif": "yw_137",
-      "audio": "audio-yawa/scene-136.wav",
-      "durationSec": 5.312
-    },
-    {
-      "index": 138,
-      "text": "針金のお母さんのところへは、ミルクを飲むときだけ、行ったのです。",
-      "type": "diagram",
-      "motif": "yw_138",
-      "audio": "audio-yawa/scene-137.wav",
-      "durationSec": 5.109333333333334
-    },
-    {
-      "index": 139,
-      "text": "ハーロウは、こう結論づけました。",
-      "type": "diagram",
-      "motif": "yw_139",
-      "audio": "audio-yawa/scene-138.wav",
-      "durationSec": 2.624
-    },
-    {
-      "index": 140,
-      "text": "触れて心地よいことは、圧倒的に大切だ。授乳は、ほとんど関係ない。",
-      "type": "diagram",
-      "motif": "yw_140",
-      "audio": "audio-yawa/scene-139.wav",
-      "durationSec": 6.165333333333334
-    },
-    {
-      "index": 141,
-      "text": "ちなみに、どちらのお母さんも、中から温められていました。",
-      "type": "diagram",
-      "motif": "yw_141",
-      "audio": "audio-yawa/scene-140.wav",
-      "durationSec": 4.608
-    },
-    {
-      "index": 142,
-      "text": "子ザルが求めていたのは、触り心地と、温かさ。",
-      "type": "diagram",
-      "motif": "yw_142",
-      "audio": "audio-yawa/scene-141.wav",
-      "durationSec": 4.085333333333334
-    },
-    {
-      "index": 143,
-      "text": "つまり、抱っこされている感じ、だったのです。",
-      "type": "diagram",
-      "motif": "yw_143",
-      "audio": "audio-yawa/scene-142.wav",
-      "durationSec": 3.8933333333333335
-    },
-    {
-      "index": 144,
-      "text": "冒頭の問いに、戻りましょう。人類が本当に欲しかったのは、柔らかさではなく、抱っこだったのかもしれません。",
-      "type": "diagram",
-      "motif": "yw_144",
-      "audio": "audio-yawa/scene-143.wav",
-      "durationSec": 8.384
-    },
-    {
-      "index": 145,
-      "text": "ただ、この研究には、影の部分もあります。",
-      "type": "diagram",
-      "motif": "yw_145",
-      "audio": "audio-yawa/scene-144.wav",
-      "durationSec": 3.6586666666666665
-    },
-    {
-      "index": 146,
-      "text": "ハーロウはその後、子ザルを親から引き離して孤立させる実験へと進み、強い批判を受けました。",
-      "type": "diagram",
-      "motif": "yw_146",
-      "audio": "audio-yawa/scene-145.wav",
-      "durationSec": 6.997333333333334
-    },
-    {
-      "index": 147,
-      "text": "では、人間の赤ちゃんにとって、柔らかいものとは、何なのでしょうか。",
-      "type": "diagram",
-      "motif": "yw_147",
-      "audio": "audio-yawa/scene-146.wav",
-      "durationSec": 6.1226666666666665
-    },
-    {
-      "index": 148,
-      "text": "第8章、自分ではない、はじめての持ち物。",
-      "type": "diagram",
-      "motif": "yw_148",
-      "audio": "audio-yawa/scene-147.wav",
-      "durationSec": 3.8826666666666667
-    },
-    {
-      "index": 149,
-      "text": "人間の赤ちゃんは、ほかのサルのなかまと比べても、とても未熟な状態で生まれてきます。",
-      "type": "diagram",
-      "motif": "yw_149",
-      "audio": "audio-yawa/scene-148.wav",
-      "durationSec": 6.442666666666667
-    },
-    {
-      "index": 150,
-      "text": "サルの赤ちゃんのように、母親にしがみついて運ばれることも、できません。",
-      "type": "diagram",
-      "motif": "yw_150",
-      "audio": "audio-yawa/scene-149.wav",
-      "durationSec": 5.386666666666667
-    },
-    {
-      "index": 151,
-      "text": "なぜそこまで未熟なのかは、研究者のあいだでも、意見が分かれています。",
-      "type": "diagram",
-      "motif": "yw_151",
-      "audio": "audio-yawa/scene-150.wav",
-      "durationSec": 5.450666666666667
-    },
-    {
-      "index": 152,
-      "text": "ただ、ひとつ確かなのは、人間は長いあいだ、抱かれて育つということです。",
-      "type": "diagram",
-      "motif": "yw_152",
-      "audio": "audio-yawa/scene-151.wav",
-      "durationSec": 5.888
-    },
-    {
-      "index": 153,
-      "text": "そして、いつかは、腕の中から下ろされる日が来ます。",
-      "type": "diagram",
-      "motif": "yw_153",
-      "audio": "audio-yawa/scene-152.wav",
-      "durationSec": 4.010666666666666
-    },
-    {
-      "index": 154,
-      "text": "イギリスの小児科医で精神分析家の、ドナルド・ウィニコットは、ここに注目しました。",
-      "type": "diagram",
-      "motif": "yw_154",
-      "audio": "audio-yawa/scene-153.wav",
-      "durationSec": 6.08
-    },
-    {
-      "index": 155,
-      "text": "赤ちゃんが手放さない、毛布の切れはしや、ぬいぐるみ。",
-      "type": "diagram",
-      "motif": "yw_155",
-      "audio": "audio-yawa/scene-154.wav",
-      "durationSec": 4.256
-    },
-    {
-      "index": 156,
-      "text": "ウィニコットは、これを「移行対象」と呼びました。",
-      "type": "diagram",
-      "motif": "yw_156",
-      "audio": "audio-yawa/scene-155.wav",
-      "durationSec": 3.3493333333333335
-    },
-    {
-      "index": 157,
-      "text": "自分ではない、はじめての持ち物、という意味です。",
-      "type": "diagram",
-      "motif": "yw_157",
-      "audio": "audio-yawa/scene-156.wav",
-      "durationSec": 3.936
-    },
-    {
-      "index": 158,
-      "text": "お母さんの腕と、ひとりの世界のあいだを、つないでくれるもの、です。",
-      "type": "diagram",
-      "motif": "yw_158",
-      "audio": "audio-yawa/scene-157.wav",
-      "durationSec": 5.354666666666667
-    },
-    {
-      "index": 159,
-      "text": "ちなみに、私たちの肌には、ゆっくり撫でられたときに、よく反応する神経があります。",
-      "type": "diagram",
-      "motif": "yw_159",
-      "audio": "audio-yawa/scene-158.wav",
-      "durationSec": 6.826666666666667
-    },
-    {
-      "index": 160,
-      "text": "いちばんよく反応するのは、秒速数センチ。ちょうど、人の手で撫でる速さです。",
-      "type": "diagram",
-      "motif": "yw_160",
-      "audio": "audio-yawa/scene-159.wav",
-      "durationSec": 6.282666666666667
-    },
-    {
-      "index": 161,
-      "text": "この神経は、毛の生えている肌に多く、手のひらには、ほとんどありません。",
-      "type": "diagram",
-      "motif": "yw_161",
-      "audio": "audio-yawa/scene-160.wav",
-      "durationSec": 5.952
-    },
-    {
-      "index": 162,
-      "text": "毛布にくるまったり、ぬいぐるみに頬ずりしたり。",
-      "type": "diagram",
-      "motif": "yw_162",
-      "audio": "audio-yawa/scene-161.wav",
-      "durationSec": 3.5733333333333333
-    },
-    {
-      "index": 163,
-      "text": "柔らかいものに包まれると落ち着くのは、体のしくみから見ても、筋が通っているのです。",
-      "type": "diagram",
-      "motif": "yw_163",
-      "audio": "audio-yawa/scene-162.wav",
-      "durationSec": 6.368
-    },
-    {
-      "index": 164,
-      "text": "では、この「抱っこの代わり」が、大量に作られるようになったのは、いつからでしょうか。",
-      "type": "diagram",
-      "motif": "yw_164",
-      "audio": "audio-yawa/scene-163.wav",
-      "durationSec": 6.741333333333333
-    },
-    {
-      "index": 165,
-      "text": "第9章、柔らかさは、大量生産される。",
-      "type": "diagram",
-      "motif": "yw_165",
-      "audio": "audio-yawa/scene-164.wav",
-      "durationSec": 3.9146666666666667
-    },
-    {
-      "index": 166,
-      "text": "20世紀に入ると、柔らかさは、工場で作られるようになります。",
-      "type": "diagram",
-      "motif": "yw_166",
-      "audio": "audio-yawa/scene-165.wav",
-      "durationSec": 5.322666666666667
-    },
-    {
-      "index": 167,
-      "text": "まずは、体を守る柔らかさから、見ていきましょう。",
-      "type": "diagram",
-      "motif": "yw_167",
-      "audio": "audio-yawa/scene-166.wav",
-      "durationSec": 4.032
-    },
-    {
-      "index": 168,
-      "text": "1966年、アメリカ。NASAのエイムズ研究センターが、ある素材の研究を依頼しました。",
-      "type": "diagram",
-      "motif": "yw_168",
-      "audio": "audio-yawa/scene-167.wav",
-      "durationSec": 7.957333333333334
-    },
-    {
-      "index": 169,
-      "text": "目的は、飛行機の座席の、衝撃をやわらげることです。",
-      "type": "diagram",
-      "motif": "yw_169",
-      "audio": "audio-yawa/scene-168.wav",
-      "durationSec": 4.554666666666667
-    },
-    {
-      "index": 170,
-      "text": "生まれたのは、押すとゆっくり沈み、ゆっくり戻る、ふしぎな泡でした。",
-      "type": "diagram",
-      "motif": "yw_170",
-      "audio": "audio-yawa/scene-169.wav",
-      "durationSec": 5.557333333333333
-    },
-    {
-      "index": 171,
-      "text": "いまでいう、低反発素材です。",
-      "type": "diagram",
-      "motif": "yw_171",
-      "audio": "audio-yawa/scene-170.wav",
-      "durationSec": 2.752
-    },
-    {
-      "index": 172,
-      "text": "もうひとつ、手を守る柔らかさがあります。",
-      "type": "diagram",
-      "motif": "yw_172",
-      "audio": "audio-yawa/scene-171.wav",
-      "durationSec": 3.1893333333333334
-    },
-    {
-      "index": 173,
-      "text": "1991年、日本のパイロットが、太くて柔らかいグリップのボールペンを発売しました。",
-      "type": "diagram",
-      "motif": "yw_173",
-      "audio": "audio-yawa/scene-172.wav",
-      "durationSec": 7.424
-    },
-    {
-      "index": 174,
-      "text": "ドクターグリップです。翌年には、シャープペンも出ました。",
-      "type": "diagram",
-      "motif": "yw_174",
-      "audio": "audio-yawa/scene-173.wav",
-      "durationSec": 4.330666666666667
-    },
-    {
-      "index": 175,
-      "text": "伝票を長い時間書きつづける人たちの、手や腕の痛みが、開発のきっかけだったとされます。",
-      "type": "diagram",
-      "motif": "yw_175",
-      "audio": "audio-yawa/scene-174.wav",
-      "durationSec": 6.858666666666666
-    },
-    {
-      "index": 176,
-      "text": "そして、心を落ち着かせる柔らかさも、どんどん大きくなっていきます。",
-      "type": "diagram",
-      "motif": "yw_176",
-      "audio": "audio-yawa/scene-175.wav",
-      "durationSec": 5.045333333333334
-    },
-    {
-      "index": 177,
-      "text": "1968年、イタリアで、ビーンバッグチェアの「サッコ」が生まれました。",
-      "type": "diagram",
-      "motif": "yw_177",
-      "audio": "audio-yawa/scene-176.wav",
-      "durationSec": 5.962666666666666
-    },
-    {
-      "index": 178,
-      "text": "中に細かい粒を詰めた、形の決まらない、大きな袋の椅子です。",
-      "type": "diagram",
-      "motif": "yw_178",
-      "audio": "audio-yawa/scene-177.wav",
-      "durationSec": 5.333333333333333
-    },
-    {
-      "index": 179,
-      "text": "2013年。日本では、無印良品の「体にフィットするソファ」が、あるブログで紹介されました。",
-      "type": "diagram",
-      "motif": "yw_179",
-      "audio": "audio-yawa/scene-178.wav",
-      "durationSec": 7.616
-    },
-    {
-      "index": 180,
-      "text": "ついたあだ名が、そう、「人をダメにするソファ」です。",
-      "type": "diagram",
-      "motif": "yw_180",
-      "audio": "audio-yawa/scene-179.wav",
-      "durationSec": 3.68
-    },
-    {
-      "index": 181,
-      "text": "翌年の2014年には、アメリカ生まれのヨギボーが、日本に上陸します。",
-      "type": "diagram",
-      "motif": "yw_181",
-      "audio": "audio-yawa/scene-180.wav",
-      "durationSec": 5.92
-    },
-    {
-      "index": 182,
-      "text": "海の向こうでは、ぬいぐるみのスクイッシュマロウが、2022年だけで、およそ1億個も売れました。",
-      "type": "diagram",
-      "motif": "yw_182",
-      "audio": "audio-yawa/scene-181.wav",
-      "durationSec": 7.253333333333333
-    },
-    {
-      "index": 183,
-      "text": "柔らかさは、背中、首、腕を越えて、ついに全身を包むようになったのです。",
-      "type": "diagram",
-      "motif": "yw_183",
-      "audio": "audio-yawa/scene-182.wav",
-      "durationSec": 6.688
-    },
-    {
-      "index": 184,
-      "text": "では、こうした柔らかいものは、本当に私たちの役に立っているのでしょうか。",
-      "type": "diagram",
-      "motif": "yw_184",
-      "audio": "audio-yawa/scene-183.wav",
-      "durationSec": 6.464
-    },
-    {
-      "index": 185,
-      "text": "第10章、柔らかさは、何に効くのか。",
-      "type": "diagram",
-      "motif": "yw_185",
-      "audio": "audio-yawa/scene-184.wav",
-      "durationSec": 4.096
-    },
-    {
-      "index": 186,
-      "text": "まずは、体のほうから見ていきましょう。",
-      "type": "diagram",
-      "motif": "yw_186",
-      "audio": "audio-yawa/scene-185.wav",
-      "durationSec": 2.965333333333333
-    },
-    {
-      "index": 187,
-      "text": "病院で長く寝ている人にとって、こわいのが、床ずれです。",
-      "type": "diagram",
-      "motif": "yw_187",
-      "audio": "audio-yawa/scene-186.wav",
-      "durationSec": 4.522666666666667
-    },
-    {
-      "index": 188,
-      "text": "体の同じところに、ずっと圧がかかりつづけると、皮膚が傷ついてしまいます。",
-      "type": "diagram",
-      "motif": "yw_188",
-      "audio": "audio-yawa/scene-187.wav",
-      "durationSec": 5.930666666666666
-    },
-    {
-      "index": 189,
-      "text": "そこで使われるのが、体の形にそって沈む、高機能のマットレスです。",
-      "type": "diagram",
-      "motif": "yw_189",
-      "audio": "audio-yawa/scene-188.wav",
-      "durationSec": 5.621333333333333
-    },
-    {
-      "index": 190,
-      "text": "体と触れる面積が広がると、圧が一か所に集まりません。",
-      "type": "diagram",
-      "motif": "yw_190",
-      "audio": "audio-yawa/scene-189.wav",
-      "durationSec": 4.650666666666667
-    },
-    {
-      "index": 191,
-      "text": "世界中の研究をまとめた報告では、ふつうのマットレスより、床ずれがおよそ6割少なくなりました。",
-      "type": "diagram",
-      "motif": "yw_191",
-      "audio": "audio-yawa/scene-190.wav",
-      "durationSec": 7.637333333333333
-    },
-    {
-      "index": 192,
-      "text": "ただし、柔らかければ柔らかいほど、良いわけではありません。",
-      "type": "diagram",
-      "motif": "yw_192",
-      "audio": "audio-yawa/scene-191.wav",
-      "durationSec": 4.714666666666667
-    },
-    {
-      "index": 193,
-      "text": "腰痛の人を調べた研究では、硬めのマットレスより、中くらいの硬さのほうが、痛みがよくなりました。",
-      "type": "diagram",
-      "motif": "yw_193",
-      "audio": "audio-yawa/scene-192.wav",
-      "durationSec": 7.8613333333333335
-    },
-    {
-      "index": 194,
-      "text": "効いているのは、柔らかさそのものより、体にそう形なのです。",
-      "type": "diagram",
-      "motif": "yw_194",
-      "audio": "audio-yawa/scene-193.wav",
-      "durationSec": 4.938666666666666
-    },
-    {
-      "index": 195,
-      "text": "では、手のほうはどうでしょうか。",
-      "type": "diagram",
-      "motif": "yw_195",
-      "audio": "audio-yawa/scene-194.wav",
-      "durationSec": 2.8693333333333335
-    },
-    {
-      "index": 196,
-      "text": "12人に1時間、文字を書いてもらう実験があります。",
-      "type": "diagram",
-      "motif": "yw_196",
-      "audio": "audio-yawa/scene-195.wav",
+      "motif": "nm_074",
+      "audio": "audio-namae/scene-073.wav",
       "durationSec": 4.213333333333333
     },
     {
-      "index": 197,
-      "text": "太くて柔らかいペンのほうが、指から肩までの痛みが、小さくなりました。",
+      "index": 74,
+      "text": "名前は、呼ぶ人と呼ばれる人を結ぶ、糸でした。",
       "type": "diagram",
-      "motif": "yw_197",
-      "audio": "audio-yawa/scene-196.wav",
-      "durationSec": 5.525333333333333
+      "motif": "nm_075",
+      "audio": "audio-namae/scene-074.wav",
+      "durationSec": 4.149333333333334
     },
     {
-      "index": 198,
-      "text": "ところが、道具の持ち手を調べた研究では、意外な結果が出ています。",
+      "index": 75,
+      "text": "これが、1本目の糸。耳の糸です。",
       "type": "diagram",
-      "motif": "yw_198",
-      "audio": "audio-yawa/scene-197.wav",
-      "durationSec": 5.290666666666667
+      "motif": "nm_076",
+      "audio": "audio-namae/scene-075.wav",
+      "durationSec": 3.4346666666666668
     },
     {
-      "index": 199,
-      "text": "持ち手を柔らかくすると、握る力は、むしろ強くなったのです。",
+      "index": 76,
+      "text": "では、この糸を、無理やり書きかえたら、どうなるのでしょうか。",
       "type": "diagram",
-      "motif": "yw_199",
-      "audio": "audio-yawa/scene-198.wav",
-      "durationSec": 5.056
+      "motif": "nm_077",
+      "audio": "audio-namae/scene-076.wav",
+      "durationSec": 5.226666666666667
     },
     {
-      "index": 200,
-      "text": "それでも人は、柔らかい持ち手のほうを、好みました。",
+      "index": 77,
+      "text": "第3章、名前を、汚い名前に書きかえる罰。",
       "type": "diagram",
-      "motif": "yw_200",
-      "audio": "audio-yawa/scene-199.wav",
-      "durationSec": 4.074666666666666
+      "motif": "nm_078",
+      "audio": "audio-namae/scene-077.wav",
+      "durationSec": 4.128
     },
     {
-      "index": 201,
-      "text": "柔らかさが減らしてくれるのは、力ではなく、痛みのほうなのかもしれません。",
+      "index": 78,
+      "text": "769年、奈良時代の都で、ひとりの皇女が罪に問われました。",
       "type": "diagram",
-      "motif": "yw_201",
-      "audio": "audio-yawa/scene-200.wav",
-      "durationSec": 5.589333333333333
+      "motif": "nm_079",
+      "audio": "audio-namae/scene-078.wav",
+      "durationSec": 5.930666666666666
     },
     {
-      "index": 202,
-      "text": "では、心のほうはどうでしょうか。",
+      "index": 79,
+      "text": "天皇を呪った、という罪です。",
       "type": "diagram",
-      "motif": "yw_202",
-      "audio": "audio-yawa/scene-201.wav",
-      "durationSec": 3.104
+      "motif": "nm_080",
+      "audio": "audio-namae/scene-079.wav",
+      "durationSec": 2.6026666666666665
     },
     {
-      "index": 203,
-      "text": "2024年、137の研究、およそ1万3千人分のデータをまとめた報告が出ました。",
+      "index": 80,
+      "text": "彼女は皇族の身分を取り上げられ、さらに名前まで変えられて、都を追われました。",
       "type": "diagram",
-      "motif": "yw_203",
-      "audio": "audio-yawa/scene-202.wav",
-      "durationSec": 7.786666666666667
+      "motif": "nm_081",
+      "audio": "audio-namae/scene-080.wav",
+      "durationSec": 6.293333333333333
     },
     {
-      "index": 204,
-      "text": "人に触れてもらうと、心の健康に、はっきりした良い効果がありました。",
+      "index": 81,
+      "text": "新しい名前は、「厨真人厨女」。",
       "type": "diagram",
-      "motif": "yw_204",
-      "audio": "audio-yawa/scene-203.wav",
-      "durationSec": 5.429333333333333
+      "motif": "nm_082",
+      "audio": "audio-namae/scene-081.wav",
+      "durationSec": 3.2213333333333334
     },
     {
-      "index": 205,
-      "text": "そして、ぬいぐるみや抱き枕のような、モノに触れても、効果があったのです。",
+      "index": 82,
+      "text": "台所で働く女を思わせる名前だった、と読まれています。",
       "type": "diagram",
-      "motif": "yw_205",
-      "audio": "audio-yawa/scene-204.wav",
-      "durationSec": 5.674666666666667
-    },
-    {
-      "index": 206,
-      "text": "ただし、その効果は、人に触れてもらうほどでは、ありませんでした。",
-      "type": "diagram",
-      "motif": "yw_206",
-      "audio": "audio-yawa/scene-205.wav",
-      "durationSec": 5.173333333333333
-    },
-    {
-      "index": 207,
-      "text": "モノは、人の代わりになる。でも、人ほどではない。",
-      "type": "diagram",
-      "motif": "yw_207",
-      "audio": "audio-yawa/scene-206.wav",
-      "durationSec": 4.32
-    },
-    {
-      "index": 208,
-      "text": "では、スクイーズを握ると、心は落ち着くのでしょうか。",
-      "type": "diagram",
-      "motif": "yw_208",
-      "audio": "audio-yawa/scene-207.wav",
-      "durationSec": 4.810666666666667
-    },
-    {
-      "index": 209,
-      "text": "じつは、ストレスボールの効果を調べた研究は少なく、結果もはっきりしていません。",
-      "type": "diagram",
-      "motif": "yw_209",
-      "audio": "audio-yawa/scene-208.wav",
-      "durationSec": 6.197333333333333
-    },
-    {
-      "index": 210,
-      "text": "握る気持ちよさのしくみも、まだよくわかっていないのです。",
-      "type": "diagram",
-      "motif": "yw_210",
-      "audio": "audio-yawa/scene-209.wav",
-      "durationSec": 4.053333333333334
-    },
-    {
-      "index": 211,
-      "text": "結び、手のひらサイズの、抱っこ。",
-      "type": "diagram",
-      "motif": "yw_211",
-      "audio": "audio-yawa/scene-210.wav",
-      "durationSec": 3.0933333333333333
-    },
-    {
-      "index": 212,
-      "text": "最後に、冒頭のスクイーズに、戻りましょう。",
-      "type": "diagram",
-      "motif": "yw_212",
-      "audio": "audio-yawa/scene-211.wav",
-      "durationSec": 3.7013333333333334
-    },
-    {
-      "index": 213,
-      "text": "2017年ごろ、日本で流行ったスクイーズは、日本のメーカーが作った、ウレタンのものでした。",
-      "type": "diagram",
-      "motif": "yw_213",
-      "audio": "audio-yawa/scene-212.wav",
-      "durationSec": 7.445333333333333
-    },
-    {
-      "index": 214,
-      "text": "そして2026年の今、流行っているのは、中国のSNSから広まった、シリコンのものです。",
-      "type": "diagram",
-      "motif": "yw_214",
-      "audio": "audio-yawa/scene-213.wav",
-      "durationSec": 7.68
-    },
-    {
-      "index": 215,
-      "text": "素材も、生まれた国も変わったのに、スクイーズは、また流行りました。",
-      "type": "diagram",
-      "motif": "yw_215",
-      "audio": "audio-yawa/scene-214.wav",
-      "durationSec": 5.354666666666667
-    },
-    {
-      "index": 216,
-      "text": "人が柔らかいものを握りたくなる理由。それは、2つあります。",
-      "type": "diagram",
-      "motif": "yw_216",
-      "audio": "audio-yawa/scene-215.wav",
-      "durationSec": 4.906666666666666
-    },
-    {
-      "index": 217,
-      "text": "ひとつは、手を守るためです。",
-      "type": "diagram",
-      "motif": "yw_217",
-      "audio": "audio-yawa/scene-216.wav",
-      "durationSec": 2.2933333333333334
-    },
-    {
-      "index": 218,
-      "text": "痛くない、負担が少ない。こちらは、かなり確かです。",
-      "type": "diagram",
-      "motif": "yw_218",
-      "audio": "audio-yawa/scene-217.wav",
-      "durationSec": 4.544
-    },
-    {
-      "index": 219,
-      "text": "もうひとつは、心を落ち着かせるためです。",
-      "type": "diagram",
-      "motif": "yw_219",
-      "audio": "audio-yawa/scene-218.wav",
-      "durationSec": 3.072
-    },
-    {
-      "index": 220,
-      "text": "こちらは、まだ科学では、説明しきれません。",
-      "type": "diagram",
-      "motif": "yw_220",
-      "audio": "audio-yawa/scene-219.wav",
-      "durationSec": 3.7226666666666666
-    },
-    {
-      "index": 221,
-      "text": "でも、20万年の歴史を並べてみると、ひとつの線が見えてきます。",
-      "type": "diagram",
-      "motif": "yw_221",
-      "audio": "audio-yawa/scene-220.wav",
-      "durationSec": 5.312
-    },
-    {
-      "index": 222,
-      "text": "草のベッドは、背中の下に。",
-      "type": "diagram",
-      "motif": "yw_222",
-      "audio": "audio-yawa/scene-221.wav",
-      "durationSec": 2.485333333333333
-    },
-    {
-      "index": 223,
-      "text": "羽毛は、首の下に。",
-      "type": "diagram",
-      "motif": "yw_223",
-      "audio": "audio-yawa/scene-222.wav",
-      "durationSec": 1.92
-    },
-    {
-      "index": 224,
-      "text": "竹の夫人は、腕の中に。",
-      "type": "diagram",
-      "motif": "yw_224",
-      "audio": "audio-yawa/scene-223.wav",
-      "durationSec": 2.506666666666667
-    },
-    {
-      "index": 225,
-      "text": "ヨギボーは、全身を包みこみました。",
-      "type": "diagram",
-      "motif": "yw_225",
-      "audio": "audio-yawa/scene-224.wav",
-      "durationSec": 2.9546666666666668
-    },
-    {
-      "index": 226,
-      "text": "そして、スクイーズは、手のひらの中に。",
-      "type": "diagram",
-      "motif": "yw_226",
-      "audio": "audio-yawa/scene-225.wav",
-      "durationSec": 3.2426666666666666
-    },
-    {
-      "index": 227,
-      "text": "人類はずっと、抱っこの代わりを、作り続けてきたのかもしれません。",
-      "type": "diagram",
-      "motif": "yw_227",
-      "audio": "audio-yawa/scene-226.wav",
-      "durationSec": 5.290666666666667
-    },
-    {
-      "index": 228,
-      "text": "スクイーズは、その最新の、いちばん小さな形なのです。",
-      "type": "diagram",
-      "motif": "yw_228",
-      "audio": "audio-yawa/scene-227.wav",
+      "motif": "nm_083",
+      "audio": "audio-namae/scene-082.wav",
       "durationSec": 4.629333333333333
     },
     {
-      "index": 229,
-      "text": "握るとつぶれて、手を離すと、ゆっくり元に戻ってくる。",
+      "index": 83,
+      "text": "のちにこの罪は、でっちあげだったと分かります。",
       "type": "diagram",
-      "motif": "yw_229",
-      "audio": "audio-yawa/scene-228.wav",
-      "durationSec": 4.490666666666667
+      "motif": "nm_084",
+      "audio": "audio-namae/scene-083.wav",
+      "durationSec": 3.445333333333333
     },
     {
-      "index": 230,
-      "text": "いつでも、何度でも、受け止めてくれる。",
+      "index": 84,
+      "text": "同じ年、もうひとり、名前を奪われた人がいます。",
       "type": "diagram",
-      "motif": "yw_230",
-      "audio": "audio-yawa/scene-229.wav",
-      "durationSec": 3.1573333333333333
+      "motif": "nm_085",
+      "audio": "audio-namae/scene-084.wav",
+      "durationSec": 4.1066666666666665
     },
     {
-      "index": 231,
-      "text": "それはたぶん、抱っこに、少しだけ似ています。",
+      "index": 85,
+      "text": "和気清麻呂です。",
       "type": "diagram",
-      "motif": "yw_231",
-      "audio": "audio-yawa/scene-230.wav",
+      "motif": "nm_086",
+      "audio": "audio-namae/scene-085.wav",
+      "durationSec": 1.4826666666666666
+    },
+    {
+      "index": 86,
+      "text": "彼は、僧の道鏡が天皇の位につくのを、命がけで止めました。",
+      "type": "diagram",
+      "motif": "nm_087",
+      "audio": "audio-namae/scene-086.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 87,
+      "text": "その怒りを買って、名前を書きかえられます。",
+      "type": "diagram",
+      "motif": "nm_088",
+      "audio": "audio-namae/scene-087.wav",
+      "durationSec": 3.328
+    },
+    {
+      "index": 88,
+      "text": "「清麻呂」の「清」が、けがれの「穢」に。",
+      "type": "diagram",
+      "motif": "nm_089",
+      "audio": "audio-namae/scene-088.wav",
+      "durationSec": 3.136
+    },
+    {
+      "index": 89,
+      "text": "新しい名前は、「別部穢麻呂」。",
+      "type": "diagram",
+      "motif": "nm_090",
+      "audio": "audio-namae/scene-089.wav",
+      "durationSec": 2.848
+    },
+    {
+      "index": 90,
+      "text": "清らかな男が、けがれた男にされたのです。",
+      "type": "diagram",
+      "motif": "nm_091",
+      "audio": "audio-namae/scene-090.wav",
+      "durationSec": 3.52
+    },
+    {
+      "index": 91,
+      "text": "映画の中の話だと思っていたことが、本当にあったのです。",
+      "type": "diagram",
+      "motif": "nm_092",
+      "audio": "audio-namae/scene-091.wav",
+      "durationSec": 4.458666666666667
+    },
+    {
+      "index": 92,
+      "text": "名前を奪うことは、正式な刑罰でした。",
+      "type": "diagram",
+      "motif": "nm_093",
+      "audio": "audio-namae/scene-092.wav",
+      "durationSec": 3.3813333333333335
+    },
+    {
+      "index": 93,
+      "text": "その人を呼ぶ言葉そのものが、取り上げられたのです。",
+      "type": "diagram",
+      "motif": "nm_094",
+      "audio": "audio-namae/scene-093.wav",
+      "durationSec": 3.712
+    },
+    {
+      "index": 94,
+      "text": "清麻呂は、のちに名誉を回復し、もとの名前に戻ります。",
+      "type": "diagram",
+      "motif": "nm_095",
+      "audio": "audio-namae/scene-094.wav",
+      "durationSec": 4.618666666666667
+    },
+    {
+      "index": 95,
+      "text": "名前を消す罰は、日本だけのものではありません。",
+      "type": "diagram",
+      "motif": "nm_096",
+      "audio": "audio-namae/scene-095.wav",
+      "durationSec": 3.744
+    },
+    {
+      "index": 96,
+      "text": "古代エジプトでは、女王ハトシェプストの名前が、記念碑から削り取られています。",
+      "type": "diagram",
+      "motif": "nm_097",
+      "audio": "audio-namae/scene-096.wav",
+      "durationSec": 5.792
+    },
+    {
+      "index": 97,
+      "text": "誰が、なぜ削ったのかは、いまも議論が続いています。",
+      "type": "diagram",
+      "motif": "nm_098",
+      "audio": "audio-namae/scene-097.wav",
+      "durationSec": 4.266666666666667
+    },
+    {
+      "index": 98,
+      "text": "名前の糸は、人の手で切ることも、書きかえることもできたのです。",
+      "type": "diagram",
+      "motif": "nm_099",
+      "audio": "audio-namae/scene-098.wav",
+      "durationSec": 4.8
+    },
+    {
+      "index": 99,
+      "text": "では、もっと大きな仕組みが、名前を握ったら、どうなるのでしょうか。",
+      "type": "diagram",
+      "motif": "nm_100",
+      "audio": "audio-namae/scene-099.wav",
+      "durationSec": 5.824
+    },
+    {
+      "index": 100,
+      "text": "第4章、江戸の人は、名字を持っていた。",
+      "type": "diagram",
+      "motif": "nm_101",
+      "audio": "audio-namae/scene-100.wav",
+      "durationSec": 3.5946666666666665
+    },
+    {
+      "index": 101,
+      "text": "江戸時代の庶民は、名字を持っていなかった。",
+      "type": "diagram",
+      "motif": "nm_102",
+      "audio": "audio-namae/scene-101.wav",
+      "durationSec": 3.4346666666666668
+    },
+    {
+      "index": 102,
+      "text": "そう習った人も、多いかもしれません。",
+      "type": "diagram",
+      "motif": "nm_103",
+      "audio": "audio-namae/scene-102.wav",
+      "durationSec": 2.8906666666666667
+    },
+    {
+      "index": 103,
+      "text": "実はこれは、半分まちがいです。",
+      "type": "diagram",
+      "motif": "nm_104",
+      "audio": "audio-namae/scene-103.wav",
+      "durationSec": 3.082666666666667
+    },
+    {
+      "index": 104,
+      "text": "村人や町人にも、名字はありました。",
+      "type": "diagram",
+      "motif": "nm_105",
+      "audio": "audio-namae/scene-104.wav",
+      "durationSec": 3.2106666666666666
+    },
+    {
+      "index": 105,
+      "text": "ただ、おおやけの書類に書いて名乗ることが、許されていなかったのです。",
+      "type": "diagram",
+      "motif": "nm_106",
+      "audio": "audio-namae/scene-105.wav",
+      "durationSec": 5.066666666666666
+    },
+    {
+      "index": 106,
+      "text": "名字を名乗るのは、原則として、武士などの特権でした。",
+      "type": "diagram",
+      "motif": "nm_107",
+      "audio": "audio-namae/scene-106.wav",
+      "durationSec": 4.576
+    },
+    {
+      "index": 107,
+      "text": "手がらのあった町人には、ごほうびとして、名字を名乗る許可が出ることもありました。",
+      "type": "diagram",
+      "motif": "nm_108",
+      "audio": "audio-namae/scene-107.wav",
+      "durationSec": 5.962666666666666
+    },
+    {
+      "index": 108,
+      "text": "名字は、身分の札だったのです。",
+      "type": "diagram",
+      "motif": "nm_109",
+      "audio": "audio-namae/scene-108.wav",
+      "durationSec": 2.7306666666666666
+    },
+    {
+      "index": 109,
+      "text": "しかも江戸の人にとって、名前は、一生に何度も着替えるものでした。",
+      "type": "diagram",
+      "motif": "nm_110",
+      "audio": "audio-namae/scene-109.wav",
+      "durationSec": 5.258666666666667
+    },
+    {
+      "index": 110,
+      "text": "子どもの名前、大人の名前、家を継いだときの名前、隠居したときの名前。",
+      "type": "diagram",
+      "motif": "nm_111",
+      "audio": "audio-namae/scene-110.wav",
+      "durationSec": 6.357333333333333
+    },
+    {
+      "index": 111,
+      "text": "名前は、立場や仕事に合わせて、変わっていくものでした。",
+      "type": "diagram",
+      "motif": "nm_112",
+      "audio": "audio-namae/scene-111.wav",
+      "durationSec": 4.48
+    },
+    {
+      "index": 112,
+      "text": "その自由な名前に、鍵をかけたのが、明治の政府です。",
+      "type": "diagram",
+      "motif": "nm_113",
+      "audio": "audio-namae/scene-112.wav",
+      "durationSec": 4.608
+    },
+    {
+      "index": 113,
+      "text": "第5章、明治、名前に錠前がかかる。",
+      "type": "diagram",
+      "motif": "nm_114",
+      "audio": "audio-namae/scene-113.wav",
+      "durationSec": 3.7866666666666666
+    },
+    {
+      "index": 114,
+      "text": "明治3年。政府は、平民も名字を名乗ってよい、と許可します。",
+      "type": "diagram",
+      "motif": "nm_115",
+      "audio": "audio-namae/scene-114.wav",
+      "durationSec": 5.770666666666667
+    },
+    {
+      "index": 115,
+      "text": "ところが、届け出は、なかなか進みませんでした。",
+      "type": "diagram",
+      "motif": "nm_116",
+      "audio": "audio-namae/scene-115.wav",
+      "durationSec": 3.7333333333333334
+    },
+    {
+      "index": 116,
+      "text": "税金を取られるのでは、と警戒したから、という説もあります。",
+      "type": "diagram",
+      "motif": "nm_117",
+      "audio": "audio-namae/scene-116.wav",
+      "durationSec": 4.746666666666667
+    },
+    {
+      "index": 117,
+      "text": "明治4年、全国の人を記録する、戸籍の法律ができます。",
+      "type": "diagram",
+      "motif": "nm_118",
+      "audio": "audio-namae/scene-117.wav",
+      "durationSec": 5.248
+    },
+    {
+      "index": 118,
+      "text": "人が、ひとりずつ、名簿に結ばれたのです。",
+      "type": "diagram",
+      "motif": "nm_119",
+      "audio": "audio-namae/scene-118.wav",
+      "durationSec": 3.6053333333333333
+    },
+    {
+      "index": 119,
+      "text": "明治5年5月、名前は、ひとり1つと決められます。",
+      "type": "diagram",
+      "motif": "nm_120",
+      "audio": "audio-namae/scene-119.wav",
+      "durationSec": 4.352
+    },
+    {
+      "index": 120,
+      "text": "同じ年の8月、名前を変えることが、禁止されます。",
+      "type": "diagram",
+      "motif": "nm_121",
+      "audio": "audio-namae/scene-120.wav",
+      "durationSec": 4.394666666666667
+    },
+    {
+      "index": 121,
+      "text": "そして明治8年。名字は、名乗ってもいいものから、名乗らなければならないものになります。",
+      "type": "diagram",
+      "motif": "nm_122",
+      "audio": "audio-namae/scene-121.wav",
+      "durationSec": 6.8373333333333335
+    },
+    {
+      "index": 122,
+      "text": "先祖の名字がわからない人は、新しくつくれ、とまで命じられました。",
+      "type": "diagram",
+      "motif": "nm_123",
+      "audio": "audio-namae/scene-122.wav",
+      "durationSec": 5.376
+    },
+    {
+      "index": 123,
+      "text": "兵隊を集める名簿づくりのために、軍から求められたといわれています。",
+      "type": "diagram",
+      "motif": "nm_124",
+      "audio": "audio-namae/scene-123.wav",
+      "durationSec": 5.322666666666667
+    },
+    {
+      "index": 124,
+      "text": "わずか5年で、名前は、自由に着替える服から、外せない札に変わったのです。",
+      "type": "diagram",
+      "motif": "nm_125",
+      "audio": "audio-namae/scene-124.wav",
+      "durationSec": 6.218666666666667
+    },
+    {
+      "index": 125,
+      "text": "ちなみに、明治のはじめ、結婚した女性は、実家の名字のままでした。",
+      "type": "diagram",
+      "motif": "nm_126",
+      "audio": "audio-namae/scene-125.wav",
+      "durationSec": 5.930666666666666
+    },
+    {
+      "index": 126,
+      "text": "夫婦が同じ名字になったのは、明治31年の民法からです。",
+      "type": "diagram",
+      "motif": "nm_127",
+      "audio": "audio-namae/scene-126.wav",
+      "durationSec": 5.173333333333333
+    },
+    {
+      "index": 127,
+      "text": "昔から夫婦は同じ名字だった、というわけではないのです。",
+      "type": "diagram",
+      "motif": "nm_128",
+      "audio": "audio-namae/scene-127.wav",
+      "durationSec": 4.394666666666667
+    },
+    {
+      "index": 128,
+      "text": "こうして、名前から、2本目の糸が伸びました。",
+      "type": "diagram",
+      "motif": "nm_129",
+      "audio": "audio-namae/scene-128.wav",
       "durationSec": 3.68
     },
     {
-      "index": 232,
-      "text": "なお、いまこの動画を観ながら、何かを握っていたあなた。",
+      "index": 129,
+      "text": "国の名簿につながる、帳簿の糸です。",
       "type": "diagram",
-      "motif": "yw_232",
-      "audio": "audio-yawa/scene-231.wav",
-      "durationSec": 4.565333333333333
+      "motif": "nm_130",
+      "audio": "audio-namae/scene-129.wav",
+      "durationSec": 3.050666666666667
     },
     {
-      "index": 233,
-      "text": "それはたぶん、20万年ぶんの、癖です。",
+      "index": 130,
+      "text": "名簿に載れば、国に守られます。",
       "type": "diagram",
-      "motif": "yw_233",
-      "audio": "audio-yawa/scene-232.wav",
+      "motif": "nm_131",
+      "audio": "audio-namae/scene-130.wav",
+      "durationSec": 2.688
+    },
+    {
+      "index": 131,
+      "text": "同時に、国から逃げられなくもなりました。",
+      "type": "diagram",
+      "motif": "nm_132",
+      "audio": "audio-namae/scene-131.wav",
+      "durationSec": 3.2106666666666666
+    },
+    {
+      "index": 132,
+      "text": "この帳簿の糸は、いまも、形を変え続けています。",
+      "type": "diagram",
+      "motif": "nm_133",
+      "audio": "audio-namae/scene-132.wav",
+      "durationSec": 4.149333333333334
+    },
+    {
+      "index": 133,
+      "text": "第6章、2025年、名前に「読み方」が書かれた。",
+      "type": "diagram",
+      "motif": "nm_134",
+      "audio": "audio-namae/scene-133.wav",
+      "durationSec": 4.586666666666667
+    },
+    {
+      "index": 134,
+      "text": "実は、つい最近まで、日本の戸籍には、名前の読み方が書かれていませんでした。",
+      "type": "diagram",
+      "motif": "nm_135",
+      "audio": "audio-namae/scene-134.wav",
+      "durationSec": 6.4
+    },
+    {
+      "index": 135,
+      "text": "それが2025年5月、変わりました。",
+      "type": "diagram",
+      "motif": "nm_136",
+      "audio": "audio-namae/scene-135.wav",
+      "durationSec": 3.4026666666666667
+    },
+    {
+      "index": 136,
+      "text": "戸籍に、名前のふりがなが、載るようになったのです。",
+      "type": "diagram",
+      "motif": "nm_137",
+      "audio": "audio-namae/scene-136.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 137,
+      "text": "まず、役所から通知が届きます。あなたの名前は、こう読みますね、と。",
+      "type": "diagram",
+      "motif": "nm_138",
+      "audio": "audio-namae/scene-137.wav",
+      "durationSec": 6.1226666666666665
+    },
+    {
+      "index": 138,
+      "text": "違っていれば、届け出をして、正しい読み方を伝えます。",
+      "type": "diagram",
+      "motif": "nm_139",
+      "audio": "audio-namae/scene-138.wav",
+      "durationSec": 4.48
+    },
+    {
+      "index": 139,
+      "text": "そして2026年5月、届け出がなかった人は、通知どおりの読み方で、戸籍に書きこまれました。",
+      "type": "diagram",
+      "motif": "nm_140",
+      "audio": "audio-namae/scene-139.wav",
+      "durationSec": 7.744
+    },
+    {
+      "index": 140,
+      "text": "ルールは、一般に認められている読み方であること。",
+      "type": "diagram",
+      "motif": "nm_141",
+      "audio": "audio-namae/scene-140.wav",
+      "durationSec": 3.904
+    },
+    {
+      "index": 141,
+      "text": "法務省は、認められない例を挙げています。",
+      "type": "diagram",
+      "motif": "nm_142",
+      "audio": "audio-namae/scene-141.wav",
+      "durationSec": 3.264
+    },
+    {
+      "index": 142,
+      "text": "太郎と書いて、ジョージ。",
+      "type": "diagram",
+      "motif": "nm_143",
+      "audio": "audio-namae/scene-142.wav",
+      "durationSec": 1.984
+    },
+    {
+      "index": 143,
+      "text": "健と書いて、ケンサマ。",
+      "type": "diagram",
+      "motif": "nm_144",
+      "audio": "audio-namae/scene-143.wav",
+      "durationSec": 2.037333333333333
+    },
+    {
+      "index": 144,
+      "text": "高と書いて、ヒクシ。",
+      "type": "diagram",
+      "motif": "nm_145",
+      "audio": "audio-namae/scene-144.wav",
+      "durationSec": 1.8666666666666667
+    },
+    {
+      "index": 145,
+      "text": "ただし、キラキラネームが禁止された、というわけではありません。",
+      "type": "diagram",
+      "motif": "nm_146",
+      "audio": "audio-namae/scene-145.wav",
+      "durationSec": 4.661333333333333
+    },
+    {
+      "index": 146,
+      "text": "すでに使われている名前は、使ってきた実績があれば認められます。",
+      "type": "diagram",
+      "motif": "nm_147",
+      "audio": "audio-namae/scene-146.wav",
+      "durationSec": 4.981333333333334
+    },
+    {
+      "index": 147,
+      "text": "届け出をしないと罰金、という話もまちがいです。そういう連絡は、詐欺を疑ってください。",
+      "type": "diagram",
+      "motif": "nm_148",
+      "audio": "audio-namae/scene-147.wav",
+      "durationSec": 7.093333333333334
+    },
+    {
+      "index": 148,
+      "text": "では、名前を変えたくなったら、どうするのか。",
+      "type": "diagram",
+      "motif": "nm_149",
+      "audio": "audio-namae/scene-148.wav",
+      "durationSec": 4.053333333333334
+    },
+    {
+      "index": 149,
+      "text": "家庭裁判所に、許可を求めます。",
+      "type": "diagram",
+      "motif": "nm_150",
+      "audio": "audio-namae/scene-149.wav",
+      "durationSec": 2.8373333333333335
+    },
+    {
+      "index": 150,
+      "text": "2025年に名前の変更を申し立てたのは、4979件。",
+      "type": "diagram",
+      "motif": "nm_151",
+      "audio": "audio-namae/scene-150.wav",
+      "durationSec": 5.888
+    },
+    {
+      "index": 151,
+      "text": "名前は、いまも、国の許可なしには変えられないのです。",
+      "type": "diagram",
+      "motif": "nm_152",
+      "audio": "audio-namae/scene-151.wav",
+      "durationSec": 4.213333333333333
+    },
+    {
+      "index": 152,
+      "text": "1993年には、ある親が、子どもに「悪魔」と名づけようとしました。",
+      "type": "diagram",
+      "motif": "nm_153",
+      "audio": "audio-namae/scene-152.wav",
+      "durationSec": 5.866666666666666
+    },
+    {
+      "index": 153,
+      "text": "悪も魔も、使ってよい漢字です。",
+      "type": "diagram",
+      "motif": "nm_154",
+      "audio": "audio-namae/scene-153.wav",
+      "durationSec": 2.6133333333333333
+    },
+    {
+      "index": 154,
+      "text": "それでも役所は止め、話は裁判にまでなりました。",
+      "type": "diagram",
+      "motif": "nm_155",
+      "audio": "audio-namae/scene-154.wav",
+      "durationSec": 3.957333333333333
+    },
+    {
+      "index": 155,
+      "text": "結局、その子は、別の名前で届けられています。",
+      "type": "diagram",
+      "motif": "nm_156",
+      "audio": "audio-namae/scene-155.wav",
+      "durationSec": 4.021333333333334
+    },
+    {
+      "index": 156,
+      "text": "名前は、親のものでも、子どものものでも、国のものでもある。",
+      "type": "diagram",
+      "motif": "nm_157",
+      "audio": "audio-namae/scene-156.wav",
+      "durationSec": 4.981333333333334
+    },
+    {
+      "index": 157,
+      "text": "そんな、ふしぎな持ち物なのです。",
+      "type": "diagram",
+      "motif": "nm_158",
+      "audio": "audio-namae/scene-157.wav",
+      "durationSec": 2.6453333333333333
+    },
+    {
+      "index": 158,
+      "text": "では、名前に値打ちがついたら、それは誰のものになるのでしょうか。",
+      "type": "diagram",
+      "motif": "nm_159",
+      "audio": "audio-namae/scene-158.wav",
+      "durationSec": 5.429333333333333
+    },
+    {
+      "index": 159,
+      "text": "第7章、名前は、誰のものか。",
+      "type": "diagram",
+      "motif": "nm_160",
+      "audio": "audio-namae/scene-159.wav",
+      "durationSec": 3.6266666666666665
+    },
+    {
+      "index": 160,
+      "text": "名前には、もうひとつ、不思議な性質があります。",
+      "type": "diagram",
+      "motif": "nm_161",
+      "audio": "audio-namae/scene-160.wav",
+      "durationSec": 3.8933333333333335
+    },
+    {
+      "index": 161,
+      "text": "使えば使うほど、値打ちが貯まっていくのです。",
+      "type": "diagram",
+      "motif": "nm_162",
+      "audio": "audio-namae/scene-161.wav",
+      "durationSec": 3.4133333333333336
+    },
+    {
+      "index": 162,
+      "text": "歌舞伎の世界では、大きな名前は「名跡」と呼ばれ、親から子へ、師匠から弟子へ受け継がれます。",
+      "type": "diagram",
+      "motif": "nm_163",
+      "audio": "audio-namae/scene-162.wav",
+      "durationSec": 7.306666666666667
+    },
+    {
+      "index": 163,
+      "text": "継ぐたびに、十三代目、のように代が数えられます。",
+      "type": "diagram",
+      "motif": "nm_164",
+      "audio": "audio-namae/scene-163.wav",
+      "durationSec": 4.298666666666667
+    },
+    {
+      "index": 164,
+      "text": "名前が、人から人へ、引っ越していくのです。",
+      "type": "diagram",
+      "motif": "nm_165",
+      "audio": "audio-namae/scene-164.wav",
+      "durationSec": 3.5733333333333333
+    },
+    {
+      "index": 165,
+      "text": "落語家も、師匠から名前をもらい、出世するたびに名前を変える人が多くいます。",
+      "type": "diagram",
+      "motif": "nm_166",
+      "audio": "audio-namae/scene-165.wav",
+      "durationSec": 5.994666666666666
+    },
+    {
+      "index": 166,
+      "text": "大相撲には、親方になるための名前、年寄名跡があります。",
+      "type": "diagram",
+      "motif": "nm_167",
+      "audio": "audio-namae/scene-166.wav",
+      "durationSec": 5.1946666666666665
+    },
+    {
+      "index": 167,
+      "text": "数は、一代かぎりのものを除いて、105。",
+      "type": "diagram",
+      "motif": "nm_168",
+      "audio": "audio-namae/scene-167.wav",
+      "durationSec": 3.8506666666666667
+    },
+    {
+      "index": 168,
+      "text": "かつては、億単位のお金で受け継がれたとも言われました。",
+      "type": "diagram",
+      "motif": "nm_169",
+      "audio": "audio-namae/scene-168.wav",
+      "durationSec": 4.1386666666666665
+    },
+    {
+      "index": 169,
+      "text": "2014年からは、相撲協会が管理し、お金のやり取りは禁止されています。",
+      "type": "diagram",
+      "motif": "nm_170",
+      "audio": "audio-namae/scene-169.wav",
+      "durationSec": 6.176
+    },
+    {
+      "index": 170,
+      "text": "名前が、個人の財産から、みんなの預かりものに変わったのです。",
+      "type": "diagram",
+      "motif": "nm_171",
+      "audio": "audio-namae/scene-170.wav",
+      "durationSec": 4.938666666666666
+    },
+    {
+      "index": 171,
+      "text": "名前の値打ちは、お金で数えることもできます。",
+      "type": "diagram",
+      "motif": "nm_172",
+      "audio": "audio-namae/scene-171.wav",
       "durationSec": 3.616
     },
     {
+      "index": 172,
+      "text": "ある会社の推計では、アップルという名前の値打ちは、およそ4700億ドルです。",
+      "type": "diagram",
+      "motif": "nm_173",
+      "audio": "audio-namae/scene-172.wav",
+      "durationSec": 6.666666666666667
+    },
+    {
+      "index": 173,
+      "text": "すると、新しい問題が起きます。",
+      "type": "diagram",
+      "motif": "nm_174",
+      "audio": "audio-namae/scene-173.wav",
+      "durationSec": 2.8266666666666667
+    },
+    {
+      "index": 174,
+      "text": "その名前は、いったい誰のものなのか。",
+      "type": "diagram",
+      "motif": "nm_175",
+      "audio": "audio-namae/scene-174.wav",
+      "durationSec": 3.466666666666667
+    },
+    {
+      "index": 175,
+      "text": "2012年、最高裁は、有名人の名前や顔には、お客さんを呼ぶ力があると認めました。",
+      "type": "diagram",
+      "motif": "nm_176",
+      "audio": "audio-namae/scene-175.wav",
+      "durationSec": 7.925333333333334
+    },
+    {
+      "index": 176,
+      "text": "その力を、本人が独り占めできる権利です。",
+      "type": "diagram",
+      "motif": "nm_177",
+      "audio": "audio-namae/scene-176.wav",
+      "durationSec": 3.530666666666667
+    },
+    {
+      "index": 177,
+      "text": "では、事務所で名前が売れた人が、事務所をやめたらどうなるのでしょう。",
+      "type": "diagram",
+      "motif": "nm_178",
+      "audio": "audio-namae/scene-177.wav",
+      "durationSec": 5.034666666666666
+    },
+    {
+      "index": 178,
+      "text": "2025年、国は、芸能事務所との取引について、指針を出しました。",
+      "type": "diagram",
+      "motif": "nm_179",
+      "audio": "audio-namae/scene-178.wav",
+      "durationSec": 6.1226666666666665
+    },
+    {
+      "index": 179,
+      "text": "売れるかどうか分からない新人に、事務所はお金をかけて育てます。",
+      "type": "diagram",
+      "motif": "nm_180",
+      "audio": "audio-namae/scene-179.wav",
+      "durationSec": 4.864
+    },
+    {
+      "index": 180,
+      "text": "だから在籍中に、事務所が芸名を管理するのには、理由があるとしました。",
+      "type": "diagram",
+      "motif": "nm_181",
+      "audio": "audio-namae/scene-180.wav",
+      "durationSec": 5.92
+    },
+    {
+      "index": 181,
+      "text": "一方で、やめたあとに、理由もなく名前を使わせないのは、問題になりうる。",
+      "type": "diagram",
+      "motif": "nm_182",
+      "audio": "audio-namae/scene-181.wav",
+      "durationSec": 6.208
+    },
+    {
+      "index": 182,
+      "text": "使用料を払うなど、別の道も話し合うように、と求めています。",
+      "type": "diagram",
+      "motif": "nm_183",
+      "audio": "audio-namae/scene-182.wav",
+      "durationSec": 5.12
+    },
+    {
+      "index": 183,
+      "text": "育てた側の理屈と、名前で生きる側の理屈。",
+      "type": "diagram",
+      "motif": "nm_184",
+      "audio": "audio-namae/scene-183.wav",
+      "durationSec": 3.8293333333333335
+    },
+    {
+      "index": 184,
+      "text": "その両方が、ひとつの名前を引っぱり合っているのです。",
+      "type": "diagram",
+      "motif": "nm_185",
+      "audio": "audio-namae/scene-184.wav",
+      "durationSec": 3.8506666666666667
+    },
+    {
+      "index": 185,
+      "text": "ブイチューバーの名前も、同じです。",
+      "type": "diagram",
+      "motif": "nm_186",
+      "audio": "audio-namae/scene-185.wav",
+      "durationSec": 2.5813333333333333
+    },
+    {
+      "index": 186,
+      "text": "企業に所属する場合、名前や姿は、会社が権利を持つ契約が多いとされます。",
+      "type": "diagram",
+      "motif": "nm_187",
+      "audio": "audio-namae/scene-186.wav",
+      "durationSec": 6.474666666666667
+    },
+    {
+      "index": 187,
+      "text": "演じる人は、その名前を借りて、活動しているのです。",
+      "type": "diagram",
+      "motif": "nm_188",
+      "audio": "audio-namae/scene-187.wav",
+      "durationSec": 4.341333333333333
+    },
+    {
+      "index": 188,
+      "text": "こうして、名前から3本目の糸が伸びました。",
+      "type": "diagram",
+      "motif": "nm_189",
+      "audio": "audio-namae/scene-188.wav",
+      "durationSec": 3.466666666666667
+    },
+    {
+      "index": 189,
+      "text": "積み上げた仕事と、お客さんにつながる、信用の糸です。",
+      "type": "diagram",
+      "motif": "nm_190",
+      "audio": "audio-namae/scene-189.wav",
+      "durationSec": 4.576
+    },
+    {
+      "index": 190,
+      "text": "信用の糸は、太くなるほど、両側から強く引っぱられます。",
+      "type": "diagram",
+      "motif": "nm_191",
+      "audio": "audio-namae/scene-190.wav",
+      "durationSec": 4.8
+    },
+    {
+      "index": 191,
+      "text": "耳の糸。帳簿の糸。信用の糸。",
+      "type": "diagram",
+      "motif": "nm_192",
+      "audio": "audio-namae/scene-191.wav",
+      "durationSec": 3.296
+    },
+    {
+      "index": 192,
+      "text": "では、この糸を失ったとき、人の中では、何が起きるのでしょうか。",
+      "type": "diagram",
+      "motif": "nm_193",
+      "audio": "audio-namae/scene-192.wav",
+      "durationSec": 6.0906666666666665
+    },
+    {
+      "index": 193,
+      "text": "第8章、名前を変えると、自分は変わるのか。",
+      "type": "diagram",
+      "motif": "nm_194",
+      "audio": "audio-namae/scene-193.wav",
+      "durationSec": 4.597333333333333
+    },
+    {
+      "index": 194,
+      "text": "映画の、2つ目の怖さを思い出してください。",
+      "type": "diagram",
+      "motif": "nm_195",
+      "audio": "audio-namae/scene-194.wav",
+      "durationSec": 3.477333333333333
+    },
+    {
+      "index": 195,
+      "text": "名前をなくすと、元の自分を忘れてしまう。",
+      "type": "diagram",
+      "motif": "nm_196",
+      "audio": "audio-namae/scene-195.wav",
+      "durationSec": 3.424
+    },
+    {
+      "index": 196,
+      "text": "これは、本当でしょうか。",
+      "type": "diagram",
+      "motif": "nm_197",
+      "audio": "audio-namae/scene-196.wav",
+      "durationSec": 2.6133333333333333
+    },
+    {
+      "index": 197,
+      "text": "まず、人は、名前を使い分けても、平気なことがあります。",
+      "type": "diagram",
+      "motif": "nm_198",
+      "audio": "audio-namae/scene-197.wav",
+      "durationSec": 4.896
+    },
+    {
+      "index": 198,
+      "text": "芸名や仕事のための名前で、私生活を守っている人もいます。",
+      "type": "diagram",
+      "motif": "nm_199",
+      "audio": "audio-namae/scene-198.wav",
+      "durationSec": 4.874666666666666
+    },
+    {
+      "index": 199,
+      "text": "いくつ名前があっても、自分は、ひとりのままです。",
+      "type": "diagram",
+      "motif": "nm_200",
+      "audio": "audio-namae/scene-199.wav",
+      "durationSec": 3.8293333333333335
+    },
+    {
+      "index": 200,
+      "text": "では、名前が変わったとき、気持ちはどうなるのか。",
+      "type": "diagram",
+      "motif": "nm_201",
+      "audio": "audio-namae/scene-200.wav",
+      "durationSec": 4.554666666666667
+    },
+    {
+      "index": 201,
+      "text": "2025年のある調査では、結婚で名字を変えた人の14.8%が、こう答えました。",
+      "type": "diagram",
+      "motif": "nm_202",
+      "audio": "audio-namae/scene-201.wav",
+      "durationSec": 7.68
+    },
+    {
+      "index": 202,
+      "text": "自分が、違う人になったように感じた。",
+      "type": "diagram",
+      "motif": "nm_203",
+      "audio": "audio-namae/scene-202.wav",
+      "durationSec": 3.136
+    },
+    {
+      "index": 203,
+      "text": "およそ7人に1人。多くはありませんが、ゼロでもありません。",
+      "type": "diagram",
+      "motif": "nm_204",
+      "audio": "audio-namae/scene-203.wav",
+      "durationSec": 4.736
+    },
+    {
+      "index": 204,
+      "text": "次に、脳を見てみましょう。",
+      "type": "diagram",
+      "motif": "nm_205",
+      "audio": "audio-namae/scene-204.wav",
+      "durationSec": 2.176
+    },
+    {
+      "index": 205,
+      "text": "1959年、左右の耳に別々の話を流し、片方だけに集中してもらう実験が行われました。",
+      "type": "diagram",
+      "motif": "nm_206",
+      "audio": "audio-namae/scene-205.wav",
+      "durationSec": 8.725333333333333
+    },
+    {
+      "index": 206,
+      "text": "すると、聞いていないはずの耳で自分の名前が流れたとき、およそ3人に1人が気づいたのです。",
+      "type": "diagram",
+      "motif": "nm_207",
+      "audio": "audio-namae/scene-206.wav",
+      "durationSec": 7.082666666666666
+    },
+    {
+      "index": 207,
+      "text": "この結果は、その後の実験でも、何度も確かめられています。",
+      "type": "diagram",
+      "motif": "nm_208",
+      "audio": "audio-namae/scene-207.wav",
+      "durationSec": 4.714666666666667
+    },
+    {
+      "index": 208,
+      "text": "脳波を測ると、自分の名前を聞いたときは、他人の名前より大きな反応が出ます。",
+      "type": "diagram",
+      "motif": "nm_209",
+      "audio": "audio-namae/scene-208.wav",
+      "durationSec": 6.378666666666667
+    },
+    {
+      "index": 209,
+      "text": "生まれて4か月半の赤ちゃんも、自分の名前の音を、ほかの名前より長く聞きたがります。",
+      "type": "diagram",
+      "motif": "nm_210",
+      "audio": "audio-namae/scene-209.wav",
+      "durationSec": 6.581333333333333
+    },
+    {
+      "index": 210,
+      "text": "名前は、たしかに、脳の中で特別あつかいされているのです。",
+      "type": "diagram",
+      "motif": "nm_211",
+      "audio": "audio-namae/scene-210.wav",
+      "durationSec": 4.704
+    },
+    {
+      "index": 211,
+      "text": "では、名前を奪って、番号で呼ぶと、どうなるのでしょうか。",
+      "type": "diagram",
+      "motif": "nm_212",
+      "audio": "audio-namae/scene-211.wav",
+      "durationSec": 5.493333333333333
+    },
+    {
+      "index": 212,
+      "text": "ナチスの強制収容所では、人は番号で管理されました。",
+      "type": "diagram",
+      "motif": "nm_213",
+      "audio": "audio-namae/scene-212.wav",
+      "durationSec": 4.554666666666667
+    },
+    {
+      "index": 213,
+      "text": "アウシュヴィッツでは、その番号が、体に入れ墨されています。",
+      "type": "diagram",
+      "motif": "nm_214",
+      "audio": "audio-namae/scene-213.wav",
+      "durationSec": 4.618666666666667
+    },
+    {
+      "index": 214,
+      "text": "名前を消して番号にすることは、相手を、ひとりの人として見なくするための仕組みだった、と指摘されています。",
+      "type": "diagram",
+      "motif": "nm_215",
+      "audio": "audio-namae/scene-214.wav",
+      "durationSec": 7.8293333333333335
+    },
+    {
+      "index": 215,
+      "text": "日本の刑務所では、2024年4月から、受刑者を「さん」付けで呼ぶようになりました。",
+      "type": "diagram",
+      "motif": "nm_216",
+      "audio": "audio-namae/scene-215.wav",
+      "durationSec": 6.442666666666667
+    },
+    {
+      "index": 216,
+      "text": "いまの日本にも、戸籍に名前が載っていない人がいます。国が把握しているだけで、700人です。",
+      "type": "diagram",
+      "motif": "nm_217",
+      "audio": "audio-namae/scene-216.wav",
+      "durationSec": 7.434666666666667
+    },
+    {
+      "index": 217,
+      "text": "では、名前を呼ばれなくなった人は、自分を忘れてしまうのか。",
+      "type": "diagram",
+      "motif": "nm_218",
+      "audio": "audio-namae/scene-217.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 218,
+      "text": "実はこれを、直接測った研究は、見つかっていません。",
+      "type": "diagram",
+      "motif": "nm_219",
+      "audio": "audio-namae/scene-218.wav",
+      "durationSec": 4.864
+    },
+    {
+      "index": 219,
+      "text": "脳が自分の名前に振り向くことは、分かっています。",
+      "type": "diagram",
+      "motif": "nm_220",
+      "audio": "audio-namae/scene-219.wav",
+      "durationSec": 3.7546666666666666
+    },
+    {
+      "index": 220,
+      "text": "名前が変わって、違う人になった気がする人がいることも、分かっています。",
+      "type": "diagram",
+      "motif": "nm_221",
+      "audio": "audio-namae/scene-220.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 221,
+      "text": "でも、その先は、まだ誰にも分かっていないのです。",
+      "type": "diagram",
+      "motif": "nm_222",
+      "audio": "audio-namae/scene-221.wav",
+      "durationSec": 3.957333333333333
+    },
+    {
+      "index": 222,
+      "text": "結び、名前は、帰り道。",
+      "type": "diagram",
+      "motif": "nm_223",
+      "audio": "audio-namae/scene-222.wav",
+      "durationSec": 2.8693333333333335
+    },
+    {
+      "index": 223,
+      "text": "最後に、映画の、2つの怖さに戻りましょう。",
+      "type": "diagram",
+      "motif": "nm_224",
+      "audio": "audio-namae/scene-223.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 224,
+      "text": "1つ目の怖さ。名前を奪われると、帰り道がわからなくなる。",
+      "type": "diagram",
+      "motif": "nm_225",
+      "audio": "audio-namae/scene-224.wav",
+      "durationSec": 5.12
+    },
+    {
+      "index": 225,
+      "text": "これは、本当でした。",
+      "type": "diagram",
+      "motif": "nm_226",
+      "audio": "audio-namae/scene-225.wav",
+      "durationSec": 1.9626666666666666
+    },
+    {
+      "index": 226,
+      "text": "名前は、あなたを世界につなぐ、糸の結び目です。",
+      "type": "diagram",
+      "motif": "nm_227",
+      "audio": "audio-namae/scene-226.wav",
+      "durationSec": 4.128
+    },
+    {
+      "index": 227,
+      "text": "呼んでくれる人につながる、耳の糸。",
+      "type": "diagram",
+      "motif": "nm_228",
+      "audio": "audio-namae/scene-227.wav",
+      "durationSec": 2.88
+    },
+    {
+      "index": 228,
+      "text": "国の名簿につながる、帳簿の糸。",
+      "type": "diagram",
+      "motif": "nm_229",
+      "audio": "audio-namae/scene-228.wav",
+      "durationSec": 2.8373333333333335
+    },
+    {
+      "index": 229,
+      "text": "積み上げた仕事につながる、信用の糸。",
+      "type": "diagram",
+      "motif": "nm_230",
+      "audio": "audio-namae/scene-229.wav",
+      "durationSec": 3.2213333333333334
+    },
+    {
+      "index": 230,
+      "text": "名前を奪われると、この3本が、まとめて切れてしまいます。",
+      "type": "diagram",
+      "motif": "nm_231",
+      "audio": "audio-namae/scene-230.wav",
+      "durationSec": 4.597333333333333
+    },
+    {
+      "index": 231,
+      "text": "呼ばれなくなり、記録から消え、積み上げたものも失う。",
+      "type": "diagram",
+      "motif": "nm_232",
+      "audio": "audio-namae/scene-231.wav",
+      "durationSec": 4.448
+    },
+    {
+      "index": 232,
+      "text": "だから昔の人は、名前を隠し、名前で罰し、国は名前に鍵をかけたのです。",
+      "type": "diagram",
+      "motif": "nm_233",
+      "audio": "audio-namae/scene-232.wav",
+      "durationSec": 6.645333333333333
+    },
+    {
+      "index": 233,
+      "text": "2つ目の怖さ。名前を奪われると、元の自分を忘れてしまう。",
+      "type": "diagram",
+      "motif": "nm_234",
+      "audio": "audio-namae/scene-233.wav",
+      "durationSec": 5.109333333333334
+    },
+    {
       "index": 234,
+      "text": "こちらは、半分だけ確かめられました。",
+      "type": "diagram",
+      "motif": "nm_235",
+      "audio": "audio-namae/scene-234.wav",
+      "durationSec": 2.976
+    },
+    {
+      "index": 235,
+      "text": "脳は、自分の名前に、強く振り向きます。",
+      "type": "diagram",
+      "motif": "nm_236",
+      "audio": "audio-namae/scene-235.wav",
+      "durationSec": 3.6373333333333333
+    },
+    {
+      "index": 236,
+      "text": "でも、名前を失うと自分を忘れるのかは、まだ誰も測れていません。",
+      "type": "diagram",
+      "motif": "nm_237",
+      "audio": "audio-namae/scene-236.wav",
+      "durationSec": 5.354666666666667
+    },
+    {
+      "index": 237,
+      "text": "ここから先は、科学ではなく、物語の領域です。",
+      "type": "diagram",
+      "motif": "nm_238",
+      "audio": "audio-namae/scene-237.wav",
+      "durationSec": 4.309333333333333
+    },
+    {
+      "index": 238,
+      "text": "そして昔話の中では、名前を知った人が、助かりました。",
+      "type": "diagram",
+      "motif": "nm_239",
+      "audio": "audio-namae/scene-238.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 239,
+      "text": "名前を覚えていることは、帰り道を覚えていることなのかもしれません。",
+      "type": "diagram",
+      "motif": "nm_240",
+      "audio": "audio-namae/scene-239.wav",
+      "durationSec": 5.024
+    },
+    {
+      "index": 240,
+      "text": "ふだん意識することもない、自分の名前。",
+      "type": "diagram",
+      "motif": "nm_241",
+      "audio": "audio-namae/scene-240.wav",
+      "durationSec": 3.1573333333333333
+    },
+    {
+      "index": 241,
+      "text": "そこには、見えない糸が、何本もつながっています。",
+      "type": "diagram",
+      "motif": "nm_242",
+      "audio": "audio-namae/scene-241.wav",
+      "durationSec": 3.989333333333333
+    },
+    {
+      "index": 242,
+      "text": "なお、この動画のあいだに、どこかで名前を呼ばれて振り向いたあなた。",
+      "type": "diagram",
+      "motif": "nm_243",
+      "audio": "audio-namae/scene-242.wav",
+      "durationSec": 5.024
+    },
+    {
+      "index": 243,
+      "text": "それはたぶん、3人に1人の側です。",
+      "type": "diagram",
+      "motif": "nm_244",
+      "audio": "audio-namae/scene-243.wav",
+      "durationSec": 3.136
+    },
+    {
+      "index": 244,
       "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
       "type": "card",
       "motif": "ending",
       "isEnding": true,
-      "audio": "audio-yawa/scene-end.wav",
+      "audio": "audio-namae/scene-end.wav",
       "durationSec": 5.632
     }
   ],
   "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
-  "generatedAt": "2026-11-18T18:40:52.023Z",
+  "generatedAt": "2026-11-22T19:15:47.344Z",
   "preset": "karakuri"
 }

@@ -18,10 +18,7 @@ import { TabiB3Preview, T_B3_PREVIEW_FRAMES } from "./karakuri/TabiB3";
 import { TabiB4Preview, T_B4_PREVIEW_FRAMES } from "./karakuri/TabiB4";
 import { TabiB5Preview, T_B5_PREVIEW_FRAMES } from "./karakuri/TabiB5";
 import { TabiB6Preview, T_B6_PREVIEW_FRAMES } from "./karakuri/TabiB6";
-import { ElevB0Preview, EL_B0_PREVIEW_FRAMES, ElevB0Motion, EL_B0_MOTION_FRAMES } from "./karakuri/ElevB0";
-import { ElevB2Preview, EL_B2_PREVIEW_FRAMES, ElevB2Sample, EL_B2_SAMPLE_FRAMES } from "./karakuri/ElevB2";
 // 4章は PART2 (32シーン) 未着手。書き終えたら戻す
-// import { ElevB4Preview, EL_B4_PREVIEW_FRAMES } from "./karakuri/ElevB4";
 import { KosoPillarsPreview, KOSO_PILLARS_PREVIEW_FRAMES } from "./karakuri/KosoPillars";
 import { KosoB0Preview, KOSO_B0_PREVIEW_FRAMES } from "./karakuri/KosoB0";
 import { KosoB1Preview, KOSO_B1_PREVIEW_FRAMES } from "./karakuri/KosoB1";
@@ -151,16 +148,6 @@ export const RemotionRoot: React.FC = () => {
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="TabiB6P" component={TabiB6Preview} durationInFrames={T_B6_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
-      {/* 「エレベーターの歴史」お試しスライド (方向性確認用。1フレーム=1シーン) */}
-      <Composition id="ElevB0P" component={ElevB0Preview} durationInFrames={EL_B0_PREVIEW_FRAMES}
-        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
-      <Composition id="ElevB2P" component={ElevB2Preview} durationInFrames={EL_B2_PREVIEW_FRAMES}
-        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
-      <Composition id="ElevB2Sample" component={ElevB2Sample} durationInFrames={EL_B2_SAMPLE_FRAMES}
-        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
-      {/* 4章は PART2 (32シーン) 未着手。書き終えたらこの登録を戻す */}
-      {/* <Composition id="ElevB4P" component={ElevB4Preview} durationInFrames={EL_B4_PREVIEW_FRAMES}
-        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} /> */}
       {/* 「なぜ高層ビルは生まれたのか」5本柱の装置 (この回の主役の共通部品。150フレームずつ巡回) */}
       <Composition id="KosoPillars" component={KosoPillarsPreview} durationInFrames={KOSO_PILLARS_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
@@ -241,9 +228,6 @@ export const RemotionRoot: React.FC = () => {
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       {/* 同・共有装置の検品 (断面図A〜E/手配書/再生バー/絵巻年表/三枚札) */}
       <Composition id="SaigoParts" component={SaigoPartsPreview} durationInFrames={SAIGO_PARTS_PREVIEW_FRAMES}
-        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
-      {/* 序章の「動き」確認用 (1シーン5秒ずつ通し再生。スライドでは写らない演出を見るため) */}
-      <Composition id="ElevB0Motion" component={ElevB0Motion} durationInFrames={EL_B0_MOTION_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       {/* 「私は何者?」の回の占い師キャラ試作 A〜D。本編とは無関係 */}
       <Composition

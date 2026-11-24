@@ -50,6 +50,7 @@ import { IchiB10Preview, ICHI_B10_PREVIEW_FRAMES } from "./karakuri/IchiB10";
 import { IchiB11Preview, ICHI_B11_PREVIEW_FRAMES } from "./karakuri/IchiB11";
 import { KsePreview, KSE_PREVIEW_FRAMES, KseMotion, KSE_MOTION_FRAMES } from "./karakuri/KseIndex";
 import { PersonCatalog } from "./karakuri/PersonCatalog";
+import { ChannelHeader, HEADER_W, HEADER_H } from "./karakuri/ChannelHeader";
 import { YoruTest, YORU_TEST_FRAMES, YoruDusk, YORU_DUSK_FRAMES, YoruNoteSave, YoruNoteName, YORU_NOTE_FRAMES, YoruFlatSave, YoruDaySave, YoruPrintSave, YORU_SAVE_SET_FRAMES } from "./yoru/YoruTest";
 import { SekaiBoutouPreview, SEKAI_BOUTOU_FRAMES } from "./sekai/SekaiBoutou";
 import {
@@ -356,6 +357,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="YoruPrintSave" component={YoruPrintSave} durationInFrames={YORU_SAVE_SET_FRAMES} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="YoruNoteName" component={YoruNoteName} durationInFrames={YORU_NOTE_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      {/* からくりチャンネルのヘッダー画像 (2560×1440)。本編とは無関係 */}
+      <Composition id="ChannelHeader" component={ChannelHeader} durationInFrames={1} fps={VIDEO.fps} width={HEADER_W} height={HEADER_H} />
+      <Composition id="ChannelHeaderGuide" component={ChannelHeader} durationInFrames={1} fps={VIDEO.fps} width={HEADER_W} height={HEADER_H} defaultProps={{ showGuide: true }} />
       {/* karakuri共通人物部品のカタログ (Person 7ポーズ / 表情7種 / PersonMini)。本編とは無関係 */}
       <Composition
         id="PersonCatalog"

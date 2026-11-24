@@ -154,7 +154,7 @@ export const Stamp: React.FC<{ x: number; y: number; text: string; size?: number
 // ===== 人物キット (丸頭2頭身。f でまばたき+体の上下ゆれ) =====
 // pose で腕 (run は脚も) が変わる。stand は従来と完全に同じ描画。
 type Face = "normal" | "worried" | "surprised" | "smile" | "joy" | "angry" | "sad";
-type Pose = "stand" | "banzai" | "raise" | "point" | "armsFolded" | "run" | "hold";
+type Pose = "stand" | "banzai" | "raise" | "point" | "armsFolded" | "run" | "hold" | "hang" | "sit";
 export const Person: React.FC<{
   x: number; // 足元中央のx
   y: number; // 足元のy
@@ -208,6 +208,18 @@ export const Person: React.FC<{
             <ellipse cx={18} cy={-4} rx={20} ry={9} fill={KRP.ink} />
           </g>
         </g>
+      ) : pose === "sit" ? (
+        // 座り (縁に腰かけて足をぶらぶら)。座面の高さ = y - 58*s。左足はたらし、右足は前に振り上げる
+        <g>
+          <g transform="rotate(12 -18 -58)">
+            <rect x={-30} y={-58} width={24} height={44} fill={clothDark} stroke={KRP.ink} strokeWidth={4.5} />
+            <ellipse cx={-20} cy={-12} rx={18} ry={9} fill={KRP.ink} />
+          </g>
+          <g transform="rotate(-48 18 -58)">
+            <rect x={6} y={-58} width={24} height={40} fill={clothDark} stroke={KRP.ink} strokeWidth={4.5} />
+            <ellipse cx={22} cy={-16} rx={18} ry={9} fill={KRP.ink} />
+          </g>
+        </g>
       ) : (
         <>
           <rect x={-30} y={-58} width={24} height={52} fill={clothDark} stroke={KRP.ink} strokeWidth={4.5} />
@@ -222,6 +234,18 @@ export const Person: React.FC<{
         <g>
           {armRect(-1, 135 + armSway)}
           {armRect(1, -135 - armSway)}
+        </g>
+      ) : pose === "sit" ? (
+        // 座り: 腕を少し外へ開いて、縁に手をつく
+        <g>
+          {armRect(-1, 22)}
+          {armRect(1, -22)}
+        </g>
+      ) : pose === "hang" ? (
+        // ぶら下がり: 両腕をまっすぐ上へ長く伸ばす。手の位置 = (±67, -313) 付近
+        <g>
+          {armRect(-1, 180, 165)}
+          {armRect(1, 180, 165)}
         </g>
       ) : pose === "raise" ? (
         <g>

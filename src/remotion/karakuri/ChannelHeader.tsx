@@ -24,7 +24,7 @@ const P_B = P_T + P_H;
 const FLOOR = P_B - 34; // コマの中の床
 
 // ===== 小物 =====
-const Gear: React.FC<{ x: number; y: number; r: number; teeth?: number; fill: string; rot?: number }> = ({
+export const Gear: React.FC<{ x: number; y: number; r: number; teeth?: number; fill: string; rot?: number }> = ({
   x, y, r, teeth = 10, fill, rot = 0,
 }) => {
   const pts: string[] = [];
@@ -42,7 +42,7 @@ const Gear: React.FC<{ x: number; y: number; r: number; teeth?: number; fill: st
   );
 };
 
-const Sparkle: React.FC<{ x: number; y: number; s?: number; fill?: string }> = ({ x, y, s = 1, fill = KRP.white }) => (
+export const Sparkle: React.FC<{ x: number; y: number; s?: number; fill?: string }> = ({ x, y, s = 1, fill = KRP.white }) => (
   <path
     transform={`translate(${x} ${y}) scale(${s})`}
     d="M0,-22 C4,-6 6,-4 22,0 C6,4 4,6 0,22 C-4,6 -6,4 -22,0 C-6,-4 -4,-6 0,-22 Z"

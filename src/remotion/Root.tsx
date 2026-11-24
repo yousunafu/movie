@@ -51,6 +51,7 @@ import { IchiB11Preview, ICHI_B11_PREVIEW_FRAMES } from "./karakuri/IchiB11";
 import { KsePreview, KSE_PREVIEW_FRAMES, KseMotion, KSE_MOTION_FRAMES } from "./karakuri/KseIndex";
 import { PersonCatalog } from "./karakuri/PersonCatalog";
 import { ChannelHeader, HEADER_W, HEADER_H } from "./karakuri/ChannelHeader";
+import { ChannelIconA, ChannelIconB, ChannelIconC, ChannelIconD, ChannelIconE, ChannelIconSheet, ICON } from "./karakuri/ChannelIcon";
 import { YoruTest, YORU_TEST_FRAMES, YoruDusk, YORU_DUSK_FRAMES, YoruNoteSave, YoruNoteName, YORU_NOTE_FRAMES, YoruFlatSave, YoruDaySave, YoruPrintSave, YORU_SAVE_SET_FRAMES } from "./yoru/YoruTest";
 import { SekaiBoutouPreview, SEKAI_BOUTOU_FRAMES } from "./sekai/SekaiBoutou";
 import {
@@ -360,6 +361,13 @@ export const RemotionRoot: React.FC = () => {
       {/* からくりチャンネルのヘッダー画像 (2560×1440)。本編とは無関係 */}
       <Composition id="ChannelHeader" component={ChannelHeader} durationInFrames={1} fps={VIDEO.fps} width={HEADER_W} height={HEADER_H} />
       <Composition id="ChannelHeaderGuide" component={ChannelHeader} durationInFrames={1} fps={VIDEO.fps} width={HEADER_W} height={HEADER_H} defaultProps={{ showGuide: true }} />
+      {/* からくりチャンネルのアイコン (800×800)。決定版 = D。A〜E と見比べ用。本編とは無関係 */}
+      <Composition id="ChannelIconA" component={ChannelIconA} durationInFrames={1} fps={VIDEO.fps} width={ICON} height={ICON} />
+      <Composition id="ChannelIconB" component={ChannelIconB} durationInFrames={1} fps={VIDEO.fps} width={ICON} height={ICON} />
+      <Composition id="ChannelIconC" component={ChannelIconC} durationInFrames={1} fps={VIDEO.fps} width={ICON} height={ICON} />
+      <Composition id="ChannelIconD" component={ChannelIconD} durationInFrames={1} fps={VIDEO.fps} width={ICON} height={ICON} />
+      <Composition id="ChannelIconE" component={ChannelIconE} durationInFrames={1} fps={VIDEO.fps} width={ICON} height={ICON} />
+      <Composition id="ChannelIconSheet" component={ChannelIconSheet} durationInFrames={1} fps={VIDEO.fps} width={1920} height={1080} />
       {/* karakuri共通人物部品のカタログ (Person 7ポーズ / 表情7種 / PersonMini)。本編とは無関係 */}
       <Composition
         id="PersonCatalog"

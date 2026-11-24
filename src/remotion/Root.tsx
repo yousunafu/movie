@@ -48,6 +48,8 @@ import { IchiB11Preview, ICHI_B11_PREVIEW_FRAMES } from "./karakuri/IchiB11";
 import { KsePreview, KSE_PREVIEW_FRAMES, KseMotion, KSE_MOTION_FRAMES } from "./karakuri/KseIndex";
 import { PersonCatalog } from "./karakuri/PersonCatalog";
 import { ChannelHeader, HEADER_W, HEADER_H } from "./karakuri/ChannelHeader";
+import { JihankiP2a, JihankiP2b, JihankiP2c, JihankiP2d, JihankiP2VarSheet, JihankiP2VarFeed, JihankiThumbP1, JihankiThumbP2, JihankiThumbP3, JihankiThumbP4, JihankiThumbSheet, JihankiThumbFeed } from "./karakuri/JihankiThumbs";
+import { YawaThumbP1, YawaThumbP2, YawaThumbP3, YawaThumbP4, YawaThumbSheet, YawaThumbFeed, TW, TH } from "./karakuri/YawaThumbs";
 import { ChannelIconA, ChannelIconB, ChannelIconC, ChannelIconD, ChannelIconE, ChannelIconSheet, ICON } from "./karakuri/ChannelIcon";
 import { YoruTest, YORU_TEST_FRAMES, YoruDusk, YORU_DUSK_FRAMES, YoruNoteSave, YoruNoteName, YORU_NOTE_FRAMES, YoruFlatSave, YoruDaySave, YoruPrintSave, YORU_SAVE_SET_FRAMES } from "./yoru/YoruTest";
 import { SekaiBoutouPreview, SEKAI_BOUTOU_FRAMES } from "./sekai/SekaiBoutou";
@@ -352,6 +354,27 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="ChannelIconD" component={ChannelIconD} durationInFrames={1} fps={VIDEO.fps} width={ICON} height={ICON} />
       <Composition id="ChannelIconE" component={ChannelIconE} durationInFrames={1} fps={VIDEO.fps} width={ICON} height={ICON} />
       <Composition id="ChannelIconSheet" component={ChannelIconSheet} durationInFrames={1} fps={VIDEO.fps} width={1920} height={1080} />
+      {/* 柔らかいもの回のサムネ 4パターン (1280×720) と見比べ用。本編とは無関係 */}
+      <Composition id="YawaThumbP1" component={YawaThumbP1} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="YawaThumbP2" component={YawaThumbP2} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="YawaThumbP3" component={YawaThumbP3} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="YawaThumbP4" component={YawaThumbP4} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="YawaThumbSheet" component={YawaThumbSheet} durationInFrames={1} fps={VIDEO.fps} width={1920} height={1080} />
+      <Composition id="YawaThumbFeed" component={YawaThumbFeed} durationInFrames={1} fps={VIDEO.fps} width={1920} height={1080} />
+      {/* 自販機回のサムネ 4パターン (1280×720) と見比べ用。本編とは無関係 */}
+      <Composition id="JihankiThumbP1" component={JihankiThumbP1} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="JihankiThumbP2" component={JihankiThumbP2} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="JihankiThumbP3" component={JihankiThumbP3} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="JihankiThumbP4" component={JihankiThumbP4} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="JihankiThumbSheet" component={JihankiThumbSheet} durationInFrames={1} fps={VIDEO.fps} width={1920} height={1080} />
+      <Composition id="JihankiThumbFeed" component={JihankiThumbFeed} durationInFrames={1} fps={VIDEO.fps} width={1920} height={1080} />
+      {/* 自販機回 P2 の文字の見せ方ちがい4案 */}
+      <Composition id="JihankiP2a" component={JihankiP2a} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="JihankiP2b" component={JihankiP2b} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="JihankiP2c" component={JihankiP2c} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="JihankiP2d" component={JihankiP2d} durationInFrames={1} fps={VIDEO.fps} width={TW} height={TH} />
+      <Composition id="JihankiP2VarSheet" component={JihankiP2VarSheet} durationInFrames={1} fps={VIDEO.fps} width={1920} height={1080} />
+      <Composition id="JihankiP2VarFeed" component={JihankiP2VarFeed} durationInFrames={1} fps={VIDEO.fps} width={1920} height={1080} />
       {/* karakuri共通人物部品のカタログ (Person 7ポーズ / 表情7種 / PersonMini)。本編とは無関係 */}
       <Composition
         id="PersonCatalog"

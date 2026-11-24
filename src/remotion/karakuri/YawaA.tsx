@@ -127,7 +127,7 @@ const YaKid: React.FC<{
 };
 
 // 大きな手 (指先が -x 方向を向く。袖は +x 側)。open: 0=にぎり 1=開く
-const YaHand: React.FC<{ x: number; y: number; s?: number; rot?: number; sleeve?: string; open?: number }> = ({
+export const YaHand: React.FC<{ x: number; y: number; s?: number; rot?: number; sleeve?: string; open?: number }> = ({
   x, y, s = 1, rot = 0, sleeve = C.kidA, open = 1,
 }) => {
   const spread = lerp(2, 9, open);

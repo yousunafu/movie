@@ -290,7 +290,7 @@ const L3bFlame: React.FC<{ x: number; y: number; h: number; w: number; f: number
 };
 
 /* 針金のお母さん (スライド・図用)。足元原点・高さ約320 */
-const L3bWireMom: React.FC<{ s?: number }> = ({ s = 1 }) => (
+export const L3bWireMom: React.FC<{ s?: number }> = ({ s = 1 }) => (
   <g transform={`scale(${s})`}>
     <rect x={-80} y={-24} width={160} height={24} rx={4} fill={C.bedWood} stroke={KRP.ink} strokeWidth={4} />
     <rect x={-56} y={-236} width={112} height={212} rx={10} fill={C.wireDark} opacity={0.18} />

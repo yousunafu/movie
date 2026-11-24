@@ -85,7 +85,7 @@ const L3dTiles: React.FC<{ x: number; y: number; w: number; h: number; sz: numbe
 );
 
 /* 布のお母さん (YawaE3 の L3cClothMom と同じ形。tilt=頭の傾き / blushOn=ほっぺ) */
-const L3dClothMom: React.FC<{ s?: number; f?: number; fluff?: number; bulb?: boolean; tilt?: number; blushOn?: number }> = ({
+export const L3dClothMom: React.FC<{ s?: number; f?: number; fluff?: number; bulb?: boolean; tilt?: number; blushOn?: number }> = ({
   s = 1, f = 0, fluff = 1, bulb = true, tilt = 0, blushOn = 0,
 }) => (
   <g transform={`scale(${s})`}>
@@ -174,7 +174,7 @@ const L3dMonkeyHead: React.FC<{ look?: number; closed?: boolean; mouth?: "smile"
   </g>
 );
 /* 座った子ザル (YawaE3 と同じ。closed=目を閉じる を足した)。原点は床 (お尻の下)。高さ約210 */
-const L3dMonkeySit: React.FC<{ s?: number; f: number; look?: number; closed?: boolean; mouth?: "smile" | "o" | "suck" }> = ({ s = 1, f, look = 0, closed = false, mouth = "smile" }) => {
+export const L3dMonkeySit: React.FC<{ s?: number; f: number; look?: number; closed?: boolean; mouth?: "smile" | "o" | "suck" }> = ({ s = 1, f, look = 0, closed = false, mouth = "smile" }) => {
   const br = 1 + Math.sin(f / 7) * 0.015;
   return (
     <g transform={`scale(${s})`}>

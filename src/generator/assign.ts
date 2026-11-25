@@ -453,6 +453,11 @@ export async function assignScenes(
       console.log(`絵づけ: なぜ人は柔らかいものを握りたくなるのかの順番割り当て (1文1絵・${yw.length}枚)`);
       return yw;
     }
+    const hm = himaOrderedAssign(sentences);
+    if (hm) {
+      console.log(`絵づけ: 「人は、なぜ暇をつぶすのか」の順番割り当て (1文1絵・${hm.length}枚)`);
+      return hm;
+    }
     const nm = namaeOrderedAssign(sentences);
     if (nm) {
       console.log(`絵づけ: 「名前を奪われる」のはなぜ怖いのかの順番割り当て (1文1絵・${nm.length}枚)`);
@@ -2133,6 +2138,19 @@ function namaeOrderedAssign(sentences: string[]): Assignment[] | null {
   if (sentences.length === N + 1) order.push(order[N - 1]);
   if (sentences.length !== order.length) {
     throw new Error(`名前: 台本が${sentences.length}文なのに絵が${order.length}枚です。docs/namae-script-v1.txt を確認してください`);
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: 「人は、なぜ暇をつぶすのか」(docs/hima-script-v2.txt・215文) 用の順番割り当て =====
+// 文 n → hm_文番号3桁。Index を import せず番号で作る (絵がまだ無くても音声を先に作れるように)
+function himaOrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[0]?.includes("いまこの動画を観ているあなた") || !sentences[0]?.includes("待って")) return null;
+  const N = 215;
+  const order = Array.from({ length: N }, (_, i) => `hm_${String(i + 1).padStart(3, "0")}`);
+  if (sentences.length === N + 1) order.push(order[N - 1]);
+  if (sentences.length !== order.length) {
+    throw new Error(`暇: 台本が${sentences.length}文なのに絵が${order.length}枚です。docs/hima-script-v2.txt を確認してください`);
   }
   return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
 }

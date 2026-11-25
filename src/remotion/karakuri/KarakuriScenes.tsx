@@ -1715,6 +1715,7 @@ export const karakuriCardShowsFullText = (scene: Scene): boolean =>
 
 export const KarakuriSceneView: React.FC<{ scene: Scene }> = ({ scene }) => {
   const f = useCurrentFrame();
+  // ※2026-11-26 から本編の終わりの絵は Video.tsx で KarakuriEnding に差し替える (循環 import を避けるためここでは古いカードのまま)
   if (scene.isEnding) return <EndingCard f={f} />;
   if (scene.type === "card") {
     if (scene.motif === "quiz") return <QuizCard f={f} />;

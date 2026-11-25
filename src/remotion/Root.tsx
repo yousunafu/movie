@@ -34,7 +34,10 @@ import { SaigoPartsPreview, SAIGO_PARTS_PREVIEW_FRAMES } from "./karakuri/SaigoP
 import { YawaAllPreview, YAWA_ALL_PREVIEW_FRAMES, YawaAllMotion, YAWA_MOTION_FRAMES } from "./karakuri/YawaIndex";
 import { YawaPartsPreview, YAWA_PARTS_PREVIEW_FRAMES } from "./karakuri/YawaParts";
 import { NamaePartsPreview, NAMAE_PARTS_PREVIEW_FRAMES } from "./karakuri/NamaeParts";
+import { HimaPartsPreview, HIMA_PARTS_PREVIEW_FRAMES } from "./karakuri/HimaParts";
+import { KarakuriEndingBgPreview } from "./karakuri/KarakuriEnding";
 import { NamaeAllPreview, NAMAE_ALL_PREVIEW_FRAMES, NamaeAllMotion, NAMAE_MOTION_FRAMES } from "./karakuri/NamaeIndex";
+import { HimaAllPreview, HIMA_ALL_PREVIEW_FRAMES, HimaAllMotion, HIMA_MOTION_FRAMES } from "./karakuri/HimaIndex";
 import { IchiB0Preview, ICHI_B0_PREVIEW_FRAMES, IchiB0Motion, ICHI_B0_MOTION_FRAMES } from "./karakuri/IchiB0";
 import { IchiB1Preview, ICHI_B1_PREVIEW_FRAMES } from "./karakuri/IchiB1";
 import { IchiB2Preview, ICHI_B2_PREVIEW_FRAMES } from "./karakuri/IchiB2";
@@ -186,6 +189,14 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="YawaParts" component={YawaPartsPreview} durationInFrames={YAWA_PARTS_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="NamaeParts" component={NamaePartsPreview} durationInFrames={NAMAE_PARTS_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="HimaAll" component={HimaAllPreview} durationInFrames={HIMA_ALL_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="HimaMotion" component={HimaAllMotion} durationInFrames={HIMA_MOTION_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="EndingBg" component={KarakuriEndingBgPreview} durationInFrames={4}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="HimaParts" component={HimaPartsPreview} durationInFrames={HIMA_PARTS_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="NamaeAll" component={NamaeAllPreview} durationInFrames={NAMAE_ALL_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />

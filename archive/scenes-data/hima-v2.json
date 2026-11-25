@@ -1,0 +1,1736 @@
+{
+  "scenes": [
+    {
+      "index": 0,
+      "text": "いまこの動画を観ているあなた。たぶん、何かを待っていますね。",
+      "type": "diagram",
+      "motif": "hm_001",
+      "audio": "audio-hima/scene-000.wav",
+      "durationSec": 4.352
+    },
+    {
+      "index": 1,
+      "text": "電車か、お湯がわくのか、既読がつくのか。",
+      "type": "diagram",
+      "motif": "hm_002",
+      "audio": "audio-hima/scene-001.wav",
+      "durationSec": 3.8933333333333335
+    },
+    {
+      "index": 2,
+      "text": "2014年、アメリカの大学で、人を何もない部屋に、15分だけ置いておく実験がありました。",
+      "type": "diagram",
+      "motif": "hm_003",
+      "audio": "audio-hima/scene-002.wav",
+      "durationSec": 7.1146666666666665
+    },
+    {
+      "index": 3,
+      "text": "スマホなし。本なし。おしゃべり相手もなし。",
+      "type": "diagram",
+      "motif": "hm_004",
+      "audio": "audio-hima/scene-003.wav",
+      "durationSec": 3.232
+    },
+    {
+      "index": 4,
+      "text": "あるのは、ボタンがひとつだけ。押すと、自分の体に、ビリッと電気が流れます。",
+      "type": "diagram",
+      "motif": "hm_005",
+      "audio": "audio-hima/scene-004.wav",
+      "durationSec": 5.973333333333334
+    },
+    {
+      "index": 5,
+      "text": "参加者は、事前に「お金を払ってでも、この電気はいやだ」と答えた人たちです。",
+      "type": "diagram",
+      "motif": "hm_006",
+      "audio": "audio-hima/scene-005.wav",
+      "durationSec": 5.386666666666667
+    },
+    {
+      "index": 6,
+      "text": "結果。男性は、18人のうち12人が、押しました。",
+      "type": "diagram",
+      "motif": "hm_007",
+      "audio": "audio-hima/scene-006.wav",
+      "durationSec": 4.768
+    },
+    {
+      "index": 7,
+      "text": "女性も、24人のうち6人が押しています。",
+      "type": "diagram",
+      "motif": "hm_008",
+      "audio": "audio-hima/scene-007.wav",
+      "durationSec": 3.36
+    },
+    {
+      "index": 8,
+      "text": "ひとり、15分で190回押した男性がいて、さすがに集計から外されました。",
+      "type": "diagram",
+      "motif": "hm_009",
+      "audio": "audio-hima/scene-008.wav",
+      "durationSec": 6.037333333333334
+    },
+    {
+      "index": 9,
+      "text": "人間、そこまでして、暇がいやなのです。",
+      "type": "diagram",
+      "motif": "hm_010",
+      "audio": "audio-hima/scene-009.wav",
+      "durationSec": 3.1253333333333333
+    },
+    {
+      "index": 10,
+      "text": "ところが、いまの私たちは、ほとんど退屈しません。",
+      "type": "diagram",
+      "motif": "hm_011",
+      "audio": "audio-hima/scene-010.wav",
+      "durationSec": 3.8506666666666667
+    },
+    {
+      "index": 11,
+      "text": "信号待ちの数十秒でも、ポケットからスマホが出てきます。",
+      "type": "diagram",
+      "motif": "hm_012",
+      "audio": "audio-hima/scene-011.wav",
+      "durationSec": 4.042666666666666
+    },
+    {
+      "index": 12,
+      "text": "しかも、日本の会社で働く人の休みは、ここ40年で、いまがいちばん多い。",
+      "type": "diagram",
+      "motif": "hm_013",
+      "audio": "audio-hima/scene-012.wav",
+      "durationSec": 5.984
+    },
+    {
+      "index": 13,
+      "text": "暇は増えた。なのに、退屈が見当たらない。",
+      "type": "diagram",
+      "motif": "hm_014",
+      "audio": "audio-hima/scene-013.wav",
+      "durationSec": 3.4133333333333336
+    },
+    {
+      "index": 14,
+      "text": "暇は、どこへ消えたのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_015",
+      "audio": "audio-hima/scene-014.wav",
+      "durationSec": 2.7093333333333334
+    },
+    {
+      "index": 15,
+      "text": "この謎を追って2500年さかのぼったら、ちょっとおかしな事件が、いくつも出てきました。",
+      "type": "diagram",
+      "motif": "hm_016",
+      "audio": "audio-hima/scene-015.wav",
+      "durationSec": 5.834666666666666
+    },
+    {
+      "index": 16,
+      "text": "休まないと罰金を取られる村。日曜を休みにしたら、休みが減った役所。そして、駅で売られはじめた、暇。",
+      "type": "diagram",
+      "motif": "hm_017",
+      "audio": "audio-hima/scene-016.wav",
+      "durationSec": 8.053333333333333
+    },
+    {
+      "index": 17,
+      "text": "道具は、このものさしです。日、時間、分、秒。名づけて、暇のものさし。",
+      "type": "diagram",
+      "motif": "hm_018",
+      "audio": "audio-hima/scene-017.wav",
+      "durationSec": 7.1146666666666665
+    },
+    {
+      "index": 18,
+      "text": "まずは、いちばん大きな暇から、測ってみます。",
+      "type": "diagram",
+      "motif": "hm_019",
+      "audio": "audio-hima/scene-018.wav",
+      "durationSec": 3.488
+    },
+    {
+      "index": 19,
+      "text": "第1章、7日に1度の、休み。",
+      "type": "diagram",
+      "motif": "hm_020",
+      "audio": "audio-hima/scene-019.wav",
+      "durationSec": 2.997333333333333
+    },
+    {
+      "index": 20,
+      "text": "7日に1度、休みが来る。これ、誰が決めたのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_021",
+      "audio": "audio-hima/scene-020.wav",
+      "durationSec": 5.024
+    },
+    {
+      "index": 21,
+      "text": "記録でたどれる、いちばん古い決まりは、約2500年前です。",
+      "type": "diagram",
+      "motif": "hm_022",
+      "audio": "audio-hima/scene-021.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 22,
+      "text": "古代のユダヤの人々は、7日目を「安息日」として、働かずに休んでいました。",
+      "type": "diagram",
+      "motif": "hm_023",
+      "audio": "audio-hima/scene-022.wav",
+      "durationSec": 5.418666666666667
+    },
+    {
+      "index": 23,
+      "text": "ポイントは、みんなが同じ日に休むこと。",
+      "type": "diagram",
+      "motif": "hm_024",
+      "audio": "audio-hima/scene-023.wav",
+      "durationSec": 2.8906666666666667
+    },
+    {
+      "index": 24,
+      "text": "休みの日に、隣の人だけ働いていると、なんだか休んだ気がしません。",
+      "type": "diagram",
+      "motif": "hm_025",
+      "audio": "audio-hima/scene-024.wav",
+      "durationSec": 5.066666666666666
+    },
+    {
+      "index": 25,
+      "text": "時代は飛んで、321年。ローマの皇帝コンスタンティヌスが、日曜日は休むように、と法律を出します。",
+      "type": "diagram",
+      "motif": "hm_026",
+      "audio": "audio-hima/scene-025.wav",
+      "durationSec": 8.181333333333333
+    },
+    {
+      "index": 26,
+      "text": "町の役人も、職人も、日曜はお休み。",
+      "type": "diagram",
+      "motif": "hm_027",
+      "audio": "audio-hima/scene-026.wav",
+      "durationSec": 3.616
+    },
+    {
+      "index": 27,
+      "text": "ただし、農家は別です。",
+      "type": "diagram",
+      "motif": "hm_028",
+      "audio": "audio-hima/scene-027.wav",
+      "durationSec": 1.9306666666666668
+    },
+    {
+      "index": 28,
+      "text": "種まきや、ぶどうの植えつけにいい日は、日曜を待ってくれないからです。",
+      "type": "diagram",
+      "motif": "hm_029",
+      "audio": "audio-hima/scene-028.wav",
+      "durationSec": 4.8213333333333335
+    },
+    {
+      "index": 29,
+      "text": "休みの決まりは、最初から、天気に負けていました。",
+      "type": "diagram",
+      "motif": "hm_030",
+      "audio": "audio-hima/scene-029.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 30,
+      "text": "ちなみに、週を7日でなくしてみた国も、あります。",
+      "type": "diagram",
+      "motif": "hm_031",
+      "audio": "audio-hima/scene-030.wav",
+      "durationSec": 3.6266666666666665
+    },
+    {
+      "index": 31,
+      "text": "1929年の、ソ連です。",
+      "type": "diagram",
+      "motif": "hm_032",
+      "audio": "audio-hima/scene-031.wav",
+      "durationSec": 2.8586666666666667
+    },
+    {
+      "index": 32,
+      "text": "工場を1日も止めないように、国民を組に分けて、交代で休ませました。週は5日、のちに6日。",
+      "type": "diagram",
+      "motif": "hm_033",
+      "audio": "audio-hima/scene-032.wav",
+      "durationSec": 7.466666666666667
+    },
+    {
+      "index": 33,
+      "text": "工場は、毎日元気に動きます。",
+      "type": "diagram",
+      "motif": "hm_034",
+      "audio": "audio-hima/scene-033.wav",
+      "durationSec": 2.6453333333333333
+    },
+    {
+      "index": 34,
+      "text": "ただ、お父さんとお母さんの休みが、合いません。",
+      "type": "diagram",
+      "motif": "hm_035",
+      "audio": "audio-hima/scene-034.wav",
+      "durationSec": 3.6373333333333333
+    },
+    {
+      "index": 35,
+      "text": "家族でお出かけも、友だちと遊ぶのも、むずかしい。",
+      "type": "diagram",
+      "motif": "hm_036",
+      "audio": "audio-hima/scene-035.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 36,
+      "text": "不満がたまって、1940年、ソ連は7日の週に戻しました。",
+      "type": "diagram",
+      "motif": "hm_037",
+      "audio": "audio-hima/scene-036.wav",
+      "durationSec": 5.269333333333333
+    },
+    {
+      "index": 37,
+      "text": "休みは、みんなで同じ日に休んで、はじめて休みになるのです。",
+      "type": "diagram",
+      "motif": "hm_038",
+      "audio": "audio-hima/scene-037.wav",
+      "durationSec": 4.522666666666667
+    },
+    {
+      "index": 38,
+      "text": "暇のものさしに、最初の目盛り、「日」が刻まれました。",
+      "type": "diagram",
+      "motif": "hm_039",
+      "audio": "audio-hima/scene-038.wav",
+      "durationSec": 3.8613333333333335
+    },
+    {
+      "index": 39,
+      "text": "第2章、休まないと、罰金。",
+      "type": "diagram",
+      "motif": "hm_040",
+      "audio": "audio-hima/scene-039.wav",
+      "durationSec": 2.816
+    },
+    {
+      "index": 40,
+      "text": "江戸時代の日本には、7日に1度の休みは、ありませんでした。",
+      "type": "diagram",
+      "motif": "hm_041",
+      "audio": "audio-hima/scene-040.wav",
+      "durationSec": 4.565333333333333
+    },
+    {
+      "index": 41,
+      "text": "休みを決めるのは、カレンダーではなく、お祭りや行事です。",
+      "type": "diagram",
+      "motif": "hm_042",
+      "audio": "audio-hima/scene-041.wav",
+      "durationSec": 4.309333333333333
+    },
+    {
+      "index": 42,
+      "text": "住みこみで働く奉公人の休みは、「藪入り」。1月16日と、7月16日です。",
+      "type": "diagram",
+      "motif": "hm_043",
+      "audio": "audio-hima/scene-042.wav",
+      "durationSec": 6.762666666666667
+    },
+    {
+      "index": 43,
+      "text": "この日は、地獄の釜のふたまで開いて、えんま様も休むと言われていました。",
+      "type": "diagram",
+      "motif": "hm_044",
+      "audio": "audio-hima/scene-043.wav",
+      "durationSec": 5.237333333333333
+    },
+    {
+      "index": 44,
+      "text": "えんま様が休むなら、奉公人も休んでいい。なかなか強い理屈です。",
+      "type": "diagram",
+      "motif": "hm_045",
+      "audio": "audio-hima/scene-044.wav",
+      "durationSec": 5.0986666666666665
+    },
+    {
+      "index": 45,
+      "text": "もっとも、休みがこの2日だけだったわけでは、ないようです。",
+      "type": "diagram",
+      "motif": "hm_046",
+      "audio": "audio-hima/scene-045.wav",
+      "durationSec": 4.053333333333334
+    },
+    {
+      "index": 46,
+      "text": "村には、村じゅうで仕事を休む、「遊び日」がありました。",
+      "type": "diagram",
+      "motif": "hm_047",
+      "audio": "audio-hima/scene-046.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 47,
+      "text": "ある研究によると、江戸の中ごろまで、遊び日は年に20日ほど。",
+      "type": "diagram",
+      "motif": "hm_048",
+      "audio": "audio-hima/scene-047.wav",
+      "durationSec": 4.725333333333333
+    },
+    {
+      "index": 48,
+      "text": "それが江戸の終わりには、30日、40日と増え、多い村では80日にもなりました。",
+      "type": "diagram",
+      "motif": "hm_049",
+      "audio": "audio-hima/scene-048.wav",
+      "durationSec": 6.656
+    },
+    {
+      "index": 49,
+      "text": "増やした犯人は、村の若者たちです。",
+      "type": "diagram",
+      "motif": "hm_050",
+      "audio": "audio-hima/scene-049.wav",
+      "durationSec": 2.933333333333333
+    },
+    {
+      "index": 50,
+      "text": "新しい神さまがはやると、そのお祭りの日を、休みにしてほしいと願い出ます。",
+      "type": "diagram",
+      "motif": "hm_051",
+      "audio": "audio-hima/scene-050.wav",
+      "durationSec": 5.450666666666667
+    },
+    {
+      "index": 51,
+      "text": "神さまが1人増えるたびに、休みが1日増える。",
+      "type": "diagram",
+      "motif": "hm_052",
+      "audio": "audio-hima/scene-051.wav",
+      "durationSec": 3.648
+    },
+    {
+      "index": 52,
+      "text": "そして、休みの守らせ方が、なかなか厳しい。",
+      "type": "diagram",
+      "motif": "hm_053",
+      "audio": "audio-hima/scene-052.wav",
+      "durationSec": 3.498666666666667
+    },
+    {
+      "index": 53,
+      "text": "遊び日に働いた人は、罰金。",
+      "type": "diagram",
+      "motif": "hm_054",
+      "audio": "audio-hima/scene-053.wav",
+      "durationSec": 2.474666666666667
+    },
+    {
+      "index": 54,
+      "text": "働いている人を知らせた人には、ほうび。",
+      "type": "diagram",
+      "motif": "hm_055",
+      "audio": "audio-hima/scene-054.wav",
+      "durationSec": 2.986666666666667
+    },
+    {
+      "index": 55,
+      "text": "休みなのに、見張りつきです。",
+      "type": "diagram",
+      "motif": "hm_056",
+      "audio": "audio-hima/scene-055.wav",
+      "durationSec": 2.1973333333333334
+    },
+    {
+      "index": 56,
+      "text": "もっとも、これで「江戸の人は暇だった」とは言えません。休みの数は、村や時代によって、ばらばらでした。",
+      "type": "diagram",
+      "motif": "hm_057",
+      "audio": "audio-hima/scene-056.wav",
+      "durationSec": 7.317333333333333
+    },
+    {
+      "index": 57,
+      "text": "そのばらばらを、明治政府が、ひとつにそろえます。",
+      "type": "diagram",
+      "motif": "hm_058",
+      "audio": "audio-hima/scene-057.wav",
+      "durationSec": 3.584
+    },
+    {
+      "index": 58,
+      "text": "第3章、日曜休みで、休みが減った。",
+      "type": "diagram",
+      "motif": "hm_059",
+      "audio": "audio-hima/scene-058.wav",
+      "durationSec": 3.4346666666666668
+    },
+    {
+      "index": 59,
+      "text": "明治のはじめ、役所の休みは「一六日」でした。",
+      "type": "diagram",
+      "motif": "hm_060",
+      "audio": "audio-hima/scene-059.wav",
+      "durationSec": 3.424
+    },
+    {
+      "index": 60,
+      "text": "1日、6日、11日、16日、21日、26日。1と6のつく日が、お休みです。",
+      "type": "diagram",
+      "motif": "hm_061",
+      "audio": "audio-hima/scene-060.wav",
+      "durationSec": 8.981333333333334
+    },
+    {
+      "index": 61,
+      "text": "月に6回。1年で、約70日。",
+      "type": "diagram",
+      "motif": "hm_062",
+      "audio": "audio-hima/scene-061.wav",
+      "durationSec": 3.562666666666667
+    },
+    {
+      "index": 62,
+      "text": "明治9年、1876年。政府は、これを日曜休みに切りかえます。",
+      "type": "diagram",
+      "motif": "hm_063",
+      "audio": "audio-hima/scene-062.wav",
+      "durationSec": 6.410666666666667
+    },
+    {
+      "index": 63,
+      "text": "土曜日は、お昼の12時から休み。",
+      "type": "diagram",
+      "motif": "hm_064",
+      "audio": "audio-hima/scene-063.wav",
+      "durationSec": 2.7733333333333334
+    },
+    {
+      "index": 64,
+      "text": "こうして、役所と学校の休みが、日曜日になりました。",
+      "type": "diagram",
+      "motif": "hm_065",
+      "audio": "audio-hima/scene-064.wav",
+      "durationSec": 4.128
+    },
+    {
+      "index": 65,
+      "text": "さて、計算してみましょう。",
+      "type": "diagram",
+      "motif": "hm_066",
+      "audio": "audio-hima/scene-065.wav",
+      "durationSec": 2.0906666666666665
+    },
+    {
+      "index": 66,
+      "text": "日曜日は、1年でだいたい52回。",
+      "type": "diagram",
+      "motif": "hm_067",
+      "audio": "audio-hima/scene-066.wav",
+      "durationSec": 3.04
+    },
+    {
+      "index": 67,
+      "text": "土曜の半日を足しても、70日には届きません。",
+      "type": "diagram",
+      "motif": "hm_068",
+      "audio": "audio-hima/scene-067.wav",
+      "durationSec": 3.7013333333333334
+    },
+    {
+      "index": 68,
+      "text": "休みは、減りました。",
+      "type": "diagram",
+      "motif": "hm_069",
+      "audio": "audio-hima/scene-068.wav",
+      "durationSec": 1.7813333333333334
+    },
+    {
+      "index": 69,
+      "text": "役所のみなさん、たぶん、がっかりです。",
+      "type": "diagram",
+      "motif": "hm_070",
+      "audio": "audio-hima/scene-069.wav",
+      "durationSec": 3.2106666666666666
+    },
+    {
+      "index": 70,
+      "text": "わざわざ変えたのは、西洋の国々と同じリズムで働くためだった、とも言えます。",
+      "type": "diagram",
+      "motif": "hm_071",
+      "audio": "audio-hima/scene-070.wav",
+      "durationSec": 5.621333333333333
+    },
+    {
+      "index": 71,
+      "text": "外国と取り引きする港の役所は、明治のはじめから、もう日曜に休んでいました。",
+      "type": "diagram",
+      "motif": "hm_072",
+      "audio": "audio-hima/scene-071.wav",
+      "durationSec": 5.856
+    },
+    {
+      "index": 72,
+      "text": "こうして休みは、お祭りの日から、7日ごとの目盛りへと変わっていきます。",
+      "type": "diagram",
+      "motif": "hm_073",
+      "audio": "audio-hima/scene-072.wav",
+      "durationSec": 4.981333333333334
+    },
+    {
+      "index": 73,
+      "text": "ただし、日曜休みになったのは、役所と学校だけ。",
+      "type": "diagram",
+      "motif": "hm_074",
+      "audio": "audio-hima/scene-073.wav",
+      "durationSec": 4.021333333333334
+    },
+    {
+      "index": 74,
+      "text": "工場で働く人の休みは、まだずっと、少ないままでした。",
+      "type": "diagram",
+      "motif": "hm_075",
+      "audio": "audio-hima/scene-074.wav",
+      "durationSec": 4.490666666666667
+    },
+    {
+      "index": 75,
+      "text": "第4章、時計が、1日を切り分けた。",
+      "type": "diagram",
+      "motif": "hm_076",
+      "audio": "audio-hima/scene-075.wav",
+      "durationSec": 3.3173333333333335
+    },
+    {
+      "index": 76,
+      "text": "明治の紡績工場では、機械が一日中、止まりません。",
+      "type": "diagram",
+      "motif": "hm_077",
+      "audio": "audio-hima/scene-076.wav",
+      "durationSec": 4.416
+    },
+    {
+      "index": 77,
+      "text": "昼の組と夜の組が交代で、1日11時間以上、働きました。",
+      "type": "diagram",
+      "motif": "hm_078",
+      "audio": "audio-hima/scene-077.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 78,
+      "text": "何時に来て、何時に帰るか。決めるのは、壁の時計です。",
+      "type": "diagram",
+      "motif": "hm_079",
+      "audio": "audio-hima/scene-078.wav",
+      "durationSec": 4.586666666666667
+    },
+    {
+      "index": 79,
+      "text": "工場と時計が、仕事の時間と、仕事の外の時間を、くっきり分けた。そんな説があります。",
+      "type": "diagram",
+      "motif": "hm_080",
+      "audio": "audio-hima/scene-079.wav",
+      "durationSec": 6.965333333333334
+    },
+    {
+      "index": 80,
+      "text": "といっても、時計が暇をプレゼントしてくれたわけでは、ありません。",
+      "type": "diagram",
+      "motif": "hm_081",
+      "audio": "audio-hima/scene-080.wav",
+      "durationSec": 4.458666666666667
+    },
+    {
+      "index": 81,
+      "text": "産業革命のはじめのころ、働く時間は、むしろ長くなったと考えられています。",
+      "type": "diagram",
+      "motif": "hm_082",
+      "audio": "audio-hima/scene-081.wav",
+      "durationSec": 5.781333333333333
+    },
+    {
+      "index": 82,
+      "text": "時計は、長く働かせるのにも、とても便利だったのです。",
+      "type": "diagram",
+      "motif": "hm_083",
+      "audio": "audio-hima/scene-082.wav",
+      "durationSec": 4.149333333333334
+    },
+    {
+      "index": 83,
+      "text": "そこで人々は、時計で区切られた時間を、法律で短くしようとします。",
+      "type": "diagram",
+      "motif": "hm_084",
+      "audio": "audio-hima/scene-083.wav",
+      "durationSec": 5.045333333333334
+    },
+    {
+      "index": 84,
+      "text": "1847年、イギリスで、1日10時間まで、という法律ができます。",
+      "type": "diagram",
+      "motif": "hm_085",
+      "audio": "audio-hima/scene-084.wav",
+      "durationSec": 6.208
+    },
+    {
+      "index": 85,
+      "text": "対象は、繊維工場で働く、女性と若者だけ。大人の男性は、まだ対象外です。",
+      "type": "diagram",
+      "motif": "hm_086",
+      "audio": "audio-hima/scene-085.wav",
+      "durationSec": 6.912
+    },
+    {
+      "index": 86,
+      "text": "1870年代のアメリカでは、こんな歌が歌われていたとされます。",
+      "type": "diagram",
+      "motif": "hm_087",
+      "audio": "audio-hima/scene-086.wav",
+      "durationSec": 4.917333333333334
+    },
+    {
+      "index": 87,
+      "text": "8時間は、仕事に。8時間は、休みに。そして8時間は、好きなことに。",
+      "type": "diagram",
+      "motif": "hm_088",
+      "audio": "audio-hima/scene-087.wav",
+      "durationSec": 6.314666666666667
+    },
+    {
+      "index": 88,
+      "text": "1日を、3つに切り分ける作戦です。",
+      "type": "diagram",
+      "motif": "hm_089",
+      "audio": "audio-hima/scene-088.wav",
+      "durationSec": 2.9546666666666668
+    },
+    {
+      "index": 89,
+      "text": "1919年、世界の国々は、「1日8時間、週48時間」を約束します。",
+      "type": "diagram",
+      "motif": "hm_090",
+      "audio": "audio-hima/scene-089.wav",
+      "durationSec": 7.093333333333334
+    },
+    {
+      "index": 90,
+      "text": "ところが日本にだけ、「週57時間まで」という特別ルールがつきました。",
+      "type": "diagram",
+      "motif": "hm_091",
+      "audio": "audio-hima/scene-090.wav",
+      "durationSec": 5.386666666666667
+    },
+    {
+      "index": 91,
+      "text": "日本で、働く時間に初めて上限ができたのは、1916年。",
+      "type": "diagram",
+      "motif": "hm_092",
+      "audio": "audio-hima/scene-091.wav",
+      "durationSec": 5.365333333333333
+    },
+    {
+      "index": 92,
+      "text": "対象は、子どもと女性だけ。それで、1日12時間まで。",
+      "type": "diagram",
+      "motif": "hm_093",
+      "audio": "audio-hima/scene-092.wav",
+      "durationSec": 4.810666666666667
+    },
+    {
+      "index": 93,
+      "text": "1947年、ようやく日本でも、1日8時間が法律になります。",
+      "type": "diagram",
+      "motif": "hm_094",
+      "audio": "audio-hima/scene-093.wav",
+      "durationSec": 5.962666666666666
+    },
+    {
+      "index": 94,
+      "text": "休みは日曜だけ。週48時間です。",
+      "type": "diagram",
+      "motif": "hm_095",
+      "audio": "audio-hima/scene-094.wav",
+      "durationSec": 3.3173333333333335
+    },
+    {
+      "index": 95,
+      "text": "それでも、これは大事件でした。",
+      "type": "diagram",
+      "motif": "hm_096",
+      "audio": "audio-hima/scene-095.wav",
+      "durationSec": 2.336
+    },
+    {
+      "index": 96,
+      "text": "仕事が8時間で終われば、帰ってから寝るまでの時間が、毎日、手もとに残るからです。",
+      "type": "diagram",
+      "motif": "hm_097",
+      "audio": "audio-hima/scene-096.wav",
+      "durationSec": 6.56
+    },
+    {
+      "index": 97,
+      "text": "仕事のあとの、数時間。これが、「時間の暇」です。",
+      "type": "diagram",
+      "motif": "hm_098",
+      "audio": "audio-hima/scene-097.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 98,
+      "text": "暇のものさしに、2つ目の目盛り、「時間」が刻まれました。",
+      "type": "diagram",
+      "motif": "hm_099",
+      "audio": "audio-hima/scene-098.wav",
+      "durationSec": 4.2026666666666666
+    },
+    {
+      "index": 99,
+      "text": "日本で、1年間に働く時間がいちばん長かったのは、1960年。",
+      "type": "diagram",
+      "motif": "hm_100",
+      "audio": "audio-hima/scene-099.wav",
+      "durationSec": 5.888
+    },
+    {
+      "index": 100,
+      "text": "その翌年、1961年には、「レジャー」という言葉が流行語になったとされています。",
+      "type": "diagram",
+      "motif": "hm_101",
+      "audio": "audio-hima/scene-100.wav",
+      "durationSec": 6.474666666666667
+    },
+    {
+      "index": 101,
+      "text": "働く時間の山を越えたら、さっそく遊びの話。気持ちは、よくわかります。",
+      "type": "diagram",
+      "motif": "hm_102",
+      "audio": "audio-hima/scene-101.wav",
+      "durationSec": 5.642666666666667
+    },
+    {
+      "index": 102,
+      "text": "そして暇は、もうひとつの場所でも、生まれていました。乗り物の中です。",
+      "type": "diagram",
+      "motif": "hm_103",
+      "audio": "audio-hima/scene-102.wav",
+      "durationSec": 4.949333333333334
+    },
+    {
+      "index": 103,
+      "text": "第5章、駅で、暇が売られた。",
+      "type": "diagram",
+      "motif": "hm_104",
+      "audio": "audio-hima/scene-103.wav",
+      "durationSec": 2.6773333333333333
+    },
+    {
+      "index": 104,
+      "text": "乗り物の中で暇をつぶす人は、昔からいました。",
+      "type": "diagram",
+      "motif": "hm_105",
+      "audio": "audio-hima/scene-104.wav",
+      "durationSec": 3.552
+    },
+    {
+      "index": 105,
+      "text": "1665年、イギリスの役人ピープスは、馬に揺られながら、片手で本を読んでいます。",
+      "type": "diagram",
+      "motif": "hm_106",
+      "audio": "audio-hima/scene-105.wav",
+      "durationSec": 6.933333333333334
+    },
+    {
+      "index": 106,
+      "text": "危ないので、まねしないでください。",
+      "type": "diagram",
+      "motif": "hm_107",
+      "audio": "audio-hima/scene-106.wav",
+      "durationSec": 2.421333333333333
+    },
+    {
+      "index": 107,
+      "text": "1796年には、乗合馬車の中で、小説を読んで退屈をしのいだ人もいました。",
+      "type": "diagram",
+      "motif": "hm_108",
+      "audio": "audio-hima/scene-107.wav",
+      "durationSec": 6.549333333333333
+    },
+    {
+      "index": 108,
+      "text": "ただ、馬車は揺れるし、暗いし、本は高い。",
+      "type": "diagram",
+      "motif": "hm_109",
+      "audio": "audio-hima/scene-108.wav",
+      "durationSec": 3.7546666666666666
+    },
+    {
+      "index": 109,
+      "text": "乗り物の暇は、一部の人の、たまのお楽しみでした。",
+      "type": "diagram",
+      "motif": "hm_110",
+      "audio": "audio-hima/scene-109.wav",
+      "durationSec": 3.957333333333333
+    },
+    {
+      "index": 110,
+      "text": "そこに、鉄道がやってきます。",
+      "type": "diagram",
+      "motif": "hm_111",
+      "audio": "audio-hima/scene-110.wav",
+      "durationSec": 2.272
+    },
+    {
+      "index": 111,
+      "text": "鉄道は、乗っている時間を、毎日、決まった時刻に、何万人もの人にくばりました。",
+      "type": "diagram",
+      "motif": "hm_112",
+      "audio": "audio-hima/scene-111.wav",
+      "durationSec": 6.581333333333333
+    },
+    {
+      "index": 112,
+      "text": "いわば、暇の大量生産です。",
+      "type": "diagram",
+      "motif": "hm_113",
+      "audio": "audio-hima/scene-112.wav",
+      "durationSec": 2.432
+    },
+    {
+      "index": 113,
+      "text": "すると、すかさず、それを商売にする人が現れます。",
+      "type": "diagram",
+      "motif": "hm_114",
+      "audio": "audio-hima/scene-113.wav",
+      "durationSec": 4.042666666666666
+    },
+    {
+      "index": 114,
+      "text": "1848年11月1日。ロンドンのユーストン駅に、駅の本屋が開きます。",
+      "type": "diagram",
+      "motif": "hm_115",
+      "audio": "audio-hima/scene-114.wav",
+      "durationSec": 6.474666666666667
+    },
+    {
+      "index": 115,
+      "text": "新聞屋のスミスが、鉄道会社から、駅で売る権利を買ったのです。",
+      "type": "diagram",
+      "motif": "hm_116",
+      "audio": "audio-hima/scene-115.wav",
+      "durationSec": 4.693333333333333
+    },
+    {
+      "index": 116,
+      "text": "1840年代の終わりには、汽車で読むための、安い本のシリーズまで登場します。",
+      "type": "diagram",
+      "motif": "hm_117",
+      "audio": "audio-hima/scene-116.wav",
+      "durationSec": 6.282666666666667
+    },
+    {
+      "index": 117,
+      "text": "表紙が黄色いので、呼び名は「黄色い本」。そのままです。",
+      "type": "diagram",
+      "motif": "hm_118",
+      "audio": "audio-hima/scene-117.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 118,
+      "text": "では、なぜ汽車で、本だったのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_119",
+      "audio": "audio-hima/scene-118.wav",
+      "durationSec": 3.456
+    },
+    {
+      "index": 119,
+      "text": "ある歴史家によると、馬車はせまくて、乗り合わせた人とおしゃべりするのが、ふつうでした。",
+      "type": "diagram",
+      "motif": "hm_120",
+      "audio": "audio-hima/scene-119.wav",
+      "durationSec": 5.888
+    },
+    {
+      "index": 120,
+      "text": "ところが汽車には、知らない人が、たくさん乗っています。",
+      "type": "diagram",
+      "motif": "hm_121",
+      "audio": "audio-hima/scene-120.wav",
+      "durationSec": 4.021333333333334
+    },
+    {
+      "index": 121,
+      "text": "目のやり場に、困る。",
+      "type": "diagram",
+      "motif": "hm_122",
+      "audio": "audio-hima/scene-121.wav",
+      "durationSec": 1.7066666666666668
+    },
+    {
+      "index": 122,
+      "text": "その気まずい沈黙を、本で埋めるようになった、というのです。",
+      "type": "diagram",
+      "motif": "hm_123",
+      "audio": "audio-hima/scene-122.wav",
+      "durationSec": 4.1706666666666665
+    },
+    {
+      "index": 123,
+      "text": "暇つぶしは、知らない人とのあいだの、ついたてにもなりました。",
+      "type": "diagram",
+      "motif": "hm_124",
+      "audio": "audio-hima/scene-123.wav",
+      "durationSec": 4.288
+    },
+    {
+      "index": 124,
+      "text": "いまの電車で、みんながスマホを見ているのと、ちょっと似ています。",
+      "type": "diagram",
+      "motif": "hm_125",
+      "audio": "audio-hima/scene-124.wav",
+      "durationSec": 4.2026666666666666
+    },
+    {
+      "index": 125,
+      "text": "日本でも、大正のころには、東京にもう満員電車が走っていました。",
+      "type": "diagram",
+      "motif": "hm_126",
+      "audio": "audio-hima/scene-125.wav",
+      "durationSec": 5.109333333333334
+    },
+    {
+      "index": 126,
+      "text": "1927年には、岩波文庫が生まれます。手のひらにのる、小さな本です。",
+      "type": "diagram",
+      "motif": "hm_127",
+      "audio": "audio-hima/scene-126.wav",
+      "durationSec": 6.314666666666667
+    },
+    {
+      "index": 127,
+      "text": "そして1932年4月1日。東京駅と上野駅に、10か所の売店が開きます。",
+      "type": "diagram",
+      "motif": "hm_128",
+      "audio": "audio-hima/scene-127.wav",
+      "durationSec": 6.784
+    },
+    {
+      "index": 128,
+      "text": "開いたのは、鉄道弘済会。仕事中のけがで働けなくなった鉄道員などを、助けるための売店でした。",
+      "type": "diagram",
+      "motif": "hm_129",
+      "audio": "audio-hima/scene-128.wav",
+      "durationSec": 7.530666666666667
+    },
+    {
+      "index": 129,
+      "text": "この売店が、のちの「キヨスク」です。",
+      "type": "diagram",
+      "motif": "hm_130",
+      "audio": "audio-hima/scene-129.wav",
+      "durationSec": 2.506666666666667
+    },
+    {
+      "index": 130,
+      "text": "ちなみに、待ち時間は、実際より長く感じるそうです。",
+      "type": "diagram",
+      "motif": "hm_131",
+      "audio": "audio-hima/scene-130.wav",
+      "durationSec": 4.117333333333334
+    },
+    {
+      "index": 131,
+      "text": "ある研究では、平均で3割以上、長く見積もられていました。",
+      "type": "diagram",
+      "motif": "hm_132",
+      "audio": "audio-hima/scene-131.wav",
+      "durationSec": 4.810666666666667
+    },
+    {
+      "index": 132,
+      "text": "しかも、何もしないで待つ時間ほど、長く感じる。",
+      "type": "diagram",
+      "motif": "hm_133",
+      "audio": "audio-hima/scene-132.wav",
+      "durationSec": 3.6586666666666665
+    },
+    {
+      "index": 133,
+      "text": "だから人は、待ち時間に、何かを持ちこむのです。",
+      "type": "diagram",
+      "motif": "hm_134",
+      "audio": "audio-hima/scene-133.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 134,
+      "text": "いま、日本の人が平日に通勤や通学にかける時間は、行き帰りで、平均1時間19分。",
+      "type": "diagram",
+      "motif": "hm_135",
+      "audio": "audio-hima/scene-134.wav",
+      "durationSec": 7.2
+    },
+    {
+      "index": 135,
+      "text": "神奈川県は1時間40分で、全国1位です。おつかれさまです。",
+      "type": "diagram",
+      "motif": "hm_136",
+      "audio": "audio-hima/scene-135.wav",
+      "durationSec": 5.226666666666667
+    },
+    {
+      "index": 136,
+      "text": "暇のものさしに、3つ目の目盛り、「分」が刻まれました。",
+      "type": "diagram",
+      "motif": "hm_137",
+      "audio": "audio-hima/scene-136.wav",
+      "durationSec": 4.085333333333334
+    },
+    {
+      "index": 137,
+      "text": "第6章、暇つぶしが、ポケットに入る。",
+      "type": "diagram",
+      "motif": "hm_138",
+      "audio": "audio-hima/scene-137.wav",
+      "durationSec": 3.1786666666666665
+    },
+    {
+      "index": 138,
+      "text": "暇つぶしの道具は、とても古くからありました。",
+      "type": "diagram",
+      "motif": "hm_139",
+      "audio": "audio-hima/scene-138.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 139,
+      "text": "689年、日本では、双六を禁止するおふれが出たとされています。",
+      "type": "diagram",
+      "motif": "hm_140",
+      "audio": "audio-hima/scene-139.wav",
+      "durationSec": 5.706666666666667
+    },
+    {
+      "index": 140,
+      "text": "盤の上でこまを進める、「盤すごろく」のことです。",
+      "type": "diagram",
+      "motif": "hm_141",
+      "audio": "audio-hima/scene-140.wav",
+      "durationSec": 3.4346666666666668
+    },
+    {
+      "index": 141,
+      "text": "1300年以上前から、遊びすぎは、怒られていたのです。",
+      "type": "diagram",
+      "motif": "hm_142",
+      "audio": "audio-hima/scene-141.wav",
+      "durationSec": 4.405333333333333
+    },
+    {
+      "index": 142,
+      "text": "ただ、盤で遊ぶには、場所と、まとまった時間がいります。電車で広げたら、たぶん迷惑です。",
+      "type": "diagram",
+      "motif": "hm_143",
+      "audio": "audio-hima/scene-142.wav",
+      "durationSec": 7.1466666666666665
+    },
+    {
+      "index": 143,
+      "text": "道具は、ここから、どんどん小さくなっていきます。",
+      "type": "diagram",
+      "motif": "hm_144",
+      "audio": "audio-hima/scene-143.wav",
+      "durationSec": 3.424
+    },
+    {
+      "index": 144,
+      "text": "1913年12月21日。アメリカの新聞に、クロスワードパズルが初めて載ります。新聞とえんぴつがあれば、どこでも遊べます。",
+      "type": "diagram",
+      "motif": "hm_145",
+      "audio": "audio-hima/scene-144.wav",
+      "durationSec": 10.144
+    },
+    {
+      "index": 145,
+      "text": "1979年7月1日、ウォークマン。音楽を、持ち歩けるようになります。",
+      "type": "diagram",
+      "motif": "hm_146",
+      "audio": "audio-hima/scene-145.wav",
+      "durationSec": 6.464
+    },
+    {
+      "index": 146,
+      "text": "1989年4月21日、ゲームボーイ。",
+      "type": "diagram",
+      "motif": "hm_147",
+      "audio": "audio-hima/scene-146.wav",
+      "durationSec": 4.309333333333333
+    },
+    {
+      "index": 147,
+      "text": "1999年2月22日、携帯電話でネットができる、iモード。",
+      "type": "diagram",
+      "motif": "hm_148",
+      "audio": "audio-hima/scene-147.wav",
+      "durationSec": 5.994666666666666
+    },
+    {
+      "index": 148,
+      "text": "2008年7月11日、日本で、iPhone。",
+      "type": "diagram",
+      "motif": "hm_149",
+      "audio": "audio-hima/scene-148.wav",
+      "durationSec": 4.181333333333333
+    },
+    {
+      "index": 149,
+      "text": "だいたい10年おきに、新しい暇つぶしが、ポケットに引っ越してきました。",
+      "type": "diagram",
+      "motif": "hm_150",
+      "audio": "audio-hima/scene-149.wav",
+      "durationSec": 4.896
+    },
+    {
+      "index": 150,
+      "text": "小さくなるほど、遊びはじめるまでも、速くなります。",
+      "type": "diagram",
+      "motif": "hm_151",
+      "audio": "audio-hima/scene-150.wav",
+      "durationSec": 3.8186666666666667
+    },
+    {
+      "index": 151,
+      "text": "盤を広げるなら、数分。本なら、十数秒。スマホなら、数秒です。",
+      "type": "diagram",
+      "motif": "hm_152",
+      "audio": "audio-hima/scene-151.wav",
+      "durationSec": 5.866666666666666
+    },
+    {
+      "index": 152,
+      "text": "もちろん、どの道具も、「この長さの隙間用です」と作られたわけでは、ありません。",
+      "type": "diagram",
+      "motif": "hm_153",
+      "audio": "audio-hima/scene-152.wav",
+      "durationSec": 5.557333333333333
+    },
+    {
+      "index": 153,
+      "text": "でも、ものさしに並べてみると、暇つぶしが、どんどん小さな暇へ、もぐりこんでいくように見えます。",
+      "type": "diagram",
+      "motif": "hm_154",
+      "audio": "audio-hima/scene-153.wav",
+      "durationSec": 6.890666666666666
+    },
+    {
+      "index": 154,
+      "text": "そのいちばん奥にいるのが、スマホです。",
+      "type": "diagram",
+      "motif": "hm_155",
+      "audio": "audio-hima/scene-154.wav",
+      "durationSec": 2.6453333333333333
+    },
+    {
+      "index": 155,
+      "text": "イギリスで、23人のスマホの使い方を、実際に記録した研究があります。",
+      "type": "diagram",
+      "motif": "hm_156",
+      "audio": "audio-hima/scene-155.wav",
+      "durationSec": 5.578666666666667
+    },
+    {
+      "index": 156,
+      "text": "1日に使った回数は、平均で約85回。",
+      "type": "diagram",
+      "motif": "hm_157",
+      "audio": "audio-hima/scene-156.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 157,
+      "text": "その半分以上が、30秒もたたずに終わっていました。",
+      "type": "diagram",
+      "motif": "hm_158",
+      "audio": "audio-hima/scene-157.wav",
+      "durationSec": 3.776
+    },
+    {
+      "index": 158,
+      "text": "しかも、本人たちの予想の、約2倍です。",
+      "type": "diagram",
+      "motif": "hm_159",
+      "audio": "audio-hima/scene-158.wav",
+      "durationSec": 3.232
+    },
+    {
+      "index": 159,
+      "text": "自分では、そんなに見ていないつもりだったのです。耳が痛い。",
+      "type": "diagram",
+      "motif": "hm_160",
+      "audio": "audio-hima/scene-159.wav",
+      "durationSec": 4.256
+    },
+    {
+      "index": 160,
+      "text": "信号待ち。エレベーター。レジの列。",
+      "type": "diagram",
+      "motif": "hm_161",
+      "audio": "audio-hima/scene-160.wav",
+      "durationSec": 3.104
+    },
+    {
+      "index": 161,
+      "text": "暇のものさしに、4つ目の目盛り、「秒」が刻まれました。",
+      "type": "diagram",
+      "motif": "hm_162",
+      "audio": "audio-hima/scene-161.wav",
+      "durationSec": 4.074666666666666
+    },
+    {
+      "index": 162,
+      "text": "でも、ここで素朴な疑問がわきます。",
+      "type": "diagram",
+      "motif": "hm_163",
+      "audio": "audio-hima/scene-162.wav",
+      "durationSec": 2.6133333333333333
+    },
+    {
+      "index": 163,
+      "text": "人は、なぜそこまでして、暇をつぶすのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_164",
+      "audio": "audio-hima/scene-163.wav",
+      "durationSec": 4.010666666666666
+    },
+    {
+      "index": 164,
+      "text": "第7章、退屈の、正体。",
+      "type": "diagram",
+      "motif": "hm_165",
+      "audio": "audio-hima/scene-164.wav",
+      "durationSec": 2.656
+    },
+    {
+      "index": 165,
+      "text": "最初の、電気ショックの実験。じつは、続きがあります。",
+      "type": "diagram",
+      "motif": "hm_166",
+      "audio": "audio-hima/scene-165.wav",
+      "durationSec": 4.426666666666667
+    },
+    {
+      "index": 166,
+      "text": "別の研究者たちが、結果を見直しました。",
+      "type": "diagram",
+      "motif": "hm_167",
+      "audio": "audio-hima/scene-166.wav",
+      "durationSec": 3.1573333333333333
+    },
+    {
+      "index": 167,
+      "text": "すると、参加者の半分以上は、一度もボタンを押していませんでした。",
+      "type": "diagram",
+      "motif": "hm_168",
+      "audio": "audio-hima/scene-167.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 168,
+      "text": "押した人に理由を聞くと、多かった答えは、「どんな感じか、気になったから」。",
+      "type": "diagram",
+      "motif": "hm_169",
+      "audio": "audio-hima/scene-168.wav",
+      "durationSec": 5.301333333333333
+    },
+    {
+      "index": 169,
+      "text": "電気の強さも、平均で、「ちょっと不快」くらいでした。",
+      "type": "diagram",
+      "motif": "hm_170",
+      "audio": "audio-hima/scene-169.wav",
+      "durationSec": 3.872
+    },
+    {
+      "index": 170,
+      "text": "人は退屈より痛みを選ぶ、というほど、話は単純ではなさそうです。",
+      "type": "diagram",
+      "motif": "hm_171",
+      "audio": "audio-hima/scene-170.wav",
+      "durationSec": 5.066666666666666
+    },
+    {
+      "index": 171,
+      "text": "押した人の多くは、ただの好奇心。人間らしいです。",
+      "type": "diagram",
+      "motif": "hm_172",
+      "audio": "audio-hima/scene-171.wav",
+      "durationSec": 3.8826666666666667
+    },
+    {
+      "index": 172,
+      "text": "それでも、何もない15分より、ボタンを選んだ人がいたのは、確かです。",
+      "type": "diagram",
+      "motif": "hm_173",
+      "audio": "audio-hima/scene-172.wav",
+      "durationSec": 5.28
+    },
+    {
+      "index": 173,
+      "text": "その後、11か国、2,557人で、似た実験が行われました。",
+      "type": "diagram",
+      "motif": "hm_174",
+      "audio": "audio-hima/scene-173.wav",
+      "durationSec": 5.8773333333333335
+    },
+    {
+      "index": 174,
+      "text": "結果は、どこでも同じ。ただ考えているより、何かしているほうが、楽しい。",
+      "type": "diagram",
+      "motif": "hm_175",
+      "audio": "audio-hima/scene-174.wav",
+      "durationSec": 5.738666666666667
+    },
+    {
+      "index": 175,
+      "text": "別の実験では、同じ場面を1時間くり返すだけの、退屈な映像を見せました。",
+      "type": "diagram",
+      "motif": "hm_176",
+      "audio": "audio-hima/scene-175.wav",
+      "durationSec": 5.984
+    },
+    {
+      "index": 176,
+      "text": "見る側にとっては、なかなかの修行です。",
+      "type": "diagram",
+      "motif": "hm_177",
+      "audio": "audio-hima/scene-176.wav",
+      "durationSec": 2.7733333333333334
+    },
+    {
+      "index": 177,
+      "text": "すると人は、お菓子をたくさん食べ、自分への電気ショックも、多く流しました。",
+      "type": "diagram",
+      "motif": "hm_178",
+      "audio": "audio-hima/scene-177.wav",
+      "durationSec": 5.472
+    },
+    {
+      "index": 178,
+      "text": "そもそも、退屈とは、何なのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_179",
+      "audio": "audio-hima/scene-178.wav",
+      "durationSec": 3.488
+    },
+    {
+      "index": 179,
+      "text": "心理学では、「何かに夢中になりたいのに、なれない」ときの、いやな気分だと説明します。",
+      "type": "diagram",
+      "motif": "hm_180",
+      "audio": "audio-hima/scene-179.wav",
+      "durationSec": 6.293333333333333
+    },
+    {
+      "index": 180,
+      "text": "やることがないから、退屈なのではありません。",
+      "type": "diagram",
+      "motif": "hm_181",
+      "audio": "audio-hima/scene-180.wav",
+      "durationSec": 3.029333333333333
+    },
+    {
+      "index": 181,
+      "text": "長い会議のように、やることがあっても、夢中になれなければ、人は退屈します。",
+      "type": "diagram",
+      "motif": "hm_182",
+      "audio": "audio-hima/scene-181.wav",
+      "durationSec": 5.76
+    },
+    {
+      "index": 182,
+      "text": "そして、退屈には役目がある、という説があります。",
+      "type": "diagram",
+      "motif": "hm_183",
+      "audio": "audio-hima/scene-182.wav",
+      "durationSec": 3.8186666666666667
+    },
+    {
+      "index": 183,
+      "text": "「いまのことは、もう十分。そろそろ別のことをしよう」と知らせる、心の警報ベルです。",
+      "type": "diagram",
+      "motif": "hm_184",
+      "audio": "audio-hima/scene-183.wav",
+      "durationSec": 6.026666666666666
+    },
+    {
+      "index": 184,
+      "text": "ちなみに、日本語の「退屈」は、もとは仏教の言葉です。",
+      "type": "diagram",
+      "motif": "hm_185",
+      "audio": "audio-hima/scene-184.wav",
+      "durationSec": 4.064
+    },
+    {
+      "index": 185,
+      "text": "修行がつらくて、退いてしまうこと。お坊さんも、たいへんです。",
+      "type": "diagram",
+      "motif": "hm_186",
+      "audio": "audio-hima/scene-185.wav",
+      "durationSec": 4.789333333333333
+    },
+    {
+      "index": 186,
+      "text": "では、昔の人は、いまより暇だったのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_187",
+      "audio": "audio-hima/scene-186.wav",
+      "durationSec": 4.181333333333333
+    },
+    {
+      "index": 187,
+      "text": "「大昔の人は、1日に数時間しか働かなかった」という話があります。",
+      "type": "diagram",
+      "motif": "hm_188",
+      "audio": "audio-hima/scene-187.wav",
+      "durationSec": 4.992
+    },
+    {
+      "index": 188,
+      "text": "でもこれは、食べ物を集める時間だけを数えたもので、いまでは疑問が出されています。",
+      "type": "diagram",
+      "motif": "hm_189",
+      "audio": "audio-hima/scene-188.wav",
+      "durationSec": 5.792
+    },
+    {
+      "index": 189,
+      "text": "昔の人がのんびりしていた、とは言い切れません。",
+      "type": "diagram",
+      "motif": "hm_190",
+      "audio": "audio-hima/scene-189.wav",
+      "durationSec": 3.2533333333333334
+    },
+    {
+      "index": 190,
+      "text": "わかっているのは、退屈が、ずっと昔からあったこと。",
+      "type": "diagram",
+      "motif": "hm_191",
+      "audio": "audio-hima/scene-190.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 191,
+      "text": "変わったのは、退屈が来たときの、逃げ道のほうです。",
+      "type": "diagram",
+      "motif": "hm_192",
+      "audio": "audio-hima/scene-191.wav",
+      "durationSec": 3.8293333333333335
+    },
+    {
+      "index": 192,
+      "text": "結び、暇は、どこへ消えたのか。",
+      "type": "diagram",
+      "motif": "hm_193",
+      "audio": "audio-hima/scene-192.wav",
+      "durationSec": 3.1786666666666665
+    },
+    {
+      "index": 193,
+      "text": "最後に、スマホがどこで使われているか、見てみましょう。",
+      "type": "diagram",
+      "motif": "hm_194",
+      "audio": "audio-hima/scene-193.wav",
+      "durationSec": 4.074666666666666
+    },
+    {
+      "index": 194,
+      "text": "日本の人が、平日にスマホなどでネットを使う時間は、1日に約117分。",
+      "type": "diagram",
+      "motif": "hm_195",
+      "audio": "audio-hima/scene-194.wav",
+      "durationSec": 5.994666666666666
+    },
+    {
+      "index": 195,
+      "text": "そのうち、移動中は、約10分。",
+      "type": "diagram",
+      "motif": "hm_196",
+      "audio": "audio-hima/scene-195.wav",
+      "durationSec": 2.944
+    },
+    {
+      "index": 196,
+      "text": "短い使い方は記録に残りにくい調べ方なので、本当は、もう少し多いかもしれません。",
+      "type": "diagram",
+      "motif": "hm_197",
+      "audio": "audio-hima/scene-196.wav",
+      "durationSec": 6.304
+    },
+    {
+      "index": 197,
+      "text": "では、残りはどこか。",
+      "type": "diagram",
+      "motif": "hm_198",
+      "audio": "audio-hima/scene-197.wav",
+      "durationSec": 2.1866666666666665
+    },
+    {
+      "index": 198,
+      "text": "いちばん多いのは、自宅でした。約84分です。",
+      "type": "diagram",
+      "motif": "hm_199",
+      "audio": "audio-hima/scene-198.wav",
+      "durationSec": 3.9466666666666668
+    },
+    {
+      "index": 199,
+      "text": "スマホは、細切れの隙間だけでなく、家でのまとまった暇まで、しっかり埋めていたのです。",
+      "type": "diagram",
+      "motif": "hm_200",
+      "audio": "audio-hima/scene-199.wav",
+      "durationSec": 6.144
+    },
+    {
+      "index": 200,
+      "text": "ものさしを、端から見てみましょう。",
+      "type": "diagram",
+      "motif": "hm_201",
+      "audio": "audio-hima/scene-200.wav",
+      "durationSec": 2.336
+    },
+    {
+      "index": 201,
+      "text": "7日に1度の休みが、「日」の暇を。",
+      "type": "diagram",
+      "motif": "hm_202",
+      "audio": "audio-hima/scene-201.wav",
+      "durationSec": 2.6133333333333333
+    },
+    {
+      "index": 202,
+      "text": "工場の時計と法律が、「時間」の暇を。",
+      "type": "diagram",
+      "motif": "hm_203",
+      "audio": "audio-hima/scene-202.wav",
+      "durationSec": 2.976
+    },
+    {
+      "index": 203,
+      "text": "鉄道と駅が、「分」の暇を。",
+      "type": "diagram",
+      "motif": "hm_204",
+      "audio": "audio-hima/scene-203.wav",
+      "durationSec": 2.2506666666666666
+    },
+    {
+      "index": 204,
+      "text": "そしてポケットの道具が、「秒」の暇にまで、入りこみました。",
+      "type": "diagram",
+      "motif": "hm_205",
+      "audio": "audio-hima/scene-204.wav",
+      "durationSec": 4.149333333333334
+    },
+    {
+      "index": 205,
+      "text": "日本の会社で働く人の休みは、1985年に、年に約93日。",
+      "type": "diagram",
+      "motif": "hm_206",
+      "audio": "audio-hima/scene-205.wav",
+      "durationSec": 6.442666666666667
+    },
+    {
+      "index": 206,
+      "text": "2025年の調査では、約117日。この40年で、いちばん多くなりました。",
+      "type": "diagram",
+      "motif": "hm_207",
+      "audio": "audio-hima/scene-206.wav",
+      "durationSec": 6.666666666666667
+    },
+    {
+      "index": 207,
+      "text": "暇は、ちゃんと増えています。",
+      "type": "diagram",
+      "motif": "hm_208",
+      "audio": "audio-hima/scene-207.wav",
+      "durationSec": 2.048
+    },
+    {
+      "index": 208,
+      "text": "ただ、増えたそばから細かく切られて、すみずみまで、埋まっていきました。",
+      "type": "diagram",
+      "motif": "hm_209",
+      "audio": "audio-hima/scene-208.wav",
+      "durationSec": 5.1946666666666665
+    },
+    {
+      "index": 209,
+      "text": "暇は増えたのに、退屈する時間は、消えたのです。",
+      "type": "diagram",
+      "motif": "hm_210",
+      "audio": "audio-hima/scene-209.wav",
+      "durationSec": 3.8506666666666667
+    },
+    {
+      "index": 210,
+      "text": "退屈が、「別のことをしよう」の警報ベルだとしたら。",
+      "type": "diagram",
+      "motif": "hm_211",
+      "audio": "audio-hima/scene-210.wav",
+      "durationSec": 3.562666666666667
+    },
+    {
+      "index": 211,
+      "text": "いまは、ベルが鳴るより先に、画面が次のことを出してくれます。",
+      "type": "diagram",
+      "motif": "hm_212",
+      "audio": "audio-hima/scene-211.wav",
+      "durationSec": 4.384
+    },
+    {
+      "index": 212,
+      "text": "それを便利と思うか、ちょっともったいないと思うか。決めるのは、あなたです。",
+      "type": "diagram",
+      "motif": "hm_213",
+      "audio": "audio-hima/scene-212.wav",
+      "durationSec": 5.237333333333333
+    },
+    {
+      "index": 213,
+      "text": "なお、何かを待ちながら、この動画を最後まで観てくれたあなた。",
+      "type": "diagram",
+      "motif": "hm_214",
+      "audio": "audio-hima/scene-213.wav",
+      "durationSec": 4.373333333333333
+    },
+    {
+      "index": 214,
+      "text": "それはたぶん、2500年かけて細かくなった、暇の、ひと目盛りです。",
+      "type": "diagram",
+      "motif": "hm_215",
+      "audio": "audio-hima/scene-214.wav",
+      "durationSec": 5.301333333333333
+    },
+    {
+      "index": 215,
+      "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
+      "type": "card",
+      "motif": "ending",
+      "isEnding": true,
+      "audio": "audio-hima/scene-end.wav",
+      "durationSec": 5.184
+    }
+  ],
+  "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
+  "generatedAt": "2026-11-24T21:33:44.091Z",
+  "preset": "karakuri"
+}

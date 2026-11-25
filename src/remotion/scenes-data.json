@@ -2,1967 +2,1735 @@
   "scenes": [
     {
       "index": 0,
-      "text": "2001年に公開された、スタジオジブリの『千と千尋の神隠し』。",
+      "text": "いまこの動画を観ているあなた。たぶん、何かを待っていますね。",
       "type": "diagram",
-      "motif": "nm_001",
-      "audio": "audio-namae/scene-000.wav",
-      "durationSec": 5.578666666666667
-    },
-    {
-      "index": 1,
-      "text": "長いあいだ、日本でいちばん観られた映画でした。",
-      "type": "diagram",
-      "motif": "nm_002",
-      "audio": "audio-namae/scene-001.wav",
-      "durationSec": 3.68
-    },
-    {
-      "index": 2,
-      "text": "まずは、ざっくりあらすじを。",
-      "type": "diagram",
-      "motif": "nm_003",
-      "audio": "audio-namae/scene-002.wav",
-      "durationSec": 2.304
-    },
-    {
-      "index": 3,
-      "text": "10歳の女の子、千尋は、引っ越しの途中で、両親と一緒に不思議な町に迷いこみます。",
-      "type": "diagram",
-      "motif": "nm_004",
-      "audio": "audio-namae/scene-003.wav",
-      "durationSec": 7.242666666666667
-    },
-    {
-      "index": 4,
-      "text": "両親は、そこにあった食べ物を勝手に食べて、豚になってしまいます。",
-      "type": "diagram",
-      "motif": "nm_005",
-      "audio": "audio-namae/scene-004.wav",
-      "durationSec": 5.205333333333333
-    },
-    {
-      "index": 5,
-      "text": "ひとり残された千尋は、神さまたちが通うお風呂屋さんで、働くことになります。",
-      "type": "diagram",
-      "motif": "nm_006",
-      "audio": "audio-namae/scene-005.wav",
-      "durationSec": 6.112
-    },
-    {
-      "index": 6,
-      "text": "お風呂屋さんの主人は、魔女の湯婆婆。",
-      "type": "diagram",
-      "motif": "nm_007",
-      "audio": "audio-namae/scene-006.wav",
-      "durationSec": 3.0613333333333332
-    },
-    {
-      "index": 7,
-      "text": "働く契約を結ぶとき、湯婆婆は、千尋の名前を取り上げます。",
-      "type": "diagram",
-      "motif": "nm_008",
-      "audio": "audio-namae/scene-007.wav",
-      "durationSec": 5.365333333333333
-    },
-    {
-      "index": 8,
-      "text": "「千尋」から文字が減って、ただの「千」。",
-      "type": "diagram",
-      "motif": "nm_009",
-      "audio": "audio-namae/scene-008.wav",
-      "durationSec": 2.784
-    },
-    {
-      "index": 9,
-      "text": "怪物に襲われるわけでも、ケガをするわけでもありません。",
-      "type": "diagram",
-      "motif": "nm_010",
-      "audio": "audio-namae/scene-009.wav",
-      "durationSec": 4.149333333333334
-    },
-    {
-      "index": 10,
-      "text": "それなのに、少年ハクは、千尋に教えます。",
-      "type": "diagram",
-      "motif": "nm_011",
-      "audio": "audio-namae/scene-010.wav",
-      "durationSec": 3.7333333333333334
-    },
-    {
-      "index": 11,
-      "text": "名前を奪われると、帰り道がわからなくなる、と。",
-      "type": "diagram",
-      "motif": "nm_012",
-      "audio": "audio-namae/scene-011.wav",
-      "durationSec": 4.32
-    },
-    {
-      "index": 12,
-      "text": "しかもハク自身が、自分の本当の名前を思い出せずにいます。",
-      "type": "diagram",
-      "motif": "nm_013",
-      "audio": "audio-namae/scene-012.wav",
-      "durationSec": 4.586666666666667
-    },
-    {
-      "index": 13,
-      "text": "名前をなくしたまま、別の名前で働くうちに、元の自分を忘れていく。",
-      "type": "diagram",
-      "motif": "nm_014",
-      "audio": "audio-namae/scene-013.wav",
-      "durationSec": 5.546666666666667
-    },
-    {
-      "index": 14,
-      "text": "この映画には、2つの怖さが描かれています。",
-      "type": "diagram",
-      "motif": "nm_015",
-      "audio": "audio-namae/scene-014.wav",
-      "durationSec": 3.552
-    },
-    {
-      "index": 15,
-      "text": "ひとつは、帰り道がわからなくなる怖さ。",
-      "type": "diagram",
-      "motif": "nm_016",
-      "audio": "audio-namae/scene-015.wav",
-      "durationSec": 3.3066666666666666
-    },
-    {
-      "index": 16,
-      "text": "もうひとつは、元の自分を忘れてしまう怖さ。",
-      "type": "diagram",
-      "motif": "nm_017",
-      "audio": "audio-namae/scene-016.wav",
-      "durationSec": 3.5733333333333333
-    },
-    {
-      "index": 17,
-      "text": "でも、名前は、ただの呼び名のはずです。",
-      "type": "diagram",
-      "motif": "nm_018",
-      "audio": "audio-namae/scene-017.wav",
-      "durationSec": 3.296
-    },
-    {
-      "index": 18,
-      "text": "本当に、名前を奪われると、そうなるのでしょうか。",
-      "type": "diagram",
-      "motif": "nm_019",
-      "audio": "audio-namae/scene-018.wav",
-      "durationSec": 4.661333333333333
-    },
-    {
-      "index": 19,
-      "text": "映画の外で調べてみると、名前の歴史は、なかなか物騒でした。",
-      "type": "diagram",
-      "motif": "nm_020",
-      "audio": "audio-namae/scene-019.wav",
-      "durationSec": 5.1946666666666665
-    },
-    {
-      "index": 20,
-      "text": "名前を当てられて、負けてしまう小人がいて。",
-      "type": "diagram",
-      "motif": "nm_021",
-      "audio": "audio-namae/scene-020.wav",
-      "durationSec": 3.3173333333333335
-    },
-    {
-      "index": 21,
-      "text": "罰として、汚い名前に書きかえられた貴族がいて。",
-      "type": "diagram",
-      "motif": "nm_022",
-      "audio": "audio-namae/scene-021.wav",
-      "durationSec": 3.872
-    },
-    {
-      "index": 22,
-      "text": "明治には、名前に鍵がかけられて。",
-      "type": "diagram",
-      "motif": "nm_023",
-      "audio": "audio-namae/scene-022.wav",
-      "durationSec": 2.912
-    },
-    {
-      "index": 23,
-      "text": "2025年には、太郎を「ジョージ」と読ませるのが、難しくなりました。",
-      "type": "diagram",
-      "motif": "nm_024",
-      "audio": "audio-namae/scene-023.wav",
-      "durationSec": 5.354666666666667
-    },
-    {
-      "index": 24,
-      "text": "今日は、名前のからくりを、のぞいてみます。",
-      "type": "diagram",
-      "motif": "nm_025",
-      "audio": "audio-namae/scene-024.wav",
-      "durationSec": 3.3386666666666667
-    },
-    {
-      "index": 25,
-      "text": "最初の現場は、200年前のドイツ。グリム兄弟の昔話です。",
-      "type": "diagram",
-      "motif": "nm_026",
-      "audio": "audio-namae/scene-025.wav",
-      "durationSec": 5.504
-    },
-    {
-      "index": 26,
-      "text": "第1章、名前を当てたら、あなたの勝ち。",
-      "type": "diagram",
-      "motif": "nm_027",
-      "audio": "audio-namae/scene-026.wav",
-      "durationSec": 3.5733333333333333
-    },
-    {
-      "index": 27,
-      "text": "1812年、グリム兄弟は、ある不思議な話を本に収めました。",
-      "type": "diagram",
-      "motif": "nm_028",
-      "audio": "audio-namae/scene-027.wav",
-      "durationSec": 5.898666666666666
-    },
-    {
-      "index": 28,
-      "text": "わらを金に紡がないと命がない、と王さまに命じられた娘がいました。",
-      "type": "diagram",
-      "motif": "nm_029",
-      "audio": "audio-namae/scene-028.wav",
-      "durationSec": 5.312
-    },
-    {
-      "index": 29,
-      "text": "そこへ小さな男があらわれて、代わりに紡いでくれます。",
-      "type": "diagram",
-      "motif": "nm_030",
-      "audio": "audio-namae/scene-029.wav",
-      "durationSec": 4.2026666666666666
-    },
-    {
-      "index": 30,
-      "text": "ただし、お礼は、娘が将来生む、最初の子どもです。",
-      "type": "diagram",
-      "motif": "nm_031",
-      "audio": "audio-namae/scene-030.wav",
-      "durationSec": 4.938666666666666
-    },
-    {
-      "index": 31,
-      "text": "やがて赤ちゃんが生まれ、小男が取りに来ました。",
-      "type": "diagram",
-      "motif": "nm_032",
-      "audio": "audio-namae/scene-031.wav",
-      "durationSec": 3.52
-    },
-    {
-      "index": 32,
-      "text": "泣いて頼む母親に、小男は、ひとつだけ逃げ道を出します。",
-      "type": "diagram",
-      "motif": "nm_033",
-      "audio": "audio-namae/scene-032.wav",
-      "durationSec": 4.746666666666667
-    },
-    {
-      "index": 33,
-      "text": "3日のうちに、わたしの名前を当ててみろ。",
-      "type": "diagram",
-      "motif": "nm_034",
-      "audio": "audio-namae/scene-033.wav",
-      "durationSec": 3.264
-    },
-    {
-      "index": 34,
-      "text": "最後の日、森の中で、小男が自分の名前を歌っているのが聞かれてしまいます。",
-      "type": "diagram",
-      "motif": "nm_035",
-      "audio": "audio-namae/scene-034.wav",
-      "durationSec": 6.016
-    },
-    {
-      "index": 35,
-      "text": "ルンペルシュティルツキン。",
-      "type": "diagram",
-      "motif": "nm_036",
-      "audio": "audio-namae/scene-035.wav",
-      "durationSec": 1.5466666666666666
-    },
-    {
-      "index": 36,
-      "text": "名前を言い当てられた小男は、怒り狂って、姿を消しました。",
-      "type": "diagram",
-      "motif": "nm_037",
-      "audio": "audio-namae/scene-036.wav",
-      "durationSec": 4.981333333333334
-    },
-    {
-      "index": 37,
-      "text": "勝負の決め手は、力でも、知恵比べでもありません。",
-      "type": "diagram",
-      "motif": "nm_038",
-      "audio": "audio-namae/scene-037.wav",
-      "durationSec": 4.1386666666666665
-    },
-    {
-      "index": 38,
-      "text": "相手の本当の名前を知ったほうが、勝つのです。",
-      "type": "diagram",
-      "motif": "nm_039",
-      "audio": "audio-namae/scene-038.wav",
-      "durationSec": 3.584
-    },
-    {
-      "index": 39,
-      "text": "昔話の研究では、これをひとつの「型」として分類しています。",
-      "type": "diagram",
-      "motif": "nm_040",
-      "audio": "audio-namae/scene-039.wav",
-      "durationSec": 4.778666666666667
-    },
-    {
-      "index": 40,
-      "text": "イギリスの「トム・ティット・トット」など、ヨーロッパを中心に、各地に似た話があります。",
-      "type": "diagram",
-      "motif": "nm_041",
-      "audio": "audio-namae/scene-040.wav",
-      "durationSec": 6.8373333333333335
-    },
-    {
-      "index": 41,
-      "text": "日本にも、「大工と鬼六」という、そっくりな話があります。",
-      "type": "diagram",
-      "motif": "nm_042",
-      "audio": "audio-namae/scene-041.wav",
-      "durationSec": 4.586666666666667
-    },
-    {
-      "index": 42,
-      "text": "ところがこの話、実は日本古来の昔話ではありません。",
-      "type": "diagram",
-      "motif": "nm_043",
-      "audio": "audio-namae/scene-042.wav",
-      "durationSec": 5.525333333333333
-    },
-    {
-      "index": 43,
-      "text": "大正時代に、北欧の伝説を、日本風に書きかえたものだと分かっています。",
-      "type": "diagram",
-      "motif": "nm_044",
-      "audio": "audio-namae/scene-043.wav",
-      "durationSec": 6.005333333333334
-    },
-    {
-      "index": 44,
-      "text": "巨人は鬼に、教会は橋に、置きかえられました。",
-      "type": "diagram",
-      "motif": "nm_045",
-      "audio": "audio-namae/scene-044.wav",
-      "durationSec": 4.074666666666666
-    },
-    {
-      "index": 45,
-      "text": "昔話も、旅をするのです。",
-      "type": "diagram",
-      "motif": "nm_046",
-      "audio": "audio-namae/scene-045.wav",
-      "durationSec": 2.592
-    },
-    {
-      "index": 46,
-      "text": "もっと古い時代にも、名前の力は信じられていました。",
-      "type": "diagram",
-      "motif": "nm_047",
-      "audio": "audio-namae/scene-046.wav",
-      "durationSec": 4.2026666666666666
-    },
-    {
-      "index": 47,
-      "text": "古代エジプトでは、敵の名前を書いた人形を、わざと割って埋める儀式がありました。",
-      "type": "diagram",
-      "motif": "nm_048",
-      "audio": "audio-namae/scene-047.wav",
-      "durationSec": 6.282666666666667
-    },
-    {
-      "index": 48,
-      "text": "名前を壊せば、相手も弱る。そう考えたのです。",
-      "type": "diagram",
-      "motif": "nm_049",
-      "audio": "audio-namae/scene-048.wav",
-      "durationSec": 4.149333333333334
-    },
-    {
-      "index": 49,
-      "text": "名前を知る者は、相手をつかまえることができる。",
-      "type": "diagram",
-      "motif": "nm_050",
-      "audio": "audio-namae/scene-049.wav",
-      "durationSec": 3.68
-    },
-    {
-      "index": 50,
-      "text": "だから人々は、こう考えるようになります。",
-      "type": "diagram",
-      "motif": "nm_051",
-      "audio": "audio-namae/scene-050.wav",
-      "durationSec": 3.296
-    },
-    {
-      "index": 51,
-      "text": "本当の名前は、隠しておこう。",
-      "type": "diagram",
-      "motif": "nm_052",
-      "audio": "audio-namae/scene-051.wav",
-      "durationSec": 2.6453333333333333
-    },
-    {
-      "index": 52,
-      "text": "第2章、本当の名前は、呼んではいけない。",
-      "type": "diagram",
-      "motif": "nm_053",
-      "audio": "audio-namae/scene-052.wav",
-      "durationSec": 3.6693333333333333
-    },
-    {
-      "index": 53,
-      "text": "古代の中国では、人は、名前を2つ持っていました。",
-      "type": "diagram",
-      "motif": "nm_054",
-      "audio": "audio-namae/scene-053.wav",
-      "durationSec": 4.341333333333333
-    },
-    {
-      "index": 54,
-      "text": "本当の名前の「諱」と、ふだん呼ばれるための名前の「字」です。",
-      "type": "diagram",
-      "motif": "nm_055",
-      "audio": "audio-namae/scene-054.wav",
-      "durationSec": 5.045333333333334
-    },
-    {
-      "index": 55,
-      "text": "諱は、親や主君でもなければ、口にしてはいけないものでした。",
-      "type": "diagram",
-      "motif": "nm_056",
-      "audio": "audio-namae/scene-055.wav",
-      "durationSec": 4.928
-    },
-    {
-      "index": 56,
-      "text": "とくに、皇帝の諱は特別です。",
-      "type": "diagram",
-      "motif": "nm_057",
-      "audio": "audio-namae/scene-056.wav",
-      "durationSec": 2.965333333333333
-    },
-    {
-      "index": 57,
-      "text": "唐の皇帝、李世民が亡くなったあと、「民」の字を使うことが避けられました。",
-      "type": "diagram",
-      "motif": "nm_058",
-      "audio": "audio-namae/scene-057.wav",
-      "durationSec": 5.898666666666666
-    },
-    {
-      "index": 58,
-      "text": "その結果、国の役所「民部」の名前まで、「戸部」に変えられてしまいます。",
-      "type": "diagram",
-      "motif": "nm_059",
-      "audio": "audio-namae/scene-058.wav",
-      "durationSec": 5.1946666666666665
-    },
-    {
-      "index": 59,
-      "text": "ひとりの名前のために、役所の看板が書きかえられたのです。",
-      "type": "diagram",
-      "motif": "nm_060",
-      "audio": "audio-namae/scene-059.wav",
-      "durationSec": 4.469333333333333
-    },
-    {
-      "index": 60,
-      "text": "日本の平安時代の女性も、本名で呼ばれることは、ほとんどありませんでした。",
-      "type": "diagram",
-      "motif": "nm_061",
-      "audio": "audio-namae/scene-060.wav",
-      "durationSec": 5.898666666666666
-    },
-    {
-      "index": 61,
-      "text": "父の役職などにちなんだ、呼び名で呼ばれていたのです。",
-      "type": "diagram",
-      "motif": "nm_062",
-      "audio": "audio-namae/scene-061.wav",
-      "durationSec": 4.1706666666666665
-    },
-    {
-      "index": 62,
-      "text": "そのため、あの紫式部でさえ、本名は分かっていません。",
-      "type": "diagram",
-      "motif": "nm_063",
-      "audio": "audio-namae/scene-062.wav",
-      "durationSec": 4.693333333333333
-    },
-    {
-      "index": 63,
-      "text": "名前を知られることには、特別な意味がありました。",
-      "type": "diagram",
-      "motif": "nm_064",
-      "audio": "audio-namae/scene-063.wav",
-      "durationSec": 3.7013333333333334
-    },
-    {
-      "index": 64,
-      "text": "万葉集のいちばん最初の歌は、雄略天皇の歌として伝わる、こんな歌です。",
-      "type": "diagram",
-      "motif": "nm_065",
-      "audio": "audio-namae/scene-064.wav",
-      "durationSec": 6.08
-    },
-    {
-      "index": 65,
-      "text": "家告らせ、名告らさね。",
-      "type": "diagram",
-      "motif": "nm_066",
-      "audio": "audio-namae/scene-065.wav",
-      "durationSec": 2.058666666666667
-    },
-    {
-      "index": 66,
-      "text": "あなたの家はどこ。名前を教えて。",
-      "type": "diagram",
-      "motif": "nm_067",
-      "audio": "audio-namae/scene-066.wav",
-      "durationSec": 2.88
-    },
-    {
-      "index": 67,
-      "text": "名前をたずねることが、そのまま、求婚の言葉だったと考えられています。",
-      "type": "diagram",
-      "motif": "nm_068",
-      "audio": "audio-namae/scene-067.wav",
-      "durationSec": 5.482666666666667
-    },
-    {
-      "index": 68,
-      "text": "名前で身を守る、という工夫もありました。",
-      "type": "diagram",
-      "motif": "nm_069",
-      "audio": "audio-namae/scene-068.wav",
-      "durationSec": 3.1786666666666665
-    },
-    {
-      "index": 69,
-      "text": "豊臣秀吉は、待ちに待った男の子に、「棄」と名前をつけます。",
-      "type": "diagram",
-      "motif": "nm_070",
-      "audio": "audio-namae/scene-069.wav",
-      "durationSec": 5.184
-    },
-    {
-      "index": 70,
-      "text": "捨てる、の棄です。",
-      "type": "diagram",
-      "motif": "nm_071",
-      "audio": "audio-namae/scene-070.wav",
-      "durationSec": 1.6746666666666667
-    },
-    {
-      "index": 71,
-      "text": "捨て子は丈夫に育つ、という言い伝えにあやかったとされます。",
-      "type": "diagram",
-      "motif": "nm_072",
-      "audio": "audio-namae/scene-071.wav",
-      "durationSec": 4.373333333333333
-    },
-    {
-      "index": 72,
-      "text": "名前を知られると、つかまる。",
-      "type": "diagram",
-      "motif": "nm_073",
-      "audio": "audio-namae/scene-072.wav",
-      "durationSec": 2.3893333333333335
-    },
-    {
-      "index": 73,
-      "text": "だから隠す。呼ばない。わざと悪い名前をつける。",
-      "type": "diagram",
-      "motif": "nm_074",
-      "audio": "audio-namae/scene-073.wav",
-      "durationSec": 4.213333333333333
-    },
-    {
-      "index": 74,
-      "text": "名前は、呼ぶ人と呼ばれる人を結ぶ、糸でした。",
-      "type": "diagram",
-      "motif": "nm_075",
-      "audio": "audio-namae/scene-074.wav",
-      "durationSec": 4.149333333333334
-    },
-    {
-      "index": 75,
-      "text": "これが、1本目の糸。耳の糸です。",
-      "type": "diagram",
-      "motif": "nm_076",
-      "audio": "audio-namae/scene-075.wav",
-      "durationSec": 3.4346666666666668
-    },
-    {
-      "index": 76,
-      "text": "では、この糸を、無理やり書きかえたら、どうなるのでしょうか。",
-      "type": "diagram",
-      "motif": "nm_077",
-      "audio": "audio-namae/scene-076.wav",
-      "durationSec": 5.226666666666667
-    },
-    {
-      "index": 77,
-      "text": "第3章、名前を、汚い名前に書きかえる罰。",
-      "type": "diagram",
-      "motif": "nm_078",
-      "audio": "audio-namae/scene-077.wav",
-      "durationSec": 4.128
-    },
-    {
-      "index": 78,
-      "text": "769年、奈良時代の都で、ひとりの皇女が罪に問われました。",
-      "type": "diagram",
-      "motif": "nm_079",
-      "audio": "audio-namae/scene-078.wav",
-      "durationSec": 5.930666666666666
-    },
-    {
-      "index": 79,
-      "text": "天皇を呪った、という罪です。",
-      "type": "diagram",
-      "motif": "nm_080",
-      "audio": "audio-namae/scene-079.wav",
-      "durationSec": 2.6026666666666665
-    },
-    {
-      "index": 80,
-      "text": "彼女は皇族の身分を取り上げられ、さらに名前まで変えられて、都を追われました。",
-      "type": "diagram",
-      "motif": "nm_081",
-      "audio": "audio-namae/scene-080.wav",
-      "durationSec": 6.293333333333333
-    },
-    {
-      "index": 81,
-      "text": "新しい名前は、「厨真人厨女」。",
-      "type": "diagram",
-      "motif": "nm_082",
-      "audio": "audio-namae/scene-081.wav",
-      "durationSec": 3.2213333333333334
-    },
-    {
-      "index": 82,
-      "text": "台所で働く女を思わせる名前だった、と読まれています。",
-      "type": "diagram",
-      "motif": "nm_083",
-      "audio": "audio-namae/scene-082.wav",
-      "durationSec": 4.629333333333333
-    },
-    {
-      "index": 83,
-      "text": "のちにこの罪は、でっちあげだったと分かります。",
-      "type": "diagram",
-      "motif": "nm_084",
-      "audio": "audio-namae/scene-083.wav",
-      "durationSec": 3.445333333333333
-    },
-    {
-      "index": 84,
-      "text": "同じ年、もうひとり、名前を奪われた人がいます。",
-      "type": "diagram",
-      "motif": "nm_085",
-      "audio": "audio-namae/scene-084.wav",
-      "durationSec": 4.1066666666666665
-    },
-    {
-      "index": 85,
-      "text": "和気清麻呂です。",
-      "type": "diagram",
-      "motif": "nm_086",
-      "audio": "audio-namae/scene-085.wav",
-      "durationSec": 1.4826666666666666
-    },
-    {
-      "index": 86,
-      "text": "彼は、僧の道鏡が天皇の位につくのを、命がけで止めました。",
-      "type": "diagram",
-      "motif": "nm_087",
-      "audio": "audio-namae/scene-086.wav",
-      "durationSec": 5.397333333333333
-    },
-    {
-      "index": 87,
-      "text": "その怒りを買って、名前を書きかえられます。",
-      "type": "diagram",
-      "motif": "nm_088",
-      "audio": "audio-namae/scene-087.wav",
-      "durationSec": 3.328
-    },
-    {
-      "index": 88,
-      "text": "「清麻呂」の「清」が、けがれの「穢」に。",
-      "type": "diagram",
-      "motif": "nm_089",
-      "audio": "audio-namae/scene-088.wav",
-      "durationSec": 3.136
-    },
-    {
-      "index": 89,
-      "text": "新しい名前は、「別部穢麻呂」。",
-      "type": "diagram",
-      "motif": "nm_090",
-      "audio": "audio-namae/scene-089.wav",
-      "durationSec": 2.848
-    },
-    {
-      "index": 90,
-      "text": "清らかな男が、けがれた男にされたのです。",
-      "type": "diagram",
-      "motif": "nm_091",
-      "audio": "audio-namae/scene-090.wav",
-      "durationSec": 3.52
-    },
-    {
-      "index": 91,
-      "text": "映画の中の話だと思っていたことが、本当にあったのです。",
-      "type": "diagram",
-      "motif": "nm_092",
-      "audio": "audio-namae/scene-091.wav",
-      "durationSec": 4.458666666666667
-    },
-    {
-      "index": 92,
-      "text": "名前を奪うことは、正式な刑罰でした。",
-      "type": "diagram",
-      "motif": "nm_093",
-      "audio": "audio-namae/scene-092.wav",
-      "durationSec": 3.3813333333333335
-    },
-    {
-      "index": 93,
-      "text": "その人を呼ぶ言葉そのものが、取り上げられたのです。",
-      "type": "diagram",
-      "motif": "nm_094",
-      "audio": "audio-namae/scene-093.wav",
-      "durationSec": 3.712
-    },
-    {
-      "index": 94,
-      "text": "清麻呂は、のちに名誉を回復し、もとの名前に戻ります。",
-      "type": "diagram",
-      "motif": "nm_095",
-      "audio": "audio-namae/scene-094.wav",
-      "durationSec": 4.618666666666667
-    },
-    {
-      "index": 95,
-      "text": "名前を消す罰は、日本だけのものではありません。",
-      "type": "diagram",
-      "motif": "nm_096",
-      "audio": "audio-namae/scene-095.wav",
-      "durationSec": 3.744
-    },
-    {
-      "index": 96,
-      "text": "古代エジプトでは、女王ハトシェプストの名前が、記念碑から削り取られています。",
-      "type": "diagram",
-      "motif": "nm_097",
-      "audio": "audio-namae/scene-096.wav",
-      "durationSec": 5.792
-    },
-    {
-      "index": 97,
-      "text": "誰が、なぜ削ったのかは、いまも議論が続いています。",
-      "type": "diagram",
-      "motif": "nm_098",
-      "audio": "audio-namae/scene-097.wav",
-      "durationSec": 4.266666666666667
-    },
-    {
-      "index": 98,
-      "text": "名前の糸は、人の手で切ることも、書きかえることもできたのです。",
-      "type": "diagram",
-      "motif": "nm_099",
-      "audio": "audio-namae/scene-098.wav",
-      "durationSec": 4.8
-    },
-    {
-      "index": 99,
-      "text": "では、もっと大きな仕組みが、名前を握ったら、どうなるのでしょうか。",
-      "type": "diagram",
-      "motif": "nm_100",
-      "audio": "audio-namae/scene-099.wav",
-      "durationSec": 5.824
-    },
-    {
-      "index": 100,
-      "text": "第4章、江戸の人は、名字を持っていた。",
-      "type": "diagram",
-      "motif": "nm_101",
-      "audio": "audio-namae/scene-100.wav",
-      "durationSec": 3.5946666666666665
-    },
-    {
-      "index": 101,
-      "text": "江戸時代の庶民は、名字を持っていなかった。",
-      "type": "diagram",
-      "motif": "nm_102",
-      "audio": "audio-namae/scene-101.wav",
-      "durationSec": 3.4346666666666668
-    },
-    {
-      "index": 102,
-      "text": "そう習った人も、多いかもしれません。",
-      "type": "diagram",
-      "motif": "nm_103",
-      "audio": "audio-namae/scene-102.wav",
-      "durationSec": 2.8906666666666667
-    },
-    {
-      "index": 103,
-      "text": "実はこれは、半分まちがいです。",
-      "type": "diagram",
-      "motif": "nm_104",
-      "audio": "audio-namae/scene-103.wav",
-      "durationSec": 3.082666666666667
-    },
-    {
-      "index": 104,
-      "text": "村人や町人にも、名字はありました。",
-      "type": "diagram",
-      "motif": "nm_105",
-      "audio": "audio-namae/scene-104.wav",
-      "durationSec": 3.2106666666666666
-    },
-    {
-      "index": 105,
-      "text": "ただ、おおやけの書類に書いて名乗ることが、許されていなかったのです。",
-      "type": "diagram",
-      "motif": "nm_106",
-      "audio": "audio-namae/scene-105.wav",
-      "durationSec": 5.066666666666666
-    },
-    {
-      "index": 106,
-      "text": "名字を名乗るのは、原則として、武士などの特権でした。",
-      "type": "diagram",
-      "motif": "nm_107",
-      "audio": "audio-namae/scene-106.wav",
-      "durationSec": 4.576
-    },
-    {
-      "index": 107,
-      "text": "手がらのあった町人には、ごほうびとして、名字を名乗る許可が出ることもありました。",
-      "type": "diagram",
-      "motif": "nm_108",
-      "audio": "audio-namae/scene-107.wav",
-      "durationSec": 5.962666666666666
-    },
-    {
-      "index": 108,
-      "text": "名字は、身分の札だったのです。",
-      "type": "diagram",
-      "motif": "nm_109",
-      "audio": "audio-namae/scene-108.wav",
-      "durationSec": 2.7306666666666666
-    },
-    {
-      "index": 109,
-      "text": "しかも江戸の人にとって、名前は、一生に何度も着替えるものでした。",
-      "type": "diagram",
-      "motif": "nm_110",
-      "audio": "audio-namae/scene-109.wav",
-      "durationSec": 5.258666666666667
-    },
-    {
-      "index": 110,
-      "text": "子どもの名前、大人の名前、家を継いだときの名前、隠居したときの名前。",
-      "type": "diagram",
-      "motif": "nm_111",
-      "audio": "audio-namae/scene-110.wav",
-      "durationSec": 6.357333333333333
-    },
-    {
-      "index": 111,
-      "text": "名前は、立場や仕事に合わせて、変わっていくものでした。",
-      "type": "diagram",
-      "motif": "nm_112",
-      "audio": "audio-namae/scene-111.wav",
-      "durationSec": 4.48
-    },
-    {
-      "index": 112,
-      "text": "その自由な名前に、鍵をかけたのが、明治の政府です。",
-      "type": "diagram",
-      "motif": "nm_113",
-      "audio": "audio-namae/scene-112.wav",
-      "durationSec": 4.608
-    },
-    {
-      "index": 113,
-      "text": "第5章、明治、名前に錠前がかかる。",
-      "type": "diagram",
-      "motif": "nm_114",
-      "audio": "audio-namae/scene-113.wav",
-      "durationSec": 3.7866666666666666
-    },
-    {
-      "index": 114,
-      "text": "明治3年。政府は、平民も名字を名乗ってよい、と許可します。",
-      "type": "diagram",
-      "motif": "nm_115",
-      "audio": "audio-namae/scene-114.wav",
-      "durationSec": 5.770666666666667
-    },
-    {
-      "index": 115,
-      "text": "ところが、届け出は、なかなか進みませんでした。",
-      "type": "diagram",
-      "motif": "nm_116",
-      "audio": "audio-namae/scene-115.wav",
-      "durationSec": 3.7333333333333334
-    },
-    {
-      "index": 116,
-      "text": "税金を取られるのでは、と警戒したから、という説もあります。",
-      "type": "diagram",
-      "motif": "nm_117",
-      "audio": "audio-namae/scene-116.wav",
-      "durationSec": 4.746666666666667
-    },
-    {
-      "index": 117,
-      "text": "明治4年、全国の人を記録する、戸籍の法律ができます。",
-      "type": "diagram",
-      "motif": "nm_118",
-      "audio": "audio-namae/scene-117.wav",
-      "durationSec": 5.248
-    },
-    {
-      "index": 118,
-      "text": "人が、ひとりずつ、名簿に結ばれたのです。",
-      "type": "diagram",
-      "motif": "nm_119",
-      "audio": "audio-namae/scene-118.wav",
-      "durationSec": 3.6053333333333333
-    },
-    {
-      "index": 119,
-      "text": "明治5年5月、名前は、ひとり1つと決められます。",
-      "type": "diagram",
-      "motif": "nm_120",
-      "audio": "audio-namae/scene-119.wav",
+      "motif": "hm_001",
+      "audio": "audio-hima/scene-000.wav",
       "durationSec": 4.352
     },
     {
-      "index": 120,
-      "text": "同じ年の8月、名前を変えることが、禁止されます。",
+      "index": 1,
+      "text": "電車か、お湯がわくのか、既読がつくのか。",
       "type": "diagram",
-      "motif": "nm_121",
-      "audio": "audio-namae/scene-120.wav",
-      "durationSec": 4.394666666666667
-    },
-    {
-      "index": 121,
-      "text": "そして明治8年。名字は、名乗ってもいいものから、名乗らなければならないものになります。",
-      "type": "diagram",
-      "motif": "nm_122",
-      "audio": "audio-namae/scene-121.wav",
-      "durationSec": 6.8373333333333335
-    },
-    {
-      "index": 122,
-      "text": "先祖の名字がわからない人は、新しくつくれ、とまで命じられました。",
-      "type": "diagram",
-      "motif": "nm_123",
-      "audio": "audio-namae/scene-122.wav",
-      "durationSec": 5.376
-    },
-    {
-      "index": 123,
-      "text": "兵隊を集める名簿づくりのために、軍から求められたといわれています。",
-      "type": "diagram",
-      "motif": "nm_124",
-      "audio": "audio-namae/scene-123.wav",
-      "durationSec": 5.322666666666667
-    },
-    {
-      "index": 124,
-      "text": "わずか5年で、名前は、自由に着替える服から、外せない札に変わったのです。",
-      "type": "diagram",
-      "motif": "nm_125",
-      "audio": "audio-namae/scene-124.wav",
-      "durationSec": 6.218666666666667
-    },
-    {
-      "index": 125,
-      "text": "ちなみに、明治のはじめ、結婚した女性は、実家の名字のままでした。",
-      "type": "diagram",
-      "motif": "nm_126",
-      "audio": "audio-namae/scene-125.wav",
-      "durationSec": 5.930666666666666
-    },
-    {
-      "index": 126,
-      "text": "夫婦が同じ名字になったのは、明治31年の民法からです。",
-      "type": "diagram",
-      "motif": "nm_127",
-      "audio": "audio-namae/scene-126.wav",
-      "durationSec": 5.173333333333333
-    },
-    {
-      "index": 127,
-      "text": "昔から夫婦は同じ名字だった、というわけではないのです。",
-      "type": "diagram",
-      "motif": "nm_128",
-      "audio": "audio-namae/scene-127.wav",
-      "durationSec": 4.394666666666667
-    },
-    {
-      "index": 128,
-      "text": "こうして、名前から、2本目の糸が伸びました。",
-      "type": "diagram",
-      "motif": "nm_129",
-      "audio": "audio-namae/scene-128.wav",
-      "durationSec": 3.68
-    },
-    {
-      "index": 129,
-      "text": "国の名簿につながる、帳簿の糸です。",
-      "type": "diagram",
-      "motif": "nm_130",
-      "audio": "audio-namae/scene-129.wav",
-      "durationSec": 3.050666666666667
-    },
-    {
-      "index": 130,
-      "text": "名簿に載れば、国に守られます。",
-      "type": "diagram",
-      "motif": "nm_131",
-      "audio": "audio-namae/scene-130.wav",
-      "durationSec": 2.688
-    },
-    {
-      "index": 131,
-      "text": "同時に、国から逃げられなくもなりました。",
-      "type": "diagram",
-      "motif": "nm_132",
-      "audio": "audio-namae/scene-131.wav",
-      "durationSec": 3.2106666666666666
-    },
-    {
-      "index": 132,
-      "text": "この帳簿の糸は、いまも、形を変え続けています。",
-      "type": "diagram",
-      "motif": "nm_133",
-      "audio": "audio-namae/scene-132.wav",
-      "durationSec": 4.149333333333334
-    },
-    {
-      "index": 133,
-      "text": "第6章、2025年、名前に「読み方」が書かれた。",
-      "type": "diagram",
-      "motif": "nm_134",
-      "audio": "audio-namae/scene-133.wav",
-      "durationSec": 4.586666666666667
-    },
-    {
-      "index": 134,
-      "text": "実は、つい最近まで、日本の戸籍には、名前の読み方が書かれていませんでした。",
-      "type": "diagram",
-      "motif": "nm_135",
-      "audio": "audio-namae/scene-134.wav",
-      "durationSec": 6.4
-    },
-    {
-      "index": 135,
-      "text": "それが2025年5月、変わりました。",
-      "type": "diagram",
-      "motif": "nm_136",
-      "audio": "audio-namae/scene-135.wav",
-      "durationSec": 3.4026666666666667
-    },
-    {
-      "index": 136,
-      "text": "戸籍に、名前のふりがなが、載るようになったのです。",
-      "type": "diagram",
-      "motif": "nm_137",
-      "audio": "audio-namae/scene-136.wav",
-      "durationSec": 4
-    },
-    {
-      "index": 137,
-      "text": "まず、役所から通知が届きます。あなたの名前は、こう読みますね、と。",
-      "type": "diagram",
-      "motif": "nm_138",
-      "audio": "audio-namae/scene-137.wav",
-      "durationSec": 6.1226666666666665
-    },
-    {
-      "index": 138,
-      "text": "違っていれば、届け出をして、正しい読み方を伝えます。",
-      "type": "diagram",
-      "motif": "nm_139",
-      "audio": "audio-namae/scene-138.wav",
-      "durationSec": 4.48
-    },
-    {
-      "index": 139,
-      "text": "そして2026年5月、届け出がなかった人は、通知どおりの読み方で、戸籍に書きこまれました。",
-      "type": "diagram",
-      "motif": "nm_140",
-      "audio": "audio-namae/scene-139.wav",
-      "durationSec": 7.744
-    },
-    {
-      "index": 140,
-      "text": "ルールは、一般に認められている読み方であること。",
-      "type": "diagram",
-      "motif": "nm_141",
-      "audio": "audio-namae/scene-140.wav",
-      "durationSec": 3.904
-    },
-    {
-      "index": 141,
-      "text": "法務省は、認められない例を挙げています。",
-      "type": "diagram",
-      "motif": "nm_142",
-      "audio": "audio-namae/scene-141.wav",
-      "durationSec": 3.264
-    },
-    {
-      "index": 142,
-      "text": "太郎と書いて、ジョージ。",
-      "type": "diagram",
-      "motif": "nm_143",
-      "audio": "audio-namae/scene-142.wav",
-      "durationSec": 1.984
-    },
-    {
-      "index": 143,
-      "text": "健と書いて、ケンサマ。",
-      "type": "diagram",
-      "motif": "nm_144",
-      "audio": "audio-namae/scene-143.wav",
-      "durationSec": 2.037333333333333
-    },
-    {
-      "index": 144,
-      "text": "高と書いて、ヒクシ。",
-      "type": "diagram",
-      "motif": "nm_145",
-      "audio": "audio-namae/scene-144.wav",
-      "durationSec": 1.8666666666666667
-    },
-    {
-      "index": 145,
-      "text": "ただし、キラキラネームが禁止された、というわけではありません。",
-      "type": "diagram",
-      "motif": "nm_146",
-      "audio": "audio-namae/scene-145.wav",
-      "durationSec": 4.661333333333333
-    },
-    {
-      "index": 146,
-      "text": "すでに使われている名前は、使ってきた実績があれば認められます。",
-      "type": "diagram",
-      "motif": "nm_147",
-      "audio": "audio-namae/scene-146.wav",
-      "durationSec": 4.981333333333334
-    },
-    {
-      "index": 147,
-      "text": "届け出をしないと罰金、という話もまちがいです。そういう連絡は、詐欺を疑ってください。",
-      "type": "diagram",
-      "motif": "nm_148",
-      "audio": "audio-namae/scene-147.wav",
-      "durationSec": 7.093333333333334
-    },
-    {
-      "index": 148,
-      "text": "では、名前を変えたくなったら、どうするのか。",
-      "type": "diagram",
-      "motif": "nm_149",
-      "audio": "audio-namae/scene-148.wav",
-      "durationSec": 4.053333333333334
-    },
-    {
-      "index": 149,
-      "text": "家庭裁判所に、許可を求めます。",
-      "type": "diagram",
-      "motif": "nm_150",
-      "audio": "audio-namae/scene-149.wav",
-      "durationSec": 2.8373333333333335
-    },
-    {
-      "index": 150,
-      "text": "2025年に名前の変更を申し立てたのは、4979件。",
-      "type": "diagram",
-      "motif": "nm_151",
-      "audio": "audio-namae/scene-150.wav",
-      "durationSec": 5.888
-    },
-    {
-      "index": 151,
-      "text": "名前は、いまも、国の許可なしには変えられないのです。",
-      "type": "diagram",
-      "motif": "nm_152",
-      "audio": "audio-namae/scene-151.wav",
-      "durationSec": 4.213333333333333
-    },
-    {
-      "index": 152,
-      "text": "1993年には、ある親が、子どもに「悪魔」と名づけようとしました。",
-      "type": "diagram",
-      "motif": "nm_153",
-      "audio": "audio-namae/scene-152.wav",
-      "durationSec": 5.866666666666666
-    },
-    {
-      "index": 153,
-      "text": "悪も魔も、使ってよい漢字です。",
-      "type": "diagram",
-      "motif": "nm_154",
-      "audio": "audio-namae/scene-153.wav",
-      "durationSec": 2.6133333333333333
-    },
-    {
-      "index": 154,
-      "text": "それでも役所は止め、話は裁判にまでなりました。",
-      "type": "diagram",
-      "motif": "nm_155",
-      "audio": "audio-namae/scene-154.wav",
-      "durationSec": 3.957333333333333
-    },
-    {
-      "index": 155,
-      "text": "結局、その子は、別の名前で届けられています。",
-      "type": "diagram",
-      "motif": "nm_156",
-      "audio": "audio-namae/scene-155.wav",
-      "durationSec": 4.021333333333334
-    },
-    {
-      "index": 156,
-      "text": "名前は、親のものでも、子どものものでも、国のものでもある。",
-      "type": "diagram",
-      "motif": "nm_157",
-      "audio": "audio-namae/scene-156.wav",
-      "durationSec": 4.981333333333334
-    },
-    {
-      "index": 157,
-      "text": "そんな、ふしぎな持ち物なのです。",
-      "type": "diagram",
-      "motif": "nm_158",
-      "audio": "audio-namae/scene-157.wav",
-      "durationSec": 2.6453333333333333
-    },
-    {
-      "index": 158,
-      "text": "では、名前に値打ちがついたら、それは誰のものになるのでしょうか。",
-      "type": "diagram",
-      "motif": "nm_159",
-      "audio": "audio-namae/scene-158.wav",
-      "durationSec": 5.429333333333333
-    },
-    {
-      "index": 159,
-      "text": "第7章、名前は、誰のものか。",
-      "type": "diagram",
-      "motif": "nm_160",
-      "audio": "audio-namae/scene-159.wav",
-      "durationSec": 3.6266666666666665
-    },
-    {
-      "index": 160,
-      "text": "名前には、もうひとつ、不思議な性質があります。",
-      "type": "diagram",
-      "motif": "nm_161",
-      "audio": "audio-namae/scene-160.wav",
+      "motif": "hm_002",
+      "audio": "audio-hima/scene-001.wav",
       "durationSec": 3.8933333333333335
     },
     {
-      "index": 161,
-      "text": "使えば使うほど、値打ちが貯まっていくのです。",
+      "index": 2,
+      "text": "2014年、アメリカの大学で、人を何もない部屋に、15分だけ置いておく実験がありました。",
       "type": "diagram",
-      "motif": "nm_162",
-      "audio": "audio-namae/scene-161.wav",
+      "motif": "hm_003",
+      "audio": "audio-hima/scene-002.wav",
+      "durationSec": 7.1146666666666665
+    },
+    {
+      "index": 3,
+      "text": "スマホなし。本なし。おしゃべり相手もなし。",
+      "type": "diagram",
+      "motif": "hm_004",
+      "audio": "audio-hima/scene-003.wav",
+      "durationSec": 3.232
+    },
+    {
+      "index": 4,
+      "text": "あるのは、ボタンがひとつだけ。押すと、自分の体に、ビリッと電気が流れます。",
+      "type": "diagram",
+      "motif": "hm_005",
+      "audio": "audio-hima/scene-004.wav",
+      "durationSec": 5.973333333333334
+    },
+    {
+      "index": 5,
+      "text": "参加者は、事前に「お金を払ってでも、この電気はいやだ」と答えた人たちです。",
+      "type": "diagram",
+      "motif": "hm_006",
+      "audio": "audio-hima/scene-005.wav",
+      "durationSec": 5.386666666666667
+    },
+    {
+      "index": 6,
+      "text": "結果。男性は、18人のうち12人が、押しました。",
+      "type": "diagram",
+      "motif": "hm_007",
+      "audio": "audio-hima/scene-006.wav",
+      "durationSec": 4.768
+    },
+    {
+      "index": 7,
+      "text": "女性も、24人のうち6人が押しています。",
+      "type": "diagram",
+      "motif": "hm_008",
+      "audio": "audio-hima/scene-007.wav",
+      "durationSec": 3.36
+    },
+    {
+      "index": 8,
+      "text": "ひとり、15分で190回押した男性がいて、さすがに集計から外されました。",
+      "type": "diagram",
+      "motif": "hm_009",
+      "audio": "audio-hima/scene-008.wav",
+      "durationSec": 6.037333333333334
+    },
+    {
+      "index": 9,
+      "text": "人間、そこまでして、暇がいやなのです。",
+      "type": "diagram",
+      "motif": "hm_010",
+      "audio": "audio-hima/scene-009.wav",
+      "durationSec": 3.1253333333333333
+    },
+    {
+      "index": 10,
+      "text": "ところが、いまの私たちは、ほとんど退屈しません。",
+      "type": "diagram",
+      "motif": "hm_011",
+      "audio": "audio-hima/scene-010.wav",
+      "durationSec": 3.8506666666666667
+    },
+    {
+      "index": 11,
+      "text": "信号待ちの数十秒でも、ポケットからスマホが出てきます。",
+      "type": "diagram",
+      "motif": "hm_012",
+      "audio": "audio-hima/scene-011.wav",
+      "durationSec": 4.042666666666666
+    },
+    {
+      "index": 12,
+      "text": "しかも、日本の会社で働く人の休みは、ここ40年で、いまがいちばん多い。",
+      "type": "diagram",
+      "motif": "hm_013",
+      "audio": "audio-hima/scene-012.wav",
+      "durationSec": 5.984
+    },
+    {
+      "index": 13,
+      "text": "暇は増えた。なのに、退屈が見当たらない。",
+      "type": "diagram",
+      "motif": "hm_014",
+      "audio": "audio-hima/scene-013.wav",
       "durationSec": 3.4133333333333336
     },
     {
-      "index": 162,
-      "text": "歌舞伎の世界では、大きな名前は「名跡」と呼ばれ、親から子へ、師匠から弟子へ受け継がれます。",
+      "index": 14,
+      "text": "暇は、どこへ消えたのでしょうか。",
       "type": "diagram",
-      "motif": "nm_163",
-      "audio": "audio-namae/scene-162.wav",
-      "durationSec": 7.306666666666667
+      "motif": "hm_015",
+      "audio": "audio-hima/scene-014.wav",
+      "durationSec": 2.7093333333333334
     },
     {
-      "index": 163,
-      "text": "継ぐたびに、十三代目、のように代が数えられます。",
+      "index": 15,
+      "text": "この謎を追って2500年さかのぼったら、ちょっとおかしな事件が、いくつも出てきました。",
       "type": "diagram",
-      "motif": "nm_164",
-      "audio": "audio-namae/scene-163.wav",
-      "durationSec": 4.298666666666667
+      "motif": "hm_016",
+      "audio": "audio-hima/scene-015.wav",
+      "durationSec": 5.834666666666666
     },
     {
-      "index": 164,
-      "text": "名前が、人から人へ、引っ越していくのです。",
+      "index": 16,
+      "text": "休まないと罰金を取られる村。日曜を休みにしたら、休みが減った役所。そして、駅で売られはじめた、暇。",
       "type": "diagram",
-      "motif": "nm_165",
-      "audio": "audio-namae/scene-164.wav",
-      "durationSec": 3.5733333333333333
+      "motif": "hm_017",
+      "audio": "audio-hima/scene-016.wav",
+      "durationSec": 8.053333333333333
     },
     {
-      "index": 165,
-      "text": "落語家も、師匠から名前をもらい、出世するたびに名前を変える人が多くいます。",
+      "index": 17,
+      "text": "道具は、このものさしです。日、時間、分、秒。名づけて、暇のものさし。",
       "type": "diagram",
-      "motif": "nm_166",
-      "audio": "audio-namae/scene-165.wav",
-      "durationSec": 5.994666666666666
+      "motif": "hm_018",
+      "audio": "audio-hima/scene-017.wav",
+      "durationSec": 7.1146666666666665
     },
     {
-      "index": 166,
-      "text": "大相撲には、親方になるための名前、年寄名跡があります。",
+      "index": 18,
+      "text": "まずは、いちばん大きな暇から、測ってみます。",
       "type": "diagram",
-      "motif": "nm_167",
-      "audio": "audio-namae/scene-166.wav",
-      "durationSec": 5.1946666666666665
+      "motif": "hm_019",
+      "audio": "audio-hima/scene-018.wav",
+      "durationSec": 3.488
     },
     {
-      "index": 167,
-      "text": "数は、一代かぎりのものを除いて、105。",
+      "index": 19,
+      "text": "第1章、7日に1度の、休み。",
       "type": "diagram",
-      "motif": "nm_168",
-      "audio": "audio-namae/scene-167.wav",
-      "durationSec": 3.8506666666666667
+      "motif": "hm_020",
+      "audio": "audio-hima/scene-019.wav",
+      "durationSec": 2.997333333333333
     },
     {
-      "index": 168,
-      "text": "かつては、億単位のお金で受け継がれたとも言われました。",
+      "index": 20,
+      "text": "7日に1度、休みが来る。これ、誰が決めたのでしょうか。",
       "type": "diagram",
-      "motif": "nm_169",
-      "audio": "audio-namae/scene-168.wav",
-      "durationSec": 4.1386666666666665
+      "motif": "hm_021",
+      "audio": "audio-hima/scene-020.wav",
+      "durationSec": 5.024
     },
     {
-      "index": 169,
-      "text": "2014年からは、相撲協会が管理し、お金のやり取りは禁止されています。",
+      "index": 21,
+      "text": "記録でたどれる、いちばん古い決まりは、約2500年前です。",
       "type": "diagram",
-      "motif": "nm_170",
-      "audio": "audio-namae/scene-169.wav",
-      "durationSec": 6.176
-    },
-    {
-      "index": 170,
-      "text": "名前が、個人の財産から、みんなの預かりものに変わったのです。",
-      "type": "diagram",
-      "motif": "nm_171",
-      "audio": "audio-namae/scene-170.wav",
-      "durationSec": 4.938666666666666
-    },
-    {
-      "index": 171,
-      "text": "名前の値打ちは、お金で数えることもできます。",
-      "type": "diagram",
-      "motif": "nm_172",
-      "audio": "audio-namae/scene-171.wav",
-      "durationSec": 3.616
-    },
-    {
-      "index": 172,
-      "text": "ある会社の推計では、アップルという名前の値打ちは、およそ4700億ドルです。",
-      "type": "diagram",
-      "motif": "nm_173",
-      "audio": "audio-namae/scene-172.wav",
-      "durationSec": 6.666666666666667
-    },
-    {
-      "index": 173,
-      "text": "すると、新しい問題が起きます。",
-      "type": "diagram",
-      "motif": "nm_174",
-      "audio": "audio-namae/scene-173.wav",
-      "durationSec": 2.8266666666666667
-    },
-    {
-      "index": 174,
-      "text": "その名前は、いったい誰のものなのか。",
-      "type": "diagram",
-      "motif": "nm_175",
-      "audio": "audio-namae/scene-174.wav",
-      "durationSec": 3.466666666666667
-    },
-    {
-      "index": 175,
-      "text": "2012年、最高裁は、有名人の名前や顔には、お客さんを呼ぶ力があると認めました。",
-      "type": "diagram",
-      "motif": "nm_176",
-      "audio": "audio-namae/scene-175.wav",
-      "durationSec": 7.925333333333334
-    },
-    {
-      "index": 176,
-      "text": "その力を、本人が独り占めできる権利です。",
-      "type": "diagram",
-      "motif": "nm_177",
-      "audio": "audio-namae/scene-176.wav",
-      "durationSec": 3.530666666666667
-    },
-    {
-      "index": 177,
-      "text": "では、事務所で名前が売れた人が、事務所をやめたらどうなるのでしょう。",
-      "type": "diagram",
-      "motif": "nm_178",
-      "audio": "audio-namae/scene-177.wav",
-      "durationSec": 5.034666666666666
-    },
-    {
-      "index": 178,
-      "text": "2025年、国は、芸能事務所との取引について、指針を出しました。",
-      "type": "diagram",
-      "motif": "nm_179",
-      "audio": "audio-namae/scene-178.wav",
-      "durationSec": 6.1226666666666665
-    },
-    {
-      "index": 179,
-      "text": "売れるかどうか分からない新人に、事務所はお金をかけて育てます。",
-      "type": "diagram",
-      "motif": "nm_180",
-      "audio": "audio-namae/scene-179.wav",
-      "durationSec": 4.864
-    },
-    {
-      "index": 180,
-      "text": "だから在籍中に、事務所が芸名を管理するのには、理由があるとしました。",
-      "type": "diagram",
-      "motif": "nm_181",
-      "audio": "audio-namae/scene-180.wav",
-      "durationSec": 5.92
-    },
-    {
-      "index": 181,
-      "text": "一方で、やめたあとに、理由もなく名前を使わせないのは、問題になりうる。",
-      "type": "diagram",
-      "motif": "nm_182",
-      "audio": "audio-namae/scene-181.wav",
-      "durationSec": 6.208
-    },
-    {
-      "index": 182,
-      "text": "使用料を払うなど、別の道も話し合うように、と求めています。",
-      "type": "diagram",
-      "motif": "nm_183",
-      "audio": "audio-namae/scene-182.wav",
-      "durationSec": 5.12
-    },
-    {
-      "index": 183,
-      "text": "育てた側の理屈と、名前で生きる側の理屈。",
-      "type": "diagram",
-      "motif": "nm_184",
-      "audio": "audio-namae/scene-183.wav",
-      "durationSec": 3.8293333333333335
-    },
-    {
-      "index": 184,
-      "text": "その両方が、ひとつの名前を引っぱり合っているのです。",
-      "type": "diagram",
-      "motif": "nm_185",
-      "audio": "audio-namae/scene-184.wav",
-      "durationSec": 3.8506666666666667
-    },
-    {
-      "index": 185,
-      "text": "ブイチューバーの名前も、同じです。",
-      "type": "diagram",
-      "motif": "nm_186",
-      "audio": "audio-namae/scene-185.wav",
-      "durationSec": 2.5813333333333333
-    },
-    {
-      "index": 186,
-      "text": "企業に所属する場合、名前や姿は、会社が権利を持つ契約が多いとされます。",
-      "type": "diagram",
-      "motif": "nm_187",
-      "audio": "audio-namae/scene-186.wav",
-      "durationSec": 6.474666666666667
-    },
-    {
-      "index": 187,
-      "text": "演じる人は、その名前を借りて、活動しているのです。",
-      "type": "diagram",
-      "motif": "nm_188",
-      "audio": "audio-namae/scene-187.wav",
-      "durationSec": 4.341333333333333
-    },
-    {
-      "index": 188,
-      "text": "こうして、名前から3本目の糸が伸びました。",
-      "type": "diagram",
-      "motif": "nm_189",
-      "audio": "audio-namae/scene-188.wav",
-      "durationSec": 3.466666666666667
-    },
-    {
-      "index": 189,
-      "text": "積み上げた仕事と、お客さんにつながる、信用の糸です。",
-      "type": "diagram",
-      "motif": "nm_190",
-      "audio": "audio-namae/scene-189.wav",
-      "durationSec": 4.576
-    },
-    {
-      "index": 190,
-      "text": "信用の糸は、太くなるほど、両側から強く引っぱられます。",
-      "type": "diagram",
-      "motif": "nm_191",
-      "audio": "audio-namae/scene-190.wav",
-      "durationSec": 4.8
-    },
-    {
-      "index": 191,
-      "text": "耳の糸。帳簿の糸。信用の糸。",
-      "type": "diagram",
-      "motif": "nm_192",
-      "audio": "audio-namae/scene-191.wav",
-      "durationSec": 3.296
-    },
-    {
-      "index": 192,
-      "text": "では、この糸を失ったとき、人の中では、何が起きるのでしょうか。",
-      "type": "diagram",
-      "motif": "nm_193",
-      "audio": "audio-namae/scene-192.wav",
-      "durationSec": 6.0906666666666665
-    },
-    {
-      "index": 193,
-      "text": "第8章、名前を変えると、自分は変わるのか。",
-      "type": "diagram",
-      "motif": "nm_194",
-      "audio": "audio-namae/scene-193.wav",
-      "durationSec": 4.597333333333333
-    },
-    {
-      "index": 194,
-      "text": "映画の、2つ目の怖さを思い出してください。",
-      "type": "diagram",
-      "motif": "nm_195",
-      "audio": "audio-namae/scene-194.wav",
-      "durationSec": 3.477333333333333
-    },
-    {
-      "index": 195,
-      "text": "名前をなくすと、元の自分を忘れてしまう。",
-      "type": "diagram",
-      "motif": "nm_196",
-      "audio": "audio-namae/scene-195.wav",
-      "durationSec": 3.424
-    },
-    {
-      "index": 196,
-      "text": "これは、本当でしょうか。",
-      "type": "diagram",
-      "motif": "nm_197",
-      "audio": "audio-namae/scene-196.wav",
-      "durationSec": 2.6133333333333333
-    },
-    {
-      "index": 197,
-      "text": "まず、人は、名前を使い分けても、平気なことがあります。",
-      "type": "diagram",
-      "motif": "nm_198",
-      "audio": "audio-namae/scene-197.wav",
-      "durationSec": 4.896
-    },
-    {
-      "index": 198,
-      "text": "芸名や仕事のための名前で、私生活を守っている人もいます。",
-      "type": "diagram",
-      "motif": "nm_199",
-      "audio": "audio-namae/scene-198.wav",
-      "durationSec": 4.874666666666666
-    },
-    {
-      "index": 199,
-      "text": "いくつ名前があっても、自分は、ひとりのままです。",
-      "type": "diagram",
-      "motif": "nm_200",
-      "audio": "audio-namae/scene-199.wav",
-      "durationSec": 3.8293333333333335
-    },
-    {
-      "index": 200,
-      "text": "では、名前が変わったとき、気持ちはどうなるのか。",
-      "type": "diagram",
-      "motif": "nm_201",
-      "audio": "audio-namae/scene-200.wav",
-      "durationSec": 4.554666666666667
-    },
-    {
-      "index": 201,
-      "text": "2025年のある調査では、結婚で名字を変えた人の14.8%が、こう答えました。",
-      "type": "diagram",
-      "motif": "nm_202",
-      "audio": "audio-namae/scene-201.wav",
-      "durationSec": 7.68
-    },
-    {
-      "index": 202,
-      "text": "自分が、違う人になったように感じた。",
-      "type": "diagram",
-      "motif": "nm_203",
-      "audio": "audio-namae/scene-202.wav",
-      "durationSec": 3.136
-    },
-    {
-      "index": 203,
-      "text": "およそ7人に1人。多くはありませんが、ゼロでもありません。",
-      "type": "diagram",
-      "motif": "nm_204",
-      "audio": "audio-namae/scene-203.wav",
-      "durationSec": 4.736
-    },
-    {
-      "index": 204,
-      "text": "次に、脳を見てみましょう。",
-      "type": "diagram",
-      "motif": "nm_205",
-      "audio": "audio-namae/scene-204.wav",
-      "durationSec": 2.176
-    },
-    {
-      "index": 205,
-      "text": "1959年、左右の耳に別々の話を流し、片方だけに集中してもらう実験が行われました。",
-      "type": "diagram",
-      "motif": "nm_206",
-      "audio": "audio-namae/scene-205.wav",
-      "durationSec": 8.725333333333333
-    },
-    {
-      "index": 206,
-      "text": "すると、聞いていないはずの耳で自分の名前が流れたとき、およそ3人に1人が気づいたのです。",
-      "type": "diagram",
-      "motif": "nm_207",
-      "audio": "audio-namae/scene-206.wav",
-      "durationSec": 7.082666666666666
-    },
-    {
-      "index": 207,
-      "text": "この結果は、その後の実験でも、何度も確かめられています。",
-      "type": "diagram",
-      "motif": "nm_208",
-      "audio": "audio-namae/scene-207.wav",
-      "durationSec": 4.714666666666667
-    },
-    {
-      "index": 208,
-      "text": "脳波を測ると、自分の名前を聞いたときは、他人の名前より大きな反応が出ます。",
-      "type": "diagram",
-      "motif": "nm_209",
-      "audio": "audio-namae/scene-208.wav",
-      "durationSec": 6.378666666666667
-    },
-    {
-      "index": 209,
-      "text": "生まれて4か月半の赤ちゃんも、自分の名前の音を、ほかの名前より長く聞きたがります。",
-      "type": "diagram",
-      "motif": "nm_210",
-      "audio": "audio-namae/scene-209.wav",
-      "durationSec": 6.581333333333333
-    },
-    {
-      "index": 210,
-      "text": "名前は、たしかに、脳の中で特別あつかいされているのです。",
-      "type": "diagram",
-      "motif": "nm_211",
-      "audio": "audio-namae/scene-210.wav",
-      "durationSec": 4.704
-    },
-    {
-      "index": 211,
-      "text": "では、名前を奪って、番号で呼ぶと、どうなるのでしょうか。",
-      "type": "diagram",
-      "motif": "nm_212",
-      "audio": "audio-namae/scene-211.wav",
-      "durationSec": 5.493333333333333
-    },
-    {
-      "index": 212,
-      "text": "ナチスの強制収容所では、人は番号で管理されました。",
-      "type": "diagram",
-      "motif": "nm_213",
-      "audio": "audio-namae/scene-212.wav",
-      "durationSec": 4.554666666666667
-    },
-    {
-      "index": 213,
-      "text": "アウシュヴィッツでは、その番号が、体に入れ墨されています。",
-      "type": "diagram",
-      "motif": "nm_214",
-      "audio": "audio-namae/scene-213.wav",
-      "durationSec": 4.618666666666667
-    },
-    {
-      "index": 214,
-      "text": "名前を消して番号にすることは、相手を、ひとりの人として見なくするための仕組みだった、と指摘されています。",
-      "type": "diagram",
-      "motif": "nm_215",
-      "audio": "audio-namae/scene-214.wav",
-      "durationSec": 7.8293333333333335
-    },
-    {
-      "index": 215,
-      "text": "日本の刑務所では、2024年4月から、受刑者を「さん」付けで呼ぶようになりました。",
-      "type": "diagram",
-      "motif": "nm_216",
-      "audio": "audio-namae/scene-215.wav",
-      "durationSec": 6.442666666666667
-    },
-    {
-      "index": 216,
-      "text": "いまの日本にも、戸籍に名前が載っていない人がいます。国が把握しているだけで、700人です。",
-      "type": "diagram",
-      "motif": "nm_217",
-      "audio": "audio-namae/scene-216.wav",
-      "durationSec": 7.434666666666667
-    },
-    {
-      "index": 217,
-      "text": "では、名前を呼ばれなくなった人は、自分を忘れてしまうのか。",
-      "type": "diagram",
-      "motif": "nm_218",
-      "audio": "audio-namae/scene-217.wav",
-      "durationSec": 5.397333333333333
-    },
-    {
-      "index": 218,
-      "text": "実はこれを、直接測った研究は、見つかっていません。",
-      "type": "diagram",
-      "motif": "nm_219",
-      "audio": "audio-namae/scene-218.wav",
-      "durationSec": 4.864
-    },
-    {
-      "index": 219,
-      "text": "脳が自分の名前に振り向くことは、分かっています。",
-      "type": "diagram",
-      "motif": "nm_220",
-      "audio": "audio-namae/scene-219.wav",
-      "durationSec": 3.7546666666666666
-    },
-    {
-      "index": 220,
-      "text": "名前が変わって、違う人になった気がする人がいることも、分かっています。",
-      "type": "diagram",
-      "motif": "nm_221",
-      "audio": "audio-namae/scene-220.wav",
-      "durationSec": 5.397333333333333
-    },
-    {
-      "index": 221,
-      "text": "でも、その先は、まだ誰にも分かっていないのです。",
-      "type": "diagram",
-      "motif": "nm_222",
-      "audio": "audio-namae/scene-221.wav",
-      "durationSec": 3.957333333333333
-    },
-    {
-      "index": 222,
-      "text": "結び、名前は、帰り道。",
-      "type": "diagram",
-      "motif": "nm_223",
-      "audio": "audio-namae/scene-222.wav",
-      "durationSec": 2.8693333333333335
-    },
-    {
-      "index": 223,
-      "text": "最後に、映画の、2つの怖さに戻りましょう。",
-      "type": "diagram",
-      "motif": "nm_224",
-      "audio": "audio-namae/scene-223.wav",
-      "durationSec": 3.925333333333333
-    },
-    {
-      "index": 224,
-      "text": "1つ目の怖さ。名前を奪われると、帰り道がわからなくなる。",
-      "type": "diagram",
-      "motif": "nm_225",
-      "audio": "audio-namae/scene-224.wav",
-      "durationSec": 5.12
-    },
-    {
-      "index": 225,
-      "text": "これは、本当でした。",
-      "type": "diagram",
-      "motif": "nm_226",
-      "audio": "audio-namae/scene-225.wav",
-      "durationSec": 1.9626666666666666
-    },
-    {
-      "index": 226,
-      "text": "名前は、あなたを世界につなぐ、糸の結び目です。",
-      "type": "diagram",
-      "motif": "nm_227",
-      "audio": "audio-namae/scene-226.wav",
-      "durationSec": 4.128
-    },
-    {
-      "index": 227,
-      "text": "呼んでくれる人につながる、耳の糸。",
-      "type": "diagram",
-      "motif": "nm_228",
-      "audio": "audio-namae/scene-227.wav",
-      "durationSec": 2.88
-    },
-    {
-      "index": 228,
-      "text": "国の名簿につながる、帳簿の糸。",
-      "type": "diagram",
-      "motif": "nm_229",
-      "audio": "audio-namae/scene-228.wav",
-      "durationSec": 2.8373333333333335
-    },
-    {
-      "index": 229,
-      "text": "積み上げた仕事につながる、信用の糸。",
-      "type": "diagram",
-      "motif": "nm_230",
-      "audio": "audio-namae/scene-229.wav",
-      "durationSec": 3.2213333333333334
-    },
-    {
-      "index": 230,
-      "text": "名前を奪われると、この3本が、まとめて切れてしまいます。",
-      "type": "diagram",
-      "motif": "nm_231",
-      "audio": "audio-namae/scene-230.wav",
-      "durationSec": 4.597333333333333
-    },
-    {
-      "index": 231,
-      "text": "呼ばれなくなり、記録から消え、積み上げたものも失う。",
-      "type": "diagram",
-      "motif": "nm_232",
-      "audio": "audio-namae/scene-231.wav",
-      "durationSec": 4.448
-    },
-    {
-      "index": 232,
-      "text": "だから昔の人は、名前を隠し、名前で罰し、国は名前に鍵をかけたのです。",
-      "type": "diagram",
-      "motif": "nm_233",
-      "audio": "audio-namae/scene-232.wav",
-      "durationSec": 6.645333333333333
-    },
-    {
-      "index": 233,
-      "text": "2つ目の怖さ。名前を奪われると、元の自分を忘れてしまう。",
-      "type": "diagram",
-      "motif": "nm_234",
-      "audio": "audio-namae/scene-233.wav",
-      "durationSec": 5.109333333333334
-    },
-    {
-      "index": 234,
-      "text": "こちらは、半分だけ確かめられました。",
-      "type": "diagram",
-      "motif": "nm_235",
-      "audio": "audio-namae/scene-234.wav",
-      "durationSec": 2.976
-    },
-    {
-      "index": 235,
-      "text": "脳は、自分の名前に、強く振り向きます。",
-      "type": "diagram",
-      "motif": "nm_236",
-      "audio": "audio-namae/scene-235.wav",
-      "durationSec": 3.6373333333333333
-    },
-    {
-      "index": 236,
-      "text": "でも、名前を失うと自分を忘れるのかは、まだ誰も測れていません。",
-      "type": "diagram",
-      "motif": "nm_237",
-      "audio": "audio-namae/scene-236.wav",
-      "durationSec": 5.354666666666667
-    },
-    {
-      "index": 237,
-      "text": "ここから先は、科学ではなく、物語の領域です。",
-      "type": "diagram",
-      "motif": "nm_238",
-      "audio": "audio-namae/scene-237.wav",
-      "durationSec": 4.309333333333333
-    },
-    {
-      "index": 238,
-      "text": "そして昔話の中では、名前を知った人が、助かりました。",
-      "type": "diagram",
-      "motif": "nm_239",
-      "audio": "audio-namae/scene-238.wav",
+      "motif": "hm_022",
+      "audio": "audio-hima/scene-021.wav",
       "durationSec": 4.842666666666666
     },
     {
-      "index": 239,
-      "text": "名前を覚えていることは、帰り道を覚えていることなのかもしれません。",
+      "index": 22,
+      "text": "古代のユダヤの人々は、7日目を「安息日」として、働かずに休んでいました。",
       "type": "diagram",
-      "motif": "nm_240",
-      "audio": "audio-namae/scene-239.wav",
-      "durationSec": 5.024
+      "motif": "hm_023",
+      "audio": "audio-hima/scene-022.wav",
+      "durationSec": 5.418666666666667
     },
     {
-      "index": 240,
-      "text": "ふだん意識することもない、自分の名前。",
+      "index": 23,
+      "text": "ポイントは、みんなが同じ日に休むこと。",
       "type": "diagram",
-      "motif": "nm_241",
-      "audio": "audio-namae/scene-240.wav",
+      "motif": "hm_024",
+      "audio": "audio-hima/scene-023.wav",
+      "durationSec": 2.8906666666666667
+    },
+    {
+      "index": 24,
+      "text": "休みの日に、隣の人だけ働いていると、なんだか休んだ気がしません。",
+      "type": "diagram",
+      "motif": "hm_025",
+      "audio": "audio-hima/scene-024.wav",
+      "durationSec": 5.066666666666666
+    },
+    {
+      "index": 25,
+      "text": "時代は飛んで、321年。ローマの皇帝コンスタンティヌスが、日曜日は休むように、と法律を出します。",
+      "type": "diagram",
+      "motif": "hm_026",
+      "audio": "audio-hima/scene-025.wav",
+      "durationSec": 8.181333333333333
+    },
+    {
+      "index": 26,
+      "text": "町の役人も、職人も、日曜はお休み。",
+      "type": "diagram",
+      "motif": "hm_027",
+      "audio": "audio-hima/scene-026.wav",
+      "durationSec": 3.616
+    },
+    {
+      "index": 27,
+      "text": "ただし、農家は別です。",
+      "type": "diagram",
+      "motif": "hm_028",
+      "audio": "audio-hima/scene-027.wav",
+      "durationSec": 1.9306666666666668
+    },
+    {
+      "index": 28,
+      "text": "種まきや、ぶどうの植えつけにいい日は、日曜を待ってくれないからです。",
+      "type": "diagram",
+      "motif": "hm_029",
+      "audio": "audio-hima/scene-028.wav",
+      "durationSec": 4.8213333333333335
+    },
+    {
+      "index": 29,
+      "text": "休みの決まりは、最初から、天気に負けていました。",
+      "type": "diagram",
+      "motif": "hm_030",
+      "audio": "audio-hima/scene-029.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 30,
+      "text": "ちなみに、週を7日でなくしてみた国も、あります。",
+      "type": "diagram",
+      "motif": "hm_031",
+      "audio": "audio-hima/scene-030.wav",
+      "durationSec": 3.6266666666666665
+    },
+    {
+      "index": 31,
+      "text": "1929年の、ソ連です。",
+      "type": "diagram",
+      "motif": "hm_032",
+      "audio": "audio-hima/scene-031.wav",
+      "durationSec": 2.8586666666666667
+    },
+    {
+      "index": 32,
+      "text": "工場を1日も止めないように、国民を組に分けて、交代で休ませました。週は5日、のちに6日。",
+      "type": "diagram",
+      "motif": "hm_033",
+      "audio": "audio-hima/scene-032.wav",
+      "durationSec": 7.466666666666667
+    },
+    {
+      "index": 33,
+      "text": "工場は、毎日元気に動きます。",
+      "type": "diagram",
+      "motif": "hm_034",
+      "audio": "audio-hima/scene-033.wav",
+      "durationSec": 2.6453333333333333
+    },
+    {
+      "index": 34,
+      "text": "ただ、お父さんとお母さんの休みが、合いません。",
+      "type": "diagram",
+      "motif": "hm_035",
+      "audio": "audio-hima/scene-034.wav",
+      "durationSec": 3.6373333333333333
+    },
+    {
+      "index": 35,
+      "text": "家族でお出かけも、友だちと遊ぶのも、むずかしい。",
+      "type": "diagram",
+      "motif": "hm_036",
+      "audio": "audio-hima/scene-035.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 36,
+      "text": "不満がたまって、1940年、ソ連は7日の週に戻しました。",
+      "type": "diagram",
+      "motif": "hm_037",
+      "audio": "audio-hima/scene-036.wav",
+      "durationSec": 5.269333333333333
+    },
+    {
+      "index": 37,
+      "text": "休みは、みんなで同じ日に休んで、はじめて休みになるのです。",
+      "type": "diagram",
+      "motif": "hm_038",
+      "audio": "audio-hima/scene-037.wav",
+      "durationSec": 4.522666666666667
+    },
+    {
+      "index": 38,
+      "text": "暇のものさしに、最初の目盛り、「日」が刻まれました。",
+      "type": "diagram",
+      "motif": "hm_039",
+      "audio": "audio-hima/scene-038.wav",
+      "durationSec": 3.8613333333333335
+    },
+    {
+      "index": 39,
+      "text": "第2章、休まないと、罰金。",
+      "type": "diagram",
+      "motif": "hm_040",
+      "audio": "audio-hima/scene-039.wav",
+      "durationSec": 2.816
+    },
+    {
+      "index": 40,
+      "text": "江戸時代の日本には、7日に1度の休みは、ありませんでした。",
+      "type": "diagram",
+      "motif": "hm_041",
+      "audio": "audio-hima/scene-040.wav",
+      "durationSec": 4.565333333333333
+    },
+    {
+      "index": 41,
+      "text": "休みを決めるのは、カレンダーではなく、お祭りや行事です。",
+      "type": "diagram",
+      "motif": "hm_042",
+      "audio": "audio-hima/scene-041.wav",
+      "durationSec": 4.309333333333333
+    },
+    {
+      "index": 42,
+      "text": "住みこみで働く奉公人の休みは、「藪入り」。1月16日と、7月16日です。",
+      "type": "diagram",
+      "motif": "hm_043",
+      "audio": "audio-hima/scene-042.wav",
+      "durationSec": 6.762666666666667
+    },
+    {
+      "index": 43,
+      "text": "この日は、地獄の釜のふたまで開いて、えんま様も休むと言われていました。",
+      "type": "diagram",
+      "motif": "hm_044",
+      "audio": "audio-hima/scene-043.wav",
+      "durationSec": 5.237333333333333
+    },
+    {
+      "index": 44,
+      "text": "えんま様が休むなら、奉公人も休んでいい。なかなか強い理屈です。",
+      "type": "diagram",
+      "motif": "hm_045",
+      "audio": "audio-hima/scene-044.wav",
+      "durationSec": 5.0986666666666665
+    },
+    {
+      "index": 45,
+      "text": "もっとも、休みがこの2日だけだったわけでは、ないようです。",
+      "type": "diagram",
+      "motif": "hm_046",
+      "audio": "audio-hima/scene-045.wav",
+      "durationSec": 4.053333333333334
+    },
+    {
+      "index": 46,
+      "text": "村には、村じゅうで仕事を休む、「遊び日」がありました。",
+      "type": "diagram",
+      "motif": "hm_047",
+      "audio": "audio-hima/scene-046.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 47,
+      "text": "ある研究によると、江戸の中ごろまで、遊び日は年に20日ほど。",
+      "type": "diagram",
+      "motif": "hm_048",
+      "audio": "audio-hima/scene-047.wav",
+      "durationSec": 4.725333333333333
+    },
+    {
+      "index": 48,
+      "text": "それが江戸の終わりには、30日、40日と増え、多い村では80日にもなりました。",
+      "type": "diagram",
+      "motif": "hm_049",
+      "audio": "audio-hima/scene-048.wav",
+      "durationSec": 6.656
+    },
+    {
+      "index": 49,
+      "text": "増やした犯人は、村の若者たちです。",
+      "type": "diagram",
+      "motif": "hm_050",
+      "audio": "audio-hima/scene-049.wav",
+      "durationSec": 2.933333333333333
+    },
+    {
+      "index": 50,
+      "text": "新しい神さまがはやると、そのお祭りの日を、休みにしてほしいと願い出ます。",
+      "type": "diagram",
+      "motif": "hm_051",
+      "audio": "audio-hima/scene-050.wav",
+      "durationSec": 5.450666666666667
+    },
+    {
+      "index": 51,
+      "text": "神さまが1人増えるたびに、休みが1日増える。",
+      "type": "diagram",
+      "motif": "hm_052",
+      "audio": "audio-hima/scene-051.wav",
+      "durationSec": 3.648
+    },
+    {
+      "index": 52,
+      "text": "そして、休みの守らせ方が、なかなか厳しい。",
+      "type": "diagram",
+      "motif": "hm_053",
+      "audio": "audio-hima/scene-052.wav",
+      "durationSec": 3.498666666666667
+    },
+    {
+      "index": 53,
+      "text": "遊び日に働いた人は、罰金。",
+      "type": "diagram",
+      "motif": "hm_054",
+      "audio": "audio-hima/scene-053.wav",
+      "durationSec": 2.474666666666667
+    },
+    {
+      "index": 54,
+      "text": "働いている人を知らせた人には、ほうび。",
+      "type": "diagram",
+      "motif": "hm_055",
+      "audio": "audio-hima/scene-054.wav",
+      "durationSec": 2.986666666666667
+    },
+    {
+      "index": 55,
+      "text": "休みなのに、見張りつきです。",
+      "type": "diagram",
+      "motif": "hm_056",
+      "audio": "audio-hima/scene-055.wav",
+      "durationSec": 2.1973333333333334
+    },
+    {
+      "index": 56,
+      "text": "もっとも、これで「江戸の人は暇だった」とは言えません。休みの数は、村や時代によって、ばらばらでした。",
+      "type": "diagram",
+      "motif": "hm_057",
+      "audio": "audio-hima/scene-056.wav",
+      "durationSec": 7.317333333333333
+    },
+    {
+      "index": 57,
+      "text": "そのばらばらを、明治政府が、ひとつにそろえます。",
+      "type": "diagram",
+      "motif": "hm_058",
+      "audio": "audio-hima/scene-057.wav",
+      "durationSec": 3.584
+    },
+    {
+      "index": 58,
+      "text": "第3章、日曜休みで、休みが減った。",
+      "type": "diagram",
+      "motif": "hm_059",
+      "audio": "audio-hima/scene-058.wav",
+      "durationSec": 3.4346666666666668
+    },
+    {
+      "index": 59,
+      "text": "明治のはじめ、役所の休みは「一六日」でした。",
+      "type": "diagram",
+      "motif": "hm_060",
+      "audio": "audio-hima/scene-059.wav",
+      "durationSec": 3.424
+    },
+    {
+      "index": 60,
+      "text": "1日、6日、11日、16日、21日、26日。1と6のつく日が、お休みです。",
+      "type": "diagram",
+      "motif": "hm_061",
+      "audio": "audio-hima/scene-060.wav",
+      "durationSec": 8.981333333333334
+    },
+    {
+      "index": 61,
+      "text": "月に6回。1年で、約70日。",
+      "type": "diagram",
+      "motif": "hm_062",
+      "audio": "audio-hima/scene-061.wav",
+      "durationSec": 3.562666666666667
+    },
+    {
+      "index": 62,
+      "text": "明治9年、1876年。政府は、これを日曜休みに切りかえます。",
+      "type": "diagram",
+      "motif": "hm_063",
+      "audio": "audio-hima/scene-062.wav",
+      "durationSec": 6.410666666666667
+    },
+    {
+      "index": 63,
+      "text": "土曜日は、お昼の12時から休み。",
+      "type": "diagram",
+      "motif": "hm_064",
+      "audio": "audio-hima/scene-063.wav",
+      "durationSec": 2.7733333333333334
+    },
+    {
+      "index": 64,
+      "text": "こうして、役所と学校の休みが、日曜日になりました。",
+      "type": "diagram",
+      "motif": "hm_065",
+      "audio": "audio-hima/scene-064.wav",
+      "durationSec": 4.128
+    },
+    {
+      "index": 65,
+      "text": "さて、計算してみましょう。",
+      "type": "diagram",
+      "motif": "hm_066",
+      "audio": "audio-hima/scene-065.wav",
+      "durationSec": 2.0906666666666665
+    },
+    {
+      "index": 66,
+      "text": "日曜日は、1年でだいたい52回。",
+      "type": "diagram",
+      "motif": "hm_067",
+      "audio": "audio-hima/scene-066.wav",
+      "durationSec": 3.04
+    },
+    {
+      "index": 67,
+      "text": "土曜の半日を足しても、70日には届きません。",
+      "type": "diagram",
+      "motif": "hm_068",
+      "audio": "audio-hima/scene-067.wav",
+      "durationSec": 3.7013333333333334
+    },
+    {
+      "index": 68,
+      "text": "休みは、減りました。",
+      "type": "diagram",
+      "motif": "hm_069",
+      "audio": "audio-hima/scene-068.wav",
+      "durationSec": 1.7813333333333334
+    },
+    {
+      "index": 69,
+      "text": "役所のみなさん、たぶん、がっかりです。",
+      "type": "diagram",
+      "motif": "hm_070",
+      "audio": "audio-hima/scene-069.wav",
+      "durationSec": 3.2106666666666666
+    },
+    {
+      "index": 70,
+      "text": "わざわざ変えたのは、西洋の国々と同じリズムで働くためだった、とも言えます。",
+      "type": "diagram",
+      "motif": "hm_071",
+      "audio": "audio-hima/scene-070.wav",
+      "durationSec": 5.621333333333333
+    },
+    {
+      "index": 71,
+      "text": "外国と取り引きする港の役所は、明治のはじめから、もう日曜に休んでいました。",
+      "type": "diagram",
+      "motif": "hm_072",
+      "audio": "audio-hima/scene-071.wav",
+      "durationSec": 5.856
+    },
+    {
+      "index": 72,
+      "text": "こうして休みは、お祭りの日から、7日ごとの目盛りへと変わっていきます。",
+      "type": "diagram",
+      "motif": "hm_073",
+      "audio": "audio-hima/scene-072.wav",
+      "durationSec": 4.981333333333334
+    },
+    {
+      "index": 73,
+      "text": "ただし、日曜休みになったのは、役所と学校だけ。",
+      "type": "diagram",
+      "motif": "hm_074",
+      "audio": "audio-hima/scene-073.wav",
+      "durationSec": 4.021333333333334
+    },
+    {
+      "index": 74,
+      "text": "工場で働く人の休みは、まだずっと、少ないままでした。",
+      "type": "diagram",
+      "motif": "hm_075",
+      "audio": "audio-hima/scene-074.wav",
+      "durationSec": 4.490666666666667
+    },
+    {
+      "index": 75,
+      "text": "第4章、時計が、1日を切り分けた。",
+      "type": "diagram",
+      "motif": "hm_076",
+      "audio": "audio-hima/scene-075.wav",
+      "durationSec": 3.3173333333333335
+    },
+    {
+      "index": 76,
+      "text": "明治の紡績工場では、機械が一日中、止まりません。",
+      "type": "diagram",
+      "motif": "hm_077",
+      "audio": "audio-hima/scene-076.wav",
+      "durationSec": 4.416
+    },
+    {
+      "index": 77,
+      "text": "昼の組と夜の組が交代で、1日11時間以上、働きました。",
+      "type": "diagram",
+      "motif": "hm_078",
+      "audio": "audio-hima/scene-077.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 78,
+      "text": "何時に来て、何時に帰るか。決めるのは、壁の時計です。",
+      "type": "diagram",
+      "motif": "hm_079",
+      "audio": "audio-hima/scene-078.wav",
+      "durationSec": 4.586666666666667
+    },
+    {
+      "index": 79,
+      "text": "工場と時計が、仕事の時間と、仕事の外の時間を、くっきり分けた。そんな説があります。",
+      "type": "diagram",
+      "motif": "hm_080",
+      "audio": "audio-hima/scene-079.wav",
+      "durationSec": 6.965333333333334
+    },
+    {
+      "index": 80,
+      "text": "といっても、時計が暇をプレゼントしてくれたわけでは、ありません。",
+      "type": "diagram",
+      "motif": "hm_081",
+      "audio": "audio-hima/scene-080.wav",
+      "durationSec": 4.458666666666667
+    },
+    {
+      "index": 81,
+      "text": "産業革命のはじめのころ、働く時間は、むしろ長くなったと考えられています。",
+      "type": "diagram",
+      "motif": "hm_082",
+      "audio": "audio-hima/scene-081.wav",
+      "durationSec": 5.781333333333333
+    },
+    {
+      "index": 82,
+      "text": "時計は、長く働かせるのにも、とても便利だったのです。",
+      "type": "diagram",
+      "motif": "hm_083",
+      "audio": "audio-hima/scene-082.wav",
+      "durationSec": 4.149333333333334
+    },
+    {
+      "index": 83,
+      "text": "そこで人々は、時計で区切られた時間を、法律で短くしようとします。",
+      "type": "diagram",
+      "motif": "hm_084",
+      "audio": "audio-hima/scene-083.wav",
+      "durationSec": 5.045333333333334
+    },
+    {
+      "index": 84,
+      "text": "1847年、イギリスで、1日10時間まで、という法律ができます。",
+      "type": "diagram",
+      "motif": "hm_085",
+      "audio": "audio-hima/scene-084.wav",
+      "durationSec": 6.208
+    },
+    {
+      "index": 85,
+      "text": "対象は、繊維工場で働く、女性と若者だけ。大人の男性は、まだ対象外です。",
+      "type": "diagram",
+      "motif": "hm_086",
+      "audio": "audio-hima/scene-085.wav",
+      "durationSec": 6.912
+    },
+    {
+      "index": 86,
+      "text": "1870年代のアメリカでは、こんな歌が歌われていたとされます。",
+      "type": "diagram",
+      "motif": "hm_087",
+      "audio": "audio-hima/scene-086.wav",
+      "durationSec": 4.917333333333334
+    },
+    {
+      "index": 87,
+      "text": "8時間は、仕事に。8時間は、休みに。そして8時間は、好きなことに。",
+      "type": "diagram",
+      "motif": "hm_088",
+      "audio": "audio-hima/scene-087.wav",
+      "durationSec": 6.314666666666667
+    },
+    {
+      "index": 88,
+      "text": "1日を、3つに切り分ける作戦です。",
+      "type": "diagram",
+      "motif": "hm_089",
+      "audio": "audio-hima/scene-088.wav",
+      "durationSec": 2.9546666666666668
+    },
+    {
+      "index": 89,
+      "text": "1919年、世界の国々は、「1日8時間、週48時間」を約束します。",
+      "type": "diagram",
+      "motif": "hm_090",
+      "audio": "audio-hima/scene-089.wav",
+      "durationSec": 7.093333333333334
+    },
+    {
+      "index": 90,
+      "text": "ところが日本にだけ、「週57時間まで」という特別ルールがつきました。",
+      "type": "diagram",
+      "motif": "hm_091",
+      "audio": "audio-hima/scene-090.wav",
+      "durationSec": 5.386666666666667
+    },
+    {
+      "index": 91,
+      "text": "日本で、働く時間に初めて上限ができたのは、1916年。",
+      "type": "diagram",
+      "motif": "hm_092",
+      "audio": "audio-hima/scene-091.wav",
+      "durationSec": 5.365333333333333
+    },
+    {
+      "index": 92,
+      "text": "対象は、子どもと女性だけ。それで、1日12時間まで。",
+      "type": "diagram",
+      "motif": "hm_093",
+      "audio": "audio-hima/scene-092.wav",
+      "durationSec": 4.810666666666667
+    },
+    {
+      "index": 93,
+      "text": "1947年、ようやく日本でも、1日8時間が法律になります。",
+      "type": "diagram",
+      "motif": "hm_094",
+      "audio": "audio-hima/scene-093.wav",
+      "durationSec": 5.962666666666666
+    },
+    {
+      "index": 94,
+      "text": "休みは日曜だけ。週48時間です。",
+      "type": "diagram",
+      "motif": "hm_095",
+      "audio": "audio-hima/scene-094.wav",
+      "durationSec": 3.3173333333333335
+    },
+    {
+      "index": 95,
+      "text": "それでも、これは大事件でした。",
+      "type": "diagram",
+      "motif": "hm_096",
+      "audio": "audio-hima/scene-095.wav",
+      "durationSec": 2.336
+    },
+    {
+      "index": 96,
+      "text": "仕事が8時間で終われば、帰ってから寝るまでの時間が、毎日、手もとに残るからです。",
+      "type": "diagram",
+      "motif": "hm_097",
+      "audio": "audio-hima/scene-096.wav",
+      "durationSec": 6.56
+    },
+    {
+      "index": 97,
+      "text": "仕事のあとの、数時間。これが、「時間の暇」です。",
+      "type": "diagram",
+      "motif": "hm_098",
+      "audio": "audio-hima/scene-097.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 98,
+      "text": "暇のものさしに、2つ目の目盛り、「時間」が刻まれました。",
+      "type": "diagram",
+      "motif": "hm_099",
+      "audio": "audio-hima/scene-098.wav",
+      "durationSec": 4.2026666666666666
+    },
+    {
+      "index": 99,
+      "text": "日本で、1年間に働く時間がいちばん長かったのは、1960年。",
+      "type": "diagram",
+      "motif": "hm_100",
+      "audio": "audio-hima/scene-099.wav",
+      "durationSec": 5.888
+    },
+    {
+      "index": 100,
+      "text": "その翌年、1961年には、「レジャー」という言葉が流行語になったとされています。",
+      "type": "diagram",
+      "motif": "hm_101",
+      "audio": "audio-hima/scene-100.wav",
+      "durationSec": 6.474666666666667
+    },
+    {
+      "index": 101,
+      "text": "働く時間の山を越えたら、さっそく遊びの話。気持ちは、よくわかります。",
+      "type": "diagram",
+      "motif": "hm_102",
+      "audio": "audio-hima/scene-101.wav",
+      "durationSec": 5.642666666666667
+    },
+    {
+      "index": 102,
+      "text": "そして暇は、もうひとつの場所でも、生まれていました。乗り物の中です。",
+      "type": "diagram",
+      "motif": "hm_103",
+      "audio": "audio-hima/scene-102.wav",
+      "durationSec": 4.949333333333334
+    },
+    {
+      "index": 103,
+      "text": "第5章、駅で、暇が売られた。",
+      "type": "diagram",
+      "motif": "hm_104",
+      "audio": "audio-hima/scene-103.wav",
+      "durationSec": 2.6773333333333333
+    },
+    {
+      "index": 104,
+      "text": "乗り物の中で暇をつぶす人は、昔からいました。",
+      "type": "diagram",
+      "motif": "hm_105",
+      "audio": "audio-hima/scene-104.wav",
+      "durationSec": 3.552
+    },
+    {
+      "index": 105,
+      "text": "1665年、イギリスの役人ピープスは、馬に揺られながら、片手で本を読んでいます。",
+      "type": "diagram",
+      "motif": "hm_106",
+      "audio": "audio-hima/scene-105.wav",
+      "durationSec": 6.933333333333334
+    },
+    {
+      "index": 106,
+      "text": "危ないので、まねしないでください。",
+      "type": "diagram",
+      "motif": "hm_107",
+      "audio": "audio-hima/scene-106.wav",
+      "durationSec": 2.421333333333333
+    },
+    {
+      "index": 107,
+      "text": "1796年には、乗合馬車の中で、小説を読んで退屈をしのいだ人もいました。",
+      "type": "diagram",
+      "motif": "hm_108",
+      "audio": "audio-hima/scene-107.wav",
+      "durationSec": 6.549333333333333
+    },
+    {
+      "index": 108,
+      "text": "ただ、馬車は揺れるし、暗いし、本は高い。",
+      "type": "diagram",
+      "motif": "hm_109",
+      "audio": "audio-hima/scene-108.wav",
+      "durationSec": 3.7546666666666666
+    },
+    {
+      "index": 109,
+      "text": "乗り物の暇は、一部の人の、たまのお楽しみでした。",
+      "type": "diagram",
+      "motif": "hm_110",
+      "audio": "audio-hima/scene-109.wav",
+      "durationSec": 3.957333333333333
+    },
+    {
+      "index": 110,
+      "text": "そこに、鉄道がやってきます。",
+      "type": "diagram",
+      "motif": "hm_111",
+      "audio": "audio-hima/scene-110.wav",
+      "durationSec": 2.272
+    },
+    {
+      "index": 111,
+      "text": "鉄道は、乗っている時間を、毎日、決まった時刻に、何万人もの人にくばりました。",
+      "type": "diagram",
+      "motif": "hm_112",
+      "audio": "audio-hima/scene-111.wav",
+      "durationSec": 6.581333333333333
+    },
+    {
+      "index": 112,
+      "text": "いわば、暇の大量生産です。",
+      "type": "diagram",
+      "motif": "hm_113",
+      "audio": "audio-hima/scene-112.wav",
+      "durationSec": 2.432
+    },
+    {
+      "index": 113,
+      "text": "すると、すかさず、それを商売にする人が現れます。",
+      "type": "diagram",
+      "motif": "hm_114",
+      "audio": "audio-hima/scene-113.wav",
+      "durationSec": 4.042666666666666
+    },
+    {
+      "index": 114,
+      "text": "1848年11月1日。ロンドンのユーストン駅に、駅の本屋が開きます。",
+      "type": "diagram",
+      "motif": "hm_115",
+      "audio": "audio-hima/scene-114.wav",
+      "durationSec": 6.474666666666667
+    },
+    {
+      "index": 115,
+      "text": "新聞屋のスミスが、鉄道会社から、駅で売る権利を買ったのです。",
+      "type": "diagram",
+      "motif": "hm_116",
+      "audio": "audio-hima/scene-115.wav",
+      "durationSec": 4.693333333333333
+    },
+    {
+      "index": 116,
+      "text": "1840年代の終わりには、汽車で読むための、安い本のシリーズまで登場します。",
+      "type": "diagram",
+      "motif": "hm_117",
+      "audio": "audio-hima/scene-116.wav",
+      "durationSec": 6.282666666666667
+    },
+    {
+      "index": 117,
+      "text": "表紙が黄色いので、呼び名は「黄色い本」。そのままです。",
+      "type": "diagram",
+      "motif": "hm_118",
+      "audio": "audio-hima/scene-117.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 118,
+      "text": "では、なぜ汽車で、本だったのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_119",
+      "audio": "audio-hima/scene-118.wav",
+      "durationSec": 3.456
+    },
+    {
+      "index": 119,
+      "text": "ある歴史家によると、馬車はせまくて、乗り合わせた人とおしゃべりするのが、ふつうでした。",
+      "type": "diagram",
+      "motif": "hm_120",
+      "audio": "audio-hima/scene-119.wav",
+      "durationSec": 5.888
+    },
+    {
+      "index": 120,
+      "text": "ところが汽車には、知らない人が、たくさん乗っています。",
+      "type": "diagram",
+      "motif": "hm_121",
+      "audio": "audio-hima/scene-120.wav",
+      "durationSec": 4.021333333333334
+    },
+    {
+      "index": 121,
+      "text": "目のやり場に、困る。",
+      "type": "diagram",
+      "motif": "hm_122",
+      "audio": "audio-hima/scene-121.wav",
+      "durationSec": 1.7066666666666668
+    },
+    {
+      "index": 122,
+      "text": "その気まずい沈黙を、本で埋めるようになった、というのです。",
+      "type": "diagram",
+      "motif": "hm_123",
+      "audio": "audio-hima/scene-122.wav",
+      "durationSec": 4.1706666666666665
+    },
+    {
+      "index": 123,
+      "text": "暇つぶしは、知らない人とのあいだの、ついたてにもなりました。",
+      "type": "diagram",
+      "motif": "hm_124",
+      "audio": "audio-hima/scene-123.wav",
+      "durationSec": 4.288
+    },
+    {
+      "index": 124,
+      "text": "いまの電車で、みんながスマホを見ているのと、ちょっと似ています。",
+      "type": "diagram",
+      "motif": "hm_125",
+      "audio": "audio-hima/scene-124.wav",
+      "durationSec": 4.2026666666666666
+    },
+    {
+      "index": 125,
+      "text": "日本でも、大正のころには、東京にもう満員電車が走っていました。",
+      "type": "diagram",
+      "motif": "hm_126",
+      "audio": "audio-hima/scene-125.wav",
+      "durationSec": 5.109333333333334
+    },
+    {
+      "index": 126,
+      "text": "1927年には、岩波文庫が生まれます。手のひらにのる、小さな本です。",
+      "type": "diagram",
+      "motif": "hm_127",
+      "audio": "audio-hima/scene-126.wav",
+      "durationSec": 6.314666666666667
+    },
+    {
+      "index": 127,
+      "text": "そして1932年4月1日。東京駅と上野駅に、10か所の売店が開きます。",
+      "type": "diagram",
+      "motif": "hm_128",
+      "audio": "audio-hima/scene-127.wav",
+      "durationSec": 6.784
+    },
+    {
+      "index": 128,
+      "text": "開いたのは、鉄道弘済会。仕事中のけがで働けなくなった鉄道員などを、助けるための売店でした。",
+      "type": "diagram",
+      "motif": "hm_129",
+      "audio": "audio-hima/scene-128.wav",
+      "durationSec": 7.530666666666667
+    },
+    {
+      "index": 129,
+      "text": "この売店が、のちの「キヨスク」です。",
+      "type": "diagram",
+      "motif": "hm_130",
+      "audio": "audio-hima/scene-129.wav",
+      "durationSec": 2.506666666666667
+    },
+    {
+      "index": 130,
+      "text": "ちなみに、待ち時間は、実際より長く感じるそうです。",
+      "type": "diagram",
+      "motif": "hm_131",
+      "audio": "audio-hima/scene-130.wav",
+      "durationSec": 4.117333333333334
+    },
+    {
+      "index": 131,
+      "text": "ある研究では、平均で3割以上、長く見積もられていました。",
+      "type": "diagram",
+      "motif": "hm_132",
+      "audio": "audio-hima/scene-131.wav",
+      "durationSec": 4.810666666666667
+    },
+    {
+      "index": 132,
+      "text": "しかも、何もしないで待つ時間ほど、長く感じる。",
+      "type": "diagram",
+      "motif": "hm_133",
+      "audio": "audio-hima/scene-132.wav",
+      "durationSec": 3.6586666666666665
+    },
+    {
+      "index": 133,
+      "text": "だから人は、待ち時間に、何かを持ちこむのです。",
+      "type": "diagram",
+      "motif": "hm_134",
+      "audio": "audio-hima/scene-133.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 134,
+      "text": "いま、日本の人が平日に通勤や通学にかける時間は、行き帰りで、平均1時間19分。",
+      "type": "diagram",
+      "motif": "hm_135",
+      "audio": "audio-hima/scene-134.wav",
+      "durationSec": 7.2
+    },
+    {
+      "index": 135,
+      "text": "神奈川県は1時間40分で、全国1位です。おつかれさまです。",
+      "type": "diagram",
+      "motif": "hm_136",
+      "audio": "audio-hima/scene-135.wav",
+      "durationSec": 5.226666666666667
+    },
+    {
+      "index": 136,
+      "text": "暇のものさしに、3つ目の目盛り、「分」が刻まれました。",
+      "type": "diagram",
+      "motif": "hm_137",
+      "audio": "audio-hima/scene-136.wav",
+      "durationSec": 4.085333333333334
+    },
+    {
+      "index": 137,
+      "text": "第6章、暇つぶしが、ポケットに入る。",
+      "type": "diagram",
+      "motif": "hm_138",
+      "audio": "audio-hima/scene-137.wav",
+      "durationSec": 3.1786666666666665
+    },
+    {
+      "index": 138,
+      "text": "暇つぶしの道具は、とても古くからありました。",
+      "type": "diagram",
+      "motif": "hm_139",
+      "audio": "audio-hima/scene-138.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 139,
+      "text": "689年、日本では、双六を禁止するおふれが出たとされています。",
+      "type": "diagram",
+      "motif": "hm_140",
+      "audio": "audio-hima/scene-139.wav",
+      "durationSec": 5.706666666666667
+    },
+    {
+      "index": 140,
+      "text": "盤の上でこまを進める、「盤すごろく」のことです。",
+      "type": "diagram",
+      "motif": "hm_141",
+      "audio": "audio-hima/scene-140.wav",
+      "durationSec": 3.4346666666666668
+    },
+    {
+      "index": 141,
+      "text": "1300年以上前から、遊びすぎは、怒られていたのです。",
+      "type": "diagram",
+      "motif": "hm_142",
+      "audio": "audio-hima/scene-141.wav",
+      "durationSec": 4.405333333333333
+    },
+    {
+      "index": 142,
+      "text": "ただ、盤で遊ぶには、場所と、まとまった時間がいります。電車で広げたら、たぶん迷惑です。",
+      "type": "diagram",
+      "motif": "hm_143",
+      "audio": "audio-hima/scene-142.wav",
+      "durationSec": 7.1466666666666665
+    },
+    {
+      "index": 143,
+      "text": "道具は、ここから、どんどん小さくなっていきます。",
+      "type": "diagram",
+      "motif": "hm_144",
+      "audio": "audio-hima/scene-143.wav",
+      "durationSec": 3.424
+    },
+    {
+      "index": 144,
+      "text": "1913年12月21日。アメリカの新聞に、クロスワードパズルが初めて載ります。新聞とえんぴつがあれば、どこでも遊べます。",
+      "type": "diagram",
+      "motif": "hm_145",
+      "audio": "audio-hima/scene-144.wav",
+      "durationSec": 10.144
+    },
+    {
+      "index": 145,
+      "text": "1979年7月1日、ウォークマン。音楽を、持ち歩けるようになります。",
+      "type": "diagram",
+      "motif": "hm_146",
+      "audio": "audio-hima/scene-145.wav",
+      "durationSec": 6.464
+    },
+    {
+      "index": 146,
+      "text": "1989年4月21日、ゲームボーイ。",
+      "type": "diagram",
+      "motif": "hm_147",
+      "audio": "audio-hima/scene-146.wav",
+      "durationSec": 4.309333333333333
+    },
+    {
+      "index": 147,
+      "text": "1999年2月22日、携帯電話でネットができる、iモード。",
+      "type": "diagram",
+      "motif": "hm_148",
+      "audio": "audio-hima/scene-147.wav",
+      "durationSec": 5.994666666666666
+    },
+    {
+      "index": 148,
+      "text": "2008年7月11日、日本で、iPhone。",
+      "type": "diagram",
+      "motif": "hm_149",
+      "audio": "audio-hima/scene-148.wav",
+      "durationSec": 4.181333333333333
+    },
+    {
+      "index": 149,
+      "text": "だいたい10年おきに、新しい暇つぶしが、ポケットに引っ越してきました。",
+      "type": "diagram",
+      "motif": "hm_150",
+      "audio": "audio-hima/scene-149.wav",
+      "durationSec": 4.896
+    },
+    {
+      "index": 150,
+      "text": "小さくなるほど、遊びはじめるまでも、速くなります。",
+      "type": "diagram",
+      "motif": "hm_151",
+      "audio": "audio-hima/scene-150.wav",
+      "durationSec": 3.8186666666666667
+    },
+    {
+      "index": 151,
+      "text": "盤を広げるなら、数分。本なら、十数秒。スマホなら、数秒です。",
+      "type": "diagram",
+      "motif": "hm_152",
+      "audio": "audio-hima/scene-151.wav",
+      "durationSec": 5.866666666666666
+    },
+    {
+      "index": 152,
+      "text": "もちろん、どの道具も、「この長さの隙間用です」と作られたわけでは、ありません。",
+      "type": "diagram",
+      "motif": "hm_153",
+      "audio": "audio-hima/scene-152.wav",
+      "durationSec": 5.557333333333333
+    },
+    {
+      "index": 153,
+      "text": "でも、ものさしに並べてみると、暇つぶしが、どんどん小さな暇へ、もぐりこんでいくように見えます。",
+      "type": "diagram",
+      "motif": "hm_154",
+      "audio": "audio-hima/scene-153.wav",
+      "durationSec": 6.890666666666666
+    },
+    {
+      "index": 154,
+      "text": "そのいちばん奥にいるのが、スマホです。",
+      "type": "diagram",
+      "motif": "hm_155",
+      "audio": "audio-hima/scene-154.wav",
+      "durationSec": 2.6453333333333333
+    },
+    {
+      "index": 155,
+      "text": "イギリスで、23人のスマホの使い方を、実際に記録した研究があります。",
+      "type": "diagram",
+      "motif": "hm_156",
+      "audio": "audio-hima/scene-155.wav",
+      "durationSec": 5.578666666666667
+    },
+    {
+      "index": 156,
+      "text": "1日に使った回数は、平均で約85回。",
+      "type": "diagram",
+      "motif": "hm_157",
+      "audio": "audio-hima/scene-156.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 157,
+      "text": "その半分以上が、30秒もたたずに終わっていました。",
+      "type": "diagram",
+      "motif": "hm_158",
+      "audio": "audio-hima/scene-157.wav",
+      "durationSec": 3.776
+    },
+    {
+      "index": 158,
+      "text": "しかも、本人たちの予想の、約2倍です。",
+      "type": "diagram",
+      "motif": "hm_159",
+      "audio": "audio-hima/scene-158.wav",
+      "durationSec": 3.232
+    },
+    {
+      "index": 159,
+      "text": "自分では、そんなに見ていないつもりだったのです。耳が痛い。",
+      "type": "diagram",
+      "motif": "hm_160",
+      "audio": "audio-hima/scene-159.wav",
+      "durationSec": 4.256
+    },
+    {
+      "index": 160,
+      "text": "信号待ち。エレベーター。レジの列。",
+      "type": "diagram",
+      "motif": "hm_161",
+      "audio": "audio-hima/scene-160.wav",
+      "durationSec": 3.104
+    },
+    {
+      "index": 161,
+      "text": "暇のものさしに、4つ目の目盛り、「秒」が刻まれました。",
+      "type": "diagram",
+      "motif": "hm_162",
+      "audio": "audio-hima/scene-161.wav",
+      "durationSec": 4.074666666666666
+    },
+    {
+      "index": 162,
+      "text": "でも、ここで素朴な疑問がわきます。",
+      "type": "diagram",
+      "motif": "hm_163",
+      "audio": "audio-hima/scene-162.wav",
+      "durationSec": 2.6133333333333333
+    },
+    {
+      "index": 163,
+      "text": "人は、なぜそこまでして、暇をつぶすのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_164",
+      "audio": "audio-hima/scene-163.wav",
+      "durationSec": 4.010666666666666
+    },
+    {
+      "index": 164,
+      "text": "第7章、退屈の、正体。",
+      "type": "diagram",
+      "motif": "hm_165",
+      "audio": "audio-hima/scene-164.wav",
+      "durationSec": 2.656
+    },
+    {
+      "index": 165,
+      "text": "最初の、電気ショックの実験。じつは、続きがあります。",
+      "type": "diagram",
+      "motif": "hm_166",
+      "audio": "audio-hima/scene-165.wav",
+      "durationSec": 4.426666666666667
+    },
+    {
+      "index": 166,
+      "text": "別の研究者たちが、結果を見直しました。",
+      "type": "diagram",
+      "motif": "hm_167",
+      "audio": "audio-hima/scene-166.wav",
       "durationSec": 3.1573333333333333
     },
     {
-      "index": 241,
-      "text": "そこには、見えない糸が、何本もつながっています。",
+      "index": 167,
+      "text": "すると、参加者の半分以上は、一度もボタンを押していませんでした。",
       "type": "diagram",
-      "motif": "nm_242",
-      "audio": "audio-namae/scene-241.wav",
-      "durationSec": 3.989333333333333
+      "motif": "hm_168",
+      "audio": "audio-hima/scene-167.wav",
+      "durationSec": 4.842666666666666
     },
     {
-      "index": 242,
-      "text": "なお、この動画のあいだに、どこかで名前を呼ばれて振り向いたあなた。",
+      "index": 168,
+      "text": "押した人に理由を聞くと、多かった答えは、「どんな感じか、気になったから」。",
       "type": "diagram",
-      "motif": "nm_243",
-      "audio": "audio-namae/scene-242.wav",
-      "durationSec": 5.024
+      "motif": "hm_169",
+      "audio": "audio-hima/scene-168.wav",
+      "durationSec": 5.301333333333333
     },
     {
-      "index": 243,
-      "text": "それはたぶん、3人に1人の側です。",
+      "index": 169,
+      "text": "電気の強さも、平均で、「ちょっと不快」くらいでした。",
       "type": "diagram",
-      "motif": "nm_244",
-      "audio": "audio-namae/scene-243.wav",
-      "durationSec": 3.136
+      "motif": "hm_170",
+      "audio": "audio-hima/scene-169.wav",
+      "durationSec": 3.872
     },
     {
-      "index": 244,
+      "index": 170,
+      "text": "人は退屈より痛みを選ぶ、というほど、話は単純ではなさそうです。",
+      "type": "diagram",
+      "motif": "hm_171",
+      "audio": "audio-hima/scene-170.wav",
+      "durationSec": 5.066666666666666
+    },
+    {
+      "index": 171,
+      "text": "押した人の多くは、ただの好奇心。人間らしいです。",
+      "type": "diagram",
+      "motif": "hm_172",
+      "audio": "audio-hima/scene-171.wav",
+      "durationSec": 3.8826666666666667
+    },
+    {
+      "index": 172,
+      "text": "それでも、何もない15分より、ボタンを選んだ人がいたのは、確かです。",
+      "type": "diagram",
+      "motif": "hm_173",
+      "audio": "audio-hima/scene-172.wav",
+      "durationSec": 5.28
+    },
+    {
+      "index": 173,
+      "text": "その後、11か国、2,557人で、似た実験が行われました。",
+      "type": "diagram",
+      "motif": "hm_174",
+      "audio": "audio-hima/scene-173.wav",
+      "durationSec": 5.8773333333333335
+    },
+    {
+      "index": 174,
+      "text": "結果は、どこでも同じ。ただ考えているより、何かしているほうが、楽しい。",
+      "type": "diagram",
+      "motif": "hm_175",
+      "audio": "audio-hima/scene-174.wav",
+      "durationSec": 5.738666666666667
+    },
+    {
+      "index": 175,
+      "text": "別の実験では、同じ場面を1時間くり返すだけの、退屈な映像を見せました。",
+      "type": "diagram",
+      "motif": "hm_176",
+      "audio": "audio-hima/scene-175.wav",
+      "durationSec": 5.984
+    },
+    {
+      "index": 176,
+      "text": "見る側にとっては、なかなかの修行です。",
+      "type": "diagram",
+      "motif": "hm_177",
+      "audio": "audio-hima/scene-176.wav",
+      "durationSec": 2.7733333333333334
+    },
+    {
+      "index": 177,
+      "text": "すると人は、お菓子をたくさん食べ、自分への電気ショックも、多く流しました。",
+      "type": "diagram",
+      "motif": "hm_178",
+      "audio": "audio-hima/scene-177.wav",
+      "durationSec": 5.472
+    },
+    {
+      "index": 178,
+      "text": "そもそも、退屈とは、何なのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_179",
+      "audio": "audio-hima/scene-178.wav",
+      "durationSec": 3.488
+    },
+    {
+      "index": 179,
+      "text": "心理学では、「何かに夢中になりたいのに、なれない」ときの、いやな気分だと説明します。",
+      "type": "diagram",
+      "motif": "hm_180",
+      "audio": "audio-hima/scene-179.wav",
+      "durationSec": 6.293333333333333
+    },
+    {
+      "index": 180,
+      "text": "やることがないから、退屈なのではありません。",
+      "type": "diagram",
+      "motif": "hm_181",
+      "audio": "audio-hima/scene-180.wav",
+      "durationSec": 3.029333333333333
+    },
+    {
+      "index": 181,
+      "text": "長い会議のように、やることがあっても、夢中になれなければ、人は退屈します。",
+      "type": "diagram",
+      "motif": "hm_182",
+      "audio": "audio-hima/scene-181.wav",
+      "durationSec": 5.76
+    },
+    {
+      "index": 182,
+      "text": "そして、退屈には役目がある、という説があります。",
+      "type": "diagram",
+      "motif": "hm_183",
+      "audio": "audio-hima/scene-182.wav",
+      "durationSec": 3.8186666666666667
+    },
+    {
+      "index": 183,
+      "text": "「いまのことは、もう十分。そろそろ別のことをしよう」と知らせる、心の警報ベルです。",
+      "type": "diagram",
+      "motif": "hm_184",
+      "audio": "audio-hima/scene-183.wav",
+      "durationSec": 6.026666666666666
+    },
+    {
+      "index": 184,
+      "text": "ちなみに、日本語の「退屈」は、もとは仏教の言葉です。",
+      "type": "diagram",
+      "motif": "hm_185",
+      "audio": "audio-hima/scene-184.wav",
+      "durationSec": 4.064
+    },
+    {
+      "index": 185,
+      "text": "修行がつらくて、退いてしまうこと。お坊さんも、たいへんです。",
+      "type": "diagram",
+      "motif": "hm_186",
+      "audio": "audio-hima/scene-185.wav",
+      "durationSec": 4.789333333333333
+    },
+    {
+      "index": 186,
+      "text": "では、昔の人は、いまより暇だったのでしょうか。",
+      "type": "diagram",
+      "motif": "hm_187",
+      "audio": "audio-hima/scene-186.wav",
+      "durationSec": 4.181333333333333
+    },
+    {
+      "index": 187,
+      "text": "「大昔の人は、1日に数時間しか働かなかった」という話があります。",
+      "type": "diagram",
+      "motif": "hm_188",
+      "audio": "audio-hima/scene-187.wav",
+      "durationSec": 4.992
+    },
+    {
+      "index": 188,
+      "text": "でもこれは、食べ物を集める時間だけを数えたもので、いまでは疑問が出されています。",
+      "type": "diagram",
+      "motif": "hm_189",
+      "audio": "audio-hima/scene-188.wav",
+      "durationSec": 5.792
+    },
+    {
+      "index": 189,
+      "text": "昔の人がのんびりしていた、とは言い切れません。",
+      "type": "diagram",
+      "motif": "hm_190",
+      "audio": "audio-hima/scene-189.wav",
+      "durationSec": 3.2533333333333334
+    },
+    {
+      "index": 190,
+      "text": "わかっているのは、退屈が、ずっと昔からあったこと。",
+      "type": "diagram",
+      "motif": "hm_191",
+      "audio": "audio-hima/scene-190.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 191,
+      "text": "変わったのは、退屈が来たときの、逃げ道のほうです。",
+      "type": "diagram",
+      "motif": "hm_192",
+      "audio": "audio-hima/scene-191.wav",
+      "durationSec": 3.8293333333333335
+    },
+    {
+      "index": 192,
+      "text": "結び、暇は、どこへ消えたのか。",
+      "type": "diagram",
+      "motif": "hm_193",
+      "audio": "audio-hima/scene-192.wav",
+      "durationSec": 3.1786666666666665
+    },
+    {
+      "index": 193,
+      "text": "最後に、スマホがどこで使われているか、見てみましょう。",
+      "type": "diagram",
+      "motif": "hm_194",
+      "audio": "audio-hima/scene-193.wav",
+      "durationSec": 4.074666666666666
+    },
+    {
+      "index": 194,
+      "text": "日本の人が、平日にスマホなどでネットを使う時間は、1日に約117分。",
+      "type": "diagram",
+      "motif": "hm_195",
+      "audio": "audio-hima/scene-194.wav",
+      "durationSec": 5.994666666666666
+    },
+    {
+      "index": 195,
+      "text": "そのうち、移動中は、約10分。",
+      "type": "diagram",
+      "motif": "hm_196",
+      "audio": "audio-hima/scene-195.wav",
+      "durationSec": 2.944
+    },
+    {
+      "index": 196,
+      "text": "短い使い方は記録に残りにくい調べ方なので、本当は、もう少し多いかもしれません。",
+      "type": "diagram",
+      "motif": "hm_197",
+      "audio": "audio-hima/scene-196.wav",
+      "durationSec": 6.304
+    },
+    {
+      "index": 197,
+      "text": "では、残りはどこか。",
+      "type": "diagram",
+      "motif": "hm_198",
+      "audio": "audio-hima/scene-197.wav",
+      "durationSec": 2.1866666666666665
+    },
+    {
+      "index": 198,
+      "text": "いちばん多いのは、自宅でした。約84分です。",
+      "type": "diagram",
+      "motif": "hm_199",
+      "audio": "audio-hima/scene-198.wav",
+      "durationSec": 3.9466666666666668
+    },
+    {
+      "index": 199,
+      "text": "スマホは、細切れの隙間だけでなく、家でのまとまった暇まで、しっかり埋めていたのです。",
+      "type": "diagram",
+      "motif": "hm_200",
+      "audio": "audio-hima/scene-199.wav",
+      "durationSec": 6.144
+    },
+    {
+      "index": 200,
+      "text": "ものさしを、端から見てみましょう。",
+      "type": "diagram",
+      "motif": "hm_201",
+      "audio": "audio-hima/scene-200.wav",
+      "durationSec": 2.336
+    },
+    {
+      "index": 201,
+      "text": "7日に1度の休みが、「日」の暇を。",
+      "type": "diagram",
+      "motif": "hm_202",
+      "audio": "audio-hima/scene-201.wav",
+      "durationSec": 2.6133333333333333
+    },
+    {
+      "index": 202,
+      "text": "工場の時計と法律が、「時間」の暇を。",
+      "type": "diagram",
+      "motif": "hm_203",
+      "audio": "audio-hima/scene-202.wav",
+      "durationSec": 2.976
+    },
+    {
+      "index": 203,
+      "text": "鉄道と駅が、「分」の暇を。",
+      "type": "diagram",
+      "motif": "hm_204",
+      "audio": "audio-hima/scene-203.wav",
+      "durationSec": 2.2506666666666666
+    },
+    {
+      "index": 204,
+      "text": "そしてポケットの道具が、「秒」の暇にまで、入りこみました。",
+      "type": "diagram",
+      "motif": "hm_205",
+      "audio": "audio-hima/scene-204.wav",
+      "durationSec": 4.149333333333334
+    },
+    {
+      "index": 205,
+      "text": "日本の会社で働く人の休みは、1985年に、年に約93日。",
+      "type": "diagram",
+      "motif": "hm_206",
+      "audio": "audio-hima/scene-205.wav",
+      "durationSec": 6.496
+    },
+    {
+      "index": 206,
+      "text": "2025年の調査では、約117日。この40年で、いちばん多くなりました。",
+      "type": "diagram",
+      "motif": "hm_207",
+      "audio": "audio-hima/scene-206.wav",
+      "durationSec": 6.666666666666667
+    },
+    {
+      "index": 207,
+      "text": "暇は、ちゃんと増えています。",
+      "type": "diagram",
+      "motif": "hm_208",
+      "audio": "audio-hima/scene-207.wav",
+      "durationSec": 2.048
+    },
+    {
+      "index": 208,
+      "text": "ただ、増えたそばから細かく切られて、すみずみまで、埋まっていきました。",
+      "type": "diagram",
+      "motif": "hm_209",
+      "audio": "audio-hima/scene-208.wav",
+      "durationSec": 5.1946666666666665
+    },
+    {
+      "index": 209,
+      "text": "暇は増えたのに、退屈する時間は、消えたのです。",
+      "type": "diagram",
+      "motif": "hm_210",
+      "audio": "audio-hima/scene-209.wav",
+      "durationSec": 3.8506666666666667
+    },
+    {
+      "index": 210,
+      "text": "退屈が、「別のことをしよう」の警報ベルだとしたら。",
+      "type": "diagram",
+      "motif": "hm_211",
+      "audio": "audio-hima/scene-210.wav",
+      "durationSec": 3.562666666666667
+    },
+    {
+      "index": 211,
+      "text": "いまは、ベルが鳴るより先に、画面が次のことを出してくれます。",
+      "type": "diagram",
+      "motif": "hm_212",
+      "audio": "audio-hima/scene-211.wav",
+      "durationSec": 4.384
+    },
+    {
+      "index": 212,
+      "text": "それを便利と思うか、ちょっともったいないと思うか。決めるのは、あなたです。",
+      "type": "diagram",
+      "motif": "hm_213",
+      "audio": "audio-hima/scene-212.wav",
+      "durationSec": 5.237333333333333
+    },
+    {
+      "index": 213,
+      "text": "なお、何かを待ちながら、この動画を最後まで観てくれたあなた。",
+      "type": "diagram",
+      "motif": "hm_214",
+      "audio": "audio-hima/scene-213.wav",
+      "durationSec": 4.373333333333333
+    },
+    {
+      "index": 214,
+      "text": "それはたぶん、2500年かけて細かくなった、暇の、ひと目盛りです。",
+      "type": "diagram",
+      "motif": "hm_215",
+      "audio": "audio-hima/scene-214.wav",
+      "durationSec": 5.301333333333333
+    },
+    {
+      "index": 215,
       "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
       "type": "card",
       "motif": "ending",
       "isEnding": true,
-      "audio": "audio-namae/scene-end.wav",
-      "durationSec": 5.632
+      "audio": "audio-hima/scene-end.wav",
+      "durationSec": 5.184
     }
   ],
   "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
-  "generatedAt": "2026-11-22T19:15:47.344Z",
+  "generatedAt": "2026-11-24T21:33:44.091Z",
   "preset": "karakuri"
 }

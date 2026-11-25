@@ -53,7 +53,7 @@ export const SUURI_CHANNEL = {
 
 // 身の回りの機械のからくり図解系 (お手本: 最高の老後 のテイスト分析から。名前は自作)
 export const KARAKURI_CHANNEL = {
-  name: "まちのからくり図鑑", // ←自分のチャンネル名に変える
+  name: "からくりチャンネル", // 2026-11-26 チャンネル名を決定版に (旧「まちのからくり図鑑」)
   iconLetter: "か",
   closingLine:
     // 台本側の最終文に「ご視聴ありがとう」があるため、ここでは繰り返さない (恋愛ドレイク回v3の教訓)
@@ -161,6 +161,9 @@ export function applyPresetVoice(preset: Preset) {
   // ※上の VOICE 初期化と同じ値にすること
   VOICE.voicevoxStyle = "ノーマル";
   VOICE.voicevoxSpeed = preset === "karakuri" ? 1.1 : preset === "sekai" ? 1.05 : 0.95;
+  // 作品ごとに話速を変えたいときは VOICE_SPEED=1.2 のように渡す (2026-11-25 暇の回「ずんだもん1.2倍で」)
+  const envSpeed = Number(process.env.VOICE_SPEED);
+  if (Number.isFinite(envSpeed) && envSpeed > 0) VOICE.voicevoxSpeed = envSpeed;
 }
 
 /** 反応役を別の声で喋らせる作風か (いまは sekai の新人記者だけ) */

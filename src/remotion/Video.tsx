@@ -48,7 +48,10 @@ import { ichiScene } from "./karakuri/IchiIndex";
 import { saigoScene } from "./karakuri/SaigoIndex";
 import { yawaScene } from "./karakuri/YawaIndex";
 import { namaeScene } from "./karakuri/NamaeIndex";
+import { himaScene } from "./karakuri/HimaIndex";
+import { KarakuriEnding } from "./karakuri/KarakuriEnding";
 import { SAIGO_SE } from "./karakuri/saigoSe";
+import { HIMA_SE } from "./karakuri/himaSe";
 
 // 自販機2000年史 (モチーフ名が j2_ で始まる専用絵) を本編プレイヤーで描くためのつなぎ。
 // J2AllSceneView は (motif, f) を受けるので、Sequence内の経過フレームを渡す。
@@ -117,6 +120,16 @@ export const isNamaeMotif = (motif: string) => /^nm_\d{3}$/.test(motif);
 const NamaeSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
   const f = useCurrentFrame();
   return namaeScene(motif, f) ?? <AbsoluteFill style={{ background: KRP.cream }} />;
+};
+// からくりの終わりの絵 (2026-11-26〜 全回共通・チャンネルヘッダーを使う)
+const KarakuriEndingInVideo: React.FC = () => {
+  const f = useCurrentFrame();
+  return <KarakuriEnding f={f} />;
+};
+export const isHimaMotif = (motif: string) => /^hm_\d{3}$/.test(motif);
+const HimaSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return himaScene(motif, f) ?? <AbsoluteFill style={{ background: KRP.cream }} />;
 };
 export const isYawaMotif = (motif: string) => /^yw_\d{3}$/.test(motif);
 const YawaSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
@@ -536,7 +549,7 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
               {/* 効果音 (いまは「人類は、昔から飛ばして観ていた」だけ)。
                   表 (saigoSe.ts) に載っていない motif は空配列なので他作風には影響しない */}
               {isKarakuri &&
-                (SAIGO_SE[scene.motif] ?? []).map((cue, i) => (
+                (SAIGO_SE[scene.motif] ?? HIMA_SE[scene.motif] ?? []).map((cue, i) => (
                   <Sequence key={`se${i}`} from={cue.at} name={`se-${scene.index}-${i}`}>
                     <Audio src={staticFile(cue.file)} volume={cue.volume ?? 0.55} />
                   </Sequence>
@@ -582,8 +595,12 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   <SaigoSceneInVideo motif={scene.motif} />
                 ) : isYawaMotif(scene.motif) ? (
                   <YawaSceneInVideo motif={scene.motif} />
+                ) : isHimaMotif(scene.motif) ? (
+                  <HimaSceneInVideo motif={scene.motif} />
                 ) : isNamaeMotif(scene.motif) ? (
                   <NamaeSceneInVideo motif={scene.motif} />
+                ) : scene.isEnding ? (
+                  <KarakuriEndingInVideo />
                 ) : (
                   <KarakuriSceneView scene={scene} />
                 )

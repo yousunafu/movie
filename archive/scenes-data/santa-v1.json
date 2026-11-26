@@ -1,0 +1,1808 @@
+{
+  "scenes": [
+    {
+      "index": 0,
+      "text": "サンタの服を赤くしたのは、コカ・コーラではありません。",
+      "type": "diagram",
+      "motif": "st_001",
+      "audio": "audio-santa/scene-000.wav",
+      "durationSec": 3.488
+    },
+    {
+      "index": 1,
+      "text": "よく聞く話ですよね。コカ・コーラが、広告のために、会社の色に塗った、という話。",
+      "type": "diagram",
+      "motif": "st_002",
+      "audio": "audio-santa/scene-001.wav",
+      "durationSec": 6.325333333333333
+    },
+    {
+      "index": 2,
+      "text": "でも、違います。",
+      "type": "diagram",
+      "motif": "st_003",
+      "audio": "audio-santa/scene-002.wav",
+      "durationSec": 1.4933333333333334
+    },
+    {
+      "index": 3,
+      "text": "そう言っているのは、コカ・コーラ自身です。",
+      "type": "diagram",
+      "motif": "st_004",
+      "audio": "audio-santa/scene-003.wav",
+      "durationSec": 2.7093333333333334
+    },
+    {
+      "index": 4,
+      "text": "会社の公式ページに、「社の色だからではない」と、はっきり書いてあります。",
+      "type": "diagram",
+      "motif": "st_005",
+      "audio": "audio-santa/scene-004.wav",
+      "durationSec": 5.034666666666666
+    },
+    {
+      "index": 5,
+      "text": "疑われていた本人が、いちばん熱心に、無実を訴えています。",
+      "type": "diagram",
+      "motif": "st_006",
+      "audio": "audio-santa/scene-005.wav",
+      "durationSec": 4.8
+    },
+    {
+      "index": 6,
+      "text": "では、サンタを作った犯人は、誰なのか。",
+      "type": "diagram",
+      "motif": "st_007",
+      "audio": "audio-santa/scene-006.wav",
+      "durationSec": 3.8293333333333335
+    },
+    {
+      "index": 7,
+      "text": "調べてみると、容疑者は、一人ではありませんでした。",
+      "type": "diagram",
+      "motif": "st_008",
+      "audio": "audio-santa/scene-007.wav",
+      "durationSec": 3.872
+    },
+    {
+      "index": 8,
+      "text": "名前を付けた人。太らせた人。トナカイを付けた人。服を塗った人。",
+      "type": "diagram",
+      "motif": "st_009",
+      "audio": "audio-santa/scene-008.wav",
+      "durationSec": 5.1306666666666665
+    },
+    {
+      "index": 9,
+      "text": "200年分の大人たちが、少しずつ、サンタを付け足していたのです。",
+      "type": "diagram",
+      "motif": "st_010",
+      "audio": "audio-santa/scene-009.wav",
+      "durationSec": 4.704
+    },
+    {
+      "index": 10,
+      "text": "その証拠に、昔のサンタは、今とはまるで別人です。",
+      "type": "diagram",
+      "motif": "st_011",
+      "audio": "audio-santa/scene-010.wav",
+      "durationSec": 4.085333333333334
+    },
+    {
+      "index": 11,
+      "text": "1810年の絵では、暖炉に、靴下が2本、下がっています。",
+      "type": "diagram",
+      "motif": "st_012",
+      "audio": "audio-santa/scene-011.wav",
+      "durationSec": 5.141333333333334
+    },
+    {
+      "index": 12,
+      "text": "片方には、お菓子。もう片方には、おしおきの枝だけ。",
+      "type": "diagram",
+      "motif": "st_013",
+      "audio": "audio-santa/scene-012.wav",
+      "durationSec": 4.469333333333333
+    },
+    {
+      "index": 13,
+      "text": "サンタは、悪い子に、おしおきの道具を置いていく人でした。",
+      "type": "diagram",
+      "motif": "st_014",
+      "audio": "audio-santa/scene-013.wav",
+      "durationSec": 4.181333333333333
+    },
+    {
+      "index": 14,
+      "text": "今日は、サンタの部品を1つずつ、誰が付けたのか、追いかけます。",
+      "type": "diagram",
+      "motif": "st_015",
+      "audio": "audio-santa/scene-014.wav",
+      "durationSec": 4.768
+    },
+    {
+      "index": 15,
+      "text": "最後には、もうひとつの謎も待っています。子どもは、いつ正体に気づくのか。",
+      "type": "diagram",
+      "motif": "st_016",
+      "audio": "audio-santa/scene-015.wav",
+      "durationSec": 6.016
+    },
+    {
+      "index": 16,
+      "text": "まずは、すべての元になった、一人の司教から、調べてみます。",
+      "type": "diagram",
+      "motif": "st_017",
+      "audio": "audio-santa/scene-016.wav",
+      "durationSec": 4.608
+    },
+    {
+      "index": 17,
+      "text": "第1章、窓から来た、司教さま。",
+      "type": "diagram",
+      "motif": "st_018",
+      "audio": "audio-santa/scene-017.wav",
+      "durationSec": 2.944
+    },
+    {
+      "index": 18,
+      "text": "4世紀、今のトルコのミュラという町に、ニコラウスという司教がいた、とされます。",
+      "type": "diagram",
+      "motif": "st_019",
+      "audio": "audio-santa/scene-018.wav",
+      "durationSec": 5.802666666666667
+    },
+    {
+      "index": 19,
+      "text": "ただ、本人が書いたものは、1つも残っていません。生まれた年も、言い伝えです。",
+      "type": "diagram",
+      "motif": "st_020",
+      "audio": "audio-santa/scene-019.wav",
+      "durationSec": 6.112
+    },
+    {
+      "index": 20,
+      "text": "元祖からして、ほぼ、言い伝えでできています。",
+      "type": "diagram",
+      "motif": "st_021",
+      "audio": "audio-santa/scene-020.wav",
+      "durationSec": 3.3813333333333335
+    },
+    {
+      "index": 21,
+      "text": "有名なのは、貧しくて嫁入りの支度ができない、3人の娘の話です。",
+      "type": "diagram",
+      "motif": "st_022",
+      "audio": "audio-santa/scene-021.wav",
+      "durationSec": 5.365333333333333
+    },
+    {
+      "index": 22,
+      "text": "ニコラウスは夜、その家の窓から、こっそり金の袋を投げ入れた、とされます。",
+      "type": "diagram",
+      "motif": "st_023",
+      "audio": "audio-santa/scene-022.wav",
+      "durationSec": 5.504
+    },
+    {
+      "index": 23,
+      "text": "煙突ではありません。窓です。",
+      "type": "diagram",
+      "motif": "st_024",
+      "audio": "audio-santa/scene-023.wav",
+      "durationSec": 2.336
+    },
+    {
+      "index": 24,
+      "text": "煙突は、まだ、付け足されていません。",
+      "type": "diagram",
+      "motif": "st_025",
+      "audio": "audio-santa/scene-024.wav",
+      "durationSec": 2.944
+    },
+    {
+      "index": 25,
+      "text": "やがてニコラウスは、子どもの守護聖人になり、12月6日がお祝いの日になります。",
+      "type": "diagram",
+      "motif": "st_026",
+      "audio": "audio-santa/scene-025.wav",
+      "durationSec": 5.770666666666667
+    },
+    {
+      "index": 26,
+      "text": "1087年には、イタリアのバーリの船乗りたちが、遺骨を持ち去りました。",
+      "type": "diagram",
+      "motif": "st_027",
+      "audio": "audio-santa/scene-026.wav",
+      "durationSec": 5.344
+    },
+    {
+      "index": 27,
+      "text": "聖人も、引っ越し先は、自分で選べません。",
+      "type": "diagram",
+      "motif": "st_028",
+      "audio": "audio-santa/scene-027.wav",
+      "durationSec": 3.5733333333333333
+    },
+    {
+      "index": 28,
+      "text": "このお祝いを今も大事にしているのが、オランダのシンタクラースです。",
+      "type": "diagram",
+      "motif": "st_029",
+      "audio": "audio-santa/scene-028.wav",
+      "durationSec": 4.341333333333333
+    },
+    {
+      "index": 29,
+      "text": "白い馬に乗り、赤い司教の服。体はやせて、背が高い。",
+      "type": "diagram",
+      "motif": "st_030",
+      "audio": "audio-santa/scene-029.wav",
+      "durationSec": 4.693333333333333
+    },
+    {
+      "index": 30,
+      "text": "子どもたちは、プレゼントを待って、靴を置きます。靴下ではなく、靴です。",
+      "type": "diagram",
+      "motif": "st_031",
+      "audio": "audio-santa/scene-030.wav",
+      "durationSec": 5.589333333333333
+    },
+    {
+      "index": 31,
+      "text": "太ってもいない。トナカイもいない。部品は、まだ、ほとんどありません。",
+      "type": "diagram",
+      "motif": "st_032",
+      "audio": "audio-santa/scene-031.wav",
+      "durationSec": 5.152
+    },
+    {
+      "index": 32,
+      "text": "では、これが海を渡って、そのままサンタになったのでしょうか。",
+      "type": "diagram",
+      "motif": "st_033",
+      "audio": "audio-santa/scene-032.wav",
+      "durationSec": 4.746666666666667
+    },
+    {
+      "index": 33,
+      "text": "実はここ、研究者のあいだでも、意見が割れています。",
+      "type": "diagram",
+      "motif": "st_034",
+      "audio": "audio-santa/scene-033.wav",
+      "durationSec": 4.341333333333333
+    },
+    {
+      "index": 34,
+      "text": "オランダからの移民が持ち込んだ、という説。",
+      "type": "diagram",
+      "motif": "st_035",
+      "audio": "audio-santa/scene-034.wav",
+      "durationSec": 2.933333333333333
+    },
+    {
+      "index": 35,
+      "text": "いや、19世紀のニューヨークの作家たちが作ったのだ、と論じた研究者もいます。",
+      "type": "diagram",
+      "motif": "st_036",
+      "audio": "audio-santa/scene-035.wav",
+      "durationSec": 5.898666666666666
+    },
+    {
+      "index": 36,
+      "text": "では、そのニューヨークで、何が起きていたのか。",
+      "type": "diagram",
+      "motif": "st_037",
+      "audio": "audio-santa/scene-036.wav",
+      "durationSec": 3.8933333333333335
+    },
+    {
+      "index": 37,
+      "text": "第2章、ニューヨークで、組み立てが始まる。",
+      "type": "diagram",
+      "motif": "st_038",
+      "audio": "audio-santa/scene-037.wav",
+      "durationSec": 3.3173333333333335
+    },
+    {
+      "index": 38,
+      "text": "1773年12月、ニューヨークの新聞に、「セント・ア・クロース」という名前が出てきます。",
+      "type": "diagram",
+      "motif": "st_039",
+      "audio": "audio-santa/scene-038.wav",
+      "durationSec": 6.677333333333333
+    },
+    {
+      "index": 39,
+      "text": "名前の部品、完成です。中身は、まだ空っぽです。",
+      "type": "diagram",
+      "motif": "st_040",
+      "audio": "audio-santa/scene-039.wav",
+      "durationSec": 4.245333333333333
+    },
+    {
+      "index": 40,
+      "text": "中身を足したのは、作家のワシントン・アーヴィングでした。",
+      "type": "diagram",
+      "motif": "st_041",
+      "audio": "audio-santa/scene-040.wav",
+      "durationSec": 4.010666666666666
+    },
+    {
+      "index": 41,
+      "text": "1809年に出した、半分は冗談で書いた、ニューヨークの歴史の本です。",
+      "type": "diagram",
+      "motif": "st_042",
+      "audio": "audio-santa/scene-041.wav",
+      "durationSec": 5.525333333333333
+    },
+    {
+      "index": 42,
+      "text": "その中でニコラウスは、パイプをくわえた、太ったオランダのおじさんになりました。",
+      "type": "diagram",
+      "motif": "st_043",
+      "audio": "audio-santa/scene-042.wav",
+      "durationSec": 5.333333333333333
+    },
+    {
+      "index": 43,
+      "text": "太らせた容疑者、一人目です。",
+      "type": "diagram",
+      "motif": "st_044",
+      "audio": "audio-santa/scene-043.wav",
+      "durationSec": 2.368
+    },
+    {
+      "index": 44,
+      "text": "翌年の1810年には、ピンタードという人の版画が出ます。冒頭の、靴下2本の絵です。",
+      "type": "diagram",
+      "motif": "st_045",
+      "audio": "audio-santa/scene-044.wav",
+      "durationSec": 6.890666666666666
+    },
+    {
+      "index": 45,
+      "text": "いい子の靴下にはお菓子。悪い子の靴下には、枝だけ。",
+      "type": "diagram",
+      "motif": "st_046",
+      "audio": "audio-santa/scene-045.wav",
+      "durationSec": 4.330666666666667
+    },
+    {
+      "index": 46,
+      "text": "クリスマスの朝に、枝。なかなかの教育方針です。",
+      "type": "diagram",
+      "motif": "st_047",
+      "audio": "audio-santa/scene-046.wav",
+      "durationSec": 4.213333333333333
+    },
+    {
+      "index": 47,
+      "text": "1821年には、作者のわからない、子ども向けの小さな冊子が出ます。",
+      "type": "diagram",
+      "motif": "st_048",
+      "audio": "audio-santa/scene-047.wav",
+      "durationSec": 5.610666666666667
+    },
+    {
+      "index": 48,
+      "text": "ここに、トナカイのソリが出てきます。知られている限り、いちばん古い例です。",
+      "type": "diagram",
+      "motif": "st_049",
+      "audio": "audio-santa/scene-048.wav",
+      "durationSec": 5.344
+    },
+    {
+      "index": 49,
+      "text": "ただし、絵に描かれたトナカイは、1頭だけ。",
+      "type": "diagram",
+      "motif": "st_050",
+      "audio": "audio-santa/scene-049.wav",
+      "durationSec": 3.541333333333333
+    },
+    {
+      "index": 50,
+      "text": "そして悪い子には、長い黒い樺のムチを置いていきます。神の命令だそうです。",
+      "type": "diagram",
+      "motif": "st_051",
+      "audio": "audio-santa/scene-050.wav",
+      "durationSec": 5.461333333333333
+    },
+    {
+      "index": 51,
+      "text": "繰り返しますが、子ども向けの本です。",
+      "type": "diagram",
+      "motif": "st_052",
+      "audio": "audio-santa/scene-051.wav",
+      "durationSec": 2.688
+    },
+    {
+      "index": 52,
+      "text": "そして1823年12月23日、トロイという町の新聞に、作者名のない詩が載ります。",
+      "type": "diagram",
+      "motif": "st_053",
+      "audio": "audio-santa/scene-052.wav",
+      "durationSec": 7.253333333333333
+    },
+    {
+      "index": 53,
+      "text": "この詩で、部品が一気に増えます。",
+      "type": "diagram",
+      "motif": "st_054",
+      "audio": "audio-santa/scene-053.wav",
+      "durationSec": 2.4426666666666668
+    },
+    {
+      "index": 54,
+      "text": "トナカイは8頭。一頭一頭に、名前がつきます。",
+      "type": "diagram",
+      "motif": "st_055",
+      "audio": "audio-santa/scene-054.wav",
+      "durationSec": 4.010666666666666
+    },
+    {
+      "index": 55,
+      "text": "煙突から入ってきて、背中には、おもちゃの包み。あごには、白いひげ。",
+      "type": "diagram",
+      "motif": "st_056",
+      "audio": "audio-santa/scene-055.wav",
+      "durationSec": 5.525333333333333
+    },
+    {
+      "index": 56,
+      "text": "姿は、陽気な年寄りの妖精。まだ、人間の大きさではありません。",
+      "type": "diagram",
+      "motif": "st_057",
+      "audio": "audio-santa/scene-056.wav",
+      "durationSec": 5.312
+    },
+    {
+      "index": 57,
+      "text": "ちなみに、最後の2頭の名前は、もとはオランダ語の「雷」と「稲妻」でした。",
+      "type": "diagram",
+      "motif": "st_058",
+      "audio": "audio-santa/scene-057.wav",
+      "durationSec": 5.237333333333333
+    },
+    {
+      "index": 58,
+      "text": "トナカイというより、天気予報です。",
+      "type": "diagram",
+      "motif": "st_059",
+      "audio": "audio-santa/scene-058.wav",
+      "durationSec": 2.624
+    },
+    {
+      "index": 59,
+      "text": "さて、ここで問題です。",
+      "type": "diagram",
+      "motif": "st_060",
+      "audio": "audio-santa/scene-059.wav",
+      "durationSec": 1.8666666666666667
+    },
+    {
+      "index": 60,
+      "text": "この1823年の詩で、サンタの服は、何色だったでしょう。",
+      "type": "diagram",
+      "motif": "st_061",
+      "audio": "audio-santa/scene-060.wav",
+      "durationSec": 4.938666666666666
+    },
+    {
+      "index": 61,
+      "text": "答えは、書いていない、です。全身毛皮、とはあっても、色は出てきません。",
+      "type": "diagram",
+      "motif": "st_062",
+      "audio": "audio-santa/scene-061.wav",
+      "durationSec": 6.101333333333334
+    },
+    {
+      "index": 62,
+      "text": "赤い服の部品は、まだ、どこにもありません。",
+      "type": "diagram",
+      "motif": "st_063",
+      "audio": "audio-santa/scene-062.wav",
+      "durationSec": 3.3493333333333335
+    },
+    {
+      "index": 63,
+      "text": "この詩は、ムーアという学者が書いた、とされています。",
+      "type": "diagram",
+      "motif": "st_064",
+      "audio": "audio-santa/scene-063.wav",
+      "durationSec": 3.712
+    },
+    {
+      "index": 64,
+      "text": "ただ別の説もあり、2016年と2023年の分析で、逆の結論が出ています。",
+      "type": "diagram",
+      "motif": "st_065",
+      "audio": "audio-santa/scene-064.wav",
+      "durationSec": 6.602666666666667
+    },
+    {
+      "index": 65,
+      "text": "200年たっても、容疑者が一人、決まっていません。",
+      "type": "diagram",
+      "motif": "st_066",
+      "audio": "audio-santa/scene-065.wav",
+      "durationSec": 3.7653333333333334
+    },
+    {
+      "index": 66,
+      "text": "では、色の書いていないサンタに、誰が色を塗ったのか。",
+      "type": "diagram",
+      "motif": "st_067",
+      "audio": "audio-santa/scene-066.wav",
+      "durationSec": 4.501333333333333
+    },
+    {
+      "index": 67,
+      "text": "第3章、絵描きたちが、姿を決める。",
+      "type": "diagram",
+      "motif": "st_068",
+      "audio": "audio-santa/scene-067.wav",
+      "durationSec": 3.1146666666666665
+    },
+    {
+      "index": 68,
+      "text": "文字だけのサンタに顔を与えたのは、雑誌の挿絵画家、トーマス・ナストです。",
+      "type": "diagram",
+      "motif": "st_069",
+      "audio": "audio-santa/scene-068.wav",
+      "durationSec": 5.418666666666667
+    },
+    {
+      "index": 69,
+      "text": "1863年1月3日号の最初のサンタは、星の上着に、ストライプのズボン。星条旗の柄です。",
+      "type": "diagram",
+      "motif": "st_070",
+      "audio": "audio-santa/scene-069.wav",
+      "durationSec": 7.808
+    },
+    {
+      "index": 70,
+      "text": "南北戦争の真っ最中。サンタは、北軍の応援に来ていました。",
+      "type": "diagram",
+      "motif": "st_071",
+      "audio": "audio-santa/scene-070.wav",
+      "durationSec": 4.864
+    },
+    {
+      "index": 71,
+      "text": "ナストは1886年までに、30枚あまりのサンタを描きます。",
+      "type": "diagram",
+      "motif": "st_072",
+      "audio": "audio-santa/scene-071.wav",
+      "durationSec": 5.216
+    },
+    {
+      "index": 72,
+      "text": "初期のサンタはとても小さく、椅子に乗らないと、暖炉に届きません。",
+      "type": "diagram",
+      "motif": "st_073",
+      "audio": "audio-santa/scene-072.wav",
+      "durationSec": 4.789333333333333
+    },
+    {
+      "index": 73,
+      "text": "煙突から入れるのに、暖炉には届かない。なかなか不便な体です。",
+      "type": "diagram",
+      "motif": "st_074",
+      "audio": "audio-santa/scene-073.wav",
+      "durationSec": 4.949333333333334
+    },
+    {
+      "index": 74,
+      "text": "1866年の暮れの絵には、「サンタクロースビル、北極」という住所が書かれています。",
+      "type": "diagram",
+      "motif": "st_075",
+      "audio": "audio-santa/scene-074.wav",
+      "durationSec": 6.325333333333333
+    },
+    {
+      "index": 75,
+      "text": "知られている限り、いちばん古い、北極の住所だとされています。",
+      "type": "diagram",
+      "motif": "st_076",
+      "audio": "audio-santa/scene-075.wav",
+      "durationSec": 4.746666666666667
+    },
+    {
+      "index": 76,
+      "text": "工房があり、望遠鏡でいい子を探し、手元には子どもの行いの帳簿まであります。",
+      "type": "diagram",
+      "motif": "st_077",
+      "audio": "audio-santa/scene-076.wav",
+      "durationSec": 6.037333333333334
+    },
+    {
+      "index": 77,
+      "text": "見張りの体制が、急に本格的になってきました。",
+      "type": "diagram",
+      "motif": "st_078",
+      "audio": "audio-santa/scene-077.wav",
+      "durationSec": 3.552
+    },
+    {
+      "index": 78,
+      "text": "では、ナストのサンタは、何色だったのか。",
+      "type": "diagram",
+      "motif": "st_079",
+      "audio": "audio-santa/scene-078.wav",
+      "durationSec": 3.6693333333333333
+    },
+    {
+      "index": 79,
+      "text": "わかりません。白黒だからです。",
+      "type": "diagram",
+      "motif": "st_080",
+      "audio": "audio-santa/scene-079.wav",
+      "durationSec": 2.3466666666666667
+    },
+    {
+      "index": 80,
+      "text": "19世紀のサンタの服は、茶色、緑、青、紫、黒と、ばらばらだった、とされます。",
+      "type": "diagram",
+      "motif": "st_081",
+      "audio": "audio-santa/scene-080.wav",
+      "durationSec": 7.957333333333334
+    },
+    {
+      "index": 81,
+      "text": "今とそっくりの赤いサンタは、1902年12月3日の雑誌『パック』の表紙に、もう出ています。",
+      "type": "diagram",
+      "motif": "st_082",
+      "audio": "audio-santa/scene-081.wav",
+      "durationSec": 7.626666666666667
+    },
+    {
+      "index": 82,
+      "text": "1923年12月13日には、炭酸水「ホワイトロック」の広告に、赤いサンタが出ます。",
+      "type": "diagram",
+      "motif": "st_083",
+      "audio": "audio-santa/scene-082.wav",
+      "durationSec": 7.093333333333334
+    },
+    {
+      "index": 83,
+      "text": "白い縁の赤い服に、白いひげ。次の章の画家より、8年早いサンタです。",
+      "type": "diagram",
+      "motif": "st_084",
+      "audio": "audio-santa/scene-083.wav",
+      "durationSec": 5.781333333333333
+    },
+    {
+      "index": 84,
+      "text": "しかも1924年版の広告には、なんと、ウイスキーの瓶まで写っています。",
+      "type": "diagram",
+      "motif": "st_085",
+      "audio": "audio-santa/scene-084.wav",
+      "durationSec": 6.058666666666666
+    },
+    {
+      "index": 85,
+      "text": "お酒が禁止されていた時代の、アメリカです。サンタ、なかなか大胆です。",
+      "type": "diagram",
+      "motif": "st_086",
+      "audio": "audio-santa/scene-085.wav",
+      "durationSec": 5.386666666666667
+    },
+    {
+      "index": 86,
+      "text": "では、コカ・コーラは、いったい何をしたのか。",
+      "type": "diagram",
+      "motif": "st_087",
+      "audio": "audio-santa/scene-086.wav",
+      "durationSec": 3.6266666666666665
+    },
+    {
+      "index": 87,
+      "text": "第4章、コカ・コーラが、一人のおじいさんに決めた。",
+      "type": "diagram",
+      "motif": "st_088",
+      "audio": "audio-santa/scene-087.wav",
+      "durationSec": 3.6586666666666665
+    },
+    {
+      "index": 88,
+      "text": "1931年、コカ・コーラの広告に、画家ハッドン・サンドブロムのサンタが登場します。",
+      "type": "diagram",
+      "motif": "st_089",
+      "audio": "audio-santa/scene-088.wav",
+      "durationSec": 6.677333333333333
+    },
+    {
+      "index": 89,
+      "text": "コカ・コーラの発明は1886年。サンタのほうが、ずっと先輩です。",
+      "type": "diagram",
+      "motif": "st_090",
+      "audio": "audio-santa/scene-089.wav",
+      "durationSec": 5.728
+    },
+    {
+      "index": 90,
+      "text": "サンドブロムのサンタは、人間の大きさ。太っていて、温かい顔のおじいさんです。",
+      "type": "diagram",
+      "motif": "st_091",
+      "audio": "audio-santa/scene-090.wav",
+      "durationSec": 5.973333333333334
+    },
+    {
+      "index": 91,
+      "text": "妖精の小人が、ついに、人間になりました。",
+      "type": "diagram",
+      "motif": "st_092",
+      "audio": "audio-santa/scene-091.wav",
+      "durationSec": 3.530666666666667
+    },
+    {
+      "index": 92,
+      "text": "そして1964年まで、33年間、毎年毎年、同じ一人のおじいさんを描き続けます。",
+      "type": "diagram",
+      "motif": "st_093",
+      "audio": "audio-santa/scene-092.wav",
+      "durationSec": 7.722666666666667
+    },
+    {
+      "index": 93,
+      "text": "モデルは、はじめは友人でした。",
+      "type": "diagram",
+      "motif": "st_094",
+      "audio": "audio-santa/scene-093.wav",
+      "durationSec": 2.4106666666666667
+    },
+    {
+      "index": 94,
+      "text": "その友人が亡くなると、鏡で自分の顔を見て描いた、と会社は伝えています。",
+      "type": "diagram",
+      "motif": "st_095",
+      "audio": "audio-santa/scene-094.wav",
+      "durationSec": 5.653333333333333
+    },
+    {
+      "index": 95,
+      "text": "サンタの正体、一時期は、画家本人です。",
+      "type": "diagram",
+      "motif": "st_096",
+      "audio": "audio-santa/scene-095.wav",
+      "durationSec": 3.498666666666667
+    },
+    {
+      "index": 96,
+      "text": "ベルトが逆向きに描かれてしまった年も、あったそうです。",
+      "type": "diagram",
+      "motif": "st_097",
+      "audio": "audio-santa/scene-096.wav",
+      "durationSec": 3.7546666666666666
+    },
+    {
+      "index": 97,
+      "text": "ある年には、サンタの指から、結婚指輪が消えました。",
+      "type": "diagram",
+      "motif": "st_098",
+      "audio": "audio-santa/scene-097.wav",
+      "durationSec": 4.1386666666666665
+    },
+    {
+      "index": 98,
+      "text": "すると、手紙が届きます。「サンタの奥さんは、どうしたんですか」。",
+      "type": "diagram",
+      "motif": "st_099",
+      "audio": "audio-santa/scene-098.wav",
+      "durationSec": 4.789333333333333
+    },
+    {
+      "index": 99,
+      "text": "見ている人は、ちゃんと見ています。",
+      "type": "diagram",
+      "motif": "st_100",
+      "audio": "audio-santa/scene-099.wav",
+      "durationSec": 2.272
+    },
+    {
+      "index": 100,
+      "text": "では、ここで容疑者を並べてみます。",
+      "type": "diagram",
+      "motif": "st_101",
+      "audio": "audio-santa/scene-100.wav",
+      "durationSec": 2.592
+    },
+    {
+      "index": 101,
+      "text": "名前を出した、1773年の新聞。太らせた、アーヴィング。",
+      "type": "diagram",
+      "motif": "st_102",
+      "audio": "audio-santa/scene-101.wav",
+      "durationSec": 5.525333333333333
+    },
+    {
+      "index": 102,
+      "text": "ムチとトナカイ1頭を足した、1821年の小冊子。8頭と煙突の、1823年の詩。",
+      "type": "diagram",
+      "motif": "st_103",
+      "audio": "audio-santa/scene-102.wav",
+      "durationSec": 8.021333333333333
+    },
+    {
+      "index": 103,
+      "text": "北極に住ませた、ナスト。赤く塗った、1902年の雑誌と、1923年の炭酸水。",
+      "type": "diagram",
+      "motif": "st_104",
+      "audio": "audio-santa/scene-103.wav",
+      "durationSec": 7.488
+    },
+    {
+      "index": 104,
+      "text": "そして、コカ・コーラ。",
+      "type": "diagram",
+      "motif": "st_105",
+      "audio": "audio-santa/scene-104.wav",
+      "durationSec": 1.536
+    },
+    {
+      "index": 105,
+      "text": "コカ・コーラは、サンタを赤くした犯人では、ありません。",
+      "type": "diagram",
+      "motif": "st_106",
+      "audio": "audio-santa/scene-105.wav",
+      "durationSec": 3.8186666666666667
+    },
+    {
+      "index": 106,
+      "text": "したことは、決まった一人のおじいさんとして、33年間、見せ続けたことです。",
+      "type": "diagram",
+      "motif": "st_107",
+      "audio": "audio-santa/scene-106.wav",
+      "durationSec": 5.824
+    },
+    {
+      "index": 107,
+      "text": "毎年同じ顔を見ていれば、それが「本物の顔」になっていきます。",
+      "type": "diagram",
+      "motif": "st_108",
+      "audio": "audio-santa/scene-107.wav",
+      "durationSec": 4.352
+    },
+    {
+      "index": 108,
+      "text": "では、なぜ「コカ・コーラが赤くした」という話が、広まったのか。",
+      "type": "diagram",
+      "motif": "st_109",
+      "audio": "audio-santa/scene-108.wav",
+      "durationSec": 4.8
+    },
+    {
+      "index": 109,
+      "text": "実は、この説を本で広めた人が、31年後に「自分も広めた一人だった」と撤回しています。",
+      "type": "diagram",
+      "motif": "st_110",
+      "audio": "audio-santa/scene-109.wav",
+      "durationSec": 6.666666666666667
+    },
+    {
+      "index": 110,
+      "text": "犯人探しの本を書いた人が、自首してきました。",
+      "type": "diagram",
+      "motif": "st_111",
+      "audio": "audio-santa/scene-110.wav",
+      "durationSec": 3.36
+    },
+    {
+      "index": 111,
+      "text": "サンタには、姿だけでなく、うわさまで付け足されていくのです。",
+      "type": "diagram",
+      "motif": "st_112",
+      "audio": "audio-santa/scene-111.wav",
+      "durationSec": 4.341333333333333
+    },
+    {
+      "index": 112,
+      "text": "第5章、デパートが、9頭目を付け足す。",
+      "type": "diagram",
+      "motif": "st_113",
+      "audio": "audio-santa/scene-112.wav",
+      "durationSec": 3.3066666666666666
+    },
+    {
+      "index": 113,
+      "text": "1939年、シカゴのデパート、モンゴメリー・ワード。",
+      "type": "diagram",
+      "motif": "st_114",
+      "audio": "audio-santa/scene-113.wav",
+      "durationSec": 5.248
+    },
+    {
+      "index": 114,
+      "text": "社員のロバート・メイは、上司に頼まれて、子どもに配る本を書きます。",
+      "type": "diagram",
+      "motif": "st_115",
+      "audio": "audio-santa/scene-114.wav",
+      "durationSec": 5.226666666666667
+    },
+    {
+      "index": 115,
+      "text": "こうして生まれたのが、赤い鼻のトナカイ、ルドルフです。",
+      "type": "diagram",
+      "motif": "st_116",
+      "audio": "audio-santa/scene-115.wav",
+      "durationSec": 3.925333333333333
+    },
+    {
+      "index": 116,
+      "text": "名前の候補には、ロロや、レジナルドもあった、とされます。",
+      "type": "diagram",
+      "motif": "st_117",
+      "audio": "audio-santa/scene-116.wav",
+      "durationSec": 4.330666666666667
+    },
+    {
+      "index": 117,
+      "text": "赤い鼻のレジナルド。だいぶ、雰囲気が違います。",
+      "type": "diagram",
+      "motif": "st_118",
+      "audio": "audio-santa/scene-117.wav",
+      "durationSec": 3.8826666666666667
+    },
+    {
+      "index": 118,
+      "text": "しかも赤い鼻は最初、「酔っぱらいの鼻みたいだ」と、ボツにされたと言われています。",
+      "type": "diagram",
+      "motif": "st_119",
+      "audio": "audio-santa/scene-118.wav",
+      "durationSec": 5.365333333333333
+    },
+    {
+      "index": 119,
+      "text": "その酔っぱらいの鼻が、今では、ソリの先頭です。",
+      "type": "diagram",
+      "motif": "st_120",
+      "audio": "audio-santa/scene-119.wav",
+      "durationSec": 3.6906666666666665
+    },
+    {
+      "index": 120,
+      "text": "本は、1年目だけで、240万部、無料で配られました。",
+      "type": "diagram",
+      "motif": "st_121",
+      "audio": "audio-santa/scene-120.wav",
+      "durationSec": 5.013333333333334
+    },
+    {
+      "index": 121,
+      "text": "のちにこの話は、家族を慰めるための寝物語として、語られるようになります。",
+      "type": "diagram",
+      "motif": "st_122",
+      "audio": "audio-santa/scene-121.wav",
+      "durationSec": 5.781333333333333
+    },
+    {
+      "index": 122,
+      "text": "でも実際は、上司に頼まれた、宣伝の仕事でした。話のほうが、あとから美しくなっています。",
+      "type": "diagram",
+      "motif": "st_123",
+      "audio": "audio-santa/scene-122.wav",
+      "durationSec": 7.029333333333334
+    },
+    {
+      "index": 123,
+      "text": "1949年にジーン・オートリーが歌い、1950年1月、全米1位になります。",
+      "type": "diagram",
+      "motif": "st_124",
+      "audio": "audio-santa/scene-123.wav",
+      "durationSec": 7.52
+    },
+    {
+      "index": 124,
+      "text": "ちなみに、日本語の「赤鼻のトナカイ」には、ルドルフという名前が出てこないそうです。",
+      "type": "diagram",
+      "motif": "st_125",
+      "audio": "audio-santa/scene-124.wav",
+      "durationSec": 5.450666666666667
+    },
+    {
+      "index": 125,
+      "text": "主役なのに、名前を呼ばれません。",
+      "type": "diagram",
+      "motif": "st_126",
+      "audio": "audio-santa/scene-125.wav",
+      "durationSec": 2.56
+    },
+    {
+      "index": 126,
+      "text": "では、本物のトナカイは、どんな生き物なのか。",
+      "type": "diagram",
+      "motif": "st_127",
+      "audio": "audio-santa/scene-126.wav",
+      "durationSec": 4.085333333333334
+    },
+    {
+      "index": 127,
+      "text": "トナカイは、シカの仲間でただ一つ、メスにも角があります。",
+      "type": "diagram",
+      "motif": "st_128",
+      "audio": "audio-santa/scene-127.wav",
+      "durationSec": 4.1066666666666665
+    },
+    {
+      "index": 128,
+      "text": "そして大人のオスは、10月の終わりから12月のはじめに、角を落とします。",
+      "type": "diagram",
+      "motif": "st_129",
+      "audio": "audio-santa/scene-128.wav",
+      "durationSec": 5.429333333333333
+    },
+    {
+      "index": 129,
+      "text": "つまり、12月に立派な角があるのは、大人のオスではない可能性が高い。",
+      "type": "diagram",
+      "motif": "st_130",
+      "audio": "audio-santa/scene-129.wav",
+      "durationSec": 5.493333333333333
+    },
+    {
+      "index": 130,
+      "text": "そこから、「サンタのトナカイは全員メス」という説まであります。",
+      "type": "diagram",
+      "motif": "st_131",
+      "audio": "audio-santa/scene-130.wav",
+      "durationSec": 3.978666666666667
+    },
+    {
+      "index": 131,
+      "text": "ただ、若いオスや去勢されたオスも、春まで角を持っています。全員とは、言い切れません。",
+      "type": "diagram",
+      "motif": "st_132",
+      "audio": "audio-santa/scene-131.wav",
+      "durationSec": 6.688
+    },
+    {
+      "index": 132,
+      "text": "鼻の研究もあります。トナカイの鼻は、人より血管が約25%多い、という研究です。",
+      "type": "diagram",
+      "motif": "st_133",
+      "audio": "audio-santa/scene-132.wav",
+      "durationSec": 7.125333333333334
+    },
+    {
+      "index": 133,
+      "text": "2012年、イギリスの医学雑誌の、クリスマス号に載りました。調べたトナカイは、2頭です。",
+      "type": "diagram",
+      "motif": "st_134",
+      "audio": "audio-santa/scene-133.wav",
+      "durationSec": 7.04
+    },
+    {
+      "index": 134,
+      "text": "さらに、トナカイの目の奥は、夏は金色、冬は青に、色が変わります。",
+      "type": "diagram",
+      "motif": "st_135",
+      "audio": "audio-santa/scene-134.wav",
+      "durationSec": 5.696
+    },
+    {
+      "index": 135,
+      "text": "では、このソリは、いったいどこから来るのか。",
+      "type": "diagram",
+      "motif": "st_136",
+      "audio": "audio-santa/scene-135.wav",
+      "durationSec": 3.7546666666666666
+    },
+    {
+      "index": 136,
+      "text": "第6章、郵便局が、宛先を作る。",
+      "type": "diagram",
+      "motif": "st_137",
+      "audio": "audio-santa/scene-136.wav",
+      "durationSec": 3.4346666666666668
+    },
+    {
+      "index": 137,
+      "text": "サンタの家は、北極、とされています。ところが、ほかにも名乗り出る国があります。",
+      "type": "diagram",
+      "motif": "st_138",
+      "audio": "audio-santa/scene-137.wav",
+      "durationSec": 5.941333333333334
+    },
+    {
+      "index": 138,
+      "text": "フィンランドは「耳の山」。1927年のラジオで広まった、とされますが、録音は残っていません。",
+      "type": "diagram",
+      "motif": "st_139",
+      "audio": "audio-santa/scene-138.wav",
+      "durationSec": 7.168
+    },
+    {
+      "index": 139,
+      "text": "デンマークは、いやいやグリーンランドだ、と言います。",
+      "type": "diagram",
+      "motif": "st_140",
+      "audio": "audio-santa/scene-139.wav",
+      "durationSec": 3.488
+    },
+    {
+      "index": 140,
+      "text": "サンタの家は、今も、取り合いです。",
+      "type": "diagram",
+      "motif": "st_141",
+      "audio": "audio-santa/scene-140.wav",
+      "durationSec": 2.816
+    },
+    {
+      "index": 141,
+      "text": "家があれば、手紙が来ます。",
+      "type": "diagram",
+      "motif": "st_142",
+      "audio": "audio-santa/scene-141.wav",
+      "durationSec": 2.144
+    },
+    {
+      "index": 142,
+      "text": "でも昔のアメリカでは、サンタ宛ての手紙は「架空の宛先」として、開けて捨てられていました。",
+      "type": "diagram",
+      "motif": "st_143",
+      "audio": "audio-santa/scene-142.wav",
+      "durationSec": 5.930666666666666
+    },
+    {
+      "index": 143,
+      "text": "それが変わったのは、1911年11月1日。郵政長官が、扱ってよいと許しました。",
+      "type": "diagram",
+      "motif": "st_144",
+      "audio": "audio-santa/scene-143.wav",
+      "durationSec": 7.530666666666667
+    },
+    {
+      "index": 144,
+      "text": "1979年からは、イースター・バニー宛ての手紙も、同じ扱いになります。",
+      "type": "diagram",
+      "motif": "st_145",
+      "audio": "audio-santa/scene-144.wav",
+      "durationSec": 6.368
+    },
+    {
+      "index": 145,
+      "text": "ウサギも、ついでに、宛先として認められました。",
+      "type": "diagram",
+      "motif": "st_146",
+      "audio": "audio-santa/scene-145.wav",
+      "durationSec": 3.562666666666667
+    },
+    {
+      "index": 146,
+      "text": "カナダは、返事を書く派です。毎年、100万通以上に、返事をしています。",
+      "type": "diagram",
+      "motif": "st_147",
+      "audio": "audio-santa/scene-146.wav",
+      "durationSec": 5.898666666666666
+    },
+    {
+      "index": 147,
+      "text": "さて、ここで問題です。",
+      "type": "diagram",
+      "motif": "st_148",
+      "audio": "audio-santa/scene-147.wav",
+      "durationSec": 1.8666666666666667
+    },
+    {
+      "index": 148,
+      "text": "カナダのサンタの郵便番号は、「H0H 0H0」。何と読むでしょう。",
+      "type": "diagram",
+      "motif": "st_149",
+      "audio": "audio-santa/scene-148.wav",
+      "durationSec": 6.176
+    },
+    {
+      "index": 149,
+      "text": "答えは、ホー・ホー・ホー、です。郵便番号が、笑っています。",
+      "type": "diagram",
+      "motif": "st_150",
+      "audio": "audio-santa/scene-149.wav",
+      "durationSec": 5.9093333333333335
+    },
+    {
+      "index": 150,
+      "text": "フィンランドのロヴァニエミにも、年に約50万通。多い時期は、1日3万通が届きます。",
+      "type": "diagram",
+      "motif": "st_151",
+      "audio": "audio-santa/scene-150.wav",
+      "durationSec": 6.581333333333333
+    },
+    {
+      "index": 151,
+      "text": "ドイツでは1984年、東ドイツの「天国の門」村で、局員が2通に返事を書いたのが始まりです。",
+      "type": "diagram",
+      "motif": "st_152",
+      "audio": "audio-santa/scene-151.wav",
+      "durationSec": 7.68
+    },
+    {
+      "index": 152,
+      "text": "天国の門から、返事が来ます。住所の説得力が、違います。",
+      "type": "diagram",
+      "motif": "st_153",
+      "audio": "audio-santa/scene-152.wav",
+      "durationSec": 4.928
+    },
+    {
+      "index": 153,
+      "text": "日本でも1984年、北海道の広尾町が、オスロ市から「サンタランド」に認められた、とされます。",
+      "type": "diagram",
+      "motif": "st_154",
+      "audio": "audio-santa/scene-153.wav",
+      "durationSec": 7.616
+    },
+    {
+      "index": 154,
+      "text": "こうしてサンタは、手紙の届く人になりました。",
+      "type": "diagram",
+      "motif": "st_155",
+      "audio": "audio-santa/scene-154.wav",
+      "durationSec": 3.136
+    },
+    {
+      "index": 155,
+      "text": "でも、まだ終わりではありません。最後に付け足されたのは、証拠です。",
+      "type": "diagram",
+      "motif": "st_156",
+      "audio": "audio-santa/scene-155.wav",
+      "durationSec": 4.928
+    },
+    {
+      "index": 156,
+      "text": "第7章、軍が、サンタを追いかける。",
+      "type": "diagram",
+      "motif": "st_157",
+      "audio": "audio-santa/scene-156.wav",
+      "durationSec": 3.082666666666667
+    },
+    {
+      "index": 157,
+      "text": "毎年クリスマスになると、北アメリカの防空司令部、NORADが、サンタを追いかけます。",
+      "type": "diagram",
+      "motif": "st_158",
+      "audio": "audio-santa/scene-157.wav",
+      "durationSec": 6.026666666666666
+    },
+    {
+      "index": 158,
+      "text": "空を見張るのが仕事の、本物の軍の司令部が、真顔でやっています。",
+      "type": "diagram",
+      "motif": "st_159",
+      "audio": "audio-santa/scene-158.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 159,
+      "text": "この追跡は、去年で70年目。今はウェブで、日本語を含む9つの言葉で見られます。",
+      "type": "diagram",
+      "motif": "st_160",
+      "audio": "audio-santa/scene-159.wav",
+      "durationSec": 6.72
+    },
+    {
+      "index": 160,
+      "text": "ボランティアは1000人を超え、電話は1日で数十万件、とも言われます。",
+      "type": "diagram",
+      "motif": "st_161",
+      "audio": "audio-santa/scene-160.wav",
+      "durationSec": 5.173333333333333
+    },
+    {
+      "index": 161,
+      "text": "この始まりは、よく、こんなふうに語られます。",
+      "type": "diagram",
+      "motif": "st_162",
+      "audio": "audio-santa/scene-161.wav",
+      "durationSec": 3.424
+    },
+    {
+      "index": 162,
+      "text": "1955年のクリスマス・イブ。子どもからの間違い電話が、司令部にかかってきた。",
+      "type": "diagram",
+      "motif": "st_163",
+      "audio": "audio-santa/scene-162.wav",
+      "durationSec": 6.741333333333333
+    },
+    {
+      "index": 163,
+      "text": "大佐は、とっさにサンタのふりをして、答えてあげた。",
+      "type": "diagram",
+      "motif": "st_164",
+      "audio": "audio-santa/scene-163.wav",
+      "durationSec": 3.6586666666666665
+    },
+    {
+      "index": 164,
+      "text": "いい話です。",
+      "type": "diagram",
+      "motif": "st_165",
+      "audio": "audio-santa/scene-164.wav",
+      "durationSec": 1.056
+    },
+    {
+      "index": 165,
+      "text": "でも、当時の新聞を見ると、少し違います。",
+      "type": "diagram",
+      "motif": "st_166",
+      "audio": "audio-santa/scene-165.wav",
+      "durationSec": 3.562666666666667
+    },
+    {
+      "index": 166,
+      "text": "電話があったのは、1955年の11月30日。イブでは、ありません。",
+      "type": "diagram",
+      "motif": "st_167",
+      "audio": "audio-santa/scene-166.wav",
+      "durationSec": 6.4
+    },
+    {
+      "index": 167,
+      "text": "かけてきたのは、子ども1人。",
+      "type": "diagram",
+      "motif": "st_168",
+      "audio": "audio-santa/scene-167.wav",
+      "durationSec": 2.1226666666666665
+    },
+    {
+      "index": 168,
+      "text": "お店の広告を見てサンタにかけたつもりが、防空司令部の、シャウプ大佐につながりました。",
+      "type": "diagram",
+      "motif": "st_169",
+      "audio": "audio-santa/scene-168.wav",
+      "durationSec": 6.069333333333334
+    },
+    {
+      "index": 169,
+      "text": "広告の番号が間違っていたとも、子どもが掛け間違えたとも、言われています。",
+      "type": "diagram",
+      "motif": "st_170",
+      "audio": "audio-santa/scene-169.wav",
+      "durationSec": 5.301333333333333
+    },
+    {
+      "index": 170,
+      "text": "当時の記事に残る大佐の言葉は、要旨、こうだったとされます。",
+      "type": "diagram",
+      "motif": "st_171",
+      "audio": "audio-santa/scene-170.wav",
+      "durationSec": 4.48
+    },
+    {
+      "index": 171,
+      "text": "「北極にサンタとかいう男がいるかもしれないが、私が心配しているのは、そいつじゃない」。",
+      "type": "diagram",
+      "motif": "st_172",
+      "audio": "audio-santa/scene-171.wav",
+      "durationSec": 5.973333333333334
+    },
+    {
+      "index": 172,
+      "text": "防空司令部として、きわめて正しい答えです。",
+      "type": "diagram",
+      "motif": "st_173",
+      "audio": "audio-santa/scene-172.wav",
+      "durationSec": 3.3173333333333335
+    },
+    {
+      "index": 173,
+      "text": "この話を広報の担当者が通信社に流して、全米のニュースになった、とされます。",
+      "type": "diagram",
+      "motif": "st_174",
+      "audio": "audio-santa/scene-173.wav",
+      "durationSec": 6.037333333333334
+    },
+    {
+      "index": 174,
+      "text": "しかも、話には、もっと前があります。",
+      "type": "diagram",
+      "motif": "st_175",
+      "audio": "audio-santa/scene-174.wav",
+      "durationSec": 2.9546666666666668
+    },
+    {
+      "index": 175,
+      "text": "1948年、アメリカ空軍は、「レーダーがトナカイ8頭のソリを探知した」と、発表していました。",
+      "type": "diagram",
+      "motif": "st_176",
+      "audio": "audio-santa/scene-175.wav",
+      "durationSec": 7.68
+    },
+    {
+      "index": 176,
+      "text": "間違い電話より、7年も前です。軍は、最初から、わりと乗り気でした。",
+      "type": "diagram",
+      "motif": "st_177",
+      "audio": "audio-santa/scene-176.wav",
+      "durationSec": 5.930666666666666
+    },
+    {
+      "index": 177,
+      "text": "付け足されたのは、サンタの姿だけでは、ありませんでした。",
+      "type": "diagram",
+      "motif": "st_178",
+      "audio": "audio-santa/scene-177.wav",
+      "durationSec": 4.064
+    },
+    {
+      "index": 178,
+      "text": "コカ・コーラが赤くした話。家族を慰める寝物語。イブの夜の間違い電話。",
+      "type": "diagram",
+      "motif": "st_179",
+      "audio": "audio-santa/scene-178.wav",
+      "durationSec": 5.984
+    },
+    {
+      "index": 179,
+      "text": "サンタは、作られ方の話まで、あとから付け足されていくのです。",
+      "type": "diagram",
+      "motif": "st_180",
+      "audio": "audio-santa/scene-179.wav",
+      "durationSec": 4.426666666666667
+    },
+    {
+      "index": 180,
+      "text": "こんな計算まで、付け足されています。1990年ごろ、アメリカの雑誌に載った、ジョークです。",
+      "type": "diagram",
+      "motif": "st_181",
+      "audio": "audio-santa/scene-180.wav",
+      "durationSec": 7.210666666666667
+    },
+    {
+      "index": 181,
+      "text": "一晩で子どもたちの家を回るには、1秒に822軒。",
+      "type": "diagram",
+      "motif": "st_182",
+      "audio": "audio-santa/scene-181.wav",
+      "durationSec": 4.448
+    },
+    {
+      "index": 182,
+      "text": "ソリの速さは、音速の約3000倍。トナカイは、21万4200頭が必要。",
+      "type": "diagram",
+      "motif": "st_183",
+      "audio": "audio-santa/scene-182.wav",
+      "durationSec": 6.602666666666667
+    },
+    {
+      "index": 183,
+      "text": "そして先頭のトナカイは、0.00426秒で、燃え尽きます。",
+      "type": "diagram",
+      "motif": "st_184",
+      "audio": "audio-santa/scene-183.wav",
+      "durationSec": 5.024
+    },
+    {
+      "index": 184,
+      "text": "もちろん、冗談です。ルドルフは、無事です。",
+      "type": "diagram",
+      "motif": "st_185",
+      "audio": "audio-santa/scene-184.wav",
+      "durationSec": 3.584
+    },
+    {
+      "index": 185,
+      "text": "では、子どもたちは、いつ、このからくりに気づくのでしょうか。",
+      "type": "diagram",
+      "motif": "st_186",
+      "audio": "audio-santa/scene-185.wav",
+      "durationSec": 4.96
+    },
+    {
+      "index": 186,
+      "text": "第8章、正体に、気づく日。",
+      "type": "diagram",
+      "motif": "st_187",
+      "audio": "audio-santa/scene-186.wav",
+      "durationSec": 2.7306666666666666
+    },
+    {
+      "index": 187,
+      "text": "ある研究で、サンタの正体に気づいたときの気持ちを、聞いています。",
+      "type": "diagram",
+      "motif": "st_188",
+      "audio": "audio-santa/scene-187.wav",
+      "durationSec": 4.789333333333333
+    },
+    {
+      "index": 188,
+      "text": "子どもは、「うれしかった」という答えが多かった、とされます。",
+      "type": "diagram",
+      "motif": "st_189",
+      "audio": "audio-santa/scene-188.wav",
+      "durationSec": 3.978666666666667
+    },
+    {
+      "index": 189,
+      "text": "いちばん悲しんでいたのは、親のほうでした。「悲しい」が40%、「うれしい」は6%だけ。",
+      "type": "diagram",
+      "motif": "st_190",
+      "audio": "audio-santa/scene-189.wav",
+      "durationSec": 7.093333333333334
+    },
+    {
+      "index": 190,
+      "text": "卒業式で泣いているのは、だいたい、親のほうです。",
+      "type": "diagram",
+      "motif": "st_191",
+      "audio": "audio-santa/scene-190.wav",
+      "durationSec": 3.7653333333333334
+    },
+    {
+      "index": 191,
+      "text": "では、子どもは何歳で、気づくのか。",
+      "type": "diagram",
+      "motif": "st_192",
+      "audio": "audio-santa/scene-191.wav",
+      "durationSec": 3.392
+    },
+    {
+      "index": 192,
+      "text": "アメリカの研究では、平均8歳ごろ。ただし、早い子は3歳半、遅い子は11歳半と、幅があります。",
+      "type": "diagram",
+      "motif": "st_193",
+      "audio": "audio-santa/scene-192.wav",
+      "durationSec": 8.586666666666666
+    },
+    {
+      "index": 193,
+      "text": "日本の短大生の思い出では、7歳ごろには79%が信じていて、10歳ごろには22%まで減ります。",
+      "type": "diagram",
+      "motif": "st_194",
+      "audio": "audio-santa/scene-193.wav",
+      "durationSec": 8.522666666666666
+    },
+    {
+      "index": 194,
+      "text": "小学4年生までに、86%が、卒業していました。",
+      "type": "diagram",
+      "motif": "st_195",
+      "audio": "audio-santa/scene-194.wav",
+      "durationSec": 4.928
+    },
+    {
+      "index": 195,
+      "text": "きっかけで多いのは、人から聞くこと、です。",
+      "type": "diagram",
+      "motif": "st_196",
+      "audio": "audio-santa/scene-195.wav",
+      "durationSec": 3.2426666666666666
+    },
+    {
+      "index": 196,
+      "text": "母親に口止めされたお姉さんが、5分後に妹にばらした、という例もあります。",
+      "type": "diagram",
+      "motif": "st_197",
+      "audio": "audio-santa/scene-196.wav",
+      "durationSec": 5.674666666666667
+    },
+    {
+      "index": 197,
+      "text": "口止めの効き目、5分です。",
+      "type": "diagram",
+      "motif": "st_198",
+      "audio": "audio-santa/scene-197.wav",
+      "durationSec": 2.1546666666666665
+    },
+    {
+      "index": 198,
+      "text": "次に多いのが、親のうっかりです。",
+      "type": "diagram",
+      "motif": "st_199",
+      "audio": "audio-santa/scene-198.wav",
+      "durationSec": 2.538666666666667
+    },
+    {
+      "index": 199,
+      "text": "プレゼントが、スーパーの袋に入っていた。",
+      "type": "diagram",
+      "motif": "st_200",
+      "audio": "audio-santa/scene-199.wav",
+      "durationSec": 3.029333333333333
+    },
+    {
+      "index": 200,
+      "text": "園に来たサンタの車に、郵便局のマークがついていた。",
+      "type": "diagram",
+      "motif": "st_201",
+      "audio": "audio-santa/scene-200.wav",
+      "durationSec": 4.042666666666666
+    },
+    {
+      "index": 201,
+      "text": "北極からではなく、だいぶ近所から来ていました。",
+      "type": "diagram",
+      "motif": "st_202",
+      "audio": "audio-santa/scene-201.wav",
+      "durationSec": 3.392
+    },
+    {
+      "index": 202,
+      "text": "包み紙の裏に、「サンタがこの紙を使ったら、ママがサンタだ!」と書いておいた子もいます。",
+      "type": "diagram",
+      "motif": "st_203",
+      "audio": "audio-santa/scene-202.wav",
+      "durationSec": 5.92
+    },
+    {
+      "index": 203,
+      "text": "罠です。",
+      "type": "diagram",
+      "motif": "st_204",
+      "audio": "audio-santa/scene-203.wav",
+      "durationSec": 0.7573333333333333
+    },
+    {
+      "index": 204,
+      "text": "8歳ごろは、「めったにないこと」と「ありえないこと」を、区別できるようになる年です。",
+      "type": "diagram",
+      "motif": "st_205",
+      "audio": "audio-santa/scene-204.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 205,
+      "text": "3歳から9歳の子の96%が、「ソリで空を飛ぶ」を本当だと答えた研究があります。",
+      "type": "diagram",
+      "motif": "st_206",
+      "audio": "audio-santa/scene-205.wav",
+      "durationSec": 6.528
+    },
+    {
+      "index": 206,
+      "text": "でも、子どもの質問の41%は、「どうやって」という、仕組みの質問でした。",
+      "type": "diagram",
+      "motif": "st_207",
+      "audio": "audio-santa/scene-206.wav",
+      "durationSec": 5.888
+    },
+    {
+      "index": 207,
+      "text": "そして、自分で説明を作ります。トナカイは、毛糸で吊ってある。",
+      "type": "diagram",
+      "motif": "st_208",
+      "audio": "audio-santa/scene-207.wav",
+      "durationSec": 4.864
+    },
+    {
+      "index": 208,
+      "text": "サンタは、上着を脱いでから、煙突に入る。",
+      "type": "diagram",
+      "motif": "st_209",
+      "audio": "audio-santa/scene-208.wav",
+      "durationSec": 3.4133333333333336
+    },
+    {
+      "index": 209,
+      "text": "信じながら、仕組みを調べて、説明を組み立てる。このチャンネルと、同じことをしています。",
+      "type": "diagram",
+      "motif": "st_210",
+      "audio": "audio-santa/scene-209.wav",
+      "durationSec": 6.442666666666667
+    },
+    {
+      "index": 210,
+      "text": "イギリスの調査では、気づいたあとも、信じているふりをした人が65%、とされます。",
+      "type": "diagram",
+      "motif": "st_211",
+      "audio": "audio-santa/scene-210.wav",
+      "durationSec": 6.485333333333333
+    },
+    {
+      "index": 211,
+      "text": "保育士を目指す学生に聞くと、「本当はいないの?」に「いるよ」と答える、が64%。「いないよ」は1%。",
+      "type": "diagram",
+      "motif": "st_212",
+      "audio": "audio-santa/scene-211.wav",
+      "durationSec": 8.576
+    },
+    {
+      "index": 212,
+      "text": "子どももふりをして、大人もふりをする。みんなで、ふりをしています。",
+      "type": "diagram",
+      "motif": "st_213",
+      "audio": "audio-santa/scene-212.wav",
+      "durationSec": 4.789333333333333
+    },
+    {
+      "index": 213,
+      "text": "そして、最後の部品です。",
+      "type": "diagram",
+      "motif": "st_214",
+      "audio": "audio-santa/scene-213.wav",
+      "durationSec": 2.026666666666667
+    },
+    {
+      "index": 214,
+      "text": "正体を知った大人の9割前後が、自分の子どもにもサンタをする、という研究があります。",
+      "type": "diagram",
+      "motif": "st_215",
+      "audio": "audio-santa/scene-214.wav",
+      "durationSec": 6.304
+    },
+    {
+      "index": 215,
+      "text": "日本の論文には、ある学生の、こんな言葉が残っています。",
+      "type": "diagram",
+      "motif": "st_216",
+      "audio": "audio-santa/scene-215.wav",
+      "durationSec": 4.362666666666667
+    },
+    {
+      "index": 216,
+      "text": "「僕も将来、このような手を自分の子どもに使おうと思っている」。",
+      "type": "diagram",
+      "motif": "st_217",
+      "audio": "audio-santa/scene-216.wav",
+      "durationSec": 4.266666666666667
+    },
+    {
+      "index": 217,
+      "text": "だまされた子どもが、次のサンタになるのです。",
+      "type": "diagram",
+      "motif": "st_218",
+      "audio": "audio-santa/scene-217.wav",
+      "durationSec": 3.018666666666667
+    },
+    {
+      "index": 218,
+      "text": "聖人の言い伝え。冗談の歴史本。作者のわからない詩。雑誌の絵、広告、デパート、郵便局、軍。",
+      "type": "diagram",
+      "motif": "st_219",
+      "audio": "audio-santa/scene-218.wav",
+      "durationSec": 8.949333333333334
+    },
+    {
+      "index": 219,
+      "text": "サンタは、200年分の大人たちが、少しずつ付け足して、作ってきました。",
+      "type": "diagram",
+      "motif": "st_220",
+      "audio": "audio-santa/scene-219.wav",
+      "durationSec": 5.312
+    },
+    {
+      "index": 220,
+      "text": "そして、気づいた子どもが、今度は、付け足す側の大人になる。",
+      "type": "diagram",
+      "motif": "st_221",
+      "audio": "audio-santa/scene-220.wav",
+      "durationSec": 4.394666666666667
+    },
+    {
+      "index": 221,
+      "text": "サンタはそうやって、大人から大人へ、続いてきたのかもしれません。",
+      "type": "diagram",
+      "motif": "st_222",
+      "audio": "audio-santa/scene-221.wav",
+      "durationSec": 4.597333333333333
+    },
+    {
+      "index": 222,
+      "text": "今年、枕元にプレゼントを置くなら、それは、あなたが付け足す、新しい部品です。",
+      "type": "diagram",
+      "motif": "st_223",
+      "audio": "audio-santa/scene-222.wav",
+      "durationSec": 6.250666666666667
+    },
+    {
+      "index": 223,
+      "text": "ただし、スーパーの袋のままは、やめておきましょう。",
+      "type": "diagram",
+      "motif": "st_224",
+      "audio": "audio-santa/scene-223.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 224,
+      "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
+      "type": "card",
+      "motif": "ending",
+      "isEnding": true,
+      "audio": "audio-santa/scene-end.wav",
+      "durationSec": 5.184
+    }
+  ],
+  "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
+  "generatedAt": "2026-11-26T20:39:35.836Z",
+  "preset": "karakuri"
+}

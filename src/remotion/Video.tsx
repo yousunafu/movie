@@ -50,6 +50,8 @@ import { yawaScene } from "./karakuri/YawaIndex";
 import { namaeScene } from "./karakuri/NamaeIndex";
 import { himaScene } from "./karakuri/HimaIndex";
 import { mezaScene } from "./karakuri/MezaIndex";
+import { santaScene } from "./karakuri/SantaIndex";
+import { xjScene } from "./karakuri/XjIndex";
 import { KarakuriEnding } from "./karakuri/KarakuriEnding";
 import { SAIGO_SE } from "./karakuri/saigoSe";
 import { HIMA_SE } from "./karakuri/himaSe";
@@ -132,6 +134,16 @@ export const isHimaMotif = (motif: string) => /^hm_\d{3}$/.test(motif);
 const HimaSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
   const f = useCurrentFrame();
   return himaScene(motif, f) ?? <AbsoluteFill style={{ background: KRP.cream }} />;
+};
+export const isSantaMotif = (motif: string) => /^st_\d{3}$/.test(motif);
+const SantaSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return santaScene(motif, f) ?? <AbsoluteFill style={{ background: KRP.cream }} />;
+};
+export const isXjMotif = (motif: string) => /^xj_\d{3}$/.test(motif);
+const XjSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
+  const f = useCurrentFrame();
+  return xjScene(motif, f) ?? <AbsoluteFill style={{ background: KRP.cream }} />;
 };
 export const isMezaMotif = (motif: string) => /^mz_\d{3}$/.test(motif);
 const MezaSceneInVideo: React.FC<{ motif: string }> = ({ motif }) => {
@@ -604,6 +616,10 @@ export const Main: React.FC<{ data: ScenesData }> = ({ data }) => {
                   <YawaSceneInVideo motif={scene.motif} />
                 ) : isHimaMotif(scene.motif) ? (
                   <HimaSceneInVideo motif={scene.motif} />
+                ) : isSantaMotif(scene.motif) ? (
+                  <SantaSceneInVideo motif={scene.motif} />
+                ) : isXjMotif(scene.motif) ? (
+                  <XjSceneInVideo motif={scene.motif} />
                 ) : isMezaMotif(scene.motif) ? (
                   <MezaSceneInVideo motif={scene.motif} />
                 ) : isNamaeMotif(scene.motif) ? (

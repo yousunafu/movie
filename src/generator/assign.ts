@@ -453,6 +453,16 @@ export async function assignScenes(
       console.log(`絵づけ: なぜ人は柔らかいものを握りたくなるのかの順番割り当て (1文1絵・${yw.length}枚)`);
       return yw;
     }
+    const st = santaOrderedAssign(sentences);
+    if (st) {
+      console.log(`絵づけ: クリスマス回A「サンタクロースは、だれが作ったのか」の順番割り当て (1文1絵・${st.length}枚)`);
+      return st;
+    }
+    const xj = xmasjpOrderedAssign(sentences);
+    if (xj) {
+      console.log(`絵づけ: クリスマス回B「日本のクリスマスは、なぜこうなったのか」の順番割り当て (1文1絵・${xj.length}枚)`);
+      return xj;
+    }
     const mz = mezaOrderedAssign(sentences);
     if (mz) {
       console.log(`絵づけ: 「人はなぜ、自力で起きられないのか」(目覚まし回) の順番割り当て (1文1絵・${mz.length}枚)`);
@@ -2171,6 +2181,24 @@ function mezaOrderedAssign(sentences: string[]): Assignment[] | null {
     throw new Error(`目覚まし: 台本が${sentences.length}文なのに絵が${order.length}枚です。docs/mezamashi-script-v1.txt を確認してください`);
   }
   return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: クリスマス回A (docs/santa-script-v1.txt・224文) / B (docs/xmasjp-script-v1.txt・224文) 用 =====
+// 文 n → st_ / xj_ + 文番号3桁。Index を import せず番号で作る (絵がまだ無くても音声を先に作れるように)
+function xmasOrderedAssign(sentences: string[], head: string, prefix: string, N: number, label: string): Assignment[] | null {
+  if (!sentences[0]?.includes(head)) return null;
+  const order = Array.from({ length: N }, (_, i) => `${prefix}${String(i + 1).padStart(3, "0")}`);
+  if (sentences.length === N + 1) order.push(order[N - 1]);
+  if (sentences.length !== order.length) {
+    throw new Error(`${label}: 台本が${sentences.length}文なのに絵が${order.length}枚です`);
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+function santaOrderedAssign(sentences: string[]): Assignment[] | null {
+  return xmasOrderedAssign(sentences, "サンタの服を赤くしたのは、コカ・コーラではありません", "st_", 224, "サンタ回");
+}
+function xmasjpOrderedAssign(sentences: string[]): Assignment[] | null {
+  return xmasOrderedAssign(sentences, "クリスマスの予定、ありますか", "xj_", 224, "日本のクリスマス回");
 }
 
 // ===== sekai (つながる世界史) 用の割り当て =====

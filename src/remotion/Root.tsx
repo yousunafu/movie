@@ -35,9 +35,11 @@ import { YawaAllPreview, YAWA_ALL_PREVIEW_FRAMES, YawaAllMotion, YAWA_MOTION_FRA
 import { YawaPartsPreview, YAWA_PARTS_PREVIEW_FRAMES } from "./karakuri/YawaParts";
 import { NamaePartsPreview, NAMAE_PARTS_PREVIEW_FRAMES } from "./karakuri/NamaeParts";
 import { HimaPartsPreview, HIMA_PARTS_PREVIEW_FRAMES } from "./karakuri/HimaParts";
+import { MezaPartsPreview, MEZA_PARTS_PREVIEW_FRAMES } from "./karakuri/MezaParts";
 import { KarakuriEndingBgPreview } from "./karakuri/KarakuriEnding";
 import { NamaeAllPreview, NAMAE_ALL_PREVIEW_FRAMES, NamaeAllMotion, NAMAE_MOTION_FRAMES } from "./karakuri/NamaeIndex";
 import { HimaAllPreview, HIMA_ALL_PREVIEW_FRAMES, HimaAllMotion, HIMA_MOTION_FRAMES } from "./karakuri/HimaIndex";
+import { MezaAllPreview, MEZA_ALL_PREVIEW_FRAMES, MezaAllMotion, MEZA_MOTION_FRAMES } from "./karakuri/MezaIndex";
 import { IchiB0Preview, ICHI_B0_PREVIEW_FRAMES, IchiB0Motion, ICHI_B0_MOTION_FRAMES } from "./karakuri/IchiB0";
 import { IchiB1Preview, ICHI_B1_PREVIEW_FRAMES } from "./karakuri/IchiB1";
 import { IchiB2Preview, ICHI_B2_PREVIEW_FRAMES } from "./karakuri/IchiB2";
@@ -194,9 +196,15 @@ export const RemotionRoot: React.FC = () => {
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="HimaMotion" component={HimaAllMotion} durationInFrames={HIMA_MOTION_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="MezaAll" component={MezaAllPreview} durationInFrames={MEZA_ALL_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="MezaMotion" component={MezaAllMotion} durationInFrames={MEZA_MOTION_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="EndingBg" component={KarakuriEndingBgPreview} durationInFrames={4}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="HimaParts" component={HimaPartsPreview} durationInFrames={HIMA_PARTS_PREVIEW_FRAMES}
+        fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+      <Composition id="MezaParts" component={MezaPartsPreview} durationInFrames={MEZA_PARTS_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
       <Composition id="NamaeAll" component={NamaeAllPreview} durationInFrames={NAMAE_ALL_PREVIEW_FRAMES}
         fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />

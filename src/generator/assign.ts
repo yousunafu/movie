@@ -453,6 +453,11 @@ export async function assignScenes(
       console.log(`絵づけ: なぜ人は柔らかいものを握りたくなるのかの順番割り当て (1文1絵・${yw.length}枚)`);
       return yw;
     }
+    const mz = mezaOrderedAssign(sentences);
+    if (mz) {
+      console.log(`絵づけ: 「人はなぜ、自力で起きられないのか」(目覚まし回) の順番割り当て (1文1絵・${mz.length}枚)`);
+      return mz;
+    }
     const hm = himaOrderedAssign(sentences);
     if (hm) {
       console.log(`絵づけ: 「人は、なぜ暇をつぶすのか」の順番割り当て (1文1絵・${hm.length}枚)`);
@@ -2151,6 +2156,19 @@ function himaOrderedAssign(sentences: string[]): Assignment[] | null {
   if (sentences.length === N + 1) order.push(order[N - 1]);
   if (sentences.length !== order.length) {
     throw new Error(`暇: 台本が${sentences.length}文なのに絵が${order.length}枚です。docs/hima-script-v2.txt を確認してください`);
+  }
+  return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
+}
+
+// ===== karakuri: 目覚まし回「人はなぜ、自力で起きられないのか」(docs/mezamashi-script-v1.txt・213文) 用 =====
+// 文 n → mz_文番号3桁。Index を import せず番号で作る (絵がまだ無くても音声を先に作れるように)
+function mezaOrderedAssign(sentences: string[]): Assignment[] | null {
+  if (!sentences[0]?.includes("目覚まし、何個かけていますか")) return null;
+  const N = 213;
+  const order = Array.from({ length: N }, (_, i) => `mz_${String(i + 1).padStart(3, "0")}`);
+  if (sentences.length === N + 1) order.push(order[N - 1]);
+  if (sentences.length !== order.length) {
+    throw new Error(`目覚まし: 台本が${sentences.length}文なのに絵が${order.length}枚です。docs/mezamashi-script-v1.txt を確認してください`);
   }
   return order.map((motif) => ({ type: "diagram" as SceneType, motif }));
 }

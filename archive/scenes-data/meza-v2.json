@@ -1,0 +1,1720 @@
+{
+  "scenes": [
+    {
+      "index": 0,
+      "text": "目覚まし、何個かけていますか。",
+      "type": "diagram",
+      "motif": "mz_001",
+      "audio": "audio-meza/scene-000.wav",
+      "durationSec": 2.7733333333333334
+    },
+    {
+      "index": 1,
+      "text": "5分おきに、5個。止めた記憶は、ありません。",
+      "type": "diagram",
+      "motif": "mz_002",
+      "audio": "audio-meza/scene-001.wav",
+      "durationSec": 3.7013333333333334
+    },
+    {
+      "index": 2,
+      "text": "でも実は、あなたの体は、起きる時刻を、ちゃんと知っています。",
+      "type": "diagram",
+      "motif": "mz_003",
+      "audio": "audio-meza/scene-002.wav",
+      "durationSec": 4.725333333333333
+    },
+    {
+      "index": 3,
+      "text": "「6時に起きる」と思って眠ると、体は約1時間前から、起きる準備を始める、という研究があります。",
+      "type": "diagram",
+      "motif": "mz_004",
+      "audio": "audio-meza/scene-003.wav",
+      "durationSec": 7.402666666666667
+    },
+    {
+      "index": 4,
+      "text": "体のほうは、もう準備万端です。",
+      "type": "diagram",
+      "motif": "mz_005",
+      "audio": "audio-meza/scene-004.wav",
+      "durationSec": 2.6133333333333333
+    },
+    {
+      "index": 5,
+      "text": "いまも電気のない暮らしをしている、タンザニアやボリビアの人たちは、目覚ましなしで、日の出の約1時間前に起きます。",
+      "type": "diagram",
+      "motif": "mz_006",
+      "audio": "audio-meza/scene-005.wav",
+      "durationSec": 7.925333333333334
+    },
+    {
+      "index": 6,
+      "text": "しかも、毎日です。",
+      "type": "diagram",
+      "motif": "mz_007",
+      "audio": "audio-meza/scene-006.wav",
+      "durationSec": 1.6106666666666667
+    },
+    {
+      "index": 7,
+      "text": "人間は、本当は、自力で起きられる生き物なんです。",
+      "type": "diagram",
+      "motif": "mz_008",
+      "audio": "audio-meza/scene-007.wav",
+      "durationSec": 4.032
+    },
+    {
+      "index": 8,
+      "text": "なのに、起きられない。",
+      "type": "diagram",
+      "motif": "mz_009",
+      "audio": "audio-meza/scene-008.wav",
+      "durationSec": 1.6213333333333333
+    },
+    {
+      "index": 9,
+      "text": "犯人は、あなたの体ではありません。",
+      "type": "diagram",
+      "motif": "mz_010",
+      "audio": "audio-meza/scene-009.wav",
+      "durationSec": 2.784
+    },
+    {
+      "index": 10,
+      "text": "犯人は、時計の向こう側にいます。",
+      "type": "diagram",
+      "motif": "mz_011",
+      "audio": "audio-meza/scene-010.wav",
+      "durationSec": 2.6666666666666665
+    },
+    {
+      "index": 11,
+      "text": "この犯人を追いかけると、1500年前の修道院にたどり着きます。寝坊した人のために、お祈りの歌を、わざとゆっくり唱えていた修道院です。",
+      "type": "diagram",
+      "motif": "mz_012",
+      "audio": "audio-meza/scene-011.wav",
+      "durationSec": 10.293333333333333
+    },
+    {
+      "index": 12,
+      "text": "豆鉄砲で、人の家の窓を撃つのが仕事の人にも、会います。",
+      "type": "diagram",
+      "motif": "mz_013",
+      "audio": "audio-meza/scene-012.wav",
+      "durationSec": 4.522666666666667
+    },
+    {
+      "index": 13,
+      "text": "そして最後に、ひとつの謎が残ります。",
+      "type": "diagram",
+      "motif": "mz_014",
+      "audio": "audio-meza/scene-013.wav",
+      "durationSec": 2.784
+    },
+    {
+      "index": 14,
+      "text": "人を起こすのが仕事の人は、毎朝、誰に起こしてもらっていたのか。",
+      "type": "diagram",
+      "motif": "mz_015",
+      "audio": "audio-meza/scene-014.wav",
+      "durationSec": 5.418666666666667
+    },
+    {
+      "index": 15,
+      "text": "まずは、いちばん疑われている、あなたの体から、調べてみます。",
+      "type": "diagram",
+      "motif": "mz_016",
+      "audio": "audio-meza/scene-015.wav",
+      "durationSec": 4.864
+    },
+    {
+      "index": 16,
+      "text": "第1章、体の中の、ちょっと遅い時計。",
+      "type": "diagram",
+      "motif": "mz_017",
+      "audio": "audio-meza/scene-016.wav",
+      "durationSec": 3.488
+    },
+    {
+      "index": 17,
+      "text": "あなたの体の中には、時計があります。",
+      "type": "diagram",
+      "motif": "mz_018",
+      "audio": "audio-meza/scene-017.wav",
+      "durationSec": 2.8906666666666667
+    },
+    {
+      "index": 18,
+      "text": "脳の奥にある、小さな時計です。",
+      "type": "diagram",
+      "motif": "mz_019",
+      "audio": "audio-meza/scene-018.wav",
+      "durationSec": 2.6453333333333333
+    },
+    {
+      "index": 19,
+      "text": "ただ、この時計、少しだけ遅れます。",
+      "type": "diagram",
+      "motif": "mz_020",
+      "audio": "audio-meza/scene-019.wav",
+      "durationSec": 2.965333333333333
+    },
+    {
+      "index": 20,
+      "text": "平均すると、1日が、24時間と11分。",
+      "type": "diagram",
+      "motif": "mz_021",
+      "audio": "audio-meza/scene-020.wav",
+      "durationSec": 4.085333333333334
+    },
+    {
+      "index": 21,
+      "text": "放っておくと、1か月で、5時間以上ずれる計算です。",
+      "type": "diagram",
+      "motif": "mz_022",
+      "audio": "audio-meza/scene-021.wav",
+      "durationSec": 4.256
+    },
+    {
+      "index": 22,
+      "text": "それでもずれないのは、毎朝、目から入る光で、針を合わせ直しているからです。",
+      "type": "diagram",
+      "motif": "mz_023",
+      "audio": "audio-meza/scene-022.wav",
+      "durationSec": 5.781333333333333
+    },
+    {
+      "index": 23,
+      "text": "朝日は、体の時計の、時報です。",
+      "type": "diagram",
+      "motif": "mz_024",
+      "audio": "audio-meza/scene-023.wav",
+      "durationSec": 2.965333333333333
+    },
+    {
+      "index": 24,
+      "text": "この時計の仕組みを解いた3人の研究者は、2017年に、ノーベル賞をもらいました。",
+      "type": "diagram",
+      "motif": "mz_025",
+      "audio": "audio-meza/scene-024.wav",
+      "durationSec": 6.208
+    },
+    {
+      "index": 25,
+      "text": "では、電気がなかったら、どうなるのか。",
+      "type": "diagram",
+      "motif": "mz_026",
+      "audio": "audio-meza/scene-025.wav",
+      "durationSec": 3.424
+    },
+    {
+      "index": 26,
+      "text": "2013年、アメリカの研究者が、8人を連れて、1週間のキャンプに出かけました。",
+      "type": "diagram",
+      "motif": "mz_027",
+      "audio": "audio-meza/scene-026.wav",
+      "durationSec": 6.506666666666667
+    },
+    {
+      "index": 27,
+      "text": "懐中電灯も、スマホも、なし。明かりは、たき火と、太陽だけです。",
+      "type": "diagram",
+      "motif": "mz_028",
+      "audio": "audio-meza/scene-027.wav",
+      "durationSec": 5.578666666666667
+    },
+    {
+      "index": 28,
+      "text": "すると、体の時計が、約2時間、朝のほうへ戻りました。",
+      "type": "diagram",
+      "motif": "mz_029",
+      "audio": "audio-meza/scene-028.wav",
+      "durationSec": 4.810666666666667
+    },
+    {
+      "index": 29,
+      "text": "しかも、夜型の人ほど、大きく戻りました。",
+      "type": "diagram",
+      "motif": "mz_030",
+      "audio": "audio-meza/scene-029.wav",
+      "durationSec": 3.36
+    },
+    {
+      "index": 30,
+      "text": "夜型の人、じつは電気のせいだった説、浮上です。",
+      "type": "diagram",
+      "motif": "mz_031",
+      "audio": "audio-meza/scene-030.wav",
+      "durationSec": 4
+    },
+    {
+      "index": 31,
+      "text": "ちなみに、昔の人は、日の出とともに起きて、日の入りとともに寝た、とよく言われます。",
+      "type": "diagram",
+      "motif": "mz_032",
+      "audio": "audio-meza/scene-031.wav",
+      "durationSec": 6.101333333333334
+    },
+    {
+      "index": 32,
+      "text": "これは、半分だけ正解です。",
+      "type": "diagram",
+      "motif": "mz_033",
+      "audio": "audio-meza/scene-032.wav",
+      "durationSec": 2.2933333333333334
+    },
+    {
+      "index": 33,
+      "text": "電気のない暮らしの人たちを見ると、寝るのは、日が沈んでから、3時間ほどあとでした。",
+      "type": "diagram",
+      "motif": "mz_034",
+      "audio": "audio-meza/scene-033.wav",
+      "durationSec": 6.197333333333333
+    },
+    {
+      "index": 34,
+      "text": "夜ふかしは、電気より先に、ありました。",
+      "type": "diagram",
+      "motif": "mz_035",
+      "audio": "audio-meza/scene-034.wav",
+      "durationSec": 3.1466666666666665
+    },
+    {
+      "index": 35,
+      "text": "つまり、体だけなら、人はちゃんと起きられます。",
+      "type": "diagram",
+      "motif": "mz_036",
+      "audio": "audio-meza/scene-035.wav",
+      "durationSec": 3.52
+    },
+    {
+      "index": 36,
+      "text": "体の時計は、太陽に合わせて、毎朝きっちり起こしてくれます。",
+      "type": "diagram",
+      "motif": "mz_037",
+      "audio": "audio-meza/scene-036.wav",
+      "durationSec": 4.714666666666667
+    },
+    {
+      "index": 37,
+      "text": "困るのは、起きたい時刻が、太陽の時刻と、ずれたときです。",
+      "type": "diagram",
+      "motif": "mz_038",
+      "audio": "audio-meza/scene-037.wav",
+      "durationSec": 4.650666666666667
+    },
+    {
+      "index": 38,
+      "text": "では、太陽と違う時刻に、人を起こそうとしたのは、誰だったのか。",
+      "type": "diagram",
+      "motif": "mz_039",
+      "audio": "audio-meza/scene-038.wav",
+      "durationSec": 5.610666666666667
+    },
+    {
+      "index": 39,
+      "text": "第2章、起こす係。",
+      "type": "diagram",
+      "motif": "mz_040",
+      "audio": "audio-meza/scene-039.wav",
+      "durationSec": 1.8773333333333333
+    },
+    {
+      "index": 40,
+      "text": "最初の目覚ましは、機械ではありませんでした。",
+      "type": "diagram",
+      "motif": "mz_041",
+      "audio": "audio-meza/scene-040.wav",
+      "durationSec": 3.1146666666666665
+    },
+    {
+      "index": 41,
+      "text": "人間です。",
+      "type": "diagram",
+      "motif": "mz_042",
+      "audio": "audio-meza/scene-041.wav",
+      "durationSec": 0.9493333333333334
+    },
+    {
+      "index": 42,
+      "text": "古代中国の書物『周礼』には、「鶏人」という役職が出てきます。",
+      "type": "diagram",
+      "motif": "mz_043",
+      "audio": "audio-meza/scene-042.wav",
+      "durationSec": 5.1626666666666665
+    },
+    {
+      "index": 43,
+      "text": "仕事は、夜明けを大声で知らせて、役人たちを起こすこと。",
+      "type": "diagram",
+      "motif": "mz_044",
+      "audio": "audio-meza/scene-043.wav",
+      "durationSec": 4.309333333333333
+    },
+    {
+      "index": 44,
+      "text": "名前のとおり、鶏の役を、人がやっていました。",
+      "type": "diagram",
+      "motif": "mz_045",
+      "audio": "audio-meza/scene-044.wav",
+      "durationSec": 3.8613333333333335
+    },
+    {
+      "index": 45,
+      "text": "ちなみに本物の鶏は、日の出に鳴くのではありません。",
+      "type": "diagram",
+      "motif": "mz_046",
+      "audio": "audio-meza/scene-045.wav",
+      "durationSec": 3.872
+    },
+    {
+      "index": 46,
+      "text": "体の中の時計で、夜明けの前に鳴きます。",
+      "type": "diagram",
+      "motif": "mz_047",
+      "audio": "audio-meza/scene-046.wav",
+      "durationSec": 3.2533333333333334
+    },
+    {
+      "index": 47,
+      "text": "しかも、群れでいちばん強いオスが、最初に鳴く、とされています。",
+      "type": "diagram",
+      "motif": "mz_048",
+      "audio": "audio-meza/scene-047.wav",
+      "durationSec": 4.618666666666667
+    },
+    {
+      "index": 48,
+      "text": "鶏の世界にも、起こす順番があったのです。",
+      "type": "diagram",
+      "motif": "mz_049",
+      "audio": "audio-meza/scene-048.wav",
+      "durationSec": 3.264
+    },
+    {
+      "index": 49,
+      "text": "もっと厳しかったのが、ヨーロッパの修道院です。",
+      "type": "diagram",
+      "motif": "mz_050",
+      "audio": "audio-meza/scene-049.wav",
+      "durationSec": 3.328
+    },
+    {
+      "index": 50,
+      "text": "約1500年前に書かれた、修道院の決まりが、残っています。",
+      "type": "diagram",
+      "motif": "mz_051",
+      "audio": "audio-meza/scene-050.wav",
+      "durationSec": 4.768
+    },
+    {
+      "index": 51,
+      "text": "冬は、まだ真っ暗な夜中に起きて、お祈りをすること。",
+      "type": "diagram",
+      "motif": "mz_052",
+      "audio": "audio-meza/scene-051.wav",
+      "durationSec": 4.064
+    },
+    {
+      "index": 52,
+      "text": "すぐ起きられるように、服を着たまま寝ること。",
+      "type": "diagram",
+      "motif": "mz_053",
+      "audio": "audio-meza/scene-052.wav",
+      "durationSec": 3.1146666666666665
+    },
+    {
+      "index": 53,
+      "text": "合図があったら、ただちに起きること。",
+      "type": "diagram",
+      "motif": "mz_054",
+      "audio": "audio-meza/scene-053.wav",
+      "durationSec": 2.5493333333333332
+    },
+    {
+      "index": 54,
+      "text": "さらに、若い修道士は、年上の修道士のあいだに寝かせること。",
+      "type": "diagram",
+      "motif": "mz_055",
+      "audio": "audio-meza/scene-054.wav",
+      "durationSec": 4.864
+    },
+    {
+      "index": 55,
+      "text": "理由は、寝坊の言い訳を、させないためです。",
+      "type": "diagram",
+      "motif": "mz_056",
+      "audio": "audio-meza/scene-055.wav",
+      "durationSec": 3.3386666666666667
+    },
+    {
+      "index": 56,
+      "text": "両側から、起こされます。",
+      "type": "diagram",
+      "motif": "mz_057",
+      "audio": "audio-meza/scene-056.wav",
+      "durationSec": 1.9306666666666668
+    },
+    {
+      "index": 57,
+      "text": "そして、合図を出して、みんなの起きる時刻を決めたのは、修道院長か、院長が任せた修道士でした。",
+      "type": "diagram",
+      "motif": "mz_058",
+      "audio": "audio-meza/scene-057.wav",
+      "durationSec": 7.445333333333333
+    },
+    {
+      "index": 58,
+      "text": "鶏人も、修道院も。起きる時刻を決めていたのは、自分の体ではなく、他人です。",
+      "type": "diagram",
+      "motif": "mz_059",
+      "audio": "audio-meza/scene-058.wav",
+      "durationSec": 6.453333333333333
+    },
+    {
+      "index": 59,
+      "text": "時計の向こう側にいた犯人。それは、他人でした。",
+      "type": "diagram",
+      "motif": "mz_060",
+      "audio": "audio-meza/scene-059.wav",
+      "durationSec": 3.84
+    },
+    {
+      "index": 60,
+      "text": "ただ、この決まりには、もうひとつ、やさしい一文があります。",
+      "type": "diagram",
+      "motif": "mz_061",
+      "audio": "audio-meza/scene-060.wav",
+      "durationSec": 4.416
+    },
+    {
+      "index": 61,
+      "text": "遅れてくる者のために、最初のお祈りの歌は、わざとゆっくり唱えること。",
+      "type": "diagram",
+      "motif": "mz_062",
+      "audio": "audio-meza/scene-061.wav",
+      "durationSec": 5.248
+    },
+    {
+      "index": 62,
+      "text": "1500年前の、スヌーズです。",
+      "type": "diagram",
+      "motif": "mz_063",
+      "audio": "audio-meza/scene-062.wav",
+      "durationSec": 2.5493333333333332
+    },
+    {
+      "index": 63,
+      "text": "この一文、最後にもう一度、出てきます。",
+      "type": "diagram",
+      "motif": "mz_064",
+      "audio": "audio-meza/scene-063.wav",
+      "durationSec": 3.392
+    },
+    {
+      "index": 64,
+      "text": "日本にも、起こす係がいました。鐘です。",
+      "type": "diagram",
+      "motif": "mz_065",
+      "audio": "audio-meza/scene-064.wav",
+      "durationSec": 3.2853333333333334
+    },
+    {
+      "index": 65,
+      "text": "1626年、江戸の町に、最初の時の鐘ができた、とされています。",
+      "type": "diagram",
+      "motif": "mz_066",
+      "audio": "audio-meza/scene-065.wav",
+      "durationSec": 5.930666666666666
+    },
+    {
+      "index": 66,
+      "text": "鐘の代金は、町の人たちが、家の間口1間につき4文ずつ、払っていたとされます。",
+      "type": "diagram",
+      "motif": "mz_067",
+      "audio": "audio-meza/scene-066.wav",
+      "durationSec": 6.986666666666666
+    },
+    {
+      "index": 67,
+      "text": "起こされる料金を、家の幅で、払っていたのです。",
+      "type": "diagram",
+      "motif": "mz_068",
+      "audio": "audio-meza/scene-067.wav",
+      "durationSec": 3.8186666666666667
+    },
+    {
+      "index": 68,
+      "text": "朝の鐘、明け六つは、日の出の約30分前。",
+      "type": "diagram",
+      "motif": "mz_069",
+      "audio": "audio-meza/scene-068.wav",
+      "durationSec": 3.7333333333333334
+    },
+    {
+      "index": 69,
+      "text": "しかも江戸の時刻は、季節ごとに、1時間の長さが、伸び縮みしました。",
+      "type": "diagram",
+      "motif": "mz_070",
+      "audio": "audio-meza/scene-069.wav",
+      "durationSec": 5.354666666666667
+    },
+    {
+      "index": 70,
+      "text": "人間が太陽に合わせるのではなく、時刻のほうが、太陽に合わせていたのです。",
+      "type": "diagram",
+      "motif": "mz_071",
+      "audio": "audio-meza/scene-070.wav",
+      "durationSec": 5.397333333333333
+    },
+    {
+      "index": 71,
+      "text": "このころの他人は、まだ、太陽と仲良しでした。",
+      "type": "diagram",
+      "motif": "mz_072",
+      "audio": "audio-meza/scene-071.wav",
+      "durationSec": 3.6693333333333333
+    },
+    {
+      "index": 72,
+      "text": "第3章、機械が、起こしはじめる。",
+      "type": "diagram",
+      "motif": "mz_073",
+      "audio": "audio-meza/scene-072.wav",
+      "durationSec": 2.8373333333333335
+    },
+    {
+      "index": 73,
+      "text": "では、機械の目覚ましは、いつからあるのか。",
+      "type": "diagram",
+      "motif": "mz_074",
+      "audio": "audio-meza/scene-073.wav",
+      "durationSec": 3.7333333333333334
+    },
+    {
+      "index": 74,
+      "text": "よく元祖として名前が出るのが、古代ギリシャの哲学者、プラトンです。",
+      "type": "diagram",
+      "motif": "mz_075",
+      "audio": "audio-meza/scene-074.wav",
+      "durationSec": 4.842666666666666
+    },
+    {
+      "index": 75,
+      "text": "紀元前4世紀、水を使った夜の時計を作った、と伝わっています。",
+      "type": "diagram",
+      "motif": "mz_076",
+      "audio": "audio-meza/scene-075.wav",
+      "durationSec": 5.301333333333333
+    },
+    {
+      "index": 76,
+      "text": "ただ、古代に残っている記録は、たった1文。",
+      "type": "diagram",
+      "motif": "mz_077",
+      "audio": "audio-meza/scene-076.wav",
+      "durationSec": 3.477333333333333
+    },
+    {
+      "index": 77,
+      "text": "しかも書かれたのは、プラトンが亡くなってから、約550年後です。",
+      "type": "diagram",
+      "motif": "mz_078",
+      "audio": "audio-meza/scene-077.wav",
+      "durationSec": 4.832
+    },
+    {
+      "index": 78,
+      "text": "元祖の目覚まし、ほぼ、うわさ話です。",
+      "type": "diagram",
+      "motif": "mz_079",
+      "audio": "audio-meza/scene-078.wav",
+      "durationSec": 3.1573333333333333
+    },
+    {
+      "index": 79,
+      "text": "水がたまると笛が鳴る、という仕組みも、後の時代の人が考えた、復元です。",
+      "type": "diagram",
+      "motif": "mz_080",
+      "audio": "audio-meza/scene-079.wav",
+      "durationSec": 5.76
+    },
+    {
+      "index": 80,
+      "text": "はっきりした目覚まし時計が出てくるのは、15世紀ごろ、とされます。",
+      "type": "diagram",
+      "motif": "mz_081",
+      "audio": "audio-meza/scene-080.wav",
+      "durationSec": 4.661333333333333
+    },
+    {
+      "index": 81,
+      "text": "ヨーロッパで、鉄でできた、壁掛けの目覚まし時計が、使われるようになりました。",
+      "type": "diagram",
+      "motif": "mz_082",
+      "audio": "audio-meza/scene-081.wav",
+      "durationSec": 5.557333333333333
+    },
+    {
+      "index": 82,
+      "text": "鳴らしたい時刻の穴に、ピンを差しておくと、そこでベルが鳴るしくみです。",
+      "type": "diagram",
+      "motif": "mz_083",
+      "audio": "audio-meza/scene-082.wav",
+      "durationSec": 4.8213333333333335
+    },
+    {
+      "index": 83,
+      "text": "そのころのウィーンには、こんな時計が、残っています。",
+      "type": "diagram",
+      "motif": "mz_084",
+      "audio": "audio-meza/scene-083.wav",
+      "durationSec": 3.6693333333333333
+    },
+    {
+      "index": 84,
+      "text": "塔の番人を起こすための、ベル付きの時計です。",
+      "type": "diagram",
+      "motif": "mz_085",
+      "audio": "audio-meza/scene-084.wav",
+      "durationSec": 3.3813333333333335
+    },
+    {
+      "index": 85,
+      "text": "番人は、鐘を打って、町じゅうに時刻を知らせる係です。",
+      "type": "diagram",
+      "motif": "mz_086",
+      "audio": "audio-meza/scene-085.wav",
+      "durationSec": 4.288
+    },
+    {
+      "index": 86,
+      "text": "つまり、町を起こす番人を、機械が起こしていました。",
+      "type": "diagram",
+      "motif": "mz_087",
+      "audio": "audio-meza/scene-086.wav",
+      "durationSec": 3.989333333333333
+    },
+    {
+      "index": 87,
+      "text": "起こす人を、誰が起こすのか。最初の答えは、機械でした。",
+      "type": "diagram",
+      "motif": "mz_088",
+      "audio": "audio-meza/scene-087.wav",
+      "durationSec": 4.576
+    },
+    {
+      "index": 88,
+      "text": "いまから約470年前には、机に置ける、ゼンマイ式の目覚まし時計も、作られます。",
+      "type": "diagram",
+      "motif": "mz_089",
+      "audio": "audio-meza/scene-088.wav",
+      "durationSec": 6.8053333333333335
+    },
+    {
+      "index": 89,
+      "text": "ドイツ製のものが、いまも、イギリスの博物館に残っています。",
+      "type": "diagram",
+      "motif": "mz_090",
+      "audio": "audio-meza/scene-089.wav",
+      "durationSec": 4.469333333333333
+    },
+    {
+      "index": 90,
+      "text": "ところで、ネットでよく見る、こんな話があります。",
+      "type": "diagram",
+      "motif": "mz_091",
+      "audio": "audio-meza/scene-090.wav",
+      "durationSec": 3.6053333333333333
+    },
+    {
+      "index": 91,
+      "text": "1787年、アメリカの時計職人、レヴィ・ハッチンズが、世界初の目覚まし時計を作った。しかもそれは、朝4時にしか鳴らなかった。",
+      "type": "diagram",
+      "motif": "mz_092",
+      "audio": "audio-meza/scene-091.wav",
+      "durationSec": 11.008
+    },
+    {
+      "index": 92,
+      "text": "まず、世界初では、ありません。いま見たとおり、200年以上前から、あります。",
+      "type": "diagram",
+      "motif": "mz_093",
+      "audio": "audio-meza/scene-092.wav",
+      "durationSec": 6.432
+    },
+    {
+      "index": 93,
+      "text": "アメリカで最初の1台、とは、言われています。",
+      "type": "diagram",
+      "motif": "mz_094",
+      "audio": "audio-meza/scene-093.wav",
+      "durationSec": 3.530666666666667
+    },
+    {
+      "index": 94,
+      "text": "そして、ハッチンズ本人の自伝を読むと、目覚まし時計の話が、1行も出てきません。",
+      "type": "diagram",
+      "motif": "mz_095",
+      "audio": "audio-meza/scene-094.wav",
+      "durationSec": 6.165333333333334
+    },
+    {
+      "index": 95,
+      "text": "4時にしか鳴らない時計は、後の時代の、言い伝えです。",
+      "type": "diagram",
+      "motif": "mz_096",
+      "audio": "audio-meza/scene-095.wav",
+      "durationSec": 4.1066666666666665
+    },
+    {
+      "index": 96,
+      "text": "ただ、ハッチンズが冬でも朝4時に起きていたことは、息子が書き残しています。",
+      "type": "diagram",
+      "motif": "mz_097",
+      "audio": "audio-meza/scene-096.wav",
+      "durationSec": 5.290666666666667
+    },
+    {
+      "index": 97,
+      "text": "目覚ましの発明者というより、ただの、ものすごい早起きでした。",
+      "type": "diagram",
+      "motif": "mz_098",
+      "audio": "audio-meza/scene-097.wav",
+      "durationSec": 4.448
+    },
+    {
+      "index": 98,
+      "text": "日本では、1899年、のちのセイコー、精工舎が、国産で初めての目覚まし時計を作ります。",
+      "type": "diagram",
+      "motif": "mz_099",
+      "audio": "audio-meza/scene-098.wav",
+      "durationSec": 8.085333333333333
+    },
+    {
+      "index": 99,
+      "text": "1915年には、イギリスから60万個、フランスから30万個の注文が来ました。",
+      "type": "diagram",
+      "motif": "mz_100",
+      "audio": "audio-meza/scene-099.wav",
+      "durationSec": 6.656
+    },
+    {
+      "index": 100,
+      "text": "世界じゅうで、起こしたい人と、起こされたい人が、増えていたのです。",
+      "type": "diagram",
+      "motif": "mz_101",
+      "audio": "audio-meza/scene-100.wav",
+      "durationSec": 4.757333333333333
+    },
+    {
+      "index": 101,
+      "text": "では、そんなにたくさんの人を、決まった時刻に起こしたかったのは、誰だったのか。",
+      "type": "diagram",
+      "motif": "mz_102",
+      "audio": "audio-meza/scene-101.wav",
+      "durationSec": 6.101333333333334
+    },
+    {
+      "index": 102,
+      "text": "第4章、工場が、起きる時刻を決めた。",
+      "type": "diagram",
+      "motif": "mz_103",
+      "audio": "audio-meza/scene-102.wav",
+      "durationSec": 3.2426666666666666
+    },
+    {
+      "index": 103,
+      "text": "18世紀、イギリスで、工場が増えはじめます。",
+      "type": "diagram",
+      "motif": "mz_104",
+      "audio": "audio-meza/scene-103.wav",
+      "durationSec": 3.84
+    },
+    {
+      "index": 104,
+      "text": "畑の仕事なら、日が昇ったら始めて、暗くなったら終わり。",
+      "type": "diagram",
+      "motif": "mz_105",
+      "audio": "audio-meza/scene-104.wav",
+      "durationSec": 4.341333333333333
+    },
+    {
+      "index": 105,
+      "text": "でも工場は、全員がそろわないと、機械が動きません。",
+      "type": "diagram",
+      "motif": "mz_106",
+      "audio": "audio-meza/scene-105.wav",
+      "durationSec": 4.16
+    },
+    {
+      "index": 106,
+      "text": "起きる時刻を、工場が決めるようになりました。",
+      "type": "diagram",
+      "motif": "mz_107",
+      "audio": "audio-meza/scene-106.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 107,
+      "text": "イギリスのある製鉄所では、働く人の、出勤と退勤の時刻を記録していました。",
+      "type": "diagram",
+      "motif": "mz_108",
+      "audio": "audio-meza/scene-107.wav",
+      "durationSec": 5.941333333333334
+    },
+    {
+      "index": 108,
+      "text": "1日の仕事は、13時間半です。",
+      "type": "diagram",
+      "motif": "mz_109",
+      "audio": "audio-meza/scene-108.wav",
+      "durationSec": 2.88
+    },
+    {
+      "index": 109,
+      "text": "ある陶器の工場では、閉まった門を押し通って入ると、罰金でした。",
+      "type": "diagram",
+      "motif": "mz_110",
+      "audio": "audio-meza/scene-109.wav",
+      "durationSec": 5.034666666666666
+    },
+    {
+      "index": 110,
+      "text": "さらに、こんな証言も残っています。",
+      "type": "diagram",
+      "motif": "mz_111",
+      "audio": "audio-meza/scene-110.wav",
+      "durationSec": 2.688
+    },
+    {
+      "index": 111,
+      "text": "工場の時計に細工をして、30分の昼休みを、27分に縮めていた。",
+      "type": "diagram",
+      "motif": "mz_112",
+      "audio": "audio-meza/scene-111.wav",
+      "durationSec": 5.696
+    },
+    {
+      "index": 112,
+      "text": "時計の針まで、他人のものでした。",
+      "type": "diagram",
+      "motif": "mz_113",
+      "audio": "audio-meza/scene-112.wav",
+      "durationSec": 2.624
+    },
+    {
+      "index": 113,
+      "text": "次に、みんなの時刻をそろえたのは、鉄道です。",
+      "type": "diagram",
+      "motif": "mz_114",
+      "audio": "audio-meza/scene-113.wav",
+      "durationSec": 3.616
+    },
+    {
+      "index": 114,
+      "text": "昔は、町ごとに、太陽に合わせた、ばらばらの時刻を使っていました。",
+      "type": "diagram",
+      "motif": "mz_115",
+      "audio": "audio-meza/scene-114.wav",
+      "durationSec": 5.482666666666667
+    },
+    {
+      "index": 115,
+      "text": "でも、それでは、時刻表が作れません。",
+      "type": "diagram",
+      "motif": "mz_116",
+      "audio": "audio-meza/scene-115.wav",
+      "durationSec": 3.050666666666667
+    },
+    {
+      "index": 116,
+      "text": "1840年代、イギリスの鉄道は、ロンドンの時刻にそろえはじめます。",
+      "type": "diagram",
+      "motif": "mz_117",
+      "audio": "audio-meza/scene-116.wav",
+      "durationSec": 5.536
+    },
+    {
+      "index": 117,
+      "text": "アメリカでは、1883年11月18日、鉄道会社が、国の時刻を、いくつかの帯にまとめました。",
+      "type": "diagram",
+      "motif": "mz_118",
+      "audio": "audio-meza/scene-117.wav",
+      "durationSec": 8.672
+    },
+    {
+      "index": 118,
+      "text": "時計の針を戻した町では、その日、正午が2回、来ました。",
+      "type": "diagram",
+      "motif": "mz_119",
+      "audio": "audio-meza/scene-118.wav",
+      "durationSec": 4.757333333333333
+    },
+    {
+      "index": 119,
+      "text": "お昼ごはんを2回食べた人がいたかどうかは、記録にありません。",
+      "type": "diagram",
+      "motif": "mz_120",
+      "audio": "audio-meza/scene-119.wav",
+      "durationSec": 4.1066666666666665
+    },
+    {
+      "index": 120,
+      "text": "日本でも、明治のはじめに、時刻がそろいます。",
+      "type": "diagram",
+      "motif": "mz_121",
+      "audio": "audio-meza/scene-120.wav",
+      "durationSec": 3.7226666666666666
+    },
+    {
+      "index": 121,
+      "text": "1871年、東京で、正午に大砲を1発撃って、時刻を知らせはじめます。音から、「ドン」と呼ばれました。",
+      "type": "diagram",
+      "motif": "mz_122",
+      "audio": "audio-meza/scene-121.wav",
+      "durationSec": 8.693333333333333
+    },
+    {
+      "index": 122,
+      "text": "1873年からは、季節で伸び縮みする時刻をやめて、1日を24時間に、きっちり分けました。",
+      "type": "diagram",
+      "motif": "mz_123",
+      "audio": "audio-meza/scene-122.wav",
+      "durationSec": 7.989333333333334
+    },
+    {
+      "index": 123,
+      "text": "そして1888年、日本じゅうが、同じ時刻になります。",
+      "type": "diagram",
+      "motif": "mz_124",
+      "audio": "audio-meza/scene-123.wav",
+      "durationSec": 5.024
+    },
+    {
+      "index": 124,
+      "text": "1920年には、時間を守ろうと呼びかける、時の記念日まで、できました。",
+      "type": "diagram",
+      "motif": "mz_125",
+      "audio": "audio-meza/scene-124.wav",
+      "durationSec": 5.973333333333334
+    },
+    {
+      "index": 125,
+      "text": "わざわざ記念日を作るほど、守られていなかった、とも言えます。",
+      "type": "diagram",
+      "motif": "mz_126",
+      "audio": "audio-meza/scene-125.wav",
+      "durationSec": 4.373333333333333
+    },
+    {
+      "index": 126,
+      "text": "こうして、起きる時刻は、太陽から、時計と他人のもとへ、引っ越しました。",
+      "type": "diagram",
+      "motif": "mz_127",
+      "audio": "audio-meza/scene-126.wav",
+      "durationSec": 5.322666666666667
+    },
+    {
+      "index": 127,
+      "text": "でも、体の時計は、相変わらず、太陽を見ています。",
+      "type": "diagram",
+      "motif": "mz_128",
+      "audio": "audio-meza/scene-127.wav",
+      "durationSec": 4.405333333333333
+    },
+    {
+      "index": 128,
+      "text": "体は太陽の時刻で。仕事は、他人の時刻で。",
+      "type": "diagram",
+      "motif": "mz_129",
+      "audio": "audio-meza/scene-128.wav",
+      "durationSec": 3.8613333333333335
+    },
+    {
+      "index": 129,
+      "text": "起きられない理由は、このずれにあります。",
+      "type": "diagram",
+      "motif": "mz_130",
+      "audio": "audio-meza/scene-129.wav",
+      "durationSec": 2.7626666666666666
+    },
+    {
+      "index": 130,
+      "text": "では、他人の時刻に、たくさんの人を、どうやって起こしたのか。",
+      "type": "diagram",
+      "motif": "mz_131",
+      "audio": "audio-meza/scene-130.wav",
+      "durationSec": 5.1626666666666665
+    },
+    {
+      "index": 131,
+      "text": "イギリスの工業の町には、ちょっと変わった仕事が、生まれていました。",
+      "type": "diagram",
+      "motif": "mz_132",
+      "audio": "audio-meza/scene-131.wav",
+      "durationSec": 4.629333333333333
+    },
+    {
+      "index": 132,
+      "text": "第5章、止められない、人間。",
+      "type": "diagram",
+      "motif": "mz_133",
+      "audio": "audio-meza/scene-132.wav",
+      "durationSec": 2.656
+    },
+    {
+      "index": 133,
+      "text": "その名も、ノッカー・アップ。",
+      "type": "diagram",
+      "motif": "mz_134",
+      "audio": "audio-meza/scene-133.wav",
+      "durationSec": 1.8346666666666667
+    },
+    {
+      "index": 134,
+      "text": "人間目覚まし時計です。",
+      "type": "diagram",
+      "motif": "mz_135",
+      "audio": "audio-meza/scene-134.wav",
+      "durationSec": 1.7493333333333334
+    },
+    {
+      "index": 135,
+      "text": "夜明け前、長い棒を持って町を歩き、2階の寝室の窓を、コンコンと叩いて起こします。",
+      "type": "diagram",
+      "motif": "mz_136",
+      "audio": "audio-meza/scene-135.wav",
+      "durationSec": 6.442666666666667
+    },
+    {
+      "index": 136,
+      "text": "中には、豆鉄砲で、窓に豆を当てる人もいました。",
+      "type": "diagram",
+      "motif": "mz_137",
+      "audio": "audio-meza/scene-136.wav",
+      "durationSec": 4.053333333333334
+    },
+    {
+      "index": 137,
+      "text": "ロンドンには、豆鉄砲を構えた、女性のノッカー・アップの写真が残っています。",
+      "type": "diagram",
+      "motif": "mz_138",
+      "audio": "audio-meza/scene-137.wav",
+      "durationSec": 5.418666666666667
+    },
+    {
+      "index": 138,
+      "text": "料金は、週ぎめです。",
+      "type": "diagram",
+      "motif": "mz_139",
+      "audio": "audio-meza/scene-138.wav",
+      "durationSec": 1.9413333333333334
+    },
+    {
+      "index": 139,
+      "text": "1853年の記録では、朝6時より後なら、週に2ペンスか3ペンス。それより早いと、6ペンス。",
+      "type": "diagram",
+      "motif": "mz_140",
+      "audio": "audio-meza/scene-139.wav",
+      "durationSec": 8.074666666666667
+    },
+    {
+      "index": 140,
+      "text": "早起きほど、高くつきます。",
+      "type": "diagram",
+      "motif": "mz_141",
+      "audio": "audio-meza/scene-140.wav",
+      "durationSec": 2.1546666666666665
+    },
+    {
+      "index": 141,
+      "text": "1人が回る家は、1日に、80軒から100軒。",
+      "type": "diagram",
+      "motif": "mz_142",
+      "audio": "audio-meza/scene-141.wav",
+      "durationSec": 4.16
+    },
+    {
+      "index": 142,
+      "text": "朝の数時間で、町じゅうを起こして回りました。",
+      "type": "diagram",
+      "motif": "mz_143",
+      "audio": "audio-meza/scene-142.wav",
+      "durationSec": 3.4346666666666668
+    },
+    {
+      "index": 143,
+      "text": "でも、おかしいと思いませんか。",
+      "type": "diagram",
+      "motif": "mz_144",
+      "audio": "audio-meza/scene-143.wav",
+      "durationSec": 2.7306666666666666
+    },
+    {
+      "index": 144,
+      "text": "19世紀には、もう目覚まし時計は、ありました。",
+      "type": "diagram",
+      "motif": "mz_145",
+      "audio": "audio-meza/scene-144.wav",
+      "durationSec": 3.7333333333333334
+    },
+    {
+      "index": 145,
+      "text": "1896年には、「もうノッカー・アップにお金を払わなくていい」という、目覚まし時計の広告まで出ています。",
+      "type": "diagram",
+      "motif": "mz_146",
+      "audio": "audio-meza/scene-145.wav",
+      "durationSec": 7.626666666666667
+    },
+    {
+      "index": 146,
+      "text": "それなのに、ノッカー・アップは、なくなりませんでした。",
+      "type": "diagram",
+      "motif": "mz_147",
+      "audio": "audio-meza/scene-146.wav",
+      "durationSec": 3.52
+    },
+    {
+      "index": 147,
+      "text": "1950年代までにはほとんど姿を消しますが、1970年代のはじめまで残った町も、あったとされます。",
+      "type": "diagram",
+      "motif": "mz_148",
+      "audio": "audio-meza/scene-147.wav",
+      "durationSec": 8.448
+    },
+    {
+      "index": 148,
+      "text": "目覚ましと人間が、何十年も、並んで働いていたのです。",
+      "type": "diagram",
+      "motif": "mz_149",
+      "audio": "audio-meza/scene-148.wav",
+      "durationSec": 4.426666666666667
+    },
+    {
+      "index": 149,
+      "text": "理由のひとつは、値段です。はじめのころの目覚まし時計は高く、しかも、よく狂いました。",
+      "type": "diagram",
+      "motif": "mz_150",
+      "audio": "audio-meza/scene-149.wav",
+      "durationSec": 6.421333333333333
+    },
+    {
+      "index": 150,
+      "text": "でも、もうひとつ、大事な理由があります。",
+      "type": "diagram",
+      "motif": "mz_151",
+      "audio": "audio-meza/scene-150.wav",
+      "durationSec": 3.1466666666666665
+    },
+    {
+      "index": 151,
+      "text": "目覚まし時計は、止められます。",
+      "type": "diagram",
+      "motif": "mz_152",
+      "audio": "audio-meza/scene-151.wav",
+      "durationSec": 2.2293333333333334
+    },
+    {
+      "index": 152,
+      "text": "止めて、二度寝ができます。",
+      "type": "diagram",
+      "motif": "mz_153",
+      "audio": "audio-meza/scene-152.wav",
+      "durationSec": 1.9093333333333333
+    },
+    {
+      "index": 153,
+      "text": "ノッカー・アップは、止められません。",
+      "type": "diagram",
+      "motif": "mz_154",
+      "audio": "audio-meza/scene-153.wav",
+      "durationSec": 2.24
+    },
+    {
+      "index": 154,
+      "text": "起きるまで、帰ってくれないのです。",
+      "type": "diagram",
+      "motif": "mz_155",
+      "audio": "audio-meza/scene-154.wav",
+      "durationSec": 2.496
+    },
+    {
+      "index": 155,
+      "text": "人を起こすのにいちばん効いたのは、音の大きさではなく、止められないこと、でした。",
+      "type": "diagram",
+      "motif": "mz_156",
+      "audio": "audio-meza/scene-155.wav",
+      "durationSec": 5.76
+    },
+    {
+      "index": 156,
+      "text": "さて、ここで、冒頭の謎です。",
+      "type": "diagram",
+      "motif": "mz_157",
+      "audio": "audio-meza/scene-156.wav",
+      "durationSec": 2.56
+    },
+    {
+      "index": 157,
+      "text": "人を起こすのが仕事のノッカー・アップは、毎朝、誰に起こしてもらっていたのか。",
+      "type": "diagram",
+      "motif": "mz_158",
+      "audio": "audio-meza/scene-157.wav",
+      "durationSec": 5.952
+    },
+    {
+      "index": 158,
+      "text": "記録によると、多くのノッカー・アップは、そもそも、寝ていませんでした。",
+      "type": "diagram",
+      "motif": "mz_159",
+      "audio": "audio-meza/scene-158.wav",
+      "durationSec": 4.8853333333333335
+    },
+    {
+      "index": 159,
+      "text": "夜通し起きていて、朝の3時ごろから、回りはじめたのです。",
+      "type": "diagram",
+      "motif": "mz_160",
+      "audio": "audio-meza/scene-159.wav",
+      "durationSec": 4.277333333333333
+    },
+    {
+      "index": 160,
+      "text": "寝なければ、寝坊はしません。完璧な作戦です。",
+      "type": "diagram",
+      "motif": "mz_161",
+      "audio": "audio-meza/scene-160.wav",
+      "durationSec": 3.8826666666666667
+    },
+    {
+      "index": 161,
+      "text": "では、ちゃんと寝ていたノッカー・アップは、どうしたのか。",
+      "type": "diagram",
+      "motif": "mz_162",
+      "audio": "audio-meza/scene-161.wav",
+      "durationSec": 4.096
+    },
+    {
+      "index": 162,
+      "text": "イギリスのボルトンという町に、72歳のノッカー・アップがいました。",
+      "type": "diagram",
+      "motif": "mz_163",
+      "audio": "audio-meza/scene-162.wav",
+      "durationSec": 4.512
+    },
+    {
+      "index": 163,
+      "text": "この道53年。毎朝3時45分に起きる、大ベテランです。",
+      "type": "diagram",
+      "motif": "mz_164",
+      "audio": "audio-meza/scene-163.wav",
+      "durationSec": 5.269333333333333
+    },
+    {
+      "index": 164,
+      "text": "その写真の説明には、こう残っています。",
+      "type": "diagram",
+      "motif": "mz_165",
+      "audio": "audio-meza/scene-164.wav",
+      "durationSec": 3.04
+    },
+    {
+      "index": 165,
+      "text": "本人は、目覚まし時計で、起きていた。",
+      "type": "diagram",
+      "motif": "mz_166",
+      "audio": "audio-meza/scene-165.wav",
+      "durationSec": 3.0613333333333332
+    },
+    {
+      "index": 166,
+      "text": "人間目覚まし時計を起こしていたのは、目覚まし時計でした。",
+      "type": "diagram",
+      "motif": "mz_167",
+      "audio": "audio-meza/scene-166.wav",
+      "durationSec": 3.957333333333333
+    },
+    {
+      "index": 167,
+      "text": "起こす人を起こすのは、やっぱり、他人です。それがたまたま、機械だっただけです。",
+      "type": "diagram",
+      "motif": "mz_168",
+      "audio": "audio-meza/scene-167.wav",
+      "durationSec": 5.834666666666666
+    },
+    {
+      "index": 168,
+      "text": "第6章、止められる機械と、逃げる機械。",
+      "type": "diagram",
+      "motif": "mz_169",
+      "audio": "audio-meza/scene-168.wav",
+      "durationSec": 3.3706666666666667
+    },
+    {
+      "index": 169,
+      "text": "20世紀、目覚まし時計は、どの家にも置かれるようになります。",
+      "type": "diagram",
+      "motif": "mz_170",
+      "audio": "audio-meza/scene-169.wav",
+      "durationSec": 4.650666666666667
+    },
+    {
+      "index": 170,
+      "text": "アメリカでは、1940年の1年で、1150万台も作られました。",
+      "type": "diagram",
+      "motif": "mz_171",
+      "audio": "audio-meza/scene-170.wav",
+      "durationSec": 5.941333333333334
+    },
+    {
+      "index": 171,
+      "text": "ところが、1942年7月1日、アメリカ政府が、目覚まし時計の製造を止めます。",
+      "type": "diagram",
+      "motif": "mz_172",
+      "audio": "audio-meza/scene-171.wav",
+      "durationSec": 7.04
+    },
+    {
+      "index": 172,
+      "text": "戦争に、金属が必要だったからです。",
+      "type": "diagram",
+      "motif": "mz_173",
+      "audio": "audio-meza/scene-172.wav",
+      "durationSec": 2.997333333333333
+    },
+    {
+      "index": 173,
+      "text": "国が、目覚ましを止めました。",
+      "type": "diagram",
+      "motif": "mz_174",
+      "audio": "audio-meza/scene-173.wav",
+      "durationSec": 2.176
+    },
+    {
+      "index": 174,
+      "text": "翌年には、金属を減らした、戦争用の目覚まし時計で、製造が再開されます。",
+      "type": "diagram",
+      "motif": "mz_175",
+      "audio": "audio-meza/scene-174.wav",
+      "durationSec": 6.218666666666667
+    },
+    {
+      "index": 175,
+      "text": "戦争中でも、人を起こさないわけには、いかなかったのです。",
+      "type": "diagram",
+      "motif": "mz_176",
+      "audio": "audio-meza/scene-175.wav",
+      "durationSec": 4.213333333333333
+    },
+    {
+      "index": 176,
+      "text": "そして目覚まし時計は、ある方向へ、進化します。",
+      "type": "diagram",
+      "motif": "mz_177",
+      "audio": "audio-meza/scene-176.wav",
+      "durationSec": 3.712
+    },
+    {
+      "index": 177,
+      "text": "1955年、アメリカで、こんな特許が認められました。",
+      "type": "diagram",
+      "motif": "mz_178",
+      "audio": "audio-meza/scene-177.wav",
+      "durationSec": 4.693333333333333
+    },
+    {
+      "index": 178,
+      "text": "アラームを止めても、5分か10分たつと、もう一度鳴らす装置。",
+      "type": "diagram",
+      "motif": "mz_179",
+      "audio": "audio-meza/scene-178.wav",
+      "durationSec": 4.426666666666667
+    },
+    {
+      "index": 179,
+      "text": "翌年には、「スヌーズアラーム」という名前の目覚まし時計が売り出された、とされています。",
+      "type": "diagram",
+      "motif": "mz_180",
+      "audio": "audio-meza/scene-179.wav",
+      "durationSec": 5.589333333333333
+    },
+    {
+      "index": 180,
+      "text": "スヌーズとは、英語で、うたた寝のことです。",
+      "type": "diagram",
+      "motif": "mz_181",
+      "audio": "audio-meza/scene-180.wav",
+      "durationSec": 3.2
+    },
+    {
+      "index": 181,
+      "text": "機械はついに、二度寝を、正式な機能にしました。",
+      "type": "diagram",
+      "motif": "mz_182",
+      "audio": "audio-meza/scene-181.wav",
+      "durationSec": 3.7333333333333334
+    },
+    {
+      "index": 182,
+      "text": "ノッカー・アップが、窓の外で必死に防いでいたものを、ボタンひとつで、許したのです。",
+      "type": "diagram",
+      "motif": "mz_183",
+      "audio": "audio-meza/scene-182.wav",
+      "durationSec": 5.824
+    },
+    {
+      "index": 183,
+      "text": "ちなみに、スヌーズは体に悪いのか。",
+      "type": "diagram",
+      "motif": "mz_184",
+      "audio": "audio-meza/scene-183.wav",
+      "durationSec": 3.2746666666666666
+    },
+    {
+      "index": 184,
+      "text": "2023年の研究では、30分ほどのスヌーズなら、はっきりした悪い影響は、見つかりませんでした。",
+      "type": "diagram",
+      "motif": "mz_185",
+      "audio": "audio-meza/scene-184.wav",
+      "durationSec": 7.488
+    },
+    {
+      "index": 185,
+      "text": "人類、ひと安心です。",
+      "type": "diagram",
+      "motif": "mz_186",
+      "audio": "audio-meza/scene-185.wav",
+      "durationSec": 1.9946666666666666
+    },
+    {
+      "index": 186,
+      "text": "でも、止められる目覚ましでは、起きられない人もいます。",
+      "type": "diagram",
+      "motif": "mz_187",
+      "audio": "audio-meza/scene-186.wav",
+      "durationSec": 3.776
+    },
+    {
+      "index": 187,
+      "text": "2005年、アメリカのMITの大学院生が、授業の課題で、ある目覚まし時計を作りました。",
+      "type": "diagram",
+      "motif": "mz_188",
+      "audio": "audio-meza/scene-187.wav",
+      "durationSec": 7.125333333333334
+    },
+    {
+      "index": 188,
+      "text": "名前は、クロッキー。",
+      "type": "diagram",
+      "motif": "mz_189",
+      "audio": "audio-meza/scene-188.wav",
+      "durationSec": 1.696
+    },
+    {
+      "index": 189,
+      "text": "鳴りだすと、台から飛び降りて、車輪で部屋を走り回り、隠れます。",
+      "type": "diagram",
+      "motif": "mz_190",
+      "audio": "audio-meza/scene-189.wav",
+      "durationSec": 5.077333333333334
+    },
+    {
+      "index": 190,
+      "text": "止めたければ、起きて、探すしかありません。",
+      "type": "diagram",
+      "motif": "mz_191",
+      "audio": "audio-meza/scene-190.wav",
+      "durationSec": 3.1466666666666665
+    },
+    {
+      "index": 191,
+      "text": "止められない目覚まし、ふたたびです。",
+      "type": "diagram",
+      "motif": "mz_192",
+      "audio": "audio-meza/scene-191.wav",
+      "durationSec": 2.538666666666667
+    },
+    {
+      "index": 192,
+      "text": "この時計は、同じ年、イグノーベル賞の、経済学賞をもらいました。",
+      "type": "diagram",
+      "motif": "mz_193",
+      "audio": "audio-meza/scene-192.wav",
+      "durationSec": 5.461333333333333
+    },
+    {
+      "index": 193,
+      "text": "人をちゃんと起こして、働く時間を増やしたから、だそうです。",
+      "type": "diagram",
+      "motif": "mz_194",
+      "audio": "audio-meza/scene-193.wav",
+      "durationSec": 4.128
+    },
+    {
+      "index": 194,
+      "text": "窓を叩いていたノッカー・アップが、車輪をつけて、部屋の中まで入ってきたようなものです。",
+      "type": "diagram",
+      "motif": "mz_195",
+      "audio": "audio-meza/scene-194.wav",
+      "durationSec": 5.8133333333333335
+    },
+    {
+      "index": 195,
+      "text": "機械は、一度、止められるようになって、また、止められない方へ、戻ってきました。",
+      "type": "diagram",
+      "motif": "mz_196",
+      "audio": "audio-meza/scene-195.wav",
+      "durationSec": 6.144
+    },
+    {
+      "index": 196,
+      "text": "第7章、待ってくれる、他人。",
+      "type": "diagram",
+      "motif": "mz_197",
+      "audio": "audio-meza/scene-196.wav",
+      "durationSec": 2.7626666666666666
+    },
+    {
+      "index": 197,
+      "text": "ここまでを、まとめます。",
+      "type": "diagram",
+      "motif": "mz_198",
+      "audio": "audio-meza/scene-197.wav",
+      "durationSec": 1.8026666666666666
+    },
+    {
+      "index": 198,
+      "text": "人間の体は、本当は、自力で起きられます。",
+      "type": "diagram",
+      "motif": "mz_199",
+      "audio": "audio-meza/scene-198.wav",
+      "durationSec": 3.6266666666666665
+    },
+    {
+      "index": 199,
+      "text": "起きられなくなったのは、起きる時刻を、他人が決めるようになってからでした。",
+      "type": "diagram",
+      "motif": "mz_200",
+      "audio": "audio-meza/scene-199.wav",
+      "durationSec": 4.970666666666666
+    },
+    {
+      "index": 200,
+      "text": "修道院の合図。町の鐘。工場の門。鉄道の時刻表。",
+      "type": "diagram",
+      "motif": "mz_201",
+      "audio": "audio-meza/scene-200.wav",
+      "durationSec": 5.002666666666666
+    },
+    {
+      "index": 201,
+      "text": "だから、人を起こすのも、いつも他人でした。",
+      "type": "diagram",
+      "motif": "mz_202",
+      "audio": "audio-meza/scene-201.wav",
+      "durationSec": 3.1573333333333333
+    },
+    {
+      "index": 202,
+      "text": "鶏人。修道士。番人を起こす時計。ノッカー・アップ。そして、ノッカー・アップを起こす、目覚まし時計。",
+      "type": "diagram",
+      "motif": "mz_203",
+      "audio": "audio-meza/scene-202.wav",
+      "durationSec": 7.989333333333334
+    },
+    {
+      "index": 203,
+      "text": "でも、他人が決めた時刻には、ひとつだけ、いいところがあります。",
+      "type": "diagram",
+      "motif": "mz_204",
+      "audio": "audio-meza/scene-203.wav",
+      "durationSec": 5.034666666666666
+    },
+    {
+      "index": 204,
+      "text": "他人は、待ってもくれるのです。",
+      "type": "diagram",
+      "motif": "mz_205",
+      "audio": "audio-meza/scene-204.wav",
+      "durationSec": 2.272
+    },
+    {
+      "index": 205,
+      "text": "1500年前の修道院を、思い出してください。",
+      "type": "diagram",
+      "motif": "mz_206",
+      "audio": "audio-meza/scene-205.wav",
+      "durationSec": 3.6586666666666665
+    },
+    {
+      "index": 206,
+      "text": "遅れてくる者のために、最初のお祈りの歌は、わざとゆっくり唱えること。",
+      "type": "diagram",
+      "motif": "mz_207",
+      "audio": "audio-meza/scene-206.wav",
+      "durationSec": 5.248
+    },
+    {
+      "index": 207,
+      "text": "起きる時刻を決めた人たちは、起きられない人のために、ちょっとだけ待つ決まりも、作っていました。",
+      "type": "diagram",
+      "motif": "mz_208",
+      "audio": "audio-meza/scene-207.wav",
+      "durationSec": 6.506666666666667
+    },
+    {
+      "index": 208,
+      "text": "そして1400年あまりのち、目覚まし時計に、スヌーズがつきました。",
+      "type": "diagram",
+      "motif": "mz_209",
+      "audio": "audio-meza/scene-208.wav",
+      "durationSec": 5.013333333333334
+    },
+    {
+      "index": 209,
+      "text": "人類は、寝坊する人を起こす道具と同じくらい、寝坊する人を待ってあげる仕組みも、作り続けてきたのです。",
+      "type": "diagram",
+      "motif": "mz_210",
+      "audio": "audio-meza/scene-209.wav",
+      "durationSec": 7.498666666666667
+    },
+    {
+      "index": 210,
+      "text": "明日の朝、スヌーズを押したら、思い出してください。",
+      "type": "diagram",
+      "motif": "mz_211",
+      "audio": "audio-meza/scene-210.wav",
+      "durationSec": 3.7013333333333334
+    },
+    {
+      "index": 211,
+      "text": "それは、1500年前から続く、やさしさです。",
+      "type": "diagram",
+      "motif": "mz_212",
+      "audio": "audio-meza/scene-211.wav",
+      "durationSec": 3.8293333333333335
+    },
+    {
+      "index": 212,
+      "text": "ただし、会社の始業時刻は、たぶん、待ってくれません。",
+      "type": "diagram",
+      "motif": "mz_213",
+      "audio": "audio-meza/scene-212.wav",
+      "durationSec": 4.458666666666667
+    },
+    {
+      "index": 213,
+      "text": "身の回りのからくりは、まだまだあります。次回も、お楽しみに。",
+      "type": "card",
+      "motif": "ending",
+      "isEnding": true,
+      "audio": "audio-meza/scene-end.wav",
+      "durationSec": 5.184
+    }
+  ],
+  "bgmFile": "bgm/sigmamusicart-no-copyright-music-537751.mp3",
+  "generatedAt": "2026-11-25T21:05:30.550Z",
+  "preset": "karakuri"
+}
